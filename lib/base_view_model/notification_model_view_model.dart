@@ -2,7 +2,7 @@
 import 'package:library_architecture_mvvm_modify/base_data_source/notification_model_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_response/response.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/view_model_constants.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 class NotificationModelViewModel {
   static Future<Response<String,LocalException>> pushNotificationToZonedSchedule(

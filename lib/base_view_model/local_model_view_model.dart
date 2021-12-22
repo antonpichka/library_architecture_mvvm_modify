@@ -9,7 +9,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/base_list_model/local_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/local_model.dart';
 import 'package:library_architecture_mvvm_modify/base_response/response.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/view_model_constants.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 class LocalModelViewModel
 {
