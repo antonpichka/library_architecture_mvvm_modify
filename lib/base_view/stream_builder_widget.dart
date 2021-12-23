@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:library_architecture_mvvm_modify/base_model/domain_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_array_and_item_widget/base_array_widget.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_widget/base_widget.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_widget/empty_list_widget.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_single_widget/base_single_widget.dart';
+import 'package:library_architecture_mvvm_modify/custom_widget/empty_list_widget.dart';
 
 
 enum SelectedStreamBuilderWidget {
+  SINGLE_WIDGET_USE_STREAM_DOMAIN_MODEL,
+  SINGLE_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL,
   ARRAY_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL,
   ARRAY_WIDGET_USE_STREAM_DOMAIN_MODEL,
   ARRAY_WIDGET_USE_STREAM_DOMAIN_MODEL_AND_STREAM_LIST_DOMAIN_MODEL,
@@ -22,26 +24,33 @@ class StreamBuilderWidget extends StatelessWidget
   // all constructor (function_view_model)
   final SelectedStreamBuilderWidget _enumSelectedStreamWidget;
 
+  BaseSingleWidget _baseSingleWidget;
   BaseArrayWidget _baseArrayWidget;
   Stream<List<DomainModel>> _streamListDomainModel;
   Future<List<DomainModel>> _futureListDomainModel;
   Stream<DomainModel> _streamDomainModel;
 
   // all constructor (not function_view_model)
-  double _horizontalPadding = 0.0;
-  double _verticalPadding = 0.0;
   ProgressIndicator _progressIndicator = const CircularProgressIndicator();
-  BaseWidget _emptyListWidget = EmptyListWidget("Empty Text");
+  StatelessWidget _emptyListWidget = const EmptyListWidget("Empty Text");
 
+  StreamBuilderWidget.singleWidgetUseStreamDomainModel(
+      this._baseSingleWidget,
+      this._streamDomainModel
+      ) :
+        _enumSelectedStreamWidget = SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_DOMAIN_MODEL;
 
+  StreamBuilderWidget.singleWidgetUseStreamListDomainModel(
+      this._baseSingleWidget,
+      this._streamListDomainModel
+      ) :
+        _enumSelectedStreamWidget = SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL;
 
   StreamBuilderWidget.arrayWidgetUseStreamDomainModel(
       this._baseArrayWidget,
       this._streamDomainModel,
-      [this._horizontalPadding,
-        this._verticalPadding,
-        this._progressIndicator,
-        this._emptyListWidget]
+      [this._emptyListWidget,
+        this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_DOMAIN_MODEL;
 
@@ -49,10 +58,8 @@ class StreamBuilderWidget extends StatelessWidget
   StreamBuilderWidget.arrayWidgetUseStreamListDomainModel(
       this._baseArrayWidget,
       this._streamListDomainModel,
-      [this._horizontalPadding,
-      this._verticalPadding,
-      this._progressIndicator,
-      this._emptyListWidget]
+      [this._emptyListWidget,
+        this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL;
 
@@ -62,10 +69,8 @@ class StreamBuilderWidget extends StatelessWidget
       this._baseArrayWidget,
       this._streamDomainModel,
       this._streamListDomainModel,
-      [this._horizontalPadding,
-        this._verticalPadding,
-        this._progressIndicator,
-        this._emptyListWidget]
+      [this._emptyListWidget,
+        this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_DOMAIN_MODEL_AND_STREAM_LIST_DOMAIN_MODEL;
 
@@ -74,10 +79,8 @@ class StreamBuilderWidget extends StatelessWidget
       this._baseArrayWidget,
       this._streamListDomainModel,
       this._streamDomainModel,
-      [this._horizontalPadding,
-        this._verticalPadding,
-        this._progressIndicator,
-        this._emptyListWidget]
+      [this._emptyListWidget,
+        this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL_AND_STREAM_DOMAIN_MODEL;
 
@@ -85,10 +88,8 @@ class StreamBuilderWidget extends StatelessWidget
       this._baseArrayWidget,
       this._futureListDomainModel,
       this._streamDomainModel,
-      [this._horizontalPadding,
-        this._verticalPadding,
-        this._progressIndicator,
-        this._emptyListWidget]
+      [this._emptyListWidget,
+        this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_DOMAIN_MODEL_AND_STREAM_DOMAIN_MODEL;
 
@@ -97,49 +98,57 @@ class StreamBuilderWidget extends StatelessWidget
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     switch(_enumSelectedStreamWidget) {
+      case SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_DOMAIN_MODEL:
+        return _buildSingleWidgetUseStreamBuilderDomainModel(themeData);
+      case SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL:
+        return _buildSingleWidgetUseStreamBuilderListDomainModel(themeData);  
       case SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_DOMAIN_MODEL:
-        return Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: _horizontalPadding,
-                vertical: _verticalPadding),
-            child: _buildArrayWidgetUseStreamBuilderDomainModel(themeData)
-        );
+        return _buildArrayWidgetUseStreamBuilderDomainModel(themeData);
       case SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL:
-        return Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: _horizontalPadding,
-                vertical: _verticalPadding),
-            child: _buildArrayWidgetUseStreamBuilderListDomainModel(themeData)
-        );
+        return _buildArrayWidgetUseStreamBuilderListDomainModel(themeData);
       case SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_DOMAIN_MODEL_AND_STREAM_LIST_DOMAIN_MODEL:
-         return Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: _horizontalPadding,
-                vertical: _verticalPadding),
-            child: _buildArrayWidgetUseStreamBuilderDomainModelAndStreamBuilderListDomainModel(themeData)
-         );
+         return _buildArrayWidgetUseStreamBuilderDomainModelAndStreamBuilderListDomainModel(themeData);
       case SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_DOMAIN_MODEL_AND_STREAM_DOMAIN_MODEL:
-        return Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: _horizontalPadding,
-                vertical: _verticalPadding),
-            child: _buildArrayWidgetUseStreamBuilderListDomainModelAndStreamBuilderDomainModel(themeData)
-        );
+        return _buildArrayWidgetUseStreamBuilderListDomainModelAndStreamBuilderDomainModel(themeData);
       case SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_DOMAIN_MODEL_AND_STREAM_DOMAIN_MODEL:
-        return Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: _horizontalPadding,
-                vertical: _verticalPadding),
-            child: _buildArrayWidgetUseFutureBuilderListDomainModelAndStreamBuilderDomainModel(themeData)
-        );
-      default: return Container(
-          padding: EdgeInsets.symmetric(
-              horizontal: _horizontalPadding,
-              vertical: _verticalPadding),
-          child: _buildArrayWidgetUseStreamBuilderListDomainModel(themeData)
-      );
+        return _buildArrayWidgetUseFutureBuilderListDomainModelAndStreamBuilderDomainModel(themeData);
+      default: return _buildArrayWidgetUseStreamBuilderListDomainModel(themeData);
     }
   }
+
+  Widget _buildSingleWidgetUseStreamBuilderDomainModel(ThemeData themeData) {
+    return StreamBuilder<DomainModel>(
+        stream: _streamDomainModel,
+        builder: (BuildContext context, AsyncSnapshot<DomainModel> asyncSnapshot)
+        {
+          if(asyncSnapshot.hasData) {
+            DomainModel domainModel = asyncSnapshot.data ?? DomainModel();
+
+            return _baseSingleWidget.buildSingleWidgetUsingTheModel(context, domainModel);
+          }
+          return Container();
+        }
+    );
+  }
+
+  Widget _buildSingleWidgetUseStreamBuilderListDomainModel(ThemeData themeData) {
+    return StreamBuilder<List<DomainModel>>(
+        stream: _streamListDomainModel,
+        builder: (BuildContext context, AsyncSnapshot<List<DomainModel>> asyncSnapshot)
+        {
+          if(asyncSnapshot.hasData) {
+            List<DomainModel> domainListModel = asyncSnapshot.data ?? List.empty();
+
+            return _baseSingleWidget.buildSingleWidgetUsingAList(
+                context,
+                domainListModel
+            );
+          }
+          return Container();
+        }
+    );
+  }
+
 
   Widget _buildArrayWidgetUseStreamBuilderDomainModel(ThemeData themeData) {
     return StreamBuilder<DomainModel>(
@@ -147,9 +156,9 @@ class StreamBuilderWidget extends StatelessWidget
         builder: (BuildContext context, AsyncSnapshot<DomainModel> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
-            DomainModel domainModel = asyncSnapshot.data ?? List.empty();
+            DomainModel domainModel = asyncSnapshot.data ?? DomainModel();
 
-            return _baseArrayWidget.buildBaseStreamArrayAndBelongsBaseItemWidget(
+            return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemWidget(
                   context,
                   domainModel);
           }
@@ -172,7 +181,7 @@ class StreamBuilderWidget extends StatelessWidget
           }
 
           if(domainListModel.isNotEmpty) {
-            return _baseArrayWidget.buildBaseStreamArrayAndBelongsBaseItemOrBelongsBaseItemAndArrayModelWidget(
+            return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
                 context,
                 domainListModel
             );
@@ -202,8 +211,13 @@ class StreamBuilderWidget extends StatelessWidget
               }
 
               if(domainListModel.isNotEmpty) {
-                DomainModel domainModel = modelAsyncSnapshot.data;
-                return _baseArrayWidget.buildBaseStreamArrayAndBelongsBaseItemTwoModelOrBelongsBaseItemAndArrayModelWidget(
+                DomainModel domainModel = DomainModel();
+               
+                if(modelAsyncSnapshot.hasData) {
+                  domainModel = modelAsyncSnapshot.data;
+                }
+                
+                return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                     context,
                     domainListModel,
                     domainModel
@@ -234,8 +248,13 @@ class StreamBuilderWidget extends StatelessWidget
                   }
 
                   if(domainListModel.isNotEmpty) {
-                    DomainModel domainModel = modelAsyncSnapshot.data;
-                    return _baseArrayWidget.buildBaseStreamArrayAndBelongsBaseItemTwoModelOrBelongsBaseItemAndArrayModelWidget(
+                    DomainModel domainModel = DomainModel();
+
+                    if(modelAsyncSnapshot.hasData) {
+                      domainModel = modelAsyncSnapshot.data;
+                    }
+                    
+                    return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                         context,
                         domainListModel,
                         domainModel
@@ -266,8 +285,12 @@ class StreamBuilderWidget extends StatelessWidget
                   }
 
                   if(domainListModel.isNotEmpty) {
-                    DomainModel domainModel = modelAsyncSnapshot.data;
-                    return _baseArrayWidget.buildBaseStreamArrayAndBelongsBaseItemTwoModelOrBelongsBaseItemAndArrayModelWidget(
+                    DomainModel domainModel = DomainModel();
+
+                    if(modelAsyncSnapshot.hasData) {
+                      domainModel = modelAsyncSnapshot.data;
+                    }
+                    return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                         context,
                         domainListModel,
                         domainModel

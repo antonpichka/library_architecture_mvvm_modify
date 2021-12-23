@@ -1,9 +1,9 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:library_architecture_mvvm_modify/base_model/domain_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_array_and_item_widget/base_array_widget.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_array_and_item_widget/base_item_two_model_widget.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_array_and_item_widget/base_item_widget.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_two_model_widget.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_widget.dart';
 
 
 class ListViewSeparatedArrayWidget extends BaseArrayWidget
@@ -12,7 +12,7 @@ class ListViewSeparatedArrayWidget extends BaseArrayWidget
   ListViewSeparatedArrayWidget(this._baseItemWidget);
 
   @override
-  BoxScrollView buildBaseStreamArrayAndBelongsBaseItemTwoModelOrBelongsBaseItemAndArrayModelWidget(
+  BoxScrollView buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
       List<DomainModel> list,
       DomainModel model)
@@ -37,7 +37,7 @@ class ListViewSeparatedArrayWidget extends BaseArrayWidget
   }
 
   @override
-  Widget buildBaseStreamArrayAndBelongsBaseItemOrBelongsBaseItemAndArrayModelWidget(
+  Widget buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
       List<DomainModel> list)
   {
@@ -59,7 +59,7 @@ class ListViewSeparatedArrayWidget extends BaseArrayWidget
   }
 
   @override
-  Widget buildBaseStreamArrayAndBelongsBaseItemWidget(
+  Widget buildArrayWidgetAndBelongsBaseItemWidget(
       BuildContext context,
       DomainModel model)
   {
