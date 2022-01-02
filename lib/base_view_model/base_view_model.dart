@@ -1,18 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_event/setters_event.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_event/base_setters_event.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
 import 'package:uuid/uuid.dart';
 
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<C extends SettersEvent,
+abstract class BaseViewModel<C extends BaseSettersEvent,
                               T extends Enum,
-                              Y extends DomainModel,
-                              U extends ListModel<DomainModel>>
+                              Y extends BaseDomainModel,
+                              U extends BaseListModel<BaseDomainModel>>
 {
   StreamController<List<Y>> _streamControllerLocalListDomainModel = StreamController.broadcast();
   StreamController<List<Y>> _streamControllerNetworkListDomainModel = StreamController.broadcast();
@@ -110,7 +110,7 @@ abstract class BaseViewModel<C extends SettersEvent,
 
   Future<List<Y>> get getFutureLocalListModel async {
     var list = List.empty();
-    for(DomainModel value in _listModel.getLocalList) {
+    for(BaseDomainModel value in _listModel.getLocalList) {
       list.add(value);
     }
     return list;
@@ -122,7 +122,7 @@ abstract class BaseViewModel<C extends SettersEvent,
 
   Future<List<Y>> get getFutureNetworkListModel async {
     var list = List.empty();
-    for(DomainModel value in _listModel.getNetworkList) {
+    for(BaseDomainModel value in _listModel.getNetworkList) {
       list.add(value);
     }
     return list;

@@ -3,7 +3,7 @@
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 
 class ListDataNetworkException {
-  static final Map<int,NetworkException> mapNetworkException = {
+  static final Map<int,NetworkException> mapCodeAndNetworkException = {
     201: NetworkException(201,
         '201 Created',
         'The request has been fulfilled and resulted in a new resource being created.'
@@ -130,7 +130,7 @@ class ListDataNetworkException {
     ),
     501: NetworkException(501,
         '501 Not Implemented',
-        'The server does not support the functionality function_view_model to fulfill the request.'
+        'The server does not support the functionality interface_function_view_model to fulfill the request.'
     ),
     502: NetworkException(502,
         '502 Bad Gateway',

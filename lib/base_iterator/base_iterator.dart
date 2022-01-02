@@ -4,12 +4,8 @@ abstract class BaseIterator<T> implements Iterator<T> {
   List<T> _list;
 
   set setList(List<T> newItems) {
-    this._list = newItems;
+    _list = newItems;
   }
-  
-  @protected
-  List<T> get getList => _list;
-
   List<T> get getSortedList {
     List<T> list = List.empty();
     while(moveNext()) {
@@ -18,4 +14,7 @@ abstract class BaseIterator<T> implements Iterator<T> {
     }
     return list;
   }
+
+  @protected
+  List<T> get getList => _list;
 }

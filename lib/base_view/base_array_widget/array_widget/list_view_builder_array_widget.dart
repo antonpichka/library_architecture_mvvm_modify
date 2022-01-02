@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_architecture_mvvm_modify/base_model/domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_two_model_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_widget.dart';
@@ -11,7 +11,7 @@ class ListViewBuilderArrayWidget extends BaseArrayWidget
 
   @override
   Widget buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(BuildContext context,
-      List<DomainModel> list) {
+      List<BaseDomainModel> list) {
     return ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -25,8 +25,8 @@ class ListViewBuilderArrayWidget extends BaseArrayWidget
 
   @override
   Widget buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(BuildContext context,
-      List<DomainModel> list,
-      DomainModel model)
+      List<BaseDomainModel> list,
+      BaseDomainModel model)
   {
     return ListView.builder(
         shrinkWrap: true,
@@ -43,7 +43,7 @@ class ListViewBuilderArrayWidget extends BaseArrayWidget
 
   @override
   Widget buildArrayWidgetAndBelongsBaseItemWidget(BuildContext context,
-      DomainModel model)
+      BaseDomainModel model)
   {
     _baseItemWidget.setModel = model;
     return _baseItemWidget;
