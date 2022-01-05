@@ -45,7 +45,7 @@ class ReadySPModelFVM
     }
   }
 
- static Future<Response<String, BaseException>> deleteModelToSP(
+ static Future<Response<String, BaseException>> deleteModelToSPFVM(
       SPModelDataSource spDataSource,
       ) async {
     try {
