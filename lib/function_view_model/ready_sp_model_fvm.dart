@@ -6,9 +6,10 @@ import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dar
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
-class ReadySPModelFVM {
-
- static Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSetters(
+/* USING TO VIEW_MODEL CLASSES */
+class ReadySPModelFVM
+{
+ static Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSettersFVM(
       SPModelDataSource spDataSource,
       Function(BaseLocalModel localModel) function) async
  {
@@ -26,7 +27,7 @@ class ReadySPModelFVM {
     }
   }
 
- static Future<Response<String,BaseException>> insertModelToSPThereIsParameter(
+ static Future<Response<String,BaseException>> insertModelToSPThereIsParameterFVM(
       SPModelDataSource spDataSource,
       BaseLocalModel localModel
       ) async {

@@ -1,3 +1,3 @@
 abstract class InsertModelToLocalListModelFVM {
-  bool insertModelToLocalListModel();
+  bool insertModelToLocalListModelFVM();
 }

@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class SPModelFVM {
-  Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSetters();
-  Future<Response<String,BaseException>> insertModelToSPThereIsParameter();
-  Future<Response<String,BaseException>> deleteModelToSP();
+  Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSettersFVM();
+  Future<Response<String,BaseException>> insertModelToSPThereIsParameterFVM();
+  Future<Response<String,BaseException>> deleteModelToSPFVM();
 }

@@ -1,6 +1,4 @@
 
-
-
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_ln_list_model_fvm.dart';
@@ -41,360 +39,357 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_network_list_model_fvm.dart';
 
+/* USING TO VIEW CLASSES */
 class FunctionViewModel {
 
-  static Future<String> callToMethodGetModelFromSPAndUseTheSetters(
+  static Future<String> callToMethodGetModelFromSPAndUseTheSettersFVM(
       SPModelFVM spModelFVM) async
   {
     return _codeNetworkOrLocalDatabase(
-        spModelFVM.callToMethodGetModelFromSPAndUseTheSetters()
+        spModelFVM.callToMethodGetModelFromSPAndUseTheSettersFVM()
     );
   }
 
-  static Future<String> insertModelToSPThereIsParameter(
+  static Future<String> insertModelToSPThereIsParameterFVM(
       SPModelFVM spModelFVM) async
   {
     return _codeNetworkOrLocalDatabase(
-        spModelFVM.insertModelToSPThereIsParameter()
+        spModelFVM.insertModelToSPThereIsParameterFVM()
     );
   }
 
-  static Future<String> deleteModelToSP(
+  static Future<String> deleteModelToSPFVM(
       SPModelFVM spModelFVM) async
   {
     return _codeNetworkOrLocalDatabase(
-        spModelFVM.deleteModelToSP()
+        spModelFVM.deleteModelToSPFVM()
     );
   }
 
-  static Future<String> insertModelToLocalDatabaseThereIsParameter(
+  static Future<String> insertModelToLocalDatabaseThereIsParameterFVM(
       InsertModelToLocalDatabaseThereIsParameterFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkOrLocalDatabase(
-        insertModel.insertModelToLocalDatabaseThereIsParameter(),
+        insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool insertModelToLocalListModel(
+  static bool insertModelToLocalListModelFVM(
       InsertModelToLocalListModelFVM insertModel) {
     // Insert Model FVM
     return _codeNetworkOrLocalListModel(
-      insertModel.insertModelToLocalListModel()
+      insertModel.insertModelToLocalListModelFVM()
     );
   }
-
-
-  static Future<String> updateModelToLocalDatabaseThereIsParameter(
+  
+  static Future<String> updateModelToLocalDatabaseThereIsParameterFVM(
       UpdateModelToLocalDatabaseThereIsParameterFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkOrLocalDatabase(
-      updateModel.updateModelToLocalDatabaseThereIsParameter(),
+      updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool updateModelToLocalListModel(
+  static bool updateModelToLocalListModelFVM(
       UpdateModelToLocalListModelFVM updateModel) {
-    // Insert Model FVM
+    // Update Model FVM
     return _codeNetworkOrLocalListModel(
-        updateModel.updateModelToLocalListModel()
+        updateModel.updateModelToLocalListModelFVM()
     );
   }
 
-
-  static Future<String> deleteModelToLocalDatabaseThereIsParameter(
+  static Future<String> deleteModelToLocalDatabaseThereIsParameterFVM(
       DeleteModelToLocalDatabaseThereIsParameterFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkOrLocalDatabase(
-      deleteModel.deleteModelToLocalDatabaseThereIsParameter(),
+      deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool deleteModelToLocalListModel(
+  static bool deleteModelToLocalListModelFVM(
       DeleteModelToLocalListModelFVM deleteModel) {
-    // Insert Model FVM
+    // Delete Model FVM
     return _codeNetworkOrLocalListModel(
-        deleteModel.deleteModelToLocalListModel()
+        deleteModel.deleteModelToLocalListModelFVM()
     );
   }
 
-  static Future<String> callToMethodGetListModelFromLocalDatabaseAndUseTheSetters(
+  static Future<String> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseFVM getListModel)
   async {
     return _codeNetworkOrLocalDatabase(
-      getListModel.callToMethodGetListModelFromLocalDatabaseAndUseTheSetters(),
+      getListModel.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSetters(
+  static Future<String> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseThereIsParameterFVM getListModel)
   async {
     return _codeNetworkOrLocalDatabase(
-      getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSetters(),
+      getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSetters(
+  static Future<String> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromLocalDatabaseThereIsParameterFVM getModel)
   async {
     return _codeNetworkOrLocalDatabase(
-      getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSetters(),
+      getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> insertModelToNetworkDatabaseThereIsParameter(
+  static Future<String> insertModelToNetworkDatabaseThereIsParameterFVM(
       InsertModelToNetworkDatabaseThereIsParameterFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkOrLocalDatabase(
-      insertModel.insertModelToNetworkDatabaseThereIsParameter(),
+      insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool insertModelToNetworkListModel(
+  static bool insertModelToNetworkListModelFVM(
       InsertModelToNetworkListModelFVM insertModel) {
     // Insert Model FVM
     return _codeNetworkOrLocalListModel(
-        insertModel.insertModelToNetworkListModel()
+        insertModel.insertModelToNetworkListModelFVM()
     );
   }
 
-  static Future<String> updateModelToNetworkDatabaseThereIsParameter(
+  static Future<String> updateModelToNetworkDatabaseThereIsParameterFVM(
       UpdateModelToNetworkDatabaseThereIsParameterFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkOrLocalDatabase(
-      updateModel.updateModelToNetworkDatabaseThereIsParameter(),
+      updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool updateModelToNetworkListModel(
+  static bool updateModelToNetworkListModelFVM(
       UpdateModelToNetworkListModelFVM updateModel) {
     // Update Model FVM
     return _codeNetworkOrLocalListModel(
-        updateModel.updateModelToNetworkListModel()
+        updateModel.updateModelToNetworkListModelFVM()
     );
   }
 
-  static Future<String> deleteModelToNetworkDatabaseThereIsParameter(
+  static Future<String> deleteModelToNetworkDatabaseThereIsParameterFVM(
       DeleteModelToNetworkDatabaseThereIsParameterFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkOrLocalDatabase(
-      deleteModel.deleteModelToNetworkDatabaseThereIsParameter(),
+      deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool deleteModelToNetworkListModel(
+  static bool deleteModelToNetworkListModelFVM(
       DeleteModelToNetworkListModelFVM deleteModel) {
     // Delete Model FVM
     return _codeNetworkOrLocalListModel(
-        deleteModel.deleteModelToNetworkListModel()
+        deleteModel.deleteModelToNetworkListModelFVM()
     );
   }
 
-  static Future<String> callToMethodGetListModelFromNetworkDatabaseAndUseTheSetters(
+  static Future<String> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseFVM getListModel)
   async {
     return _codeNetworkOrLocalDatabase(
-      getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSetters(),
+      getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(
+  static Future<String> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseThereIsParameterFVM getListModel)
   async {
     return _codeNetworkOrLocalDatabase(
-      getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(),
+      getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(
+  static Future<String> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromNetworkDatabaseThereIsParameterFVM getModel)
   async {
     return _codeNetworkOrLocalDatabase(
-      getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(),
+      getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
   
-  static Future<String> insertModelToLNDatabaseThereIsParameter(
+  static Future<String> insertModelToLNDatabaseThereIsParameterFVM(
       InsertModelToLNDatabaseThereIsParameterFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkAndLocalDatabase(
-      insertModel.insertModelToNetworkDatabaseThereIsParameter(),
-      insertModel.insertModelToLocalDatabaseThereIsParameter(),
+      insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
+      insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool insertModelToLNListModel(
+  static bool insertModelToLNListModelFVM(
       InsertModelToLNListModelFVM insertModel) {
     // Insert Model FVM
     return _codeNetworkAndLocalListModel(
-      insertModel.insertModelToNetworkListModel(),
-      insertModel.insertModelToLocalListModel(),
+      insertModel.insertModelToNetworkListModelFVM(),
+      insertModel.insertModelToLocalListModelFVM(),
     );
   }
 
-  static Future<String> updateModelToLNDatabaseThereIsParameter(
+  static Future<String> updateModelToLNDatabaseThereIsParameterFVM(
       UpdateModelToLNDatabaseThereIsParameterFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkAndLocalDatabase(
-      updateModel.updateModelToNetworkDatabaseThereIsParameter(),
-      updateModel.updateModelToLocalDatabaseThereIsParameter(),
+      updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
+      updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool updateModelToLNListModel(
+  static bool updateModelToLNListModelFVM(
       UpdateModelToLNListModelFVM updateModel) {
     // Update Model FVM
     return _codeNetworkAndLocalListModel(
-      updateModel.updateModelToNetworkListModel(),
-      updateModel.updateModelToLocalListModel(),
+      updateModel.updateModelToNetworkListModelFVM(),
+      updateModel.updateModelToLocalListModelFVM(),
     );
   }
 
-  static Future<String> deleteModelToLNDatabaseThereIsParameter(
+  static Future<String> deleteModelToLNDatabaseThereIsParameterFVM(
       DeleteModelToLNDatabaseThereIsParameterFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkAndLocalDatabase(
-      deleteModel.deleteModelToNetworkDatabaseThereIsParameter(),
-      deleteModel.deleteModelToLocalDatabaseThereIsParameter(),
+      deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
+      deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
-  static bool deleteModelToLNListModel(
+  static bool deleteModelToLNListModelFVM(
       DeleteModelToLNListModelFVM deleteModel) {
     // Delete Model FVM
     return _codeNetworkAndLocalListModel(
-      deleteModel.deleteModelToNetworkListModel(),
-      deleteModel.deleteModelToLocalListModel(),
+      deleteModel.deleteModelToNetworkListModelFVM(),
+      deleteModel.deleteModelToLocalListModelFVM(),
     );
   }
 
-  static Future<String> callToMethodGetListModelFromLNDatabaseAndUseTheSetters(
+  static Future<String> callToMethodGetListModelFromLNDatabaseAndUseTheSettersFVM(
       GetListModelFromLNDatabaseFVM getListModel)
   async {
     return _codeNetworkAndLocalDatabase(
-      getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSetters(),
-      getListModel.callToMethodGetListModelFromLocalDatabaseAndUseTheSetters(),
+      getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(),
+      getListModel.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> callToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSetters(
+  static Future<String> callToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLNDatabaseThereIsParameterFVM getListModel)
   async {
     return _codeNetworkAndLocalDatabase(
-      getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(),
-      getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSetters(),
+      getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
+      getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
-
-
-
-  static Future<String> callToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSetters(
+  
+  static Future<String> callToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromLNDatabaseThereIsParameterFVM getModel)
   async {
     return _codeNetworkAndLocalDatabase(
-      getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(),
-      getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSetters(),
+      getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
+      getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
 
-  static Future<String> insertModelToLocalDatabaseThereIsParameterAndInsertModelToLocalListModel(
+  static Future<String> insertModelToLocalDatabaseThereIsParameterAndInsertModelToLocalListModelFVM(
       InsertModelToLocalDatabaseThereIsParameterAndInsertModelToLocalListModelFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkOrLocalDatabaseAndListModel(
-        insertModel.insertModelToLocalDatabaseThereIsParameter(),
-        insertModel.insertModelToLocalListModel
+        insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
+        insertModel.insertModelToLocalListModelFVM
     );
   }
 
-  static Future<String> updateModelToLocalDatabaseThereIsParameterAndUpdateModelToLocalListModel(
+  static Future<String> updateModelToLocalDatabaseThereIsParameterAndUpdateModelToLocalListModelFVM(
       UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToLocalListModelFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkOrLocalDatabaseAndListModel(
-        updateModel.updateModelToLocalDatabaseThereIsParameter(),
-        updateModel.updateModelToLocalListModel
+        updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
+        updateModel.updateModelToLocalListModelFVM
     );
   }
 
-  static Future<String> deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModel(
+  static Future<String> deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModelFVM(
       DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModelFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkOrLocalDatabaseAndListModel(
-        deleteModel.deleteModelToLocalDatabaseThereIsParameter(),
-        deleteModel.deleteModelToLocalListModel
+        deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
+        deleteModel.deleteModelToLocalListModelFVM
     );
   }
 
-  static Future<String> insertModelToNetworkDatabaseThereIsParameterAndInsertModelToNetworkListModel(
+  static Future<String> insertModelToNetworkDatabaseThereIsParameterAndInsertModelToNetworkListModelFVM(
       InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToNetworkListModelFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkOrLocalDatabaseAndListModel(
-        insertModel.insertModelToNetworkDatabaseThereIsParameter(),
-        insertModel.insertModelToNetworkListModel
+        insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
+        insertModel.insertModelToNetworkListModelFVM
     );
   }
 
-  static Future<String> updateModelToNetworkDatabaseThereIsParameterAndUpdateModelToNetworkListModel(
+  static Future<String> updateModelToNetworkDatabaseThereIsParameterAndUpdateModelToNetworkListModelFVM(
       UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToNetworkListModelFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkOrLocalDatabaseAndListModel(
-        updateModel.updateModelToNetworkDatabaseThereIsParameter(),
-        updateModel.updateModelToNetworkListModel);
+        updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
+        updateModel.updateModelToNetworkListModelFVM);
   }
 
-  static Future<String> deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToNetworkListModel(
+  static Future<String> deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToNetworkListModelFVM(
       DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToNetworkListModelFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkOrLocalDatabaseAndListModel(
-        deleteModel.deleteModelToNetworkDatabaseThereIsParameter(),
-        deleteModel.deleteModelToNetworkListModel
+        deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
+        deleteModel.deleteModelToNetworkListModelFVM
     );
   }
 
-  static Future<String> insertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModel(
+  static Future<String> insertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModelFVM(
       InsertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModelFVM  insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkAndLocalDatabaseAndListModel(
-        insertModel.insertModelToNetworkDatabaseThereIsParameter(),
-        insertModel.insertModelToNetworkListModel,
-        insertModel.insertModelToLocalDatabaseThereIsParameter(),
-        insertModel.insertModelToLocalListModel);
+        insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
+        insertModel.insertModelToNetworkListModelFVM,
+        insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
+        insertModel.insertModelToLocalListModelFVM);
   }
 
-  static Future<String> updateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModel(
+  static Future<String> updateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModelFVM(
       UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModelFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkAndLocalDatabaseAndListModel(
-        updateModel.updateModelToNetworkDatabaseThereIsParameter(),
-        updateModel.updateModelToNetworkListModel,
-        updateModel.updateModelToLocalDatabaseThereIsParameter(),
-        updateModel.updateModelToLocalListModel);
+        updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
+        updateModel.updateModelToNetworkListModelFVM,
+        updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
+        updateModel.updateModelToLocalListModelFVM);
   }
 
-  static Future<String> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModel(
+  static Future<String> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM(
       DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkAndLocalDatabaseAndListModel(
-        deleteModel.deleteModelToNetworkDatabaseThereIsParameter(),
-        deleteModel.deleteModelToNetworkListModel,
-        deleteModel.deleteModelToLocalDatabaseThereIsParameter(),
-        deleteModel.deleteModelToLocalListModel);
+        deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
+        deleteModel.deleteModelToNetworkListModelFVM,
+        deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
+        deleteModel.deleteModelToLocalListModelFVM);
   }
   
   /* OTHER */

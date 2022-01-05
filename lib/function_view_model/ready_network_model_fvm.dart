@@ -12,10 +12,10 @@ import 'package:library_architecture_mvvm_modify/base_model/base_network_model.d
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
-
+/* USING TO VIEW_MODEL CLASSES */
 class ReadyNetworkModelFVM
 {
- static Future<Response<String,BaseException>> callToMethodGetListModelFromNetworkDatabaseAndUseTheSetters(
+ static Future<Response<String,BaseException>> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,
       Function(BaseNetworkListModel) function
       ) async
@@ -34,7 +34,7 @@ class ReadyNetworkModelFVM
     }
   }
 
-  static Future<Response<String, BaseException>> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(
+  static Future<Response<String, BaseException>> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
       dynamic sorted,
       Function(BaseNetworkListModel) function
@@ -54,7 +54,7 @@ class ReadyNetworkModelFVM
     }
   }
 
-  static Future<Response<String, BaseException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSetters(
+  static Future<Response<String, BaseException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
       dynamic weGetTheElementOnIt,
       Function(BaseNetworkModel) function
@@ -74,7 +74,7 @@ class ReadyNetworkModelFVM
   }
 
 
-  static Future<Response<String, BaseException>> insertModelToNetworkDatabaseThereIsParameter(
+  static Future<Response<String, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
       InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
       BaseNetworkModel networkModel
       ) async {
@@ -100,7 +100,7 @@ class ReadyNetworkModelFVM
   }
 
 
-  static Future<Response<String, BaseException>> updateModelToNetworkDatabaseThereIsParameter(
+  static Future<Response<String, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
       BaseNetworkModel networkModel
       ) async {
@@ -125,7 +125,7 @@ class ReadyNetworkModelFVM
     }
   }
 
-  static Future<Response<String, BaseException>> deleteModelToNetworkDatabaseThereIsParameter(
+  static Future<Response<String, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
       DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
       BaseNetworkModel networkModel
       ) async {

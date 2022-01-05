@@ -3,5 +3,5 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class DeleteModelToLocalDatabaseThereIsParameterFVM {
-  Future<Response<String,BaseException>> deleteModelToLocalDatabaseThereIsParameter();
+  Future<Response<String,BaseException>> deleteModelToLocalDatabaseThereIsParameterFVM();
 }

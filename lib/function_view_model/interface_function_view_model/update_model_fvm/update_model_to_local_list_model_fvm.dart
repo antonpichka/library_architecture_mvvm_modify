@@ -1,3 +1,3 @@
 abstract class UpdateModelToLocalListModelFVM {
-  bool updateModelToLocalListModel();
+  bool updateModelToLocalListModelFVM();
 }

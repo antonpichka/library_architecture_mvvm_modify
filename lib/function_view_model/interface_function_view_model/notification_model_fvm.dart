@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class NotificationModelFVM {
-  Future<Response<String,LocalException>> pushNotificationToZonedSchedule();
-  Future<Response<String,LocalException>> pushNotificationToShow();
-  Future<Response<String,LocalException>> cancelNotification();
+  Future<Response<String,LocalException>> pushNotificationToZonedScheduleFVM();
+  Future<Response<String,LocalException>> pushNotificationToShowFVM();
+  Future<Response<String,LocalException>> cancelNotificationFVM();
 }

@@ -1,3 +1,3 @@
 abstract class UpdateModelToNetworkListModelFVM {
-  bool updateModelToNetworkListModel();
+  bool updateModelToNetworkListModelFVM();
 }

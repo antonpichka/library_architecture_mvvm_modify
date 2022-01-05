@@ -5,7 +5,6 @@ import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dar
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class TypeForSP {
   final EnumTypeForSP _enumTypeForSP;
 
@@ -57,7 +56,7 @@ abstract class BaseSPModelDataSource {
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseInsertModelToSPThereIsParameter(BaseLocalModel localModel) async {
+  Future<Response<bool,LocalException>> baseInsertModelToSPThereIsParameterDataSource(BaseLocalModel localModel) async {
     try {
       final sP = await sharedPreferences;
       localModel.toMap().forEach((key, value) {
@@ -80,7 +79,7 @@ abstract class BaseSPModelDataSource {
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseDeleteModelToSP() async {
+  Future<Response<bool,LocalException>> baseDeleteModelToSPDataSource() async {
     try {
       final sP = await sharedPreferences;
       toMap().forEach((key, value) {
@@ -93,7 +92,7 @@ abstract class BaseSPModelDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromSP() async {
+  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromSPDataSource() async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};

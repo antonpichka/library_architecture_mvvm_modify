@@ -1,3 +1,3 @@
 abstract class IteratorLocalListModelFVM {
-  bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIterator();
+  bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM();
 }

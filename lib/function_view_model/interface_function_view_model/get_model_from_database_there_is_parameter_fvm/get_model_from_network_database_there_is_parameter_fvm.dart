@@ -3,5 +3,5 @@ import 'package:library_architecture_mvvm_modify/base_exception/network_exceptio
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class GetModelFromNetworkDatabaseThereIsParameterFVM {
-  Future<Response<String,NetworkException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSetters();
+  Future<Response<String,NetworkException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM();
 }

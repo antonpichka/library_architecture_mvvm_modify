@@ -4,8 +4,10 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
-class ReadyNotificationModelFVM {
-  static Future<Response<String,LocalException>> pushNotificationToZonedSchedule(
+/* USING TO VIEW_MODEL CLASSES */
+class ReadyNotificationModelFVM
+{
+  static Future<Response<String,LocalException>> pushNotificationToZonedScheduleFVM(
       NotificationModelDataSource notificationModelDataSource,
       dynamic model) async
   {
@@ -30,7 +32,7 @@ class ReadyNotificationModelFVM {
     }
   }
 
-  static Future<Response<String,LocalException>> pushNotificationToShow(
+  static Future<Response<String,LocalException>> pushNotificationToShowFVM(
       NotificationModelDataSource notificationModelDataSource,
       dynamic model) async
   {
@@ -55,7 +57,7 @@ class ReadyNotificationModelFVM {
     }
   }
 
-  static Future<Response<String,LocalException>> cancelNotification(
+  static Future<Response<String,LocalException>> cancelNotificationFVM(
       NotificationModelDataSource notificationModelDataSource,
       dynamic model) async
   {

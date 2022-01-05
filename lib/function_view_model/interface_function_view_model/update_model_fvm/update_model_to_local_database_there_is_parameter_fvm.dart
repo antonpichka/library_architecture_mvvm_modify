@@ -3,5 +3,5 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class UpdateModelToLocalDatabaseThereIsParameterFVM {
-  Future<Response<String,BaseException>> updateModelToLocalDatabaseThereIsParameter();
+  Future<Response<String,BaseException>> updateModelToLocalDatabaseThereIsParameterFVM();
 }

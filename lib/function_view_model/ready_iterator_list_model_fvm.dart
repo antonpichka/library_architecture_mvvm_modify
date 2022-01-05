@@ -2,8 +2,10 @@
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model.dart';
 
-class ReadyIteratorListModelFVM {
- static bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIterator(
+/* USING TO VIEW_MODEL CLASSES */
+class ReadyIteratorListModelFVM
+{
+ static bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
       BaseListModel listModel,
       Enum selectedEnum,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
@@ -20,7 +22,7 @@ class ReadyIteratorListModelFVM {
     return true;
   }
 
-  static bool callToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIterator(
+  static bool callToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM(
       BaseListModel listModel,
       Enum selectedEnum,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)

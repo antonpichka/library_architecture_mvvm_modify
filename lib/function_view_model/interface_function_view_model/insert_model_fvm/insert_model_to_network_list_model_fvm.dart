@@ -1,3 +1,3 @@
 abstract class InsertModelToNetworkListModelFVM {
-  bool insertModelToNetworkListModel();
+  bool insertModelToNetworkListModelFVM();
 }

@@ -4,5 +4,5 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class GetListModelFromLocalDatabaseFVM {
-  Future<Response<String,LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSetters();
+  Future<Response<String,LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM();
 }

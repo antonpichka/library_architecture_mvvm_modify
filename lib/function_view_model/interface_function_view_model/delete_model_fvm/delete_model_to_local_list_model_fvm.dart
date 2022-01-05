@@ -1,3 +1,3 @@
 abstract class DeleteModelToLocalListModelFVM {
-  bool deleteModelToLocalListModel();
+  bool deleteModelToLocalListModelFVM();
 }

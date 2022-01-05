@@ -1,3 +1,3 @@
 abstract class DeleteModelToNetworkListModelFVM {
-  bool deleteModelToNetworkListModel();
+  bool deleteModelToNetworkListModelFVM();
 }

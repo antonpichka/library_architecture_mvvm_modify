@@ -50,7 +50,7 @@ abstract class BaseLocalDatabaseModelDataSource {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseInsertModelToLocalDatabaseThereIsParameter(
+  Future<Response<int,LocalException>> baseInsertModelToLocalDatabaseThereIsParameterDataSource(
       BaseLocalModel localModel,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
@@ -69,7 +69,7 @@ abstract class BaseLocalDatabaseModelDataSource {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameter(
+  Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameterDataSource(
       BaseLocalModel localModel,
       String table,
       String columnForWhere,
@@ -90,7 +90,7 @@ abstract class BaseLocalDatabaseModelDataSource {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameter(
+  Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
       BaseLocalModel localModel,
       String table,
       String columnForWhere,
@@ -111,7 +111,7 @@ abstract class BaseLocalDatabaseModelDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromLocalDatabaseThereIsParameter(
+  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromLocalDatabaseThereIsParameterDataSource(
       dynamic parameterForWhereArgs,
       String table,
       String columnForWhere,
@@ -134,7 +134,7 @@ abstract class BaseLocalDatabaseModelDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabase(
+  Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
       String table
       ) async {
     try {
@@ -155,7 +155,7 @@ abstract class BaseLocalDatabaseModelDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameter(
+  Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
       dynamic parameterForWhereArgs,
       String table,
       String columnForWhere) async {

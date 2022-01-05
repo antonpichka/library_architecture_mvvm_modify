@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 
 class BaseNotificationModelDataSource {
 
-  Future<Response<bool, LocalException>> baseCancelNotification(
+  Future<Response<bool, LocalException>> baseCancelNotificationDataSource(
       Future<void> methodCancelNotification) async
   {
     try {
@@ -14,7 +14,7 @@ class BaseNotificationModelDataSource {
     }
   }
 
-  Future<Response<bool, LocalException>> basePushNotificationToShow(
+  Future<Response<bool, LocalException>> basePushNotificationToShowDataSource(
       Future<void> methodPushNotificationToShow) async
   {
     try {
@@ -25,7 +25,7 @@ class BaseNotificationModelDataSource {
     }
   }
 
-  Future<Response<bool, LocalException>> basePushNotificationToZonedSchedule(
+  Future<Response<bool, LocalException>> basePushNotificationToZonedScheduleDataSource(
       Future<void> methodPushNotificationToZonedSchedule) async
   {
     try {

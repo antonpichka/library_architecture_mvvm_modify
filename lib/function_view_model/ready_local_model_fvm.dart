@@ -11,9 +11,10 @@ import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dar
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
+/* USING TO VIEW_MODEL CLASSES */
 class ReadyLocalModelFVM
 {
-  static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSetters(
+  static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,
       Function(BaseLocalListModel) function
       ) async
@@ -31,7 +32,7 @@ class ReadyLocalModelFVM
     }
   }
 
-  static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSetters(
+  static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
       dynamic sorted,
       Function(BaseLocalListModel) function
@@ -50,7 +51,7 @@ class ReadyLocalModelFVM
     }
   }
 
-  static Future<Response<String, LocalException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSetters(
+  static Future<Response<String, LocalException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
       dynamic weGetTheElementOnIt,
       Function(BaseLocalModel) function
@@ -70,7 +71,7 @@ class ReadyLocalModelFVM
   }
 
 
-  static Future<Response<String, LocalException>> insertModelToLocalDatabaseThereIsParameter(
+  static Future<Response<String, LocalException>> insertModelToLocalDatabaseThereIsParameterFVM(
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
       BaseLocalModel localModel
       ) async {
@@ -99,7 +100,7 @@ class ReadyLocalModelFVM
   }
 
 
- static Future<Response<String, LocalException>> updateModelToLocalDatabaseThereIsParameter(
+ static Future<Response<String, LocalException>> updateModelToLocalDatabaseThereIsParameterFVM(
       UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
       BaseLocalModel localModel
       ) async {
@@ -125,7 +126,7 @@ class ReadyLocalModelFVM
     }
   }
 
- static Future<Response<String, LocalException>> deleteModelToLocalDatabaseThereIsParameter(
+ static Future<Response<String, LocalException>> deleteModelToLocalDatabaseThereIsParameterFVM(
       DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
       BaseLocalModel localModel
       ) async {

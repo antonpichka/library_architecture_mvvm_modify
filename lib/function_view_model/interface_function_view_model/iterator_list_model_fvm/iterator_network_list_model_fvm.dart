@@ -1,3 +1,3 @@
 abstract class IteratorNetworkListModelFVM {
-  bool callToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIterator();
+  bool callToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM();
 }
