@@ -1,5 +1,5 @@
 
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/sp_model_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_sp_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
@@ -7,10 +7,10 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadySPModelFVM
+class ReadyModelSPFVM
 {
  static Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSettersFVM(
-      SPModelDataSource spDataSource,
+      ModelSPDataSource spDataSource,
       Function(BaseLocalModel localModel) function) async
  {
     try {
@@ -28,7 +28,7 @@ class ReadySPModelFVM
   }
 
  static Future<Response<String,BaseException>> insertModelToSPThereIsParameterFVM(
-      SPModelDataSource spDataSource,
+      ModelSPDataSource spDataSource,
       BaseLocalModel localModel
       ) async {
     try {
@@ -46,7 +46,7 @@ class ReadySPModelFVM
   }
 
  static Future<Response<String, BaseException>> deleteModelToSPFVM(
-      SPModelDataSource spDataSource,
+      ModelSPDataSource spDataSource,
       ) async {
     try {
       Response<bool,LocalException> response = await spDataSource.deleteModelToSPDataSource();

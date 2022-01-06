@@ -36,7 +36,7 @@ enum EnumTypeForSP {
   listString
 }
 
-abstract class BaseSPModelDataSource {
+abstract class BaseModelSPDataSource {
 
   static SharedPreferences _sharedPreferences;
 

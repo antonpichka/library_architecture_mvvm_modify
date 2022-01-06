@@ -12,7 +12,7 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyLocalDatabaseModelFVM
+class ReadyModelLocalDatabaseFVM
 {
   static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,

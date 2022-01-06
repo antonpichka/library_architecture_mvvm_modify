@@ -9,7 +9,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-abstract class BaseLocalDatabaseModelDataSource {
+abstract class BaseModelLocalDatabaseDataSource {
   @protected
   final String fileDatabase;
   @protected
@@ -27,7 +27,7 @@ abstract class BaseLocalDatabaseModelDataSource {
 
   static final Map<String, Database> _mapFilenameAndDatabase = {};
 
-  BaseLocalDatabaseModelDataSource(
+  BaseModelLocalDatabaseDataSource(
       {this.fileDatabase,
         this.version,
         this.onConfigure,

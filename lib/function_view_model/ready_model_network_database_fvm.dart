@@ -13,7 +13,7 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyNetworkDatabaseModelFVM
+class ReadyModelNetworkDatabaseFVM
 {
  static Future<Response<String,BaseException>> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,

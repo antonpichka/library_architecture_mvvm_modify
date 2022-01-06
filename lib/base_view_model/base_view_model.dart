@@ -89,7 +89,6 @@ abstract class BaseViewModel<C extends BaseSettersEvent,
     _getMapEnumAndDomainModelObject[operation] = newModel;
   }
 
-  @protected
   Y getModel(T operation) {
     return _getMapEnumAndDomainModelObject[operation];
   }

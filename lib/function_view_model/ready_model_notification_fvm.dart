@@ -1,14 +1,14 @@
 
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/notification_model_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyNotificationModelFVM
+class ReadyModelNotificationFVM
 {
   static Future<Response<String,LocalException>> pushNotificationToZonedScheduleFVM(
-      NotificationModelDataSource notificationModelDataSource,
+      ModelNotificationDataSource notificationModelDataSource,
       dynamic model) async
   {
     try {
@@ -33,7 +33,7 @@ class ReadyNotificationModelFVM
   }
 
   static Future<Response<String,LocalException>> pushNotificationToShowFVM(
-      NotificationModelDataSource notificationModelDataSource,
+      ModelNotificationDataSource notificationModelDataSource,
       dynamic model) async
   {
     try {
@@ -58,7 +58,7 @@ class ReadyNotificationModelFVM
   }
 
   static Future<Response<String,LocalException>> cancelNotificationFVM(
-      NotificationModelDataSource notificationModelDataSource,
+      ModelNotificationDataSource notificationModelDataSource,
       dynamic model) async
   {
     try {

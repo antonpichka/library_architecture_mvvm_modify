@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dar
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyIteratorListModelFVM
+class ReadyListModelIteratorFVM
 {
  static bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
       BaseListModel listModel,
