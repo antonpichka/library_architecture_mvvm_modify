@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ReadyCustomDialog {
+class ReadyDialog {
   static Future<void> simpleShowDialog(BuildContext context,
       String title,
       String content,
@@ -22,7 +22,7 @@ class ReadyCustomDialog {
           backgroundColor: backgroundColor,
           content: SingleChildScrollView(
             child: ListBody(
-              children:  <Widget>[
+              children: <Widget>[
                 Text(content,style: const TextStyle(
                   color: Colors.white,
                   fontSize: 17,),)

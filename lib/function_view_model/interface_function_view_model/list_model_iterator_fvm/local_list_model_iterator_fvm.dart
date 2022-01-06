@@ -1,3 +1,3 @@
-abstract class IteratorLocalListModelFVM {
+abstract class LocalListModelIteratorFVM {
   bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM();
 }
