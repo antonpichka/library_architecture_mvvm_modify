@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_local_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -112,7 +113,7 @@ abstract class BaseModelLocalDatabaseDataSource {
 
   @protected
   Future<Response<BaseLocalModel,LocalException>> baseGetModelFromLocalDatabaseThereIsParameterDataSource(
-      dynamic parameterForWhereArgs,
+      BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
       ) async {
@@ -122,7 +123,7 @@ abstract class BaseModelLocalDatabaseDataSource {
       final Map<String, dynamic> map = (await db.query(
           table,
           where: columnForWhere + '= ?',
-          whereArgs: [parameterForWhereArgs]
+          whereArgs: [baseTypeParameter.getParameter]
       )) as Map<String, dynamic>;
 
       var model = fromMap(map);
@@ -156,7 +157,7 @@ abstract class BaseModelLocalDatabaseDataSource {
 
   @protected
   Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
-      dynamic parameterForWhereArgs,
+      BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere) async {
     try {
@@ -164,7 +165,7 @@ abstract class BaseModelLocalDatabaseDataSource {
 
       final List<Map<String, dynamic>> maps = await db.query(table,
           where: columnForWhere + '= ?',
-          whereArgs: [parameterForWhereArgs]
+          whereArgs: [baseTypeParameter.getParameter]
       );
 
       var list = List.generate(maps.length, (i) {

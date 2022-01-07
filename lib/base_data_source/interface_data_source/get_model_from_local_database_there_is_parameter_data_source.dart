@@ -5,8 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_p
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class GetModelFromLocalDatabaseThereIsParameterDataSource<
-              T extends BaseLocalModel,
-              Z extends BaseTypeParameter>
+              T extends BaseLocalModel>
 {
-  Future<Response<T,LocalException>> getModelFromLocalDatabaseThereIsParameterDataSource(Z parameter);
+  Future<Response<T,LocalException>> getModelFromLocalDatabaseThereIsParameterDataSource(BaseTypeParameter parameter);
 }

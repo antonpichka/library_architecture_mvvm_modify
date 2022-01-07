@@ -5,8 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_p
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class GetModelFromNetworkDatabaseThereIsParameterDataSource<
-      T extends BaseNetworkModel,
-      Z extends BaseTypeParameter>
+      T extends BaseNetworkModel>
 {
-      Future<Response<T,BaseException>> getModelFromNetworkDatabaseThereIsParameterDataSource(Z parameter);
+      Future<Response<T,BaseException>> getModelFromNetworkDatabaseThereIsParameterDataSource(BaseTypeParameter parameter);
 }
