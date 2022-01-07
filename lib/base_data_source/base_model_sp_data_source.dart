@@ -56,7 +56,9 @@ abstract class BaseModelSPDataSource {
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseInsertModelToSPThereIsParameterDataSource(BaseLocalModel localModel) async {
+  Future<Response<bool,LocalException>> baseInsertModelToSPThereIsParameterDataSource(
+      BaseLocalModel localModel) async
+  {
     try {
       final sP = await sharedPreferences;
       localModel.toMap().forEach((key, value) {

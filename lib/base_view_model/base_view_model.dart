@@ -1,42 +1,46 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_event/base_setters_event.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:uuid/uuid.dart';
-
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<C extends BaseSettersEvent,
-                              T extends Enum,
+abstract class BaseViewModel<T extends Enum,
                               Y extends BaseDomainModel,
                               U extends BaseListModel<BaseDomainModel>>
 {
   StreamController<List<Y>> _streamControllerLocalListDomainModel = StreamController.broadcast();
   StreamController<List<Y>> _streamControllerNetworkListDomainModel = StreamController.broadcast();
   List<T> _listEnum = List.empty();
-  Map<T,Y> _mapEnumAndDomainModelObject;
-  Map<T,StreamController<Y>> _mapEnumAndStreamControllerObject;
-  ItemCreator<Y> _creatorY;
+  Map<T,Y> _mapEnumAndDomainModelObject = {};
+  Map<T,StreamController<Y>> _mapEnumAndStreamControllerObject = {};
+  ItemCreator<Y> _creatorBaseDomainModel;
   U _listModel;
+  BaseTypeParameter _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM;
+  BaseTypeParameter _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM;
+  BaseTypeParameter _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM;
+  BaseTypeParameter _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
+  BaseTypeParameter _baseTypeParameterForCancelNotificationThereIsParameterFVM;
+  EnumTypeParameter _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM;
+  EnumTypeParameter _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM;
 
-  BaseViewModel(List<T> list,
-      ItemCreator<Y> initCreatorY,
-      ItemCreator<U> initCreatorU)
+  BaseViewModel(List<T> listEnum,
+      ItemCreator<Y> initCreatorBaseDomainModel,
+      ItemCreator<U> initCreatorBaseListModel)
   {
-    _listEnum = list;
-    _creatorY = initCreatorY;
-    _listModel = initCreatorU();
+    _listEnum = listEnum;
+    _creatorBaseDomainModel = initCreatorBaseDomainModel;
+    _listModel = initCreatorBaseListModel();
   }
-
-  void handleEventForSettersMethods(C event);
 
   void dispose() {
     _mapEnumAndDomainModelObject = null;
     _listEnum = null;
-    _creatorY = null;
+    _creatorBaseDomainModel = null;
     _listModel = null;
     
     if(_mapEnumAndStreamControllerObject.values.isEmpty) {
@@ -64,6 +68,101 @@ abstract class BaseViewModel<C extends BaseSettersEvent,
     }
     _mapEnumAndStreamControllerObject = null;
   }
+
+  /* Start Methods BaseTypeParameter */
+
+  set setTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
+  }
+
+  set setTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
+  }
+
+  set setTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
+  }
+
+  set setTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
+  }
+
+  set setTypeParameterForCancelNotificationThereIsParameterFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _baseTypeParameterForCancelNotificationThereIsParameterFVM = baseTypeParameter;
+  }
+
+  set setEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM= baseTypeParameter;
+  }
+
+  set setEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM(
+      BaseTypeParameter baseTypeParameter)
+  {
+    _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM = baseTypeParameter;
+  }
+
+  BaseTypeParameter get getBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM {
+    if(_baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM == null) {
+      throw Exception("no setters");
+    }
+    return _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM;
+  }
+
+  BaseTypeParameter get getBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM {
+    if(_baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM == null) {
+      throw Exception("no setters");
+    }
+    return _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM;
+  }
+
+  BaseTypeParameter get getBaseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM {
+    if(_baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM == null) {
+      throw Exception("no setters");
+    }
+    return _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM;
+  }
+
+  BaseTypeParameter get getBaseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM {
+    if(_baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM  == null) {
+      throw Exception("no setters");
+    }
+    return _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
+  }
+
+  BaseTypeParameter get getBaseTypeParameterForCancelNotificationThereIsParameterFVM {
+    if(_baseTypeParameterForCancelNotificationThereIsParameterFVM  == null) {
+      throw Exception("no setters");
+    }
+    return _baseTypeParameterForCancelNotificationThereIsParameterFVM;
+  }
+
+  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM {
+    if(_enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM  == null) {
+      throw Exception("no setters enum");
+    }
+    return _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM;
+  }
+
+  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM {
+    if(_enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM  == null) {
+      throw Exception("no setters enum");
+    }
+    return _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM;
+  }
+
+  /* End Methods BaseTypeParameter */
 
   /* Start Methods Model */
 
@@ -101,7 +200,6 @@ abstract class BaseViewModel<C extends BaseSettersEvent,
   /* End Methods Model */
 
   /* Start Methods ListModel */
-
 
   Stream<List<Y>> get getStreamLocalListModel  {
     return _streamControllerLocalListDomainModel.stream;
@@ -151,7 +249,6 @@ abstract class BaseViewModel<C extends BaseSettersEvent,
 
   /* End Methods ListModel */
 
-
   Map<T,StreamController<Y>> get _getMapEnumAndStreamControllerObject {
     _mapEnumAndStreamControllerObject ??= _creationAndGetMapEnumAndStreamControllerObjects();
     return _mapEnumAndStreamControllerObject;
@@ -162,14 +259,13 @@ abstract class BaseViewModel<C extends BaseSettersEvent,
     return _mapEnumAndDomainModelObject;
   }
 
-
   Map<T,Y> _creationAndGetMapEnumAndDomainModelObjects() {
     if(_listEnum.isEmpty) {
       return {};
     }
     Map<T,Y> map = {};
     for(T viewModelOperation in _listEnum) {
-      map[viewModelOperation] = _creatorY();
+      map[viewModelOperation] = _creatorBaseDomainModel();
     }
     return map;
   }

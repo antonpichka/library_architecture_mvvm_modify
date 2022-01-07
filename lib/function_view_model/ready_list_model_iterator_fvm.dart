@@ -1,20 +1,23 @@
-
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyListModelIteratorFVM
 {
  static bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
+      BaseViewModel viewModel,
       BaseListModel listModel,
-      Enum selectedEnum,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
       return false;
     }
     mapEnumAndBaseIterator.forEach((itemEnum, baseIterator) {
-      if(selectedEnum == itemEnum) {
+      if(viewModel
+          .getEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM
+          .getParameter == itemEnum)
+      {
         listModel.setLocalIterator = baseIterator;
       }
     });
@@ -23,15 +26,18 @@ class ReadyListModelIteratorFVM
   }
 
   static bool callToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM(
+      BaseViewModel viewModel,
       BaseListModel listModel,
-      Enum selectedEnum,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
       return false;
     }
     mapEnumAndBaseIterator.forEach((itemEnum, baseIterator) {
-      if(selectedEnum == itemEnum) {
+      if(viewModel
+          .getEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM
+          .getParameter == itemEnum)
+      {
         listModel.setNetworkIterator = baseIterator;
       }
     });

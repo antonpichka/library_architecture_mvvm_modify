@@ -8,8 +8,9 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_local_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
-import 'package:library_architecture_mvvm_modify/response.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
+import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelLocalDatabaseFVM
@@ -33,13 +34,15 @@ class ReadyModelLocalDatabaseFVM
   }
 
   static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+      BaseViewModel baseViewModel,
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      dynamic sorted,
       Function(BaseLocalListModel) function
       ) async
   {
     try {
-      var response = await getListModelFromLocalDatabaseThereIsParameterDataSource.getListModelFromLocalDatabaseThereIsParameterDataSource(sorted);
+      var response = await getListModelFromLocalDatabaseThereIsParameterDataSource
+          .getListModelFromLocalDatabaseThereIsParameterDataSource(
+          baseViewModel.getBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM);
       if(response.isSuccessResponse) {
         function(response.getData);
         return Response.success(CONST_SUCCESS);
@@ -52,13 +55,15 @@ class ReadyModelLocalDatabaseFVM
   }
 
   static Future<Response<String, LocalException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+      BaseViewModel baseViewModel,
       GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
-      dynamic weGetTheElementOnIt,
       Function(BaseLocalModel) function
       ) async {
     try {
       var response = await getModelFromLocalDatabaseThereIsParameterDataSource
-          .getModelFromLocalDatabaseThereIsParameterDataSource(weGetTheElementOnIt);
+          .getModelFromLocalDatabaseThereIsParameterDataSource(
+          baseViewModel.getBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM
+      );
       if(response.isSuccessResponse) {
         function(response.getData);
         return Response.success(CONST_SUCCESS);
@@ -76,10 +81,10 @@ class ReadyModelLocalDatabaseFVM
       BaseLocalModel localModel
       ) async {
     try {
-      var response = await insertModelToLocalDatabaseThereIsParameterDataSource.insertModelToLocalDatabaseThereIsParameterDataSource(
+      var response = await insertModelToLocalDatabaseThereIsParameterDataSource
+          .insertModelToLocalDatabaseThereIsParameterDataSource(
           localModel
       );
-
       if (response.isSuccessResponse) {
         int result = response.getData;
         if(result > 0) {
@@ -93,7 +98,6 @@ class ReadyModelLocalDatabaseFVM
       } else {
         return Response.exception(response.getException);
       }
-
     } on Exception catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }

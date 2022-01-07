@@ -9,8 +9,9 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_network_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_network_model.dart';
-import 'package:library_architecture_mvvm_modify/response.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
+import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelNetworkDatabaseFVM
@@ -35,14 +36,15 @@ class ReadyModelNetworkDatabaseFVM
   }
 
   static Future<Response<String, BaseException>> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+      BaseViewModel baseViewModel,
       GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
-      dynamic sorted,
       Function(BaseNetworkListModel) function
       ) async
   {
     try {
       var response = await getListModelFromNetworkDatabaseThereIsParameterDataSource
-          .getListModelFromNetworkDatabaseThereIsParameterDataSource(sorted);
+          .getListModelFromNetworkDatabaseThereIsParameterDataSource(
+          baseViewModel.getBaseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM);
       if(response.isSuccessResponse) {
         function(response.getData);
         return Response.success(CONST_SUCCESS);
@@ -55,13 +57,14 @@ class ReadyModelNetworkDatabaseFVM
   }
 
   static Future<Response<String, BaseException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+      BaseViewModel baseViewModel,
       GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
-      dynamic weGetTheElementOnIt,
       Function(BaseNetworkModel) function
       ) async {
     try {
       var response = await getModelFromNetworkDatabaseThereIsParameterDataSource
-          .getModelFromNetworkDatabaseThereIsParameterDataSource(weGetTheElementOnIt);
+          .getModelFromNetworkDatabaseThereIsParameterDataSource(
+          baseViewModel.getBaseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM);
       if(response.isSuccessResponse) {
         function(response.getData);
         return Response.success(CONST_SUCCESS);

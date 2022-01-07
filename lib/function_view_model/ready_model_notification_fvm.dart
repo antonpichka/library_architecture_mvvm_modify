@@ -1,19 +1,20 @@
 
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelNotificationFVM
 {
-  static Future<Response<String,LocalException>> pushNotificationToZonedScheduleFVM(
+  static Future<Response<String,LocalException>> pushNotificationToZonedScheduleThereIsParameterFVM(
       ModelNotificationDataSource notificationModelDataSource,
       dynamic model) async
   {
     try {
       var response = await notificationModelDataSource
-          .pushNotificationToZonedScheduleDataSource(model);
+          .pushNotificationToZonedScheduleThereIsParameterDataSource(model);
       
       if(response.isSuccessResponse) {
         if(response.getData) {
@@ -32,13 +33,13 @@ class ReadyModelNotificationFVM
     }
   }
 
-  static Future<Response<String,LocalException>> pushNotificationToShowFVM(
+  static Future<Response<String,LocalException>> pushNotificationToShowThereIsParameterFVM(
       ModelNotificationDataSource notificationModelDataSource,
       dynamic model) async
   {
     try {
       var response = await notificationModelDataSource
-          .pushNotificationToShowDataSource(model);
+          .pushNotificationToShowThereIsParameterDataSource(model);
 
       if(response.isSuccessResponse) {
         if(response.getData) {
@@ -57,14 +58,15 @@ class ReadyModelNotificationFVM
     }
   }
 
-  static Future<Response<String,LocalException>> cancelNotificationFVM(
-      ModelNotificationDataSource notificationModelDataSource,
-      dynamic model) async
+  static Future<Response<String,LocalException>> cancelNotificationThereIsParameterFVM(
+      BaseViewModel baseViewModel,
+      ModelNotificationDataSource notificationModelDataSource) async
   {
     try {
       var response = await notificationModelDataSource
-          .cancelNotificationDataSource(model);
-
+          .cancelNotificationThereIsParameterDataSource(
+            baseViewModel.getBaseTypeParameterForCancelNotificationThereIsParameterFVM
+       );
       if(response.isSuccessResponse) {
         if(response.getData) {
           return Response.success(CONST_SUCCESS);
