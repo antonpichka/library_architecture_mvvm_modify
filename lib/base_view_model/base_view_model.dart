@@ -24,7 +24,6 @@ abstract class BaseViewModel<T extends Enum,
   BaseTypeParameter _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM;
   BaseTypeParameter _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM;
   BaseTypeParameter _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
-  BaseTypeParameter _baseTypeParameterForCancelNotificationThereIsParameterFVM;
   EnumTypeParameter _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM;
   EnumTypeParameter _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM;
 
@@ -71,34 +70,28 @@ abstract class BaseViewModel<T extends Enum,
 
   /* Start Methods BaseTypeParameter */
 
-  set setTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM(
+  set setBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM(
       BaseTypeParameter baseTypeParameter)
   {
     _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
   }
 
-  set setTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM(
+  set setBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM(
       BaseTypeParameter baseTypeParameter)
   {
     _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
   }
 
-  set setTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM(
+  set setBaseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM(
       BaseTypeParameter baseTypeParameter)
   {
     _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
   }
 
-  set setTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM(
+  set setBaseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM(
       BaseTypeParameter baseTypeParameter)
   {
     _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
-  }
-
-  set setTypeParameterForCancelNotificationThereIsParameterFVM(
-      BaseTypeParameter baseTypeParameter)
-  {
-    _baseTypeParameterForCancelNotificationThereIsParameterFVM = baseTypeParameter;
   }
 
   set setEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
@@ -139,13 +132,6 @@ abstract class BaseViewModel<T extends Enum,
       throw Exception("no setters");
     }
     return _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
-  }
-
-  BaseTypeParameter get getBaseTypeParameterForCancelNotificationThereIsParameterFVM {
-    if(_baseTypeParameterForCancelNotificationThereIsParameterFVM  == null) {
-      throw Exception("no setters");
-    }
-    return _baseTypeParameterForCancelNotificationThereIsParameterFVM;
   }
 
   EnumTypeParameter get getEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM {

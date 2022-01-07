@@ -1,7 +1,6 @@
 
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
@@ -59,13 +58,13 @@ class ReadyModelNotificationFVM
   }
 
   static Future<Response<String,LocalException>> cancelNotificationThereIsParameterFVM(
-      BaseViewModel baseViewModel,
-      ModelNotificationDataSource notificationModelDataSource) async
+      ModelNotificationDataSource notificationModelDataSource,
+      dynamic model) async
   {
     try {
       var response = await notificationModelDataSource
           .cancelNotificationThereIsParameterDataSource(
-            baseViewModel.getBaseTypeParameterForCancelNotificationThereIsParameterFVM
+            model
        );
       if(response.isSuccessResponse) {
         if(response.getData) {
