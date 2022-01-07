@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_local_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_local_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
@@ -10,7 +10,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-abstract class BaseModelLocalDatabaseDataSource {
+abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   @protected
   final String fileDatabase;
   @protected
@@ -28,7 +28,7 @@ abstract class BaseModelLocalDatabaseDataSource {
 
   static final Map<String, Database> _mapFilenameAndDatabase = {};
 
-  BaseModelLocalDatabaseDataSource(
+  BaseModelLocalDatabaseDataSourceLibSqfliteLib(
       {this.fileDatabase,
         this.version,
         this.onConfigure,
@@ -135,7 +135,7 @@ abstract class BaseModelLocalDatabaseDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
+  Future<Response<BaseListLocalModel,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
       String table
       ) async {
     try {
@@ -147,8 +147,8 @@ abstract class BaseModelLocalDatabaseDataSource {
         fromMap(maps[i]);
       });
 
-      var localListModel = BaseLocalListModel();
-      localListModel.setLocalList = list;
+      var localListModel = BaseListLocalModel();
+      localListModel.setListLocalModel = list;
       return Response.success(localListModel);
     } on Exception catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -156,7 +156,7 @@ abstract class BaseModelLocalDatabaseDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalListModel,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
+  Future<Response<BaseListLocalModel,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere) async {
@@ -172,8 +172,8 @@ abstract class BaseModelLocalDatabaseDataSource {
         fromMap(maps[i]);
       });
 
-      var localListModel = BaseLocalListModel();
-      localListModel.setLocalList = list;
+      var localListModel = BaseListLocalModel();
+      localListModel.setListLocalModel = list;
       return Response.success(localListModel);
     } on Exception catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));

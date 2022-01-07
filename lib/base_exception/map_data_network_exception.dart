@@ -2,7 +2,7 @@
 
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 
-class ListDataNetworkException {
+class MapDataNetworkException {
   static final Map<int,NetworkException> mapCodeAndNetworkException = {
     201: NetworkException(201,
         '201 Created',

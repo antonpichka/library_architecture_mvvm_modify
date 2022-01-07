@@ -36,8 +36,8 @@ enum EnumTypeForSP {
   listString
 }
 
-abstract class BaseModelSPDataSource {
-
+abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
+{
   static SharedPreferences _sharedPreferences;
 
   @protected
@@ -56,7 +56,7 @@ abstract class BaseModelSPDataSource {
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseInsertModelToSPThereIsParameterDataSource(
+  Future<Response<bool,LocalException>> baseInsertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
       BaseLocalModel localModel) async
   {
     try {
@@ -81,7 +81,7 @@ abstract class BaseModelSPDataSource {
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseDeleteModelToSPDataSource() async {
+  Future<Response<bool,LocalException>> baseDeleteModelToLocalDatabaseForOneEntryDataSource() async {
     try {
       final sP = await sharedPreferences;
       toMap().forEach((key, value) {
@@ -94,7 +94,7 @@ abstract class BaseModelSPDataSource {
   }
 
   @protected
-  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromSPDataSource() async {
+  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromLocalDatabaseForOneEntryDataSource() async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};

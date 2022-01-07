@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_domain_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
@@ -11,7 +11,7 @@ typedef ItemCreator<S> = S Function();
 
 abstract class BaseViewModel<T extends Enum,
                               Y extends BaseDomainModel,
-                              U extends BaseListModel<BaseDomainModel>>
+                              U extends BaseListDomainModel<BaseDomainModel>>
 {
   final List<T> _listEnum;
   final ItemCreator<Y> _initCreatorBaseDomainModel;
@@ -190,7 +190,7 @@ abstract class BaseViewModel<T extends Enum,
 
   Future<List<Y>> get getFutureLocalListModel async {
     var list = List.empty();
-    for(BaseDomainModel value in _baseListModel.getLocalList) {
+    for(BaseDomainModel value in _baseListModel.getListLocalModel) {
       list.add(value);
     }
     return list;
@@ -198,7 +198,7 @@ abstract class BaseViewModel<T extends Enum,
 
   Future<List<Y>> get getFutureNetworkListModel async {
     var list = List.empty();
-    for(BaseDomainModel value in _baseListModel.getNetworkList) {
+    for(BaseDomainModel value in _baseListModel.getListNetworkModel) {
       list.add(value);
     }
     return list;
@@ -208,14 +208,14 @@ abstract class BaseViewModel<T extends Enum,
     if(_baseListModel == null) {
       return;
     }
-    _streamControllerLocalListDomainModel.add(_baseListModel.getLocalList);
+    _streamControllerLocalListDomainModel.add(_baseListModel.getListLocalModel);
   }
 
   void notifyStreamNetworkListModel() {
     if(_baseListModel == null) {
       return;
     }
-    _streamControllerNetworkListDomainModel.add(_baseListModel.getNetworkList);
+    _streamControllerNetworkListDomainModel.add(_baseListModel.getListNetworkModel);
   }
 
   @protected

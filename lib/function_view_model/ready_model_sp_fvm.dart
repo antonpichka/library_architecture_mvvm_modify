@@ -1,5 +1,5 @@
 
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_sp_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_local_database_for_one_entry_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
@@ -10,12 +10,12 @@ import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_
 class ReadyModelSPFVM
 {
  static Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSettersFVM(
-      ModelSPDataSource spDataSource,
+      ModelLocalDatabaseForOneEntryDataSource spDataSource,
       Function(BaseLocalModel localModel) function) async
  {
     try {
       Response<BaseLocalModel, LocalException> response = await spDataSource
-          .getModelFromSPDataSource();
+          .getModelFromLocalDatabaseForOneEntryDataSource();
       if (response.isSuccessResponse) {
         function(response.getData);
         return Response.success(CONST_SUCCESS);
@@ -28,11 +28,11 @@ class ReadyModelSPFVM
   }
 
  static Future<Response<String,BaseException>> insertModelToSPThereIsParameterFVM(
-      ModelSPDataSource spDataSource,
+      ModelLocalDatabaseForOneEntryDataSource spDataSource,
       BaseLocalModel localModel
       ) async {
     try {
-      Response<bool,LocalException> response = await spDataSource.insertModelToSPThereIsParameterDataSource(
+      Response<bool,LocalException> response = await spDataSource.insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
         localModel
       );
       if(response.isSuccessResponse) {
@@ -46,10 +46,10 @@ class ReadyModelSPFVM
   }
 
  static Future<Response<String, BaseException>> deleteModelToSPFVM(
-      ModelSPDataSource spDataSource,
+      ModelLocalDatabaseForOneEntryDataSource spDataSource,
       ) async {
     try {
-      Response<bool,LocalException> response = await spDataSource.deleteModelToSPDataSource();
+      Response<bool,LocalException> response = await spDataSource.deleteModelToLocalDatabaseForOneEntryDataSource();
       if(response.isSuccessResponse) {
         return Response.success(CONST_SUCCESS);
       } else {
