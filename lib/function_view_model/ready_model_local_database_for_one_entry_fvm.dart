@@ -9,7 +9,7 @@ import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelLocalDatabaseForOneEntryFVM
 {
- static Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSettersFVM(
+ static Future<Response<String,LocalException>> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
       ModelLocalDatabaseForOneEntryDataSource modelDataSource,
       Function(BaseModelLocalDatabase localModel) function) async
  {
@@ -27,7 +27,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
     }
   }
 
- static Future<Response<String,BaseException>> insertModelToSPThereIsParameterFVM(
+ static Future<Response<String,BaseException>> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
       ModelLocalDatabaseForOneEntryDataSource modelDataSource,
       BaseModelLocalDatabase localModel
       ) async {
@@ -45,7 +45,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
     }
   }
 
- static Future<Response<String, BaseException>> deleteModelToSPFVM(
+ static Future<Response<String, BaseException>> deleteModelToLocalDatabaseForOneEntryFVM(
       ModelLocalDatabaseForOneEntryDataSource modelDataSource,
       ) async {
     try {
