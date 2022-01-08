@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.da
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain_notification.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
-abstract class ModelNotificationDataSource<T extends BaseModelDomainNotification,
+abstract class ModelDomainNotificationDataSource<T extends BaseModelDomainNotification,
                                           Y extends BaseModelDomain>
 {
   Future<Response<bool,LocalException>> pushNotificationToZonedScheduleThereIsParameterDataSource(T model);
