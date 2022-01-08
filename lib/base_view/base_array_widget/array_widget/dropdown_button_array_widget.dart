@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_and_array_widget/base_item_and_array_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_widget.dart';
@@ -13,31 +13,31 @@ class DropdownButtonArrayWidget extends BaseArrayWidget {
   @override
   Widget buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
-      List<BaseDomainModel> list,
-      BaseDomainModel model)
+      List<BaseModelDomain> list,
+      BaseModelDomain model)
   {
     BaseItemAndArrayWidget baseItemArrayModelWidget = _baseItemWidget;
-    baseItemArrayModelWidget.setModel = model;
-    baseItemArrayModelWidget.setListModel = list;
+    baseItemArrayModelWidget.setModelDomain = model;
+    baseItemArrayModelWidget.setListModelDomain = list;
     return baseItemArrayModelWidget;
   }
 
   @override
   Widget buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
-      List<BaseDomainModel> list)
+      List<BaseModelDomain> list)
   {
     BaseItemAndArrayWidget baseItemArrayModelWidget = _baseItemWidget;
-    baseItemArrayModelWidget.setListModel = list;
+    baseItemArrayModelWidget.setListModelDomain = list;
     return baseItemArrayModelWidget;
   }
 
   @override
   Widget buildArrayWidgetAndBelongsBaseItemWidget(
       BuildContext context,
-      BaseDomainModel model)
+      BaseModelDomain model)
   {
-    _baseItemWidget.setModel = model;
+    _baseItemWidget.setModelDomain = model;
     return _baseItemWidget;
   }
 

@@ -2,19 +2,19 @@
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_local_database_for_one_entry_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyModelSPFVM
+class ReadyModelLocalDatabaseForOneEntryFVM
 {
  static Future<Response<String,LocalException>> callToMethodGetModelFromSPAndUseTheSettersFVM(
-      ModelLocalDatabaseForOneEntryDataSource spDataSource,
-      Function(BaseLocalModel localModel) function) async
+      ModelLocalDatabaseForOneEntryDataSource modelDataSource,
+      Function(BaseModelLocalDatabase localModel) function) async
  {
     try {
-      Response<BaseLocalModel, LocalException> response = await spDataSource
+      Response<BaseModelLocalDatabase, LocalException> response = await modelDataSource
           .getModelFromLocalDatabaseForOneEntryDataSource();
       if (response.isSuccessResponse) {
         function(response.getData);
@@ -28,11 +28,11 @@ class ReadyModelSPFVM
   }
 
  static Future<Response<String,BaseException>> insertModelToSPThereIsParameterFVM(
-      ModelLocalDatabaseForOneEntryDataSource spDataSource,
-      BaseLocalModel localModel
+      ModelLocalDatabaseForOneEntryDataSource modelDataSource,
+      BaseModelLocalDatabase localModel
       ) async {
     try {
-      Response<bool,LocalException> response = await spDataSource.insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
+      Response<bool,LocalException> response = await modelDataSource.insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
         localModel
       );
       if(response.isSuccessResponse) {
@@ -46,10 +46,10 @@ class ReadyModelSPFVM
   }
 
  static Future<Response<String, BaseException>> deleteModelToSPFVM(
-      ModelLocalDatabaseForOneEntryDataSource spDataSource,
+      ModelLocalDatabaseForOneEntryDataSource modelDataSource,
       ) async {
     try {
-      Response<bool,LocalException> response = await spDataSource.deleteModelToLocalDatabaseForOneEntryDataSource();
+      Response<bool,LocalException> response = await modelDataSource.deleteModelToLocalDatabaseForOneEntryDataSource();
       if(response.isSuccessResponse) {
         return Response.success(CONST_SUCCESS);
       } else {

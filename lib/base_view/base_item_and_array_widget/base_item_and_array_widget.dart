@@ -1,20 +1,20 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_widget.dart';
 
 //ignore: must_be_immutable
 abstract class BaseItemAndArrayWidget<
-      T extends BaseDomainModel,
-      Y extends List<BaseDomainModel>>
+      T extends BaseModelDomain,
+      Y extends List<BaseModelDomain>>
           extends BaseItemWidget<T>  
 {
-  Y _listModel;
+  Y _listModelDomain;
 
-  Y get getListModel {
-    return _listModel;
+  Y get getListModelDomain {
+    return _listModelDomain;
   }
 
-  set setListModel(Y listModel) {
-    _listModel = listModel;
+  set setListModelDomain(Y listModel) {
+    _listModelDomain = listModel;
   }
   
 }

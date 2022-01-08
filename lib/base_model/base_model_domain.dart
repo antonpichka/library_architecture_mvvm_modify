@@ -1,4 +1,4 @@
-class BaseDomainModel {
+class BaseModelDomain {
   String uniqueId = "";
 
   set setUniqueId(String uniqueId)  {

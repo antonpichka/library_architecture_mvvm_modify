@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_local_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_local_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:path/path.dart';
@@ -39,7 +39,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       );
 
   @protected
-  BaseLocalModel fromMap(Map<String, dynamic> map);
+  BaseModelLocalDatabase fromMap(Map<String, dynamic> map);
 
   @protected
   Future<Database> get getDatabase async {
@@ -52,7 +52,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseInsertModelToLocalDatabaseThereIsParameterDataSource(
-      BaseLocalModel localModel,
+      BaseModelLocalDatabase localModel,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
@@ -71,7 +71,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameterDataSource(
-      BaseLocalModel localModel,
+      BaseModelLocalDatabase localModel,
       String table,
       String columnForWhere,
       ) async
@@ -92,7 +92,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
-      BaseLocalModel localModel,
+      BaseModelLocalDatabase localModel,
       String table,
       String columnForWhere,
       ) async
@@ -112,7 +112,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromLocalDatabaseThereIsParameterDataSource(
+  Future<Response<BaseModelLocalDatabase,LocalException>> baseGetModelFromLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -135,7 +135,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<BaseListLocalModel,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
+  Future<Response<BaseListModelLocalDatabase,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
       String table
       ) async {
     try {
@@ -147,8 +147,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
         fromMap(maps[i]);
       });
 
-      var localListModel = BaseListLocalModel();
-      localListModel.setListLocalModel = list;
+      var localListModel = BaseListModelLocalDatabase();
+      localListModel.setListModelLocalDatabase = list;
       return Response.success(localListModel);
     } on Exception catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -156,7 +156,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<BaseListLocalModel,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
+  Future<Response<BaseListModelLocalDatabase,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere) async {
@@ -172,8 +172,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
         fromMap(maps[i]);
       });
 
-      var localListModel = BaseListLocalModel();
-      localListModel.setListLocalModel = list;
+      var localListModel = BaseListModelLocalDatabase();
+      localListModel.setListModelLocalDatabase = list;
       return Response.success(localListModel);
     } on Exception catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));

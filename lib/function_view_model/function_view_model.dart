@@ -27,7 +27,7 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_and_insert_model_to_network_list_model_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_list_model_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_sp_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_database_there_is_parameter_and_update_model_to_ln_list_model_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_list_model_fvm.dart';
@@ -41,27 +41,27 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 /* USING TO MANAGE_VIEW_MODEL CLASS */
 class FunctionViewModel {
 
-  static Future<String> callToMethodGetModelFromSPAndUseTheSettersFVM(
-      ModelSPFVM spModelFVM) async
+  static Future<String> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
+      ModelLocalDatabaseForOneEntryFVM spModelFVM) async
   {
     return _codeNetworkOrLocalDatabase(
-        spModelFVM.callToMethodGetModelFromSPAndUseTheSettersFVM()
+        spModelFVM.callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM()
     );
   }
 
-  static Future<String> insertModelToSPThereIsParameterFVM(
-      ModelSPFVM spModelFVM) async
+  static Future<String> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
+      ModelLocalDatabaseForOneEntryFVM spModelFVM) async
   {
     return _codeNetworkOrLocalDatabase(
-        spModelFVM.insertModelToSPThereIsParameterFVM()
+        spModelFVM.insertModelToLocalDatabaseForOneEntryThereIsParameterFVM()
     );
   }
 
-  static Future<String> deleteModelToSPFVM(
-      ModelSPFVM spModelFVM) async
+  static Future<String> deleteModelToLocalDatabaseForOneEntryFVM(
+      ModelLocalDatabaseForOneEntryFVM spModelFVM) async
   {
     return _codeNetworkOrLocalDatabase(
-        spModelFVM.deleteModelToSPFVM()
+        spModelFVM.deleteModelToLocalDatabaseForOneEntryFVM()
     );
   }
 

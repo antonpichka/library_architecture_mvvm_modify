@@ -6,8 +6,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_local_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_local_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
@@ -17,7 +17,7 @@ class ReadyModelLocalDatabaseFVM
 {
   static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,
-      Function(BaseListLocalModel) function
+      Function(BaseListModelLocalDatabase) function
       ) async
   {
     try {
@@ -36,7 +36,7 @@ class ReadyModelLocalDatabaseFVM
   static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      Function(BaseListLocalModel) function
+      Function(BaseListModelLocalDatabase) function
       ) async
   {
     try {
@@ -57,7 +57,7 @@ class ReadyModelLocalDatabaseFVM
   static Future<Response<String, LocalException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
-      Function(BaseLocalModel) function
+      Function(BaseModelLocalDatabase) function
       ) async {
     try {
       var response = await getModelFromLocalDatabaseThereIsParameterDataSource
@@ -78,7 +78,7 @@ class ReadyModelLocalDatabaseFVM
 
   static Future<Response<String, LocalException>> insertModelToLocalDatabaseThereIsParameterFVM(
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      BaseLocalModel localModel
+      BaseModelLocalDatabase localModel
       ) async {
     try {
       var response = await insertModelToLocalDatabaseThereIsParameterDataSource
@@ -106,7 +106,7 @@ class ReadyModelLocalDatabaseFVM
 
  static Future<Response<String, LocalException>> updateModelToLocalDatabaseThereIsParameterFVM(
       UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
-      BaseLocalModel localModel
+      BaseModelLocalDatabase localModel
       ) async {
     try {
       var response = await updateModelToLocalDatabaseThereIsParameterDataSource
@@ -132,7 +132,7 @@ class ReadyModelLocalDatabaseFVM
 
  static Future<Response<String, LocalException>> deleteModelToLocalDatabaseThereIsParameterFVM(
       DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
-      BaseLocalModel localModel
+      BaseModelLocalDatabase localModel
       ) async {
     try {
       var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource

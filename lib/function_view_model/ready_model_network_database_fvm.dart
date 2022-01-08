@@ -7,8 +7,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_network_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_network_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_network_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
@@ -18,7 +18,7 @@ class ReadyModelNetworkDatabaseFVM
 {
  static Future<Response<String,BaseException>> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,
-      Function(BaseListNetworkModel) function
+      Function(BaseListModelNetworkDatabase) function
       ) async
   {
     try {
@@ -38,7 +38,7 @@ class ReadyModelNetworkDatabaseFVM
   static Future<Response<String, BaseException>> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
-      Function(BaseListNetworkModel) function
+      Function(BaseListModelNetworkDatabase) function
       ) async
   {
     try {
@@ -59,7 +59,7 @@ class ReadyModelNetworkDatabaseFVM
   static Future<Response<String, BaseException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
-      Function(BaseNetworkModel) function
+      Function(BaseModelNetworkDatabase) function
       ) async {
     try {
       var response = await getModelFromNetworkDatabaseThereIsParameterDataSource
@@ -79,7 +79,7 @@ class ReadyModelNetworkDatabaseFVM
 
   static Future<Response<String, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
       InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
-      BaseNetworkModel networkModel
+      BaseModelNetworkDatabase networkModel
       ) async {
     try {
       var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
@@ -105,7 +105,7 @@ class ReadyModelNetworkDatabaseFVM
 
   static Future<Response<String, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-      BaseNetworkModel networkModel
+      BaseModelNetworkDatabase networkModel
       ) async {
     try {
       var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
@@ -130,7 +130,7 @@ class ReadyModelNetworkDatabaseFVM
 
   static Future<Response<String, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
       DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
-      BaseNetworkModel networkModel
+      BaseModelNetworkDatabase networkModel
       ) async {
     try {
       var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource

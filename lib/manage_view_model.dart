@@ -10,7 +10,7 @@ class ManageViewModel {
       BaseViewModel baseViewModelVariantTwo,
       DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModelFVM deleteModelVariantOne)
   async {
-    baseViewModelVariantOne.notifyStreamModel(listOperations[0]);
+    baseViewModelVariantOne.notifyStreamModelDomain(listOperations[0]);
 
   }
 }

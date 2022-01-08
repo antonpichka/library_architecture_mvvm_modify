@@ -1,6 +1,6 @@
 
 import 'package:flutter/widgets.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_two_model_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base_item_widget.dart';
@@ -14,18 +14,18 @@ class ListViewSeparatedArrayWidget extends BaseArrayWidget
   @override
   BoxScrollView buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
-      List<BaseDomainModel> list,
-      BaseDomainModel model)
+      List<BaseModelDomain> list,
+      BaseModelDomain model)
   {
       return ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
-          BaseDomainModel item = list[index];
+          BaseModelDomain item = list[index];
           BaseItemTwoModelWidget baseItemTwoModelWidget = _baseItemWidget;
-          baseItemTwoModelWidget.setModel = item;
-          baseItemTwoModelWidget.setTwoModel = model;
+          baseItemTwoModelWidget.setModelDomain = item;
+          baseItemTwoModelWidget.setTwoModelDomain = model;
           return baseItemTwoModelWidget;
         },
         separatorBuilder: (BuildContext context, int index) {
@@ -39,15 +39,15 @@ class ListViewSeparatedArrayWidget extends BaseArrayWidget
   @override
   Widget buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
-      List<BaseDomainModel> list)
+      List<BaseModelDomain> list)
   {
     return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
-        BaseDomainModel item = list[index];
-        _baseItemWidget.setModel = item;
+        BaseModelDomain item = list[index];
+        _baseItemWidget.setModelDomain = item;
         return _baseItemWidget;
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -61,9 +61,9 @@ class ListViewSeparatedArrayWidget extends BaseArrayWidget
   @override
   Widget buildArrayWidgetAndBelongsBaseItemWidget(
       BuildContext context,
-      BaseDomainModel model)
+      BaseModelDomain model)
   {
-    _baseItemWidget.setModel = model;
+    _baseItemWidget.setModelDomain = model;
     return _baseItemWidget;
   }
 

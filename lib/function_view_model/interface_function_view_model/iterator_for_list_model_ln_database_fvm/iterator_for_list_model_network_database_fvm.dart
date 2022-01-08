@@ -1,0 +1,3 @@
+abstract class IteratorForListModelNetworkDatabaseFVM {
+  bool callToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM();
+}

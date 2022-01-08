@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_local_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -44,7 +44,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
   Map<String,TypeForSP> toMap();
 
   @protected
-  BaseLocalModel fromMap(Map<String, dynamic> map);
+  BaseModelLocalDatabase fromMap(Map<String, dynamic> map);
 
   @protected
   Future<SharedPreferences> get sharedPreferences async {
@@ -57,7 +57,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
 
   @protected
   Future<Response<bool,LocalException>> baseInsertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
-      BaseLocalModel localModel) async
+      BaseModelLocalDatabase localModel) async
   {
     try {
       final sP = await sharedPreferences;
@@ -94,7 +94,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
   }
 
   @protected
-  Future<Response<BaseLocalModel,LocalException>> baseGetModelFromLocalDatabaseForOneEntryDataSource() async {
+  Future<Response<BaseModelLocalDatabase,LocalException>> baseGetModelFromLocalDatabaseForOneEntryDataSource() async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};

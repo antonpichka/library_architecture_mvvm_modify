@@ -1,13 +1,13 @@
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyListModelIteratorFVM
+class ReadyIteratorForListModelLNDatabaseFVM
 {
- static bool callToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
+ static bool callToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM(
       BaseViewModel viewModel,
-      BaseListDomainModel listModel,
+      BaseListModelDomain listModel,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
@@ -18,16 +18,16 @@ class ReadyListModelIteratorFVM
           .getEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM
           .getParameter == itemEnum)
       {
-        listModel.setLocalIterator = baseIterator;
+        listModel.setIteratorForListModelLocalDatabase = baseIterator;
       }
     });
-    listModel.setListLocalModelUsingAnIterator();
+    listModel.setListModelLocalDatabaseUsingAnIterator();
     return true;
   }
 
-  static bool callToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM(
+  static bool callToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM(
       BaseViewModel viewModel,
-      BaseListDomainModel listModel,
+      BaseListModelDomain listModel,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
@@ -38,10 +38,10 @@ class ReadyListModelIteratorFVM
           .getEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM
           .getParameter == itemEnum)
       {
-        listModel.setNetworkIterator = baseIterator;
+        listModel.setIteratorForListModelNetworkDatabase = baseIterator;
       }
     });
-    listModel.setListNetworkModelUsingAnIterator();
+    listModel.setListModelNetworkDatabaseUsingAnIterator();
     return true;
   }
 

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_domain_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:uuid/uuid.dart';
@@ -10,14 +10,14 @@ import 'package:uuid/uuid.dart';
 typedef ItemCreator<S> = S Function();
 
 abstract class BaseViewModel<T extends Enum,
-                              Y extends BaseDomainModel,
-                              U extends BaseListDomainModel<BaseDomainModel>>
+                              Y extends BaseModelDomain,
+                              U extends BaseListModelDomain<BaseModelDomain>>
 {
   final List<T> _listEnum;
   final ItemCreator<Y> _initCreatorBaseDomainModel;
   U _baseListModel;
-  StreamController<List<Y>> _streamControllerLocalListDomainModel = StreamController.broadcast();
-  StreamController<List<Y>> _streamControllerNetworkListDomainModel = StreamController.broadcast();
+  StreamController<List<Y>> _streamControllerListModelDomainLocalDatabase = StreamController.broadcast();
+  StreamController<List<Y>> _streamControllerListModelDomainNetworkDatabase = StreamController.broadcast();
   Map<T,Y> _mapEnumAndBaseDomainModel = {};
   Map<T,StreamController<Y>> _mapEnumAndStreamController = {};
   BaseTypeParameter _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM;
@@ -39,15 +39,15 @@ abstract class BaseViewModel<T extends Enum,
     _baseListModel = null;
     _mapEnumAndBaseDomainModel = null;
 
-    if(!_streamControllerLocalListDomainModel.isClosed) {
-      _streamControllerLocalListDomainModel.close();
+    if(!_streamControllerListModelDomainLocalDatabase.isClosed) {
+      _streamControllerListModelDomainLocalDatabase.close();
     }
-    _streamControllerLocalListDomainModel = null;
+    _streamControllerListModelDomainLocalDatabase = null;
 
-    if(!_streamControllerNetworkListDomainModel.isClosed) {
-      _streamControllerNetworkListDomainModel.close();
+    if(!_streamControllerListModelDomainNetworkDatabase.isClosed) {
+      _streamControllerListModelDomainNetworkDatabase.close();
     }
-    _streamControllerNetworkListDomainModel = null;
+    _streamControllerListModelDomainNetworkDatabase = null;
     
     if(_mapEnumAndStreamController.values.isEmpty) {
       _mapEnumAndStreamController = null;
@@ -149,30 +149,30 @@ abstract class BaseViewModel<T extends Enum,
 
   /* Start Methods Model */
 
-  Stream<Y> getStreamModel(T operation) {
+  Stream<Y> getStreamModelDomain(T operation) {
     return _getMapEnumAndStreamController[operation].stream;
   }
 
-  void notifyStreamModel(T operation) {
+  void notifyStreamModelDomain(T operation) {
     _getMapEnumAndStreamController[operation].add(
         _getMapEnumAndBaseDomainModel[operation]
     );
   }
 
-  Future<Y> getFutureModel(T operation) async {
+  Future<Y> getFutureModelDomain(T operation) async {
     return _getMapEnumAndBaseDomainModel[operation];
   }
 
-  void setModel(Y newModel,T operation) {
+  void setModelDomain(Y newModel,T operation) {
     _getMapEnumAndBaseDomainModel[operation] = newModel;
   }
 
-  Y getModel(T operation) {
+  Y getModelDomain(T operation) {
     return _getMapEnumAndBaseDomainModel[operation];
   }
 
   @protected
-  set setParameterModelUniqueId(T operation) {
+  set setParameterModelDomainUniqueId(T operation) {
     _getMapEnumAndBaseDomainModel[operation].setUniqueId = const Uuid().v1();
   }
 
@@ -180,42 +180,42 @@ abstract class BaseViewModel<T extends Enum,
 
   /* Start Methods ListModel */
 
-  Stream<List<Y>> get getStreamLocalListModel  {
-    return _streamControllerLocalListDomainModel.stream;
+  Stream<List<Y>> get getStreamListModelDomainLocalDatabase  {
+    return _streamControllerListModelDomainLocalDatabase.stream;
   }
   
-  Stream<List<Y>> get getStreamNetworkListModel  {
-    return _streamControllerNetworkListDomainModel.stream;
+  Stream<List<Y>> get getStreamListModelDomainNetworkDatabase  {
+    return _streamControllerListModelDomainNetworkDatabase.stream;
   }
 
-  Future<List<Y>> get getFutureLocalListModel async {
+  Future<List<Y>> get getFutureListModelDomainLocalDatabase async {
     var list = List.empty();
-    for(BaseDomainModel value in _baseListModel.getListLocalModel) {
+    for(BaseModelDomain value in _baseListModel.getListModelLocalDatabase) {
       list.add(value);
     }
     return list;
   }
 
-  Future<List<Y>> get getFutureNetworkListModel async {
+  Future<List<Y>> get getFutureListModelDomainNetworkDatabase async {
     var list = List.empty();
-    for(BaseDomainModel value in _baseListModel.getListNetworkModel) {
+    for(BaseModelDomain value in _baseListModel.getListModelNetworkDatabase) {
       list.add(value);
     }
     return list;
   }
 
-  void notifyStreamLocalListModel() {
+  void notifyStreamListModelDomainLocalDatabase() {
     if(_baseListModel == null) {
       return;
     }
-    _streamControllerLocalListDomainModel.add(_baseListModel.getListLocalModel);
+    _streamControllerListModelDomainLocalDatabase.add(_baseListModel.getListModelLocalDatabase);
   }
 
-  void notifyStreamNetworkListModel() {
+  void notifyStreamListModelDomainNetworkDatabase() {
     if(_baseListModel == null) {
       return;
     }
-    _streamControllerNetworkListDomainModel.add(_baseListModel.getListNetworkModel);
+    _streamControllerListModelDomainNetworkDatabase.add(_baseListModel.getListModelNetworkDatabase);
   }
 
   @protected

@@ -1,19 +1,19 @@
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_domain_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
 //ignore: must_be_immutable
 abstract class BaseItemWidget<
-      T extends BaseDomainModel>
+      T extends BaseModelDomain>
     extends StatelessWidget
 {
-  T _model;
+  T _modelDomain;
 
-  T get getModel {
-    return _model;
+  T get getModelDomain {
+    return _modelDomain;
   }
 
-  set setModel(T item) {
-    _model = item;
+  set setModelDomain(T item) {
+    _modelDomain = item;
   }
   
 }

@@ -1,4 +1,4 @@
-abstract class BaseLocalModel {
+abstract class BaseModelLocalDatabase {
   String localUniqueId = "";
 
   Map<String, dynamic> toMap();
