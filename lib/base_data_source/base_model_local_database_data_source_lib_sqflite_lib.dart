@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_local_database.dart';
@@ -64,7 +63,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
           conflictAlgorithm: conflictAlgorithm
       );
       return Response.success(result);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -72,8 +71,10 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   @protected
   Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameterDataSource(
       BaseModelLocalDatabase localModel,
+      BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
+      [String columnForWhereOperationMark = '= ?']
       ) async
   {
     try {
@@ -81,11 +82,11 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       var result = await db.update(
         table,
         localModel.toMap(),
-        where: columnForWhere + '= ?',
-        whereArgs: [localModel.localUniqueId],
+        where: columnForWhere + columnForWhereOperationMark,
+        whereArgs: [baseTypeParameter.getParameter],
       );
       return Response.success(result);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -93,8 +94,10 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   @protected
   Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
       BaseModelLocalDatabase localModel,
+      BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
+      [String columnForWhereOperationMark = '= ?']
       ) async
   {
     try {
@@ -102,11 +105,11 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       var result = await db.update(
         table,
         localModel.toMap(),
-        where: columnForWhere + '= ?',
-        whereArgs: [localModel.localUniqueId],
+        where: columnForWhere + columnForWhereOperationMark,
+        whereArgs: [baseTypeParameter.getParameter],
       );
       return Response.success(result);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -116,20 +119,21 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
+      [String columnForWhereOperationMark = '= ?']
       ) async {
     try {
       final db = await getDatabase;
 
       final Map<String, dynamic> map = (await db.query(
           table,
-          where: columnForWhere + '= ?',
+          where: columnForWhere + columnForWhereOperationMark,
           whereArgs: [baseTypeParameter.getParameter]
       )) as Map<String, dynamic>;
 
       var model = fromMap(map);
 
       return Response.success(model);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -150,7 +154,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       var localListModel = BaseListModelLocalDatabase();
       localListModel.setListModelLocalDatabase = list;
       return Response.success(localListModel);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -159,12 +163,15 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   Future<Response<BaseListModelLocalDatabase,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
-      String columnForWhere) async {
+      String columnForWhere,
+      [String columnForWhereOperationMark = '= ?']) async
+  {
     try {
       final db = await getDatabase;
 
-      final List<Map<String, dynamic>> maps = await db.query(table,
-          where: columnForWhere + '= ?',
+      final List<Map<String, dynamic>> maps = await db.query(
+          table,
+          where: columnForWhere + columnForWhereOperationMark,
           whereArgs: [baseTypeParameter.getParameter]
       );
 
@@ -175,7 +182,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       var localListModel = BaseListModelLocalDatabase();
       localListModel.setListModelLocalDatabase = list;
       return Response.success(localListModel);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }

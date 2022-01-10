@@ -4,8 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
-abstract class GetListModelFromLocalDatabaseThereIsParameterDataSource<
-              Y extends BaseListModelLocalDatabase>
+abstract class GetListModelFromLocalDatabaseThereIsParameterDataSource<Y extends BaseListModelLocalDatabase>
 {
   Future<Response<Y,LocalException>> getListModelFromLocalDatabaseThereIsParameterDataSource(BaseTypeParameter parameter);
 }

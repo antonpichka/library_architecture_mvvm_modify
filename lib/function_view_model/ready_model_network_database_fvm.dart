@@ -30,7 +30,7 @@ class ReadyModelNetworkDatabaseFVM
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -51,7 +51,7 @@ class ReadyModelNetworkDatabaseFVM
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -71,7 +71,7 @@ class ReadyModelNetworkDatabaseFVM
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -87,17 +87,11 @@ class ReadyModelNetworkDatabaseFVM
           networkModel
       );
       if (response.isSuccessResponse) {
-        if(response.getData) {
-          return Response.success(CONST_SUCCESS);
-        } else {
-          return Response.exception(LocalException(
-              CONST_NETWORK_NOT_OPERATION_INSERT_OR_UPDATE_OR_DELETE_FAILURE,
-              CONST_NETWORK_NOT_OPERATION_INSERT_OR_UPDATE_OR_DELETE_FAILURE));
-        }
+        return Response.success(CONST_SUCCESS);
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -113,17 +107,11 @@ class ReadyModelNetworkDatabaseFVM
           networkModel
       );
       if(response.isSuccessResponse) {
-        if(response.getData) {
-          return Response.success(CONST_SUCCESS);
-        } else {
-          return Response.exception(LocalException(
-              CONST_NETWORK_NOT_OPERATION_INSERT_OR_UPDATE_OR_DELETE_FAILURE,
-              CONST_NETWORK_NOT_OPERATION_INSERT_OR_UPDATE_OR_DELETE_FAILURE));
-        }
+        return Response.success(CONST_SUCCESS);
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -138,17 +126,11 @@ class ReadyModelNetworkDatabaseFVM
           networkModel
       );
       if(response.isSuccessResponse) {
-        if(response.getData) {
-          return Response.success(CONST_SUCCESS);
-        } else {
-          return Response.exception(LocalException(
-              CONST_NETWORK_NOT_OPERATION_INSERT_OR_UPDATE_OR_DELETE_FAILURE,
-              CONST_NETWORK_NOT_OPERATION_INSERT_OR_UPDATE_OR_DELETE_FAILURE));
-        }
+        return Response.success(CONST_SUCCESS);
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }

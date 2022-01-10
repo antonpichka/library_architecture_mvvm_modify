@@ -14,7 +14,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
       Function(BaseModelLocalDatabase localModel) function) async
  {
     try {
-      Response<BaseModelLocalDatabase, LocalException> response = await modelDataSource
+      var response = await modelDataSource
           .getModelFromLocalDatabaseForOneEntryDataSource();
       if (response.isSuccessResponse) {
         function(response.getData);
@@ -22,7 +22,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -32,15 +32,14 @@ class ReadyModelLocalDatabaseForOneEntryFVM
       BaseModelLocalDatabase localModel
       ) async {
     try {
-      Response<bool,LocalException> response = await modelDataSource.insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
-        localModel
-      );
+      var response = await modelDataSource
+          .insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(localModel);
       if(response.isSuccessResponse) {
         return Response.success(CONST_SUCCESS);
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -49,13 +48,14 @@ class ReadyModelLocalDatabaseForOneEntryFVM
       ModelLocalDatabaseForOneEntryDataSource modelDataSource,
       ) async {
     try {
-      Response<bool,LocalException> response = await modelDataSource.deleteModelToLocalDatabaseForOneEntryDataSource();
+      var response = await modelDataSource
+          .deleteModelToLocalDatabaseForOneEntryDataSource();
       if(response.isSuccessResponse) {
         return Response.success(CONST_SUCCESS);
       } else {
         return Response.exception(response.getException);
       }
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }

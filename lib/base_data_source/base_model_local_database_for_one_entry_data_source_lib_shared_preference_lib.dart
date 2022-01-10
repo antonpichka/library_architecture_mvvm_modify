@@ -75,7 +75,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
         }
       });
       return Response.success(true);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -88,7 +88,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
         sP.remove(key);
       });
       return Response.success(true);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -126,7 +126,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
       var model = fromMap(map);
 
       return Response.success(model);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }

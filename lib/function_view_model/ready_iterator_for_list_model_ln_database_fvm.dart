@@ -15,7 +15,7 @@ class ReadyIteratorForListModelLNDatabaseFVM
     }
     mapEnumAndBaseIterator.forEach((itemEnum, baseIterator) {
       if(viewModel
-          .getEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM
+          .getEnumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM
           .getParameter == itemEnum)
       {
         listModel.setIteratorForListModelLocalDatabase = baseIterator;
@@ -35,7 +35,7 @@ class ReadyIteratorForListModelLNDatabaseFVM
     }
     mapEnumAndBaseIterator.forEach((itemEnum, baseIterator) {
       if(viewModel
-          .getEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM
+          .getEnumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM
           .getParameter == itemEnum)
       {
         listModel.setIteratorForListModelNetworkDatabase = baseIterator;

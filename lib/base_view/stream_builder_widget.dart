@@ -26,9 +26,9 @@ class StreamBuilderWidget extends StatelessWidget
 
   BaseSingleWidget _baseSingleWidget;
   BaseArrayWidget _baseArrayWidget;
-  Stream<List<BaseModelDomain>> _streamListDomainModel;
-  Future<List<BaseModelDomain>> _futureListDomainModel;
-  Stream<BaseModelDomain> _streamDomainModel;
+  Stream<List<BaseModelDomain>> _streamListModelDomain;
+  Future<List<BaseModelDomain>> _futureListModelDomain;
+  Stream<BaseModelDomain> _streamModelDomain;
 
   // all constructor (not interface_function_view_model)
   ProgressIndicator _progressIndicator = const CircularProgressIndicator();
@@ -36,19 +36,19 @@ class StreamBuilderWidget extends StatelessWidget
 
   StreamBuilderWidget.singleWidgetUseStreamModelDomain(
       this._baseSingleWidget,
-      this._streamDomainModel
+      this._streamModelDomain
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN;
 
   StreamBuilderWidget.singleWidgetUseStreamListModelDomain(
       this._baseSingleWidget,
-      this._streamListDomainModel
+      this._streamListModelDomain
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN;
 
   StreamBuilderWidget.arrayWidgetUseStreamModelDomain(
       this._baseArrayWidget,
-      this._streamDomainModel,
+      this._streamModelDomain,
       [this._emptyListWidget,
         this._progressIndicator]
       ) :
@@ -57,7 +57,7 @@ class StreamBuilderWidget extends StatelessWidget
 
   StreamBuilderWidget.arrayWidgetUseStreamListModelDomain(
       this._baseArrayWidget,
-      this._streamListDomainModel,
+      this._streamListModelDomain,
       [this._emptyListWidget,
         this._progressIndicator]
       ) :
@@ -67,8 +67,8 @@ class StreamBuilderWidget extends StatelessWidget
 
   StreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomain(
       this._baseArrayWidget,
-      this._streamDomainModel,
-      this._streamListDomainModel,
+      this._streamModelDomain,
+      this._streamListModelDomain,
       [this._emptyListWidget,
         this._progressIndicator]
       ) :
@@ -77,8 +77,8 @@ class StreamBuilderWidget extends StatelessWidget
 
   StreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
       this._baseArrayWidget,
-      this._streamListDomainModel,
-      this._streamDomainModel,
+      this._streamListModelDomain,
+      this._streamModelDomain,
       [this._emptyListWidget,
         this._progressIndicator]
       ) :
@@ -86,8 +86,8 @@ class StreamBuilderWidget extends StatelessWidget
 
   StreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomain(
       this._baseArrayWidget,
-      this._futureListDomainModel,
-      this._streamDomainModel,
+      this._futureListModelDomain,
+      this._streamModelDomain,
       [this._emptyListWidget,
         this._progressIndicator]
       ) :
@@ -118,7 +118,7 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildSingleWidgetUseStreamBuilderModelDomain(ThemeData themeData) {
     return StreamBuilder<BaseModelDomain>(
-        stream: _streamDomainModel,
+        stream: _streamModelDomain,
         builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
@@ -133,7 +133,7 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildSingleWidgetUseStreamBuilderListModelDomain(ThemeData themeData) {
     return StreamBuilder<List<BaseModelDomain>>(
-        stream: _streamListDomainModel,
+        stream: _streamListModelDomain,
         builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
@@ -152,7 +152,7 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildArrayWidgetUseStreamBuilderModelDomain(ThemeData themeData) {
     return StreamBuilder<BaseModelDomain>(
-        stream: _streamDomainModel,
+        stream: _streamModelDomain,
         builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
@@ -170,7 +170,7 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildArrayWidgetUseStreamBuilderListModelDomain(ThemeData themeData) {
     return StreamBuilder<List<BaseModelDomain>>(
-      stream: _streamListDomainModel,
+      stream: _streamListModelDomain,
       builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> asyncSnapshot)
       {
         if(asyncSnapshot.hasData) {
@@ -196,11 +196,11 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildArrayWidgetUseStreamBuilderModelDomainAndStreamBuilderListModelDomain(ThemeData themeData) {
     return StreamBuilder<BaseModelDomain>(
-        stream: _streamDomainModel,
+        stream: _streamModelDomain,
         builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> modelAsyncSnapshot)
         {
           return StreamBuilder<List<BaseModelDomain>>(
-                 stream: _streamListDomainModel,
+                 stream: _streamListModelDomain,
                  builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> listModelAsyncSnapshot)
           {
             if(listModelAsyncSnapshot.hasData) {
@@ -233,11 +233,11 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildArrayWidgetUseStreamBuilderListModelDomainAndStreamBuilderModelDomain(ThemeData themeData) {
     return StreamBuilder<List<BaseModelDomain>>(
-        stream: _streamListDomainModel,
+        stream: _streamListModelDomain,
         builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> listModelAsyncSnapshot)
         {
           return StreamBuilder<BaseModelDomain>(
-              stream: _streamDomainModel,
+              stream: _streamModelDomain,
               builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
@@ -270,11 +270,11 @@ class StreamBuilderWidget extends StatelessWidget
 
   Widget _buildArrayWidgetUseFutureBuilderListModelDomainAndStreamBuilderModelDomain(ThemeData themeData) {
     return FutureBuilder<List<BaseModelDomain>>(
-        future: _futureListDomainModel,
+        future: _futureListModelDomain,
         builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> listModelAsyncSnapshot)
         {
           return StreamBuilder<BaseModelDomain>(
-              stream: _streamDomainModel,
+              stream: _streamModelDomain,
               builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {

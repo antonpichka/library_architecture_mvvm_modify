@@ -13,6 +13,8 @@ abstract class BaseViewModel<T extends Enum,
                               Y extends BaseModelDomain,
                               U extends BaseListModelDomain<BaseModelDomain>>
 {
+  final Type _typeEnum = T;
+  final Type _typeBaseModelDomain = Y;
   final List<T> _listEnum;
   final ItemCreator<Y> _initCreatorBaseDomainModel;
   U _baseListModel;
@@ -24,8 +26,8 @@ abstract class BaseViewModel<T extends Enum,
   BaseTypeParameter _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM;
   BaseTypeParameter _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM;
   BaseTypeParameter _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
-  EnumTypeParameter _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM;
-  EnumTypeParameter _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM;
+  EnumTypeParameter _enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM;
+  EnumTypeParameter _enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM;
 
   BaseViewModel(
       this._listEnum,
@@ -65,6 +67,14 @@ abstract class BaseViewModel<T extends Enum,
     _mapEnumAndStreamController = null;
   }
 
+  Type get getTypeEnum {
+    return _typeEnum;
+  }
+
+  Type get getTypeBaseModelDomain {
+    return _typeBaseModelDomain;
+  }
+
   /* Start Methods BaseTypeParameter */
 
   set setBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM(
@@ -91,16 +101,16 @@ abstract class BaseViewModel<T extends Enum,
     _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
   }
 
-  set setEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM(
+  set setEnumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM(
       BaseTypeParameter baseTypeParameter)
   {
-    _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM= baseTypeParameter;
+    _enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM = baseTypeParameter;
   }
 
-  set setEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM(
+  set setEnumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM(
       BaseTypeParameter baseTypeParameter)
   {
-    _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM = baseTypeParameter;
+    _enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM = baseTypeParameter;
   }
 
   BaseTypeParameter get getBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM {
@@ -131,18 +141,18 @@ abstract class BaseViewModel<T extends Enum,
     return _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
   }
 
-  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM {
-    if(_enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM  == null) {
+  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM {
+    if(_enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM  == null) {
       throw Exception("no setters enum");
     }
-    return _enumTypeParameterForCallToMethodSetLocalIteratorAndSetLocalListModelUsingAnIteratorFVM;
+    return _enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM;
   }
 
-  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM {
-    if(_enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM  == null) {
+  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM {
+    if(_enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM  == null) {
       throw Exception("no setters enum");
     }
-    return _enumTypeParameterForCallToMethodSetNetworkIteratorAndSetNetworkListModelUsingAnIteratorFVM;
+    return _enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM;
   }
 
   /* End Methods BaseTypeParameter */
@@ -206,14 +216,14 @@ abstract class BaseViewModel<T extends Enum,
 
   void notifyStreamListModelDomainLocalDatabase() {
     if(_baseListModel == null) {
-      return;
+      throw Exception("null object ListModel");
     }
     _streamControllerListModelDomainLocalDatabase.add(_baseListModel.getListModelLocalDatabase);
   }
 
   void notifyStreamListModelDomainNetworkDatabase() {
     if(_baseListModel == null) {
-      return;
+      throw Exception("null object ListModel");
     }
     _streamControllerListModelDomainNetworkDatabase.add(_baseListModel.getListModelNetworkDatabase);
   }
@@ -221,7 +231,7 @@ abstract class BaseViewModel<T extends Enum,
   @protected
   U get getListModel   {
     if(_baseListModel == null) {
-      throw Exception("null object ListModel");
+      return throw Exception("null object ListModel");
     }
     return _baseListModel;
   }

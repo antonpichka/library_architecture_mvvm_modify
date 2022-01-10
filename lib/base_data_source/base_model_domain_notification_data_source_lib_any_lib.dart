@@ -9,7 +9,7 @@ abstract class BaseModelDomainNotificationDataSourceLibAnyLib {
     try {
       await methodCancelNotification;
       return Response.success(true);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -20,7 +20,7 @@ abstract class BaseModelDomainNotificationDataSourceLibAnyLib {
     try {
       await methodPushNotificationToShow;
       return Response.success(true);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
@@ -31,7 +31,7 @@ abstract class BaseModelDomainNotificationDataSourceLibAnyLib {
     try {
       await methodPushNotificationToZonedSchedule;
       return Response.success(true);
-    } on Exception catch (e) {
+    } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
