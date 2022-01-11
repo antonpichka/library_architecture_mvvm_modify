@@ -5,23 +5,30 @@ import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_operation_view_model.dart';
 import 'package:uuid/uuid.dart';
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<T extends Enum,
-                              Y extends BaseModelDomain,
-                              U extends BaseListModelDomain<BaseModelDomain>>
+abstract class BaseViewModel<T extends BaseModelDomain,
+                              Y extends BaseListModelDomain<T>>
 {
-  final Type _typeEnum = T;
-  final Type _typeBaseModelDomain = Y;
-  final List<T> _listEnum;
-  final ItemCreator<Y> _initCreatorBaseDomainModel;
-  U _baseListModel;
-  StreamController<List<Y>> _streamControllerListModelDomainLocalDatabase = StreamController.broadcast();
-  StreamController<List<Y>> _streamControllerListModelDomainNetworkDatabase = StreamController.broadcast();
-  Map<T,Y> _mapEnumAndBaseDomainModel = {};
-  Map<T,StreamController<Y>> _mapEnumAndStreamController = {};
+  /* Constructor */
+  final List<EnumOperationViewModel> _listEnumOperationViewModel;
+  final ItemCreator<T> _initCreatorBaseModelDomain;
+  final ItemCreator<Y> _initCreatorBaseListModelDomain;
+
+  /* Types */
+  final Type _typeBaseModelDomain = T;
+  final Type _typeBaseListModelDomain = Y;
+
+  /* Maps */
+  Map<EnumOperationViewModel,T> _mapEnumOperationViewModelAndBaseModelDomain = {};
+  Map<EnumOperationViewModel,StreamController<T>> _mapEnumOperationViewModelAndStreamControllerForBaseModelDomain = {};
+  Map<EnumOperationViewModel,Y> _mapEnumOperationViewModelAndBaseListModelDomain = {};
+  Map<EnumOperationViewModel,StreamController<Y>> _mapEnumOperationViewModelAndStreamControllerForBaseListModelDomain = {};
+
+  /* BaseTypesParameters */
   BaseTypeParameter _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM;
   BaseTypeParameter _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM;
   BaseTypeParameter _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM;
@@ -30,49 +37,24 @@ abstract class BaseViewModel<T extends Enum,
   EnumTypeParameter _enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM;
 
   BaseViewModel(
-      this._listEnum,
-      this._initCreatorBaseDomainModel,
-      ItemCreator<U> initCreatorBaseListModel)
-  {
-    _baseListModel = initCreatorBaseListModel();
-  }
+      this._listEnumOperationViewModel,
+      this._initCreatorBaseModelDomain,
+      this._initCreatorBaseListModelDomain
+      );
 
   void dispose() {
-    _baseListModel = null;
-    _mapEnumAndBaseDomainModel = null;
-
-    if(!_streamControllerListModelDomainLocalDatabase.isClosed) {
-      _streamControllerListModelDomainLocalDatabase.close();
-    }
-    _streamControllerListModelDomainLocalDatabase = null;
-
-    if(!_streamControllerListModelDomainNetworkDatabase.isClosed) {
-      _streamControllerListModelDomainNetworkDatabase.close();
-    }
-    _streamControllerListModelDomainNetworkDatabase = null;
-    
-    if(_mapEnumAndStreamController.values.isEmpty) {
-      _mapEnumAndStreamController = null;
-      return;
-    }
-
-    for(StreamController streamController in _mapEnumAndStreamController.values) {
-      if (streamController != null) {
-        if (!streamController.isClosed) {
-          streamController.close();
-        }
-        streamController = null;
-      }
-    }
-    _mapEnumAndStreamController = null;
+    _mapEnumOperationViewModelAndBaseModelDomain = null;
+    _mapEnumOperationViewModelAndBaseListModelDomain = null;
+    _dispose(_mapEnumOperationViewModelAndStreamControllerForBaseModelDomain);
+    _dispose(_mapEnumOperationViewModelAndStreamControllerForBaseListModelDomain);
   }
-
-  Type get getTypeEnum {
-    return _typeEnum;
-  }
-
+  
   Type get getTypeBaseModelDomain {
     return _typeBaseModelDomain;
+  }
+
+  Type get getTypeBaseListModelDomain {
+    return _typeBaseListModelDomain;
   }
 
   /* Start Methods BaseTypeParameter */
@@ -159,115 +141,163 @@ abstract class BaseViewModel<T extends Enum,
 
   /* Start Methods Model */
 
-  Stream<Y> getStreamModelDomain(T operation) {
-    return _getMapEnumAndStreamController[operation].stream;
+  Stream<T> getStreamModelDomain(EnumOperationViewModel operation) {
+    return _getMapEnumOperationViewModelAndStreamControllerForBaseModelDomain[operation].stream;
   }
 
-  void notifyStreamModelDomain(T operation) {
-    _getMapEnumAndStreamController[operation].add(
-        _getMapEnumAndBaseDomainModel[operation]
+  Future<T> getFutureModelDomain(EnumOperationViewModel operation) async {
+    return _getMapEnumOperationViewModelAndBaseModelDomain[operation];
+  }
+
+  void setModelDomain(T newModel,EnumOperationViewModel operation) {
+    _getMapEnumOperationViewModelAndBaseModelDomain[operation] = newModel;
+  }
+
+  T getModelDomain(EnumOperationViewModel operation) {
+    return _getMapEnumOperationViewModelAndBaseModelDomain[operation];
+  }
+
+  void notifyStreamModelDomain(EnumOperationViewModel operation) {
+    _getMapEnumOperationViewModelAndStreamControllerForBaseModelDomain[operation].add(
+        _getMapEnumOperationViewModelAndBaseModelDomain[operation]
     );
   }
 
-  Future<Y> getFutureModelDomain(T operation) async {
-    return _getMapEnumAndBaseDomainModel[operation];
-  }
-
-  void setModelDomain(Y newModel,T operation) {
-    _getMapEnumAndBaseDomainModel[operation] = newModel;
-  }
-
-  Y getModelDomain(T operation) {
-    return _getMapEnumAndBaseDomainModel[operation];
-  }
-
   @protected
-  set setParameterModelDomainUniqueId(T operation) {
-    _getMapEnumAndBaseDomainModel[operation].setUniqueId = const Uuid().v1();
+  set setParameterModelDomainNamedUniqueId(EnumOperationViewModel operation) {
+    _getMapEnumOperationViewModelAndBaseModelDomain[operation].setUniqueId = const Uuid().v1();
   }
 
   /* End Methods Model */
 
   /* Start Methods ListModel */
 
-  Stream<List<Y>> get getStreamListModelDomainLocalDatabase  {
-    return _streamControllerListModelDomainLocalDatabase.stream;
+  Stream<List<T>> get getStreamListModelDomainFromLocalDatabase  {
+    return _streamControllerListModelDomainFromLocalDatabase.stream;
   }
   
-  Stream<List<Y>> get getStreamListModelDomainNetworkDatabase  {
-    return _streamControllerListModelDomainNetworkDatabase.stream;
+  Stream<List<T>> get getStreamListModelDomainFromNetworkDatabase  {
+    return _streamControllerListModelDomainFromNetworkDatabase.stream;
   }
 
-  Future<List<Y>> get getFutureListModelDomainLocalDatabase async {
+  Future<List<T>> get getFutureListModelDomainFromLocalDatabase async {
     var list = List.empty();
-    for(BaseModelDomain value in _baseListModel.getListModelLocalDatabase) {
+    for(BaseModelDomain value in _baseListModelDomain.getListModelLocalDatabase) {
       list.add(value);
     }
     return list;
   }
 
-  Future<List<Y>> get getFutureListModelDomainNetworkDatabase async {
+  Future<List<T>> get getFutureListModelDomainFromNetworkDatabase async {
     var list = List.empty();
-    for(BaseModelDomain value in _baseListModel.getListModelNetworkDatabase) {
+    for(BaseModelDomain value in _baseListModelDomain.getListModelNetworkDatabase) {
       list.add(value);
     }
     return list;
   }
 
-  void notifyStreamListModelDomainLocalDatabase() {
-    if(_baseListModel == null) {
+  void notifyStreamListModelDomainFromLocalDatabase() {
+    if(_baseListModelDomain == null) {
       throw Exception("null object ListModel");
     }
-    _streamControllerListModelDomainLocalDatabase.add(_baseListModel.getListModelLocalDatabase);
+    _streamControllerListModelDomainFromLocalDatabase.add(_baseListModelDomain.getListModelLocalDatabase);
   }
 
-  void notifyStreamListModelDomainNetworkDatabase() {
-    if(_baseListModel == null) {
+  void notifyStreamListModelDomainFromNetworkDatabase() {
+    if(_baseListModelDomain == null) {
       throw Exception("null object ListModel");
     }
-    _streamControllerListModelDomainNetworkDatabase.add(_baseListModel.getListModelNetworkDatabase);
+    _streamControllerListModelDomainFromNetworkDatabase.add(_baseListModelDomain.getListModelNetworkDatabase);
   }
 
   @protected
-  U get getListModel   {
-    if(_baseListModel == null) {
+  Y get getListModelDomain   {
+    if(_baseListModelDomain == null) {
       return throw Exception("null object ListModel");
     }
-    return _baseListModel;
+    return _baseListModelDomain;
   }
 
   /* End Methods ListModel */
-
-  Map<T,StreamController<Y>> get _getMapEnumAndStreamController {
-    _mapEnumAndStreamController ??= _creationAndGetMapEnumAndStreamController();
-    return _mapEnumAndStreamController;
+  
+  Map<EnumOperationViewModel,T> get _getMapEnumOperationViewModelAndBaseModelDomain {
+    _mapEnumOperationViewModelAndBaseModelDomain ??= _creationAndGetMapEnumOperationViewModelAndBaseModelDomain();
+    return _mapEnumOperationViewModelAndBaseModelDomain;
   }
 
-  Map<T,Y> get _getMapEnumAndBaseDomainModel {
-    _mapEnumAndBaseDomainModel ??= _creationAndGetMapEnumAndBaseDomainModel();
-    return _mapEnumAndBaseDomainModel;
+  Map<EnumOperationViewModel,StreamController<T>> get _getMapEnumOperationViewModelAndStreamControllerForBaseModelDomain {
+    _mapEnumOperationViewModelAndStreamControllerForBaseModelDomain ??= _creationAndGetMapEnumOperationViewModelAndStreamControllerForBaseModelDomain();
+    return _mapEnumOperationViewModelAndStreamControllerForBaseModelDomain;
   }
 
-  Map<T,Y> _creationAndGetMapEnumAndBaseDomainModel() {
-    if(_listEnum.isEmpty) {
+  Map<EnumOperationViewModel,Y> get _getMapEnumOperationViewModelAndBaseListModelDomain {
+    _mapEnumOperationViewModelAndBaseListModelDomain ??= _creationAndGetMapEnumOperationViewModelAndBaseListModelDomain();
+    return _mapEnumOperationViewModelAndBaseListModelDomain;
+  }
+
+  Map<EnumOperationViewModel,StreamController<Y>> get _getMapEnumOperationViewModelAndStreamControllerForBaseListModelDomain {
+    _mapEnumOperationViewModelAndStreamControllerForBaseListModelDomain ??= _creationAndGetMapEnumOperationViewModelAndStreamControllerForBaseListModelDomain();
+    return _mapEnumOperationViewModelAndStreamControllerForBaseListModelDomain;
+  }
+
+  Map<EnumOperationViewModel,T> _creationAndGetMapEnumOperationViewModelAndBaseModelDomain() {
+    if(_listEnumOperationViewModel.isEmpty) {
       return {};
     }
-    Map<T,Y> map = {};
-    for(T viewModelOperation in _listEnum) {
-      map[viewModelOperation] = _initCreatorBaseDomainModel();
+    Map<EnumOperationViewModel,T> map = {};
+    for(EnumOperationViewModel viewModelOperation in _listEnumOperationViewModel) {
+      map[viewModelOperation] = _initCreatorBaseModelDomain();
     }
     return map;
   }
 
-  Map<T,StreamController<Y>> _creationAndGetMapEnumAndStreamController() {
-    if(_listEnum.isEmpty) {
+  Map<EnumOperationViewModel,StreamController<T>> _creationAndGetMapEnumOperationViewModelAndStreamControllerForBaseModelDomain() {
+    if(_listEnumOperationViewModel.isEmpty) {
       return {};
     }
-    Map<T,StreamController<Y>> map = {};
-    for(T viewModelOperation in _listEnum) {
+    Map<EnumOperationViewModel,StreamController<T>> map = {};
+    for(EnumOperationViewModel viewModelOperation in _listEnumOperationViewModel) {
+      map[viewModelOperation] = StreamController<T>.broadcast();
+    }
+    return map;
+  }
+  
+  Map<EnumOperationViewModel,Y> _creationAndGetMapEnumOperationViewModelAndBaseListModelDomain() {
+    if(_listEnumOperationViewModel.isEmpty) {
+      return {};
+    }
+    Map<EnumOperationViewModel,Y> map = {};
+    for(EnumOperationViewModel viewModelOperation in _listEnumOperationViewModel) {
+      map[viewModelOperation] = _initCreatorBaseListModelDomain();
+    }
+    return map;
+  }
+
+  Map<EnumOperationViewModel,StreamController<Y>> _creationAndGetMapEnumOperationViewModelAndStreamControllerForBaseListModelDomain() {
+    if(_listEnumOperationViewModel.isEmpty) {
+      return {};
+    }
+    Map<EnumOperationViewModel,StreamController<Y>> map = {};
+    for(EnumOperationViewModel viewModelOperation in _listEnumOperationViewModel) {
       map[viewModelOperation] = StreamController<Y>.broadcast();
     }
     return map;
+  }
+
+  void _dispose(Map<EnumOperationViewModel,StreamController> map) {
+    if(map.values.isEmpty) {
+      map = null;
+    } else {
+      for (StreamController streamController in map.values) {
+        if (streamController != null) {
+          if (!streamController.isClosed) {
+            streamController.close();
+          }
+          streamController = null;
+        }
+      }
+      map = null;
+    }
   }
 
 }

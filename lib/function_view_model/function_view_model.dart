@@ -1,11 +1,14 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_ln_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_list_model_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_list_model_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_and_delete_model_to_local_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_and_delete_model_to_list_model_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_and_delete_model_to_network_list_model_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_list_model_fvm.dart';
@@ -44,7 +47,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
       ModelLocalDatabaseForOneEntryFVM spModelFVM) async
   {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
         spModelFVM.callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM()
     );
   }
@@ -52,7 +55,7 @@ class FunctionViewModel {
   static Future<String> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
       ModelLocalDatabaseForOneEntryFVM spModelFVM) async
   {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
         spModelFVM.insertModelToLocalDatabaseForOneEntryThereIsParameterFVM()
     );
   }
@@ -60,7 +63,7 @@ class FunctionViewModel {
   static Future<String> deleteModelToLocalDatabaseForOneEntryFVM(
       ModelLocalDatabaseForOneEntryFVM spModelFVM) async
   {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
         spModelFVM.deleteModelToLocalDatabaseForOneEntryFVM()
     );
   }
@@ -69,7 +72,7 @@ class FunctionViewModel {
       InsertModelToLocalDatabaseThereIsParameterFVM insertModel)
   async {
     // Insert Model FVM
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
         insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
@@ -77,7 +80,7 @@ class FunctionViewModel {
   static bool insertModelToLocalListModelFVM(
       InsertModelToLocalListModelFVM insertModel) {
     // Insert Model FVM
-    return _codeNetworkOrLocalListModel(
+    return _codeNetworkListModelOrLocalListModel(
       insertModel.insertModelToLocalListModelFVM()
     );
   }
@@ -86,7 +89,7 @@ class FunctionViewModel {
       UpdateModelToLocalDatabaseThereIsParameterFVM updateModel)
   async {
     // Update Model FVM
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
@@ -94,7 +97,7 @@ class FunctionViewModel {
   static bool updateModelToLocalListModelFVM(
       UpdateModelToLocalListModelFVM updateModel) {
     // Update Model FVM
-    return _codeNetworkOrLocalListModel(
+    return _codeNetworkListModelOrLocalListModel(
         updateModel.updateModelToLocalListModelFVM()
     );
   }
@@ -103,15 +106,15 @@ class FunctionViewModel {
       DeleteModelToLocalDatabaseThereIsParameterFVM deleteModel)
   async {
     // Delete Model FVM
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
   static bool deleteModelToLocalListModelFVM(
-      DeleteModelToLocalListModelFVM deleteModel) {
+      DeleteModelToListModelLocalDatabaseFVM deleteModel) {
     // Delete Model FVM
-    return _codeNetworkOrLocalListModel(
+    return _codeNetworkListModelOrLocalListModel(
         deleteModel.deleteModelToLocalListModelFVM()
     );
   }
@@ -119,7 +122,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseFVM getListModel)
   async {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       getListModel.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(),
     );
   }
@@ -127,7 +130,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseThereIsParameterFVM getListModel)
   async {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
@@ -135,7 +138,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromLocalDatabaseThereIsParameterFVM getModel)
   async {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
@@ -144,7 +147,7 @@ class FunctionViewModel {
       InsertModelToNetworkDatabaseThereIsParameterFVM insertModel)
   async {
     // Insert Model FVM
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
     );
   }
@@ -152,7 +155,7 @@ class FunctionViewModel {
   static bool insertModelToNetworkListModelFVM(
       InsertModelToNetworkListModelFVM insertModel) {
     // Insert Model FVM
-    return _codeNetworkOrLocalListModel(
+    return _codeNetworkListModelOrLocalListModel(
         insertModel.insertModelToNetworkListModelFVM()
     );
   }
@@ -161,7 +164,7 @@ class FunctionViewModel {
       UpdateModelToNetworkDatabaseThereIsParameterFVM updateModel)
   async {
     // Update Model FVM
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
     );
   }
@@ -169,7 +172,7 @@ class FunctionViewModel {
   static bool updateModelToNetworkListModelFVM(
       UpdateModelToNetworkListModelFVM updateModel) {
     // Update Model FVM
-    return _codeNetworkOrLocalListModel(
+    return _codeNetworkListModelOrLocalListModel(
         updateModel.updateModelToNetworkListModelFVM()
     );
   }
@@ -178,7 +181,7 @@ class FunctionViewModel {
       DeleteModelToNetworkDatabaseThereIsParameterFVM deleteModel)
   async {
     // Delete Model FVM
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
     );
   }
@@ -186,7 +189,7 @@ class FunctionViewModel {
   static bool deleteModelToNetworkListModelFVM(
       DeleteModelToNetworkListModelFVM deleteModel) {
     // Delete Model FVM
-    return _codeNetworkOrLocalListModel(
+    return _codeNetworkListModelOrLocalListModel(
         deleteModel.deleteModelToNetworkListModelFVM()
     );
   }
@@ -194,7 +197,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseFVM getListModel)
   async {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(),
     );
   }
@@ -202,7 +205,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseThereIsParameterFVM getListModel)
   async {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
@@ -210,7 +213,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromNetworkDatabaseThereIsParameterFVM getModel)
   async {
-    return _codeNetworkOrLocalDatabase(
+    return _codeNetworkDatabaseOrLocalDatabase(
       getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
   }
@@ -219,7 +222,7 @@ class FunctionViewModel {
       InsertModelToLNDatabaseThereIsParameterFVM insertModel)
   async {
     // Insert Model FVM
-    return _codeNetworkAndLocalDatabase(
+    return _codeNetworkDatabaseAndLocalDatabase(
       insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
       insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
     );
@@ -228,7 +231,7 @@ class FunctionViewModel {
   static bool insertModelToLNListModelFVM(
       InsertModelToLNListModelFVM insertModel) {
     // Insert Model FVM
-    return _codeNetworkAndLocalListModel(
+    return _codeNetworkListModelAndLocalListModel(
       insertModel.insertModelToNetworkListModelFVM(),
       insertModel.insertModelToLocalListModelFVM(),
     );
@@ -238,7 +241,7 @@ class FunctionViewModel {
       UpdateModelToLNDatabaseThereIsParameterFVM updateModel)
   async {
     // Update Model FVM
-    return _codeNetworkAndLocalDatabase(
+    return _codeNetworkDatabaseAndLocalDatabase(
       updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
       updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
     );
@@ -247,7 +250,7 @@ class FunctionViewModel {
   static bool updateModelToLNListModelFVM(
       UpdateModelToLNListModelFVM updateModel) {
     // Update Model FVM
-    return _codeNetworkAndLocalListModel(
+    return _codeNetworkListModelAndLocalListModel(
       updateModel.updateModelToNetworkListModelFVM(),
       updateModel.updateModelToLocalListModelFVM(),
     );
@@ -257,16 +260,16 @@ class FunctionViewModel {
       DeleteModelToLNDatabaseThereIsParameterFVM deleteModel)
   async {
     // Delete Model FVM
-    return _codeNetworkAndLocalDatabase(
+    return _codeNetworkDatabaseAndLocalDatabase(
       deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
       deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
     );
   }
 
   static bool deleteModelToLNListModelFVM(
-      DeleteModelToLNListModelFVM deleteModel) {
+      DeleteModelToListModelDomainForLNDatabaseFVM deleteModel) {
     // Delete Model FVM
-    return _codeNetworkAndLocalListModel(
+    return _codeNetworkListModelAndLocalListModel(
       deleteModel.deleteModelToNetworkListModelFVM(),
       deleteModel.deleteModelToLocalListModelFVM(),
     );
@@ -275,7 +278,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetListModelFromLNDatabaseAndUseTheSettersFVM(
       GetListModelFromLNDatabaseFVM getListModel)
   async {
-    return _codeNetworkAndLocalDatabase(
+    return _codeNetworkDatabaseAndLocalDatabase(
       getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(),
       getListModel.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(),
     );
@@ -284,7 +287,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLNDatabaseThereIsParameterFVM getListModel)
   async {
-    return _codeNetworkAndLocalDatabase(
+    return _codeNetworkDatabaseAndLocalDatabase(
       getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
       getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
@@ -293,7 +296,7 @@ class FunctionViewModel {
   static Future<String> callToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromLNDatabaseThereIsParameterFVM getModel)
   async {
-    return _codeNetworkAndLocalDatabase(
+    return _codeNetworkDatabaseAndLocalDatabase(
       getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(),
       getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(),
     );
@@ -303,7 +306,7 @@ class FunctionViewModel {
       InsertModelToLocalDatabaseThereIsParameterAndInsertModelToLocalListModelFVM insertModel)
   async {
     // Insert Model FVM
-    return _codeNetworkOrLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
         insertModel.insertModelToLocalListModelFVM
     );
@@ -313,17 +316,17 @@ class FunctionViewModel {
       UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToLocalListModelFVM updateModel)
   async {
     // Update Model FVM
-    return _codeNetworkOrLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
         updateModel.updateModelToLocalListModelFVM
     );
   }
 
   static Future<String> deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModelFVM(
-      DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModelFVM deleteModel)
+      DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelLocalDatabaseFVM deleteModel)
   async {
     // Delete Model FVM
-    return _codeNetworkOrLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
         deleteModel.deleteModelToLocalListModelFVM
     );
@@ -333,7 +336,7 @@ class FunctionViewModel {
       InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToNetworkListModelFVM insertModel)
   async {
     // Insert Model FVM
-    return _codeNetworkOrLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
         insertModel.insertModelToNetworkListModelFVM
     );
@@ -343,7 +346,7 @@ class FunctionViewModel {
       UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToNetworkListModelFVM updateModel)
   async {
     // Update Model FVM
-    return _codeNetworkOrLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
         updateModel.updateModelToNetworkListModelFVM);
   }
@@ -352,7 +355,7 @@ class FunctionViewModel {
       DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToNetworkListModelFVM deleteModel)
   async {
     // Delete Model FVM
-    return _codeNetworkOrLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
         deleteModel.deleteModelToNetworkListModelFVM
     );
@@ -362,7 +365,7 @@ class FunctionViewModel {
       InsertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModelFVM  insertModel)
   async {
     // Insert Model FVM
-    return _codeNetworkAndLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseAndLocalDatabaseAndListModel(
         insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
         insertModel.insertModelToNetworkListModelFVM,
         insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
@@ -373,71 +376,112 @@ class FunctionViewModel {
       UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModelFVM updateModel)
   async {
     // Update Model FVM
-    return _codeNetworkAndLocalDatabaseAndListModel(
+    return _codeNetworkDatabaseAndLocalDatabaseAndListModel(
         updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
         updateModel.updateModelToNetworkListModelFVM,
         updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
         updateModel.updateModelToLocalListModelFVM);
   }
 
-  static Future<String> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM(
-      DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM deleteModel)
+  static Future<void> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM(
+      DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelLNDatabaseFVM deleteModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
   async {
     // Delete Model FVM
-    return _codeNetworkAndLocalDatabaseAndListModel(
-        deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
-        deleteModel.deleteModelToNetworkListModelFVM,
-        deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
-        deleteModel.deleteModelToLocalListModelFVM);
+     _codeNetworkDatabaseAndLocalDatabaseAndListModel(
+         deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
+         deleteModel.deleteModelToNetworkListModelFVM,
+         deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
+         deleteModel.deleteModelToLocalListModelFVM,
+         functionForResultSuccess,
+         functionForResultDomainException,
+         functionForResultLocalException,
+         functionForResultNetworkException
+     );
   }
   
   /* OTHER */
 
-  static Future<String> _codeNetworkOrLocalDatabase(
-      Future<Response<String,BaseException>> function) async
+  static Future<void> _codeNetworkDatabaseOrLocalDatabase(
+      Future<Response<String,BaseException>> function,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException
+      ) async
   {
     var result = await function;
     if(result.isSuccessResponse) {
-      return result.getData;
+      functionForResultSuccess();
     } else {
-      return result.getException.getSendMessageToTheView;
+      _choiceException(
+          result.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
     }
   }
 
-  static Future<String> _codeNetworkAndLocalDatabase(
+  static Future<void> _codeNetworkDatabaseAndLocalDatabase(
       Future<Response<String,BaseException>> networkFunction,
-      Future<Response<String,BaseException>> localFunction) async
+      Future<Response<String,BaseException>> localFunction,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException) async
   {
     var resultNetwork = await networkFunction;
     if(resultNetwork.isSuccessResponse) {
       var resultLocal = await localFunction;
       if(resultLocal.isSuccessResponse) {
-        return resultLocal.getData;
+        functionForResultSuccess();
       } else {
-        return resultLocal.getException.getSendMessageToTheView;
+        _choiceException(
+            resultLocal.getException,
+            functionForResultDomainException,
+            functionForResultLocalException,
+            functionForResultNetworkException
+        );
       }
     } else {
-      return resultNetwork.getException.getSendMessageToTheView;
+      _choiceException(
+          resultNetwork.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
     }
   }
 
-  static bool _codeNetworkOrLocalListModel(
-      bool function)
+  static void _codeNetworkListModelOrLocalListModel(
+      bool function,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
   {
     if(function) {
-      return true;
+      functionForResultSuccess();
     } else {
       return false;
     }
   }
 
-  static bool _codeNetworkAndLocalListModel(
+  static void _codeNetworkListModelAndLocalListModel(
       bool functionNetwork,
-      bool functionLocal)
+      bool functionLocal,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
   {
     if(functionNetwork) {
       if(functionLocal) {
-        return true;
+        functionForResultSuccess();
       } else {
         return false;
       }
@@ -447,24 +491,37 @@ class FunctionViewModel {
   }
 
 
-  static Future<String> _codeNetworkOrLocalDatabaseAndListModel(
+  static Future<void> _codeNetworkDatabaseOrLocalDatabaseAndListModel(
       Future<Response<String,BaseException>> functionOne,
-      Function functionTwo) async 
+      Function functionTwo,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException) async 
   {
     var result = await functionOne;
     if(result.isSuccessResponse) {
       functionTwo();
-      return result.getData;
+      functionForResultSuccess();
     } else {
-      return result.getException.getSendMessageToTheView;
+      _choiceException(
+          result.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
     }
   }
 
-  static Future<String> _codeNetworkAndLocalDatabaseAndListModel(
+  static Future<void> _codeNetworkDatabaseAndLocalDatabaseAndListModel(
       Future<Response<String,BaseException>> networkFunctionOne,
       Function networkFunctionTwo,
       Future<Response<String,BaseException>> localFunctionOne,
-      Function localFunctionTwo) async
+      Function localFunctionTwo,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException) async
   {
     var resultNetwork = await networkFunctionOne;
     if(resultNetwork.isSuccessResponse) {
@@ -472,12 +529,38 @@ class FunctionViewModel {
       var resultLocal = await localFunctionOne;
       if(resultLocal.isSuccessResponse) {
         localFunctionTwo();
-        return resultLocal.getData;
+        functionForResultSuccess();
       } else {
-        return resultLocal.getException.getSendMessageToTheView;
+        _choiceException(
+            resultLocal.getException,
+            functionForResultDomainException,
+            functionForResultLocalException,
+            functionForResultNetworkException
+        );
       }
     } else {
-      return resultNetwork.getException.getSendMessageToTheView;
+      _choiceException(
+          resultNetwork.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+    }
+  }
+
+  static void _choiceException(
+      BaseException baseException,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException
+      )
+  {
+    if(baseException is DomainException) {
+      functionForResultDomainException(baseException);
+    } else if(baseException is LocalException) {
+      functionForResultLocalException(baseException);
+    } else if(baseException is NetworkException) {
+      functionForResultNetworkException(baseException);
     }
   }
 

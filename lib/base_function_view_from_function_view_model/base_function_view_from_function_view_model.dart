@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_function_view_from_function_view_model/extends_function_view_from_function_view_model/get_list_model_from_database_fvffvm/get_list_model_local_database_fvffvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_from_function_view_model/extends_function_view_from_function_view_model/get_list_model_from_database_fvffvm/get_list_model_from_local_database_fvffvm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
@@ -127,7 +127,8 @@ class BaseFunctionViewFromFunctionViewModel {
       BaseViewModel baseViewModel,
       BaseTypeParameter baseTypeParameter,
       Function functionForResultSuccess,
-      Function(String) functionForResultError
+      Function(String) functionForResultError,
+      Future<String> method
       ) async
   {
     baseViewModel.setBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
@@ -136,6 +137,7 @@ class BaseFunctionViewFromFunctionViewModel {
         .callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
         getListModelFromLocalDatabaseThereIsParameterFVM
     );
+
     _afterCodeIsCheckResponse(
         response,
         functionForResultSuccess,
@@ -333,7 +335,7 @@ class BaseFunctionViewFromFunctionViewModel {
       Function(String) functionForResultError)
   {
     if(response == CONST_SUCCESS) {
-      baseViewModel.notifyStreamListModelDomainLocalDatabase();
+      baseViewModel.notifyStreamListModelDomainFromLocalDatabase();
       functionForResultSuccess();
     } else {
       functionForResultError(response);
@@ -348,7 +350,7 @@ class BaseFunctionViewFromFunctionViewModel {
       Function(String) functionForResultError)
   {
     if(response == CONST_SUCCESS) {
-      baseViewModel.notifyStreamListModelDomainNetworkDatabase();
+      baseViewModel.notifyStreamListModelDomainFromNetworkDatabase();
       functionForResultSuccess();
     } else {
       functionForResultError(response);

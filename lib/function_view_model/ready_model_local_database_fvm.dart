@@ -10,13 +10,12 @@ import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelLocalDatabaseFVM
 {
-  static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
+  static Future<Response<bool, LocalException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,
       Function(BaseListModelLocalDatabase) function
       ) async
@@ -26,7 +25,7 @@ class ReadyModelLocalDatabaseFVM
           .getListModelFromLocalDatabaseDataSource();
       if(response.isSuccessResponse) {
         function(response.getData);
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
@@ -35,7 +34,7 @@ class ReadyModelLocalDatabaseFVM
     }
   }
 
-  static Future<Response<String, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<Response<bool, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
       BaseListModelDomain listModelDomain,
@@ -48,7 +47,7 @@ class ReadyModelLocalDatabaseFVM
       );
       if(response.isSuccessResponse) {
         listModelDomain.setListModelLocalDatabaseFromBaseListModelLocalDatabase(response.getData);
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
@@ -57,7 +56,7 @@ class ReadyModelLocalDatabaseFVM
     }
   }
 
-  static Future<Response<String, LocalException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<Response<bool, LocalException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
       Function(BaseModelLocalDatabase) function
@@ -69,7 +68,7 @@ class ReadyModelLocalDatabaseFVM
       );
       if(response.isSuccessResponse) {
         function(response.getData);
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
@@ -80,13 +79,13 @@ class ReadyModelLocalDatabaseFVM
 
 
   static Future<Response<String, LocalException>> insertModelToLocalDatabaseThereIsParameterFVM(
+      BaseViewModel baseViewModel,
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      BaseModelLocalDatabase localModel
       ) async {
     try {
       var response = await insertModelToLocalDatabaseThereIsParameterDataSource
           .insertModelToLocalDatabaseThereIsParameterDataSource(
-          localModel
+          baseViewModel.getModelDomain(operation).toModelLocalDatabase()
       );
       if (response.isSuccessResponse) {
         return Response.success(CONST_SUCCESS);

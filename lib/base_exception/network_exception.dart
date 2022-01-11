@@ -25,9 +25,6 @@ class NetworkException extends BaseException {
   }
 
   @override
-  String get getSendMessageToTheView => _descriptionStatusCode;
-
-  @override
   String toString() {
     return "$_statusCode : $_nameStatusCode : $_descriptionStatusCode";
   }

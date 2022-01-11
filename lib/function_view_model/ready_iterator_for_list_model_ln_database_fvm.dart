@@ -18,10 +18,10 @@ class ReadyIteratorForListModelLNDatabaseFVM
           .getEnumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM
           .getParameter == itemEnum)
       {
-        listModel.setIteratorForListModelLocalDatabase = baseIterator;
+        listModel.setIterator = baseIterator;
       }
     });
-    listModel.setListModelLocalDatabaseUsingAnIterator();
+    listModel.setListModelDomainUsingAnIterator();
     return true;
   }
 

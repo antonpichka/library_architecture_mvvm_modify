@@ -16,9 +16,6 @@ class LocalException extends BaseException {
   String get getMessage => _message;
 
   @override
-  String get getSendMessageToTheView => _message;
-
-  @override
   String toString() {
     return "$_code : $_message";
   }

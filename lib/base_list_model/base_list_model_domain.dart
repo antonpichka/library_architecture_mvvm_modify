@@ -1,28 +1,53 @@
 
+import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_network_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
 
-abstract class BaseListModelDomain<T extends BaseModelDomain>
-    with BaseListModelLocalDatabase<T>,BaseListModelNetworkDatabase<T>
-{
-  BaseModelDomain getBaseModelDomainFromList(List<BaseModelDomain> list);
+abstract class BaseListModelDomain<T extends BaseModelDomain> {
+  List<T> _listModelDomain = List.empty();
+  BaseIterator _iterator;
+  
+  BaseModelDomain fromBaseModelLocalDatabase(BaseModelLocalDatabase model);
+  BaseModelDomain fromBaseModelNetworkDatabase(BaseModelNetworkDatabase model);
 
   void setListModelLocalDatabaseFromBaseListModelLocalDatabase(BaseListModelLocalDatabase listModelLocalDatabase) {
     List<BaseModelDomain> list = List.generate(listModelLocalDatabase.getListModelLocalDatabase.length, (i) {
-      return getBaseModelDomainFromList(listModelLocalDatabase.getListModelLocalDatabase);
+      return fromBaseModelLocalDatabase(listModelLocalDatabase.getListModelLocalDatabase[i]);
     });
     setListModelLocalDatabase = list;
   }
 
   void setListModelNetworkDatabaseFromBaseListModelNetworkDatabase(BaseListModelNetworkDatabase listModelNetworkDatabase) {
     List<BaseModelDomain> list = List.generate(listModelNetworkDatabase.getListModelNetworkDatabase.length, (i) {
-      return getBaseModelDomainFromList(listModelNetworkDatabase.getListModelNetworkDatabase);
+      return fromBaseModelNetworkDatabase(listModelNetworkDatabase.getListModelNetworkDatabase[i]);
     });
     setListModelNetworkDatabase = list;
   }
+
+  List<T> get getListModelDomain {
+    return _listModelDomain;
+  }
+
+  set setListModelDomain(List<T> list) {
+    _listModelDomain = list;
+  }
+
+  void setListModelDomainUsingAnIterator() {
+    if(_iterator == null) {
+      throw Exception();
+    }
+    _listModelDomain = _iterator.getSortedList;
+  }
+
+  set setIterator(BaseIterator newIterator) {
+    _iterator = newIterator;
+    _iterator.setList = _listModelDomain;
+  }
   
-  bool insertModelToListModelLocalDatabase(
+  bool insertModelToListModelDomain(
       BaseModelDomain model
       )
   {

@@ -3,21 +3,22 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelLocalDatabaseForOneEntryFVM
 {
  static Future<Response<String,LocalException>> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
-      ModelLocalDatabaseForOneEntryDataSource modelDataSource,
-      Function(BaseModelLocalDatabase localModel) function) async
+     BaseViewModel baseViewModel,
+     ModelLocalDatabaseForOneEntryDataSource modelDataSource
+     ) async
  {
     try {
       var response = await modelDataSource
           .getModelFromLocalDatabaseForOneEntryDataSource();
       if (response.isSuccessResponse) {
-        function(response.getData);
+        baseViewModel.setModelDomain(response.getData.toModelDomain(), operation);
         return Response.success(CONST_SUCCESS);
       } else {
         return Response.exception(response.getException);
@@ -28,12 +29,15 @@ class ReadyModelLocalDatabaseForOneEntryFVM
   }
 
  static Future<Response<String,BaseException>> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-      ModelLocalDatabaseForOneEntryDataSource modelDataSource,
-      BaseModelLocalDatabase localModel
+     BaseViewModel baseViewModel, 
+     ModelLocalDatabaseForOneEntryDataSource modelDataSource,
       ) async {
     try {
       var response = await modelDataSource
-          .insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(localModel);
+          .insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
+          baseViewModel
+              .getModelDomain(operation)
+              .toModelLocalDatabase());
       if(response.isSuccessResponse) {
         return Response.success(CONST_SUCCESS);
       } else {

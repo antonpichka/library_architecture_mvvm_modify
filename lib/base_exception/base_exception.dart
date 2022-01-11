@@ -1,3 +1,2 @@
-abstract class BaseException {
-  String get getSendMessageToTheView;
+class BaseException {
 }

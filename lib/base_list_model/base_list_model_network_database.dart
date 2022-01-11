@@ -1,7 +1,8 @@
 
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
 
-class BaseListModelNetworkDatabase<T> {
+class BaseListModelNetworkDatabase<T extends BaseModelNetworkDatabase> {
   List<T> _listModelNetworkDatabase = List.empty();
   BaseIterator _iterator;
   
