@@ -17,14 +17,14 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
     List<BaseModelDomain> list = List.generate(listModelLocalDatabase.getListModelLocalDatabase.length, (i) {
       return fromBaseModelLocalDatabase(listModelLocalDatabase.getListModelLocalDatabase[i]);
     });
-    setListModelLocalDatabase = list;
+    _listModelDomain = list;
   }
 
   void setListModelNetworkDatabaseFromBaseListModelNetworkDatabase(BaseListModelNetworkDatabase listModelNetworkDatabase) {
     List<BaseModelDomain> list = List.generate(listModelNetworkDatabase.getListModelNetworkDatabase.length, (i) {
       return fromBaseModelNetworkDatabase(listModelNetworkDatabase.getListModelNetworkDatabase[i]);
     });
-    setListModelNetworkDatabase = list;
+    _listModelDomain = list;
   }
 
   List<T> get getListModelDomain {
@@ -46,88 +46,51 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
     _iterator = newIterator;
     _iterator.setList = _listModelDomain;
   }
+
+  bool get isEqualsNullForIterator {
+    return _iterator == null;
+  }
   
   bool insertModelToListModelDomain(
       BaseModelDomain model
       )
   {
-    getListModelLocalDatabase.add(model);
+    _listModelDomain.add(model);
     return true;
   }
 
-  bool insertModelToListModelNetworkDatabase(
+  bool updateModelToListModelDomain(
       BaseModelDomain model
       )
   {
-    getListModelNetworkDatabase.add(model);
-    return true;
-  }
-
-  bool updateModelToListModelLocalDatabase(
-      BaseModelDomain model
-      )
-  {
-    if(getListModelLocalDatabase.isEmpty) {
+    if(_listModelDomain.isEmpty) {
       return false;
     }
 
-    for(int i = 0; i < getListModelLocalDatabase.length; i++) {
-      if(getListModelLocalDatabase[i].uniqueId == model.uniqueId) {
-        getListModelLocalDatabase.setAll(i, [model]);
+    for(int i = 0; i < _listModelDomain.length; i++) {
+      if(_listModelDomain[i].uniqueId == model.uniqueId) {
+        _listModelDomain.setAll(i, [model]);
         return true;
       }
     }
     return false;
   }
 
-  bool updateModelToListModelNetworkDatabase(
+  bool deleteModelToListModelDomain(
       BaseModelDomain model
       )
   {
-    if(getListModelNetworkDatabase.isEmpty) {
+    if(_listModelDomain.isEmpty) {
       return false;
     }
 
-    for(int i = 0; i < getListModelNetworkDatabase.length; i++) {
-      if(getListModelNetworkDatabase[i].uniqueId == model.uniqueId) {
-        getListModelNetworkDatabase.setAll(i, [model]);
+    for(int i = 0; i < _listModelDomain.length; i++) {
+      if(_listModelDomain[i].uniqueId == model.uniqueId) {
+        _listModelDomain.removeAt(i);
         return true;
       }
     }
     return false;
   }
 
-  bool deleteModelToListModelLocalDatabase(
-      BaseModelDomain model
-      )
-  {
-    if(getListModelLocalDatabase.isEmpty) {
-      return false;
-    }
-
-    for(int i = 0; i < getListModelLocalDatabase.length; i++) {
-      if(getListModelLocalDatabase[i].uniqueId == model.uniqueId) {
-        getListModelLocalDatabase.removeAt(i);
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool deleteModelToListModelNetworkDatabase(
-      BaseModelDomain model
-      )
-  {
-    if(getListModelNetworkDatabase.isEmpty) {
-      return false;
-    }
-
-    for(int i = 0; i < getListModelNetworkDatabase.length; i++) {
-      if(getListModelNetworkDatabase[i].uniqueId == model.uniqueId) {
-        getListModelNetworkDatabase.removeAt(i);
-        return true;
-      }
-    }
-    return false;
-  }
 }

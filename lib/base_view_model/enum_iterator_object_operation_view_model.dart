@@ -1,0 +1,4 @@
+enum EnumIteratorObjectOperationViewModel {
+  getListModelFromLocalDatabaseThereIsParameter,
+  getListModelFromNetworkDatabaseThereIsParameter,
+}

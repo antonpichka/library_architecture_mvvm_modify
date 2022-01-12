@@ -51,15 +51,18 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseInsertModelToLocalDatabaseThereIsParameterDataSource(
-      BaseModelLocalDatabase localModel,
+      BaseModelLocalDatabase model,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
     try {
+      if(model == null) {
+        return throw Exception("ModelLocalDatabase null");
+      }
       final db = await getDatabase;
       var result = await db.insert(
           table,
-          localModel.toMap(),
+          model.toMap(),
           conflictAlgorithm: conflictAlgorithm
       );
       return Response.success(result);
@@ -69,8 +72,42 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
+  Future<Response<int,LocalException>> baseInsertModelsToLocalDatabaseThereIsParameterDataSource(
+      BaseListModelLocalDatabase listModel,
+      String table,
+      [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
+  {
+    try {
+      if(listModel == null) {
+        return throw Exception("ListModel null");
+      }
+      if(listModel.getListModelLocalDatabase.isEmpty) {
+        return throw Exception("List empty");
+      }
+      final db = await getDatabase;
+      int result = 0;
+      for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
+        if(model == null) {
+          continue;
+        }
+        var resultInsert = await db.insert(
+            table,
+            model.toMap(),
+            conflictAlgorithm: conflictAlgorithm
+        );
+        if(resultInsert > 0) {
+          result++;
+        }
+      }
+      return Response.success(result);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+
+  @protected
   Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameterDataSource(
-      BaseModelLocalDatabase localModel,
+      BaseModelLocalDatabase model,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -78,10 +115,13 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       ) async
   {
     try {
+      if(model == null) {
+        return throw Exception("ModelLocalDatabase null");
+      }
       final db = await getDatabase;
       var result = await db.update(
         table,
-        localModel.toMap(),
+        model.toMap(),
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
@@ -92,8 +132,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
-      BaseModelLocalDatabase localModel,
+  Future<Response<int,LocalException>> baseUpdateModelsToLocalDatabaseThereIsParameterDataSource(
+      BaseListModelLocalDatabase listModel,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -101,13 +141,90 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       ) async
   {
     try {
+      if(listModel == null) {
+        return throw Exception("ListModel null");
+      }
+      if(listModel.getListModelLocalDatabase.isEmpty) {
+        return throw Exception("List empty");
+      }
       final db = await getDatabase;
-      var result = await db.update(
+      int result = 0;
+      for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
+        if(model == null) {
+          continue;
+        }
+        var resultUpdate = await db.update(
+          table,
+          model.toMap(),
+          where: columnForWhere + columnForWhereOperationMark,
+          whereArgs: [baseTypeParameter.getParameter],
+        );
+        if(resultUpdate > 0) {
+          result++;
+        }
+      }
+      return Response.success(result);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+
+  @protected
+  Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
+      BaseModelLocalDatabase model,
+      BaseTypeParameter baseTypeParameter,
+      String table,
+      String columnForWhere,
+      [String columnForWhereOperationMark = '= ?']
+      ) async
+  {
+    try {
+      if(model == null) {
+        return throw Exception("ModelLocalDatabase null");
+      }
+      final db = await getDatabase;
+      var result = await db.delete(
         table,
-        localModel.toMap(),
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
+      return Response.success(result);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+
+  @protected
+  Future<Response<int,LocalException>> baseDeleteModelsToLocalDatabaseThereIsParameterDataSource(
+      BaseListModelLocalDatabase listModel,
+      BaseTypeParameter baseTypeParameter,
+      String table,
+      String columnForWhere,
+      [String columnForWhereOperationMark = '= ?']
+      ) async
+  {
+    try {
+      if(listModel == null) {
+        return throw Exception("ListModel null");
+      }
+      if(listModel.getListModelLocalDatabase.isEmpty) {
+        return throw Exception("List empty");
+      }
+      final db = await getDatabase;
+      int result = 0;
+      for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
+        if(model == null) {
+          continue;
+        }
+        var resultDelete = await db.delete(
+          table,
+          where: columnForWhere + columnForWhereOperationMark,
+          whereArgs: [baseTypeParameter.getParameter],
+        );
+        if(resultDelete > 0) {
+          result++;
+        }
+      }
       return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));

@@ -1,0 +1,6 @@
+enum EnumBaseTypeParameterObjectOperationViewModel {
+  getModelFromLocalDatabaseThereIsParameter,
+  getModelFromNetworkDatabaseThereIsParameter,
+  getListModelFromLocalDatabaseThereIsParameter,
+  getListModelFromNetworkDatabaseThereIsParameter,
+}

@@ -335,7 +335,7 @@ class BaseFunctionViewFromFunctionViewModel {
       Function(String) functionForResultError)
   {
     if(response == CONST_SUCCESS) {
-      baseViewModel.notifyStreamListModelDomainFromLocalDatabase();
+      baseViewModel.notifyStreamListModelDomain();
       functionForResultSuccess();
     } else {
       functionForResultError(response);

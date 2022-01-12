@@ -37,7 +37,6 @@ class ReadyModelLocalDatabaseFVM
   static Future<Response<bool, LocalException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      BaseListModelDomain listModelDomain,
       ) async
   {
     try {

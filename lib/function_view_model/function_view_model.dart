@@ -3,12 +3,12 @@ import 'package:library_architecture_mvvm_modify/base_exception/domain_exception
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_list_model_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_list_model_domain_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_and_delete_model_to_list_model_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_and_delete_model_to_network_list_model_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_list_model_fvm.dart';
@@ -112,10 +112,10 @@ class FunctionViewModel {
   }
 
   static bool deleteModelToLocalListModelFVM(
-      DeleteModelToListModelLocalDatabaseFVM deleteModel) {
+      DeleteModelToListModelDomainFVM deleteModel) {
     // Delete Model FVM
     return _codeNetworkListModelOrLocalListModel(
-        deleteModel.deleteModelToLocalListModelFVM()
+        deleteModel.deleteModelToListModelDomainFVM()
     );
   }
 
@@ -271,7 +271,7 @@ class FunctionViewModel {
     // Delete Model FVM
     return _codeNetworkListModelAndLocalListModel(
       deleteModel.deleteModelToNetworkListModelFVM(),
-      deleteModel.deleteModelToLocalListModelFVM(),
+      deleteModel.deleteModelToListModelDomainFVM(),
     );
   }
 
@@ -328,7 +328,7 @@ class FunctionViewModel {
     // Delete Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
-        deleteModel.deleteModelToLocalListModelFVM
+        deleteModel.deleteModelToListModelDomainFVM
     );
   }
 
@@ -384,7 +384,7 @@ class FunctionViewModel {
   }
 
   static Future<void> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM(
-      DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelLNDatabaseFVM deleteModel,
+      DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainFVM deleteModel,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,
@@ -395,7 +395,7 @@ class FunctionViewModel {
          deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
          deleteModel.deleteModelToNetworkListModelFVM,
          deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
-         deleteModel.deleteModelToLocalListModelFVM,
+         deleteModel.deleteModelToListModelDomainFVM,
          functionForResultSuccess,
          functionForResultDomainException,
          functionForResultLocalException,
