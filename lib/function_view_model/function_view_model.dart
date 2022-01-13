@@ -3,15 +3,13 @@ import 'package:library_architecture_mvvm_modify/base_exception/domain_exception
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_list_model_domain_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_and_delete_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_ln_database_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_and_delete_model_to_list_model_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_and_delete_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_local_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_and_delete_model_to_network_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_and_delete_model_to_list_model_domain_for_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_network_list_model_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_network_database_fvm.dart';
@@ -21,25 +19,21 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_ln_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_ln_database_there_is_parameter_and_insert_model_to_ln_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_ln_database_there_is_parameter_and_insert_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_ln_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_ln_list_model_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_local_database_there_is_parameter_and_insert_model_to_local_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_local_database_there_is_parameter_and_insert_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_local_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_local_list_model_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_and_insert_model_to_network_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_and_insert_model_to_list_model_domain_for_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_list_model_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_database_there_is_parameter_and_update_model_to_ln_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_database_there_is_parameter_and_update_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_ln_list_model_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_local_database_there_is_parameter_and_update_model_to_local_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_local_database_there_is_parameter_and_update_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_local_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_local_list_model_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_network_database_there_is_parameter_and_update_model_to_network_list_model_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_network_database_there_is_parameter_and_update_model_to_list_model_domain_for_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_network_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_network_list_model_fvm.dart';
 
 /* USING TO MANAGE_VIEW_MODEL CLASS */
 class FunctionViewModel {
@@ -78,10 +72,10 @@ class FunctionViewModel {
   }
 
   static bool insertModelToLocalListModelFVM(
-      InsertModelToLocalListModelFVM insertModel) {
+      InsertModelToListModelDomainForLocalDatabaseFVM insertModel) {
     // Insert Model FVM
     return _codeNetworkListModelOrLocalListModel(
-      insertModel.insertModelToLocalListModelFVM()
+      insertModel.insertModelToListModelDomainForLocalDatabaseFVM()
     );
   }
   
@@ -95,10 +89,10 @@ class FunctionViewModel {
   }
 
   static bool updateModelToLocalListModelFVM(
-      UpdateModelToLocalListModelFVM updateModel) {
+      UpdateModelToListModelDomainForLocalDatabaseFVM updateModel) {
     // Update Model FVM
     return _codeNetworkListModelOrLocalListModel(
-        updateModel.updateModelToLocalListModelFVM()
+        updateModel.updateModelToListModelDomainForLocalDatabaseFVM()
     );
   }
 
@@ -112,10 +106,10 @@ class FunctionViewModel {
   }
 
   static bool deleteModelToLocalListModelFVM(
-      DeleteModelToListModelDomainFVM deleteModel) {
+      DeleteModelToListModelDomainForLocalDatabaseFVM deleteModel) {
     // Delete Model FVM
     return _codeNetworkListModelOrLocalListModel(
-        deleteModel.deleteModelToListModelDomainFVM()
+        deleteModel.deleteModelToListModelDomainForLocalDatabaseFVM()
     );
   }
 
@@ -233,7 +227,7 @@ class FunctionViewModel {
     // Insert Model FVM
     return _codeNetworkListModelAndLocalListModel(
       insertModel.insertModelToNetworkListModelFVM(),
-      insertModel.insertModelToLocalListModelFVM(),
+      insertModel.insertModelToListModelDomainForLocalDatabaseFVM(),
     );
   }
 
@@ -252,7 +246,7 @@ class FunctionViewModel {
     // Update Model FVM
     return _codeNetworkListModelAndLocalListModel(
       updateModel.updateModelToNetworkListModelFVM(),
-      updateModel.updateModelToLocalListModelFVM(),
+      updateModel.updateModelToListModelDomainForLocalDatabaseFVM(),
     );
   }
 
@@ -271,7 +265,7 @@ class FunctionViewModel {
     // Delete Model FVM
     return _codeNetworkListModelAndLocalListModel(
       deleteModel.deleteModelToNetworkListModelFVM(),
-      deleteModel.deleteModelToListModelDomainFVM(),
+      deleteModel.deleteModelToListModelDomainForLocalDatabaseFVM(),
     );
   }
 
@@ -303,37 +297,37 @@ class FunctionViewModel {
   }
 
   static Future<String> insertModelToLocalDatabaseThereIsParameterAndInsertModelToLocalListModelFVM(
-      InsertModelToLocalDatabaseThereIsParameterAndInsertModelToLocalListModelFVM insertModel)
+      InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
-        insertModel.insertModelToLocalListModelFVM
+        insertModel.insertModelToListModelDomainForLocalDatabaseFVM
     );
   }
 
   static Future<String> updateModelToLocalDatabaseThereIsParameterAndUpdateModelToLocalListModelFVM(
-      UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToLocalListModelFVM updateModel)
+      UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
-        updateModel.updateModelToLocalListModelFVM
+        updateModel.updateModelToListModelDomainForLocalDatabaseFVM
     );
   }
 
   static Future<String> deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToLocalListModelFVM(
-      DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelLocalDatabaseFVM deleteModel)
+      DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
         deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
-        deleteModel.deleteModelToListModelDomainFVM
+        deleteModel.deleteModelToListModelDomainForLocalDatabaseFVM
     );
   }
 
   static Future<String> insertModelToNetworkDatabaseThereIsParameterAndInsertModelToNetworkListModelFVM(
-      InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToNetworkListModelFVM insertModel)
+      InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVM insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
@@ -343,7 +337,7 @@ class FunctionViewModel {
   }
 
   static Future<String> updateModelToNetworkDatabaseThereIsParameterAndUpdateModelToNetworkListModelFVM(
-      UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToNetworkListModelFVM updateModel)
+      UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
@@ -352,7 +346,7 @@ class FunctionViewModel {
   }
 
   static Future<String> deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToNetworkListModelFVM(
-      DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToNetworkListModelFVM deleteModel)
+      DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVM deleteModel)
   async {
     // Delete Model FVM
     return _codeNetworkDatabaseOrLocalDatabaseAndListModel(
@@ -362,29 +356,29 @@ class FunctionViewModel {
   }
 
   static Future<String> insertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModelFVM(
-      InsertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModelFVM  insertModel)
+      InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVM  insertModel)
   async {
     // Insert Model FVM
     return _codeNetworkDatabaseAndLocalDatabaseAndListModel(
         insertModel.insertModelToNetworkDatabaseThereIsParameterFVM(),
         insertModel.insertModelToNetworkListModelFVM,
         insertModel.insertModelToLocalDatabaseThereIsParameterFVM(),
-        insertModel.insertModelToLocalListModelFVM);
+        insertModel.insertModelToListModelDomainForLocalDatabaseFVM);
   }
 
   static Future<String> updateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModelFVM(
-      UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModelFVM updateModel)
+      UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM updateModel)
   async {
     // Update Model FVM
     return _codeNetworkDatabaseAndLocalDatabaseAndListModel(
         updateModel.updateModelToNetworkDatabaseThereIsParameterFVM(),
         updateModel.updateModelToNetworkListModelFVM,
         updateModel.updateModelToLocalDatabaseThereIsParameterFVM(),
-        updateModel.updateModelToLocalListModelFVM);
+        updateModel.updateModelToListModelDomainForLocalDatabaseFVM);
   }
 
   static Future<void> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM(
-      DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainFVM deleteModel,
+      DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVM deleteModel,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,
@@ -395,7 +389,7 @@ class FunctionViewModel {
          deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM(),
          deleteModel.deleteModelToNetworkListModelFVM,
          deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM(),
-         deleteModel.deleteModelToListModelDomainFVM,
+         deleteModel.deleteModelToListModelDomainForLocalDatabaseFVM,
          functionForResultSuccess,
          functionForResultDomainException,
          functionForResultLocalException,

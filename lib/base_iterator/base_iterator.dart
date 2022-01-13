@@ -6,6 +6,7 @@ abstract class BaseIterator<T> implements Iterator<T> {
   set setList(List<T> newItems) {
     _list = newItems;
   }
+
   List<T> get getSortedList {
     List<T> list = List.empty();
     while(moveNext()) {

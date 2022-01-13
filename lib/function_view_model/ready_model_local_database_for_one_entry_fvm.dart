@@ -2,66 +2,57 @@
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_local_database_for_one_entry_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelLocalDatabaseForOneEntryFVM
 {
- static Future<Response<String,LocalException>> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
+ static Future<Response<bool,LocalException>> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
      BaseViewModel baseViewModel,
      ModelLocalDatabaseForOneEntryDataSource modelDataSource
      ) async
  {
-    try {
-      var response = await modelDataSource
-          .getModelFromLocalDatabaseForOneEntryDataSource();
+      var response = await modelDataSource.getModelFromLocalDatabaseForOneEntryDataSource();
       if (response.isSuccessResponse) {
-        baseViewModel.setModelDomain(response.getData.toModelDomain(), operation);
-        return Response.success(CONST_SUCCESS);
+        baseViewModel.setModelDomain(
+            response.getData.toBaseModelDomain(),
+            EnumBaseModelDomainObjectOperationViewModel.getModelFromLocalDatabaseForOneEntryThereIsParameter
+        );
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
- static Future<Response<String,BaseException>> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
+ static Future<Response<bool,BaseException>> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
      BaseViewModel baseViewModel, 
      ModelLocalDatabaseForOneEntryDataSource modelDataSource,
-      ) async {
-    try {
+      ) async
+ {
       var response = await modelDataSource
-          .insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
-          baseViewModel
-              .getModelDomain(operation)
-              .toModelLocalDatabase());
+          .insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(baseViewModel
+              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.insertModelToLocalDatabaseForOneEntryThereIsParameter)
+              .toBaseModelLocalDatabase()
+      );
       if(response.isSuccessResponse) {
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
- static Future<Response<String, BaseException>> deleteModelToLocalDatabaseForOneEntryFVM(
+ static Future<Response<bool, BaseException>> deleteModelToLocalDatabaseForOneEntryFVM(
       ModelLocalDatabaseForOneEntryDataSource modelDataSource,
-      ) async {
-    try {
+      ) async
+ {
       var response = await modelDataSource
           .deleteModelToLocalDatabaseForOneEntryDataSource();
       if(response.isSuccessResponse) {
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
-
 }

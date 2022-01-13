@@ -36,9 +36,12 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
         this.onUpgrade,
         this.onDowngrade}
       );
+  
+  @protected
+  BaseModelLocalDatabase fromMapToBaseModelLocalDatabase(Map<String, dynamic> map);
 
   @protected
-  BaseModelLocalDatabase fromMap(Map<String, dynamic> map);
+  BaseListModelLocalDatabase fromListMapToBaseListModelLocalDatabase(List<Map<String, dynamic>> map);
 
   @protected
   Future<Database> get getDatabase async {
@@ -72,7 +75,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseInsertModelsToLocalDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseInsertListModelToLocalDatabaseThereIsParameterDataSource(
       BaseListModelLocalDatabase listModel,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
@@ -132,7 +135,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseUpdateModelsToLocalDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseUpdateListModelToLocalDatabaseThereIsParameterDataSource(
       BaseListModelLocalDatabase listModel,
       BaseTypeParameter baseTypeParameter,
       String table,
@@ -195,7 +198,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<int,LocalException>> baseDeleteModelsToLocalDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseDeleteListModelToLocalDatabaseThereIsParameterDataSource(
       BaseListModelLocalDatabase listModel,
       BaseTypeParameter baseTypeParameter,
       String table,
@@ -247,8 +250,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
           whereArgs: [baseTypeParameter.getParameter]
       )) as Map<String, dynamic>;
 
-      var model = fromMap(map);
-
+      var model = fromMapToBaseModelLocalDatabase(map);
       return Response.success(model);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -264,12 +266,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
       final List<Map<String, dynamic>> maps = await db.query(table);
 
-      var list = List.generate(maps.length, (i) {
-        fromMap(maps[i]);
-      });
-
-      var localListModel = BaseListModelLocalDatabase();
-      localListModel.setListModelLocalDatabase = list;
+      var localListModel = fromListMapToBaseListModelLocalDatabase(maps);
       return Response.success(localListModel);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -292,12 +289,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
           whereArgs: [baseTypeParameter.getParameter]
       );
 
-      var list = List.generate(maps.length, (i) {
-        fromMap(maps[i]);
-      });
-
-      var localListModel = BaseListModelLocalDatabase();
-      localListModel.setListModelLocalDatabase = list;
+      var localListModel = fromListMapToBaseListModelLocalDatabase(maps);
       return Response.success(localListModel);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));

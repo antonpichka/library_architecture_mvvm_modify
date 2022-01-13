@@ -9,6 +9,7 @@ import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_iterator_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/protected_base_view_model.dart';
 import 'package:uuid/uuid.dart';
 
 typedef ItemCreator<S> = S Function();
@@ -33,7 +34,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     EnumBaseTypeParameterObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter : BoolTypeParameter(false),
     EnumBaseTypeParameterObjectOperationViewModel.getModelFromNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
   };
-  final Map<EnumIteratorObjectOperationViewModel,EnumTypeParameter> _mapEnumIteratorObjectOperationViewModelAndEnumTypeParameter = {
+  final Map<EnumIteratorObjectOperationViewModel,EnumTypeParameter> _mapEnumIteratorTypeParameterObjectOperationViewModelAndEnumTypeParameter = {
     EnumIteratorObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter : EnumTypeParameter(
         EnumIteratorObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter
     ),
@@ -45,13 +46,21 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   Map<EnumBaseModelDomainObjectOperationViewModel,StreamController<T>> _mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain;
   Map<EnumBaseListModelDomainObjectOperationViewModel,Y> _mapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain;
   Map<EnumBaseListModelDomainObjectOperationViewModel,StreamController<List<T>>> _mapEnumBaseListModelDomainObjectOperationViewModelAndStreamControllerForListBaseModelDomain;
+  ProtectedBaseViewModel _protectedBaseViewModel;
 
   BaseViewModel(
       this._listEnumBaseModelDomainObjectOperationViewModel,
       this._listEnumBaseListModelDomainObjectOperationViewModel,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain
-      );
+      )
+  {
+    _protectedBaseViewModel = ProtectedBaseViewModel(
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain,
+        _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter,
+        _mapEnumIteratorTypeParameterObjectOperationViewModelAndEnumTypeParameter
+    );
+  }
 
   void dispose() {
     _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain = null;
@@ -68,87 +77,28 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return _typeBaseListModelDomain;
   }
 
-  /* Start Methods BaseTypeParameter */
+  @protected
+  ProtectedBaseViewModel get getProtectedBaseViewModel {
+    return _protectedBaseViewModel;
+  }
 
-  set setBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM(
-      BaseTypeParameter baseTypeParameter)
+  /* Start Methods Base/EnumTypeParameter */
+
+  void setBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
+      BaseTypeParameter baseTypeParameter,
+      EnumBaseTypeParameterObjectOperationViewModel operation)
   {
-    _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
+    _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[operation] = baseTypeParameter;
   }
 
-  set setBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM(
-      BaseTypeParameter baseTypeParameter)
+  void setEnumIteratorTypeParameterForGetListLNDatabase(
+      EnumTypeParameter enumTypeParameter,
+      EnumIteratorObjectOperationViewModel operation)
   {
-    _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
+    _mapEnumIteratorTypeParameterObjectOperationViewModelAndEnumTypeParameter[operation] = enumTypeParameter;
   }
 
-  set setBaseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM(
-      BaseTypeParameter baseTypeParameter)
-  {
-    _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
-  }
-
-  set setBaseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM(
-      BaseTypeParameter baseTypeParameter)
-  {
-    _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM = baseTypeParameter;
-  }
-
-  set setEnumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM(
-      BaseTypeParameter baseTypeParameter)
-  {
-    _enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM = baseTypeParameter;
-  }
-
-  set setEnumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM(
-      BaseTypeParameter baseTypeParameter)
-  {
-    _enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM = baseTypeParameter;
-  }
-
-  BaseTypeParameter get getBaseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM {
-    if(_baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM == null) {
-      throw Exception("no setters");
-    }
-    return _baseTypeParameterForGetModelFromLocalDatabaseThereIsParameterFVM;
-  }
-
-  BaseTypeParameter get getBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM {
-    if(_baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM == null) {
-      throw Exception("no setters");
-    }
-    return _baseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM;
-  }
-
-  BaseTypeParameter get getBaseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM {
-    if(_baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM == null) {
-      throw Exception("no setters");
-    }
-    return _baseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM;
-  }
-
-  BaseTypeParameter get getBaseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM {
-    if(_baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM  == null) {
-      throw Exception("no setters");
-    }
-    return _baseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM;
-  }
-
-  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM {
-    if(_enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM  == null) {
-      throw Exception("no setters enum");
-    }
-    return _enumTypeParameterForCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM;
-  }
-
-  EnumTypeParameter get getEnumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM {
-    if(_enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM  == null) {
-      throw Exception("no setters enum");
-    }
-    return _enumTypeParameterForCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM;
-  }
-
-  /* End Methods BaseTypeParameter */
+  /* End Methods Base/EnumTypeParameter */
 
   /* Start Methods Model */
 
@@ -165,11 +115,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
 
   Stream<T> getStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel operation) {
-    return _getMapEnumOperationViewModelAndStreamControllerForBaseModelDomain[operation].stream;
+    return _getMapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain[operation].stream;
   }
   
   void notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel operation) {
-    _getMapEnumOperationViewModelAndStreamControllerForBaseModelDomain[operation].add(
+    _getMapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain[operation].add(
         _getMapEnumOperationViewModelAndBaseModelDomain[operation]
     );
   }
@@ -183,27 +133,23 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   /* Start Methods ListModel */
 
-  List<T>  getListModelDomain(EnumBaseModelDomainObjectOperationViewModel operation)  {
+  List<T> getListModelDomain(EnumBaseListModelDomainObjectOperationViewModel operation)  {
     return _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[operation].getListModelDomain;
   }
 
-  void setListModelDomain(List<T> newModel,EnumBaseModelDomainObjectOperationViewModel operation) {
+  void setListModelDomain(List<T> newModel,EnumBaseListModelDomainObjectOperationViewModel operation) {
     _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[operation].setListModelDomain = newModel;
   }
 
-  Future<List<T>> getFutureListModelDomain(EnumBaseModelDomainObjectOperationViewModel operation) async {
-    var list = List.empty();
-    for(BaseModelDomain value in _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[operation].getListModelDomain) {
-      list.add(value);
-    }
-    return list;
+  Future<List<T>> getFutureListModelDomain(EnumBaseListModelDomainObjectOperationViewModel operation) async {
+    return _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[operation].getListModelDomain;
   }
   
-  Stream<List<T>> getStreamListModelDomain(EnumBaseModelDomainObjectOperationViewModel operation) {
+  Stream<List<T>> getStreamListModelDomain(EnumBaseListModelDomainObjectOperationViewModel operation) {
     return _getMapEnumBaseListModelDomainObjectOperationViewModelAndStreamControllerForListBaseModelDomain[operation].stream;
   }
 
-  void notifyStreamListModelDomain(EnumBaseModelDomainObjectOperationViewModel operation) {
+  void notifyStreamListModelDomain(EnumBaseListModelDomainObjectOperationViewModel operation) {
     _getMapEnumBaseListModelDomainObjectOperationViewModelAndStreamControllerForListBaseModelDomain[operation].add(
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[operation].getListModelDomain
     );
@@ -215,15 +161,15 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     if(_mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain != null) {
       return _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain;
     }
-    _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain = _creationAndGetMapEnumOperationViewModelAndBaseModelDomain();
+    _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain = _creationAndGetMapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain();
     return _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain;
   }
 
-  Map<EnumBaseModelDomainObjectOperationViewModel,StreamController<T>> get _getMapEnumOperationViewModelAndStreamControllerForBaseModelDomain {
+  Map<EnumBaseModelDomainObjectOperationViewModel,StreamController<T>> get _getMapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain {
     if(_mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain != null) {
       return _mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain;
     }
-    _mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain = _creationAndGetMapEnumOperationViewModelAndStreamControllerForBaseModelDomain();
+    _mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain = _creationAndGetMapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain();
     return _mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain;
   }
 
@@ -243,7 +189,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return _mapEnumBaseListModelDomainObjectOperationViewModelAndStreamControllerForListBaseModelDomain;
   }
 
-  Map<EnumBaseModelDomainObjectOperationViewModel,T> _creationAndGetMapEnumOperationViewModelAndBaseModelDomain() {
+  Map<EnumBaseModelDomainObjectOperationViewModel,T> _creationAndGetMapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain() {
     if(_listEnumBaseModelDomainObjectOperationViewModel.isEmpty) {
       return {};
     }
@@ -254,7 +200,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return map;
   }
 
-  Map<EnumBaseModelDomainObjectOperationViewModel,StreamController<T>> _creationAndGetMapEnumOperationViewModelAndStreamControllerForBaseModelDomain() {
+  Map<EnumBaseModelDomainObjectOperationViewModel,StreamController<T>> _creationAndGetMapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain() {
     if(_listEnumBaseModelDomainObjectOperationViewModel.isEmpty) {
       return {};
     }

@@ -6,132 +6,127 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_network_database.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/constants_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/protected_base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelNetworkDatabaseFVM
 {
- static Future<Response<String,BaseException>> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
+ static Future<Response<bool,BaseException>> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,
-      Function(BaseListModelNetworkDatabase) function
+      ProtectedBaseViewModel protectedBaseViewModel
       ) async
   {
-    try {
       var response = await getListModelFromNetworkDatabaseDataSource
           .getListModelFromNetworkDatabaseDataSource();
       if(response.isSuccessResponse) {
-        function(response.getData);
-        return Response.success(CONST_SUCCESS);
+        protectedBaseViewModel
+            .getBaseListModelDomain(EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter)
+            .setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
-  static Future<Response<String, BaseException>> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-      BaseViewModel baseViewModel,
+  static Future<Response<bool, BaseException>> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
-      Function(BaseListModelNetworkDatabase) function
+      ProtectedBaseViewModel protectedBaseViewModel
       ) async
   {
-    try {
       var response = await getListModelFromNetworkDatabaseThereIsParameterDataSource
           .getListModelFromNetworkDatabaseThereIsParameterDataSource(
-          baseViewModel.getBaseTypeParameterForGetListModelFromNetworkDatabaseThereIsParameterFVM);
+          protectedBaseViewModel
+              .getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(EnumBaseTypeParameterObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter)
+      );
       if(response.isSuccessResponse) {
-        function(response.getData);
-        return Response.success(CONST_SUCCESS);
+        protectedBaseViewModel
+            .getBaseListModelDomain(EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter)
+            .setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
-  static Future<Response<String, BaseException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<Response<bool, BaseException>> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
-      Function(BaseModelNetworkDatabase) function
-      ) async {
-    try {
+      ProtectedBaseViewModel protectedBaseViewModel
+      ) async
+  {
       var response = await getModelFromNetworkDatabaseThereIsParameterDataSource
           .getModelFromNetworkDatabaseThereIsParameterDataSource(
-          baseViewModel.getBaseTypeParameterForGetModelFromNetworkDatabaseThereIsParameterFVM);
+          protectedBaseViewModel.getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
+              EnumBaseTypeParameterObjectOperationViewModel.getModelFromNetworkDatabaseThereIsParameter
+          )
+      );
       if(response.isSuccessResponse) {
-        function(response.getData);
-        return Response.success(CONST_SUCCESS);
+        baseViewModel.setModelDomain(
+            response.getData.toBaseModelDomain(),
+            EnumBaseModelDomainObjectOperationViewModel.getModelFromNetworkDatabaseThereIsParameter
+        );
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
-
-  static Future<Response<String, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
+  static Future<Response<bool, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
+      BaseViewModel baseViewModel,
       InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
-      BaseModelNetworkDatabase networkModel
-      ) async {
-    try {
+      ) async
+  {
       var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
           .insertModelToNetworkDatabaseThereIsParameterDataSource(
-          networkModel
+          baseViewModel
+              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter)
+              .toBaseModelNetworkDatabase()
       );
       if (response.isSuccessResponse) {
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
-
-  static Future<Response<String, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
+  static Future<Response<bool, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
+      BaseViewModel baseViewModel,
       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-      BaseModelNetworkDatabase networkModel
-      ) async {
-    try {
+      ) async
+  {
       var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
           .updateModelToNetworkDatabaseThereIsParameterDataSource(
-          networkModel
+          baseViewModel
+              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.updateModelToNetworkDatabaseThereIsParameter)
+              .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 
-  static Future<Response<String, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
+  static Future<Response<bool, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
+      BaseViewModel baseViewModel,
       DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
-      BaseModelNetworkDatabase networkModel
-      ) async {
-    try {
+      ) async
+  {
       var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource
           .deleteModelToNetworkDatabaseThereIsParameterDataSource(
-          networkModel
+          baseViewModel
+              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.deleteModelToNetworkDatabaseThereIsParameter)
+              .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {
-        return Response.success(CONST_SUCCESS);
+        return Response.success(true);
       } else {
         return Response.exception(response.getException);
       }
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
   }
 }

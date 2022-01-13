@@ -1,9 +1,9 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-abstract class BaseModelNetworkDatabase {
+
+import 'package:library_architecture_mvvm_modify/base_model/base_model_ln_database.dart';
+
+abstract class BaseModelNetworkDatabase extends BaseModelLNDatabase {
   String networkUniqueId = "";
-
-  BaseModelDomain toModelDomain();
 
   set setNetworkUniqueId(String uniqueId)  {
     networkUniqueId = uniqueId;

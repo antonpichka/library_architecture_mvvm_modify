@@ -1,10 +1,9 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-abstract class BaseModelLocalDatabase {
+
+import 'package:library_architecture_mvvm_modify/base_model/base_model_ln_database.dart';
+
+abstract class BaseModelLocalDatabase extends BaseModelLNDatabase {
   String localUniqueId = "";
-
-  BaseModelDomain toModelDomain();
-  Map<String, dynamic> toMap();
 
   set setLocalUniqueId(String uniqueId)  {
     localUniqueId = uniqueId;

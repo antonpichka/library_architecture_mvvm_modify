@@ -44,7 +44,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
   Map<String,TypeForSP> toMap();
 
   @protected
-  BaseModelLocalDatabase fromMap(Map<String, dynamic> map);
+  BaseModelLocalDatabase fromMapToBaseModelLocalDatabase(Map<String, dynamic> map);
 
   @protected
   Future<SharedPreferences> get sharedPreferences async {
@@ -123,7 +123,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
             break;
         }
       });
-      var model = fromMap(map);
+      var model = fromMapToBaseModelLocalDatabase(map);
 
       return Response.success(model);
     } catch (e) {

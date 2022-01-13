@@ -1,10 +1,11 @@
 
-import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_ln_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 
-class BaseListModelLocalDatabase<T extends BaseModelLocalDatabase> {
+abstract class BaseListModelLocalDatabase<T extends BaseModelLocalDatabase>
+    extends BaseListModelLNDatabase
+{
   List<T> _listModelLocalDatabase = List.empty();
-  BaseIterator _iterator;
 
   set setListModelLocalDatabase(List<T> list) {
     _listModelLocalDatabase = list;
@@ -12,18 +13,6 @@ class BaseListModelLocalDatabase<T extends BaseModelLocalDatabase> {
 
   List<T> get getListModelLocalDatabase {
     return _listModelLocalDatabase;
-  }
-
-  void setListModelLocalDatabaseUsingAnIterator() {
-    if(_iterator == null) {
-      throw Exception();
-    }
-    _listModelLocalDatabase = _iterator.getSortedList;
-  }
-
-  set setIteratorForListModelLocalDatabase(BaseIterator newIterator) {
-    _iterator = newIterator;
-    _iterator.setList = _listModelLocalDatabase;
   }
 
 }

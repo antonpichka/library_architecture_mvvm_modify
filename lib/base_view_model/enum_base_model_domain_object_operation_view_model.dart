@@ -11,4 +11,8 @@ enum EnumBaseModelDomainObjectOperationViewModel {
   updateModelToNetworkDatabaseThereIsParameter,
   deleteModelToNetworkDatabaseThereIsParameter,
   getModelFromNetworkDatabaseThereIsParameter,
+
+  pushNotificationToZonedScheduleThereIsParameter,
+  pushNotificationToShowThereIsParameter,
+  cancelNotificationThereIsParameter
 }

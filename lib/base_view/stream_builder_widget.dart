@@ -74,7 +74,6 @@ class StreamBuilderWidget extends StatelessWidget
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
 
-
   StreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
       this._baseArrayWidget,
       this._streamListModelDomain,
@@ -122,7 +121,7 @@ class StreamBuilderWidget extends StatelessWidget
         builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
-            BaseModelDomain domainModel = asyncSnapshot.data ?? BaseModelDomain();
+            BaseModelDomain domainModel = asyncSnapshot.data;
 
             return _baseSingleWidget.buildSingleWidgetUsingTheModelDomain(context, domainModel);
           }
@@ -156,7 +155,7 @@ class StreamBuilderWidget extends StatelessWidget
         builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
-            BaseModelDomain domainModel = asyncSnapshot.data ?? BaseModelDomain();
+            BaseModelDomain domainModel = asyncSnapshot.data;
 
             return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemWidget(
                   context,
@@ -211,17 +210,14 @@ class StreamBuilderWidget extends StatelessWidget
               }
 
               if(domainListModel.isNotEmpty) {
-                BaseModelDomain domainModel = BaseModelDomain();
-               
                 if(modelAsyncSnapshot.hasData) {
-                  domainModel = modelAsyncSnapshot.data;
+                  BaseModelDomain modelDomain = modelAsyncSnapshot.data;
+                  return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
+                      context,
+                      domainListModel,
+                      modelDomain
+                  );
                 }
-                
-                return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
-                    context,
-                    domainListModel,
-                    domainModel
-                );
               }
             }
 
@@ -248,17 +244,14 @@ class StreamBuilderWidget extends StatelessWidget
                   }
 
                   if(domainListModel.isNotEmpty) {
-                    BaseModelDomain domainModel = BaseModelDomain();
-
                     if(modelAsyncSnapshot.hasData) {
-                      domainModel = modelAsyncSnapshot.data;
+                      BaseModelDomain domainModel = modelAsyncSnapshot.data;
+                      return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
+                          context,
+                          domainListModel,
+                          domainModel
+                      );
                     }
-                    
-                    return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
-                        context,
-                        domainListModel,
-                        domainModel
-                    );
                   }
                 }
 
@@ -285,16 +278,14 @@ class StreamBuilderWidget extends StatelessWidget
                   }
 
                   if(domainListModel.isNotEmpty) {
-                    BaseModelDomain domainModel = BaseModelDomain();
-
                     if(modelAsyncSnapshot.hasData) {
-                      domainModel = modelAsyncSnapshot.data;
+                      BaseModelDomain domainModel = modelAsyncSnapshot.data;
+                      return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
+                          context,
+                          domainListModel,
+                          domainModel
+                      );
                     }
-                    return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
-                        context,
-                        domainListModel,
-                        domainModel
-                    );
                   }
                 }
 
