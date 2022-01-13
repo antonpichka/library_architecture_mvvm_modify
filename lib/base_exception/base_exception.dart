@@ -1,2 +1,2 @@
-class BaseException {
+abstract class BaseException {
 }

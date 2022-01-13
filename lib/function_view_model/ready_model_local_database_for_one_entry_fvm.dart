@@ -1,7 +1,6 @@
 
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_local_database_for_one_entry_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
@@ -9,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelLocalDatabaseForOneEntryFVM
 {
- static Future<Response<bool,LocalException>> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
+ static Future<Response<bool,BaseException>> callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(
      BaseViewModel baseViewModel,
      ModelLocalDatabaseForOneEntryDataSource modelDataSource
      ) async

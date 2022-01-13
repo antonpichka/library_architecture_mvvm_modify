@@ -1,6 +1,6 @@
 
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_domain_notification_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 /* USING TO VIEW_MODEL CLASSES */
 class ReadyModelDomainNotificationFVM
 {
-  static Future<Response<bool,LocalException>> pushNotificationToZonedScheduleThereIsParameterFVM(
+  static Future<Response<bool,BaseException>> pushNotificationToZonedScheduleThereIsParameterFVM(
       BaseViewModel baseViewModel,
       ModelDomainNotificationDataSource notificationModelDataSource) async
   {
@@ -25,7 +25,7 @@ class ReadyModelDomainNotificationFVM
       }
   }
 
-  static Future<Response<bool,LocalException>> pushNotificationToShowThereIsParameterFVM(
+  static Future<Response<bool,BaseException>> pushNotificationToShowThereIsParameterFVM(
       BaseViewModel baseViewModel,
       ModelDomainNotificationDataSource notificationModelDataSource) async
   {
@@ -42,7 +42,7 @@ class ReadyModelDomainNotificationFVM
       }
   }
 
-  static Future<Response<bool,LocalException>> cancelNotificationThereIsParameterFVM(
+  static Future<Response<bool,BaseException>> cancelNotificationThereIsParameterFVM(
       BaseViewModel baseViewModel,
       ModelDomainNotificationDataSource notificationModelDataSource) async
   {
