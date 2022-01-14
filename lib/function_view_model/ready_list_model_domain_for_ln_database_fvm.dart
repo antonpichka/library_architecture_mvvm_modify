@@ -1,92 +1,83 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/protected_base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 class ReadyListModelDomainForLNDatabaseFVM
 {
   static Response<bool, BaseException> insertModelToListModelDomainForLocalDatabaseFVM(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel)
+      BaseListModelDomain baseListModelDomain)
   {
     return _codeForInsertMethod(
         baseViewModel,
-        protectedBaseViewModel,
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
+        baseListModelDomain,
         EnumBaseModelDomainObjectOperationViewModel.insertModelToLocalDatabaseThereIsParameter
     );
   }
 
   static Response<bool, BaseException> updateModelToListModelDomainForLocalDatabaseFVM(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel,)
+      BaseListModelDomain baseListModelDomain)
   {
     return _codeForUpdateMethod(
         baseViewModel,
-        protectedBaseViewModel,
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
+        baseListModelDomain,
         EnumBaseModelDomainObjectOperationViewModel.updateModelToLocalDatabaseThereIsParameter
     );
   }
 
   static Response<bool, BaseException> deleteModelToListModelDomainForLocalDatabaseFVM(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel,)
+      BaseListModelDomain baseListModelDomain)
   {
     return _codeForDeleteMethod(
         baseViewModel,
-        protectedBaseViewModel,
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
+        baseListModelDomain,
         EnumBaseModelDomainObjectOperationViewModel.deleteModelToLocalDatabaseThereIsParameter
     );
   }
 
   static Response<bool, BaseException> insertModelToListModelDomainForNetworkDatabaseFVM(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel)
+      BaseListModelDomain baseListModelDomain)
   {
     return _codeForInsertMethod(
         baseViewModel,
-        protectedBaseViewModel,
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
+        baseListModelDomain,
         EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter
     );
   }
 
   static Response<bool, BaseException> updateModelToListModelDomainForNetworkDatabaseFVM(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel)
+      BaseListModelDomain baseListModelDomain)
   {
     return _codeForUpdateMethod(
         baseViewModel,
-        protectedBaseViewModel,
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
+        baseListModelDomain,
         EnumBaseModelDomainObjectOperationViewModel.updateModelToNetworkDatabaseThereIsParameter
     );
   }
 
   static Response<bool, BaseException> deleteModelToListModelDomainForNetworkDatabaseFVM(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel)
+      BaseListModelDomain baseListModelDomain)
   {
     return _codeForDeleteMethod(
         baseViewModel,
-        protectedBaseViewModel,
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
+        baseListModelDomain,
         EnumBaseModelDomainObjectOperationViewModel.deleteModelToNetworkDatabaseThereIsParameter
     );
   }
 
   static Response<bool, BaseException> _codeForInsertMethod(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel,
-      EnumBaseListModelDomainObjectOperationViewModel enumBaseListModelDomainObjectOperationViewModel,
+      BaseListModelDomain baseListModelDomain,
       EnumBaseModelDomainObjectOperationViewModel enumBaseModelDomainObjectOperationViewModel)
   {
-      var response = protectedBaseViewModel
-          .getBaseListModelDomain(enumBaseListModelDomainObjectOperationViewModel)
+      var response = baseListModelDomain
           .insertModelToListModelDomain(baseViewModel.getModelDomain(enumBaseModelDomainObjectOperationViewModel)
       );
       if(response.isSuccessResponse) {
@@ -98,12 +89,10 @@ class ReadyListModelDomainForLNDatabaseFVM
 
   static Response<bool, BaseException> _codeForUpdateMethod(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel,
-      EnumBaseListModelDomainObjectOperationViewModel enumBaseListModelDomainObjectOperationViewModel,
+      BaseListModelDomain baseListModelDomain,
       EnumBaseModelDomainObjectOperationViewModel enumBaseModelDomainObjectOperationViewModel)
   {
-      var response = protectedBaseViewModel
-          .getBaseListModelDomain(enumBaseListModelDomainObjectOperationViewModel)
+      var response = baseListModelDomain
           .updateModelToListModelDomain(baseViewModel.getModelDomain(enumBaseModelDomainObjectOperationViewModel)
       );
       if(response.isSuccessResponse) {
@@ -115,12 +104,10 @@ class ReadyListModelDomainForLNDatabaseFVM
 
   static Response<bool, BaseException> _codeForDeleteMethod(
       BaseViewModel baseViewModel,
-      ProtectedBaseViewModel protectedBaseViewModel,
-      EnumBaseListModelDomainObjectOperationViewModel enumBaseListModelDomainObjectOperationViewModel,
+      BaseListModelDomain baseListModelDomain,
       EnumBaseModelDomainObjectOperationViewModel enumBaseModelDomainObjectOperationViewModel)
   {
-      var response = protectedBaseViewModel
-          .getBaseListModelDomain(enumBaseListModelDomainObjectOperationViewModel)
+      var response = baseListModelDomain
           .deleteModelToListModelDomain(baseViewModel.getModelDomain(enumBaseModelDomainObjectOperationViewModel)
       );
       if(response.isSuccessResponse) {

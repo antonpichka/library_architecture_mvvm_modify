@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_function_view_from_function_view_model/extends_function_view_from_function_view_model/get_list_model_from_database_fvffvm/get_list_model_from_local_database_fvffvm.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_fvufvm/get_list_model_from_local_database_fvufvm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
@@ -16,6 +18,8 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
  /*
    1) void FUNCTION_VIEW_MODEL
    2) void FUNCTION_VIEW_MODEL and NotifyStream.. ModelDomain/ListModelDomain
+   3) NotifyStream.. ModelDomain/ListModelDomain
+
  */
 
  /*  End Variant: No There Is Parameter */
@@ -27,20 +31,23 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
    2) void FUNCTION_VIEW_MODEL and NotifyStream.. ModelDomain/ListModelDomain
    3) void set.. BaseParameter/ModelDomain and FUNCTION_VIEW_MODEL
    4) void set.. BaseParameter/ModelDomain and FUNCTION_VIEW_MODEL and NotifyStream.. ModelDomain/ListModelDomain
+   5) void set.. BaseParameter/ModelDomain
+   6) NotifyStream.. ModelDomain/ListModelDomain
+
  */
 
   /* End Variant: There Is Parameter */
 
   */
 
-class BaseFunctionViewFromFunctionViewModel {
+class BaseFunctionViewUsingFunctionViewModel {
 
-  static final GetListModelFromLocalDatabaseFVFFVM _getListModelFromLocalDatabaseFVFFVM = GetListModelFromLocalDatabaseFVFFVM();
+  static final GetListModelFromLocalDatabaseFVUFVM _getListModelFromLocalDatabaseFVUFVM = GetListModelFromLocalDatabaseFVUFVM();
 
   /* Start Method CallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM */
 
-  static GetListModelFromLocalDatabaseFVFFVM get getListModelFromLocalDatabaseFVFFVM {
-    return _getListModelFromLocalDatabaseFVFFVM;
+  static GetListModelFromLocalDatabaseFVUFVM get getListModelFromLocalDatabaseFVUFVM {
+    return _getListModelFromLocalDatabaseFVUFVM;
   }
 
   /* End Method CallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM */
@@ -50,13 +57,19 @@ class BaseFunctionViewFromFunctionViewModel {
   static Future<void> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseFVM getListModelFromNetworkDatabaseFVM,
       Function functionForResultSuccess,
-      Function(String) functionForResultError
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException
       ) async
   {
-    String response = await FunctionViewModel
+     await FunctionViewModel
         .callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
-        getListModelFromNetworkDatabaseFVM
-    );
+         getListModelFromNetworkDatabaseFVM,
+         functionForResultSuccess,
+         functionForResultDomainException,
+         functionForResultLocalException,
+         functionForResultNetworkException
+     );
     _afterCodeIsCheckResponse(
         response,
         functionForResultSuccess,
@@ -267,28 +280,14 @@ class BaseFunctionViewFromFunctionViewModel {
   /* End Method InsertModelToLocalDatabaseForOneEntryThereIsParameterFVM */
 
   @protected
-  void beforeCodeIsCheckTypeNamelyEnum(
-      BaseViewModel baseViewModel,
-      Enum operation,
-      )
-  {
-    if(baseViewModel.getTypeEnum != operation.runtimeType)
-    {
-      throw Exception("no type enum: ${baseViewModel.runtimeType}");
-    }
-  }
-
-  @protected
-  void beforeCodeIsCheckTypeNamelyEnumAndBaseModelDomainAndAlsoUsedFunctionSetModelDomain(
+  void beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(
       BaseViewModel baseViewModel,
       BaseModelDomain baseModelDomain,
       Enum operation,
      )
   {
-    if(baseViewModel.getTypeEnum != operation.runtimeType ||
-        baseViewModel.getTypeBaseModelDomain != baseModelDomain.runtimeType)
-    {
-      throw Exception("no type enum or no type baseModelDomain: ${baseViewModel.runtimeType}");
+    if(baseViewModel.getTypeBaseModelDomain != baseModelDomain.runtimeType) {
+      throw Exception("viewModel type baseModelDomain | not equals | type baseModelDomain. ViewModelType: ${baseViewModel.runtimeType}");
     }
 
     baseViewModel.setModelDomain(
@@ -297,63 +296,5 @@ class BaseFunctionViewFromFunctionViewModel {
     );
   }
 
-  @protected
-  void afterCodeIsCheckResponse(
-      String response,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError)
-  {
-    if(response == CONST_SUCCESS) {
-      functionForResultSuccess();
-    } else {
-      functionForResultError(response);
-    }
-  }
-
-  @protected
-  void afterCodeIsCheckResponseAndNotifyStreamModelDomain(
-      String response,
-      BaseViewModel baseViewModel,
-      Enum operation,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError)
-  {
-    if(response == CONST_SUCCESS) {
-      baseViewModel.notifyStreamModelDomain(operation);
-      functionForResultSuccess();
-    } else {
-      functionForResultError(response);
-    }
-  }
-
-  @protected
-  void afterCodeIsCheckResponseAndNotifyStreamListModelDomainLocalDatabase(
-      String response,
-      BaseViewModel baseViewModel,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError)
-  {
-    if(response == CONST_SUCCESS) {
-      baseViewModel.notifyStreamListModelDomain();
-      functionForResultSuccess();
-    } else {
-      functionForResultError(response);
-    }
-  }
-
-  @protected
-  void afterCodeIsCheckResponseAndNotifyStreamListModelDomainNetworkDatabase(
-      String response,
-      BaseViewModel baseViewModel,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError)
-  {
-    if(response == CONST_SUCCESS) {
-      baseViewModel.notifyStreamListModelDomainFromNetworkDatabase();
-      functionForResultSuccess();
-    } else {
-      functionForResultError(response);
-    }
-  }
 
 }

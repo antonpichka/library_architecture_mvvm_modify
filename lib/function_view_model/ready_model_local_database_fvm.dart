@@ -6,11 +6,10 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_object_operation_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/protected_base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
@@ -18,15 +17,13 @@ class ReadyModelLocalDatabaseFVM
 {
   static Future<Response<bool, BaseException>> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,
-      ProtectedBaseViewModel protectedBaseViewModel
+      BaseListModelDomain baseListModelDomain
       ) async
   {
     var response = await getListModelFromLocalDatabaseDataSource
         .getListModelFromLocalDatabaseDataSource();
     if(response.isSuccessResponse) {
-      protectedBaseViewModel
-          .getBaseListModelDomain(EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter)
-          .setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
+      baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(true);
     } else {
       return Response.exception(response.getException);
@@ -35,18 +32,16 @@ class ReadyModelLocalDatabaseFVM
 
   static Future<Response<bool, BaseException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      ProtectedBaseViewModel protectedBaseViewModel
+      BaseListModelDomain baseListModelDomain,
+      BaseTypeParameter baseTypeParameter
       ) async
   {
     var response = await getListModelFromLocalDatabaseThereIsParameterDataSource
         .getListModelFromLocalDatabaseThereIsParameterDataSource(
-        protectedBaseViewModel
-            .getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(EnumBaseTypeParameterObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter)
+         baseTypeParameter
       );
     if(response.isSuccessResponse) {
-      protectedBaseViewModel
-          .getBaseListModelDomain(EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter)
-          .setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
+      baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(true);
     } else {
       return Response.exception(response.getException);
@@ -56,14 +51,12 @@ class ReadyModelLocalDatabaseFVM
   static Future<Response<bool, BaseException>> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       BaseViewModel baseViewModel,
       GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
-      ProtectedBaseViewModel protectedBaseViewModel
+      BaseTypeParameter baseTypeParameter
       ) async
   {
     var response = await getModelFromLocalDatabaseThereIsParameterDataSource
         .getModelFromLocalDatabaseThereIsParameterDataSource(
-        protectedBaseViewModel.getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
-            EnumBaseTypeParameterObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter
-        )
+        baseTypeParameter
     );
     if(response.isSuccessResponse) {
       baseViewModel.setModelDomain(

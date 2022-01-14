@@ -2,11 +2,11 @@ enum EnumBaseListModelDomainObjectOperationViewModel {
   getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
   getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
 
-  insertModelsToLocalDatabaseThereIsParameter,
-  updateModelsToLocalDatabaseThereIsParameter,
-  deleteModelsToLocalDatabaseThereIsParameter,
+  insertListModelToLocalDatabaseThereIsParameter,
+  updateListModelToLocalDatabaseThereIsParameter,
+  deleteListModelToLocalDatabaseThereIsParameter,
 
-  insertModelsToNetworkDatabaseThereIsParameter,
-  updateModelsToNetworkDatabaseThereIsParameter,
-  deleteModelsToNetworkDatabaseThereIsParameter,
+  insertListModelToNetworkDatabaseThereIsParameter,
+  updateListModelToNetworkDatabaseThereIsParameter,
+  deleteListModelToNetworkDatabaseThereIsParameter,
 }

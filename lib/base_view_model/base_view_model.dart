@@ -1,15 +1,37 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_local_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_network_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_network_database_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_network_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_network_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_local_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_network_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_domain_notification_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_local_database_for_one_entry_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_iterator_object_operation_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/protected_base_view_model.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_iterator_for_base_list_model_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_domain_notification_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_local_database_for_one_entry_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:uuid/uuid.dart';
 
 typedef ItemCreator<S> = S Function();
@@ -34,33 +56,36 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     EnumBaseTypeParameterObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter : BoolTypeParameter(false),
     EnumBaseTypeParameterObjectOperationViewModel.getModelFromNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
   };
-  final Map<EnumIteratorObjectOperationViewModel,EnumTypeParameter> _mapEnumIteratorTypeParameterObjectOperationViewModelAndEnumTypeParameter = {
-    EnumIteratorObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter : EnumTypeParameter(
-        EnumIteratorObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter
+  final Map<EnumTypeParameterObjectOperationViewModel,EnumTypeParameter> _mapEnumTypeParameterObjectOperationViewModelAndEnumTypeParameter = {
+    EnumTypeParameterObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter : EnumTypeParameter(
+        EnumTypeParameterObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter
     ),
-    EnumIteratorObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter : EnumTypeParameter(
-        EnumIteratorObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter
+    EnumTypeParameterObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter : EnumTypeParameter(
+        EnumTypeParameterObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter
     ),
   };
   Map<EnumBaseModelDomainObjectOperationViewModel,T> _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain;
   Map<EnumBaseModelDomainObjectOperationViewModel,StreamController<T>> _mapEnumBaseModelDomainObjectOperationViewModelAndStreamControllerForBaseModelDomain;
   Map<EnumBaseListModelDomainObjectOperationViewModel,Y> _mapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain;
   Map<EnumBaseListModelDomainObjectOperationViewModel,StreamController<List<T>>> _mapEnumBaseListModelDomainObjectOperationViewModelAndStreamControllerForListBaseModelDomain;
-  ProtectedBaseViewModel _protectedBaseViewModel;
+
+  /* Maps For Iterator */
+  Map<Enum,BaseIterator> _mapEnumAndBaseIteratorForSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIterator = {};
 
   BaseViewModel(
       this._listEnumBaseModelDomainObjectOperationViewModel,
       this._listEnumBaseListModelDomainObjectOperationViewModel,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain
-      )
-  {
-    _protectedBaseViewModel = ProtectedBaseViewModel(
-        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain,
-        _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter,
-        _mapEnumIteratorTypeParameterObjectOperationViewModelAndEnumTypeParameter
-    );
-  }
+      );
+
+  BaseViewModel.forIterator(
+      this._listEnumBaseModelDomainObjectOperationViewModel,
+      this._listEnumBaseListModelDomainObjectOperationViewModel,
+      this._initCreatorBaseModelDomain,
+      this._initCreatorBaseListModelDomain,
+      this._mapEnumAndBaseIteratorForSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIterator
+      );
 
   void dispose() {
     _mapEnumBaseModelDomainObjectOperationViewModelAndBaseModelDomain = null;
@@ -76,12 +101,225 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   Type get getTypeBaseListModelDomain {
     return _typeBaseListModelDomain;
   }
+  
+  /* Start Methods From ReadyClassesFVM */
 
+  /// Start ReadyModelLocalDatabaseForOneEntryFVM
+  ///
   @protected
-  ProtectedBaseViewModel get getProtectedBaseViewModel {
-    return _protectedBaseViewModel;
+  Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(ModelLocalDatabaseForOneEntryDataSource modelLocalDatabaseForOneEntryDataSource) {
+    return ReadyModelLocalDatabaseForOneEntryFVM.callToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVM(this, modelLocalDatabaseForOneEntryDataSource);
   }
 
+  @protected
+  Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseForOneEntryThereIsParameterFVM(ModelLocalDatabaseForOneEntryDataSource modelLocalDatabaseForOneEntryDataSource) {
+    return ReadyModelLocalDatabaseForOneEntryFVM.insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(this, modelLocalDatabaseForOneEntryDataSource);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseForOneEntryFVM(ModelLocalDatabaseForOneEntryDataSource modelLocalDatabaseForOneEntryDataSource) {
+    return ReadyModelLocalDatabaseForOneEntryFVM.deleteModelToLocalDatabaseForOneEntryFVM(modelLocalDatabaseForOneEntryDataSource);
+  }
+
+  /// End ReadyModelLocalDatabaseForOneEntryFVM
+
+  /// Start ReadyIteratorForBaseListModelLNDatabaseFVM
+  ///
+  @protected
+  Response<bool,BaseException> baseCallToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM() {
+    return ReadyIteratorForBaseListModelLNDatabaseFVM.callToMethodSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIteratorFVM(
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
+        _mapEnumTypeParameterObjectOperationViewModelAndEnumTypeParameter[EnumTypeParameterObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter],
+        _mapEnumAndBaseIteratorForSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIterator);
+  }
+
+  @protected
+  Response<bool,BaseException> baseCallToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM() {
+    return ReadyIteratorForBaseListModelLNDatabaseFVM.callToMethodSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIteratorFVM(
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
+        _mapEnumTypeParameterObjectOperationViewModelAndEnumTypeParameter[EnumTypeParameterObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter],
+        _mapEnumAndBaseIteratorForSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIterator);
+  }
+
+  /// End ReadyIteratorForBaseListModelLNDatabaseFVM
+
+  /// Start ReadyModelLocalDatabaseFVM
+  ///
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource) {
+    return ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
+        getListModelFromLocalDatabaseDataSource,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource) {
+    return ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+        getListModelFromLocalDatabaseThereIsParameterDataSource, 
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
+        _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[EnumBaseTypeParameterObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter]);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource) {
+    return ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+        this,
+        getModelFromLocalDatabaseThereIsParameterDataSource,
+        _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[EnumBaseTypeParameterObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter]);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseThereIsParameterFVM(InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource) {
+    return ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVM(
+        this,
+        insertModelToLocalDatabaseThereIsParameterDataSource
+    );
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterFVM(UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource) {
+    return ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVM(
+        this,
+        updateModelToLocalDatabaseThereIsParameterDataSource
+    );
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseThereIsParameterFVM(DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource) {
+    return ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVM(
+        this,
+        deleteModelToLocalDatabaseThereIsParameterDataSource
+    );
+  }
+
+  /// End ReadyModelLocalDatabaseFVM
+
+  /// Start ReadyModelNetworkDatabaseFVM
+  ///
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
+      GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource)
+  {
+    return ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
+        getListModelFromNetworkDatabaseDataSource,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource) 
+  {
+    return ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+        getListModelFromNetworkDatabaseThereIsParameterDataSource,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
+        _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[EnumBaseTypeParameterObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter]);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource)
+  {
+    return ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+        this,
+        getModelFromNetworkDatabaseThereIsParameterDataSource,
+        _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[EnumBaseTypeParameterObjectOperationViewModel.getModelFromNetworkDatabaseThereIsParameter]);
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseInsertModelToNetworkDatabaseThereIsParameterFVM(InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource) {
+    return ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVM(
+        this,
+        insertModelToNetworkDatabaseThereIsParameterDataSource
+    );
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseUpdateModelToNetworkDatabaseThereIsParameterFVM(UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource) {
+    return ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVM(
+        this,
+        updateModelToNetworkDatabaseThereIsParameterDataSource
+    );
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseDeleteModelToNetworkDatabaseThereIsParameterFVM(DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource) {
+    return ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVM(
+        this,
+        deleteModelToNetworkDatabaseThereIsParameterDataSource
+    );
+  }
+
+  /// End ReadyModelNetworkDatabaseFVM
+
+  /// Start ReadyModelDomainNotificationFVM
+  ///
+  Future<Response<bool,BaseException>> basePushNotificationToZonedScheduleThereIsParameterFVM(ModelDomainNotificationDataSource notificationModelDataSource) {
+    return ReadyModelDomainNotificationFVM.pushNotificationToZonedScheduleThereIsParameterFVM(this, notificationModelDataSource);
+  }
+
+  Future<Response<bool,BaseException>> basePushNotificationToShowThereIsParameterFVM(ModelDomainNotificationDataSource notificationModelDataSource) {
+    return ReadyModelDomainNotificationFVM.pushNotificationToShowThereIsParameterFVM(this, notificationModelDataSource);
+  }
+
+  Future<Response<bool,BaseException>> baseCancelNotificationThereIsParameterFVM(ModelDomainNotificationDataSource notificationModelDataSource) {
+    return ReadyModelDomainNotificationFVM.cancelNotificationThereIsParameterFVM(this, notificationModelDataSource);
+  }
+  /// End ReadyModelDomainNotificationFVM
+
+  /// Start ReadyListModelDomainForLNDatabaseFVM
+  ///
+  Response<bool, BaseException> insertModelToListModelDomainForLocalDatabaseFVM() {
+    return ReadyListModelDomainForLNDatabaseFVM.insertModelToListModelDomainForLocalDatabaseFVM(
+        this,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
+        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+    );
+  }
+
+  Response<bool, BaseException> updateModelToListModelDomainForLocalDatabaseFVM() {
+    return ReadyListModelDomainForLNDatabaseFVM.updateModelToListModelDomainForLocalDatabaseFVM(
+        this,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
+        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+    );
+  }
+
+  Response<bool, BaseException> deleteModelToListModelDomainForLocalDatabaseFVM() {
+    return ReadyListModelDomainForLNDatabaseFVM.deleteModelToListModelDomainForLocalDatabaseFVM(
+        this,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
+        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+    );
+  }
+
+  Response<bool, BaseException> insertModelToListModelDomainForNetworkDatabaseFVM() {
+    return ReadyListModelDomainForLNDatabaseFVM.insertModelToListModelDomainForNetworkDatabaseFVM(
+        this,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
+        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+    );
+  }
+
+  Response<bool, BaseException> updateModelToListModelDomainForNetworkDatabaseFVM() {
+    return ReadyListModelDomainForLNDatabaseFVM.updateModelToListModelDomainForNetworkDatabaseFVM(
+        this,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
+        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+    );
+  }
+
+  Response<bool, BaseException> deleteModelToListModelDomainForNetworkDatabaseFVM() {
+    return ReadyListModelDomainForLNDatabaseFVM.deleteModelToListModelDomainForNetworkDatabaseFVM(
+        this,
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
+        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+    );
+  }
+
+  /// End ReadyListModelDomainForLNDatabaseFVM
+
+  /* End Methods From ReadyClassesFVM */
+  
   /* Start Methods Base/EnumTypeParameter */
 
   void setBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
@@ -91,11 +329,28 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[operation] = baseTypeParameter;
   }
 
-  void setEnumIteratorTypeParameterForGetListLNDatabase(
+  void setEnumTypeParameterForGetListLNDatabase(
       EnumTypeParameter enumTypeParameter,
-      EnumIteratorObjectOperationViewModel operation)
+      EnumTypeParameterObjectOperationViewModel operation)
   {
-    _mapEnumIteratorTypeParameterObjectOperationViewModelAndEnumTypeParameter[operation] = enumTypeParameter;
+    _mapEnumTypeParameterObjectOperationViewModelAndEnumTypeParameter[operation] = enumTypeParameter;
+  }
+
+  @protected
+  BaseTypeParameter getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
+      EnumBaseTypeParameterObjectOperationViewModel operation)
+  {
+    return _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter[operation];
+  }
+
+  @protected
+  EnumTypeParameter getEnumTypeParameterForGetListLNDatabase(EnumTypeParameterObjectOperationViewModel operation) {
+    return _mapEnumTypeParameterObjectOperationViewModelAndEnumTypeParameter[operation];
+  }
+
+  @protected
+  BaseListModelDomain getBaseListModelDomain(EnumBaseListModelDomainObjectOperationViewModel operation) {
+    return _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[operation];
   }
 
   /* End Methods Base/EnumTypeParameter */
