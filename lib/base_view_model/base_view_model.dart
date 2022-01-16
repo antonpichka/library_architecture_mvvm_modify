@@ -47,7 +47,6 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   /* Types */
   final Type _typeBaseModelDomain = T;
-  final Type _typeBaseListModelDomain = Y;
 
   /* Maps */
   final Map<EnumBaseTypeParameterObjectOperationViewModel,BaseTypeParameter> _mapEnumBaseTypeParameterObjectOperationViewModelAndBaseTypeParameter = {
@@ -96,10 +95,6 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   
   Type get getTypeBaseModelDomain {
     return _typeBaseModelDomain;
-  }
-
-  Type get getTypeBaseListModelDomain {
-    return _typeBaseListModelDomain;
   }
   
   /* Start Methods From ReadyClassesFVM */

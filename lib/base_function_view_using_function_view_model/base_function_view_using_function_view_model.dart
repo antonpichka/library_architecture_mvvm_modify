@@ -1,15 +1,24 @@
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_fvufvm/get_list_model_from_ln_database_fvufvm.dart';
 import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_fvufvm/get_list_model_from_local_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_fvufvm/get_list_model_from_network_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_there_is_parameter_fvufvm/get_list_model_from_ln_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_there_is_parameter_fvufvm/get_list_model_from_local_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_list_model_from_database_there_is_parameter_fvufvm/get_list_model_from_network_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_model_from_database_there_is_parameter_fvufvm/get_model_from_ln_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_model_from_database_there_is_parameter_fvufvm/get_model_from_local_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/get_model_from_database_there_is_parameter_fvufvm/get_model_from_network_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_list_model_domain_for_ln_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_list_model_domain_for_local_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_list_model_domain_for_network_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_ln_database_there_is_parameter_and_insert_model_to_list_model_domain_for_ln_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_ln_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_local_database_there_is_parameter_and_insert_model_to_list_model_domain_for_local_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_local_database_there_is_parameter_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_network_database_there_is_parameter_and_insert_model_to_list_model_domain_for_network_database_fvufvm.dart';
+import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/insert_model_fvufvm/insert_model_to_network_database_there_is_parameter_fvufvm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_network_database_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
 
  /* 4 methods for 1 methods owned by classes FunctionViewModel
 
@@ -42,242 +51,115 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 
 class BaseFunctionViewUsingFunctionViewModel {
 
+  static final GetListModelFromLNDatabaseFVUFVM _getListModelFromLNDatabaseFVUFVM = GetListModelFromLNDatabaseFVUFVM();
   static final GetListModelFromLocalDatabaseFVUFVM _getListModelFromLocalDatabaseFVUFVM = GetListModelFromLocalDatabaseFVUFVM();
+  static final GetListModelFromNetworkDatabaseFVUFVM _getListModelFromNetworkDatabaseFVUFVM = GetListModelFromNetworkDatabaseFVUFVM();
 
-  /* Start Method CallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM */
+  static final GetListModelFromLNDatabaseThereIsParameterFVUFVM _getListModelFromLNDatabaseThereIsParameterFVUFVM = GetListModelFromLNDatabaseThereIsParameterFVUFVM();
+  static final GetListModelFromLocalDatabaseThereIsParameterFVUFVM _getListModelFromLocalDatabaseThereIsParameterFVUFVM = GetListModelFromLocalDatabaseThereIsParameterFVUFVM();
+  static final GetListModelFromNetworkDatabaseThereIsParameterFVUFVM _getListModelFromNetworkDatabaseThereIsParameterFVUFVM = GetListModelFromNetworkDatabaseThereIsParameterFVUFVM();
+
+  static final GetModelFromLNDatabaseThereIsParameterFVUFVM _getModelFromLNDatabaseThereIsParameterFVUFVM = GetModelFromLNDatabaseThereIsParameterFVUFVM();
+  static final GetModelFromLocalDatabaseThereIsParameterFVUFVM _getModelFromLocalDatabaseThereIsParameterFVUFVM = GetModelFromLocalDatabaseThereIsParameterFVUFVM();
+  static final GetModelFromNetworkDatabaseThereIsParameterFVUFVM _getModelFromNetworkDatabaseThereIsParameterFVUFVM = GetModelFromNetworkDatabaseThereIsParameterFVUFVM();
+
+  static final InsertModelToListModelDomainForLNDatabaseFVUFVM _insertModelToListModelDomainForLNDatabaseFVUFVM = InsertModelToListModelDomainForLNDatabaseFVUFVM();
+  static final InsertModelToListModelDomainForLocalDatabaseFVUFVM _insertModelToListModelDomainForLocalDatabaseFVUFVM = InsertModelToListModelDomainForLocalDatabaseFVUFVM();
+  static final InsertModelToListModelDomainForNetworkDatabaseFVUFVM _insertModelToListModelDomainForNetworkDatabaseFVUFVM = InsertModelToListModelDomainForNetworkDatabaseFVUFVM();
+  static final InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM _insertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM = InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM();
+  static final InsertModelToLNDatabaseThereIsParameterFVUFVM _insertModelToLNDatabaseThereIsParameterFVUFVM = InsertModelToLNDatabaseThereIsParameterFVUFVM();
+  static final InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM _insertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM = InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM();
+  static final InsertModelToLocalDatabaseThereIsParameterFVUFVM _insertModelToLocalDatabaseThereIsParameterFVUFVM = InsertModelToLocalDatabaseThereIsParameterFVUFVM();
+  static final InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM _insertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM = InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM();
+  static final InsertModelToNetworkDatabaseThereIsParameterFVUFVM _insertModelToNetworkDatabaseThereIsParameterFVUFVM = InsertModelToNetworkDatabaseThereIsParameterFVUFVM();
+
+  /* Start Method CallToMethodGetListModelFromLNDatabaseAndUseTheSettersFVUFVM */
+
+  static GetListModelFromLNDatabaseFVUFVM get getListModelFromLNDatabaseFVUFVM {
+    return _getListModelFromLNDatabaseFVUFVM;
+  }
 
   static GetListModelFromLocalDatabaseFVUFVM get getListModelFromLocalDatabaseFVUFVM {
     return _getListModelFromLocalDatabaseFVUFVM;
   }
 
-  /* End Method CallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM */
-
-  /* Start Method CallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM */
-
-  static Future<void> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
-      GetListModelFromNetworkDatabaseFVM getListModelFromNetworkDatabaseFVM,
-      Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException
-      ) async
-  {
-     await FunctionViewModel
-        .callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
-         getListModelFromNetworkDatabaseFVM,
-         functionForResultSuccess,
-         functionForResultDomainException,
-         functionForResultLocalException,
-         functionForResultNetworkException
-     );
-    _afterCodeIsCheckResponse(
-        response,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static GetListModelFromNetworkDatabaseFVUFVM get getListModelFromNetworkDatabaseFVUFVM {
+    return _getListModelFromNetworkDatabaseFVUFVM;
   }
 
-  static Future<void> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVMAndNotifyStreamListModelDomainNetworkDatabase(
-      GetListModelFromNetworkDatabaseFVM getListModelFromNetworkDatabaseFVM,
-      BaseViewModel baseViewModel,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    String response = await FunctionViewModel
-        .callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
-        getListModelFromNetworkDatabaseFVM
-    );
-    _afterCodeIsCheckResponseAndNotifyStreamListModelDomainNetworkDatabase(
-        response,
-        baseViewModel,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  /* End Method CallToMethodGetListModelFromLNDatabaseAndUseTheSettersFVUFVM */
+
+  /* Start Method CallToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSettersFVUFVM */
+
+  static GetListModelFromLNDatabaseThereIsParameterFVUFVM get getListModelFromLNDatabaseThereIsParameterFVUFVM {
+    return _getListModelFromLNDatabaseThereIsParameterFVUFVM;
   }
 
-  /* Start Method CallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM */
-
-  static Future<void> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-      GetListModelFromLocalDatabaseThereIsParameterFVM getListModelFromLocalDatabaseThereIsParameterFVM,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    String response = await FunctionViewModel
-        .callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseThereIsParameterFVM
-    );
-    _afterCodeIsCheckResponse(
-        response,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static GetListModelFromLocalDatabaseThereIsParameterFVUFVM get getListModelFromLocalDatabaseThereIsParameterFVUFVM {
+    return _getListModelFromLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  static Future<void> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMAndNotifyStreamListModelDomainLocalDatabase(
-      GetListModelFromLocalDatabaseThereIsParameterFVM getListModelFromLocalDatabaseThereIsParameterFVM,
-      BaseViewModel baseViewModel,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    String response = await FunctionViewModel
-        .callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseThereIsParameterFVM
-    );
-    _afterCodeIsCheckResponseAndNotifyStreamListModelDomainLocalDatabase(
-        response,
-        baseViewModel,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static GetListModelFromNetworkDatabaseThereIsParameterFVUFVM get getListModelFromNetworkDatabaseThereIsParameterFVUFVM {
+    return _getListModelFromNetworkDatabaseThereIsParameterFVUFVM;
   }
 
-  static Future<void> setBaseTypeParameterAndCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-      GetListModelFromLocalDatabaseThereIsParameterFVM getListModelFromLocalDatabaseThereIsParameterFVM,
-      BaseViewModel baseViewModel,
-      BaseTypeParameter baseTypeParameter,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError,
-      Future<String> method
-      ) async
-  {
-    baseViewModel.setBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
-    
-    String response = await FunctionViewModel
-        .callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseThereIsParameterFVM
-    );
+  /* End Method CallToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSettersFVUFVM */
 
-    _afterCodeIsCheckResponse(
-        response,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  /* Start Method CallToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSettersFVUFVM */
+
+  static GetModelFromLNDatabaseThereIsParameterFVUFVM get getModelFromLNDatabaseThereIsParameterFVUFVM {
+    return _getModelFromLNDatabaseThereIsParameterFVUFVM;
   }
 
-  static Future<void> setBaseTypeParameterAndCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMAndNotifyStreamListModelDomainLocalDatabase(
-      GetListModelFromLocalDatabaseThereIsParameterFVM getListModelFromLocalDatabaseThereIsParameterFVM,
-      BaseViewModel baseViewModel,
-      BaseTypeParameter baseTypeParameter,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    baseViewModel.setBaseTypeParameterForGetListModelFromLocalDatabaseThereIsParameterFVM = baseTypeParameter;
-
-    String response = await FunctionViewModel
-        .callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseThereIsParameterFVM
-    );
-    _afterCodeIsCheckResponseAndNotifyStreamListModelDomainLocalDatabase(
-        response,
-        baseViewModel,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static GetModelFromLocalDatabaseThereIsParameterFVUFVM get getModelFromLocalDatabaseThereIsParameterFVUFVM {
+    return _getModelFromLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  /* End Method CallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM */
-
-  /* Start Method InsertModelToLocalDatabaseForOneEntryThereIsParameterFVM */
-
-  static Future<void> insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-      ModelLocalDatabaseForOneEntryFVM modelLocalDatabaseForOneEntryFVM,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    String response = await FunctionViewModel
-        .insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-        modelLocalDatabaseForOneEntryFVM
-    );
-    _afterCodeIsCheckResponse(
-        response,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static GetModelFromNetworkDatabaseThereIsParameterFVUFVM get getModelFromNetworkDatabaseThereIsParameterFVUFVM {
+    return _getModelFromNetworkDatabaseThereIsParameterFVUFVM;
   }
 
-  static Future<void> insertModelToLocalDatabaseForOneEntryThereIsParameterFVMAndNotifyStreamModelDomain(
-      ModelLocalDatabaseForOneEntryFVM modelLocalDatabaseForOneEntryFVM,
-      BaseViewModel baseViewModel,
-      Enum operation,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    _beforeCodeIsCheckTypeNamelyEnum(
-        baseViewModel,
-        operation
-    );
-    String response = await FunctionViewModel
-        .insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-        modelLocalDatabaseForOneEntryFVM
-    );
-    _afterCodeIsCheckResponseAndNotifyStreamModelDomain(
-        response,
-        baseViewModel,
-        operation,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  /* End Method CallToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSettersFVUFVM */
+
+  /* Start Method InsertModelFVUFVM */
+
+  static InsertModelToListModelDomainForLNDatabaseFVUFVM get getInsertModelToListModelDomainForLNDatabaseFVUFVM {
+    return _insertModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static Future<void> setModelDomainAndInsertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-      ModelLocalDatabaseForOneEntryFVM modelLocalDatabaseForOneEntryFVM,
-      BaseViewModel baseViewModel,
-      BaseModelDomain baseModelDomain,
-      Enum operation,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    _beforeCodeIsCheckTypeNamelyEnumAndBaseModelDomainAndAlsoUsedFunctionSetModelDomain(
-        baseViewModel,
-        baseModelDomain,
-        operation
-    );
-    String response = await FunctionViewModel
-        .insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-        modelLocalDatabaseForOneEntryFVM
-    );
-    _afterCodeIsCheckResponse(
-        response,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static InsertModelToListModelDomainForLocalDatabaseFVUFVM get getInsertModelToListModelDomainForLocalDatabaseFVUFVM {
+    return _insertModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static Future<void> setModelDomainAndInsertModelToLocalDatabaseForOneEntryThereIsParameterFVMAndNotifyStreamModelDomain(
-      ModelLocalDatabaseForOneEntryFVM modelLocalDatabaseForOneEntryFVM,
-      BaseViewModel baseViewModel,
-      BaseModelDomain baseModelDomain,
-      Enum operation,
-      Function functionForResultSuccess,
-      Function(String) functionForResultError
-      ) async
-  {
-    _beforeCodeIsCheckTypeNamelyEnumAndBaseModelDomainAndAlsoUsedFunctionSetModelDomain(
-        baseViewModel,
-        baseModelDomain,
-        operation
-    );
-    String response = await FunctionViewModel
-        .insertModelToLocalDatabaseForOneEntryThereIsParameterFVM(
-        modelLocalDatabaseForOneEntryFVM
-    );
-    _afterCodeIsCheckResponseAndNotifyStreamModelDomain(
-        response,
-        baseViewModel,
-        operation,
-        functionForResultSuccess,
-        functionForResultError
-    );
+  static InsertModelToListModelDomainForNetworkDatabaseFVUFVM get getInsertModelToListModelDomainForNetworkDatabaseFVUFVM {
+    return _insertModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  /* End Method InsertModelToLocalDatabaseForOneEntryThereIsParameterFVM */
+  static InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM get getInsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM {
+    return _insertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM;
+  }
+
+  static InsertModelToLNDatabaseThereIsParameterFVUFVM get getInsertModelToLNDatabaseThereIsParameterFVUFVM {
+    return _insertModelToLNDatabaseThereIsParameterFVUFVM;
+  }
+
+  static InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM get getInsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM {
+    return _insertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM;
+  }
+
+  static InsertModelToLocalDatabaseThereIsParameterFVUFVM get getInsertModelToLocalDatabaseThereIsParameterFVUFVM {
+    return _insertModelToLocalDatabaseThereIsParameterFVUFVM;
+  }
+
+  static InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM get getInsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM {
+    return _insertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM;
+  }
+
+  static InsertModelToNetworkDatabaseThereIsParameterFVUFVM get getInsertModelToNetworkDatabaseThereIsParameterFVUFVM {
+    return _insertModelToNetworkDatabaseThereIsParameterFVUFVM;
+  }
+
+  /* End Method InsertModelFVUFVM */
 
   @protected
   void beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(

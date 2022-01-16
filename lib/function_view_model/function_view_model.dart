@@ -29,9 +29,9 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_local_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_and_insert_model_to_list_model_domain_for_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_network_database_there_is_parameter_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_ln_database_fvm/iterator_for_list_model_ln_database_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_ln_database_fvm/iterator_for_list_model_local_database_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_ln_database_fvm/iterator_for_list_model_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_notification_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_ln_database_fvm.dart';
@@ -1092,7 +1092,7 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
-  static Future<void> insertModelToLNDatabaseThereIsParameterAndInsertModelToLNListModelFVM(
+  static Future<void> insertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVM(
       InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVM insertModel,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
@@ -1143,7 +1143,7 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
-  static Future<void> updateModelToLNDatabaseThereIsParameterAndUpdateModelToLNListModelFVM(
+  static Future<void> updateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM(
       UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM updateModel,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
@@ -1194,7 +1194,7 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
-  static Future<void> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToLNListModelFVM(
+  static Future<void> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVM(
       DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVM deleteModel,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
