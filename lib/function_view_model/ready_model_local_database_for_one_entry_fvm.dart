@@ -17,7 +17,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
       if (response.isSuccessResponse) {
         baseViewModel.setModelDomain(
             response.getData.toBaseModelDomain(),
-            EnumBaseModelDomainObjectOperationViewModel.getModelFromLocalDatabaseForOneEntryThereIsParameter
+            EnumBaseModelDomainObjectOperationViewModel.getModelFromLocalDatabaseForOneEntry
         );
         return Response.success(true);
       } else {

@@ -7,14 +7,26 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.da
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_local_database_fvm.dart';
 
-class InsertModelToListModelDomainForNetworkDatabaseFVUFVM
-    extends BaseFVUFVMSpecificallyYesTIPYesNS<InsertModelToListModelDomainForNetworkDatabaseFVM,BaseModelDomain>
+class DeleteModelToListModelDomainForLocalDatabaseFVUFVM
+    extends BaseFVUFVMSpecificallyYesTIPYesNS<DeleteModelToListModelDomainForLocalDatabaseFVM,BaseModelDomain>
 {
   @override
-  Future<void> mainMethod(InsertModelToListModelDomainForNetworkDatabaseFVM mainMethod, Function functionForResultSuccess, Function(DomainException p1) functionForResultDomainException, Function(LocalException p1) functionForResultLocalException, Function(NetworkException p1) functionForResultNetworkException) async {
-    FunctionViewModel.insertModelToListModelDomainForNetworkDatabaseFVM(
+  void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
+    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel.deleteModelToLocalDatabaseThereIsParameter);
+  }
+
+  @override
+  void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, BaseModelDomain object) {
+    beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(baseViewModel,
+        object,
+        EnumBaseModelDomainObjectOperationViewModel.deleteModelToLocalDatabaseThereIsParameter);
+  }
+
+  @override
+  Future<void> mainMethod(DeleteModelToListModelDomainForLocalDatabaseFVM mainMethod, Function functionForResultSuccess, Function(DomainException p1) functionForResultDomainException, Function(LocalException p1) functionForResultLocalException, Function(NetworkException p1) functionForResultNetworkException) async {
+    FunctionViewModel.deleteModelToListModelDomainForLocalDatabaseFVM(
         mainMethod,
         functionForResultSuccess,
         functionForResultDomainException,
@@ -23,15 +35,4 @@ class InsertModelToListModelDomainForNetworkDatabaseFVUFVM
     );
   }
 
-  @override
-  void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter);
-  }
-
-  @override
-  void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, BaseModelDomain object) {
-    beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(baseViewModel,
-        object,
-        EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter);
-  }
 }

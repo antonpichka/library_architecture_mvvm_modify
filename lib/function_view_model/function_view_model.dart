@@ -33,7 +33,7 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_notification_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_domain_notification_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_network_database_fvm.dart';
@@ -121,7 +121,7 @@ class FunctionViewModel {
   }
   
   static Future<void> pushNotificationToZonedScheduleFVM(
-      ModelNotificationFVM modelNotificationFVM,
+      ModelDomainNotificationFVM modelNotificationFVM,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,
@@ -141,7 +141,7 @@ class FunctionViewModel {
   }
 
   static Future<void> pushNotificationToShowFVM(
-      ModelNotificationFVM modelNotificationFVM,
+      ModelDomainNotificationFVM modelNotificationFVM,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,
@@ -161,7 +161,7 @@ class FunctionViewModel {
   }
 
   static Future<void> cancelNotificationFVM(
-      ModelNotificationFVM modelNotificationFVM,
+      ModelDomainNotificationFVM modelNotificationFVM,
       Function functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,

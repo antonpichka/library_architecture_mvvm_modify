@@ -1,6 +1,6 @@
 enum EnumBaseModelDomainObjectOperationViewModel {
   insertModelToLocalDatabaseForOneEntryThereIsParameter,
-  getModelFromLocalDatabaseForOneEntryThereIsParameter,
+  getModelFromLocalDatabaseForOneEntry,
 
   insertModelToLocalDatabaseThereIsParameter,
   updateModelToLocalDatabaseThereIsParameter,

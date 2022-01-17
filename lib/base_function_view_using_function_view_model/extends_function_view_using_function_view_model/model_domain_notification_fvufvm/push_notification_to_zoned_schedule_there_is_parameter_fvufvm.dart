@@ -7,14 +7,14 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.da
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_domain_notification_fvm.dart';
 
-class InsertModelToListModelDomainForNetworkDatabaseFVUFVM
-    extends BaseFVUFVMSpecificallyYesTIPYesNS<InsertModelToListModelDomainForNetworkDatabaseFVM,BaseModelDomain>
+class PushNotificationToZonedScheduleThereIsParameterFVUFVM
+    extends BaseFVUFVMSpecificallyYesTIPYesNS<ModelDomainNotificationFVM,BaseModelDomain>
 {
   @override
-  Future<void> mainMethod(InsertModelToListModelDomainForNetworkDatabaseFVM mainMethod, Function functionForResultSuccess, Function(DomainException p1) functionForResultDomainException, Function(LocalException p1) functionForResultLocalException, Function(NetworkException p1) functionForResultNetworkException) async {
-    FunctionViewModel.insertModelToListModelDomainForNetworkDatabaseFVM(
+  Future<void> mainMethod(ModelDomainNotificationFVM mainMethod, Function functionForResultSuccess, Function(DomainException p1) functionForResultDomainException, Function(LocalException p1) functionForResultLocalException, Function(NetworkException p1) functionForResultNetworkException) async {
+    await FunctionViewModel.pushNotificationToZonedScheduleFVM(
         mainMethod,
         functionForResultSuccess,
         functionForResultDomainException,
@@ -25,13 +25,16 @@ class InsertModelToListModelDomainForNetworkDatabaseFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel.pushNotificationToZonedScheduleThereIsParameter);
   }
 
   @override
   void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, BaseModelDomain object) {
-    beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(baseViewModel,
+    beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(
+        baseViewModel,
         object,
-        EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter);
+        EnumBaseModelDomainObjectOperationViewModel.pushNotificationToZonedScheduleThereIsParameter
+    );
   }
+
 }
