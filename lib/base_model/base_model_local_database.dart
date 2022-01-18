@@ -4,8 +4,4 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_ln_databa
 
 abstract class BaseModelLocalDatabase extends BaseModelLNDatabase {
   String localUniqueId = "";
-
-  set setLocalUniqueId(String uniqueId)  {
-    localUniqueId = uniqueId;
-  }
 }

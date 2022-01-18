@@ -6,8 +6,4 @@ abstract class BaseModelDomain {
 
   BaseModelLocalDatabase toBaseModelLocalDatabase();
   BaseModelNetworkDatabase toBaseModelNetworkDatabase();
-  
-  set setUniqueId(String uniqueId)  {
-    this.uniqueId = uniqueId;
-  }
 }

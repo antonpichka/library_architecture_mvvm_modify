@@ -1,5 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
