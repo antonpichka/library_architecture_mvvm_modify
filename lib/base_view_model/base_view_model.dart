@@ -263,7 +263,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   /// Start ReadyListModelDomainForLNDatabaseFVM
   ///
-  Response<bool, BaseException> insertModelToListModelDomainForLocalDatabaseFVM() {
+  Response<bool, BaseException> baseInsertModelToListModelDomainForLocalDatabaseFVM() {
     return ReadyListModelDomainForLNDatabaseFVM.insertModelToListModelDomainForLocalDatabaseFVM(
         this,
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
@@ -271,7 +271,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
-  Response<bool, BaseException> updateModelToListModelDomainForLocalDatabaseFVM() {
+  Response<bool, BaseException> baseUpdateModelToListModelDomainForLocalDatabaseFVM() {
     return ReadyListModelDomainForLNDatabaseFVM.updateModelToListModelDomainForLocalDatabaseFVM(
         this,
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
@@ -279,7 +279,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
-  Response<bool, BaseException> deleteModelToListModelDomainForLocalDatabaseFVM() {
+  Response<bool, BaseException> baseDeleteModelToListModelDomainForLocalDatabaseFVM() {
     return ReadyListModelDomainForLNDatabaseFVM.deleteModelToListModelDomainForLocalDatabaseFVM(
         this,
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
@@ -287,7 +287,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
-  Response<bool, BaseException> insertModelToListModelDomainForNetworkDatabaseFVM() {
+  Response<bool, BaseException> baseInsertModelToListModelDomainForNetworkDatabaseFVM() {
     return ReadyListModelDomainForLNDatabaseFVM.insertModelToListModelDomainForNetworkDatabaseFVM(
         this,
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
@@ -295,7 +295,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
-  Response<bool, BaseException> updateModelToListModelDomainForNetworkDatabaseFVM() {
+  Response<bool, BaseException> baseUpdateModelToListModelDomainForNetworkDatabaseFVM() {
     return ReadyListModelDomainForLNDatabaseFVM.updateModelToListModelDomainForNetworkDatabaseFVM(
         this,
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
@@ -303,7 +303,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
-  Response<bool, BaseException> deleteModelToListModelDomainForNetworkDatabaseFVM() {
+  Response<bool, BaseException> baseDeleteModelToListModelDomainForNetworkDatabaseFVM() {
     return ReadyListModelDomainForLNDatabaseFVM.deleteModelToListModelDomainForNetworkDatabaseFVM(
         this,
         _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[
