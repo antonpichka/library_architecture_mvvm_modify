@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_network_database_there_is_parameter_data_source.dart';
@@ -10,8 +11,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_domain_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_local_database_for_one_entry_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
@@ -27,10 +28,10 @@ import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_iterator_object_operation_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_iterator_for_base_list_model_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_list_model_domain_for_ln_database_fvm.dart';
-import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_domain_notification_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_local_database_for_one_entry_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_notification_fvm.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 typedef ItemCreator<S> = S Function();
@@ -170,6 +171,18 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
+/*  @protected
+  Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseThereIsParameterVariantTwoFVM(
+      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
+      InsertModelToLNDatabaseThereIsParameterCBFVM insertModelToLNDatabaseThereIsParameterCBFVM)
+  {
+    return ReadyModelLocalDatabaseFVM
+        .insertModelToLocalDatabaseThereIsParameterFVM(
+        this,
+        insertModelToLocalDatabaseThereIsParameterDataSource
+    );
+  }*/
+
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterFVM(UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource) {
     return ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVM(
@@ -247,16 +260,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   /// Start ReadyModelDomainNotificationFVM
   ///
-  Future<Response<bool,BaseException>> basePushNotificationToZonedScheduleThereIsParameterFVM(ModelDomainNotificationDataSource notificationModelDataSource) {
-    return ReadyModelDomainNotificationFVM.pushNotificationToZonedScheduleThereIsParameterFVM(this, notificationModelDataSource);
+  Future<Response<bool,BaseException>> basePushNotificationToZonedScheduleThereIsParameterFVM(ModelNotificationDataSource notificationModelDataSource) {
+    return ReadyModelNotificationFVM.pushNotificationToZonedScheduleThereIsParameterFVM(this, notificationModelDataSource);
   }
 
-  Future<Response<bool,BaseException>> basePushNotificationToShowThereIsParameterFVM(ModelDomainNotificationDataSource notificationModelDataSource) {
-    return ReadyModelDomainNotificationFVM.pushNotificationToShowThereIsParameterFVM(this, notificationModelDataSource);
+  Future<Response<bool,BaseException>> basePushNotificationToShowThereIsParameterFVM(ModelNotificationDataSource notificationModelDataSource) {
+    return ReadyModelNotificationFVM.pushNotificationToShowThereIsParameterFVM(this, notificationModelDataSource);
   }
 
-  Future<Response<bool,BaseException>> baseCancelNotificationThereIsParameterFVM(ModelDomainNotificationDataSource notificationModelDataSource) {
-    return ReadyModelDomainNotificationFVM.cancelNotificationThereIsParameterFVM(this, notificationModelDataSource);
+  Future<Response<bool,BaseException>> baseCancelNotificationThereIsParameterFVM(ModelNotificationDataSource notificationModelDataSource) {
+    return ReadyModelNotificationFVM.cancelNotificationThereIsParameterFVM(this, notificationModelDataSource);
   }
   /// End ReadyModelDomainNotificationFVM
 

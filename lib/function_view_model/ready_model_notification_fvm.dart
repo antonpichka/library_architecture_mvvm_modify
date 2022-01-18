@@ -1,5 +1,5 @@
 
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_domain_notification_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain_ext_for_notification.dart';
@@ -9,11 +9,11 @@ import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
-class ReadyModelDomainNotificationFVM
+class ReadyModelNotificationFVM
 {
   static Future<Response<bool,BaseException>> pushNotificationToZonedScheduleThereIsParameterFVM(
       BaseViewModel baseViewModel,
-      ModelDomainNotificationDataSource notificationModelDataSource) async
+      ModelNotificationDataSource notificationModelDataSource) async
   {
       var object = baseViewModel
           .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.pushNotificationToZonedScheduleThereIsParameter);
@@ -35,7 +35,7 @@ class ReadyModelDomainNotificationFVM
 
   static Future<Response<bool,BaseException>> pushNotificationToShowThereIsParameterFVM(
       BaseViewModel baseViewModel,
-      ModelDomainNotificationDataSource notificationModelDataSource) async
+      ModelNotificationDataSource notificationModelDataSource) async
   {
     var object = baseViewModel.getModelDomain(
         EnumBaseModelDomainObjectOperationViewModel.pushNotificationToShowThereIsParameter);
@@ -57,7 +57,7 @@ class ReadyModelDomainNotificationFVM
 
   static Future<Response<bool,BaseException>> cancelNotificationThereIsParameterFVM(
       BaseViewModel baseViewModel,
-      ModelDomainNotificationDataSource notificationModelDataSource) async
+      ModelNotificationDataSource notificationModelDataSource) async
   {
       var response = await notificationModelDataSource
           .cancelNotificationThereIsParameterDataSource(

@@ -1,6 +1,6 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-class BaseModelDomainNotification {
+class BaseModelNotification {
   BaseModelDomain baseDomainModel;
   String title;
   String body;
