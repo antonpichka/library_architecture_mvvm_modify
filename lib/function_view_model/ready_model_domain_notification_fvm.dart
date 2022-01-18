@@ -1,8 +1,11 @@
 
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/model_domain_notification_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain_ext_for_notification.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
@@ -12,12 +15,17 @@ class ReadyModelDomainNotificationFVM
       BaseViewModel baseViewModel,
       ModelDomainNotificationDataSource notificationModelDataSource) async
   {
-      var response = await notificationModelDataSource
-          .pushNotificationToZonedScheduleThereIsParameterDataSource(
-          baseViewModel
-              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.pushNotificationToZonedScheduleThereIsParameter)
-              .toBaseModelDomainNotification()
+      var object = baseViewModel
+          .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.pushNotificationToZonedScheduleThereIsParameter);
+      Response<bool, LocalException> response = Response.exception(
+          LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
       );
+      if(object is BaseModelDomainExtForNotification) {
+        response = await notificationModelDataSource
+            .pushNotificationToZonedScheduleThereIsParameterDataSource(
+            object.toBaseModelDomainNotification()
+        );
+      }
       if(response.isSuccessResponse) {
         return Response.success(true);
       } else {
@@ -29,12 +37,17 @@ class ReadyModelDomainNotificationFVM
       BaseViewModel baseViewModel,
       ModelDomainNotificationDataSource notificationModelDataSource) async
   {
-      var response = await notificationModelDataSource
-          .pushNotificationToShowThereIsParameterDataSource(
-          baseViewModel
-              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.pushNotificationToShowThereIsParameter)
-              .toBaseModelDomainNotification()
+    var object = baseViewModel.getModelDomain(
+        EnumBaseModelDomainObjectOperationViewModel.pushNotificationToShowThereIsParameter);
+      Response<bool, LocalException> response = Response.exception(
+          LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
       );
+      if(object is BaseModelDomainExtForNotification) {
+        response = await notificationModelDataSource
+            .pushNotificationToShowThereIsParameterDataSource(
+            object.toBaseModelDomainNotification()
+        );
+      }
       if(response.isSuccessResponse) {
         return Response.success(true);
       } else {
