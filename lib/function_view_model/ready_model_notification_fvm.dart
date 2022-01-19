@@ -23,7 +23,7 @@ class ReadyModelNotificationFVM
       if(object is BaseModelDomainExtForNotification) {
         response = await notificationModelDataSource
             .pushNotificationToZonedScheduleThereIsParameterDataSource(
-            object.toBaseModelDomainNotification()
+            object.toBaseModelNotification()
         );
       }
       if(response.isSuccessResponse) {
@@ -45,7 +45,7 @@ class ReadyModelNotificationFVM
       if(object is BaseModelDomainExtForNotification) {
         response = await notificationModelDataSource
             .pushNotificationToShowThereIsParameterDataSource(
-            object.toBaseModelDomainNotification()
+            object.toBaseModelNotification()
         );
       }
       if(response.isSuccessResponse) {

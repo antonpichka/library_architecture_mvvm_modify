@@ -1,9 +1,9 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-class BaseModelNotification {
+abstract class BaseModelNotification {
   BaseModelDomain baseDomainModel;
-  String title;
-  String body;
+  String title = "";
+  String body = "";
 
   set setBaseDomainModel(BaseModelDomain baseDomainModel) {
     this.baseDomainModel = baseDomainModel;

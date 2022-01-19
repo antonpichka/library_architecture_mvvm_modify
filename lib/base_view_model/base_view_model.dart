@@ -32,7 +32,11 @@ import 'package:library_architecture_mvvm_modify/function_view_model/ready_model
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_notification_fvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/delete_model_to_ln_database_there_is_parameter_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/insert_model_to_ln_database_there_is_parameter_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/update_model_to_ln_database_there_is_parameter_cbfvm.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
+import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
 typedef ItemCreator<S> = S Function();
 
@@ -171,17 +175,27 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     );
   }
 
-/*  @protected
+  @protected
   Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseThereIsParameterVariantTwoFVM(
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterCBFVM insertModelToLNDatabaseThereIsParameterCBFVM)
+      InsertModelToLNDatabaseThereIsParameterCBFVM insertModelToLNDatabaseThereIsParameterCBFVM) async
   {
-    return ReadyModelLocalDatabaseFVM
-        .insertModelToLocalDatabaseThereIsParameterFVM(
-        this,
-        insertModelToLocalDatabaseThereIsParameterDataSource
+    ResponseGenericBoolAndDomainException response = insertModelToLNDatabaseThereIsParameterCBFVM
+        .insertModelToLNDatabaseThereIsParameterCBFVM(
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel
+          .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+          .getListModelDomain
     );
-  }*/
+    if(response.isSuccessResponse) {
+      return ReadyModelLocalDatabaseFVM
+          .insertModelToLocalDatabaseThereIsParameterFVM(
+          this,
+          insertModelToLocalDatabaseThereIsParameterDataSource
+      );
+    } else {
+      return Response.exception(response.getException);
+    }
+  }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterFVM(UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource) {
@@ -192,11 +206,55 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
 
   @protected
+  Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterVariantTwoFVM(
+      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
+      UpdateModelToLNDatabaseThereIsParameterCBFVM updateModelToLNDatabaseThereIsParameterCBFVM)  async
+  {
+    ResponseGenericBoolAndDomainException response = updateModelToLNDatabaseThereIsParameterCBFVM
+        .updateModelToLNDatabaseThereIsParameterCBFVM(
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel
+          .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+          .getListModelDomain
+    );
+    if(response.isSuccessResponse) {
+      return ReadyModelLocalDatabaseFVM
+          .updateModelToLocalDatabaseThereIsParameterFVM(
+          this,
+          updateModelToLocalDatabaseThereIsParameterDataSource
+      );
+    } else {
+      return Response.exception(response.getException);
+    }
+  }
+
+  @protected
   Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseThereIsParameterFVM(DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource) {
     return ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVM(
         this,
         deleteModelToLocalDatabaseThereIsParameterDataSource
     );
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseThereIsParameterVariantTwoFVM(
+      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
+      DeleteModelToLNDatabaseThereIsParameterCBFVM deleteModelToLNDatabaseThereIsParameterCBFVM) async
+  {
+    ResponseGenericBoolAndDomainException response = deleteModelToLNDatabaseThereIsParameterCBFVM
+        .deleteModelToLNDatabaseThereIsParameterCBFVM(
+        _getMapEnumBaseListModelDomainObjectOperationViewModelAndBaseListModelDomain[EnumBaseListModelDomainObjectOperationViewModel
+            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+            .getListModelDomain
+    );
+    if(response.isSuccessResponse) {
+      return ReadyModelLocalDatabaseFVM
+          .deleteModelToLocalDatabaseThereIsParameterFVM(
+          this,
+          deleteModelToLocalDatabaseThereIsParameterDataSource
+      );
+    } else {
+      return Response.exception(response.getException);
+    }
   }
 
   /// End ReadyModelLocalDatabaseFVM
