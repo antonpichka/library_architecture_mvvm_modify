@@ -10,7 +10,7 @@ abstract class BaseModelAssistantByViewModelForDomain {
     if(_data.containsKey(key)) {
       return _data[key];
     }
-    return throw Exception("No key: $key");
+    return null;
   }
 
   @protected

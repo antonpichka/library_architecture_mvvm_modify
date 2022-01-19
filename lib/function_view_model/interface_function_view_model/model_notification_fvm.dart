@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class ModelNotificationFVM {
-  Future<Response<bool,BaseException>> pushNotificationToZonedScheduleFVM();
-  Future<Response<bool,BaseException>> pushNotificationToShowFVM();
-  Future<Response<bool,BaseException>> cancelNotificationFVM();
+  Future<Response<bool,BaseException>> pushNotificationToZonedScheduleThereIsParameterFVM();
+  Future<Response<bool,BaseException>> pushNotificationToShowThereIsParameterFVM();
+  Future<Response<bool,BaseException>> cancelNotificationThereIsParameterFVM();
 }

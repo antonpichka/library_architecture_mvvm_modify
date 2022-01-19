@@ -127,7 +127,7 @@ class FunctionViewModel {
       Function(LocalException) functionForResultLocalException,
       Function(NetworkException) functionForResultNetworkException)
   async {
-    var resultNetworkDatabaseOrLocalDatabase = await modelNotificationFVM.pushNotificationToZonedScheduleFVM();
+    var resultNetworkDatabaseOrLocalDatabase = await modelNotificationFVM.pushNotificationToZonedScheduleThereIsParameterFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultNetworkDatabaseOrLocalDatabase.getException,
@@ -147,7 +147,7 @@ class FunctionViewModel {
       Function(LocalException) functionForResultLocalException,
       Function(NetworkException) functionForResultNetworkException)
   async {
-    var resultNetworkDatabaseOrLocalDatabase = await modelNotificationFVM.pushNotificationToShowFVM();
+    var resultNetworkDatabaseOrLocalDatabase = await modelNotificationFVM.pushNotificationToShowThereIsParameterFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultNetworkDatabaseOrLocalDatabase.getException,
@@ -167,7 +167,7 @@ class FunctionViewModel {
       Function(LocalException) functionForResultLocalException,
       Function(NetworkException) functionForResultNetworkException)
   async {
-    var resultNetworkDatabaseOrLocalDatabase = await modelNotificationFVM.cancelNotificationFVM();
+    var resultNetworkDatabaseOrLocalDatabase = await modelNotificationFVM.cancelNotificationThereIsParameterFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultNetworkDatabaseOrLocalDatabase.getException,
