@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_network_d
 
 abstract class BaseModelDomain {
   String uniqueId = "";
-  BaseModelAssistantByViewModelForDomain baseModelAssistantForDomain;
+  BaseModelAssistantByViewModelForDomain baseModelAssistantByViewModelForDomain;
 
   BaseModelLocalDatabase toBaseModelLocalDatabase();
   BaseModelNetworkDatabase toBaseModelNetworkDatabase();
