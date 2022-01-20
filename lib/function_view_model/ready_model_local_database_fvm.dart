@@ -7,9 +7,10 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
@@ -39,7 +40,7 @@ class ReadyModelLocalDatabaseFVM
     var response = await getListModelFromLocalDatabaseThereIsParameterDataSource
         .getListModelFromLocalDatabaseThereIsParameterDataSource(
          baseTypeParameter
-      );
+    );
     if(response.isSuccessResponse) {
       baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(true);
@@ -61,7 +62,7 @@ class ReadyModelLocalDatabaseFVM
     if(response.isSuccessResponse) {
       baseViewModel.setModelDomain(
           response.getData.toBaseModelDomain(),
-          EnumBaseModelDomainObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter
+          EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
       );
       return Response.success(true);
     } else {
@@ -78,7 +79,7 @@ class ReadyModelLocalDatabaseFVM
     var response = await insertModelToLocalDatabaseThereIsParameterDataSource
         .insertModelToLocalDatabaseThereIsParameterDataSource(
         baseViewModel
-            .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.insertModelToLocalDatabaseThereIsParameter)
+            .getModelDomain(EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter)
             .toBaseModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
@@ -88,6 +89,21 @@ class ReadyModelLocalDatabaseFVM
     }
   }
 
+  static Future<Response<bool, BaseException>> insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+      BaseModelDomain baseModelDomain,
+      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
+      ) async
+  {
+    var response = await insertModelToLocalDatabaseThereIsParameterDataSource
+        .insertModelToLocalDatabaseThereIsParameterDataSource(
+        baseModelDomain.toBaseModelLocalDatabase()
+    );
+    if (response.isSuccessResponse) {
+      return Response.success(true);
+    } else {
+      return Response.exception(response.getException);
+    }
+  }
 
  static Future<Response<bool, BaseException>> updateModelToLocalDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
@@ -97,9 +113,25 @@ class ReadyModelLocalDatabaseFVM
     var response = await updateModelToLocalDatabaseThereIsParameterDataSource
         .updateModelToLocalDatabaseThereIsParameterDataSource(
         baseViewModel
-            .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.updateModelToLocalDatabaseThereIsParameter)
+            .getModelDomain(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter)
             .toBaseModelLocalDatabase()
       );
+    if(response.isSuccessResponse) {
+      return Response.success(true);
+    } else {
+      return Response.exception(response.getException);
+    }
+  }
+
+  static Future<Response<bool, BaseException>> updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+      BaseModelDomain baseModelDomain,
+      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
+      ) async
+  {
+    var response = await updateModelToLocalDatabaseThereIsParameterDataSource
+        .updateModelToLocalDatabaseThereIsParameterDataSource(
+        baseModelDomain.toBaseModelLocalDatabase()
+    );
     if(response.isSuccessResponse) {
       return Response.success(true);
     } else {
@@ -115,7 +147,7 @@ class ReadyModelLocalDatabaseFVM
     var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource
         .deleteModelToLocalDatabaseThereIsParameterDataSource(
         baseViewModel
-            .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.deleteModelToLocalDatabaseThereIsParameter)
+            .getModelDomain(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter)
             .toBaseModelLocalDatabase()
     );
     if(response.isSuccessResponse) {
@@ -124,4 +156,21 @@ class ReadyModelLocalDatabaseFVM
       return Response.exception(response.getException);
     }
   }
+
+  static Future<Response<bool, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+      BaseModelDomain baseModelDomain,
+      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
+      ) async
+  {
+    var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource
+        .deleteModelToLocalDatabaseThereIsParameterDataSource(
+        baseModelDomain.toBaseModelLocalDatabase()
+    );
+    if(response.isSuccessResponse) {
+      return Response.success(true);
+    } else {
+      return Response.exception(response.getException);
+    }
+  }
+
 }

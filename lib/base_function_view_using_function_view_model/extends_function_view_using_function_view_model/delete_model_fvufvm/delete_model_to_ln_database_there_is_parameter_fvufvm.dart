@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_function_view_using_functi
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_ln_database_there_is_parameter_fvm.dart';
 
@@ -25,18 +25,18 @@ class DeleteModelToLNDatabaseThereIsParameterFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel.deleteModelToNetworkDatabaseThereIsParameter);
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainObjectOperationViewModel.deleteModelToLocalDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter);
   }
 
   @override
   void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, BaseModelDomain object) {
     beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(baseViewModel,
         object,
-        EnumBaseModelDomainObjectOperationViewModel.deleteModelToNetworkDatabaseThereIsParameter);
+        EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter);
     beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(baseViewModel,
         object,
-        EnumBaseModelDomainObjectOperationViewModel.deleteModelToLocalDatabaseThereIsParameter);
+        EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter);
   }
 
 }

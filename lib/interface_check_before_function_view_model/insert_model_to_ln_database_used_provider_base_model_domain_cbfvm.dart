@@ -1,0 +1,7 @@
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/insert_model_to_ln_database_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_model_domain_cbfvm.dart';
+
+abstract class InsertModelToLNDatabaseUsedProviderBaseModelDomainCBFVM<T extends BaseModelDomain>
+    implements InsertModelToLNDatabaseCBFVM,ProviderBaseModelDomainCBFVM<T> {
+}

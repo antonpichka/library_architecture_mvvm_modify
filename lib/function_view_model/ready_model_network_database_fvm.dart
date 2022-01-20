@@ -7,9 +7,10 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 /* USING TO VIEW_MODEL CLASSES */
@@ -57,7 +58,7 @@ class ReadyModelNetworkDatabaseFVM
       if(response.isSuccessResponse) {
         baseViewModel.setModelDomain(
             response.getData.toBaseModelDomain(),
-            EnumBaseModelDomainObjectOperationViewModel.getModelFromNetworkDatabaseThereIsParameter
+            EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
         );
         return Response.success(true);
       } else {
@@ -73,7 +74,7 @@ class ReadyModelNetworkDatabaseFVM
       var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
           .insertModelToNetworkDatabaseThereIsParameterDataSource(
           baseViewModel
-              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.insertModelToNetworkDatabaseThereIsParameter)
+              .getModelDomain(EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter)
               .toBaseModelNetworkDatabase()
       );
       if (response.isSuccessResponse) {
@@ -83,6 +84,22 @@ class ReadyModelNetworkDatabaseFVM
       }
   }
 
+   static Future<Response<bool, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+       BaseModelDomain baseModelDomain,
+       InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
+       ) async
+   {
+     var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
+         .insertModelToNetworkDatabaseThereIsParameterDataSource(
+         baseModelDomain.toBaseModelNetworkDatabase()
+     );
+     if (response.isSuccessResponse) {
+       return Response.success(true);
+     } else {
+       return Response.exception(response.getException);
+     }
+   }
+
   static Future<Response<bool, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
@@ -91,7 +108,7 @@ class ReadyModelNetworkDatabaseFVM
       var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
           .updateModelToNetworkDatabaseThereIsParameterDataSource(
           baseViewModel
-              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.updateModelToNetworkDatabaseThereIsParameter)
+              .getModelDomain(EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter)
               .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {
@@ -101,6 +118,22 @@ class ReadyModelNetworkDatabaseFVM
       }
   }
 
+   static Future<Response<bool, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+       BaseModelDomain baseModelDomain,
+       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
+       ) async
+   {
+     var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
+         .updateModelToNetworkDatabaseThereIsParameterDataSource(
+         baseModelDomain.toBaseModelNetworkDatabase()
+     );
+     if(response.isSuccessResponse) {
+       return Response.success(true);
+     } else {
+       return Response.exception(response.getException);
+     }
+   }
+
   static Future<Response<bool, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
@@ -109,7 +142,7 @@ class ReadyModelNetworkDatabaseFVM
       var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource
           .deleteModelToNetworkDatabaseThereIsParameterDataSource(
           baseViewModel
-              .getModelDomain(EnumBaseModelDomainObjectOperationViewModel.deleteModelToNetworkDatabaseThereIsParameter)
+              .getModelDomain(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter)
               .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {
@@ -118,4 +151,20 @@ class ReadyModelNetworkDatabaseFVM
         return Response.exception(response.getException);
       }
   }
+
+ static Future<Response<bool, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+     BaseModelDomain baseModelDomain,
+     DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
+     ) async
+ {
+   var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource
+       .deleteModelToNetworkDatabaseThereIsParameterDataSource(
+       baseModelDomain.toBaseModelNetworkDatabase()
+   );
+   if(response.isSuccessResponse) {
+     return Response.success(true);
+   } else {
+     return Response.exception(response.getException);
+   }
+ }
 }

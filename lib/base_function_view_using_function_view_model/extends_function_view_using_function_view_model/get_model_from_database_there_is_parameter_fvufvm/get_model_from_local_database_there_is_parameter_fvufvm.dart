@@ -6,8 +6,8 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_vm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm.dart';
 
@@ -29,7 +29,7 @@ class GetModelFromLocalDatabaseThereIsParameterFVUFVM
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
     baseViewModel.notifyStreamModelDomain(
-        EnumBaseModelDomainObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter
+        EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
     );
   }
 
@@ -37,7 +37,7 @@ class GetModelFromLocalDatabaseThereIsParameterFVUFVM
   void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, BaseTypeParameter object) {
     baseViewModel.setBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
         object,
-        EnumBaseTypeParameterObjectOperationViewModel.getModelFromLocalDatabaseThereIsParameter
+        EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter
     );
   }
 }

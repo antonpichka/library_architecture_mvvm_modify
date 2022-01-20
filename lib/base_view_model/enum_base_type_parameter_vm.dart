@@ -1,4 +1,4 @@
-enum EnumBaseTypeParameterObjectOperationViewModel {
+enum EnumBaseTypeParameterVM {
   getModelFromLocalDatabaseThereIsParameter,
   getModelFromNetworkDatabaseThereIsParameter,
   getListModelFromLocalDatabaseThereIsParameter,

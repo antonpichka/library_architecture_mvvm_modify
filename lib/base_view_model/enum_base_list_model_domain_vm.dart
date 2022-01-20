@@ -1,4 +1,4 @@
-enum EnumBaseListModelDomainObjectOperationViewModel {
+enum EnumBaseListModelDomainVM {
   getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
   getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
 

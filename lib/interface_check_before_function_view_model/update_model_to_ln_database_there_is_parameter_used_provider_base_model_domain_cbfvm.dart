@@ -1,0 +1,7 @@
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_model_domain_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/update_model_to_ln_database_there_is_parameter_cbfvm.dart';
+
+abstract class UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T extends BaseModelDomain>
+    implements UpdateModelToLNDatabaseThereIsParameterCBFVM,ProviderBaseModelDomainCBFVM<T> {
+}

@@ -6,8 +6,8 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_object_operation_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_iterator_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_type_parameter_vm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/function_view_model.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_ln_database_fvm.dart';
 
@@ -27,18 +27,18 @@ class IteratorForListModelLNDatabaseFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamListModelDomain(
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter);
-    baseViewModel.notifyStreamListModelDomain(
-        EnumBaseListModelDomainObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter);
+    baseViewModel.notifyStreamList(
+        EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter);
+    baseViewModel.notifyStreamList(
+        EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter);
   }
 
   @override
   void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, EnumTypeParameter object) {
     baseViewModel.setEnumTypeParameterForGetListLNDatabase(object,
-        EnumTypeParameterObjectOperationViewModel.getListModelFromLocalDatabaseThereIsParameter);
+        EnumTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter);
     baseViewModel.setEnumTypeParameterForGetListLNDatabase(object,
-        EnumTypeParameterObjectOperationViewModel.getListModelFromNetworkDatabaseThereIsParameter);
+        EnumTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter);
   }
 
 }

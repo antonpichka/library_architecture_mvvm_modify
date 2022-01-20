@@ -1,0 +1,8 @@
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_model_domain_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/push_notification_to_zoned_schedule_there_is_parameter_cbfvm.dart';
+
+abstract class PushNotificationToZonedScheduleThereIsParameterUsedProviderBaseModelDomainCBFVM<T extends BaseModelDomain>
+    implements PushNotificationToZonedScheduleThereIsParameterCBFVM, ProviderBaseModelDomainCBFVM<T>
+{
+}

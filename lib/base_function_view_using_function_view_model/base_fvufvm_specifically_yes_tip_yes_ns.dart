@@ -45,7 +45,7 @@ import 'package:library_architecture_mvvm_modify/base_function_view_using_functi
 import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/update_model_fvufvm/update_model_to_network_database_there_is_parameter_fvufvm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_object_operation_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
 
 abstract class BaseFVUFVMSpecificallyYesTIPYesNS<T,Y>
     extends BaseFVUFVMSpecificallyNoTIPYesNS<T>
@@ -335,7 +335,7 @@ abstract class BaseFVUFVMSpecificallyYesTIPYesNS<T,Y>
   void beforeCodeIsCheckTypeBaseModelDomainAndAlsoUsedFunctionSetModelDomain(
       BaseViewModel baseViewModel,
       BaseModelDomain baseModelDomain,
-      EnumBaseModelDomainObjectOperationViewModel operation,
+      EnumBaseModelDomainVM operation,
      )
   {
     if(baseViewModel.getTypeBaseModelDomain != baseModelDomain.runtimeType) {

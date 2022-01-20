@@ -1,4 +1,4 @@
-enum EnumBaseModelDomainObjectOperationViewModel {
+enum EnumBaseModelDomainVM {
   insertModelToLocalDatabaseForOneEntryThereIsParameter,
   getModelFromLocalDatabaseForOneEntry,
 
