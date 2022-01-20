@@ -25,8 +25,8 @@ class DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForL
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter);
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter);
   }
 
   @override

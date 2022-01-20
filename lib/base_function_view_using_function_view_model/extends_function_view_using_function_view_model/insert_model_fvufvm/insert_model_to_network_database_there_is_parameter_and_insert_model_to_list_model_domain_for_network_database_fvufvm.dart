@@ -25,7 +25,7 @@ class InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomai
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter);
   }
 
   @override

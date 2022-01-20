@@ -25,7 +25,7 @@ class GetModelFromLocalDatabaseForOneEntryFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(
+    baseViewModel.notifyStreamModel(
       EnumBaseModelDomainVM.getModelFromLocalDatabaseForOneEntry
     );
   }

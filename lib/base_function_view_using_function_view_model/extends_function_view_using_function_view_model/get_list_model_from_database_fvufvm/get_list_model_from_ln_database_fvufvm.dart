@@ -27,11 +27,11 @@ class GetListModelFromLNDatabaseFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamList(
+    baseViewModel.notifyStreamListModel(
         EnumBaseListModelDomainVM
             .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
     );
-    baseViewModel.notifyStreamList(
+    baseViewModel.notifyStreamListModel(
         EnumBaseListModelDomainVM
             .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
     );

@@ -342,7 +342,7 @@ abstract class BaseFVUFVMSpecificallyYesTIPYesNS<T,Y>
       throw Exception("viewModel type baseModelDomain | not equals | type baseModelDomain. ViewModelType: ${baseViewModel.runtimeType}");
     }
 
-    baseViewModel.setModelDomain(
+    baseViewModel.setModel(
         baseModelDomain,
         operation
     );

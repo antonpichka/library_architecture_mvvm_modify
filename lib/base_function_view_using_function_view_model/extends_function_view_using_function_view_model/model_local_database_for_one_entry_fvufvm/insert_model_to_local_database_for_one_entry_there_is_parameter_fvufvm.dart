@@ -25,7 +25,7 @@ class InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(
+    baseViewModel.notifyStreamModel(
       EnumBaseModelDomainVM.insertModelToLocalDatabaseForOneEntryThereIsParameter
     );
   }

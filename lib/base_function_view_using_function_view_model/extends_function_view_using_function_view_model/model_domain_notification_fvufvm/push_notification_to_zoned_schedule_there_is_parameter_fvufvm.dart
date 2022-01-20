@@ -25,7 +25,7 @@ class PushNotificationToZonedScheduleThereIsParameterFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.pushNotificationToZonedScheduleThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.pushNotificationToZonedScheduleThereIsParameter);
   }
 
   @override

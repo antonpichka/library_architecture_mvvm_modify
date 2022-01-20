@@ -25,8 +25,8 @@ class UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForL
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter);
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter);
   }
 
   @override

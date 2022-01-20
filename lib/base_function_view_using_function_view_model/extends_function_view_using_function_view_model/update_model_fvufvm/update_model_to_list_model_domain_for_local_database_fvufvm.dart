@@ -25,7 +25,7 @@ class UpdateModelToListModelDomainForLocalDatabaseFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter);
   }
 
   @override

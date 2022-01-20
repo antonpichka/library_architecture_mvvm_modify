@@ -56,7 +56,7 @@ class ReadyModelNetworkDatabaseFVM
       var response = await getModelFromNetworkDatabaseThereIsParameterDataSource
           .getModelFromNetworkDatabaseThereIsParameterDataSource(baseTypeParameter);
       if(response.isSuccessResponse) {
-        baseViewModel.setModelDomain(
+        baseViewModel.setModel(
             response.getData.toBaseModelDomain(),
             EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
         );
@@ -74,7 +74,7 @@ class ReadyModelNetworkDatabaseFVM
       var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
           .insertModelToNetworkDatabaseThereIsParameterDataSource(
           baseViewModel
-              .getModelDomain(EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter)
+              .getModel(EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter)
               .toBaseModelNetworkDatabase()
       );
       if (response.isSuccessResponse) {
@@ -108,7 +108,7 @@ class ReadyModelNetworkDatabaseFVM
       var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
           .updateModelToNetworkDatabaseThereIsParameterDataSource(
           baseViewModel
-              .getModelDomain(EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter)
+              .getModel(EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter)
               .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {
@@ -142,7 +142,7 @@ class ReadyModelNetworkDatabaseFVM
       var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource
           .deleteModelToNetworkDatabaseThereIsParameterDataSource(
           baseViewModel
-              .getModelDomain(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter)
+              .getModel(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter)
               .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {

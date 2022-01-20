@@ -78,7 +78,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       EnumBaseModelDomainVM enumBaseModelDomainObjectOperationViewModel)
   {
       var response = baseListModelDomain
-          .insertModelToListModelDomain(baseViewModel.getModelDomain(enumBaseModelDomainObjectOperationViewModel)
+          .insertModelToListModelDomain(baseViewModel.getModel(enumBaseModelDomainObjectOperationViewModel)
       );
       if(response.isSuccessResponse) {
         return Response.success(response.getData);
@@ -93,7 +93,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       EnumBaseModelDomainVM enumBaseModelDomainObjectOperationViewModel)
   {
       var response = baseListModelDomain
-          .updateModelToListModelDomain(baseViewModel.getModelDomain(enumBaseModelDomainObjectOperationViewModel)
+          .updateModelToListModelDomain(baseViewModel.getModel(enumBaseModelDomainObjectOperationViewModel)
       );
       if(response.isSuccessResponse) {
         return Response.success(response.getData);
@@ -108,7 +108,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       EnumBaseModelDomainVM enumBaseModelDomainObjectOperationViewModel)
   {
       var response = baseListModelDomain
-          .deleteModelToListModelDomain(baseViewModel.getModelDomain(enumBaseModelDomainObjectOperationViewModel)
+          .deleteModelToListModelDomain(baseViewModel.getModel(enumBaseModelDomainObjectOperationViewModel)
       );
       if(response.isSuccessResponse) {
         return Response.success(response.getData);

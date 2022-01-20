@@ -28,7 +28,7 @@ class GetListModelFromNetworkDatabaseThereIsParameterFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamList(
+    baseViewModel.notifyStreamListModel(
         EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
     );
   }

@@ -60,7 +60,7 @@ class ReadyModelLocalDatabaseFVM
         baseTypeParameter
     );
     if(response.isSuccessResponse) {
-      baseViewModel.setModelDomain(
+      baseViewModel.setModel(
           response.getData.toBaseModelDomain(),
           EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
       );
@@ -79,7 +79,7 @@ class ReadyModelLocalDatabaseFVM
     var response = await insertModelToLocalDatabaseThereIsParameterDataSource
         .insertModelToLocalDatabaseThereIsParameterDataSource(
         baseViewModel
-            .getModelDomain(EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter)
+            .getModel(EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter)
             .toBaseModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
@@ -113,7 +113,7 @@ class ReadyModelLocalDatabaseFVM
     var response = await updateModelToLocalDatabaseThereIsParameterDataSource
         .updateModelToLocalDatabaseThereIsParameterDataSource(
         baseViewModel
-            .getModelDomain(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter)
+            .getModel(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter)
             .toBaseModelLocalDatabase()
       );
     if(response.isSuccessResponse) {
@@ -147,7 +147,7 @@ class ReadyModelLocalDatabaseFVM
     var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource
         .deleteModelToLocalDatabaseThereIsParameterDataSource(
         baseViewModel
-            .getModelDomain(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter)
+            .getModel(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter)
             .toBaseModelLocalDatabase()
     );
     if(response.isSuccessResponse) {

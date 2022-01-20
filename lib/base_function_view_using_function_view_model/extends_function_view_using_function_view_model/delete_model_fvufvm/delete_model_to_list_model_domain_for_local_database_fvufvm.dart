@@ -14,7 +14,7 @@ class DeleteModelToListModelDomainForLocalDatabaseFVUFVM
 {
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter);
   }
 
   @override

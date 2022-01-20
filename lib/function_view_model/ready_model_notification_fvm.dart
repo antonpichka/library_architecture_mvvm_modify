@@ -17,7 +17,7 @@ class ReadyModelNotificationFVM
       ModelNotificationDataSource notificationModelDataSource) async
   {
       var object = baseViewModel
-          .getModelDomain(EnumBaseModelDomainVM.pushNotificationToZonedScheduleThereIsParameter);
+          .getModel(EnumBaseModelDomainVM.pushNotificationToZonedScheduleThereIsParameter);
       Response<bool, LocalException> response = Response.exception(
           LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
       );
@@ -59,7 +59,7 @@ class ReadyModelNotificationFVM
       BaseViewModel baseViewModel,
       ModelNotificationDataSource notificationModelDataSource) async
   {
-    var object = baseViewModel.getModelDomain(
+    var object = baseViewModel.getModel(
         EnumBaseModelDomainVM.pushNotificationToShowThereIsParameter);
       Response<bool, LocalException> response = Response.exception(
           LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
@@ -104,7 +104,7 @@ class ReadyModelNotificationFVM
   {
       var response = await notificationModelDataSource
           .cancelNotificationThereIsParameterDataSource(
-          baseViewModel.getModelDomain(
+          baseViewModel.getModel(
               EnumBaseModelDomainVM.cancelNotificationThereIsParameter
           )
        );

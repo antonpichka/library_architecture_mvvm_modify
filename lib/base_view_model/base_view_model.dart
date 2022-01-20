@@ -1074,23 +1074,23 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   /* Start Methods Model */
 
-  T getModelDomain(EnumBaseModelDomainVM operation) {
+  T getModel(EnumBaseModelDomainVM operation) {
     return _getMapEnumBaseModelDomainVMAndBaseModelDomain[operation];
   }
 
-  void setModelDomain(T newModel,EnumBaseModelDomainVM operation) {
+  void setModel(T newModel,EnumBaseModelDomainVM operation) {
     _getMapEnumBaseModelDomainVMAndBaseModelDomain[operation] = newModel;
   }
 
-  Future<T> getFutureModelDomain(EnumBaseModelDomainVM operation) async {
+  Future<T> getFutureModel(EnumBaseModelDomainVM operation) async {
     return _getMapEnumBaseModelDomainVMAndBaseModelDomain[operation];
   }
 
-  Stream<T> getStreamModelDomain(EnumBaseModelDomainVM operation) {
+  Stream<T> getStreamModel(EnumBaseModelDomainVM operation) {
     return _getMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation].stream;
   }
   
-  void notifyStreamModelDomain(EnumBaseModelDomainVM operation) {
+  void notifyStreamModel(EnumBaseModelDomainVM operation) {
     _getMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation].add(
         _getMapEnumBaseModelDomainVMAndBaseModelDomain[operation]
     );
@@ -1099,31 +1099,31 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   
   /* Start Methods ListModel */
 
-  @protected
-  BaseListModelDomain getBaseListModelDomain(EnumBaseListModelDomainVM operation) {
-    return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation];
-  }
-  
-  List<T> getList(EnumBaseListModelDomainVM operation)  {
+  List<T> getListModel(EnumBaseListModelDomainVM operation)  {
     return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain;
   }
 
-  void setList(List<T> newModel,EnumBaseListModelDomainVM operation) {
+  void setListModel(List<T> newModel,EnumBaseListModelDomainVM operation) {
     _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].setListModelDomain = newModel;
   }
 
-  Future<List<T>> getFutureList(EnumBaseListModelDomainVM operation) async {
+  Future<List<T>> getFutureListModel(EnumBaseListModelDomainVM operation) async {
     return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain;
   }
   
-  Stream<List<T>> getStreamList(EnumBaseListModelDomainVM operation) {
+  Stream<List<T>> getStreamListModel(EnumBaseListModelDomainVM operation) {
     return _getMapEnumBaseListModelDomainVMAndStreamControllerForList[operation].stream;
   }
 
-  void notifyStreamList(EnumBaseListModelDomainVM operation) {
+  void notifyStreamListModel(EnumBaseListModelDomainVM operation) {
     _getMapEnumBaseListModelDomainVMAndStreamControllerForList[operation].add(
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain
     );
+  }
+
+  @protected
+  Y getBaseListModelDomain(EnumBaseListModelDomainVM operation) {
+    return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation];
   }
 
   /* End Methods ListModel */
@@ -1161,9 +1161,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
 
   Map<EnumBaseModelDomainVM,T> _creationAndGetMapEnumBaseModelDomainVMAndBaseModelDomain() {
-    if(_listEnumBaseModelDomainVM.isEmpty) {
-      return {};
-    }
+    _checkListToIsEmptyAndInsertEnumBaseModelDomainVMIfListEmpty(_listEnumBaseModelDomainVM);
+
     Map<EnumBaseModelDomainVM,T> map = {};
     for(EnumBaseModelDomainVM viewModelOperation in _listEnumBaseModelDomainVM) {
       map[viewModelOperation] = _initCreatorBaseModelDomain();
@@ -1172,9 +1171,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
 
   Map<EnumBaseModelDomainVM,StreamController<T>> _creationAndGetMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain() {
-    if(_listEnumBaseModelDomainVM.isEmpty) {
-      return {};
-    }
+    _checkListToIsEmptyAndInsertEnumBaseModelDomainVMIfListEmpty(_listEnumBaseModelDomainVM);
+
     Map<EnumBaseModelDomainVM,StreamController<T>> map = {};
     for(EnumBaseModelDomainVM viewModelOperation in _listEnumBaseModelDomainVM) {
       map[viewModelOperation] = StreamController<T>.broadcast();
@@ -1183,9 +1181,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
   
   Map<EnumBaseListModelDomainVM,Y> _creationAndGetMapEnumBaseListModelDomainVMAndBaseListModelDomain() {
-    if(_listEnumBaseListModelDomainVM.isEmpty) {
-      return {};
-    }
+    _checkListToIsEmptyAndInsertEnumBaseListModelDomainVMIfListEmpty(_listEnumBaseListModelDomainVM);
+
     Map<EnumBaseListModelDomainVM,Y> map = {};
     for(EnumBaseListModelDomainVM viewModelOperation in _listEnumBaseListModelDomainVM) {
       map[viewModelOperation] = _initCreatorBaseListModelDomain();
@@ -1194,14 +1191,33 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
 
   Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _creationAndGetMapEnumBaseListModelDomainVMAndStreamControllerForList() {
-    if(_listEnumBaseListModelDomainVM.isEmpty) {
-      return {};
-    }
+    _checkListToIsEmptyAndInsertEnumBaseListModelDomainVMIfListEmpty(_listEnumBaseListModelDomainVM);
+
     Map<EnumBaseListModelDomainVM,StreamController<List<T>>> map = {};
     for(EnumBaseListModelDomainVM viewModelOperation in _listEnumBaseListModelDomainVM) {
       map[viewModelOperation] = StreamController<List<T>>.broadcast();
     }
     return map;
+  }
+
+  void _checkListToIsEmptyAndInsertEnumBaseModelDomainVMIfListEmpty(
+      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM)
+  {
+    if(listEnumBaseModelDomainVM.isEmpty) {
+      for(EnumBaseModelDomainVM enumBaseListModelDomainVM in EnumBaseModelDomainVM.values) {
+        listEnumBaseModelDomainVM.add(enumBaseListModelDomainVM);
+      }
+    }
+  }
+
+  void _checkListToIsEmptyAndInsertEnumBaseListModelDomainVMIfListEmpty(
+      List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM)
+  {
+    if(listEnumBaseListModelDomainVM.isEmpty) {
+      for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in EnumBaseListModelDomainVM.values) {
+        listEnumBaseListModelDomainVM.add(enumBaseListModelDomainVM);
+      }
+    }
   }
 
   void _dispose(Map<Enum,StreamController> map) {

@@ -14,7 +14,7 @@ class DeleteModelToListModelDomainForNetworkDatabaseFVUFVM
 {
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamModelDomain(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter);
+    baseViewModel.notifyStreamModel(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter);
   }
 
   @override

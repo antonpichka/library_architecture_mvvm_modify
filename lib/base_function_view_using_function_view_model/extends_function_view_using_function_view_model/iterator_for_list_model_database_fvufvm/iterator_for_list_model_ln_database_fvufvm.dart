@@ -27,9 +27,9 @@ class IteratorForListModelLNDatabaseFVUFVM
 
   @override
   void notifyStream(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel) {
-    baseViewModel.notifyStreamList(
+    baseViewModel.notifyStreamListModel(
         EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter);
-    baseViewModel.notifyStreamList(
+    baseViewModel.notifyStreamListModel(
         EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter);
   }
 

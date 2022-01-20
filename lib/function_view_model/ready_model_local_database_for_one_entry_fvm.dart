@@ -16,7 +16,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
  {
    var response = await modelDataSource.getModelFromLocalDatabaseForOneEntryDataSource();
    if (response.isSuccessResponse) {
-     baseViewModel.setModelDomain(
+     baseViewModel.setModel(
          response.getData.toBaseModelDomain(),
          EnumBaseModelDomainVM.getModelFromLocalDatabaseForOneEntry
      );
@@ -33,7 +33,7 @@ class ReadyModelLocalDatabaseForOneEntryFVM
  {
    var response = await modelDataSource
        .insertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(baseViewModel
-         .getModelDomain(EnumBaseModelDomainVM.insertModelToLocalDatabaseForOneEntryThereIsParameter)
+         .getModel(EnumBaseModelDomainVM.insertModelToLocalDatabaseForOneEntryThereIsParameter)
          .toBaseModelLocalDatabase()
       );
    if(response.isSuccessResponse) {
