@@ -1,12 +1,9 @@
-// ignore_for_file: prefer_final_fields
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_single_widget/base_single_widget.dart';
 import 'package:library_architecture_mvvm_modify/custom_widget/empty_list_widget.dart';
-
 
 enum SelectedStreamBuilderWidget {
   SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN,
@@ -53,8 +50,7 @@ class StreamBuilderWidget extends StatelessWidget
         this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN;
-
-
+  
   StreamBuilderWidget.arrayWidgetUseStreamListModelDomain(
       this._baseArrayWidget,
       this._streamListModelDomain,
@@ -62,9 +58,7 @@ class StreamBuilderWidget extends StatelessWidget
         this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN;
-
-
-
+  
   StreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomain(
       this._baseArrayWidget,
       this._streamModelDomain,
@@ -91,8 +85,7 @@ class StreamBuilderWidget extends StatelessWidget
         this._progressIndicator]
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
-
-
+  
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -147,8 +140,7 @@ class StreamBuilderWidget extends StatelessWidget
         }
     );
   }
-
-
+  
   Widget _buildArrayWidgetUseStreamBuilderModelDomain(ThemeData themeData) {
     return StreamBuilder<BaseModelDomain>(
         stream: _streamModelDomain,
@@ -192,7 +184,6 @@ class StreamBuilderWidget extends StatelessWidget
     );
   }
 
-
   Widget _buildArrayWidgetUseStreamBuilderModelDomainAndStreamBuilderListModelDomain(ThemeData themeData) {
     return StreamBuilder<BaseModelDomain>(
         stream: _streamModelDomain,
@@ -226,7 +217,6 @@ class StreamBuilderWidget extends StatelessWidget
         });
   }
 
-
   Widget _buildArrayWidgetUseStreamBuilderListModelDomainAndStreamBuilderModelDomain(ThemeData themeData) {
     return StreamBuilder<List<BaseModelDomain>>(
         stream: _streamListModelDomain,
@@ -259,8 +249,7 @@ class StreamBuilderWidget extends StatelessWidget
               });
         });
   }
-
-
+  
   Widget _buildArrayWidgetUseFutureBuilderListModelDomainAndStreamBuilderModelDomain(ThemeData themeData) {
     return FutureBuilder<List<BaseModelDomain>>(
         future: _futureListModelDomain,
@@ -293,5 +282,4 @@ class StreamBuilderWidget extends StatelessWidget
               });
         });
   }
-
 }
