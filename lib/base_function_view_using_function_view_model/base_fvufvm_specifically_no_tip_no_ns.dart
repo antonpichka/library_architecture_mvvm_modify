@@ -1,16 +1,6 @@
 import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/base_function_view_using_function_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/extends_function_view_using_function_view_model/model_local_database_for_one_entry_fvufvm/delete_model_to_local_database_for_one_entry_fvufvm.dart';
 
 abstract class BaseFVUFVMSpecificallyNoTIPNoNS<T>
     extends BaseFunctionViewUsingFunctionViewModel<T>
 {
-  static final DeleteModelToLocalDatabaseForOneEntryFVUFVM _deleteModelLocalDatabaseForOneEntryFVUFVM = DeleteModelToLocalDatabaseForOneEntryFVUFVM();
-
-  /* Start Method DeleteModelLocalDatabaseForOneEntryFVUFVM */
-
-  static DeleteModelToLocalDatabaseForOneEntryFVUFVM get getDeleteModelLocalDatabaseForOneEntryFVUFVM {
-    return _deleteModelLocalDatabaseForOneEntryFVUFVM;
-  }
-
-  /* End Method DeleteModelLocalDatabaseForOneEntryFVUFVM */
 }
