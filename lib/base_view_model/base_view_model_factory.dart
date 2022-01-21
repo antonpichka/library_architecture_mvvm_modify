@@ -10,19 +10,25 @@ abstract class BaseViewModelFactory<T extends Enum> {
     return throw Exception("No Value ViewModel");
   }
 
-  void dispose() {
+  void dispose(List<BaseViewModel> list) {
     if(setupMap.isEmpty) {
       return;
     }
     setupMap.forEach((key, viewModel) {
       if(viewModel != null) {
         viewModel.dispose();
-        viewModel = null;
       }
     });
-    setupMap.clear();
+    if(list.isEmpty) {
+      return;
+    }
+    for(BaseViewModel viewModel in list) {
+      if(viewModel != null) {
+        viewModel.dispose();
+      }
+    }
   }
-  
+
   @protected
   Map<T,BaseViewModel> get setupMap;
 }
