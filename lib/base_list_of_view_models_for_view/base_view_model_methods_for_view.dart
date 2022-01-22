@@ -9,4 +9,7 @@ abstract class BaseViewModelMethodsForView<T extends BaseViewModel<BaseModelDoma
 
   BaseViewModelMethodsForView(this.viewModel);
 
+  T get getViewModel {
+    return viewModel;
+  }
 }
