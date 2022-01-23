@@ -95,7 +95,7 @@ class FVUFVM {
   static final IteratorForListModelLocalDatabaseFVUFVM _iteratorForListModelLocalDatabaseFVUFVM = IteratorForListModelLocalDatabaseFVUFVM();
   static final IteratorForListModelNetworkDatabaseFVUFVM _iteratorForListModelNetworkDatabaseFVUFVM = IteratorForListModelNetworkDatabaseFVUFVM();
 
-  static final InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM _insertModelLocalDatabaseForOneEntryThereIsParameterFVUFVM = InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM();
+  static final InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM _insertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM = InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM();
 
   static final CancelNotificationThereIsParameterFVUFVM _cancelNotificationThereIsParameterFVUFVM = CancelNotificationThereIsParameterFVUFVM();
   static final PushNotificationToShowThereIsParameterFVUFVM _pushNotificationToShowThereIsParameterFVUFVM = PushNotificationToShowThereIsParameterFVUFVM();
@@ -304,8 +304,8 @@ class FVUFVM {
 
   /* Start Method InsertModelLocalDatabaseForOneEntryThereIsParameterFVUFVM */
 
-  static InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM get getInsertModelLocalDatabaseForOneEntryThereIsParameterFVUFVM {
-    return _insertModelLocalDatabaseForOneEntryThereIsParameterFVUFVM;
+  static InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM get getInsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM {
+    return _insertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM;
   }
 
   /* End Method InsertModelLocalDatabaseForOneEntryThereIsParameterFVUFVM */
