@@ -3,7 +3,11 @@ import 'package:library_architecture_mvvm_modify/base_list_of_view_models_method
 
 abstract class BaseListOfViewModelsMethodsForView<T extends Enum> {
   @protected
+  final BuildContext buildContext;
+  @protected
   Map<T,List<BaseViewModelMethodsForView>> setupMap = {};
+
+  BaseListOfViewModelsMethodsForView(this.buildContext);
 
   void dispose() {
     if(setupMap.isEmpty) {

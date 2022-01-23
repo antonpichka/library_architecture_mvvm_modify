@@ -170,15 +170,11 @@ class StreamBuilderWidget extends StatelessWidget
           if(domainListModel.isEmpty) {
             return _emptyListWidget;
           }
-
-          if(domainListModel.isNotEmpty) {
-            return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
+          return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
                 context,
                 domainListModel
             );
-          }
         }
-
         return _progressIndicator;
       }
     );
@@ -199,19 +195,15 @@ class StreamBuilderWidget extends StatelessWidget
               if(domainListModel.isEmpty) {
                 return _emptyListWidget;
               }
-
-              if(domainListModel.isNotEmpty) {
-                if(modelAsyncSnapshot.hasData) {
-                  BaseModelDomain modelDomain = modelAsyncSnapshot.data;
-                  return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
-                      context,
-                      domainListModel,
-                      modelDomain
-                  );
-                }
+              if(modelAsyncSnapshot.hasData) {
+                BaseModelDomain modelDomain = modelAsyncSnapshot.data;
+                return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
+                    context,
+                    domainListModel,
+                    modelDomain
+                );
               }
             }
-
             return _progressIndicator;
           });
         });
@@ -233,18 +225,15 @@ class StreamBuilderWidget extends StatelessWidget
                     return _emptyListWidget;
                   }
 
-                  if(domainListModel.isNotEmpty) {
-                    if(modelAsyncSnapshot.hasData) {
-                      BaseModelDomain domainModel = modelAsyncSnapshot.data;
-                      return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
-                          context,
-                          domainListModel,
-                          domainModel
-                      );
-                    }
+                  if(modelAsyncSnapshot.hasData) {
+                    BaseModelDomain domainModel = modelAsyncSnapshot.data;
+                    return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
+                        context,
+                        domainListModel,
+                        domainModel
+                    );
                   }
                 }
-
                 return _progressIndicator;
               });
         });
@@ -266,18 +255,15 @@ class StreamBuilderWidget extends StatelessWidget
                     return _emptyListWidget;
                   }
 
-                  if(domainListModel.isNotEmpty) {
-                    if(modelAsyncSnapshot.hasData) {
-                      BaseModelDomain domainModel = modelAsyncSnapshot.data;
-                      return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
-                          context,
-                          domainListModel,
-                          domainModel
-                      );
-                    }
+                  if(modelAsyncSnapshot.hasData) {
+                    BaseModelDomain domainModel = modelAsyncSnapshot.data;
+                    return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
+                        context,
+                        domainListModel,
+                        domainModel
+                    );
                   }
                 }
-
                 return _progressIndicator;
               });
         });
