@@ -11,6 +11,7 @@ abstract class BaseListOfViewModelsMethodsForView<T extends Enum> {
 
   void dispose() {
     if(setupMap.isEmpty) {
+      setupMap = null;
       return;
     }
     setupMap.forEach((key, viewModelMethodsForView) {
@@ -22,6 +23,7 @@ abstract class BaseListOfViewModelsMethodsForView<T extends Enum> {
         }
       }
     });
+    setupMap = null;
   }
 
   @protected

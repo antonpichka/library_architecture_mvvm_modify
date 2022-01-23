@@ -111,10 +111,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       );
 
   void dispose() {
-    _mapEnumBaseModelDomainVMAndBaseModelDomain = null;
-    _mapEnumBaseListModelDomainVMAndBaseListModelDomain = null;
-    _dispose(_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain);
-    _dispose(_mapEnumBaseListModelDomainVMAndStreamControllerForList);
+    _disposeForAnyMap(_mapEnumBaseModelDomainVMAndBaseModelDomain);
+    _disposeForAnyMap(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
+    _disposeForAnyMap(_mapEnumAndBaseIterator);
+    _disposeForMapEnumAndStreamController(_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain);
+    _disposeForMapEnumAndStreamController(_mapEnumBaseListModelDomainVMAndStreamControllerForList);
   }
   
   Type get getTypeBaseModelDomain {
@@ -1220,19 +1221,27 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     }
   }
 
-  void _dispose(Map<Enum,StreamController> map) {
-    if(map.values.isEmpty) {
+  void _disposeForAnyMap(Map map) {
+    if(map != null) {
       map = null;
-    } else {
-      for (StreamController streamController in map.values) {
-        if (streamController != null) {
-          if (!streamController.isClosed) {
-            streamController.close();
+    }
+  }
+
+  void _disposeForMapEnumAndStreamController(Map<Enum,StreamController> map) {
+    if(map != null) {
+      if(map.isEmpty) {
+        map = null;
+      } else {
+        for (StreamController streamController in map.values) {
+          if (streamController != null) {
+            if (!streamController.isClosed) {
+              streamController.close();
+            }
+            streamController = null;
           }
-          streamController = null;
         }
+        map = null;
       }
-      map = null;
     }
   }
 
