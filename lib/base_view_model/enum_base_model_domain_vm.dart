@@ -6,11 +6,13 @@ enum EnumBaseModelDomainVM {
   updateModelToLocalDatabaseThereIsParameter,
   deleteModelToLocalDatabaseThereIsParameter,
   getModelFromLocalDatabaseThereIsParameter,
+  getListModelFromLocalDatabaseThereIsParameter,
 
   insertModelToNetworkDatabaseThereIsParameter,
   updateModelToNetworkDatabaseThereIsParameter,
   deleteModelToNetworkDatabaseThereIsParameter,
   getModelFromNetworkDatabaseThereIsParameter,
+  getListModelFromNetworkDatabaseThereIsParameter,
 
   pushNotificationToZonedScheduleThereIsParameter,
   pushNotificationToShowThereIsParameter,
