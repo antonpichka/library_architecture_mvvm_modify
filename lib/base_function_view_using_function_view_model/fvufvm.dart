@@ -104,7 +104,7 @@ class FVUFVM {
 
   /* Start Method DeleteModelLocalDatabaseForOneEntryFVUFVM */
 
-  static DeleteModelToLocalDatabaseForOneEntryFVUFVM get getDeleteModelLocalDatabaseForOneEntryFVUFVM {
+  static DeleteModelToLocalDatabaseForOneEntryFVUFVM get deleteModelLocalDatabaseForOneEntry {
     return _deleteModelLocalDatabaseForOneEntryFVUFVM;
   }
 
@@ -112,15 +112,15 @@ class FVUFVM {
 
   /* Start Method CallToMethodGetListModelFromLNDatabaseAndUseTheSettersFVUFVM */
 
-  static GetListModelFromLNDatabaseFVUFVM get getListModelFromLNDatabaseFVUFVM {
+  static GetListModelFromLNDatabaseFVUFVM get getListModelFromLNDatabase {
     return _getListModelFromLNDatabaseFVUFVM;
   }
 
-  static GetListModelFromLocalDatabaseFVUFVM get getListModelFromLocalDatabaseFVUFVM {
+  static GetListModelFromLocalDatabaseFVUFVM get getListModelFromLocalDatabase {
     return _getListModelFromLocalDatabaseFVUFVM;
   }
 
-  static GetListModelFromNetworkDatabaseFVUFVM get getListModelFromNetworkDatabaseFVUFVM {
+  static GetListModelFromNetworkDatabaseFVUFVM get getListModelFromNetworkDatabase {
     return _getListModelFromNetworkDatabaseFVUFVM;
   }
 
@@ -128,7 +128,7 @@ class FVUFVM {
 
   /* Start Method CallToMethodGetModelFromLocalDatabaseForOneEntryAndUseTheSettersFVUFVM */
 
-  static GetModelFromLocalDatabaseForOneEntryFVUFVM get getModelFromLocalDatabaseForOneEntryFVUFVM {
+  static GetModelFromLocalDatabaseForOneEntryFVUFVM get getModelFromLocalDatabaseForOneEntry {
     return _getModelFromLocalDatabaseForOneEntryFVUFVM;
   }
 
@@ -136,15 +136,15 @@ class FVUFVM {
 
   /* Start Method CallToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSettersFVUFVM */
 
-  static GetListModelFromLNDatabaseThereIsParameterFVUFVM get getListModelFromLNDatabaseThereIsParameterFVUFVM {
+  static GetListModelFromLNDatabaseThereIsParameterFVUFVM get getListModelFromLNDatabaseThereIsParameter {
     return _getListModelFromLNDatabaseThereIsParameterFVUFVM;
   }
 
-  static GetListModelFromLocalDatabaseThereIsParameterFVUFVM get getListModelFromLocalDatabaseThereIsParameterFVUFVM {
+  static GetListModelFromLocalDatabaseThereIsParameterFVUFVM get getListModelFromLocalDatabaseThereIsParameter {
     return _getListModelFromLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  static GetListModelFromNetworkDatabaseThereIsParameterFVUFVM get getListModelFromNetworkDatabaseThereIsParameterFVUFVM {
+  static GetListModelFromNetworkDatabaseThereIsParameterFVUFVM get getListModelFromNetworkDatabaseThereIsParameter {
     return _getListModelFromNetworkDatabaseThereIsParameterFVUFVM;
   }
 
@@ -152,15 +152,15 @@ class FVUFVM {
 
   /* Start Method CallToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSettersFVUFVM */
 
-  static GetModelFromLNDatabaseThereIsParameterFVUFVM get getModelFromLNDatabaseThereIsParameterFVUFVM {
+  static GetModelFromLNDatabaseThereIsParameterFVUFVM get getModelFromLNDatabaseThereIsParameter {
     return _getModelFromLNDatabaseThereIsParameterFVUFVM;
   }
 
-  static GetModelFromLocalDatabaseThereIsParameterFVUFVM get getModelFromLocalDatabaseThereIsParameterFVUFVM {
+  static GetModelFromLocalDatabaseThereIsParameterFVUFVM get getModelFromLocalDatabaseThereIsParameter {
     return _getModelFromLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  static GetModelFromNetworkDatabaseThereIsParameterFVUFVM get getModelFromNetworkDatabaseThereIsParameterFVUFVM {
+  static GetModelFromNetworkDatabaseThereIsParameterFVUFVM get getModelFromNetworkDatabaseThereIsParameter {
     return _getModelFromNetworkDatabaseThereIsParameterFVUFVM;
   }
 
@@ -168,39 +168,39 @@ class FVUFVM {
 
   /* Start Method InsertModelFVUFVM */
 
-  static InsertModelToListModelDomainForLNDatabaseFVUFVM get getInsertModelToListModelDomainForLNDatabaseFVUFVM {
+  static InsertModelToListModelDomainForLNDatabaseFVUFVM get insertModelToListModelDomainForLNDatabase {
     return _insertModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static InsertModelToListModelDomainForLocalDatabaseFVUFVM get getInsertModelToListModelDomainForLocalDatabaseFVUFVM {
+  static InsertModelToListModelDomainForLocalDatabaseFVUFVM get insertModelToListModelDomainForLocalDatabase {
     return _insertModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static InsertModelToListModelDomainForNetworkDatabaseFVUFVM get getInsertModelToListModelDomainForNetworkDatabaseFVUFVM {
+  static InsertModelToListModelDomainForNetworkDatabaseFVUFVM get insertModelToListModelDomainForNetworkDatabase {
     return _insertModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  static InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM get getInsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM {
+  static InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM get insertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabase {
     return _insertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static InsertModelToLNDatabaseThereIsParameterFVUFVM get getInsertModelToLNDatabaseThereIsParameterFVUFVM {
+  static InsertModelToLNDatabaseThereIsParameterFVUFVM get insertModelToLNDatabaseThereIsParameter {
     return _insertModelToLNDatabaseThereIsParameterFVUFVM;
   }
 
-  static InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM get getInsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM {
+  static InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM get insertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabase {
     return _insertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static InsertModelToLocalDatabaseThereIsParameterFVUFVM get getInsertModelToLocalDatabaseThereIsParameterFVUFVM {
+  static InsertModelToLocalDatabaseThereIsParameterFVUFVM get insertModelToLocalDatabaseThereIsParameter {
     return _insertModelToLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  static InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM get getInsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM {
+  static InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM get insertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabase {
     return _insertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  static InsertModelToNetworkDatabaseThereIsParameterFVUFVM get getInsertModelToNetworkDatabaseThereIsParameterFVUFVM {
+  static InsertModelToNetworkDatabaseThereIsParameterFVUFVM get insertModelToNetworkDatabaseThereIsParameter {
     return _insertModelToNetworkDatabaseThereIsParameterFVUFVM;
   }
 
@@ -208,39 +208,39 @@ class FVUFVM {
 
   /* Start Method UpdateModelFVUFVM */
 
-  static UpdateModelToListModelDomainForLNDatabaseFVUFVM get getUpdateModelToListModelDomainForLNDatabaseFVUFVM {
+  static UpdateModelToListModelDomainForLNDatabaseFVUFVM get updateModelToListModelDomainForLNDatabase {
     return _updateModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static UpdateModelToListModelDomainForLocalDatabaseFVUFVM get getUpdateModelToListModelDomainForLocalDatabaseFVUFVM {
+  static UpdateModelToListModelDomainForLocalDatabaseFVUFVM get updateModelToListModelDomainForLocalDatabase {
     return _updateModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static UpdateModelToListModelDomainForNetworkDatabaseFVUFVM get getUpdateModelToListModelDomainForNetworkDatabaseFVUFVM {
+  static UpdateModelToListModelDomainForNetworkDatabaseFVUFVM get updateModelToListModelDomainForNetworkDatabase {
     return _updateModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  static UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVUFVM get getUpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVUFVM {
+  static UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVUFVM get updateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabase {
     return _updateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static UpdateModelToLNDatabaseThereIsParameterFVUFVM get getUpdateModelToLNDatabaseThereIsParameterFVUFVM {
+  static UpdateModelToLNDatabaseThereIsParameterFVUFVM get updateModelToLNDatabaseThereIsParameter {
     return _updateModelToLNDatabaseThereIsParameterFVUFVM;
   }
 
-  static UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVUFVM get getUpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVUFVM {
+  static UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVUFVM get updateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabase {
     return _updateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static UpdateModelToLocalDatabaseThereIsParameterFVUFVM get getUpdateModelToLocalDatabaseThereIsParameterFVUFVM {
+  static UpdateModelToLocalDatabaseThereIsParameterFVUFVM get updateModelToLocalDatabaseThereIsParameter {
     return _updateModelToLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  static UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVUFVM get getUpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVUFVM {
+  static UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVUFVM get updateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabase {
     return _updateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  static UpdateModelToNetworkDatabaseThereIsParameterFVUFVM get getUpdateModelToNetworkDatabaseThereIsParameterFVUFVM {
+  static UpdateModelToNetworkDatabaseThereIsParameterFVUFVM get updateModelToNetworkDatabaseThereIsParameter {
     return _updateModelToNetworkDatabaseThereIsParameterFVUFVM;
   }
 
@@ -248,39 +248,39 @@ class FVUFVM {
 
   /* Start Method DeleteModelFVUFVM */
 
-  static DeleteModelToListModelDomainForLNDatabaseFVUFVM get getDeleteModelToListModelDomainForLNDatabaseFVUFVM {
+  static DeleteModelToListModelDomainForLNDatabaseFVUFVM get deleteModelToListModelDomainForLNDatabase {
     return _deleteModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static DeleteModelToListModelDomainForLocalDatabaseFVUFVM get getDeleteModelToListModelDomainForLocalDatabaseFVUFVM {
+  static DeleteModelToListModelDomainForLocalDatabaseFVUFVM get deleteModelToListModelDomainForLocalDatabase {
     return _deleteModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static DeleteModelToListModelDomainForNetworkDatabaseFVUFVM get getDeleteModelToListModelDomainForNetworkDatabaseFVUFVM {
+  static DeleteModelToListModelDomainForNetworkDatabaseFVUFVM get deleteModelToListModelDomainForNetworkDatabase {
     return _deleteModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  static DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVUFVM get getDeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVUFVM {
+  static DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVUFVM get deleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabase {
     return _deleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVUFVM;
   }
 
-  static DeleteModelToLNDatabaseThereIsParameterFVUFVM get getDeleteModelToLNDatabaseThereIsParameterFVUFVM {
+  static DeleteModelToLNDatabaseThereIsParameterFVUFVM get deleteModelToLNDatabaseThereIsParameter {
     return _deleteModelToLNDatabaseThereIsParameterFVUFVM;
   }
 
-  static DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVUFVM get getDeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVUFVM {
+  static DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVUFVM get deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabase {
     return _deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVUFVM;
   }
 
-  static DeleteModelToLocalDatabaseThereIsParameterFVUFVM get getDeleteModelToLocalDatabaseThereIsParameterFVUFVM {
+  static DeleteModelToLocalDatabaseThereIsParameterFVUFVM get deleteModelToLocalDatabaseThereIsParameter {
     return _deleteModelToLocalDatabaseThereIsParameterFVUFVM;
   }
 
-  static DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVUFVM get getDeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVUFVM {
+  static DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVUFVM get deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabase {
     return _deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVUFVM;
   }
 
-  static DeleteModelToNetworkDatabaseThereIsParameterFVUFVM get getDeleteModelToNetworkDatabaseThereIsParameterFVUFVM {
+  static DeleteModelToNetworkDatabaseThereIsParameterFVUFVM get deleteModelToNetworkDatabaseThereIsParameter {
     return _deleteModelToNetworkDatabaseThereIsParameterFVUFVM;
   }
 
@@ -288,15 +288,15 @@ class FVUFVM {
 
   /* Start Method IteratorForListModelLNDatabaseFVUFVM */
 
-  static IteratorForListModelLNDatabaseFVUFVM get getIteratorForListModelLNDatabaseFVUFVM {
+  static IteratorForListModelLNDatabaseFVUFVM get iteratorForListModelLNDatabase {
     return _iteratorForListModelLNDatabaseFVUFVM;
   }
 
-  static IteratorForListModelLocalDatabaseFVUFVM get getIteratorForListModelLocalDatabaseFVUFVM {
+  static IteratorForListModelLocalDatabaseFVUFVM get iteratorForListModelLocalDatabase {
     return _iteratorForListModelLocalDatabaseFVUFVM;
   }
 
-  static IteratorForListModelNetworkDatabaseFVUFVM get getIteratorForListModelNetworkDatabaseFVUFVM {
+  static IteratorForListModelNetworkDatabaseFVUFVM get iteratorForListModelNetworkDatabase {
     return _iteratorForListModelNetworkDatabaseFVUFVM;
   }
 
@@ -304,7 +304,7 @@ class FVUFVM {
 
   /* Start Method InsertModelLocalDatabaseForOneEntryThereIsParameterFVUFVM */
 
-  static InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM get getInsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM {
+  static InsertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM get insertModelToLocalDatabaseForOneEntryThereIsParameter {
     return _insertModelToLocalDatabaseForOneEntryThereIsParameterFVUFVM;
   }
 
@@ -312,15 +312,15 @@ class FVUFVM {
 
   /* Start Method ModelDomainNotificationFVUFVM */
 
-  static CancelNotificationThereIsParameterFVUFVM get getCancelNotificationThereIsParameterFVUFVM {
+  static CancelNotificationThereIsParameterFVUFVM get cancelNotificationThereIsParameter {
     return _cancelNotificationThereIsParameterFVUFVM;
   }
 
-  static PushNotificationToShowThereIsParameterFVUFVM get getPushNotificationToShowThereIsParameterFVUFVM {
+  static PushNotificationToShowThereIsParameterFVUFVM get pushNotificationToShowThereIsParameter {
     return _pushNotificationToShowThereIsParameterFVUFVM;
   }
 
-  static PushNotificationToZonedScheduleThereIsParameterFVUFVM get getPushNotificationToZonedScheduleThereIsParameterFVUFVM {
+  static PushNotificationToZonedScheduleThereIsParameterFVUFVM get pushNotificationToZonedScheduleThereIsParameter {
     return _pushNotificationToZonedScheduleThereIsParameterFVUFVM;
   }
 
