@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_list_of_view_models_methods_for_view/base_view_model_methods_for_view.dart';
+import 'package:library_architecture_mvvm_modify/base_list_of_view_models_methods_and_as_well_as_their_call_for_view/base_view_model_methods_and_as_well_as_their_call_for_view.dart';
 
-abstract class BaseListOfViewModelsMethodsForView<T extends Enum> {
+abstract class BaseListOfViewModelsMethodsAndAsWellAsTheirCallForView<T extends Enum> {
   @protected
   final BuildContext buildContext;
   @protected
-  Map<T,List<BaseViewModelMethodsForView>> setupMap = {};
+  Map<T,List<BaseViewModelMethodsAndAsWellAsTheirCallForView>> setupMap = {};
 
-  BaseListOfViewModelsMethodsForView(this.buildContext);
+  BaseListOfViewModelsMethodsAndAsWellAsTheirCallForView(this.buildContext);
 
   void dispose() {
     if(setupMap.isEmpty) {
@@ -17,7 +17,7 @@ abstract class BaseListOfViewModelsMethodsForView<T extends Enum> {
     setupMap.forEach((key, viewModelMethodsForView) {
       if(viewModelMethodsForView != null) {
         if(viewModelMethodsForView.isNotEmpty) {
-          for(BaseViewModelMethodsForView value in viewModelMethodsForView) {
+          for(BaseViewModelMethodsAndAsWellAsTheirCallForView value in viewModelMethodsForView) {
             value.getViewModel.dispose();
           }
         }
@@ -27,7 +27,7 @@ abstract class BaseListOfViewModelsMethodsForView<T extends Enum> {
   }
 
   @protected
-  BaseViewModelMethodsForView getViewModelMethodsForView(T keyToViewModel,int index) {
+  BaseViewModelMethodsAndAsWellAsTheirCallForView getViewModelMethodsForView(T keyToViewModel,int index) {
     if(setupMap.isEmpty) {
       return throw Exception("is Empty Map");
     }
