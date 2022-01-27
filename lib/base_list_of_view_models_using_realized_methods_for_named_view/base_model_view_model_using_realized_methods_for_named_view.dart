@@ -3,11 +3,11 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-abstract class BaseViewModelUsingRealizedMethodsForView<T extends BaseViewModel<BaseModelDomain,BaseListModelDomain<BaseModelDomain>>> {
+abstract class BaseModelViewModelUsingRealizedMethodsForNamedView<T extends BaseViewModel<BaseModelDomain,BaseListModelDomain<BaseModelDomain>>> {
   @protected
   final T viewModel;
 
-  BaseViewModelUsingRealizedMethodsForView(this.viewModel);
+  BaseModelViewModelUsingRealizedMethodsForNamedView(this.viewModel);
 
   T get getViewModel {
     return viewModel;
