@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'package:library_architecture_mvvm_modify/base_list_of_view_models_methods_and_as_well_as_their_call_for_view/base_view_model_methods_and_as_well_as_their_call_for_view.dart';
+import 'package:library_architecture_mvvm_modify/base_list_of_view_models_using_realized_methods_for_view/base_view_model_using_realized_methods_for_view.dart';
 
-abstract class BaseListOfViewModelsMethodsAndAsWellAsTheirCallForView<T extends Enum> {
+abstract class BaseListOfViewModelsUsingRealizedMethodsForView<T extends Enum> {
   @protected
-  final BuildContext buildContext;
-  @protected
-  Map<T,List<BaseViewModelMethodsAndAsWellAsTheirCallForView>> setupMap = {};
+  Map<T,List<BaseViewModelUsingRealizedMethodsForView>> setupMap = {};
 
-  BaseListOfViewModelsMethodsAndAsWellAsTheirCallForView(this.buildContext);
+  BaseListOfViewModelsUsingRealizedMethodsForView();
 
   void dispose() {
+    if(setupMap == null) {
+      return;
+    }
     if(setupMap.isEmpty) {
       setupMap = null;
       return;
@@ -17,7 +18,7 @@ abstract class BaseListOfViewModelsMethodsAndAsWellAsTheirCallForView<T extends 
     setupMap.forEach((key, viewModelMethodsForView) {
       if(viewModelMethodsForView != null) {
         if(viewModelMethodsForView.isNotEmpty) {
-          for(BaseViewModelMethodsAndAsWellAsTheirCallForView value in viewModelMethodsForView) {
+          for(BaseViewModelUsingRealizedMethodsForView value in viewModelMethodsForView) {
             value.getViewModel.dispose();
           }
         }
@@ -27,7 +28,10 @@ abstract class BaseListOfViewModelsMethodsAndAsWellAsTheirCallForView<T extends 
   }
 
   @protected
-  BaseViewModelMethodsAndAsWellAsTheirCallForView getViewModelMethodsForView(T keyToViewModel,int index) {
+  BaseViewModelUsingRealizedMethodsForView getViewModelMethodsForView(T keyToViewModel,int index) {
+    if(setupMap == null) {
+      return throw Exception("setupMap equals null");
+    }
     if(setupMap.isEmpty) {
       return throw Exception("is Empty Map");
     }
