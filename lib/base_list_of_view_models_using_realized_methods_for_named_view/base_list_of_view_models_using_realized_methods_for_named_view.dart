@@ -28,9 +28,9 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
   }
 
   @protected
-  BaseModelViewModelUsingRealizedMethodsForNamedView getViewModelMethodsForView(T keyToViewModel,int index) {
+  BaseModelViewModelUsingRealizedMethodsForNamedView getModelViewModelUsingRealizedMethodsForNamedView(T keyToViewModel,int index) {
     if(setupMap == null) {
-      return throw Exception("setupMap equals null");
+      return throw Exception("setupMap Equals Null");
     }
     if(setupMap.isEmpty) {
       return throw Exception("is Empty Map");
