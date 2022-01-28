@@ -256,7 +256,25 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   }
 
   @protected
-  Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource) {
+  Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantThree(
+      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
+      GetListModelFromLNDatabaseThereIsParameterCBFVM getListModelFromLNDatabaseThereIsParameterCBFVM) async
+  {
+    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseThereIsParameterCBFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterCBFVM();
+    if(response.isSuccessResponse) {
+      return ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+          getListModelFromLocalDatabaseThereIsParameterDataSource,
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameter[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter]);
+    } else {
+      return Response.exception(response.getException);
+    }
+  }
+
+  @protected
+  Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource)
+  {
     return ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
         this,
         getModelFromLocalDatabaseThereIsParameterDataSource,
