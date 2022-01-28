@@ -1,6 +1,7 @@
 enum EnumBaseModelDomainVM {
   insertModelToLocalDatabaseForOneEntryThereIsParameter,
   getModelFromLocalDatabaseForOneEntry,
+  deleteModelToLocalDatabaseForOneEntry,
 
   insertModelToLocalDatabaseThereIsParameter,
   updateModelToLocalDatabaseThereIsParameter,
