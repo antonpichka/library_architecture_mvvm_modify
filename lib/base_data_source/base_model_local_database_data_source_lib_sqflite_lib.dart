@@ -9,7 +9,10 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
+abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
+      T extends BaseModelLocalDatabase,
+      Y extends BaseListModelLocalDatabase<T>>
+{
   @protected
   final String fileDatabase;
   @protected
@@ -38,10 +41,10 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
       );
   
   @protected
-  BaseModelLocalDatabase fromMapToBaseModelLocalDatabase(Map<String, dynamic> map);
+  T fromMapToBaseModelLocalDatabase(Map<String, dynamic> map);
 
   @protected
-  BaseListModelLocalDatabase fromListMapToBaseListModelLocalDatabase(List<Map<String, dynamic>> map);
+  Y fromListMapToBaseListModelLocalDatabase(List<Map<String, dynamic>> map);
 
   @protected
   Future<Database> get getDatabase async {
@@ -54,7 +57,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseInsertModelToLocalDatabaseThereIsParameterDataSource(
-      BaseModelLocalDatabase model,
+      T model,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
@@ -76,7 +79,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseInsertListModelToLocalDatabaseThereIsParameterDataSource(
-      BaseListModelLocalDatabase listModel,
+      Y listModel,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
@@ -110,7 +113,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameterDataSource(
-      BaseModelLocalDatabase model,
+      T model,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -136,7 +139,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseUpdateListModelToLocalDatabaseThereIsParameterDataSource(
-      BaseListModelLocalDatabase listModel,
+      Y listModel,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -174,7 +177,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
-      BaseModelLocalDatabase model,
+      T model,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -199,7 +202,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
 
   @protected
   Future<Response<int,LocalException>> baseDeleteListModelToLocalDatabaseThereIsParameterDataSource(
-      BaseListModelLocalDatabase listModel,
+      Y listModel,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -235,7 +238,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<BaseModelLocalDatabase,LocalException>> baseGetModelFromLocalDatabaseThereIsParameterDataSource(
+  Future<Response<T,LocalException>> baseGetModelFromLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -258,7 +261,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<BaseListModelLocalDatabase,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
+  Future<Response<Y,LocalException>> baseGetListModelFromLocalDatabaseDataSource(
       String table
       ) async {
     try {
@@ -274,7 +277,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib {
   }
 
   @protected
-  Future<Response<BaseListModelLocalDatabase,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
+  Future<Response<Y,LocalException>> baseGetListModelFromLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,

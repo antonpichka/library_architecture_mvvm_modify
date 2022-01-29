@@ -36,7 +36,7 @@ enum EnumTypeForSP {
   listString
 }
 
-abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
+abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib<T extends BaseModelLocalDatabase>
 {
   static SharedPreferences _sharedPreferences;
 
@@ -94,7 +94,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
   }
 
   @protected
-  Future<Response<BaseModelLocalDatabase,LocalException>> baseGetModelFromLocalDatabaseForOneEntryDataSource() async {
+  Future<Response<T,LocalException>> baseGetModelFromLocalDatabaseForOneEntryDataSource() async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};
