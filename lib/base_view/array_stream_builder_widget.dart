@@ -192,12 +192,15 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain,
                  builder: (BuildContext context, AsyncSnapshot<List<Y>> listModelAsyncSnapshot)
           {
             if(listModelAsyncSnapshot.hasData) {
+              print("List hasData");
               List<Y> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
 
               if(domainListModel.isEmpty) {
+                print("List isEmpty");
                 return _emptyListWidget;
               }
               if(modelAsyncSnapshot.hasData) {
+                print("Model hasData");
                 T modelDomain = modelAsyncSnapshot.data;
                 return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                     context,
@@ -206,6 +209,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain,
                 );
               }
             }
+            print("Indicator");
             return _progressIndicator;
           });
         });
