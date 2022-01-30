@@ -17,7 +17,7 @@ enum SelectedStreamBuilderWidget {
 }
 
 //ignore: must_be_immutable
-class StreamBuilderWidget<T extends BaseModelDomain,
+class ArrayStreamBuilderWidget<T extends BaseModelDomain,
                           Y extends BaseModelDomain> extends StatelessWidget
 {
   // all constructor (interface_function_view_model)
@@ -33,19 +33,19 @@ class StreamBuilderWidget<T extends BaseModelDomain,
   ProgressIndicator _progressIndicator = const CircularProgressIndicator();
   StatelessWidget _emptyListWidget = const EmptyListWidget("Empty Text");
 
-  StreamBuilderWidget.singleWidgetUseStreamModelDomain(
+  ArrayStreamBuilderWidget.singleWidgetUseStreamModelDomain(
       this._baseSingleWidget,
       this._streamModelDomain
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN;
 
-  StreamBuilderWidget.singleWidgetUseStreamListModelDomain(
+  ArrayStreamBuilderWidget.singleWidgetUseStreamListModelDomain(
       this._baseSingleWidget,
       this._streamListModelDomain
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN;
 
-  StreamBuilderWidget.arrayWidgetUseStreamModelDomain(
+  ArrayStreamBuilderWidget.arrayWidgetUseStreamModelDomain(
       this._baseArrayWidget,
       this._streamModelDomain,
       [this._emptyListWidget,
@@ -53,7 +53,7 @@ class StreamBuilderWidget<T extends BaseModelDomain,
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN;
   
-  StreamBuilderWidget.arrayWidgetUseStreamListModelDomain(
+  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomain(
       this._baseArrayWidget,
       this._streamListModelDomain,
       [this._emptyListWidget,
@@ -61,7 +61,7 @@ class StreamBuilderWidget<T extends BaseModelDomain,
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN;
   
-  StreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomain(
+  ArrayStreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomain(
       this._baseArrayWidget,
       this._streamModelDomain,
       this._streamListModelDomain,
@@ -70,7 +70,7 @@ class StreamBuilderWidget<T extends BaseModelDomain,
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
 
-  StreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
+  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
       this._baseArrayWidget,
       this._streamListModelDomain,
       this._streamModelDomain,
@@ -79,7 +79,7 @@ class StreamBuilderWidget<T extends BaseModelDomain,
       ) :
         _enumSelectedStreamWidget = SelectedStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
 
-  StreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomain(
+  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomain(
       this._baseArrayWidget,
       this._futureListModelDomain,
       this._streamModelDomain,
@@ -138,7 +138,7 @@ class StreamBuilderWidget<T extends BaseModelDomain,
                 domainListModel
             );
           }
-          return Container();
+          return const SizedBox(height: 0.0,width: 0.0,);
         }
     );
   }
