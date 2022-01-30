@@ -10,8 +10,8 @@ class EmptyListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
-    return Text(_text,
-            style: themeData.textTheme.caption.copyWith(fontSize: 24.0)
+    return SizedBox(width: 0.0, height: 0.0,
+        child: Text(_text, style: themeData.textTheme.caption.copyWith(fontSize: 24.0))
     );
   }
 
