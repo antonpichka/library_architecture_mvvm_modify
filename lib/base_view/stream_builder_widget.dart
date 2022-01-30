@@ -1,5 +1,6 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_single_widget/base_single_widget.dart';
@@ -16,16 +17,16 @@ enum SelectedStreamBuilderWidget {
 }
 
 //ignore: must_be_immutable
-class StreamBuilderWidget extends StatelessWidget
+class StreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidget
 {
   // all constructor (interface_function_view_model)
   final SelectedStreamBuilderWidget _enumSelectedStreamWidget;
 
   BaseSingleWidget _baseSingleWidget;
   BaseArrayWidget _baseArrayWidget;
-  Stream<List<BaseModelDomain>> _streamListModelDomain;
-  Future<List<BaseModelDomain>> _futureListModelDomain;
-  Stream<BaseModelDomain> _streamModelDomain;
+  Stream<List<T>> _streamListModelDomain;
+  Future<List<T>> _futureListModelDomain;
+  Stream<T> _streamModelDomain;
 
   // all constructor (not interface_function_view_model)
   ProgressIndicator _progressIndicator = const CircularProgressIndicator();
@@ -109,12 +110,12 @@ class StreamBuilderWidget extends StatelessWidget
   }
 
   Widget _buildSingleWidgetUseStreamBuilderModelDomain(ThemeData themeData) {
-    return StreamBuilder<BaseModelDomain>(
+    return StreamBuilder<T>(
         stream: _streamModelDomain,
-        builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> asyncSnapshot)
+        builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
-            BaseModelDomain domainModel = asyncSnapshot.data;
+            T domainModel = asyncSnapshot.data;
 
             return _baseSingleWidget.buildSingleWidgetUsingTheModelDomain(context, domainModel);
           }
@@ -124,12 +125,12 @@ class StreamBuilderWidget extends StatelessWidget
   }
 
   Widget _buildSingleWidgetUseStreamBuilderListModelDomain(ThemeData themeData) {
-    return StreamBuilder<List<BaseModelDomain>>(
+    return StreamBuilder<List<T>>(
         stream: _streamListModelDomain,
-        builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> asyncSnapshot)
+        builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
-            List<BaseModelDomain> domainListModel = asyncSnapshot.data ?? List.empty();
+            List<T> domainListModel = asyncSnapshot.data ?? List.empty();
 
             return _baseSingleWidget.buildSingleWidgetUsingAList(
                 context,
@@ -142,12 +143,12 @@ class StreamBuilderWidget extends StatelessWidget
   }
   
   Widget _buildArrayWidgetUseStreamBuilderModelDomain(ThemeData themeData) {
-    return StreamBuilder<BaseModelDomain>(
+    return StreamBuilder<T>(
         stream: _streamModelDomain,
-        builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> asyncSnapshot)
+        builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
         {
           if(asyncSnapshot.hasData) {
-            BaseModelDomain domainModel = asyncSnapshot.data;
+            T domainModel = asyncSnapshot.data;
 
             return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemWidget(
                   context,
@@ -160,12 +161,12 @@ class StreamBuilderWidget extends StatelessWidget
   }
 
   Widget _buildArrayWidgetUseStreamBuilderListModelDomain(ThemeData themeData) {
-    return StreamBuilder<List<BaseModelDomain>>(
+    return StreamBuilder<List<T>>(
       stream: _streamListModelDomain,
-      builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> asyncSnapshot)
+      builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
       {
         if(asyncSnapshot.hasData) {
-          List<BaseModelDomain> domainListModel = asyncSnapshot.data ?? List.empty();
+          List<T> domainListModel = asyncSnapshot.data ?? List.empty();
 
           if(domainListModel.isEmpty) {
             return _emptyListWidget;
@@ -181,22 +182,22 @@ class StreamBuilderWidget extends StatelessWidget
   }
 
   Widget _buildArrayWidgetUseStreamBuilderModelDomainAndStreamBuilderListModelDomain(ThemeData themeData) {
-    return StreamBuilder<BaseModelDomain>(
+    return StreamBuilder<T>(
         stream: _streamModelDomain,
-        builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> modelAsyncSnapshot)
+        builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshot)
         {
-          return StreamBuilder<List<BaseModelDomain>>(
+          return StreamBuilder<List<T>>(
                  stream: _streamListModelDomain,
-                 builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> listModelAsyncSnapshot)
+                 builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
           {
             if(listModelAsyncSnapshot.hasData) {
-              List<BaseModelDomain> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
+              List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
 
               if(domainListModel.isEmpty) {
                 return _emptyListWidget;
               }
               if(modelAsyncSnapshot.hasData) {
-                BaseModelDomain modelDomain = modelAsyncSnapshot.data;
+                T modelDomain = modelAsyncSnapshot.data;
                 return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                     context,
                     domainListModel,
@@ -210,23 +211,23 @@ class StreamBuilderWidget extends StatelessWidget
   }
 
   Widget _buildArrayWidgetUseStreamBuilderListModelDomainAndStreamBuilderModelDomain(ThemeData themeData) {
-    return StreamBuilder<List<BaseModelDomain>>(
+    return StreamBuilder<List<T>>(
         stream: _streamListModelDomain,
-        builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> listModelAsyncSnapshot)
+        builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
         {
-          return StreamBuilder<BaseModelDomain>(
+          return StreamBuilder<T>(
               stream: _streamModelDomain,
-              builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> modelAsyncSnapshot)
+              builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
-                  List<BaseModelDomain> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
+                  List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
 
                   if(domainListModel.isEmpty) {
                     return _emptyListWidget;
                   }
 
                   if(modelAsyncSnapshot.hasData) {
-                    BaseModelDomain domainModel = modelAsyncSnapshot.data;
+                    T domainModel = modelAsyncSnapshot.data;
                     return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                         context,
                         domainListModel,
@@ -240,23 +241,23 @@ class StreamBuilderWidget extends StatelessWidget
   }
   
   Widget _buildArrayWidgetUseFutureBuilderListModelDomainAndStreamBuilderModelDomain(ThemeData themeData) {
-    return FutureBuilder<List<BaseModelDomain>>(
+    return FutureBuilder<List<T>>(
         future: _futureListModelDomain,
-        builder: (BuildContext context, AsyncSnapshot<List<BaseModelDomain>> listModelAsyncSnapshot)
+        builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
         {
-          return StreamBuilder<BaseModelDomain>(
+          return StreamBuilder<T>(
               stream: _streamModelDomain,
-              builder: (BuildContext context, AsyncSnapshot<BaseModelDomain> modelAsyncSnapshot)
+              builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
-                  List<BaseModelDomain> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
+                  List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
 
                   if(domainListModel.isEmpty) {
                     return _emptyListWidget;
                   }
 
                   if(modelAsyncSnapshot.hasData) {
-                    BaseModelDomain domainModel = modelAsyncSnapshot.data;
+                    T domainModel = modelAsyncSnapshot.data;
                     return _baseArrayWidget.buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
                         context,
                         domainListModel,

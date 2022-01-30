@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-abstract class BaseArrayWidget
+abstract class BaseArrayWidget<T extends BaseModelDomain>
 {
   Widget buildArrayWidgetAndBelongsBaseItemWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
-      List<BaseModelDomain> list);
+      List<T> list);
 
   Widget buildArrayWidgetAndBelongsBaseItemWidget(
       BuildContext context,
-      BaseModelDomain model);
+      T model);
 
   Widget buildArrayWidgetAndBelongsBaseItemTwoModelWidgetOrBaseItemAndArrayWidget(
       BuildContext context,
-      List<BaseModelDomain> list,
-      BaseModelDomain model);
+      List<T> list,
+      T model);
 }
