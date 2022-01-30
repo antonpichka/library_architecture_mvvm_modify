@@ -120,7 +120,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain,
 
             return _baseSingleWidget.buildSingleWidgetUsingTheModelDomain(context, domainModel);
           }
-          return Container();
+          return const SizedBox(height: 0.0,width: 0.0,);
         }
     );
   }
@@ -210,7 +210,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain,
               }
             }
             print("Indicator");
-            return _progressIndicator;
+            return const CircularProgressIndicator();
           });
         });
   }
