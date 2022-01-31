@@ -33,27 +33,27 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
   BaseArrayWidgetUsingListModelDomainAndModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndModelDomain;
   BaseArrayWidgetUsingListModelDomainAndListModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndListModelDomain;
 
-  Stream<List<T>> _streamListModelDomain;
-  Future<List<T>> _futureListModelDomain;
+  Stream<List<T>> _streamListModelDomainT;
+  Future<List<T>> _futureListModelDomainT;
 
-  Stream<Y> _streamModelDomainVariantTwo;
-  Future<Y> _futureModelDomainVariantTwo;
+  Stream<Y> _streamModelDomainY;
+  Future<Y> _futureModelDomainY;
 
-  Stream<List<Y>> _streamListModelDomainVariantTwo;
-  Future<List<Y>> _futureListModelDomainVariantTwo;
+  Stream<List<Y>> _streamListModelDomainY;
+  Future<List<Y>> _futureListModelDomainY;
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
-      this._streamModelDomainVariantTwo,
-      this._streamListModelDomain,
+      this._streamModelDomainY,
+      this._streamListModelDomainT,
       this._emptyListWidget,
       this._progressIndicator) :
         _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
-      this._streamListModelDomain,
-      this._streamModelDomainVariantTwo,
+      this._streamListModelDomainT,
+      this._streamModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -61,8 +61,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureModelDomainAndFutureListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
-      this._futureModelDomainVariantTwo,
-      this._futureListModelDomain,
+      this._futureModelDomainY,
+      this._futureListModelDomainT,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -70,8 +70,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
-      this._futureListModelDomain,
-      this._futureModelDomainVariantTwo,
+      this._futureListModelDomainT,
+      this._futureModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -79,8 +79,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
-      this._futureListModelDomain,
-      this._streamModelDomainVariantTwo,
+      this._futureListModelDomainT,
+      this._streamModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -88,8 +88,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
-      this._streamListModelDomain,
-      this._futureModelDomainVariantTwo,
+      this._streamListModelDomainT,
+      this._futureModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -97,8 +97,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
-      this._futureListModelDomain,
-      this._futureListModelDomainVariantTwo,
+      this._futureListModelDomainT,
+      this._futureListModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -106,8 +106,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
-      this._streamListModelDomain,
-      this._streamListModelDomainVariantTwo,
+      this._streamListModelDomainT,
+      this._streamListModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -115,8 +115,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
-      this._futureListModelDomain,
-      this._streamListModelDomainVariantTwo,
+      this._futureListModelDomainT,
+      this._streamListModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -124,8 +124,8 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
-      this._streamListModelDomain,
-      this._futureListModelDomainVariantTwo,
+      this._streamListModelDomainT,
+      this._futureListModelDomainY,
       this._emptyListWidget,
       this._progressIndicator
       ) :
@@ -161,23 +161,20 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseStreamModelDomainAndStreamListModelDomain() {
     return StreamBuilder<Y>(
-        stream: _streamModelDomainVariantTwo,
+        stream: _streamModelDomainY,
         builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
         {
           return StreamBuilder<List<T>>(
-                 stream: _streamListModelDomain,
+                 stream: _streamListModelDomainT,
                  builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
           {
             if(listModelAsyncSnapshot.hasData) {
-              print("List hasData");
               List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
 
               if(domainListModel.isEmpty) {
-                print("List isEmpty");
                 return _emptyListWidget;
               }
               if(modelAsyncSnapshot.hasData) {
-                print("Model hasData");
                 Y modelDomain = modelAsyncSnapshot.data;
                 return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
                     context,
@@ -186,7 +183,6 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                 );
               }
             }
-            print("Indicator");
             return _progressIndicator;
           });
         });
@@ -194,11 +190,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseStreamListModelDomainAndStreamModelDomain() {
     return StreamBuilder<List<T>>(
-        stream: _streamListModelDomain,
+        stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
         {
           return StreamBuilder<Y>(
-              stream: _streamModelDomainVariantTwo,
+              stream: _streamModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
@@ -223,23 +219,20 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseFutureModelDomainAndFutureListModelDomain() {
     return FutureBuilder<Y>(
-        future: _futureModelDomainVariantTwo,
+        future: _futureModelDomainY,
         builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
         {
           return FutureBuilder<List<T>>(
-              future: _futureListModelDomain,
+              future: _futureListModelDomainT,
               builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
-                  print("List hasData");
                   List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
 
                   if(domainListModel.isEmpty) {
-                    print("List isEmpty");
                     return _emptyListWidget;
                   }
                   if(modelAsyncSnapshot.hasData) {
-                    print("Model hasData");
                     Y modelDomain = modelAsyncSnapshot.data;
                     return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
                         context,
@@ -248,7 +241,6 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                     );
                   }
                 }
-                print("Indicator");
                 return _progressIndicator;
               });
         });
@@ -256,11 +248,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
   
   Widget _buildArrayWidgetUseFutureListModelDomainAndFutureModelDomain() {
     return FutureBuilder<List<T>>(
-        future: _futureListModelDomain,
+        future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
         {
           return FutureBuilder<Y>(
-              future: _futureModelDomainVariantTwo,
+              future: _futureModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
@@ -285,11 +277,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
   
   Widget _buildArrayWidgetUseFutureListModelDomainAndStreamModelDomain() {
     return FutureBuilder<List<T>>(
-        future: _futureListModelDomain,
+        future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
         {
           return StreamBuilder<Y>(
-              stream: _streamModelDomainVariantTwo,
+              stream: _streamModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
@@ -314,11 +306,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseStreamListModelDomainAndFutureModelDomain() {
     return StreamBuilder<List<T>>(
-        stream: _streamListModelDomain,
+        stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
         {
           return FutureBuilder<Y>(
-              future: _futureModelDomainVariantTwo,
+              future: _futureModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
               {
                 if(listModelAsyncSnapshot.hasData) {
@@ -343,11 +335,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseFutureListModelDomainAndFutureListModelDomain() {
     return FutureBuilder<List<T>>(
-        future: _futureListModelDomain,
+        future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
         {
           return FutureBuilder<List<Y>>(
-              future: _futureListModelDomainVariantTwo,
+              future: _futureListModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<List<Y>> listModelAsyncSnapshotY)
               {
                 if(listModelAsyncSnapshotT.hasData && listModelAsyncSnapshotY.hasData) {
@@ -370,11 +362,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseStreamListModelDomainAndStreamListModelDomain() {
     return StreamBuilder<List<T>>(
-        stream: _streamListModelDomain,
+        stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
         {
           return StreamBuilder<List<Y>>(
-              stream: _streamListModelDomainVariantTwo,
+              stream: _streamListModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<List<Y>> listModelAsyncSnapshotY)
               {
                 if(listModelAsyncSnapshotT.hasData && listModelAsyncSnapshotY.hasData) {
@@ -397,11 +389,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseFutureListModelDomainAndStreamListModelDomain() {
     return FutureBuilder<List<T>>(
-        future: _futureListModelDomain,
+        future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
         {
           return StreamBuilder<List<Y>>(
-              stream: _streamListModelDomainVariantTwo,
+              stream: _streamListModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<List<Y>> listModelAsyncSnapshotY)
               {
                 if(listModelAsyncSnapshotT.hasData && listModelAsyncSnapshotY.hasData) {
@@ -424,11 +416,11 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 
   Widget _buildArrayWidgetUseStreamListModelDomainAndFutureListModelDomain() {
     return StreamBuilder<List<T>>(
-        stream: _streamListModelDomain,
+        stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
         {
           return FutureBuilder<List<Y>>(
-              future: _futureListModelDomainVariantTwo,
+              future: _futureListModelDomainY,
               builder: (BuildContext context, AsyncSnapshot<List<Y>> listModelAsyncSnapshotY)
               {
                 if(listModelAsyncSnapshotT.hasData && listModelAsyncSnapshotY.hasData) {
