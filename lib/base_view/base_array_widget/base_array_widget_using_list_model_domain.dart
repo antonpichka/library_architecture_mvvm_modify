@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_view/base_item_widget/base
 
 abstract class BaseArrayWidgetUsingListModelDomain<T extends BaseModelDomain> {
   @protected
-  final BaseItemWidgetUsingModelDomain baseItemWidgetUsingModelDomain;
+  BaseItemWidgetUsingModelDomain baseItemWidgetUsingModelDomain;
 
   BaseArrayWidgetUsingListModelDomain(this.baseItemWidgetUsingModelDomain);
   
