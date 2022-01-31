@@ -44,7 +44,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
   Map<String,TypeForSP> toMap();
 
   @protected
-  BaseModelLocalDatabase fromMapToBaseModelLocalDatabase(Map<String, dynamic> map);
+  T fromMapToBaseModelLocalDatabase(Map<String, dynamic> map);
 
   @protected
   Future<SharedPreferences> get sharedPreferences async {
@@ -57,7 +57,7 @@ abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib
 
   @protected
   Future<Response<bool,LocalException>> baseInsertModelToLocalDatabaseForOneEntryThereIsParameterDataSource(
-      BaseModelLocalDatabase localModel) async
+      T localModel) async
   {
     try {
       final sP = await sharedPreferences;
