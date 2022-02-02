@@ -140,10 +140,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   @protected
   Future<Response<int,LocalException>> baseUpdateListModelToLocalDatabaseThereIsParameterDataSource(
       Y listModel,
-      BaseTypeParameter baseTypeParameter,
       String table,
-      String columnForWhere,
-      [String columnForWhereOperationMark = '= ?']
+      String columnForUniqueId,
       ) async
   {
     try {
@@ -162,8 +160,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
         var resultUpdate = await db.update(
           table,
           model.toMap(),
-          where: columnForWhere + columnForWhereOperationMark,
-          whereArgs: [baseTypeParameter.getParameter],
+          where: columnForUniqueId + '= ?',
+          whereArgs: [model.localUniqueId],
         );
         if(resultUpdate > 0) {
           result++;
@@ -177,7 +175,6 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
 
   @protected
   Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
-      T model,
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -185,9 +182,6 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       ) async
   {
     try {
-      if(model == null) {
-        return throw Exception("BaseModelLocalDatabase null");
-      }
       final db = await getDatabase;
       var result = await db.delete(
         table,
@@ -203,10 +197,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   @protected
   Future<Response<int,LocalException>> baseDeleteListModelToLocalDatabaseThereIsParameterDataSource(
       Y listModel,
-      BaseTypeParameter baseTypeParameter,
       String table,
-      String columnForWhere,
-      [String columnForWhereOperationMark = '= ?']
+      String columnForUniqueId,
       ) async
   {
     try {
@@ -224,8 +216,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
         }
         var resultDelete = await db.delete(
           table,
-          where: columnForWhere + columnForWhereOperationMark,
-          whereArgs: [baseTypeParameter.getParameter],
+          where: columnForUniqueId + '= ?',
+          whereArgs: [model.localUniqueId],
         );
         if(resultDelete > 0) {
           result++;
