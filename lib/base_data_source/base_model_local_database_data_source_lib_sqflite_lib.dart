@@ -62,15 +62,16 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
     try {
-      if(model == null) {
-        return throw Exception("BaseModelLocalDatabase null");
-      }
       final db = await getDatabase;
-      var result = await db.insert(
+      var resultInsert = await db.insert(
           table,
           model.toMap(),
           conflictAlgorithm: conflictAlgorithm
       );
+      var result = 0;
+      if(resultInsert > 0) {
+        result++;
+      }
       return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -84,18 +85,12 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
     try {
-      if(listModel == null) {
-        return throw Exception("BaseListModelLocalDatabase null");
-      }
       if(listModel.getListModelLocalDatabase.isEmpty) {
         return throw Exception("List empty");
       }
       final db = await getDatabase;
       int result = 0;
       for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
-        if(model == null) {
-          continue;
-        }
         var resultInsert = await db.insert(
             table,
             model.toMap(),
@@ -121,16 +116,18 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       ) async
   {
     try {
-      if(model == null) {
-        return throw Exception("BaseModelLocalDatabase null");
-      }
       final db = await getDatabase;
-      var result = await db.update(
+
+      var resultUpdate = await db.update(
         table,
         model.toMap(),
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
+      int result = 0;
+      if(resultUpdate > 0) {
+        result++;
+      }
       return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -145,18 +142,13 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       ) async
   {
     try {
-      if(listModel == null) {
-        return throw Exception("BaseListModelLocalDatabase null");
-      }
       if(listModel.getListModelLocalDatabase.isEmpty) {
         return throw Exception("List empty");
       }
       final db = await getDatabase;
+
       int result = 0;
       for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
-        if(model == null) {
-          continue;
-        }
         var resultUpdate = await db.update(
           table,
           model.toMap(),
@@ -183,11 +175,15 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   {
     try {
       final db = await getDatabase;
-      var result = await db.delete(
+      var resultDelete = await db.delete(
         table,
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
+      int result = 0;
+      if(resultDelete > 0) {
+        result++;
+      }
       return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -202,18 +198,12 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       ) async
   {
     try {
-      if(listModel == null) {
-        return throw Exception("BaseListModelLocalDatabase null");
-      }
       if(listModel.getListModelLocalDatabase.isEmpty) {
         return throw Exception("List empty");
       }
       final db = await getDatabase;
       int result = 0;
       for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
-        if(model == null) {
-          continue;
-        }
         var resultDelete = await db.delete(
           table,
           where: columnForUniqueId + '= ?',
