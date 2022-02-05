@@ -4,6 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -86,7 +87,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   {
     try {
       if(listModel.getListModelLocalDatabase.isEmpty) {
-        return throw Exception("List empty");
+        return Response.exception(LocalException(constDeveloper,"List empty for insert"));
       }
       final db = await getDatabase;
       int result = 0;
@@ -100,14 +101,18 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
           result++;
         }
       }
-      return Response.success(result);
+      if(result > 0) {
+        return Response.success(result);
+      } else {
+        return Response.exception(LocalException(constDeveloper,"Zero element insert"));
+      }
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseUpdateModelToLocalDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseUpdateModelOrUpdateModelsToLocalDatabaseThereIsParameterDataSource(
       T model,
       BaseTypeParameter baseTypeParameter,
       String table,
@@ -124,11 +129,11 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
-      int result = 0;
       if(resultUpdate > 0) {
-        result++;
+        return Response.success(resultUpdate);
+      } else {
+        return Response.exception(LocalException(constDeveloper,"Zero element update"));
       }
-      return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
@@ -143,10 +148,9 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   {
     try {
       if(listModel.getListModelLocalDatabase.isEmpty) {
-        return throw Exception("List empty");
+        return Response.exception(LocalException(constDeveloper,"List empty for update"));
       }
       final db = await getDatabase;
-
       int result = 0;
       for (BaseModelLocalDatabase model in listModel.getListModelLocalDatabase) {
         var resultUpdate = await db.update(
@@ -156,17 +160,21 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
           whereArgs: [model.localUniqueId],
         );
         if(resultUpdate > 0) {
-          result++;
+          result = result + resultUpdate;
         }
       }
-      return Response.success(result);
+      if(result > 0) {
+        return Response.success(result);
+      } else {
+        return Response.exception(LocalException(constDeveloper,"Zero element update"));
+      }
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseDeleteModelToLocalDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseDeleteModelOrDeleteModelsToLocalDatabaseThereIsParameterDataSource(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -175,16 +183,16 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   {
     try {
       final db = await getDatabase;
-      var resultDelete = await db.delete(
+      int resultDelete = await db.delete(
         table,
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
-      int result = 0;
       if(resultDelete > 0) {
-        result++;
+        return Response.success(resultDelete);
+      } else {
+        return Response.exception(LocalException(constDeveloper,"Zero element delete"));
       }
-      return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
@@ -199,7 +207,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
   {
     try {
       if(listModel.getListModelLocalDatabase.isEmpty) {
-        return throw Exception("List empty");
+        return Response.exception(LocalException(constDeveloper,"List empty for delete"));
       }
       final db = await getDatabase;
       int result = 0;
@@ -210,10 +218,14 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
           whereArgs: [model.localUniqueId],
         );
         if(resultDelete > 0) {
-          result++;
+          result = result + resultDelete ;
         }
       }
-      return Response.success(result);
+      if(result > 0) {
+        return Response.success(result);
+      } else {
+        return Response.exception(LocalException(constDeveloper,"Zero element delete"));
+      }
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
@@ -237,7 +249,7 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
       if(maps.isNotEmpty) {
         return Response.success(fromMapToBaseModelLocalDatabase(maps[0]));
       } else {
-        return Response.success(fromMapToBaseModelLocalDatabase({}));
+        return Response.exception(LocalException(constDeveloper,"Zero element get"));
       }
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
