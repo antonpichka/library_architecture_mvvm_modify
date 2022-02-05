@@ -283,8 +283,8 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
     }
   }
 
-  @protected
-  Future<Response<int,LocalException>> baseClearAllModelToLocalDatabaseDataSource(String table) async {
+  @visibleForTesting
+  Future<Response<int,LocalException>> clearAllModelToLocalDatabaseDataSource(String table) async {
     try {
       final db = await getDatabase;
       int result = await db.delete(table);
