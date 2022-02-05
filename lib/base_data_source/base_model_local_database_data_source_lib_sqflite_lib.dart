@@ -229,14 +229,16 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
     try {
       final db = await getDatabase;
 
-      final Map<String, dynamic> map = (await db.query(
+      final List<Map<String, dynamic>> maps = await db.query(
           table,
           where: columnForWhere + columnForWhereOperationMark,
           whereArgs: [baseTypeParameter.getParameter]
-      )) as Map<String, dynamic>;
-
-      var model = fromMapToBaseModelLocalDatabase(map);
-      return Response.success(model);
+      );
+      if(maps.isNotEmpty) {
+        return Response.success(fromMapToBaseModelLocalDatabase(maps[0]));
+      } else {
+        return Response.success(fromMapToBaseModelLocalDatabase({}));
+      }
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
@@ -276,6 +278,17 @@ abstract class BaseModelLocalDatabaseDataSourceLibSqfliteLib<
 
       var localListModel = fromListMapToBaseListModelLocalDatabase(maps);
       return Response.success(localListModel);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+
+  @protected
+  Future<Response<int,LocalException>> baseClearAllModelToLocalDatabaseDataSource(String table) async {
+    try {
+      final db = await getDatabase;
+      int result = await db.delete(table);
+      return Response.success(result);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
