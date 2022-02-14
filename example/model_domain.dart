@@ -5,8 +5,8 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_network_d
 class ModelDomain extends BaseModelDomain {
   String name;
 
-  ModelDomain({String uniqueId,this.name}) {
-    this.uniqueId = uniqueId;
+  ModelDomain({String uniqueId,this.name}) : super(uniqueId) {
+    // Yes Assistant
 //  this.baseModelAssistantByViewModelForDomain = /* My Realized */
   }
 
