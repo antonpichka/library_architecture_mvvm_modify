@@ -1,0 +1,8 @@
+import 'package:library_architecture_mvvm_modify/base_model/base_model_assistant_by_view_model_for_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain_using_assistant_by_view_model_for_domain.dart';
+
+abstract class BaseModelDomainExtForNotificationUsingAssistantByViewModelForDomain<T extends BaseModelAssistantByViewModelForDomain>
+    extends BaseModelDomainUsingAssistantByViewModelForDomain<T>
+{
+  BaseModelDomainExtForNotificationUsingAssistantByViewModelForDomain(String uniqueId) : super(uniqueId);
+}
