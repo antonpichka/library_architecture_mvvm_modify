@@ -64,7 +64,17 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
 
   /* Start Using to Classes ReadyListModelDomainForLNDatabaseFVM */
 
-  Response<bool, BaseException> insertModelToListModelDomain(BaseModelDomain model)
+  Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
+  {
+    try {
+      _listModelDomain.addAll(listModel);
+      return Response.success(true);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+  
+  Response<bool, BaseException> insertModelToListModelDomain(T model)
   {
     try {
       _listModelDomain.add(model);
@@ -74,7 +84,26 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
     }
   }
 
-  Response<bool, BaseException> updateModelToListModelDomain(BaseModelDomain model)
+  Response<bool, BaseException> updateListModelToListModelDomain(List<T> listModel)
+  {
+    try {
+      if (_listModelDomain.isEmpty) {
+        return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+      }
+      for (int i = 0; i < _listModelDomain.length; i++) {
+        for(int j = 0; j < listModel.length; j++) {
+          if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
+            _listModelDomain.setAll(i, [listModel[j]]);
+          }
+        }
+      }
+      return Response.success(true);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+
+  Response<bool, BaseException> updateModelToListModelDomain(T model)
   {
     try {
       if (_listModelDomain.isEmpty) {
@@ -92,7 +121,26 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
     }
   }
 
-  Response<bool, BaseException> deleteModelToListModelDomain(BaseModelDomain model)
+  Response<bool, BaseException> deleteListModelToListModelDomain(List<T> listModel)
+  {
+    try {
+      if(_listModelDomain.isEmpty) {
+        return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+      }
+      for(int i = 0; i < _listModelDomain.length; i++) {
+        for(int j = 0; j < listModel.length; j++) {
+          if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
+            _listModelDomain.removeAt(i);
+          }
+        }
+      }
+      return Response.success(true);
+    } catch (e) {
+      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    }
+  }
+
+  Response<bool, BaseException> deleteModelToListModelDomain(T model)
   {
     try {
       if(_listModelDomain.isEmpty) {

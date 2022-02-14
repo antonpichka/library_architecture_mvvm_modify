@@ -35,9 +35,9 @@ class IteratorForListModelLNDatabaseFVUFVM
 
   @override
   void setObject(BaseViewModel<BaseModelDomain, BaseListModelDomain<BaseModelDomain>> baseViewModel, EnumTypeParameter object) {
-    baseViewModel.setEnumTypeParameterForGetListLNDatabase(object,
+    baseViewModel.setEnumTypeParameterForIteratorForListModelLNDatabase(object,
         EnumTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter);
-    baseViewModel.setEnumTypeParameterForGetListLNDatabase(object,
+    baseViewModel.setEnumTypeParameterForIteratorForListModelLNDatabase(object,
         EnumTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter);
   }
 

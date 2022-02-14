@@ -1,0 +1,8 @@
+What exactly are we testing?
+In order:
+1) Model Objects (Example: model domain objects) - unit test
+2) DataSource Objects (Example: model local database or model network database) - integration test or unit test
+3) Repository Objects (Example: model repository, which subsequently call DataSource objects) - integration test or unit test
+4) ViewModel Objects (Example: model view model, which subsequently call Repository object) - integration test or unit test
+5) ListOfViewModelsUsingRealizedMethodsForNamedView (Example: list of view models using realized methods for named view, which subsequently call ViewModel objects) - integration test
+6) View Objects (Example: view classes, which subsequently call ListOfViewModelsUsingRealizedMethodsForView object) - integration test

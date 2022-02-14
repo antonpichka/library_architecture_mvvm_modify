@@ -1,9 +1,0 @@
-What exactly are we testing?
-In order:
-1) Utility Object (Example: algorithms to classes Utility)
-2) Model Objects (Example: model domain objects)
-3) DataSource Objects (Example: model local database or model network database)
-4) Repository Objects (Example: model repository, which subsequently call DataSource objects)
-5) ViewModel Objects (Example: model view model, which subsequently call Repository object)
-6) ListOfViewModelsUsingRealizedMethodsForView (Example: list of view models using realized methods for named view, which subsequently call ViewModel objects) 
-7) View Objects (Example: view classes, which subsequently call ListOfViewModelsUsingRealizedMethodsForView object)

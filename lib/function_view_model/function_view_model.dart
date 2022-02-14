@@ -2,6 +2,15 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_ln_database_there_is_parameter_and_delete_list_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_ln_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_local_database_there_is_parameter_and_delete_list_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_network_database_there_is_parameter_and_delete_list_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_model_fvm/delete_model_to_list_model_domain_for_network_database_fvm.dart';
@@ -14,12 +23,57 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm/get_list_model_from_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_fvm_and_delete_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_fvm_and_delete_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_fvm_and_insert_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_fvm_and_insert_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_fvm_and_update_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_fvm_and_update_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_fvm_and_delete_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_fvm_and_delete_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_fvm_and_insert_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_fvm_and_insert_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_fvm_and_update_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_fvm_and_update_list_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm/get_list_model_from_ln_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm_and_delete_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm_and_delete_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm_and_insert_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm_and_insert_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm_and_update_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_local_database_there_is_parameter_fvm_and_update_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm_and_delete_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm_and_delete_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm_and_insert_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm_and_insert_list_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm_and_update_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_list_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_list_model_from_network_database_there_is_parameter_fvm_and_update_list_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_ln_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm_and_delete_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm_and_delete_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm_and_insert_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm_and_insert_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm_and_update_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_local_database_there_is_parameter_fvm_and_update_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm_and_delete_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm_and_delete_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm_and_insert_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm_and_insert_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm_and_update_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/get_model_from_database_there_is_parameter_fvm_and_insert_or_update_or_delete_list_model_to_database_there_is_parameter_fvm/get_model_from_network_database_there_is_parameter_fvm_and_update_model_to_network_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_ln_database_there_is_parameter_and_insert_list_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_ln_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_local_database_there_is_parameter_and_insert_list_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_network_database_there_is_parameter_and_insert_list_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_list_model_fvm/insert_list_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/insert_model_fvm/insert_model_to_list_model_domain_for_network_database_fvm.dart';
@@ -34,6 +88,15 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/iterator_for_list_model_database_fvm/iterator_for_list_model_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_local_database_for_one_entry_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/model_notification_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_ln_database_there_is_parameter_and_update_list_model_to_list_model_domain_for_ln_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_ln_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_local_database_there_is_parameter_and_update_list_model_to_list_model_domain_for_local_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_local_database_there_is_parameter_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_network_database_there_is_parameter_and_update_list_model_to_list_model_domain_for_network_database_fvm.dart';
+import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_list_model_fvm/update_list_model_to_network_database_there_is_parameter_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/update_model_fvm/update_model_to_list_model_domain_for_network_database_fvm.dart';
@@ -265,6 +328,28 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> insertListModelToLocalDatabaseThereIsParameterFVM(
+      InsertListModelToLocalDatabaseThereIsParameterFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Insert Model FVM
+    var resultNetworkDatabaseOrLocalDatabase = await insertListModel
+        .insertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void insertModelToListModelDomainForLocalDatabaseFVM(
       InsertModelToListModelDomainForLocalDatabaseFVM insertModel,
       Function functionForResultSuccess,
@@ -275,6 +360,28 @@ class FunctionViewModel {
     // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel
         .insertModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void insertListModelToListModelDomainForLocalDatabaseFVM(
+      InsertListModelToListModelDomainForLocalDatabaseFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Insert Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel
+        .insertListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
@@ -309,6 +416,28 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> updateListModelToLocalDatabaseThereIsParameterFVM(
+      UpdateListModelToLocalDatabaseThereIsParameterFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Update Model FVM
+    var resultNetworkDatabaseOrLocalDatabase = await updateListModel
+        .updateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void updateModelToListModelDomainForLocalDatabaseFVM(
       UpdateModelToListModelDomainForLocalDatabaseFVM updateModel,
       Function functionForResultSuccess,
@@ -319,6 +448,28 @@ class FunctionViewModel {
     // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateModel
         .updateModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void updateListModelToListModelDomainForLocalDatabaseFVM(
+      UpdateListModelToListModelDomainForLocalDatabaseFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Update Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel
+        .updateListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
@@ -353,6 +504,28 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> deleteListModelToLocalDatabaseThereIsParameterFVM(
+      DeleteListModelToLocalDatabaseThereIsParameterFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Delete Model FVM
+    var resultNetworkDatabaseOrLocalDatabase = await  deleteListModel
+        .deleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void deleteModelToListModelDomainForLocalDatabaseFVM(
       DeleteModelToListModelDomainForLocalDatabaseFVM deleteModel,
       Function functionForResultSuccess,
@@ -362,6 +535,27 @@ class FunctionViewModel {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel
         .deleteModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void deleteListModelToListModelDomainForLocalDatabaseFVM(
+      DeleteListModelToListModelDomainForLocalDatabaseFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException) {
+    // Delete Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteListModel
+        .deleteListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
@@ -395,6 +589,132 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> getListModelFromLocalDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseThereIsParameterFVM getListModel,
       Function functionForResultSuccess,
@@ -416,6 +736,132 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromLocalDatabaseThereIsParameterFVM getModel,
       Function functionForResultSuccess,
@@ -425,6 +871,132 @@ class FunctionViewModel {
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getModel
         .callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM(
+      GetModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM(
+      GetModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM(
+      GetModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM(
+      GetModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM(
+      GetModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM(
+      GetModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultNetworkDatabaseOrLocalDatabase.getException,
@@ -459,6 +1031,28 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> insertListModelToNetworkDatabaseThereIsParameterFVM(
+      InsertListModelToNetworkDatabaseThereIsParameterFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Insert Model FVM
+    var resultNetworkDatabaseOrLocalDatabase = await insertListModel
+        .insertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void insertModelToListModelDomainForNetworkDatabaseFVM(
       InsertModelToListModelDomainForNetworkDatabaseFVM insertModel,
       Function functionForResultSuccess,
@@ -469,6 +1063,28 @@ class FunctionViewModel {
     // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel
         .insertModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void insertListModelToListModelDomainForNetworkDatabaseFVM(
+      InsertListModelToListModelDomainForNetworkDatabaseFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Insert Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel
+        .insertListModelToListModelDomainForNetworkDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
@@ -503,6 +1119,28 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> updateListModelToNetworkDatabaseThereIsParameterFVM(
+      UpdateListModelToNetworkDatabaseThereIsParameterFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Update Model FVM
+    var resultNetworkDatabaseOrLocalDatabase = await updateListModel
+        .updateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void updateModelToListModelDomainForNetworkDatabaseFVM(
       UpdateModelToListModelDomainForNetworkDatabaseFVM updateModel,
       Function functionForResultSuccess,
@@ -513,6 +1151,28 @@ class FunctionViewModel {
     // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateModel
         .updateModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void updateListModelToListModelDomainForNetworkDatabaseFVM(
+      UpdateListModelToListModelDomainForNetworkDatabaseFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Update Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel
+        .updateListModelToListModelDomainForNetworkDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
@@ -547,6 +1207,28 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> deleteListModelToNetworkDatabaseThereIsParameterFVM(
+      DeleteListModelToNetworkDatabaseThereIsParameterFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Delete Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await deleteListModel
+        .deleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void deleteModelToListModelDomainForNetworkDatabaseFVM(
       DeleteModelToListModelDomainForNetworkDatabaseFVM deleteModel,
       Function functionForResultSuccess,
@@ -568,6 +1250,27 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static void deleteListModelToListModelDomainForNetworkDatabaseFVM(
+      DeleteListModelToListModelDomainForNetworkDatabaseFVM deleteModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Delete Model FVM
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel.deleteListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseFVM getListModel,
       Function functionForResultSuccess,
@@ -576,6 +1279,132 @@ class FunctionViewModel {
       Function(NetworkException) functionForResultNetworkException)
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultNetworkDatabaseOrLocalDatabase.getException,
@@ -609,6 +1438,132 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
+      GetListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM getListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getListModel
+        .getListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
       GetModelFromNetworkDatabaseThereIsParameterFVM getModel,
       Function functionForResultSuccess,
@@ -618,6 +1573,132 @@ class FunctionViewModel {
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getModel
         .callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM(
+      GetModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM(
+      GetModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM(
+      GetModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM(
+      GetModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM(
+      GetModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabaseOrLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM(
+      GetModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM getModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    var resultNetworkDatabaseOrLocalDatabase = await getModel
+        .getModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultNetworkDatabaseOrLocalDatabase.getException,
@@ -661,6 +1742,37 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> insertListModelToLNDatabaseThereIsParameterFVM(
+      InsertListModelToLNDatabaseThereIsParameterFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Insert Model FVM
+    var resultNetworkDatabase = await insertListModel.insertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultLocalDatabase = await insertListModel.insertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void insertModelToListModelDomainForLNDatabaseFVM(
       InsertModelToListModelDomainForLNDatabaseFVM insertModel,
       Function functionForResultSuccess,
@@ -680,6 +1792,37 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabase  = insertModel.insertModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void insertListModelToListModelDomainForLNDatabaseFVM(
+      InsertListModelToListModelDomainForLNDatabaseFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Insert Model FVM
+    var resultListModelDomainForNetworkDatabase = insertListModel.insertListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase  = insertListModel.insertListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabase.getException,
@@ -723,6 +1866,37 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> updateListModelToLNDatabaseThereIsParameterFVM(
+      UpdateListModelToLNDatabaseThereIsParameterFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Update Model FVM
+    var resultNetworkDatabase = await updateListModel.updateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultLocalDatabase = await updateListModel.updateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void updateModelToListModelDomainForLNDatabaseFVM(
       UpdateModelToListModelDomainForLNDatabaseFVM updateModel,
       Function functionForResultSuccess,
@@ -742,6 +1916,37 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabase  = updateModel.updateModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void updateListModelToListModelDomainForLNDatabaseFVM(
+      UpdateListModelToListModelDomainForLNDatabaseFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Update Model FVM
+    var resultListModelDomainForNetworkDatabase = updateListModel.updateListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase  = updateListModel.updateListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabase.getException,
@@ -785,6 +1990,37 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> deleteListModelToLNDatabaseThereIsParameterFVM(
+      DeleteListModelToLNDatabaseThereIsParameterFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Delete Model FVM
+    var resultListModelDomainForNetworkDatabase = await deleteListModel.deleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase  = await deleteListModel.deleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static void deleteModelToListModelDomainForLNDatabaseFVM(
       DeleteModelToListModelDomainForLNDatabaseFVM deleteModel,
       Function functionForResultSuccess,
@@ -804,6 +2040,37 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabase  = deleteModel.deleteModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static void deleteListModelToListModelDomainForLNDatabaseFVM(
+      DeleteListModelToListModelDomainForLNDatabaseFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  {
+    // Delete Model FVM
+    var resultListModelDomainForNetworkDatabase = deleteListModel.deleteListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase  = deleteListModel.deleteListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabase.getException,
@@ -937,6 +2204,37 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> insertListModelToLocalDatabaseThereIsParameterAndInsertListModelToListModelDomainForLocalDatabaseFVM(
+      InsertListModelToLocalDatabaseThereIsParameterAndInsertListModelToListModelDomainForLocalDatabaseFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Insert Model FVM
+    var resultLocalDatabaseOrNetworkDatabase = await insertListModel.insertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel.insertListModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> updateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVM(
       UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVM updateModel,
       Function functionForResultSuccess,
@@ -956,6 +2254,37 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  updateModel.updateModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> updateListModelToLocalDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLocalDatabaseFVM(
+      UpdateListModelToLocalDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLocalDatabaseFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Update Model FVM
+    var resultLocalDatabaseOrNetworkDatabase = await updateListModel.updateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  updateListModel.updateListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
@@ -999,6 +2328,37 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> deleteListModelToLocalDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLocalDatabaseFVM(
+      DeleteListModelToLocalDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLocalDatabaseFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Delete Model FVM
+    var resultLocalDatabaseOrNetworkDatabase = await deleteListModel.deleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  deleteListModel.deleteListModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> insertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVM(
       InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVM insertModel,
       Function functionForResultSuccess,
@@ -1018,6 +2378,37 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel.insertModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> insertListModelToNetworkDatabaseThereIsParameterAndInsertListModelToListModelDomainForNetworkDatabaseFVM(
+      InsertListModelToNetworkDatabaseThereIsParameterAndInsertListModelToListModelDomainForNetworkDatabaseFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Insert Model FVM
+    var resultLocalDatabaseOrNetworkDatabase = await insertListModel.insertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel.insertListModelToListModelDomainForNetworkDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
@@ -1061,6 +2452,37 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> updateListModelToNetworkDatabaseThereIsParameterAndUpdateListModelToListModelDomainForNetworkDatabaseFVM(
+      UpdateListModelToNetworkDatabaseThereIsParameterAndUpdateListModelToListModelDomainForNetworkDatabaseFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Update Model FVM
+    var resultLocalDatabaseOrNetworkDatabase = await updateListModel.updateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel.updateListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVM(
       DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVM deleteModel,
       Function functionForResultSuccess,
@@ -1080,6 +2502,37 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel.deleteModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> deleteListModelToNetworkDatabaseThereIsParameterAndDeleteListModelToListModelDomainForNetworkDatabaseFVM(
+      DeleteListModelToNetworkDatabaseThereIsParameterAndDeleteListModelToListModelDomainForNetworkDatabaseFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Delete Model FVM
+    var resultLocalDatabaseOrNetworkDatabase = await deleteListModel.deleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteListModel.deleteListModelToListModelDomainForNetworkDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
@@ -1143,6 +2596,57 @@ class FunctionViewModel {
     functionForResultSuccess();
   }
 
+  static Future<void> insertListModelToLNDatabaseThereIsParameterAndInsertListModelToListModelDomainForLNDatabaseFVM(
+      InsertListModelToLNDatabaseThereIsParameterAndInsertListModelToListModelDomainForLNDatabaseFVM insertListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Insert Model FVM
+    var resultNetworkDatabase = await insertListModel.insertListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForNetworkDatabase = insertListModel.insertListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultLocalDatabase = await insertListModel.insertListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase = insertListModel.insertListModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
   static Future<void> updateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM(
       UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM updateModel,
       Function functionForResultSuccess,
@@ -1182,6 +2686,57 @@ class FunctionViewModel {
       return;
     }
     var resultListModelDomainForLocalDatabase = updateModel.updateModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
+
+  static Future<void> updateListModelToLNDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLNDatabaseFVM(
+      UpdateListModelToLNDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLNDatabaseFVM updateListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Update Model FVM
+    var resultNetworkDatabase = await updateListModel.updateListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForNetworkDatabase = updateListModel.updateListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultLocalDatabase = await updateListModel.updateListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase = updateListModel.updateListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
       _choiceException(
           resultListModelDomainForLocalDatabase.getException,
@@ -1244,9 +2799,59 @@ class FunctionViewModel {
     }
     functionForResultSuccess();
   }
+
+  static Future<void> deleteListModelToLNDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLNDatabaseFVM(
+      DeleteListModelToLNDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLNDatabaseFVM deleteListModel,
+      Function functionForResultSuccess,
+      Function(DomainException) functionForResultDomainException,
+      Function(LocalException) functionForResultLocalException,
+      Function(NetworkException) functionForResultNetworkException)
+  async {
+    // Delete Model FVM
+    var resultNetworkDatabase = await deleteListModel.deleteListModelToNetworkDatabaseThereIsParameterFVM();
+    if(!resultNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForNetworkDatabase = deleteListModel.deleteListModelToListModelDomainForNetworkDatabaseFVM();
+    if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForNetworkDatabase .getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultLocalDatabase = await deleteListModel.deleteListModelToLocalDatabaseThereIsParameterFVM();
+    if(!resultLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    var resultListModelDomainForLocalDatabase = deleteListModel.deleteListModelToListModelDomainForLocalDatabaseFVM();
+    if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
+      _choiceException(
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultNetworkException
+      );
+      return;
+    }
+    functionForResultSuccess();
+  }
   
   /* OTHER */
-
   static void _choiceException(
       BaseException baseException,
       Function(DomainException) functionForResultDomainException,

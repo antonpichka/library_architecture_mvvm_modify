@@ -1,0 +1,7 @@
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_list_model_domain_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/update_list_model_to_ln_database_cbfvm.dart';
+
+abstract class UpdateListModelToLNDatabaseUsedProviderBaseListModelDomainCBFVM<T extends BaseListModelDomain>
+    implements UpdateListModelToLNDatabaseCBFVM,ProviderBaseListModelDomainCBFVM<T> {
+}
