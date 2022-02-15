@@ -8,7 +8,7 @@ abstract class BaseIterator<T> implements Iterator<T> {
   }
 
   List<T> get getSortedList {
-    List<T> list = List.empty();
+    List<T> list = List.empty(growable: true);
     while(moveNext()) {
       var item = current;
       list.add(item);
