@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.da
 abstract class BaseModelDomainUsingAssistantByViewModelForDomain<T extends BaseModelAssistantByViewModelForDomain>
     extends BaseModelDomain
 {
-  T modelAssistantByViewModelForDomain;
+  final T modelAssistantByViewModelForDomain;
 
-  BaseModelDomainUsingAssistantByViewModelForDomain(String uniqueId) : super(uniqueId);
+  BaseModelDomainUsingAssistantByViewModelForDomain(String uniqueId, this.modelAssistantByViewModelForDomain) : super(uniqueId);
 }

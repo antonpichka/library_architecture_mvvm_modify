@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain_ext_for_notification.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain_for_notification.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/constants.dart';
@@ -21,7 +21,7 @@ class ReadyModelNotificationFVM
       Response<bool, LocalException> response = Response.exception(
           LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
       );
-      if(object is BaseModelDomainExtForNotification) {
+      if(object is BaseModelDomainForNotification) {
         response = await notificationModelDataSource
             .pushNotificationToZonedScheduleThereIsParameterDataSource(
             object.toBaseModelNotification()
@@ -42,9 +42,8 @@ class ReadyModelNotificationFVM
     Response<bool, LocalException> response = Response.exception(
         LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
     );
-    if(object is BaseModelDomainExtForNotification) {
-      response = await notificationModelDataSource
-          .pushNotificationToZonedScheduleThereIsParameterDataSource(
+    if(object is BaseModelDomainForNotification) {
+      response = await notificationModelDataSource.pushNotificationToZonedScheduleThereIsParameterDataSource(
           object.toBaseModelNotification()
       );
     }
@@ -64,7 +63,7 @@ class ReadyModelNotificationFVM
       Response<bool, LocalException> response = Response.exception(
           LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
       );
-      if(object is BaseModelDomainExtForNotification) {
+      if(object is BaseModelDomainForNotification) {
         response = await notificationModelDataSource
             .pushNotificationToShowThereIsParameterDataSource(
             object.toBaseModelNotification()
@@ -85,9 +84,8 @@ class ReadyModelNotificationFVM
     Response<bool, LocalException> response = Response.exception(
         LocalException(constDeveloper,"NoBaseModelDomainExtForNotification")
     );
-    if(object is BaseModelDomainExtForNotification) {
-      response = await notificationModelDataSource
-          .pushNotificationToShowThereIsParameterDataSource(
+    if(object is BaseModelDomainForNotification) {
+      response = await notificationModelDataSource.pushNotificationToShowThereIsParameterDataSource(
           object.toBaseModelNotification()
       );
     }
