@@ -22,7 +22,7 @@ abstract class BaseFVUFVMSpecificallyYesTIPYesNS<T,Y>
       Function(NetworkException) functionForResultNetworkException)
   async {
     setObject(baseViewModel, object);
-    mainMethod(
+    await mainMethod(
         paramMainMethod,
         functionForResultSuccess,
         functionForResultDomainException,
@@ -41,7 +41,7 @@ abstract class BaseFVUFVMSpecificallyYesTIPYesNS<T,Y>
       Function(NetworkException) functionForResultNetworkException)
   async {
     setObject(baseViewModel, object);
-    mainMethod(
+    await mainMethod(
         paramMainMethod,
         functionForResultSuccess,
         functionForResultDomainException,

@@ -19,7 +19,7 @@ abstract class BaseFVUFVMSpecificallyNoTIPYesNS<T>
       Function(LocalException) functionForResultLocalException,
       Function(NetworkException) functionForResultNetworkException)
   async {
-    mainMethod(
+   await mainMethod(
         paramMainMethod,
         functionForResultSuccess,
         functionForResultDomainException,
