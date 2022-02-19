@@ -67,7 +67,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
   Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
   {
     try {
-      var _tempList = List.of(_listModelDomain);
+      var _tempList =  List.generate(_listModelDomain.length,(index) {
+        return _listModelDomain[index];
+      });
       _tempList.addAll(listModel);
       _listModelDomain = _tempList;
       return Response.success(true);
@@ -79,7 +81,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
   Response<bool, BaseException> insertModelToListModelDomain(T model)
   {
     try {
-      var _tempList = List.of(_listModelDomain);
+      var _tempList =  List.generate(_listModelDomain.length,(index) {
+        return _listModelDomain[index];
+      });
       _tempList.add(model);
       _listModelDomain = _tempList;
       return Response.success(true);
@@ -94,7 +98,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList = List.of(_listModelDomain);
+      var _tempList =  List.generate(_listModelDomain.length,(index) {
+        return _listModelDomain[index];
+      });
 
       for (int i = 0; i < _tempList.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
@@ -116,7 +122,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList = List.of(_listModelDomain);
+      var _tempList =  List.generate(_listModelDomain.length,(index) {
+        return _listModelDomain[index];
+      });
 
       for (int i = 0; i < _tempList.length; i++) {
         if (_tempList[i].uniqueId == model.uniqueId) {
@@ -137,7 +145,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList = List.of(_listModelDomain);
+      var _tempList =  List.generate(_listModelDomain.length,(index) {
+        return _listModelDomain[index];
+      });
 
       for(int i = 0; i < _tempList.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
@@ -159,7 +169,11 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList = List.of(_listModelDomain);
+
+      var _tempList = List.generate(_listModelDomain.length,(index) {
+        return _listModelDomain[index];
+      });
+
       for(int i = 0; i < _tempList.length; i++) {
         if(_tempList[i].uniqueId == model.uniqueId) {
           _tempList.removeAt(i);
