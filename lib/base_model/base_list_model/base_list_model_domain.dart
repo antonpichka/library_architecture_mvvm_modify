@@ -67,7 +67,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
   Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
   {
     try {
-      _listModelDomain.addAll(listModel);
+      var _tempList = List.of(_listModelDomain);
+      _tempList.addAll(listModel);
+      _listModelDomain = _tempList;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -77,7 +79,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
   Response<bool, BaseException> insertModelToListModelDomain(T model)
   {
     try {
-      _listModelDomain.add(model);
+      var _tempList = List.of(_listModelDomain);
+      _tempList.add(model);
+      _listModelDomain = _tempList;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -90,13 +94,16 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      for (int i = 0; i < _listModelDomain.length; i++) {
+      var _tempList = List.of(_listModelDomain);
+
+      for (int i = 0; i < _tempList.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
-          if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
-            _listModelDomain.setAll(i, [listModel[j]]);
+          if (_tempList[i].uniqueId == listModel[j].uniqueId) {
+            _tempList.setAll(i, [listModel[j]]);
           }
         }
       }
+      _listModelDomain = _tempList;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -109,9 +116,12 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      for (int i = 0; i < _listModelDomain.length; i++) {
-        if (_listModelDomain[i].uniqueId == model.uniqueId) {
-          _listModelDomain.setAll(i, [model]);
+      var _tempList = List.of(_listModelDomain);
+
+      for (int i = 0; i < _tempList.length; i++) {
+        if (_tempList[i].uniqueId == model.uniqueId) {
+          _tempList.setAll(i, [model]);
+          _listModelDomain = _tempList;
           return Response.success(true);
         }
       }
@@ -127,13 +137,16 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      for(int i = 0; i < _listModelDomain.length; i++) {
+      var _tempList = List.of(_listModelDomain);
+
+      for(int i = 0; i < _tempList.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
-          if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
-            _listModelDomain.removeAt(i);
+          if (_tempList[i].uniqueId == listModel[j].uniqueId) {
+            _tempList.removeAt(i);
           }
         }
       }
+      _listModelDomain = _tempList;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -146,9 +159,11 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      for(int i = 0; i < _listModelDomain.length; i++) {
-        if(_listModelDomain[i].uniqueId == model.uniqueId) {
-          _listModelDomain.removeAt(i);
+      var _tempList = List.of(_listModelDomain);
+      for(int i = 0; i < _tempList.length; i++) {
+        if(_tempList[i].uniqueId == model.uniqueId) {
+          _tempList.removeAt(i);
+          _listModelDomain = _tempList;
           return Response.success(true);
         }
       }
