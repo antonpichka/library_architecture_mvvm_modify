@@ -1,6 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 
 abstract class ProviderBaseListModelDomainCBFVM<T extends BaseListModelDomain> {
-  set setBaseListModelDomain(T baseModel);
-  T get getBaseListModelDomain;
+  set setBaseListModelDomainCBFVM(T baseModel);
 }

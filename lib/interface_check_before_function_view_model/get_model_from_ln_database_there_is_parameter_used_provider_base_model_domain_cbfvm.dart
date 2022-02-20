@@ -1,8 +1,0 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/get_model_from_ln_database_there_is_parameter_cbfvm.dart';
-import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_model_domain_cbfvm.dart';
-
-abstract class GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T extends BaseModelDomain>
-    implements GetModelFromLNDatabaseThereIsParameterCBFVM,ProviderBaseModelDomainCBFVM<T>
-{
-}
