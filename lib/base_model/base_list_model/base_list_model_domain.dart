@@ -14,6 +14,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
 
   BaseListModelLocalDatabase toBaseListModelLocalDatabase();
   BaseListModelNetworkDatabase toBaseListModelNetworkDatabase();
+  BaseListModelDomain cloneObjectForCBFVM();
 
   List<T> get getListModelDomain {
     return _listModelDomain;

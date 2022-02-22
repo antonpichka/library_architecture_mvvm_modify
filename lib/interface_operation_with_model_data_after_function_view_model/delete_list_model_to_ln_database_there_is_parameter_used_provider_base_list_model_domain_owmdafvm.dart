@@ -1,8 +1,8 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/interface_operation_with_model_data_after_function_view_model/provider_base_list_model_domain_owmdafvm.dart';
 
-abstract class DeleteListModelToLNDatabaseUsedProviderBaseListModelDomainOWMDAFVM<T extends BaseListModelDomain>
+abstract class DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<T extends BaseListModelDomain>
     implements ProviderBaseListModelDomainOWMDAFVM<T>
 {
-  void deleteListModelToLNDatabaseOWMDAFVM();
+  void deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(bool isSuccess);
 }
