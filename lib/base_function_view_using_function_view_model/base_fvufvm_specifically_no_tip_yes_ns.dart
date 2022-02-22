@@ -1,6 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/base_function_view_using_function_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
@@ -14,17 +13,15 @@ abstract class BaseFVUFVMSpecificallyNoTIPYesNS<T>
   Future<void> mainMethodAndNotifyStream(
       T paramMainMethod,
       BaseViewModel baseViewModel,
-      Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException)
+      {Function functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException})
   async {
-   await mainMethod(
+    await mainMethod(
         paramMainMethod,
-        functionForResultSuccess,
-        functionForResultDomainException,
-        functionForResultLocalException,
-        functionForResultNetworkException
+        functionForResultSuccess: functionForResultSuccess,
+        functionForResultDomainException: functionForResultDomainException,
+        functionForResultLocalException: functionForResultLocalException,
     );
     notifyStream(baseViewModel);
   }

@@ -1,6 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/base_fvufvm_specifically_yes_tip_yes_ns.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
@@ -13,13 +12,14 @@ class UpdateListModelToListModelDomainForNetworkDatabaseFVUFVM
     extends BaseFVUFVMSpecificallyYesTIPYesNS<UpdateListModelToListModelDomainForNetworkDatabaseFVM,List<BaseModelDomain>>
 {
   @override
-  Future<void> mainMethod(UpdateListModelToListModelDomainForNetworkDatabaseFVM mainMethod, Function functionForResultSuccess, Function(DomainException p1) functionForResultDomainException, Function(LocalException p1) functionForResultLocalException, Function(NetworkException p1) functionForResultNetworkException) async {
+  Future<void> mainMethod(UpdateListModelToListModelDomainForNetworkDatabaseFVM mainMethod,
+  {Function functionForResultSuccess, Function(DomainException p1) functionForResultDomainException, Function(LocalException p1) functionForResultLocalException})
+  async {
     FunctionViewModel.updateListModelToListModelDomainForNetworkDatabaseFVM(
-        mainMethod,
-        functionForResultSuccess,
-        functionForResultDomainException,
-        functionForResultLocalException,
-        functionForResultNetworkException
+      mainMethod,
+      functionForResultSuccess: functionForResultSuccess,
+      functionForResultDomainException: functionForResultDomainException,
+      functionForResultLocalException: functionForResultLocalException,
     );
   }
 

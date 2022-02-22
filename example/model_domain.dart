@@ -46,6 +46,11 @@ class ModelDomain extends BaseModelDomain {
     throw UnimplementedError();
   }
 
+  @override
+  BaseModelDomain cloneObjectForCBFVM() {
+    return ModelDomain(uniqueId: uniqueId,name: name);
+  }
+
   /// End Other methods **/
 
   /// Start Const For CBFVM and bool methods **/

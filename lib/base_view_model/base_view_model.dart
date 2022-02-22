@@ -65,8 +65,8 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_p
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_type_parameter_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_for_get_model_ln_database_and_get_list_ln_database_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_type_parameter_for_iterator_for_list_model_ln_database_vm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_iterator_for_base_list_model_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_local_database_for_one_entry_fvm.dart';
@@ -145,48 +145,48 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   final Type _typeBaseModelDomain = T;
 
   /* Maps */
-  final Map<EnumBaseTypeParameterVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase = {
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+  final Map<EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase = {
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
 
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
 
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
 
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
 
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
 
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
-    EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
+    EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
   };
   
-  final Map<EnumTypeParameterVM,EnumTypeParameter> _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter = {
-    EnumTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter : EnumTypeParameter(
-        EnumTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter
+  final Map<EnumTypeParameterForIteratorForListModelLNDatabaseVM,EnumTypeParameter> _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter = {
+    EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter : EnumTypeParameter(
+        EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter
     ),
-    EnumTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter : EnumTypeParameter(
-        EnumTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter
+    EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter : EnumTypeParameter(
+        EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter
     ),
   };
   Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain;
@@ -495,7 +495,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyIteratorForBaseListModelLNDatabaseFVM.callToMethodSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIteratorFVM(
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[EnumTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter],
+        _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter],
         _mapEnumAndBaseIterator);
   }
 
@@ -504,7 +504,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyIteratorForBaseListModelLNDatabaseFVM.callToMethodSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIteratorFVM(
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[EnumTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter],
+        _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter],
         _mapEnumAndBaseIterator);
   }
 
@@ -655,7 +655,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
         getListModelFromLocalDatabaseThereIsParameterDataSource, 
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter]);
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]);
   }
 
   @protected
@@ -668,7 +668,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
           getListModelFromLocalDatabaseThereIsParameterDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]);
     } else {
       return Response.exception(response.getException);
     }
@@ -687,7 +687,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
           getListModelFromLocalDatabaseThereIsParameterDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]);
     } else {
       return Response.exception(response.getException);
     }
@@ -704,7 +704,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
         getListModelFromLocalDatabaseThereIsParameterDataSource,
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]
     );
     if(responseTwo.isSuccessResponse) {
       getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -732,7 +732,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
           getListModelFromLocalDatabaseThereIsParameterDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameter]
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]
       );
       if(responseTwo.isSuccessResponse) {
         getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -753,7 +753,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -763,7 +763,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -773,7 +773,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -783,7 +783,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -793,7 +793,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -803,7 +803,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -814,7 +814,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
         this,
         getModelFromLocalDatabaseThereIsParameterDataSource,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter]);
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]);
   }
 
   @protected
@@ -827,7 +827,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
           this,
           getModelFromLocalDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]);
     } else {
       return Response.exception(response.getException);
     }
@@ -846,7 +846,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
           this,
           getModelFromLocalDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]);
     } else {
       return Response.exception(response.getException);
     }
@@ -863,7 +863,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     var response = await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
         this,
         getModelFromLocalDatabaseThereIsParameterDataSource,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
     );
     if(response.isSuccessResponse) {
       getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -891,7 +891,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
           this,
           getModelFromLocalDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameter]
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
       );
       if(responseTwo.isSuccessResponse) {
         getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -912,7 +912,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -922,7 +922,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -932,7 +932,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -942,7 +942,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -952,7 +952,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -962,7 +962,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelLocalDatabaseFVM.getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -2164,7 +2164,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
         getListModelFromNetworkDatabaseThereIsParameterDataSource,
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter]);
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]);
   }
 
   @protected
@@ -2177,7 +2177,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
           getListModelFromNetworkDatabaseThereIsParameterDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]);
     } else {
       return Response.exception(responseGenericBoolAndDomainException.getException);
     }
@@ -2196,7 +2196,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
           getListModelFromNetworkDatabaseThereIsParameterDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]);
     } else {
       return Response.exception(response.getException);
     }
@@ -2213,7 +2213,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
         getListModelFromNetworkDatabaseThereIsParameterDataSource,
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]
     );
     if(responseTwo.isSuccessResponse) {
       getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -2241,7 +2241,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
           getListModelFromNetworkDatabaseThereIsParameterDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameter]
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]
       );
       if(responseTwo.isSuccessResponse) {
         getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -2262,7 +2262,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -2272,7 +2272,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getListModelFromNetworkDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndDeleteListModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -2282,7 +2282,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -2292,7 +2292,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getListModelFromNetworkDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndInsertListModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -2302,7 +2302,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -2312,7 +2312,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getListModelFromNetworkDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameterAndUpdateListModelToNetworkDatabaseThereIsParameter]
     );
   }
   
@@ -2323,7 +2323,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     return ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
         this,
         getModelFromNetworkDatabaseThereIsParameterDataSource,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameter]);
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]);
   }
 
   @protected
@@ -2336,7 +2336,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
           this,
           getModelFromNetworkDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]);
     } else {
       return Response.exception(responseGenericBoolAndDomainException.getException);
     }
@@ -2355,7 +2355,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       return await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
           this,
           getModelFromNetworkDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameter]);
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]);
     } else {
       return Response.exception(response.getException);
     }
@@ -2372,7 +2372,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     var response = await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
         this,
         getModelFromNetworkDatabaseThereIsParameterDataSource,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
     );
     if(response.isSuccessResponse) {
       getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -2400,7 +2400,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
           this,
           getModelFromNetworkDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameter]
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
       );
       if(responseTwo.isSuccessResponse) {
         getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
@@ -2421,7 +2421,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -2431,7 +2431,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getModelFromNetworkDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndDeleteModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -2441,7 +2441,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -2451,7 +2451,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getModelFromNetworkDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndInsertModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -2461,7 +2461,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter]
     );
   }
 
@@ -2471,7 +2471,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     return ReadyModelNetworkDatabaseFVM.getModelFromNetworkDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM(
         get,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter]
+        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter]
     );
   }
 
@@ -3878,27 +3878,26 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   void setBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
       BaseTypeParameter baseTypeParameter,
-      EnumBaseTypeParameterVM operation)
+      EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM operation)
   {
     _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[operation] = baseTypeParameter;
   }
 
   void setEnumTypeParameterForIteratorForListModelLNDatabase(
       EnumTypeParameter enumTypeParameter,
-      EnumTypeParameterVM operation)
+      EnumTypeParameterForIteratorForListModelLNDatabaseVM operation)
   {
     _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[operation] = enumTypeParameter;
   }
   
   @visibleForTesting
-  BaseTypeParameter getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(
-      EnumBaseTypeParameterVM operation)
+  BaseTypeParameter getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM operation)
   {
     return _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[operation];
   }
 
   @visibleForTesting
-  EnumTypeParameter getEnumTypeParameterForIteratorForListModelLNDatabase(EnumTypeParameterVM operation) {
+  EnumTypeParameter getEnumTypeParameterForIteratorForListModelLNDatabase(EnumTypeParameterForIteratorForListModelLNDatabaseVM operation) {
     return _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[operation];
   }
 

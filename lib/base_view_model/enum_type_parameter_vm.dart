@@ -1,4 +1,0 @@
-enum EnumTypeParameterVM {
-  getListModelFromLocalDatabaseThereIsParameter,
-  getListModelFromNetworkDatabaseThereIsParameter,
-}

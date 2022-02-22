@@ -7,12 +7,14 @@ enum EnumBaseModelDomainVM {
   updateModelToLocalDatabaseThereIsParameter,
   deleteModelToLocalDatabaseThereIsParameter,
   getModelFromLocalDatabaseThereIsParameter,
+  /* No Notify Stream Method to FVUFVM */
   getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
 
   insertModelToNetworkDatabaseThereIsParameter,
   updateModelToNetworkDatabaseThereIsParameter,
   deleteModelToNetworkDatabaseThereIsParameter,
   getModelFromNetworkDatabaseThereIsParameter,
+  /* No Notify Stream Method to FVUFVM */
   getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
 
   pushNotificationToZonedScheduleThereIsParameter,
