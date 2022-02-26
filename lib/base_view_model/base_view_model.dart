@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_network_database_there_is_parameter_data_source.dart';
@@ -3889,14 +3890,12 @@ abstract class BaseViewModel<T extends BaseModelDomain,
   {
     _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[operation] = enumTypeParameter;
   }
-  
-  @visibleForTesting
+
   BaseTypeParameter getBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabase(EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM operation)
   {
     return _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[operation];
   }
 
-  @visibleForTesting
   EnumTypeParameter getEnumTypeParameterForIteratorForListModelLNDatabase(EnumTypeParameterForIteratorForListModelLNDatabaseVM operation) {
     return _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter[operation];
   }
