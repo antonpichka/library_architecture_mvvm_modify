@@ -181,15 +181,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
     EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToLocalDatabaseThereIsParameter : BoolTypeParameter(false),
     EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameterAndUpdateModelToNetworkDatabaseThereIsParameter : BoolTypeParameter(false),
   };
-  
-  final Map<EnumTypeParameterForIteratorForListModelLNDatabaseVM,EnumTypeParameter> _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter = {
-    EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter : EnumTypeParameter(
-        EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter
-    ),
-    EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter : EnumTypeParameter(
-        EnumTypeParameterForIteratorForListModelLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter
-    ),
-  };
+
   Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain;
   Map<EnumBaseModelDomainVM,StreamController<T>> _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain;
   Map<EnumBaseListModelDomainVM,Y> _mapEnumBaseListModelDomainVMAndBaseListModelDomain;
@@ -197,6 +189,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   /* Maps For Iterator */
   Map<Enum,BaseIterator> _mapEnumAndBaseIterator = {};
+  Map<EnumTypeParameterForIteratorForListModelLNDatabaseVM,EnumTypeParameter> _mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter = {};
 
   BaseViewModel(
       this._listEnumBaseModelDomainVM,
@@ -210,7 +203,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       this._listEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain,
-      this._mapEnumAndBaseIterator
+      this._mapEnumAndBaseIterator,
+      this._mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter
       );
 
   void dispose() {
