@@ -7,5 +7,5 @@ abstract class BaseItemWidgetUsingModelDomain<
 {
   final T modelDomain;
 
-  const BaseItemWidgetUsingModelDomain(this.modelDomain);
+  const BaseItemWidgetUsingModelDomain(this.modelDomain,{Key key}) : super(key: key);
 }

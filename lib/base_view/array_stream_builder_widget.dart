@@ -26,9 +26,9 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
     extends StatelessWidget
 {
   // all constructor (interface_function_view_model)
-  final SelectedArrayStreamBuilderWidget _enumSelectedStreamWidget;
   final Widget _emptyListWidget;
   final ProgressIndicator _progressIndicator;
+  SelectedArrayStreamBuilderWidget _enumSelectedStreamWidget;
 
   BaseArrayWidgetUsingListModelDomainAndModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndModelDomain;
   BaseArrayWidgetUsingListModelDomainAndListModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndListModelDomain;
@@ -47,89 +47,120 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._streamModelDomainY,
       this._streamListModelDomainT,
       this._emptyListWidget,
-      this._progressIndicator) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
       this._streamListModelDomainT,
       this._streamModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureModelDomainAndFutureListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
       this._futureModelDomainY,
       this._futureListModelDomainT,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
       this._futureListModelDomainT,
       this._futureModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
       this._futureListModelDomainT,
       this._streamModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndModelDomain,
       this._streamListModelDomainT,
       this._futureModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
       this._futureListModelDomainT,
       this._futureListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
       this._streamListModelDomainT,
       this._streamListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
       this._futureListModelDomainT,
       this._streamListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+  }
 
   ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureListModelDomain(
       this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
       this._streamListModelDomainT,
       this._futureListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator
-      ) :
-        _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+      this._progressIndicator,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
+        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+  }
 
   @override
   Widget build(BuildContext context) {

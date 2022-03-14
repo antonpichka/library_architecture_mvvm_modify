@@ -1,11 +1,10 @@
 
 import 'package:flutter/material.dart';
 
-//ignore: must_be_immutable
 class EmptyListWidget extends StatelessWidget {
 
   final String _text;
-  const EmptyListWidget(this._text);
+  const EmptyListWidget(this._text,{Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
