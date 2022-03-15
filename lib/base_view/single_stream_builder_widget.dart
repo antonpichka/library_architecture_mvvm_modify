@@ -22,8 +22,8 @@ enum SelectedSingleStreamBuilderWidget {
 class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidget
 {
   final Widget _emptyWidgetOrDefaultWidget;
+  Widget _loadingWidget;
   SelectedSingleStreamBuilderWidget _enumSelectedStreamBuilderWidget;
-  ProgressIndicator _progressIndicator;
 
   BaseSingleWidgetUsingModelDomain<T> _baseSingleWidgetUsingModelDomain;
   BaseSingleWidgetUsingListModelDomain<T> _baseSingleWidgetUsingListModelDomain;
@@ -86,7 +86,7 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
       this._baseArrayWidgetUsingListModelDomain,
       this._streamListModelDomain,
       this._emptyWidgetOrDefaultWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN;
@@ -105,7 +105,7 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
       this._baseArrayWidgetUsingListModelDomain,
       this._futureListModelDomain,
       this._emptyWidgetOrDefaultWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN;
@@ -221,7 +221,7 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
               }
               return _baseArrayWidgetUsingListModelDomain.buildArrayWidgetUsingListModelDomain(context, domainListModel);
             }
-            return _progressIndicator;
+            return _loadingWidget;
           }
       );
     }
@@ -253,7 +253,7 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
               }
               return _baseArrayWidgetUsingListModelDomain.buildArrayWidgetUsingListModelDomain(context, domainListModel);
             }
-            return _progressIndicator;
+            return _loadingWidget;
           }
       );
     }

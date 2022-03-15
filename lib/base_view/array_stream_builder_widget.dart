@@ -27,7 +27,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
 {
   // all constructor (interface_function_view_model)
   final Widget _emptyListWidget;
-  final ProgressIndicator _progressIndicator;
+  final Widget _loadingWidget;
   SelectedArrayStreamBuilderWidget _enumSelectedStreamWidget;
 
   BaseArrayWidgetUsingListModelDomainAndModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndModelDomain;
@@ -47,7 +47,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._streamModelDomainY,
       this._streamListModelDomainT,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -59,7 +59,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._streamListModelDomainT,
       this._streamModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -71,7 +71,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._futureModelDomainY,
       this._futureListModelDomainT,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -83,7 +83,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._futureListModelDomainT,
       this._futureModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -95,7 +95,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._futureListModelDomainT,
       this._streamModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -107,7 +107,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._streamListModelDomainT,
       this._futureModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -119,7 +119,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._futureListModelDomainT,
       this._futureListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -131,7 +131,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._streamListModelDomainT,
       this._streamListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -143,7 +143,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._futureListModelDomainT,
       this._streamListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -155,7 +155,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
       this._streamListModelDomainT,
       this._futureListModelDomainY,
       this._emptyListWidget,
-      this._progressIndicator,
+      this._loadingWidget,
       {Key key}) : super(key: key)
   {
     _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
@@ -214,7 +214,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                 );
               }
             }
-            return _progressIndicator;
+            return _loadingWidget;
           });
         });
   }
@@ -243,7 +243,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                     );
                   }
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -272,7 +272,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                     );
                   }
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -301,7 +301,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                     );
                   }
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -330,7 +330,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                     );
                   }
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -359,7 +359,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                     );
                   }
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -386,7 +386,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                       domainListModelY
                     );
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -413,7 +413,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                       domainListModelY
                   );
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -440,7 +440,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                       domainListModelY
                   );
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
@@ -467,7 +467,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                       domainListModelY
                   );
                 }
-                return _progressIndicator;
+                return _loadingWidget;
               });
         });
   }
