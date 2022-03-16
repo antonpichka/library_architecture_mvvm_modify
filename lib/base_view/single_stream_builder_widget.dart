@@ -16,12 +16,22 @@ enum SelectedSingleStreamBuilderWidget {
   ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN,
   ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN,
   ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN,
+
+  SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  SINGLE_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  SINGLE_WIDGET_USE_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  SINGLE_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+
+  ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
 }
 
 // ignore: must_be_immutable
 class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidget
 {
-  final Widget _emptyWidgetOrDefaultWidget;
+  Widget _emptyWidgetOrDefaultWidget;
   Widget _loadingWidget;
   SelectedSingleStreamBuilderWidget _enumSelectedStreamBuilderWidget;
 
@@ -111,7 +121,72 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
     _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN;
   }
 
-    @override
+  SingleStreamBuilderWidget.singleWidgetUseStreamModelDomainNotOtherWidget(
+      this._baseSingleWidgetUsingModelDomain,
+      this._streamModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget =
+        SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.singleWidgetUseStreamListModelDomainNotOtherWidget(
+      this._baseSingleWidgetUsingListModelDomain,
+      this._streamListModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.singleWidgetUseFutureModelDomainNotOtherWidget(
+      this._baseSingleWidgetUsingModelDomain,
+      this._futureModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.singleWidgetUseFutureListModelDomainNotOtherWidget(
+      this._baseSingleWidgetUsingListModelDomain,
+      this._futureListModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.arrayWidgetUseStreamModelDomainNotOtherWidget(
+      this._baseArrayWidgetUsingModelDomain,
+      this._streamModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.arrayWidgetUseStreamListModelDomainNotOtherWidget(
+      this._baseArrayWidgetUsingListModelDomain,
+      this._streamListModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.arrayWidgetUseFutureModelDomainNotOtherWidget(
+      this._baseArrayWidgetUsingModelDomain,
+      this._futureModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  SingleStreamBuilderWidget.arrayWidgetUseFutureListModelDomainNotOtherWidget(
+      this._baseArrayWidgetUsingListModelDomain,
+      this._futureListModelDomain,
+      {Key key}) : super(key: key)
+  {
+    _enumSelectedStreamBuilderWidget = SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+  }
+
+  @override
     Widget build(BuildContext context) {
       switch(_enumSelectedStreamBuilderWidget) {
         case SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN:
@@ -130,6 +205,22 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
           return _buildArrayFutureBuilderWidgetUsingModelDomain();
         case SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN:
           return _buildArrayFutureBuilderWidgetUsingListModelDomain();
+        case SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildSingleStreamBuilderWidgetUsingModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildSingleStreamBuilderWidgetUsingListModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildSingleFutureBuilderWidgetUsingModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.SINGLE_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildSingleFutureBuilderWidgetUsingListModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildArrayStreamBuilderWidgetUsingModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildArrayStreamBuilderWidgetUsingListModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildArrayFutureBuilderWidgetUsingModelDomainNotOtherWidget();
+        case SelectedSingleStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+          return _buildArrayFutureBuilderWidgetUsingListModelDomainNotOtherWidget();
         default:
           return _buildSingleStreamBuilderWidgetUsingModelDomain();
       }
@@ -236,26 +327,103 @@ class SingleStreamBuilderWidget<T extends BaseModelDomain> extends StatelessWidg
               return _baseArrayWidgetUsingModelDomain.buildArrayWidgetUsingModelDomain(context, domainModel);
             }
             return _emptyWidgetOrDefaultWidget;
-          }
-      );
-    }
+          });
+  }
 
-    Widget _buildArrayFutureBuilderWidgetUsingListModelDomain() {
-      return FutureBuilder<List<T>>(
-          future: _futureListModelDomain,
-          builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
-          {
-            if(asyncSnapshot.hasData) {
-              List<T> domainListModel = asyncSnapshot.data ?? List.empty();
-
-              if(domainListModel.isEmpty) {
-                return _emptyWidgetOrDefaultWidget;
-              }
-              return _baseArrayWidgetUsingListModelDomain.buildArrayWidgetUsingListModelDomain(context, domainListModel);
+  Widget _buildArrayFutureBuilderWidgetUsingListModelDomain() {
+    return FutureBuilder<List<T>>(
+        future: _futureListModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
+        {
+          if(asyncSnapshot.hasData) {
+            List<T> domainListModel = asyncSnapshot.data ?? List.empty();
+            if(domainListModel.isEmpty) {
+              return _emptyWidgetOrDefaultWidget;
             }
-            return _loadingWidget;
+            return _baseArrayWidgetUsingListModelDomain.buildArrayWidgetUsingListModelDomain(context, domainListModel);
           }
-      );
-    }
+          return _loadingWidget;
+        });
+  }
+
+  Widget _buildSingleStreamBuilderWidgetUsingModelDomainNotOtherWidget() {
+    return StreamBuilder<T>(
+        stream: _streamModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
+        {
+          T domainModel = asyncSnapshot.data;
+          return _baseSingleWidgetUsingModelDomain.buildSingleWidgetUsingModelDomain(context, domainModel);
+        });
+  }
+
+  Widget _buildSingleStreamBuilderWidgetUsingListModelDomainNotOtherWidget() {
+    return StreamBuilder<List<T>>(
+        stream: _streamListModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
+        {
+          List<T> domainListModel = asyncSnapshot.data ?? List.empty();
+          return _baseSingleWidgetUsingListModelDomain.buildSingleWidgetUsingListModelDomain(context, domainListModel);
+        });
+  }
+
+  Widget _buildSingleFutureBuilderWidgetUsingModelDomainNotOtherWidget() {
+    return FutureBuilder<T>(
+        future: _futureModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
+        {
+          T domainModel = asyncSnapshot.data;
+          return _baseSingleWidgetUsingModelDomain.buildSingleWidgetUsingModelDomain(context, domainModel);
+        });
+  }
+
+  Widget _buildSingleFutureBuilderWidgetUsingListModelDomainNotOtherWidget() {
+    return FutureBuilder<List<T>>(
+        future: _futureListModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
+        {
+          List<T> domainListModel = asyncSnapshot.data ?? List.empty();
+          return _baseSingleWidgetUsingListModelDomain.buildSingleWidgetUsingListModelDomain(context, domainListModel);
+        });
+  }
+
+  Widget _buildArrayStreamBuilderWidgetUsingModelDomainNotOtherWidget() {
+    return StreamBuilder<T>(
+        stream: _streamModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
+        {
+          T domainModel = asyncSnapshot.data;
+          return _baseArrayWidgetUsingModelDomain.buildArrayWidgetUsingModelDomain(context, domainModel);
+        });
+  }
+
+  Widget _buildArrayStreamBuilderWidgetUsingListModelDomainNotOtherWidget() {
+    return StreamBuilder<List<T>>(
+        stream: _streamListModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
+        {
+          List<T> domainListModel = asyncSnapshot.data ?? List.empty();
+          return _baseArrayWidgetUsingListModelDomain.buildArrayWidgetUsingListModelDomain(context, domainListModel);
+        });
+  }
+
+  Widget _buildArrayFutureBuilderWidgetUsingModelDomainNotOtherWidget() {
+    return FutureBuilder<T>(
+        future: _futureModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
+        {
+          T domainModel = asyncSnapshot.data;
+          return _baseArrayWidgetUsingModelDomain.buildArrayWidgetUsingModelDomain(context, domainModel);
+        });
+  }
+
+  Widget _buildArrayFutureBuilderWidgetUsingListModelDomainNotOtherWidget() {
+    return FutureBuilder<List<T>>(
+        future: _futureListModelDomain,
+        builder: (BuildContext context, AsyncSnapshot<List<T>> asyncSnapshot)
+        {
+          List<T> domainListModel = asyncSnapshot.data ?? List.empty();
+          return _baseArrayWidgetUsingListModelDomain.buildArrayWidgetUsingListModelDomain(context, domainListModel);
+        });
+  }
 
 }
