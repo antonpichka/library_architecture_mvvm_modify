@@ -1,52 +1,52 @@
 // ignore_for_file: constant_identifier_names
 import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget_using_list_model_domain_and_list_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_view/base_array_widget/base_array_widget_using_list_model_domain_and_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_widget_using/base_widget_using_list_model_domain_and_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_view/base_widget_using/base_widget_using_list_model_domain_and_model_domain.dart';
 
-enum SelectedArrayStreamBuilderWidget {
-  ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN,
+enum SelectedTwoStreamBuilderWidgetForModelDomain {
+  WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN,
 
-  ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN,
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN,
+  WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN,
 
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN,
 
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN,
 
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN,
 
-  ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET,
 
-  ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET,
 
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET,
 
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
 
-  ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
-  ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
+  WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET,
 }
 
 //ignore: must_be_immutable
-class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDomain>
+class TwoStreamBuilderWidgetForModelDomain<T extends BaseModelDomain, Y extends BaseModelDomain>
     extends StatelessWidget
 {
   // all constructor (interface_function_view_model)
   Widget _emptyListWidget;
   Widget _loadingWidget;
-  SelectedArrayStreamBuilderWidget _enumSelectedStreamWidget;
+  SelectedTwoStreamBuilderWidgetForModelDomain _enumSelectedStreamWidget;
 
-  BaseArrayWidgetUsingListModelDomainAndModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndModelDomain;
-  BaseArrayWidgetUsingListModelDomainAndListModelDomain<T,Y> _baseArrayWidgetUsingListModelDomainAndListModelDomain;
+  BaseWidgetUsingListModelDomainAndModelDomain<T,Y> _baseWidgetUsingListModelDomainAndModelDomain;
+  BaseWidgetUsingListModelDomainAndListModelDomain<T,Y> _baseWidgetUsingListModelDomainAndListModelDomain;
 
   Stream<List<T>> _streamListModelDomainT;
   Future<List<T>> _futureListModelDomainT;
@@ -57,275 +57,275 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
   Stream<List<Y>> _streamListModelDomainY;
   Future<List<Y>> _futureListModelDomainY;
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamModelDomainAndStreamListModelDomain(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._streamModelDomainY,
       this._streamListModelDomainT,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndStreamModelDomain(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._streamListModelDomainT,
       this._streamModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureModelDomainAndFutureListModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureModelDomainAndFutureListModelDomain(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._futureModelDomainY,
       this._futureListModelDomainT,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndFutureModelDomain(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._futureListModelDomainT,
       this._futureModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndStreamModelDomain(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._futureListModelDomainT,
       this._streamModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndFutureModelDomain(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._streamListModelDomainT,
       this._futureModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureListModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndFutureListModelDomain(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._futureListModelDomainT,
       this._futureListModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamListModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndStreamListModelDomain(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._streamListModelDomainT,
       this._streamListModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamListModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndStreamListModelDomain(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._futureListModelDomainT,
       this._streamListModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureListModelDomain(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndFutureListModelDomain(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._streamListModelDomainT,
       this._futureListModelDomainY,
       this._emptyListWidget,
       this._loadingWidget,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamModelDomainAndStreamListModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamModelDomainAndStreamListModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._streamModelDomainY,
       this._streamListModelDomainT,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndStreamModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._streamListModelDomainT,
       this._streamModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureModelDomainAndFutureListModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureModelDomainAndFutureListModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._futureModelDomainY,
       this._futureListModelDomainT,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndFutureModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._futureListModelDomainT,
       this._futureModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndStreamModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._futureListModelDomainT,
       this._streamModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndFutureModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndModelDomain,
       this._streamListModelDomainT,
       this._futureModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndFutureListModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndFutureListModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._futureListModelDomainT,
       this._futureListModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndStreamListModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndStreamListModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._streamListModelDomainT,
       this._streamListModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseFutureListModelDomainAndStreamListModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseFutureListModelDomainAndStreamListModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._futureListModelDomainT,
       this._streamListModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
-  ArrayStreamBuilderWidget.arrayWidgetUseStreamListModelDomainAndFutureListModelDomainNotOtherWidget(
-      this._baseArrayWidgetUsingListModelDomainAndListModelDomain,
+  TwoStreamBuilderWidgetForModelDomain.widgetUseStreamListModelDomainAndFutureListModelDomainNotOtherWidget(
+      this._baseWidgetUsingListModelDomainAndListModelDomain,
       this._streamListModelDomainT,
       this._futureListModelDomainY,
       {Key key}) : super(key: key)
   {
-    _enumSelectedStreamWidget = SelectedArrayStreamBuilderWidget
-        .ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
+    _enumSelectedStreamWidget = SelectedTwoStreamBuilderWidgetForModelDomain
+        .WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET;
   }
 
   @override
   Widget build(BuildContext context) {
     switch(_enumSelectedStreamWidget) {
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN:
-        return _buildArrayWidgetUseStreamModelDomainAndStreamListModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN:
-        return _buildArrayWidgetUseStreamListModelDomainAndStreamModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN:
-        return _buildArrayWidgetUseFutureModelDomainAndFutureListModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN:
-        return _buildArrayWidgetUseFutureListModelDomainAndFutureModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN:
-        return _buildArrayWidgetUseFutureListModelDomainAndStreamModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN:
-        return _buildArrayWidgetUseStreamListModelDomainAndFutureModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN:
-        return _buildArrayWidgetUseFutureListModelDomainAndFutureListModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN:
-        return _buildArrayWidgetUseStreamListModelDomainAndStreamListModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN:
-        return _buildArrayWidgetUseFutureListModelDomainAndStreamListModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN:
-        return _buildArrayWidgetUseStreamListModelDomainAndFutureListModelDomain();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseStreamModelDomainAndStreamListModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseStreamListModelDomainAndStreamModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseFutureModelDomainAndFutureListModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseFutureListModelDomainAndFutureModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseFutureListModelDomainAndStreamModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseStreamListModelDomainAndFutureModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseFutureListModelDomainAndFutureListModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseStreamListModelDomainAndStreamListModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseFutureListModelDomainAndStreamListModelDomainNotOtherWidget();
-      case SelectedArrayStreamBuilderWidget.ARRAY_WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
-        return _buildArrayWidgetUseStreamListModelDomainAndFutureListModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN:
+        return _buildWidgetUseStreamModelDomainAndStreamListModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN:
+        return _buildWidgetUseStreamListModelDomainAndStreamModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN:
+        return _buildWidgetUseFutureModelDomainAndFutureListModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN:
+        return _buildWidgetUseFutureListModelDomainAndFutureModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN:
+        return _buildWidgetUseFutureListModelDomainAndStreamModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN:
+        return _buildWidgetUseStreamListModelDomainAndFutureModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN:
+        return _buildWidgetUseFutureListModelDomainAndFutureListModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN:
+        return _buildWidgetUseStreamListModelDomainAndStreamListModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN:
+        return _buildWidgetUseFutureListModelDomainAndStreamListModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN:
+        return _buildWidgetUseStreamListModelDomainAndFutureListModelDomain();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseStreamModelDomainAndStreamListModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseStreamListModelDomainAndStreamModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseFutureModelDomainAndFutureListModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseFutureListModelDomainAndFutureModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseFutureListModelDomainAndStreamModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseStreamListModelDomainAndFutureModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseFutureListModelDomainAndFutureListModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseStreamListModelDomainAndStreamListModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_FUTURE_LIST_MODEL_DOMAIN_AND_STREAM_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseFutureListModelDomainAndStreamListModelDomainNotOtherWidget();
+      case SelectedTwoStreamBuilderWidgetForModelDomain.WIDGET_USE_STREAM_LIST_MODEL_DOMAIN_AND_FUTURE_LIST_MODEL_DOMAIN_NOT_OTHER_WIDGET:
+        return _buildWidgetUseStreamListModelDomainAndFutureListModelDomainNotOtherWidget();
       default:
-        return _buildArrayWidgetUseStreamModelDomainAndStreamListModelDomain();
+        return _buildWidgetUseStreamModelDomainAndStreamListModelDomain();
     }
   }
 
-  Widget _buildArrayWidgetUseStreamModelDomainAndStreamListModelDomain() {
+  Widget _buildWidgetUseStreamModelDomainAndStreamListModelDomain() {
     return StreamBuilder<Y>(
         stream: _streamModelDomainY,
         builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
@@ -342,7 +342,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               }
               if(modelAsyncSnapshot.hasData) {
                 Y modelDomain = modelAsyncSnapshot.data;
-                return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                     context,
                     domainListModel,
                     modelDomain
@@ -354,7 +354,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndStreamModelDomain() {
+  Widget _buildWidgetUseStreamListModelDomainAndStreamModelDomain() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -371,7 +371,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   }
                   if(modelAsyncSnapshot.hasData) {
                     Y modelDomain = modelAsyncSnapshot.data;
-                    return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                    return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                         context,
                         domainListModel,
                         modelDomain
@@ -383,7 +383,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureModelDomainAndFutureListModelDomain() {
+  Widget _buildWidgetUseFutureModelDomainAndFutureListModelDomain() {
     return FutureBuilder<Y>(
         future: _futureModelDomainY,
         builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
@@ -400,7 +400,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   }
                   if(modelAsyncSnapshot.hasData) {
                     Y modelDomain = modelAsyncSnapshot.data;
-                    return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                    return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                         context,
                         domainListModel,
                         modelDomain
@@ -412,7 +412,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
   
-  Widget _buildArrayWidgetUseFutureListModelDomainAndFutureModelDomain() {
+  Widget _buildWidgetUseFutureListModelDomainAndFutureModelDomain() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -429,7 +429,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   }
                   if(modelAsyncSnapshot.hasData) {
                     Y modelDomain = modelAsyncSnapshot.data;
-                    return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                    return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                         context,
                         domainListModel,
                         modelDomain
@@ -441,7 +441,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
   
-  Widget _buildArrayWidgetUseFutureListModelDomainAndStreamModelDomain() {
+  Widget _buildWidgetUseFutureListModelDomainAndStreamModelDomain() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -458,7 +458,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   }
                   if(modelAsyncSnapshot.hasData) {
                     Y modelDomain = modelAsyncSnapshot.data;
-                    return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                    return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                         context,
                         domainListModel,
                         modelDomain
@@ -470,7 +470,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndFutureModelDomain() {
+  Widget _buildWidgetUseStreamListModelDomainAndFutureModelDomain() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -487,7 +487,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   }
                   if(modelAsyncSnapshot.hasData) {
                     Y modelDomain = modelAsyncSnapshot.data;
-                    return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                    return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                         context,
                         domainListModel,
                         modelDomain
@@ -499,7 +499,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureListModelDomainAndFutureListModelDomain() {
+  Widget _buildWidgetUseFutureListModelDomainAndFutureListModelDomain() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -515,7 +515,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   if(domainListModelT.isEmpty || domainListModelY.isEmpty) {
                     return _emptyListWidget;
                   }
-                  return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                  return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                       context,
                       domainListModelT,
                       domainListModelY
@@ -526,7 +526,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndStreamListModelDomain() {
+  Widget _buildWidgetUseStreamListModelDomainAndStreamListModelDomain() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -542,7 +542,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   if(domainListModelT.isEmpty || domainListModelY.isEmpty) {
                     return _emptyListWidget;
                   }
-                  return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                  return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                       context,
                       domainListModelT,
                       domainListModelY
@@ -553,7 +553,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureListModelDomainAndStreamListModelDomain() {
+  Widget _buildWidgetUseFutureListModelDomainAndStreamListModelDomain() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -569,7 +569,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   if(domainListModelT.isEmpty || domainListModelY.isEmpty) {
                     return _emptyListWidget;
                   }
-                  return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                  return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                       context,
                       domainListModelT,
                       domainListModelY
@@ -580,7 +580,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndFutureListModelDomain() {
+  Widget _buildWidgetUseStreamListModelDomainAndFutureListModelDomain() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -596,7 +596,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                   if(domainListModelT.isEmpty || domainListModelY.isEmpty) {
                     return _emptyListWidget;
                   }
-                  return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                  return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                       context,
                       domainListModelT,
                       domainListModelY
@@ -607,7 +607,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamModelDomainAndStreamListModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseStreamModelDomainAndStreamListModelDomainNotOtherWidget() {
     return StreamBuilder<Y>(
         stream: _streamModelDomainY,
         builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
@@ -618,7 +618,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                   List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
                   Y modelDomain = modelAsyncSnapshot.data;
-                  return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                  return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                       context,
                       domainListModel,
                       modelDomain
@@ -627,7 +627,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndStreamModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseStreamListModelDomainAndStreamModelDomainNotOtherWidget() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -638,7 +638,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
                 Y modelDomain = modelAsyncSnapshot.data;
-                return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                     context,
                     domainListModel,
                     modelDomain
@@ -647,7 +647,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureModelDomainAndFutureListModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseFutureModelDomainAndFutureListModelDomainNotOtherWidget() {
     return FutureBuilder<Y>(
         future: _futureModelDomainY,
         builder: (BuildContext context, AsyncSnapshot<Y> modelAsyncSnapshot)
@@ -658,7 +658,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                   List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
                   Y modelDomain = modelAsyncSnapshot.data;
-                  return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                  return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                       context,
                       domainListModel,
                       modelDomain
@@ -667,7 +667,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureListModelDomainAndFutureModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseFutureListModelDomainAndFutureModelDomainNotOtherWidget() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -678,7 +678,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
                 Y modelDomain = modelAsyncSnapshot.data;
-                return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                     context,
                     domainListModel,
                     modelDomain
@@ -687,7 +687,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureListModelDomainAndStreamModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseFutureListModelDomainAndStreamModelDomainNotOtherWidget() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -698,7 +698,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
                 Y modelDomain = modelAsyncSnapshot.data;
-                return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                     context,
                     domainListModel,
                     modelDomain
@@ -707,7 +707,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndFutureModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseStreamListModelDomainAndFutureModelDomainNotOtherWidget() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshot)
@@ -718,7 +718,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModel = listModelAsyncSnapshot.data ?? List.empty();
                 Y modelDomain = modelAsyncSnapshot.data;
-                return _baseArrayWidgetUsingListModelDomainAndModelDomain.buildArrayWidgetUsingListModelDomainAndModelDomain(
+                return _baseWidgetUsingListModelDomainAndModelDomain.buildWidgetUsingListModelDomainAndModelDomain(
                     context,
                     domainListModel,
                     modelDomain
@@ -727,7 +727,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureListModelDomainAndFutureListModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseFutureListModelDomainAndFutureListModelDomainNotOtherWidget() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -738,7 +738,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModelT = listModelAsyncSnapshotT.data ?? List.empty();
                 List<Y> domainListModelY = listModelAsyncSnapshotY.data ?? List.empty();
-                return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                     context,
                     domainListModelT,
                     domainListModelY
@@ -747,7 +747,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndStreamListModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseStreamListModelDomainAndStreamListModelDomainNotOtherWidget() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -758,7 +758,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModelT = listModelAsyncSnapshotT.data ?? List.empty();
                 List<Y> domainListModelY = listModelAsyncSnapshotY.data ?? List.empty();
-                return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                     context,
                     domainListModelT,
                     domainListModelY
@@ -767,7 +767,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseFutureListModelDomainAndStreamListModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseFutureListModelDomainAndStreamListModelDomainNotOtherWidget() {
     return FutureBuilder<List<T>>(
         future: _futureListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -779,7 +779,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
                 List<T> domainListModelT = listModelAsyncSnapshotT.data ?? List.empty();
                 List<Y> domainListModelY = listModelAsyncSnapshotY.data ?? List.empty();
 
-                return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                     context,
                     domainListModelT,
                     domainListModelY
@@ -788,7 +788,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
         });
   }
 
-  Widget _buildArrayWidgetUseStreamListModelDomainAndFutureListModelDomainNotOtherWidget() {
+  Widget _buildWidgetUseStreamListModelDomainAndFutureListModelDomainNotOtherWidget() {
     return StreamBuilder<List<T>>(
         stream: _streamListModelDomainT,
         builder: (BuildContext context, AsyncSnapshot<List<T>> listModelAsyncSnapshotT)
@@ -799,7 +799,7 @@ class ArrayStreamBuilderWidget<T extends BaseModelDomain, Y extends BaseModelDom
               {
                 List<T> domainListModelT = listModelAsyncSnapshotT.data ?? List.empty();
                 List<Y> domainListModelY = listModelAsyncSnapshotY.data ?? List.empty();
-                return _baseArrayWidgetUsingListModelDomainAndListModelDomain.buildArrayWidgetUsingListModelDomainAndListModelDomain(
+                return _baseWidgetUsingListModelDomainAndListModelDomain.buildWidgetUsingListModelDomainAndListModelDomain(
                     context,
                     domainListModelT,
                     domainListModelY
