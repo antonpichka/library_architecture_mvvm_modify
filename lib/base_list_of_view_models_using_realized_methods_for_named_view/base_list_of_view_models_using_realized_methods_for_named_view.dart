@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:library_architecture_mvvm_modify/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_list_of_view_models_using_realized_methods_for_named_view/base_model_view_model_using_realized_methods_for_named_view.dart';
 
-abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends Enum> {
+abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends Enum> implements BaseDispose {
   @protected
   Map<T,List<BaseModelViewModelUsingRealizedMethodsForNamedView>> setupMap = {};
 
   BaseListOfViewModelsUsingRealizedMethodsForNamedView();
 
+  @override
   void dispose() {
     if(setupMap == null) {
       return;

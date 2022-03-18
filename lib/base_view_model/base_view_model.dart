@@ -56,6 +56,7 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
@@ -132,8 +133,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<T extends BaseModelDomain,
-                              Y extends BaseListModelDomain<T>>
+abstract class BaseViewModel<T extends BaseModelDomain, Y extends BaseListModelDomain<T>> implements BaseDispose
 {
   /* Constructor */
   final List<EnumBaseModelDomainVM> _listEnumBaseModelDomainVM;
@@ -206,13 +206,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       this._mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter
       );
 
+  @override
   void dispose() {
-    _disposeForAnyMap(_mapEnumBaseModelDomainVMAndBaseModelDomain);
-    _disposeForAnyMap(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
-    _disposeForAnyMap(_mapEnumAndBaseIterator);
-    _disposeForAnyMap(_mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter);
     _disposeForMapEnumAndStreamController(_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain);
     _disposeForMapEnumAndStreamController(_mapEnumBaseListModelDomainVMAndStreamControllerForList);
+    _disposeForMapEnumAndBaseDispose(_mapEnumBaseModelDomainVMAndBaseModelDomain);
+    _disposeForMapEnumAndBaseDispose(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
+    _disposeForAnyMap(_mapEnumAndBaseIterator);
+    _disposeForAnyMap(_mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter);
   }
   
   Type get getTypeBaseModelDomain {
@@ -4049,6 +4050,21 @@ abstract class BaseViewModel<T extends BaseModelDomain,
       if(map.isNotEmpty) {
         for (dynamic object in map.values) {
           if (object != null) {
+            object = null;
+          }
+        }
+        map.clear();
+      }
+      map = null;
+    }
+  }
+
+  void _disposeForMapEnumAndBaseDispose(Map<Enum,BaseDispose> map) {
+    if(map != null) {
+      if(map.isNotEmpty) {
+        for (BaseDispose object in map.values) {
+          if (object != null) {
+            object.dispose();
             object = null;
           }
         }
