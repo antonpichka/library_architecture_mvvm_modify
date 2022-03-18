@@ -23,7 +23,7 @@ class ReadySingleStreamBuilderWidget<T> extends StatelessWidget
     _selectedReadySingleStreamBuilderWidget = SelectedReadySingleStreamBuilderWidget.streamBuilderWidget;
   }
 
-  ReadySingleStreamBuilderWidget.widgetUseFutureOtherModel(
+  ReadySingleStreamBuilderWidget.futureBuilderWidget(
       this._baseSingleStreamBuilderWidget,
       this._future,
       {Key key}) : super(key: key)
