@@ -210,8 +210,8 @@ abstract class BaseViewModel<T extends BaseModelDomain, Y extends BaseListModelD
   void dispose() {
     _disposeForMapEnumAndStreamController(_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain);
     _disposeForMapEnumAndStreamController(_mapEnumBaseListModelDomainVMAndStreamControllerForList);
-    _disposeForMapEnumAndBaseDispose(_mapEnumBaseModelDomainVMAndBaseModelDomain);
-    _disposeForMapEnumAndBaseDispose(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
+    _disposeForAnyMap(_mapEnumBaseModelDomainVMAndBaseModelDomain);
+    _disposeForAnyMap(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
     _disposeForAnyMap(_mapEnumAndBaseIterator);
     _disposeForAnyMap(_mapEnumTypeParameterForIteratorForListModelLNDatabaseVMAndEnumTypeParameter);
   }
@@ -4050,21 +4050,6 @@ abstract class BaseViewModel<T extends BaseModelDomain, Y extends BaseListModelD
       if(map.isNotEmpty) {
         for (dynamic object in map.values) {
           if (object != null) {
-            object = null;
-          }
-        }
-        map.clear();
-      }
-      map = null;
-    }
-  }
-
-  void _disposeForMapEnumAndBaseDispose(Map<Enum,BaseDispose> map) {
-    if(map != null) {
-      if(map.isNotEmpty) {
-        for (BaseDispose object in map.values) {
-          if (object != null) {
-            object.dispose();
             object = null;
           }
         }

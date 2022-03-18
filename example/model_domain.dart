@@ -51,12 +51,6 @@ class ModelDomain extends BaseModelDomain {
     return ModelDomain(uniqueId: uniqueId,name: name);
   }
 
-  @override
-  void dispose() {
-    uniqueId = "";
-    name = "";
-  }
-
   /// End Other methods **/
 
   /// Start Const For CBFVM and bool methods **/
