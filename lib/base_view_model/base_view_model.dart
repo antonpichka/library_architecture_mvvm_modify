@@ -4046,10 +4046,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   void _disposeForAnyMap(Map map) {
     if(map != null) {
-      for(dynamic object in map.values) {
-        if(object != null) {
-          object = null;
+      if(map.isNotEmpty) {
+        for (dynamic object in map.values) {
+          if (object != null) {
+            object = null;
+          }
         }
+        map.clear();
       }
       map = null;
     }
@@ -4066,6 +4069,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,
             streamController = null;
           }
         }
+        map.clear();
       }
       map = null;
     }
