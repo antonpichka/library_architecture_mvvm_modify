@@ -27,6 +27,7 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
         }
       }
     });
+    setupMap.clear();
     setupMap = null;
   }
 
