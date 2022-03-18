@@ -5,11 +5,16 @@ import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model
 
 abstract class BaseModelViewModelUsingRealizedMethodsForNamedView<T extends BaseViewModel<BaseModelDomain,BaseListModelDomain<BaseModelDomain>>> {
   @protected
-  final T viewModel;
+  T viewModel;
 
   BaseModelViewModelUsingRealizedMethodsForNamedView(this.viewModel);
 
   T get getViewModel {
     return viewModel;
   }
+
+  void dispose() {
+    viewModel = null;
+  }
+
 }

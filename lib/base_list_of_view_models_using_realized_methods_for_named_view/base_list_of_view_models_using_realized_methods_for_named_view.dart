@@ -20,6 +20,7 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
         if(viewModelMethodsForView.isNotEmpty) {
           for(BaseModelViewModelUsingRealizedMethodsForNamedView value in viewModelMethodsForView) {
             value.getViewModel.dispose();
+            value.dispose();
           }
         }
       }
@@ -41,6 +42,6 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
       }
       return setupMap[keyToViewModel][index];
     }
-    return throw Exception("No Value List<ViewModelMethodsForView>");
+    return throw Exception("no Value List<ViewModelMethodsForView>");
   }
 }

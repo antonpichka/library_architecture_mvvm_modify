@@ -4046,6 +4046,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,
 
   void _disposeForAnyMap(Map map) {
     if(map != null) {
+      for(dynamic object in map.values) {
+        if(object != null) {
+          object = null;
+        }
+      }
       map = null;
     }
   }
