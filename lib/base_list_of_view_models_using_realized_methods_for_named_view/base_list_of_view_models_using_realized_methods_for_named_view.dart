@@ -6,8 +6,6 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
   @protected
   Map<T,List<BaseModelViewModelUsingRealizedMethodsForNamedView>> setupMap = {};
 
-  BaseListOfViewModelsUsingRealizedMethodsForNamedView();
-
   @override
   void dispose() {
     if(setupMap == null) {
@@ -17,12 +15,12 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
       setupMap = null;
       return;
     }
-    setupMap.forEach((key, viewModelMethodsForView) {
-      if(viewModelMethodsForView != null) {
-        if(viewModelMethodsForView.isNotEmpty) {
-          for(BaseModelViewModelUsingRealizedMethodsForNamedView value in viewModelMethodsForView) {
-            value.getViewModel.dispose();
-            value.dispose();
+    setupMap.forEach((enums, listModelViewModelUsingRealizedMethodsForNamedView) {
+      if(listModelViewModelUsingRealizedMethodsForNamedView != null) {
+        if(listModelViewModelUsingRealizedMethodsForNamedView.isNotEmpty) {
+          for(BaseModelViewModelUsingRealizedMethodsForNamedView modelViewModelUsingRealizedMethodsForNamedView in listModelViewModelUsingRealizedMethodsForNamedView) {
+            modelViewModelUsingRealizedMethodsForNamedView.getViewModel.dispose();
+            modelViewModelUsingRealizedMethodsForNamedView.dispose();
           }
         }
       }
@@ -32,18 +30,18 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
   }
 
   @protected
-  BaseModelViewModelUsingRealizedMethodsForNamedView getModelViewModelUsingRealizedMethodsForNamedView(T keyToViewModel,int index) {
+  BaseModelViewModelUsingRealizedMethodsForNamedView getModelViewModelUsingRealizedMethodsForNamedView(T keyToModelViewModelUsingRealizedMethodsForNamedView,int index) {
     if(setupMap == null) {
       return throw Exception("setupMap Equals Null");
     }
     if(setupMap.isEmpty) {
       return throw Exception("is Empty Map");
     }
-    if(setupMap.containsKey(keyToViewModel)) {
-      if(setupMap[keyToViewModel].isEmpty) {
+    if(setupMap.containsKey(keyToModelViewModelUsingRealizedMethodsForNamedView)) {
+      if(setupMap[keyToModelViewModelUsingRealizedMethodsForNamedView].isEmpty) {
         return throw Exception("is Empty List");
       }
-      return setupMap[keyToViewModel][index];
+      return setupMap[keyToModelViewModelUsingRealizedMethodsForNamedView][index];
     }
     return throw Exception("no Value List<ViewModelMethodsForView>");
   }
