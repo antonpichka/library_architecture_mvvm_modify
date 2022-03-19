@@ -53,10 +53,16 @@ class UserDomain extends BaseModelDomain {
 
   /// End Ext Methods **/
 
+  /// Start Custom Methods  **/
+
+
+  /// End Custom Methods  **/
+
   /// Start Const For CBFVM and Bool Methods **/
 
 
   /// End Const For CBFVM and Bool Methods **/
+
 
   /// Start Default state object for ViewModel object  **/
 
