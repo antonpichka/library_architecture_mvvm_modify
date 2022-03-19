@@ -17,7 +17,7 @@ In order:
 
 Result:
    - DataSource,Repository,ModelViewModelUsingRealizedMethodsForNamedView,View - integration test
-   - Model,ViewModel (Chapter: Start/End Custom Methods),ListOfViewModelsUsingRealizedMethodsForNamedView(Chapter: Start/End Custom Methods) - unit test
+   - Model,ViewModel (Chapter: Start/End Custom Methods Use Only To ListOfViewModelsUsingRealizedMethodsForMainView),ListOfViewModelsUsingRealizedMethodsForNamedView(Chapter: Start/End Custom Methods) - unit test
 
 How certain objects are tested?
 In order:
@@ -25,7 +25,10 @@ In order:
 2) ViewModel Objects,ModelViewModelUsingRealizedMethodsForNamedView Objects,ListOfViewModelsUsingRealizedMethodsForNamedView Objects - Testing method and to the expected result. Method result, and comparison of object states
 3) View Objects - as always
 
+## Note
+
+About ModelViewModelUsingRealizedMethodsForNamedView Object: if many methods from the view model are used, then they are not inserted into 1 method. This is done to improve the readability of the code.
+
 ## License
 
 [Apache License 2.0](LICENSE)
-    
