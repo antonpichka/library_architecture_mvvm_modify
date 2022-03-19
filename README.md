@@ -22,8 +22,7 @@ Result:
 How certain objects are tested?
 In order:
 1) Model Objects,DataSource Objects,Repository Objects - Testing method and into the expected result only the result of the method
-2) ViewModel Objects,ModelViewModelUsingRealizedMethodsForNamedView Objects,ListOfViewModelsUsingRealizedMethodsForNamedView Objects
-    - Testing method and to the expected result. Method result, and comparison of object states
+2) ViewModel Objects,ModelViewModelUsingRealizedMethodsForNamedView Objects,ListOfViewModelsUsingRealizedMethodsForNamedView Objects - Testing method and to the expected result. Method result, and comparison of object states
 3) View Objects - as always
 
 ## License
