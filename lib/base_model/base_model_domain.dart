@@ -9,7 +9,7 @@ abstract class BaseModelDomain {
   BaseModelNetworkDatabase toBaseModelNetworkDatabase();
 
   ///
-  ///   Using example:
+  ///   Using example_project:
   ///
   ///   class PersonDomain extends BaseModelDomain {
   ///     String name;

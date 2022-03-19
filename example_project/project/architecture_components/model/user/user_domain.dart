@@ -2,10 +2,10 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.da
 import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
 
-class ModelDomain extends BaseModelDomain {
+class UserDomain extends BaseModelDomain {
   String name;
 
-  ModelDomain({String uniqueId,this.name}) : super(uniqueId) {
+  UserDomain({String uniqueId,this.name}) : super(uniqueId) {
     // Yes Assistant
 //  this.baseModelAssistantByViewModelForDomain = /* My Realized */
   }
@@ -20,12 +20,12 @@ class ModelDomain extends BaseModelDomain {
 
   /// End Setters Methods **/
 
-  /// Start CBFVM and bool methods **/
+  /// Start CBFVM and bool Methods **/
 
 
-  /// End CBFVM and bool methods **/
+  /// End CBFVM and bool Methods **/
 
-  /// Start Other methods **/
+  /// Start Ext Methods **/
 
   // No TEST
   @override
@@ -47,14 +47,23 @@ class ModelDomain extends BaseModelDomain {
   }
 
   @override
-  BaseModelDomain cloneObjectForCBFVM() {
-    return ModelDomain(uniqueId: uniqueId,name: name);
+  UserDomain cloneObjectForCBFVM() {
+    return UserDomain(uniqueId: uniqueId,name: name);
   }
 
-  /// End Other methods **/
+  /// End Ext Methods **/
 
-  /// Start Const For CBFVM and bool methods **/
+  /// Start Const For CBFVM and Bool Methods **/
 
 
-  /// End Const For CBFVM and bool methods **/
+  /// End Const For CBFVM and Bool Methods **/
+
+  /// Start Default state object for ViewModel object  **/
+
+  static UserDomain get getDefaultUserDomain => UserDomain(
+      uniqueId: "",
+      name: ""
+  );
+
+  /// End Default state object for ViewModel object  **/
 }

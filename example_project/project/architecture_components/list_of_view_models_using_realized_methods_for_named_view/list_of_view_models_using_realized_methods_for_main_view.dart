@@ -1,7 +1,7 @@
 import 'package:library_architecture_mvvm_modify/base_list_of_view_models_using_realized_methods_for_named_view/base_list_of_view_models_using_realized_methods_for_named_view.dart';
 
 enum EnumListOfViewModelsUsingRealizedMethodsForMainView {
-  namedViewModel
+  userViewModel
 }
 
 class ListOfViewModelsUsingRealizedMethodsForMainView
@@ -12,10 +12,10 @@ class ListOfViewModelsUsingRealizedMethodsForMainView
       // init model_view_model_using_realized_methods_for_named_view
     };
   }
-  /// Start ModelVMUsingRealizedMethodsForNamedView **/
+  /// Start Getters ModelVMUsingRealizedMethodsForNamedView Methods **/
 
 
-  /// End ModelVMUsingRealizedMethodsForNamedView **/
+  /// End Getters ModelVMUsingRealizedMethodsForNamedView Methods **/
 
   /// Start Stream/Future Methods **/
 
@@ -37,9 +37,13 @@ class ListOfViewModelsUsingRealizedMethodsForMainView
 
   /// End Setters Methods **/
 
+  /// Start Custom Methods  **/
 
-  /// Start Other Methods **/
+
+  /// End Custom Methods  **/
+
+  /// Start ModelVMUsingRealizedMethodsForNamedView and Any Methods **/
 
 
-  /// End Other Methods **/
+  /// End ModelVMUsingRealizedMethodsForNamedView and Any Methods **/
 }

@@ -1,39 +1,28 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+[Here is an example of a project 'RBKaros' on Github on the architecture branch](https://github.com/JacobOdd/RBKaros/tree/architecture)
 
-```dart
-const like = 'sample';
-```
+## Testing Architecture
 
-## Additional information
+What exactly are we testing?
+In order:
+1) Model Objects (Example: model domain objects) - unit test
+2) DataSource Objects (Example: model local database or model network database) - integration test
+3) Repository Objects (Example: model repository, which subsequently call DataSource objects) - integration test
+4) ViewModel Objects (Example: model view model, which subsequently call Repository object) - unit test
+5) ModelViewModelUsingRealizedMethodsForNamedView Objects - integration test
+6) ListOfViewModelsUsingRealizedMethodsForNamedView Objects (Example: list of view models using realized methods for named view, which subsequently call ViewModel objects) - unit test
+7) View Objects (Example: view classes, which subsequently call ListOfViewModelsUsingRealizedMethodsForView object) - integration test
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Result:
+   - DataSource,Repository,ModelViewModelUsingRealizedMethodsForNamedView,View - integration test
+   - Model,ViewModel (Chapter: Start/End Custom Methods),ListOfViewModelsUsingRealizedMethodsForNamedView(Chapter: Start/End Custom Methods) - unit test
+
+How certain objects are tested?
+In order:
+1) Model Objects,DataSource Objects,Repository Objects - Testing method and into the expected result only the result of the method
+2) ViewModel Objects,ModelViewModelUsingRealizedMethodsForNamedView Objects,ListOfViewModelsUsingRealizedMethodsForNamedView Objects
+    - Testing method and to the expected result. Method result, and comparison of object states
+3) View Objects - as always
+    

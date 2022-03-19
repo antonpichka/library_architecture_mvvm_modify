@@ -3,37 +3,35 @@ import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
 
-import 'model_domain.dart';
+import '../model/user/user_domain.dart';
 
-class ModelViewModel extends BaseViewModel {
+class UserViewModel extends BaseViewModel {
 
-  ModelViewModel(
+  UserViewModel(
       /* Repository this._repository*/
       List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
       ItemCreator<BaseListModelDomain> itemCreator)
       : super(listEnumBaseModelDomainVM,
               listEnumBaseListModelDomainVM, 
-              () => ModelDomain(uniqueId: "",name: ""),
+              () => UserDomain.getDefaultUserDomain,
               itemCreator
         );
 
-
-  /// Start Abstract Function Methods **/
-
+  /// Start Abstract Methods **/
 
 
-  /// End Abstract Function Methods **/
+  /// End Abstract Methods **/
 
-  /// Start Methods ListModel (additions to Insert/Update/Delete Model FVM) do not have their own objects  **/
+  /// Start ListModel Methods (additions to Insert/Update/Delete Model FVM) do not have their own objects  **/
 
 
 
-  /// End Function Methods ListModel (additions to Insert/Update/Delete Model FVM) do not have their own objects  **/
+  /// End ListModel Methods (additions to Insert/Update/Delete Model FVM) do not have their own objects  **/
 
-  /// Start Other Methods  **/
+  /// Start Custom Methods  **/
 
 
 
-  /// End Other Methods  **/
+  /// End Custom Methods  **/
 }
