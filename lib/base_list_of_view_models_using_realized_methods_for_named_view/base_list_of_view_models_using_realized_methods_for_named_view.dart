@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_dispose.dart';
-import 'package:library_architecture_mvvm_modify/base_list_of_view_models_using_realized_methods_for_named_view/base_model_view_model_using_realized_methods_for_named_view.dart';
+import 'package:library_architecture_mvvm_modify/base_model_view_model_using_realized_methods_certain_types_namely_methods_named/base_model_view_model_using_realized_methods_certain_types_namely_methods_named.dart';
 
 abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends Enum> implements BaseDispose {
   @protected
-  Map<T,List<BaseModelViewModelUsingRealizedMethodsForNamedView>> setupMap = {};
+  Map<T,List<BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed>> setupMap = {};
 
   @override
   void dispose() {
@@ -15,12 +15,12 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
       setupMap = null;
       return;
     }
-    setupMap.forEach((enums, listModelViewModelUsingRealizedMethodsForNamedView) {
-      if(listModelViewModelUsingRealizedMethodsForNamedView != null) {
-        if(listModelViewModelUsingRealizedMethodsForNamedView.isNotEmpty) {
-          for(BaseModelViewModelUsingRealizedMethodsForNamedView modelViewModelUsingRealizedMethodsForNamedView in listModelViewModelUsingRealizedMethodsForNamedView) {
-            modelViewModelUsingRealizedMethodsForNamedView.getViewModel.dispose();
-            modelViewModelUsingRealizedMethodsForNamedView.dispose();
+    setupMap.forEach((enums, listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed) {
+      if(listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed != null) {
+        if(listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed.isNotEmpty) {
+          for(BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed  in listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed) {
+            modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed.getViewModel.dispose();
+            modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed.dispose();
           }
         }
       }
@@ -30,18 +30,18 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
   }
 
   @protected
-  BaseModelViewModelUsingRealizedMethodsForNamedView getModelViewModelUsingRealizedMethodsForNamedView(T keyToModelViewModelUsingRealizedMethodsForNamedView,int index) {
+  BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed getModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed(T keyToModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed,int index) {
     if(setupMap == null) {
       return throw Exception("setupMap Equals Null");
     }
     if(setupMap.isEmpty) {
       return throw Exception("is Empty Map");
     }
-    if(setupMap.containsKey(keyToModelViewModelUsingRealizedMethodsForNamedView)) {
-      if(setupMap[keyToModelViewModelUsingRealizedMethodsForNamedView].isEmpty) {
+    if(setupMap.containsKey(keyToModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed)) {
+      if(setupMap[keyToModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed].isEmpty) {
         return throw Exception("is Empty List");
       }
-      return setupMap[keyToModelViewModelUsingRealizedMethodsForNamedView][index];
+      return setupMap[keyToModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed][index];
     }
     return throw Exception("no Value List<ViewModelMethodsForView>");
   }

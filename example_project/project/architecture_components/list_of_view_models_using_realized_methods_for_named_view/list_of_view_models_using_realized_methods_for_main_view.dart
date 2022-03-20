@@ -9,13 +9,13 @@ class ListOfViewModelsUsingRealizedMethodsForMainView
 {
   ListOfViewModelsUsingRealizedMethodsForMainView() {
     setupMap = {
-      // init model_view_model_using_realized_methods_for_named_view
+      // init model_view_model_using_realized_methods_certain_types_namely_methods_named
     };
   }
-  /// Start Getters ModelVMUsingRealizedMethodsForNamedView Methods **/
+  /// Start Getters ModelVMUsingRealizedMethodsCertainTypesNamelyMethodsNamed Methods **/
 
 
-  /// End Getters ModelVMUsingRealizedMethodsForNamedView Methods **/
+  /// End Getters ModelVMUsingRealizedMethodsCertainTypesNamelyMethodsNamed Methods **/
 
   /// Start Stream/Future Methods **/
 
@@ -42,8 +42,8 @@ class ListOfViewModelsUsingRealizedMethodsForMainView
 
   /// End Custom Methods  **/
 
-  /// Start ModelVMUsingRealizedMethodsForNamedView and Any Methods **/
+  /// Start ModelVMUsingRealizedMethodsCertainTypesNamelyMethodsNamed and Any Methods **/
 
 
-  /// End ModelVMUsingRealizedMethodsForNamedView and Any Methods **/
+  /// End ModelVMUsingRealizedMethodsCertainTypesNamelyMethodsNamed and Any Methods **/
 }
