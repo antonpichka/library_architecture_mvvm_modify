@@ -11,12 +11,9 @@ abstract class BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNa
 
   BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed(this.viewModel);
 
-  T get getViewModel {
-    return viewModel;
-  }
-
   @override
   void dispose() {
+    viewModel.dispose();
     viewModel = null;
   }
 

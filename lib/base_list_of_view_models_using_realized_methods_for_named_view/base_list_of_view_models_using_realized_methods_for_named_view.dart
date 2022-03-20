@@ -19,8 +19,8 @@ abstract class BaseListOfViewModelsUsingRealizedMethodsForNamedView<T extends En
       if(listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed != null) {
         if(listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed.isNotEmpty) {
           for(BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed  in listModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed) {
-            modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed.getViewModel.dispose();
             modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed.dispose();
+            modelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed = null;
           }
         }
       }
