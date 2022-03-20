@@ -3,6 +3,10 @@
 
 [Here is an example of a project 'RBKaros' on Github on the architecture branch](https://github.com/JacobOdd/RBKaros/tree/architecture)
 
+## Diagram
+
+<img src="/example/mvvm_modify_architecture.jpg"/>
+
 ## Testing Architecture
 
 What exactly are we testing?
