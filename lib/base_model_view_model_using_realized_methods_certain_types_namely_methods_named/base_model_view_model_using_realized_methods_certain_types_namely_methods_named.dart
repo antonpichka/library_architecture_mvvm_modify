@@ -13,8 +13,10 @@ abstract class BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNa
 
   @override
   void dispose() {
-    viewModel.dispose();
-    viewModel = null;
+    if(viewModel != null) {
+      viewModel.dispose();
+      viewModel = null;
+    }
   }
 
 }
