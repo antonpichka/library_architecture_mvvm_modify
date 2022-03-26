@@ -3912,11 +3912,11 @@ abstract class BaseViewModel<T extends BaseModelDomain, Y extends BaseListModelD
   }
 
   Stream<T> getStreamModel(EnumBaseModelDomainVM operation) {
-    return _getMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation].stream;
+    return _getMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation]?.stream;
   }
   
   void notifyStreamModel(EnumBaseModelDomainVM operation) {
-    _getMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation].add(
+    _getMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation]?.add(
         _getMapEnumBaseModelDomainVMAndBaseModelDomain[operation]
     );
   }
@@ -3925,24 +3925,24 @@ abstract class BaseViewModel<T extends BaseModelDomain, Y extends BaseListModelD
   /// Start Methods ListModel **/
 
   List<T> getListModel(EnumBaseListModelDomainVM operation)  {
-    return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain;
+    return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation]?.getListModelDomain;
   }
 
   void setListModel(List<T> newModel,EnumBaseListModelDomainVM operation) {
-    _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].setListModelDomain = newModel;
+    _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation]?.setListModelDomain = newModel;
   }
 
   Future<List<T>> getFutureListModel(EnumBaseListModelDomainVM operation) async {
-    return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain;
+    return _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation]?.getListModelDomain;
   }
   
   Stream<List<T>> getStreamListModel(EnumBaseListModelDomainVM operation) {
-    return _getMapEnumBaseListModelDomainVMAndStreamControllerForList[operation].stream;
+    return _getMapEnumBaseListModelDomainVMAndStreamControllerForList[operation]?.stream;
   }
 
   void notifyStreamListModel(EnumBaseListModelDomainVM operation) {
-    _getMapEnumBaseListModelDomainVMAndStreamControllerForList[operation].add(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain
+    _getMapEnumBaseListModelDomainVMAndStreamControllerForList[operation]?.add(
+        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[operation]?.getListModelDomain
     );
   }
 
