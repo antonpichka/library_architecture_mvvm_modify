@@ -73,11 +73,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
   Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
   {
     try {
-      var _tempList =  List.generate(_listModelDomain.length,(index) {
-        return _listModelDomain[index];
-      });
-      _tempList.addAll(listModel);
-      _listModelDomain = _tempList;
+      _listModelDomain.addAll(listModel);
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -87,11 +83,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
   Response<bool, BaseException> insertModelToListModelDomain(T model)
   {
     try {
-      var _tempList =  List.generate(_listModelDomain.length,(index) {
-        return _listModelDomain[index];
-      });
-      _tempList.add(model);
-      _listModelDomain = _tempList;
+      _listModelDomain.add(model);
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -104,18 +96,10 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList =  List.generate(_listModelDomain.length,(index) {
-        return _listModelDomain[index];
-      });
 
-      for (int i = 0; i < _tempList.length; i++) {
-        for(int j = 0; j < listModel.length; j++) {
-          if (_tempList[i].uniqueId == listModel[j].uniqueId) {
-            _tempList.setAll(i, [listModel[j]]);
-          }
-        }
+      for(int i = 0; i < listModel.length; i++) {
+        _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
       }
-      _listModelDomain = _tempList;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -128,11 +112,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList =  List.generate(_listModelDomain.length,(index) {
-        return _listModelDomain[index];
-      });
-      _tempList[_tempList.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
-      _listModelDomain = _tempList;
+      _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -145,18 +125,14 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      var _tempList =  List.generate(_listModelDomain.length,(index) {
-        return _listModelDomain[index];
-      });
 
-      for(int i = 0; i < _tempList.length; i++) {
+      for(int i = 0; i < _listModelDomain.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
-          if (_tempList[i].uniqueId == listModel[j].uniqueId) {
-            _tempList.removeAt(i);
+          if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
+            _listModelDomain.removeAt(i);
           }
         }
       }
-      _listModelDomain = _tempList;
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -170,14 +146,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
-      var _tempList = List.generate(_listModelDomain.length,(index) {
-        return _listModelDomain[index];
-      });
-
-      for(int i = 0; i < _tempList.length; i++) {
-        if(_tempList[i].uniqueId == model.uniqueId) {
-          _tempList.removeAt(i);
-          _listModelDomain = _tempList;
+      for(int i = 0; i < _listModelDomain.length; i++) {
+        if(_listModelDomain[i].uniqueId == model.uniqueId) {
+          _listModelDomain.removeAt(i);
           return Response.success(true);
         }
       }
