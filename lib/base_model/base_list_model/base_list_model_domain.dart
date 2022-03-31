@@ -131,15 +131,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       var _tempList =  List.generate(_listModelDomain.length,(index) {
         return _listModelDomain[index];
       });
-
-      for (int i = 0; i < _tempList.length; i++) {
-        if (_tempList[i].uniqueId == model.uniqueId) {
-          _tempList.setAll(i, [model]);
-          _listModelDomain = _tempList;
-          return Response.success(true);
-        }
-      }
-      return Response.exception(LocalException(constDeveloper,"ListModelDomain Not isEquals Parameter UniqueId"));
+      _tempList[_tempList.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
+      _listModelDomain = _tempList;
+      return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
