@@ -5,7 +5,7 @@
 
 ## Diagram
 
-<img src="/example/mvvm_modify_architecture.jpg"/>
+<img src="/example/mvvm_modify_architecture.png"/>
 
 ## Testing Architecture
 
