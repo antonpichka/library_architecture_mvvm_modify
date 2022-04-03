@@ -1,8 +1,0 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/delete_model_to_local_database_for_one_entry_cbfvm.dart';
-import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_model_domain_cbfvm.dart';
-
-abstract class DeleteModelToLocalDatabaseForOneEntryUsedProviderBaseModelDomainCBFVM<T extends BaseModelDomain>
-    implements DeleteModelToLocalDatabaseForOneEntryCBFVM, ProviderBaseModelDomainCBFVM<T>
-{
-}
