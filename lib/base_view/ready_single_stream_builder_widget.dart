@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_number_stream_builder_widget/base_single_stream_builder_widget.dart';
 
 enum SelectedReadySingleStreamBuilderWidget {
-  streamBuilderWidget,
-  futureBuilderWidget,
+  singleStream,
+  singleFuture,
 }
 
 // ignore: must_be_immutable
@@ -15,35 +15,35 @@ class ReadySingleStreamBuilderWidget<T> extends StatelessWidget
   Stream<T> _stream;
   Future<T> _future;
 
-  ReadySingleStreamBuilderWidget.streamBuilderWidget(
+  ReadySingleStreamBuilderWidget.singleStream(
       this._baseSingleStreamBuilderWidget,
       this._stream,
       {Key key}) : super(key: key)
   {
-    _selectedReadySingleStreamBuilderWidget = SelectedReadySingleStreamBuilderWidget.streamBuilderWidget;
+    _selectedReadySingleStreamBuilderWidget = SelectedReadySingleStreamBuilderWidget.singleStream;
   }
 
-  ReadySingleStreamBuilderWidget.futureBuilderWidget(
+  ReadySingleStreamBuilderWidget.singleFuture(
       this._baseSingleStreamBuilderWidget,
       this._future,
       {Key key}) : super(key: key)
   {
-    _selectedReadySingleStreamBuilderWidget = SelectedReadySingleStreamBuilderWidget.futureBuilderWidget;
+    _selectedReadySingleStreamBuilderWidget = SelectedReadySingleStreamBuilderWidget.singleFuture;
   }
   
   @override
   Widget build(BuildContext context) {
     switch(_selectedReadySingleStreamBuilderWidget) {
-      case SelectedReadySingleStreamBuilderWidget.streamBuilderWidget:
-        return _buildStreamBuilderWidget();
-      case SelectedReadySingleStreamBuilderWidget.futureBuilderWidget:
-        return _buildFutureBuilderWidget();
+      case SelectedReadySingleStreamBuilderWidget.singleStream:
+        return _buildSingleStreamBuilderWidget();
+      case SelectedReadySingleStreamBuilderWidget.singleFuture:
+        return _buildSingleFutureBuilderWidget();
       default:
-        return _buildStreamBuilderWidget();
+        return _buildSingleStreamBuilderWidget();
     }
   }
 
-  Widget _buildStreamBuilderWidget() {
+  Widget _buildSingleStreamBuilderWidget() {
     return StreamBuilder<T>(
         stream: _stream,
         builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)
@@ -52,7 +52,7 @@ class ReadySingleStreamBuilderWidget<T> extends StatelessWidget
         });
   }
 
-  Widget _buildFutureBuilderWidget() {
+  Widget _buildSingleFutureBuilderWidget() {
     return FutureBuilder<T>(
         future: _future,
         builder: (BuildContext context, AsyncSnapshot<T> asyncSnapshot)

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-abstract class BaseViewState<T extends StatefulWidget>
-    extends State<T> with WidgetsBindingObserver
+abstract class BaseViewState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver
 {
   @override
   void initState() {

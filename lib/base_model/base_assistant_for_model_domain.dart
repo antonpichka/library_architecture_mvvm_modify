@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-abstract class BaseModelAssistantByViewModelForDomain {
+abstract class BaseAssistantForModelDomain {
   final Map<String,dynamic> _data;
 
-  BaseModelAssistantByViewModelForDomain(this._data);
+  BaseAssistantForModelDomain(this._data);
 
   @protected
   dynamic getData(String key) {

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_number_stream_builder_widget/base_three_stream_builder_widget.dart';
 
 enum SelectedReadyThreeStreamBuilderWidget {
-  futureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget,
-  futureBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget,
-  futureBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget,
+  threeFuture,
+  twoFutureAndSingleStream,
+  singleFutureAndTwoStream,
 
-  streamBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget,
-  streamBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget,
-  streamBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget,
+  threeStream,
+  twoStreamAndSingleFuture,
+  singleStreamAndTwoFuture,
 
-  streamBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget,
-  futureBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget,
+  singleStreamAndSingleFutureAndSingleStream,
+  singleFutureAndSingleStreamAndSingleFuture,
 }
 
 //ignore: must_be_immutable
@@ -28,7 +28,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
   Stream<Z> _streamZ;
   Future<Z> _futureZ;
 
-  ReadyThreeStreamBuilderWidget.futureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget(
+  ReadyThreeStreamBuilderWidget.threeFuture(
       this._baseThreeStreamBuilderWidget,
       this._futureT,
       this._futureY,
@@ -36,10 +36,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .futureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget;
+        .threeFuture;
   }
 
-  ReadyThreeStreamBuilderWidget.futureBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget(
+  ReadyThreeStreamBuilderWidget.twoFutureAndSingleStream(
       this._baseThreeStreamBuilderWidget,
       this._futureT,
       this._futureY,
@@ -47,10 +47,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .futureBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget;
+        .twoFutureAndSingleStream;
   }
 
-  ReadyThreeStreamBuilderWidget.futureBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget(
+  ReadyThreeStreamBuilderWidget.singleFutureAndTwoStream(
       this._baseThreeStreamBuilderWidget,
       this._futureT,
       this._streamY,
@@ -58,10 +58,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .futureBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget;
+        .singleFutureAndTwoStream;
   }
 
-  ReadyThreeStreamBuilderWidget.streamBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget(
+  ReadyThreeStreamBuilderWidget.threeStream(
       this._baseThreeStreamBuilderWidget,
       this._streamT,
       this._streamY,
@@ -69,10 +69,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .streamBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget;
+        .threeStream;
   }
 
-  ReadyThreeStreamBuilderWidget.streamBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget(
+  ReadyThreeStreamBuilderWidget.twoStreamAndSingleFuture(
       this._baseThreeStreamBuilderWidget,
       this._streamT,
       this._streamY,
@@ -80,10 +80,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .streamBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget;
+        .twoStreamAndSingleFuture;
   }
 
-  ReadyThreeStreamBuilderWidget.streamBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget(
+  ReadyThreeStreamBuilderWidget.singleStreamAndTwoFuture(
       this._baseThreeStreamBuilderWidget,
       this._streamT,
       this._futureY,
@@ -91,10 +91,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .streamBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget;
+        .singleStreamAndTwoFuture;
   }
 
-  ReadyThreeStreamBuilderWidget.streamBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget(
+  ReadyThreeStreamBuilderWidget.singleStreamAndSingleFutureAndSingleStream(
       this._baseThreeStreamBuilderWidget,
       this._streamT,
       this._futureY,
@@ -102,10 +102,10 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .streamBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget;
+        .singleStreamAndSingleFutureAndSingleStream;
   }
 
-  ReadyThreeStreamBuilderWidget.futureBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget(
+  ReadyThreeStreamBuilderWidget.singleFutureAndSingleStreamAndSingleFuture(
       this._baseThreeStreamBuilderWidget,
       this._futureT,
       this._streamY,
@@ -113,34 +113,34 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
       {Key key}) : super(key: key)
   {
     _selectedReadyThreeStreamBuilderWidget = SelectedReadyThreeStreamBuilderWidget
-        .futureBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget;
+        .singleFutureAndSingleStreamAndSingleFuture;
   }
 
   @override
   Widget build(BuildContext context) {
     switch(_selectedReadyThreeStreamBuilderWidget) {
-      case SelectedReadyThreeStreamBuilderWidget.futureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget:
-        return _buildFutureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.futureBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget:
-        return _buildFutureBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.futureBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget:
-        return _buildFutureBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.streamBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget:
-        return _buildStreamBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.streamBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget:
-        return _buildStreamBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.streamBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget:
-        return _buildStreamBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.streamBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget:
-        return _buildStreamBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget();
-      case SelectedReadyThreeStreamBuilderWidget.futureBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget:
-        return _buildFutureBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.threeFuture:
+        return _buildThreeFutureBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.twoFutureAndSingleStream:
+        return _buildTwoFutureAndSingleStreamBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.singleFutureAndTwoStream:
+        return _buildSingleFutureAndTwoStreamBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.threeStream:
+        return _buildThreeStreamBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.twoStreamAndSingleFuture:
+        return _buildTwoStreamAndSingleFutureBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.singleStreamAndTwoFuture:
+        return _buildSingleStreamAndTwoFutureBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.singleStreamAndSingleFutureAndSingleStream:
+        return _buildSingleStreamAndSingleFutureAndSingleStreamBuilderWidget();
+      case SelectedReadyThreeStreamBuilderWidget.singleFutureAndSingleStreamAndSingleFuture:
+        return _buildSingleFutureAndSingleStreamAndSingleFutureBuilderWidget();
       default:
-        return _buildFutureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget();
+        return _buildThreeFutureBuilderWidget();
     }
   }
 
-  Widget _buildFutureBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget() {
+  Widget _buildThreeFutureBuilderWidget() {
     return FutureBuilder<T>(
         future: _futureT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -163,7 +163,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
               });
         });
   }
-  Widget _buildFutureBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget() {
+  Widget _buildTwoFutureAndSingleStreamBuilderWidget() {
     return FutureBuilder<T>(
         future: _futureT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -187,7 +187,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
         });
   }
 
-  Widget _buildFutureBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget() {
+  Widget _buildSingleFutureAndTwoStreamBuilderWidget() {
     return FutureBuilder<T>(
         future: _futureT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -210,7 +210,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
               });
         });
   }
-  Widget _buildStreamBuilderWidgetAndStreamBuilderWidgetAndStreamBuilderWidget() {
+  Widget _buildThreeStreamBuilderWidget() {
     return StreamBuilder<T>(
         stream: _streamT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -234,7 +234,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
         });
   }
 
-  Widget _buildStreamBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget() {
+  Widget _buildTwoStreamAndSingleFutureBuilderWidget() {
     return StreamBuilder<T>(
         stream: _streamT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -258,7 +258,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
         });
   }
 
-  Widget _buildStreamBuilderWidgetAndFutureBuilderWidgetAndFutureBuilderWidget() {
+  Widget _buildSingleStreamAndTwoFutureBuilderWidget() {
     return StreamBuilder<T>(
         stream: _streamT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -282,7 +282,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
         });
   }
 
-  Widget _buildStreamBuilderWidgetAndFutureBuilderWidgetAndStreamBuilderWidget() {
+  Widget _buildSingleStreamAndSingleFutureAndSingleStreamBuilderWidget() {
     return StreamBuilder<T>(
         stream: _streamT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -306,7 +306,7 @@ class ReadyThreeStreamBuilderWidget<T,Y,Z> extends StatelessWidget
         });
   }
 
-  Widget _buildFutureBuilderWidgetAndStreamBuilderWidgetAndFutureBuilderWidget() {
+  Widget _buildSingleFutureAndSingleStreamAndSingleFutureBuilderWidget() {
     return FutureBuilder<T>(
         future: _futureT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)

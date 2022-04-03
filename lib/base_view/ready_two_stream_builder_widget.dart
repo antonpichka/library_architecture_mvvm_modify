@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_view/base_number_stream_builder_widget/base_two_stream_builder_widget.dart';
 
 enum SelectedReadyTwoStreamBuilderWidget {
-  streamBuilderWidgetAndStreamBuilderWidget,
-  futureBuilderWidgetAndFutureBuilderWidget,
-  futureBuilderWidgetAndStreamBuilderWidget,
-  streamBuilderWidgetAndFutureBuilderWidget,
+  twoStream,
+  twoFuture,
+  singleFutureAndSingleStream,
+  singleStreamAndSingleFuture,
 }
 
 //ignore: must_be_immutable
@@ -20,63 +20,63 @@ class ReadyTwoStreamBuilderWidget<T,Y> extends StatelessWidget
   Stream<Y> _streamY;
   Future<Y> _futureY;
   
-  ReadyTwoStreamBuilderWidget.streamBuilderWidgetAndStreamBuilderWidget(
+  ReadyTwoStreamBuilderWidget.twoStream(
       this._baseTwoStreamBuilderWidget,
       this._streamT,
       this._streamY,
       {Key key}) : super(key: key)
   {
     _selectedReadyTwoStreamBuilderWidget = SelectedReadyTwoStreamBuilderWidget
-        .streamBuilderWidgetAndStreamBuilderWidget;
+        .twoStream;
   }
 
-  ReadyTwoStreamBuilderWidget.futureBuilderWidgetAndFutureBuilderWidget(
+  ReadyTwoStreamBuilderWidget.twoFuture(
       this._baseTwoStreamBuilderWidget,
       this._futureT,
       this._futureY,
       {Key key}) : super(key: key)
   {
     _selectedReadyTwoStreamBuilderWidget = SelectedReadyTwoStreamBuilderWidget
-        .futureBuilderWidgetAndFutureBuilderWidget;
+        .twoFuture;
   }
 
-  ReadyTwoStreamBuilderWidget.futureBuilderWidgetAndStreamBuilderWidget(
+  ReadyTwoStreamBuilderWidget.singleFutureAndSingleStream(
       this._baseTwoStreamBuilderWidget,
       this._futureT,
       this._streamY,
       {Key key}) : super(key: key)
   {
     _selectedReadyTwoStreamBuilderWidget = SelectedReadyTwoStreamBuilderWidget
-        .futureBuilderWidgetAndStreamBuilderWidget;
+        .singleFutureAndSingleStream;
   }
 
-  ReadyTwoStreamBuilderWidget.streamBuilderWidgetAndFutureBuilderWidget(
+  ReadyTwoStreamBuilderWidget.singleStreamAndSingleFuture(
       this._baseTwoStreamBuilderWidget,
       this._streamT,
       this._futureY,
       {Key key}) : super(key: key)
   {
     _selectedReadyTwoStreamBuilderWidget = SelectedReadyTwoStreamBuilderWidget
-        .streamBuilderWidgetAndFutureBuilderWidget;
+        .singleStreamAndSingleFuture;
   }
 
   @override
   Widget build(BuildContext context) {
     switch(_selectedReadyTwoStreamBuilderWidget) {
-      case SelectedReadyTwoStreamBuilderWidget.streamBuilderWidgetAndStreamBuilderWidget:
-        return _buildStreamBuilderWidgetAndStreamBuilderWidget();
-      case SelectedReadyTwoStreamBuilderWidget.futureBuilderWidgetAndFutureBuilderWidget:
-        return _buildFutureBuilderWidgetAndFutureBuilderWidget();
-      case SelectedReadyTwoStreamBuilderWidget.futureBuilderWidgetAndStreamBuilderWidget:
-        return _buildFutureBuilderWidgetAndStreamBuilderWidget();
-      case SelectedReadyTwoStreamBuilderWidget.streamBuilderWidgetAndFutureBuilderWidget:
-        return _buildStreamBuilderWidgetAndFutureBuilderWidget();
+      case SelectedReadyTwoStreamBuilderWidget.twoStream:
+        return _buildTwoStreamBuilderWidget();
+      case SelectedReadyTwoStreamBuilderWidget.twoFuture:
+        return _buildTwoFutureBuilderWidget();
+      case SelectedReadyTwoStreamBuilderWidget.singleFutureAndSingleStream:
+        return _buildSingleFutureAndSingleStreamBuilderWidget();
+      case SelectedReadyTwoStreamBuilderWidget.singleStreamAndSingleFuture:
+        return _buildSingleStreamAndSingleFutureBuilderWidget();
       default:
-        return _buildStreamBuilderWidgetAndStreamBuilderWidget();
+        return _buildTwoStreamBuilderWidget();
     }
   }
 
-  Widget _buildStreamBuilderWidgetAndStreamBuilderWidget() {
+  Widget _buildTwoStreamBuilderWidget() {
     return StreamBuilder<T>(
         stream: _streamT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -94,7 +94,7 @@ class ReadyTwoStreamBuilderWidget<T,Y> extends StatelessWidget
         });
   }
 
-  Widget _buildFutureBuilderWidgetAndFutureBuilderWidget() {
+  Widget _buildTwoFutureBuilderWidget() {
     return FutureBuilder<T>(
         future: _futureT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -112,7 +112,7 @@ class ReadyTwoStreamBuilderWidget<T,Y> extends StatelessWidget
         });
   }
 
-  Widget _buildFutureBuilderWidgetAndStreamBuilderWidget() {
+  Widget _buildSingleFutureAndSingleStreamBuilderWidget() {
     return FutureBuilder<T>(
         future: _futureT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)
@@ -130,7 +130,7 @@ class ReadyTwoStreamBuilderWidget<T,Y> extends StatelessWidget
         });
   }
 
-  Widget _buildStreamBuilderWidgetAndFutureBuilderWidget() {
+  Widget _buildSingleStreamAndSingleFutureBuilderWidget() {
     return StreamBuilder<T>(
         stream: _streamT,
         builder: (BuildContext context, AsyncSnapshot<T> modelAsyncSnapshotT)

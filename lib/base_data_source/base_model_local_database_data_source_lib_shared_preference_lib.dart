@@ -36,7 +36,7 @@ enum EnumTypeForSP {
   listString
 }
 
-abstract class BaseModelLocalDatabaseForOneEntryDataSourceLibSharedPreferenceLib<T extends BaseModelLocalDatabase>
+abstract class BaseModelLocalDatabaseDataSourceLibSharedPreferenceLib<T extends BaseModelLocalDatabase>
 {
   static SharedPreferences _sharedPreferences;
 

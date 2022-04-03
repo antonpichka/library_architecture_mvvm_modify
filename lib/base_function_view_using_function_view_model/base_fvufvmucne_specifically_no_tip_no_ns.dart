@@ -1,7 +1,0 @@
-
-import 'package:library_architecture_mvvm_modify/base_function_view_using_function_view_model/base_function_view_using_function_view_model_using_callback_network_exception.dart';
-
-abstract class BaseFVUFVMUCNESpecificallyNoTIPNoNS<T>
-    extends BaseFunctionViewUsingFunctionViewModelUsingCallbackNetworkException<T>
-{
-}

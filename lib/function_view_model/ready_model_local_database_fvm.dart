@@ -1,27 +1,8 @@
-
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source_and_delete_list_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source_and_delete_list_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source_and_insert_list_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source_and_insert_list_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source_and_update_list_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_data_source_and_update_list_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source_and_delete_list_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source_and_delete_list_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source_and_insert_list_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source_and_insert_list_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source_and_update_list_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_local_database_there_is_parameter_data_source_and_update_list_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source_and_delete_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source_and_delete_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source_and_insert_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source_and_insert_model_to_network_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source_and_update_model_to_local_database_there_is_parameter_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_local_database_there_is_parameter_data_source_and_update_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_list_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_local_database_there_is_parameter_data_source.dart';
@@ -52,84 +33,6 @@ class ReadyModelLocalDatabaseFVM
     }
   }
 
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseDataSourceAndDeleteListModelToLocalDatabaseThereIsParameterDataSource get
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseDataSourceAndDeleteListModelToLocalDatabaseThereIsParameterDataSource();
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseDataSourceAndDeleteListModelToNetworkDatabaseThereIsParameterDataSource get
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseDataSourceAndDeleteListModelToNetworkDatabaseThereIsParameterDataSource();
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseDataSourceAndInsertListModelToLocalDatabaseThereIsParameterDataSource get
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseDataSourceAndInsertListModelToLocalDatabaseThereIsParameterDataSource();
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseDataSourceAndInsertListModelToNetworkDatabaseThereIsParameterDataSource get
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseDataSourceAndInsertListModelToNetworkDatabaseThereIsParameterDataSource();
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseDataSourceAndUpdateListModelToLocalDatabaseThereIsParameterDataSource get
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseDataSourceAndUpdateListModelToLocalDatabaseThereIsParameterDataSource();
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseDataSourceAndUpdateListModelToNetworkDatabaseThereIsParameterDataSource get
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseDataSourceAndUpdateListModelToNetworkDatabaseThereIsParameterDataSource();
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
   static Future<Response<bool, BaseException>> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
       BaseListModelDomain baseListModelDomain,
@@ -142,90 +45,6 @@ class ReadyModelLocalDatabaseFVM
     );
     if(response.isSuccessResponse) {
       baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToLocalDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteListModelToLocalDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteListModelToLocalDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseThereIsParameterFVMAndDeleteListModelToNetworkDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteListModelToNetworkDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteListModelToNetworkDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToLocalDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseThereIsParameterDataSourceAndInsertListModelToLocalDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseThereIsParameterDataSourceAndInsertListModelToLocalDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseThereIsParameterFVMAndInsertListModelToNetworkDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseThereIsParameterDataSourceAndInsertListModelToNetworkDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseThereIsParameterDataSourceAndInsertListModelToNetworkDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToLocalDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateListModelToLocalDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateListModelToLocalDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getListModelFromLocalDatabaseThereIsParameterFVMAndUpdateListModelToNetworkDatabaseThereIsParameterFVM(
-      GetListModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateListModelToNetworkDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getListModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateListModelToNetworkDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
       return Response.success(true);
     } else {
       return Response.exception(response.getException);
@@ -247,90 +66,6 @@ class ReadyModelLocalDatabaseFVM
           response.getData.toBaseModelDomain(),
           EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
       );
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToLocalDatabaseThereIsParameterFVM(
-      GetModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteModelToLocalDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteModelToLocalDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getModelFromLocalDatabaseThereIsParameterFVMAndDeleteModelToNetworkDatabaseThereIsParameterFVM(
-      GetModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteModelToNetworkDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getModelFromLocalDatabaseThereIsParameterDataSourceAndDeleteModelToNetworkDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToLocalDatabaseThereIsParameterFVM(
-      GetModelFromLocalDatabaseThereIsParameterDataSourceAndInsertModelToLocalDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getModelFromLocalDatabaseThereIsParameterDataSourceAndInsertModelToLocalDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getModelFromLocalDatabaseThereIsParameterFVMAndInsertModelToNetworkDatabaseThereIsParameterFVM(
-      GetModelFromLocalDatabaseThereIsParameterDataSourceAndInsertModelToNetworkDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getModelFromLocalDatabaseThereIsParameterDataSourceAndInsertModelToNetworkDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToLocalDatabaseThereIsParameterFVM(
-      GetModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateModelToLocalDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateModelToLocalDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
-      return Response.success(true);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<bool, BaseException>> getModelFromLocalDatabaseThereIsParameterFVMAndUpdateModelToNetworkDatabaseThereIsParameterFVM(
-      GetModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateModelToNetworkDatabaseThereIsParameterDataSource get,
-      BaseTypeParameter parameter
-      ) async
-  {
-    var response = await get
-        .getModelFromLocalDatabaseThereIsParameterDataSourceAndUpdateModelToNetworkDatabaseThereIsParameterDataSource(parameter);
-    if(response.isSuccessResponse) {
       return Response.success(true);
     } else {
       return Response.exception(response.getException);
