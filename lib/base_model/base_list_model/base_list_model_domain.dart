@@ -60,7 +60,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> {
       if(_iterator != null) {
         _listModelDomain = _iterator.getSortedList;
       } else {
-        return Response.exception(LocalException(constDeveloper,"Iterator equals null"));
+        return Response.exception(LocalException(constDeveloper,"null Iterator"));
       }
       return Response.success(true);
     } catch(e) {

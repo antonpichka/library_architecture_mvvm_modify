@@ -1,7 +1,10 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/delete_list_model_to_ln_database_there_is_parameter_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/provider_base_list_model_domain_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
 abstract class DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<T extends BaseListModelDomain>
-    implements DeleteListModelToLNDatabaseThereIsParameterCBFVM,ProviderBaseListModelDomainCBFVM<T> {
+    implements ProviderBaseListModelDomainCBFVM<T>
+{
+  ResponseGenericBoolAndDomainException deleteListModelToLNDatabaseThereIsParameterCBFVM(List<BaseModelDomain> list);
 }

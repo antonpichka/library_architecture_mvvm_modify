@@ -15,9 +15,12 @@ class ReadyDialog {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(title,style: const TextStyle(
-            color: Colors.white,
-            fontSize: 17,),),
+          title: Text(title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+            ),
+          ),
           backgroundColor: backgroundColor,
           content: SingleChildScrollView(
             child: ListBody(
