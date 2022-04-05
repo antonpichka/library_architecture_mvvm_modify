@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_local_database_there_is_parameter_data_source.dart';
@@ -2525,11 +2525,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
       _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM = null;
     }
-    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
-      _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM = null;
-    }
     if(_getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM != null) {
       _getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM = null;
+    }
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM = null;
+    }
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM = null;
     }
 
     if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
@@ -2550,11 +2553,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
       _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM = null;
     }
-    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
-      _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM = null;
-    }
     if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
       _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM = null;
+    }
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM = null;
     }
   }
 }
