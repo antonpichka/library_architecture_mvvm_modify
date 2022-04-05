@@ -1,3 +1,4 @@
+import 'package:library_architecture_mvvm_modify/ability_to_clone.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
@@ -8,13 +9,12 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_p
 import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
-abstract class BaseListModelDomain<T extends BaseModelDomain> {
+abstract class BaseListModelDomain<T extends BaseModelDomain> implements AbilityToClone<BaseListModelDomain> {
   List<T> _listModelDomain = List.empty();
   BaseIterator _iterator;
 
   BaseListModelLocalDatabase toBaseListModelLocalDatabase();
   BaseListModelNetworkDatabase toBaseListModelNetworkDatabase();
-  BaseListModelDomain cloneObjectForCBFVM();
 
   List<T> get getListModelDomain {
     return _listModelDomain;

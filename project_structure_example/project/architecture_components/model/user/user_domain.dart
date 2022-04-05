@@ -47,7 +47,7 @@ class UserDomain extends BaseModelDomain {
   }
 
   @override
-  UserDomain cloneObjectForCBFVM() {
+  BaseModelDomain cloneObject() {
     return UserDomain(uniqueId: uniqueId,name: name);
   }
 

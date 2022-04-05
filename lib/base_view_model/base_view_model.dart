@@ -36,8 +36,9 @@ import 'package:library_architecture_mvvm_modify/function_view_model/ready_model
 import 'package:library_architecture_mvvm_modify/function_view_model/ready_model_network_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/delete_list_model_to_ln_database_there_is_parameter_used_provider_base_list_model_domain_cbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/delete_model_to_ln_database_there_is_parameter_used_provider_base_model_domain_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/get_list_model_from_ln_database_there_is_parameter_used_provider_base_model_domain_cbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/get_list_model_from_ln_database_used_provider_base_model_domain_cbfvm.dart';
-import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/get_model_from_ln_database_used_provider_base_model_domain_cbfvm.dart';
+import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/get_model_from_ln_database_there_is_parameter_used_provider_base_model_domain_cbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/insert_list_model_to_ln_database_there_is_parameter_used_provider_base_list_model_domain_cbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/insert_model_to_ln_database_there_is_parameter_used_provider_base_model_domain_cbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_before_function_view_model/update_list_model_to_ln_database_there_is_parameter_used_provider_base_list_model_domain_cbfvm.dart';
@@ -89,7 +90,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM;
   DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM;
   GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> _getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM;
-  GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> _getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM;
+  GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM;
+  GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM;
 
   /* OWMDAFVM*/
   InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM;
@@ -165,52 +167,63 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVMVariantTwo(
-      GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseThereIsParameterOWMDAFVM)
-  async {
-    getListModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    var response = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseDataSource,
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-    );
-    if(response.isSuccessResponse) {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+      GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource) async
+  {
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter];
+
+      var response = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
+          getListModelFromLocalDatabaseDataSource,
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(getListModelFromLocalDatabaseDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVMVariantThree(
-      GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseOWMDAFVM) 
+      GetListModelFromLocalDatabaseDataSource getListModelFromLocalDatabaseDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
-    getListModelFromLNDatabaseOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
-          getListModelFromLocalDatabaseDataSource,
-          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-      );
-      if(responseTwo.isSuccessResponse) {
-        getListModelFromLNDatabaseOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+    if(_getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM != null
+        && _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var cbfvm = _getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
+      ].cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
+      ];
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetListModelFromLNDatabaseCBFVM();
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
+            getListModelFromLocalDatabaseDataSource,
+            _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        getListModelFromLNDatabaseOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      getListModelFromLNDatabaseOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(getListModelFromLocalDatabaseDataSource);
     }
   }
 
@@ -219,81 +232,106 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource) 
   {
     return ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseThereIsParameterDataSource, 
+        getListModelFromLocalDatabaseThereIsParameterDataSource,
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
         _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]);
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantTwo(
-      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM)
+      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
-    
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-          getListModelFromLocalDatabaseThereIsParameterDataSource,
-          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]);
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null)
+    {
+      var cbfvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
+      ].cloneObject();
+
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetListModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
+      );
+      if(response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+            getListModelFromLocalDatabaseThereIsParameterDataSource,
+            _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]);
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(getListModelFromLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantThree(
-      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource)
   async {
-    getListModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromLocalDatabaseThereIsParameterDataSource,
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]
-    );
-    if(responseTwo.isSuccessResponse) {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM
+          .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
+      ];
+      var response = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+          getListModelFromLocalDatabaseThereIsParameterDataSource,
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(getListModelFromLocalDatabaseThereIsParameterDataSource);
     }
   }
   
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantFour(
-      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseThereIsParameterOWMDAFVM) 
+      GetListModelFromLocalDatabaseThereIsParameterDataSource getListModelFromLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
-   
-    getListModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-          getListModelFromLocalDatabaseThereIsParameterDataSource,
-          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var cbfvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
+      ].cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter
+      ];
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetListModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+            getListModelFromLocalDatabaseThereIsParameterDataSource,
+            _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter],
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromLocalDatabaseThereIsParameter]
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(getListModelFromLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -309,74 +347,101 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantTwo(
-      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
-      GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getModelFromLNDatabaseCBFVM)
+      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    getModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var cbfvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
+      ].cloneObject();
 
-    ResponseGenericBoolAndDomainException response = getModelFromLNDatabaseCBFVM.callToMethodGetModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-          this,
-          getModelFromLocalDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]);
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
+      );
+      if (response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+            this,
+            getModelFromLocalDatabaseThereIsParameterDataSource,
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(getModelFromLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantThree(
-      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
-      GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource)
   async {
-    getModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
-    ];
-    var response = await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-        this,
-        getModelFromLocalDatabaseThereIsParameterDataSource,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
-    );
-    if(response.isSuccessResponse) {
-      getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
+      ];
+
+      var response = await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+          this, 
+          getModelFromLocalDatabaseThereIsParameterDataSource, 
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(getModelFromLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVMVariantFour(
-      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource,
-      GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getModelFromLNDatabaseCBFVM,
-      GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetModelFromLocalDatabaseThereIsParameterDataSource getModelFromLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    getModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
-    getModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
-    ];
-    
-    ResponseGenericBoolAndDomainException response = getModelFromLNDatabaseCBFVM.callToMethodGetModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
-          this,
-          getModelFromLocalDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var cbfvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
+      ].cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromLocalDatabaseThereIsParameter
+      ];
+
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if (response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+            this,
+            getModelFromLocalDatabaseThereIsParameterDataSource,
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromLocalDatabaseThereIsParameter]
+        );
+        if (responseTwo.isSuccessResponse) {
+          owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(getModelFromLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -392,79 +457,94 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> insertModelToLNDatabaseThereIsParameterCBFVM)
+      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = insertModelToLNDatabaseThereIsParameterCBFVM.insertModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          insertModelToLocalDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.insertModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if (response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            insertModelToLocalDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseInsertModelToLocalDatabaseThereIsParameterFVM(insertModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseThereIsParameterFVMVariantThree(
-      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> insertModelToLNDatabaseOWMDAFVM)
+      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var responseTwo = await ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-        _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-          EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter
-        ],
-        insertModelToLocalDatabaseThereIsParameterDataSource
-    );
-    if(responseTwo.isSuccessResponse) {
-      insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter];
+
+      var response = await ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+          _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter],
+          insertModelToLocalDatabaseThereIsParameterDataSource
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseInsertModelToLocalDatabaseThereIsParameterFVM(insertModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertModelToLocalDatabaseThereIsParameterFVMVariantFour(
-      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> insertModelToLNDatabaseCBFVM,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> insertModelToLNDatabaseOWMDAFVM)
+      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertModelToLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null )
+    {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    insertModelToLNDatabaseOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter
-    ];
-    var response = insertModelToLNDatabaseCBFVM.insertModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          insertModelToLocalDatabaseThereIsParameterDataSource
+      cbfvm.setBaseModelDomainCBFVM = model;
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter
+      ];
+
+      var response = cbfvm.insertModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            insertModelToLocalDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseInsertModelToLocalDatabaseThereIsParameterFVM(insertModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -480,80 +560,95 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> insertListModelToLNDatabaseThereIsParameterCBFVM)
+      InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseListModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = insertListModelToLNDatabaseThereIsParameterCBFVM.insertListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.insertListModelToLocalDatabaseThereIsParameterFVM(
-          cbfvm,
-          insertListModelToLocalDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.insertListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if (response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.insertListModelToLocalDatabaseThereIsParameterFVM(
+            model,
+            insertListModelToLocalDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseInsertListModelToLocalDatabaseThereIsParameterFVM(insertListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToLocalDatabaseThereIsParameterFVMVariantThree(
-      InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> insertListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    insertListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter
-    ];
-    var response = await ReadyModelLocalDatabaseFVM.insertListModelToLocalDatabaseThereIsParameterFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter],
-        insertListModelToLocalDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
+      var owmdafvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter
+      ];
+
+      var response = await ReadyModelLocalDatabaseFVM.insertListModelToLocalDatabaseThereIsParameterFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter],
+          insertListModelToLocalDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseInsertListModelToLocalDatabaseThereIsParameterFVM(insertListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToLocalDatabaseThereIsParameterFVMVariantFour(
-      InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> insertListModelToLNDatabaseThereIsParameterCBFVM,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> insertListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null &&
+        _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      var owmdafvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
 
-    insertListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = insertListModelToLNDatabaseThereIsParameterCBFVM.insertListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.insertListModelToLocalDatabaseThereIsParameterFVM(
-          cbfvm,
-          insertListModelToLocalDatabaseThereIsParameterDataSource
+      cbfvm.setBaseListModelDomainCBFVM = model;
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter
+      ];
+      ResponseGenericBoolAndDomainException response = cbfvm.insertListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if (response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.insertListModelToLocalDatabaseThereIsParameterFVM(
+            model,
+            insertListModelToLocalDatabaseThereIsParameterDataSource
+        );
+        if (responseTwo.isSuccessResponse) {
+          owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseInsertListModelToLocalDatabaseThereIsParameterFVM(insertListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -569,82 +664,92 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> updateModelToLNDatabaseThereIsParameterCBFVM)
+      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = updateModelToLNDatabaseThereIsParameterCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          updateModelToLocalDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            updateModelToLocalDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseUpdateModelToLocalDatabaseThereIsParameterFVM(updateModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterFVMVariantThree(
-      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> updateModelToLNDatabaseThereIsParameterOWMDAFVM)
+      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    updateModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter];
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter];
 
-    var response = await ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-        _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-          EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter
-        ],
-        updateModelToLocalDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      updateModelToLNDatabaseThereIsParameterOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+      var response = await ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+          _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter],
+          updateModelToLocalDatabaseThereIsParameterDataSource
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      updateModelToLNDatabaseThereIsParameterOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateModelToLocalDatabaseThereIsParameterFVM(updateModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToLocalDatabaseThereIsParameterFVMVariantFour(
-      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> updateModelToLNDatabaseThereIsParameterCBFVM,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> updateModelToLNDatabaseThereIsParameterOWMDAFVM)
+      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    updateModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter
-    ];
+      cbfvm.setBaseModelDomainCBFVM = model;
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter];
 
-    var response = updateModelToLNDatabaseThereIsParameterCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          updateModelToLocalDatabaseThereIsParameterDataSource
+      var response = cbfvm.updateModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        updateModelToLNDatabaseThereIsParameterOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            updateModelToLocalDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        updateModelToLNDatabaseThereIsParameterOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      updateModelToLNDatabaseThereIsParameterOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateModelToLocalDatabaseThereIsParameterFVM(updateModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
   
@@ -660,80 +765,92 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateListModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> updateListModelToLNDatabaseThereIsParameterCBFVM)
+      UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseListModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = updateListModelToLNDatabaseThereIsParameterCBFVM.updateListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.updateListModelToLocalDatabaseThereIsParameterFVM(
-          cbfvm,
-          updateListModelToLocalDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.updateListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.updateListModelToLocalDatabaseThereIsParameterFVM(
+            model,
+            updateListModelToLocalDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseUpdateListModelToLocalDatabaseThereIsParameterFVM(updateListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateListModelToLocalDatabaseThereIsParameterFVMVariantThree(
-      UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> updateListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    updateListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = await ReadyModelLocalDatabaseFVM.updateListModelToLocalDatabaseThereIsParameterFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter],
-        updateListModelToLocalDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
+      var owmdafvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter];
+
+      ResponseGenericBoolAndDomainException response = await ReadyModelLocalDatabaseFVM.updateListModelToLocalDatabaseThereIsParameterFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter],
+          updateListModelToLocalDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateListModelToLocalDatabaseThereIsParameterFVM(updateListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateListModelToLocalDatabaseThereIsParameterFVMVariantFour(
-      UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> updateListModelToLNDatabaseThereIsParameterCBFVM,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> updateListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null &&
+        _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      var owmdafvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
 
-    updateListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter
-    ];
-    var response = updateListModelToLNDatabaseThereIsParameterCBFVM.updateListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.updateListModelToLocalDatabaseThereIsParameterFVM(
-          cbfvm,
-          updateListModelToLocalDatabaseThereIsParameterDataSource
+      cbfvm.setBaseListModelDomainCBFVM = model;
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter];
+
+      var response = cbfvm.updateListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.updateListModelToLocalDatabaseThereIsParameterFVM(
+            model,
+            updateListModelToLocalDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateListModelToLocalDatabaseThereIsParameterFVM(updateListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -747,82 +864,93 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> deleteModelToLNDatabaseThereIsParameterCBFVM)
+      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
-    
-    ResponseGenericBoolAndDomainException response = deleteModelToLNDatabaseThereIsParameterCBFVM.deleteModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          deleteModelToLocalDatabaseThereIsParameterDataSource
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = model;
+
+      ResponseGenericBoolAndDomainException response = cbfvm.deleteModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            deleteModelToLocalDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseDeleteModelToLocalDatabaseThereIsParameterFVM(deleteModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseThereIsParameterFVMVariantThree(
-      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> deleteModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    deleteModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter
-    ];
-    var responseTwo = await ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-        _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-          EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter
-        ],
-        deleteModelToLocalDatabaseThereIsParameterDataSource
-    );
-    if(responseTwo.isSuccessResponse) {
-      deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter
+      ];
+      var response = await ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+          _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter],
+          deleteModelToLocalDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseDeleteModelToLocalDatabaseThereIsParameterFVM(deleteModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteModelToLocalDatabaseThereIsParameterFVMVariantFour(
-      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> deleteModelToLNDatabaseThereIsParameterCBFVM,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> deleteModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    deleteModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-    EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter
-    ];
-    var response = deleteModelToLNDatabaseThereIsParameterCBFVM.deleteModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          deleteModelToLocalDatabaseThereIsParameterDataSource
+      cbfvm.setBaseModelDomainCBFVM = model;
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter];
+
+      var response = cbfvm.deleteModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            deleteModelToLocalDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseDeleteModelToLocalDatabaseThereIsParameterFVM(deleteModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -838,80 +966,96 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteListModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> deleteListModelToLNDatabaseThereIsParameterCBFVM) 
+      DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
-    
-    var response = deleteListModelToLNDatabaseThereIsParameterCBFVM.deleteListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelLocalDatabaseFVM.deleteListModelToLocalDatabaseThereIsParameterFVM(
-          cbfvm,
-          deleteListModelToLocalDatabaseThereIsParameterDataSource
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseListModelDomainCBFVM = model;
+
+      var response = cbfvm.deleteListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelLocalDatabaseFVM.deleteListModelToLocalDatabaseThereIsParameterFVM(
+            model,
+            deleteListModelToLocalDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseDeleteListModelToLocalDatabaseThereIsParameterFVM(deleteListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteListModelToLocalDatabaseThereIsParameterFVMVariantThree(
-      DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> deleteListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter
-    ];
-    var response = await ReadyModelLocalDatabaseFVM.deleteListModelToLocalDatabaseThereIsParameterFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter],
-        deleteListModelToLocalDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
+      var owmdafvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter
+      ];
+      
+      var response = await ReadyModelLocalDatabaseFVM.deleteListModelToLocalDatabaseThereIsParameterFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter],
+          deleteListModelToLocalDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseDeleteListModelToLocalDatabaseThereIsParameterFVM(deleteListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteListModelToLocalDatabaseThereIsParameterFVMVariantFour(
-      DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> deleteListModelToLNDatabaseThereIsParameterCBFVM,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> deleteListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null && 
+        _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      var owmdafvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      
+      cbfvm.setBaseListModelDomainCBFVM = model;
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter
+      ];
 
-    deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter
-    ];
-    var response = deleteListModelToLNDatabaseThereIsParameterCBFVM.deleteListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelLocalDatabaseFVM.deleteListModelToLocalDatabaseThereIsParameterFVM(
-          cbfvm,
-          deleteListModelToLocalDatabaseThereIsParameterDataSource
+      var response = cbfvm.deleteListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelLocalDatabaseFVM.deleteListModelToLocalDatabaseThereIsParameterFVM(
+            model,
+            deleteListModelToLocalDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseDeleteListModelToLocalDatabaseThereIsParameterFVM(deleteListModelToLocalDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -919,6 +1063,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   /// Start ReadyModelNetworkDatabaseFVM
   ///
+  
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
       GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource)
@@ -930,77 +1075,69 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVMVariantTwo(
-      GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM)
-  async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+      GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource) async
+  {
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter];
 
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
+      var response = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
           getListModelFromNetworkDatabaseDataSource,
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
       );
+      if(response.isSuccessResponse) {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(getListModelFromNetworkDatabaseDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVMVariantThree(
-      GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource)
   async {
-    getListModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    var response = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
-        getListModelFromNetworkDatabaseDataSource,
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-    );
-    if(response.isSuccessResponse) {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
-    } else {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
-    }
-  }
+    if(_getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM != null
+        && _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var cbfvm = _getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-  @protected
-  Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVMVariantFour(
-      GetListModelFromNetworkDatabaseDataSource getListModelFromNetworkDatabaseDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseOWMDAFVM)
-  async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
-    getListModelFromLNDatabaseOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
-          getListModelFromNetworkDatabaseDataSource,
-          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-      );
-      if(responseTwo.isSuccessResponse) {
-        getListModelFromLNDatabaseOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
+      ].cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
+      ];
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetListModelFromLNDatabaseCBFVM();
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
+            getListModelFromNetworkDatabaseDataSource,
+            _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        getListModelFromLNDatabaseOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      getListModelFromLNDatabaseOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(getListModelFromNetworkDatabaseDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource) 
+      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource)
   {
     return ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
         getListModelFromNetworkDatabaseThereIsParameterDataSource,
@@ -1010,74 +1147,99 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVMVariantTwo(
-      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM)
+      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null)
+    {
+      var cbfvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
+      ].cloneObject();
 
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-          getListModelFromNetworkDatabaseThereIsParameterDataSource,
-          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]);
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetListModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
+      );
+      if(response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+            getListModelFromNetworkDatabaseThereIsParameterDataSource,
+            _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]);
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(getListModelFromNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVMVariantThree(
-      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource)
   async {
-    getListModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-        getListModelFromNetworkDatabaseThereIsParameterDataSource,
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]
-    );
-    if(responseTwo.isSuccessResponse) {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
+      ];
+      var response = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+          getListModelFromNetworkDatabaseThereIsParameterDataSource,
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(getListModelFromNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVMVariantFour(
-      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource,
-      GetListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseCBFVM,
-      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getListModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetListModelFromNetworkDatabaseThereIsParameterDataSource getListModelFromNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter].cloneObjectForCBFVM();
-    getListModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var cbfvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    getListModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = getListModelFromLNDatabaseCBFVM.callToMethodGetListModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-          getListModelFromNetworkDatabaseThereIsParameterDataSource,
-          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
+      ].cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter
+      ];
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetListModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+            getListModelFromNetworkDatabaseThereIsParameterDataSource,
+            _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter],
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getListModelFromNetworkDatabaseThereIsParameter]
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      getListModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetListModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(getListModelFromNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -1093,74 +1255,100 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVMVariantTwo(
-      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
-      GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getModelFromLNDatabaseCBFVM)
+      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    getModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var cbfvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
+      ].cloneObject();
 
-    ResponseGenericBoolAndDomainException response = getModelFromLNDatabaseCBFVM.callToMethodGetModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-          this,
-          getModelFromNetworkDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]);
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
+      );
+      if (response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+            this,
+            getModelFromNetworkDatabaseThereIsParameterDataSource,
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(getModelFromNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVMVariantThree(
-      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
-      GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource)
   async {
-    getModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
-    ];
-    var response = await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-        this,
-        getModelFromNetworkDatabaseThereIsParameterDataSource,
-        _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
-    );
-    if(response.isSuccessResponse) {
-      getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
+      ];
+      var response = await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+          this,
+          getModelFromNetworkDatabaseThereIsParameterDataSource,
+          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(getModelFromNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVMVariantFour(
-      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource,
-      GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getModelFromLNDatabaseCBFVM,
-      GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> getModelFromLNDatabaseThereIsParameterOWMDAFVM)
+      GetModelFromNetworkDatabaseThereIsParameterDataSource getModelFromNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    getModelFromLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
-    getModelFromLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
-    ];
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var cbfvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    ResponseGenericBoolAndDomainException response = getModelFromLNDatabaseCBFVM.callToMethodGetModelFromLNDatabaseCBFVM();
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
-          this,
-          getModelFromNetworkDatabaseThereIsParameterDataSource,
-          _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
+      cbfvm.setBaseModelDomainCBFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
+      ].cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.getModelFromNetworkDatabaseThereIsParameter
+      ];
+
+      ResponseGenericBoolAndDomainException response = cbfvm.callToMethodGetModelFromLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if (response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+            this,
+            getModelFromNetworkDatabaseThereIsParameterDataSource,
+            _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM.getModelFromNetworkDatabaseThereIsParameter]
+        );
+        if (responseTwo.isSuccessResponse) {
+          owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      getModelFromLNDatabaseThereIsParameterOWMDAFVM.callToMethodGetModelFromLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseCallToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(getModelFromNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -1176,80 +1364,97 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseInsertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> insertModelToLNDatabaseThereIsParameterCBFVM)
+      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = insertModelToLNDatabaseThereIsParameterCBFVM.insertModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          insertModelToNetworkDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.insertModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if (response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            insertModelToNetworkDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseInsertModelToNetworkDatabaseThereIsParameterFVM(insertModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertModelToNetworkDatabaseThereIsParameterFVMVariantThree(
-      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> insertModelToLNDatabaseOWMDAFVM)
+      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var responseTwo = await ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-        _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter],
-        insertModelToNetworkDatabaseThereIsParameterDataSource
-    );
-    if(responseTwo.isSuccessResponse) {
-      insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter];
+
+      var response = await ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+          _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter],
+          insertModelToNetworkDatabaseThereIsParameterDataSource
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseInsertModelToNetworkDatabaseThereIsParameterFVM(insertModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertModelToNetworkDatabaseThereIsParameterFVMVariantFour(
-      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> insertModelToLNDatabaseCBFVM,
-      InsertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> insertModelToLNDatabaseOWMDAFVM)
+      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertModelToLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null )
+    {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    insertModelToLNDatabaseOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = insertModelToLNDatabaseCBFVM.insertModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          insertModelToNetworkDatabaseThereIsParameterDataSource
+      cbfvm.setBaseModelDomainCBFVM = model;
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter
+      ];
+
+      var response = cbfvm.insertModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            insertModelToNetworkDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      insertModelToLNDatabaseOWMDAFVM.insertModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseInsertModelToNetworkDatabaseThereIsParameterFVM(insertModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
-  
+
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToNetworkDatabaseThereIsParameterFVM(
       InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource)
@@ -1262,85 +1467,102 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> insertListModelToLNDatabaseThereIsParameterCBFVM)
+      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseListModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = insertListModelToLNDatabaseThereIsParameterCBFVM.insertListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.insertListModelToNetworkDatabaseThereIsParameterFVM(
-          cbfvm,
-          insertListModelToNetworkDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.insertListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if (response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.insertListModelToNetworkDatabaseThereIsParameterFVM(
+            model,
+            insertListModelToNetworkDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseInsertListModelToNetworkDatabaseThereIsParameterFVM(insertListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToNetworkDatabaseThereIsParameterFVMVariantThree(
-      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> insertListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    insertListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = await ReadyModelNetworkDatabaseFVM.insertListModelToNetworkDatabaseThereIsParameterFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter],
-        insertListModelToNetworkDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
+      var owmdafvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter
+      ];
+
+      var response = await ReadyModelNetworkDatabaseFVM.insertListModelToNetworkDatabaseThereIsParameterFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter],
+          insertListModelToNetworkDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseInsertListModelToNetworkDatabaseThereIsParameterFVM(insertListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseInsertListModelToNetworkDatabaseThereIsParameterFVMVariantFour(
-      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> insertListModelToLNDatabaseThereIsParameterCBFVM,
-      InsertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> insertListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    insertListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null &&
+        _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      var owmdafvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
 
-    insertListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = insertListModelToLNDatabaseThereIsParameterCBFVM.insertListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.insertListModelToNetworkDatabaseThereIsParameterFVM(
-          cbfvm,
-          insertListModelToNetworkDatabaseThereIsParameterDataSource
+      cbfvm.setBaseListModelDomainCBFVM = model;
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter
+      ];
+      ResponseGenericBoolAndDomainException response = cbfvm.insertListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if (response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.insertListModelToNetworkDatabaseThereIsParameterFVM(
+            model,
+            insertListModelToNetworkDatabaseThereIsParameterDataSource
+        );
+        if (responseTwo.isSuccessResponse) {
+          owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      insertListModelToLNDatabaseThereIsParameterOWMDAFVM.insertListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseInsertListModelToNetworkDatabaseThereIsParameterFVM(insertListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
-  Future<Response<bool,BaseException>> baseUpdateModelToNetworkDatabaseThereIsParameterFVM(UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource) {
+  Future<Response<bool,BaseException>> baseUpdateModelToNetworkDatabaseThereIsParameterFVM(
+      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource)
+  {
     return ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVM(
         this,
         updateModelToNetworkDatabaseThereIsParameterDataSource
@@ -1349,77 +1571,92 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> updateModelToLNDatabaseThereIsParameterCBFVM)
+      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = updateModelToLNDatabaseThereIsParameterCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          updateModelToNetworkDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            updateModelToNetworkDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseUpdateModelToNetworkDatabaseThereIsParameterFVM(updateModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToNetworkDatabaseThereIsParameterFVMVariantThree(
-      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> updateModelToLNDatabaseOWMDAFVM)
+      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var responseTwo = await ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-        _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter],
-        updateModelToNetworkDatabaseThereIsParameterDataSource
-    );
-    if(responseTwo.isSuccessResponse) {
-      updateModelToLNDatabaseOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter];
+
+      var response = await ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+          _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter],
+          updateModelToNetworkDatabaseThereIsParameterDataSource
+      );
+      if (response.isSuccessResponse) {
+        owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      updateModelToLNDatabaseOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseUpdateModelToNetworkDatabaseThereIsParameterFVM(updateModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateModelToNetworkDatabaseThereIsParameterFVMVariantFour(
-      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> updateModelToLNDatabaseCBFVM,
-      UpdateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> updateModelToLNDatabaseOWMDAFVM)
+      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateModelToLNDatabaseCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    updateModelToLNDatabaseOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = updateModelToLNDatabaseCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          updateModelToNetworkDatabaseThereIsParameterDataSource
+      cbfvm.setBaseModelDomainCBFVM = model;
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter];
+
+      var response = cbfvm.updateModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        updateModelToLNDatabaseOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            updateModelToNetworkDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        updateModelToLNDatabaseOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      updateModelToLNDatabaseOWMDAFVM.updateModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateModelToNetworkDatabaseThereIsParameterFVM(updateModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -1435,80 +1672,92 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateListModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> updateListModelToLNDatabaseThereIsParameterCBFVM)
+      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseListModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = updateListModelToLNDatabaseThereIsParameterCBFVM.updateListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.updateListModelToNetworkDatabaseThereIsParameterFVM(
-          cbfvm,
-          updateListModelToNetworkDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.updateListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.updateListModelToNetworkDatabaseThereIsParameterFVM(
+            model,
+            updateListModelToNetworkDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseUpdateListModelToNetworkDatabaseThereIsParameterFVM(updateListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateListModelToNetworkDatabaseThereIsParameterFVMVariantThree(
-      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> updateListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    updateListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter
-    ];
-    ResponseGenericBoolAndDomainException response = await ReadyModelNetworkDatabaseFVM.updateListModelToNetworkDatabaseThereIsParameterFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter],
-        updateListModelToNetworkDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
+      var owmdafvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter];
+
+      ResponseGenericBoolAndDomainException response = await ReadyModelNetworkDatabaseFVM.updateListModelToNetworkDatabaseThereIsParameterFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter],
+          updateListModelToNetworkDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateListModelToNetworkDatabaseThereIsParameterFVM(updateListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseUpdateListModelToNetworkDatabaseThereIsParameterFVMVariantFour(
-      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> updateListModelToLNDatabaseThereIsParameterCBFVM,
-      UpdateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> updateListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    updateListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null &&
+        _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      var owmdafvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
 
-    updateListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = updateListModelToLNDatabaseThereIsParameterCBFVM.updateListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.updateListModelToNetworkDatabaseThereIsParameterFVM(
-          cbfvm,
-          updateListModelToNetworkDatabaseThereIsParameterDataSource
+      cbfvm.setBaseListModelDomainCBFVM = model;
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter];
+
+      var response = cbfvm.updateListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.updateListModelToNetworkDatabaseThereIsParameterFVM(
+            model,
+            updateListModelToNetworkDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      updateListModelToLNDatabaseThereIsParameterOWMDAFVM.updateListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseUpdateListModelToNetworkDatabaseThereIsParameterFVM(updateListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -1522,80 +1771,93 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> deleteModelToLNDatabaseThereIsParameterCBFVM)
+      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseModelDomainCBFVM = model;
 
-    ResponseGenericBoolAndDomainException response = deleteModelToLNDatabaseThereIsParameterCBFVM.deleteModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          deleteModelToNetworkDatabaseThereIsParameterDataSource
+      ResponseGenericBoolAndDomainException response = cbfvm.deleteModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            deleteModelToNetworkDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseDeleteModelToNetworkDatabaseThereIsParameterFVM(deleteModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteModelToNetworkDatabaseThereIsParameterFVMVariantThree(
-      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> deleteModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    deleteModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter
-    ];
-    var responseTwo = await ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-        _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter],
-        deleteModelToNetworkDatabaseThereIsParameterDataSource
-    );
-    if(responseTwo.isSuccessResponse) {
-      deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(responseTwo.getData);
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null) {
+      var owmdafvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
+        EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter
+      ];
+      var response = await ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+          _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter],
+          deleteModelToNetworkDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(responseTwo.getException);
+      return baseDeleteModelToNetworkDatabaseThereIsParameterFVM(deleteModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteModelToNetworkDatabaseThereIsParameterFVMVariantFour(
-      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> deleteModelToLNDatabaseThereIsParameterCBFVM,
-      DeleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM<T> deleteModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteModelToLNDatabaseThereIsParameterCBFVM.setBaseModelDomainCBFVM = cbfvm;
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null &&
+        _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
+      var owmdafvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainOWMDAFVM.cloneObject();
 
-    deleteModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[
-      EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = deleteModelToLNDatabaseThereIsParameterCBFVM.deleteModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-          cbfvm,
-          deleteModelToNetworkDatabaseThereIsParameterDataSource
+      cbfvm.setBaseModelDomainCBFVM = model;
+      owmdafvm.setBaseModelDomainOWMDAFVM = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter];
+
+      var response = cbfvm.deleteModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+            model,
+            deleteModelToNetworkDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      deleteModelToLNDatabaseThereIsParameterOWMDAFVM.deleteModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseDeleteModelToNetworkDatabaseThereIsParameterFVM(deleteModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
@@ -1611,83 +1873,98 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteListModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> deleteListModelToLNDatabaseThereIsParameterCBFVM)
+      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      cbfvm.setBaseListModelDomainCBFVM = model;
 
-    var response = deleteListModelToLNDatabaseThereIsParameterCBFVM.deleteListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      return await ReadyModelNetworkDatabaseFVM.deleteListModelToNetworkDatabaseThereIsParameterFVM(
-          cbfvm,
-          deleteListModelToNetworkDatabaseThereIsParameterDataSource
+      var response = cbfvm.deleteListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
+      if(response.isSuccessResponse) {
+        return await ReadyModelNetworkDatabaseFVM.deleteListModelToNetworkDatabaseThereIsParameterFVM(
+            model,
+            deleteListModelToNetworkDatabaseThereIsParameterDataSource
+        );
+      } else {
+        return Response.exception(response.getException);
+      }
     } else {
-      return Response.exception(response.getException);
+      return baseDeleteListModelToNetworkDatabaseThereIsParameterFVM(deleteListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteListModelToNetworkDatabaseThereIsParameterFVMVariantThree(
-      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> deleteListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = await ReadyModelNetworkDatabaseFVM.deleteListModelToNetworkDatabaseThereIsParameterFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter],
-        deleteListModelToNetworkDatabaseThereIsParameterDataSource
-    );
-    if(response.isSuccessResponse) {
-      deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-      return Response.success(response.getData);
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null) {
+      var owmdafvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter
+      ];
+
+      var response = await ReadyModelNetworkDatabaseFVM.deleteListModelToNetworkDatabaseThereIsParameterFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter],
+          deleteListModelToNetworkDatabaseThereIsParameterDataSource
+      );
+      if(response.isSuccessResponse) {
+        owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+        return Response.success(response.getData);
+      } else {
+        owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
+      }
     } else {
-      deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseDeleteListModelToNetworkDatabaseThereIsParameterFVM(deleteListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
 
   @protected
   Future<Response<bool,BaseException>> baseDeleteListModelToNetworkDatabaseThereIsParameterFVMVariantFour(
-      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM<Y> deleteListModelToLNDatabaseThereIsParameterCBFVM,
-      DeleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM<Y> deleteListModelToLNDatabaseThereIsParameterOWMDAFVM)
+      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource)
   async {
-    var cbfvm = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter].cloneObjectForCBFVM();
-    deleteListModelToLNDatabaseThereIsParameterCBFVM.setBaseListModelDomainCBFVM = cbfvm;
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null &&
+        _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM != null)
+    {
+      var model = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter].cloneObject();
+      var cbfvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM.cloneObject();
+      var owmdafvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainOWMDAFVM.cloneObject();
 
-    deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
-      EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter
-    ];
-    var response = deleteListModelToLNDatabaseThereIsParameterCBFVM.deleteListModelToLNDatabaseThereIsParameterCBFVM(
-        _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
-            .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
-            .getListModelDomain
-    );
-    if(response.isSuccessResponse) {
-      var responseTwo = await ReadyModelNetworkDatabaseFVM.deleteListModelToNetworkDatabaseThereIsParameterFVM(
-          cbfvm,
-          deleteListModelToNetworkDatabaseThereIsParameterDataSource
+      cbfvm.setBaseListModelDomainCBFVM = model;
+      owmdafvm.setBaseListModelDomainOWMDAFVM = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[
+        EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter
+      ];
+
+      var response = cbfvm.deleteListModelToLNDatabaseThereIsParameterCBFVM(
+          _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
+              .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
+              .getListModelDomain
       );
-      if(responseTwo.isSuccessResponse) {
-        deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
-        return Response.success(responseTwo.getData);
+      if(response.isSuccessResponse) {
+        var responseTwo = await ReadyModelNetworkDatabaseFVM.deleteListModelToNetworkDatabaseThereIsParameterFVM(
+            model,
+            deleteListModelToNetworkDatabaseThereIsParameterDataSource
+        );
+        if(responseTwo.isSuccessResponse) {
+          owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(true);
+          return Response.success(responseTwo.getData);
+        } else {
+          owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+          return Response.exception(responseTwo.getException);
+        }
       } else {
-        deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-        return Response.exception(responseTwo.getException);
+        owmdafvm.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
+        return Response.exception(response.getException);
       }
     } else {
-      deleteListModelToLNDatabaseThereIsParameterOWMDAFVM.deleteListModelToLNDatabaseThereIsParameterOWMDAFVM(false);
-      return Response.exception(response.getException);
+      return baseDeleteListModelToNetworkDatabaseThereIsParameterFVM(deleteListModelToNetworkDatabaseThereIsParameterDataSource);
     }
   }
-
   /// End ReadyModelNetworkDatabaseFVM
 
   /// Start ReadyListModelDomainForLNDatabaseFVM
@@ -1844,9 +2121,17 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     return throw Exception("null getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM");
   }
 
-  GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> get getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM {
-    if(_getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM != null) {
-      return _getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM;
+  GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> get getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM  {
+    if(_getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      return _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM;
+    }
+    return throw Exception("null getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM");
+  }
+
+
+  GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> get getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM {
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      return _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM;
     }
     return throw Exception("null getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM");
   }
@@ -1893,10 +2178,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     _getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM = getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM;
   }
 
-  set setGetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM(
-      GetModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM<T> getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM)
+  set setGetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM(
+      GetListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM)
   {
-    _getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM = getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM;
+    _getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM = getListModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM;
+  }
+
+  set setGetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM(
+      GetModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM<T> getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM)
+  {
+    _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM = getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM;
   }
 
   /// End Methods CBFVM **/
@@ -2234,8 +2525,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM != null) {
       _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCBFVM = null;
     }
-    if(_getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM != null) {
-      _getModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM = null;
+    if(_getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM != null) {
+      _getModelFromLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM = null;
     }
     if(_getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM != null) {
       _getListModelFromLNDatabaseUsedProviderBaseModelDomainCBFVM = null;
