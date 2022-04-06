@@ -671,7 +671,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       var cbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
       cbfvm.setBaseModelDomainCBFVM = model;
 
-      ResponseGenericBoolAndDomainException response = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
+      ResponseGenericBoolAndDomainException response = cbfvm.updateModelToLNDatabaseThereIsParameterCBFVM(
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
               .getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter]
               .getListModelDomain
@@ -1578,7 +1578,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       var cbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.cloneObject();
       cbfvm.setBaseModelDomainCBFVM = model;
 
-      ResponseGenericBoolAndDomainException response = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCBFVM.updateModelToLNDatabaseThereIsParameterCBFVM(
+      ResponseGenericBoolAndDomainException response = cbfvm.updateModelToLNDatabaseThereIsParameterCBFVM(
           _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM
               .getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter]
               .getListModelDomain
