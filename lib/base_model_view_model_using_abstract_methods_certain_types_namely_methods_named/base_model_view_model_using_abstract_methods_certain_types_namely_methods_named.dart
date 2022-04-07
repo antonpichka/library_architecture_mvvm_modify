@@ -4,12 +4,12 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-abstract class BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed<T extends BaseViewModel<BaseModelDomain,BaseListModelDomain<BaseModelDomain>>> implements BaseDispose
+abstract class BaseModelViewModelUsingAbstractMethodsCertainTypesNamelyMethodsNamed<T extends BaseViewModel<BaseModelDomain,BaseListModelDomain<BaseModelDomain>>> implements BaseDispose
 {
   @protected
   T viewModel;
 
-  BaseModelViewModelUsingRealizedMethodsCertainTypesNamelyMethodsNamed(this.viewModel);
+  BaseModelViewModelUsingAbstractMethodsCertainTypesNamelyMethodsNamed(this.viewModel);
 
   @override
   void dispose() {

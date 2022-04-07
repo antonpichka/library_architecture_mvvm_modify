@@ -1,13 +1,13 @@
-import 'package:library_architecture_mvvm_modify/base_list_of_view_models_using_realized_methods_for_named_view/base_list_of_view_models_using_realized_methods_for_named_view.dart';
+import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view/base_list_of_view_model_for_named_view.dart';
 
-enum EnumListOfViewModelsUsingRealizedMethodsForMainView {
-  userViewModel
+enum EnumListOfViewModelForMainView {
+  userViewModelVariantOneSqflite
 }
 
-class ListOfViewModelsUsingRealizedMethodsForMainView
-    extends BaseListOfViewModelsUsingRealizedMethodsForNamedView<EnumListOfViewModelsUsingRealizedMethodsForMainView>
+class ListOfViewModelForMainView
+    extends BaseListOfViewModelForNamedView<EnumListOfViewModelForMainView>
 {
-  ListOfViewModelsUsingRealizedMethodsForMainView() {
+  ListOfViewModelForMainView() {
     setupMap = {
       // init model_view_model_using_realized_methods_certain_types_namely_methods_named
     };
