@@ -2,6 +2,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_list_model_domain_for_ln_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_list_model_domain_for_local_database_fvm.dart';
 import 'package:library_architecture_mvvm_modify/function_view_model/interface_function_view_model/delete_list_model_fvm/delete_list_model_to_list_model_domain_for_network_database_fvm.dart';
@@ -71,11 +72,12 @@ import 'package:library_architecture_mvvm_modify/function_view_model/interface_f
 
 class FVM {
 
-  static Future<void> callToMethodSetIteratorForListModelLNDatabaseAndSetListModelLNDatabaseUsingAnIteratorFVM(
+  static Future<void> iteratorForListModelLNDatabaseFVM(
       IteratorForListModelLNDatabaseFVM iteratorForListModelLNDatabaseFVM,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultListModelDomainForNetworkDatabase = iteratorForListModelLNDatabaseFVM
         .callToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM();
@@ -83,7 +85,8 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -94,17 +97,22 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultListModelDomainForNetworkDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
   
-  static Future<void> callToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM(
+  static Future<void> iteratorForListModelLocalDatabaseFVM(
       IteratorForListModelLocalDatabaseFVM iteratorForListModelLocalDatabaseFVM,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  iteratorForListModelLocalDatabaseFVM
         .callToMethodSetIteratorForListModelLocalDatabaseAndSetListModelLocalDatabaseUsingAnIteratorFVM();
@@ -112,18 +120,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
-  static Future<void> callToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM(
+  static Future<void> iteratorForListModelNetworkDatabaseFVM(
       IteratorForListModelNetworkDatabaseFVM iteratorForListModelNetworkDatabaseFVM,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = iteratorForListModelNetworkDatabaseFVM
         .callToMethodSetIteratorForListModelNetworkDatabaseAndSetListModelNetworkDatabaseUsingAnIteratorFVM();
@@ -131,18 +141,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> insertModelToLocalDatabaseThereIsParameterFVM(
       InsertModelToLocalDatabaseThereIsParameterFVM insertModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await insertModel
@@ -152,17 +164,19 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static Future<void> insertListModelToLocalDatabaseThereIsParameterFVM(
       InsertListModelToLocalDatabaseThereIsParameterFVM insertListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await insertListModel
@@ -171,18 +185,21 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static void insertModelToListModelDomainForLocalDatabaseFVM(
       InsertModelToListModelDomainForLocalDatabaseFVM insertModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError
+      })
   {
     // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel
@@ -191,38 +208,42 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void insertListModelToListModelDomainForLocalDatabaseFVM(
       InsertListModelToListModelDomainForLocalDatabaseFVM insertListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel
         .insertListModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceNotNetworkException(
-          resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
   
   static Future<void> updateModelToLocalDatabaseThereIsParameterFVM(
       UpdateModelToLocalDatabaseThereIsParameterFVM updateModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter) functionForResultSuccess,
       Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await updateModel
@@ -231,18 +252,20 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static Future<void> updateListModelToLocalDatabaseThereIsParameterFVM(
       UpdateListModelToLocalDatabaseThereIsParameterFVM updateListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await updateListModel
@@ -251,18 +274,20 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static void updateModelToListModelDomainForLocalDatabaseFVM(
       UpdateModelToListModelDomainForLocalDatabaseFVM updateModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateModel
@@ -272,17 +297,19 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void updateListModelToListModelDomainForLocalDatabaseFVM(
       UpdateListModelToListModelDomainForLocalDatabaseFVM updateListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel
@@ -291,18 +318,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteModelToLocalDatabaseThereIsParameterFVM(
       DeleteModelToLocalDatabaseThereIsParameterFVM deleteModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await  deleteModel
@@ -311,18 +340,20 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static Future<void> deleteListModelToLocalDatabaseThereIsParameterFVM(
       DeleteListModelToLocalDatabaseThereIsParameterFVM deleteListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await  deleteListModel
@@ -331,18 +362,20 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static void deleteModelToListModelDomainForLocalDatabaseFVM(
       DeleteModelToListModelDomainForLocalDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException}) {
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError}) {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel
         .deleteModelToListModelDomainForLocalDatabaseFVM();
@@ -350,18 +383,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void deleteListModelToListModelDomainForLocalDatabaseFVM(
       DeleteListModelToListModelDomainForLocalDatabaseFVM deleteListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException}) {
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError}) {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteListModel
         .deleteListModelToListModelDomainForLocalDatabaseFVM();
@@ -369,18 +404,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
-  static Future<void> callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM(
+  static Future<void> getListModelFromLocalDatabaseFVM(
       GetListModelFromLocalDatabaseFVM getListModel,
       {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getListModel
         .callToMethodGetListModelFromLocalDatabaseAndUseTheSettersFVM();
@@ -388,18 +425,20 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     functionForResultSuccess();
   }
 
-  static Future<void> callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<void> getListModelFromLocalDatabaseThereIsParameterFVM(
       GetListModelFromLocalDatabaseThereIsParameterFVM getListModel,
       {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getListModel
         .callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM();
@@ -407,18 +446,20 @@ class FVM {
       _choiceNotNetworkException(
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     functionForResultSuccess();
   }
 
-  static Future<void> callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<void> getModelFromLocalDatabaseThereIsParameterFVM(
       GetModelFromLocalDatabaseThereIsParameterFVM getModel,
       {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getModel
         .callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM();
@@ -427,6 +468,7 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -435,10 +477,11 @@ class FVM {
 
   static Future<void> insertModelToNetworkDatabaseThereIsParameterFVM(
       InsertModelToNetworkDatabaseThereIsParameterFVM insertModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await insertModel
@@ -448,19 +491,21 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static Future<void> insertListModelToNetworkDatabaseThereIsParameterFVM(
       InsertListModelToNetworkDatabaseThereIsParameterFVM insertListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await insertListModel
@@ -470,18 +515,20 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static void insertModelToListModelDomainForNetworkDatabaseFVM(
       InsertModelToListModelDomainForNetworkDatabaseFVM insertModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel
@@ -490,18 +537,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void insertListModelToListModelDomainForNetworkDatabaseFVM(
       InsertListModelToListModelDomainForNetworkDatabaseFVM insertListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel
@@ -510,19 +559,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> updateModelToNetworkDatabaseThereIsParameterFVM(
       UpdateModelToNetworkDatabaseThereIsParameterFVM updateModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await updateModel
@@ -532,19 +583,21 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static Future<void> updateListModelToNetworkDatabaseThereIsParameterFVM(
       UpdateListModelToNetworkDatabaseThereIsParameterFVM updateListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabaseOrLocalDatabase = await updateListModel
@@ -554,18 +607,20 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabaseOrLocalDatabase.getData);
   }
 
   static void updateModelToListModelDomainForNetworkDatabaseFVM(
       UpdateModelToListModelDomainForNetworkDatabaseFVM updateModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateModel
@@ -574,18 +629,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void updateListModelToListModelDomainForNetworkDatabaseFVM(
       UpdateListModelToListModelDomainForNetworkDatabaseFVM updateListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel
@@ -594,19 +651,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteModelToNetworkDatabaseThereIsParameterFVM(
       DeleteModelToNetworkDatabaseThereIsParameterFVM deleteModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await deleteModel
@@ -616,19 +675,21 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteListModelToNetworkDatabaseThereIsParameterFVM(
       DeleteListModelToNetworkDatabaseThereIsParameterFVM deleteListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await deleteListModel
@@ -638,18 +699,20 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void deleteModelToListModelDomainForNetworkDatabaseFVM(
       DeleteModelToListModelDomainForNetworkDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel.deleteModelToListModelDomainForNetworkDatabaseFVM();
@@ -658,17 +721,19 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static void deleteListModelToListModelDomainForNetworkDatabaseFVM(
       DeleteListModelToListModelDomainForNetworkDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel.deleteListModelToListModelDomainForNetworkDatabaseFVM();
@@ -676,19 +741,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
-  static Future<void> callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM(
+  static Future<void> getListModelFromNetworkDatabaseFVM(
       GetListModelFromNetworkDatabaseFVM getListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function functionForResultSuccess, 
+        Function(DomainException) functionForResultDomainException, 
+        Function(LocalException) functionForResultLocalException, 
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM();
     if(!resultNetworkDatabaseOrLocalDatabase.isSuccessResponse) {
@@ -696,19 +763,21 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException, 
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     functionForResultSuccess();
   }
 
-  static Future<void> callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<void> getListModelFromNetworkDatabaseThereIsParameterFVM(
       GetListModelFromNetworkDatabaseThereIsParameterFVM getListModel,
       {Function functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getListModel
         .callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM();
@@ -717,19 +786,21 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     functionForResultSuccess();
   }
 
-  static Future<void> callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<void> getModelFromNetworkDatabaseThereIsParameterFVM(
       GetModelFromNetworkDatabaseThereIsParameterFVM getModel,
       {Function functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultNetworkDatabaseOrLocalDatabase = await getModel
         .callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM();
@@ -738,7 +809,8 @@ class FVM {
           resultNetworkDatabaseOrLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -747,10 +819,11 @@ class FVM {
 
   static Future<void> insertModelToLNDatabaseThereIsParameterFVM(
       InsertModelToLNDatabaseThereIsParameterFVM insertModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network, BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabase = await insertModel.insertModelToNetworkDatabaseThereIsParameterFVM();
@@ -759,7 +832,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -769,18 +843,20 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabase.getData,resultLocalDatabase.getData);
   }
 
   static Future<void> insertListModelToLNDatabaseThereIsParameterFVM(
       InsertListModelToLNDatabaseThereIsParameterFVM insertListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabase = await insertListModel.insertListModelToNetworkDatabaseThereIsParameterFVM();
@@ -789,7 +865,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -798,18 +875,20 @@ class FVM {
       _choiceNotNetworkException(
           resultLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabase.getData,resultLocalDatabase.getData);
   }
 
   static void insertModelToListModelDomainForLNDatabaseFVM(
       InsertModelToListModelDomainForLNDatabaseFVM insertModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Insert Model FVM
     var resultListModelDomainForNetworkDatabase = insertModel.insertModelToListModelDomainForNetworkDatabaseFVM();
@@ -817,7 +896,8 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -827,17 +907,19 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static void insertListModelToListModelDomainForLNDatabaseFVM(
       InsertListModelToListModelDomainForLNDatabaseFVM insertListModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException})
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Insert Model FVM
     var resultListModelDomainForNetworkDatabase = insertListModel.insertListModelToListModelDomainForNetworkDatabaseFVM();
@@ -845,7 +927,8 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -854,19 +937,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static Future<void> updateModelToLNDatabaseThereIsParameterFVM(
       UpdateModelToLNDatabaseThereIsParameterFVM updateModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabase = await updateModel.updateModelToNetworkDatabaseThereIsParameterFVM();
@@ -875,7 +960,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -884,19 +970,21 @@ class FVM {
       _choiceNotNetworkException(
           resultLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabase.getData,resultLocalDatabase.getData);
   }
 
   static Future<void> updateListModelToLNDatabaseThereIsParameterFVM(
       UpdateListModelToLNDatabaseThereIsParameterFVM updateListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabase = await updateListModel.updateListModelToNetworkDatabaseThereIsParameterFVM();
@@ -905,7 +993,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -915,17 +1004,19 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultNetworkDatabase.getData,resultLocalDatabase.getData);
   }
 
   static void updateModelToListModelDomainForLNDatabaseFVM(
       UpdateModelToListModelDomainForLNDatabaseFVM updateModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Update Model FVM
     var resultListModelDomainForNetworkDatabase = updateModel.updateModelToListModelDomainForNetworkDatabaseFVM();
@@ -934,6 +1025,7 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -942,18 +1034,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static void updateListModelToListModelDomainForLNDatabaseFVM(
       UpdateListModelToListModelDomainForLNDatabaseFVM updateListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Update Model FVM
     var resultListModelDomainForNetworkDatabase = updateListModel.updateListModelToListModelDomainForNetworkDatabaseFVM();
@@ -961,7 +1055,8 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -970,19 +1065,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static Future<void> deleteModelToLNDatabaseThereIsParameterFVM(
       DeleteModelToLNDatabaseThereIsParameterFVM deleteModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultListModelDomainForNetworkDatabase = await deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM();
@@ -991,7 +1088,8 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1000,19 +1098,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static Future<void> deleteListModelToLNDatabaseThereIsParameterFVM(
       DeleteListModelToLNDatabaseThereIsParameterFVM deleteListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultListModelDomainForNetworkDatabase = await deleteListModel.deleteListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1021,7 +1121,8 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1031,17 +1132,19 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static void deleteModelToListModelDomainForLNDatabaseFVM(
       DeleteModelToListModelDomainForLNDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Delete Model FVM
     var resultListModelDomainForNetworkDatabase = deleteModel.deleteModelToListModelDomainForNetworkDatabaseFVM();
@@ -1050,6 +1153,7 @@ class FVM {
         resultListModelDomainForNetworkDatabase.getException,
         functionForResultDomainException,
         functionForResultLocalException,
+        functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1059,17 +1163,19 @@ class FVM {
         resultListModelDomainForLocalDatabase.getException,
         functionForResultDomainException,
         functionForResultLocalException,
+        functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
   static void deleteListModelToListModelDomainForLNDatabaseFVM(
       DeleteListModelToListModelDomainForLNDatabaseFVM deleteListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter local) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
     // Delete Model FVM
     var resultListModelDomainForNetworkDatabase = deleteListModel.deleteListModelToListModelDomainForNetworkDatabaseFVM();
@@ -1078,6 +1184,7 @@ class FVM {
         resultListModelDomainForNetworkDatabase.getException,
         functionForResultDomainException,
         functionForResultLocalException,
+        functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1087,18 +1194,20 @@ class FVM {
         resultListModelDomainForLocalDatabase.getException,
         functionForResultDomainException,
         functionForResultLocalException,
+        functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultListModelDomainForNetworkDatabase.getData,resultListModelDomainForLocalDatabase.getData);
   }
 
-  static Future<void> callToMethodGetListModelFromLNDatabaseAndUseTheSettersFVM(
+  static Future<void> getListModelFromLNDatabaseFVM(
       GetListModelFromLNDatabaseFVM getListModel,
       {Function functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultListModelDomainForNetworkDatabase = await getListModel.callToMethodGetListModelFromNetworkDatabaseAndUseTheSettersFVM();
     if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
@@ -1106,7 +1215,8 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1116,18 +1226,20 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     functionForResultSuccess();
   }
 
-  static Future<void> callToMethodGetListModelFromLNDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<void> getListModelFromLNDatabaseThereIsParameterFVM(
       GetListModelFromLNDatabaseThereIsParameterFVM getListModel,
       {Function functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultListModelDomainForNetworkDatabase = await getListModel.callToMethodGetListModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM();
     if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
@@ -1135,28 +1247,31 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     var resultListModelDomainForLocalDatabase  = await getListModel.callToMethodGetListModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM();
     if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
       _choiceNotNetworkException(
-         resultListModelDomainForLocalDatabase.getException,
-         functionForResultDomainException,
-         functionForResultLocalException,
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     functionForResultSuccess();
   }
   
-  static Future<void> callToMethodGetModelFromLNDatabaseThereIsParameterAndUseTheSettersFVM(
+  static Future<void> getModelFromLNDatabaseThereIsParameterFVM(
       GetModelFromLNDatabaseThereIsParameterFVM getModel,
       {Function functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultListModelDomainForNetworkDatabase = await getModel.callToMethodGetModelFromNetworkDatabaseThereIsParameterAndUseTheSettersFVM();
     if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
@@ -1164,16 +1279,18 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     var resultListModelDomainForLocalDatabase  = await getModel.callToMethodGetModelFromLocalDatabaseThereIsParameterAndUseTheSettersFVM();
     if(!resultListModelDomainForLocalDatabase.isSuccessResponse) {
       _choiceNotNetworkException(
-        resultListModelDomainForLocalDatabase.getException,
-        functionForResultDomainException,
-        functionForResultLocalException,
+          resultListModelDomainForLocalDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1182,37 +1299,41 @@ class FVM {
 
   static Future<void> insertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVM(
       InsertModelToLocalDatabaseThereIsParameterAndInsertModelToListModelDomainForLocalDatabaseFVM insertModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter local,BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await insertModel.insertModelToLocalDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceNotNetworkException(
-        resultLocalDatabaseOrNetworkDatabase.getException,
-        functionForResultDomainException,
-        functionForResultLocalException,
+          resultLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel.insertModelToListModelDomainForLocalDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceNotNetworkException(
-        resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
-        functionForResultDomainException,
-        functionForResultLocalException,
+          resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
+          functionForResultDomainException,
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> insertListModelToLocalDatabaseThereIsParameterAndInsertListModelToListModelDomainForLocalDatabaseFVM(
       InsertListModelToLocalDatabaseThereIsParameterAndInsertListModelToListModelDomainForLocalDatabaseFVM insertListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter local,BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await insertListModel.insertListModelToLocalDatabaseThereIsParameterFVM();
@@ -1221,6 +1342,7 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1229,18 +1351,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> updateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVM(
       UpdateModelToLocalDatabaseThereIsParameterAndUpdateModelToListModelDomainForLocalDatabaseFVM updateModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter local,BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await updateModel.updateModelToLocalDatabaseThereIsParameterFVM();
@@ -1249,6 +1373,7 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1258,17 +1383,19 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> updateListModelToLocalDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLocalDatabaseFVM(
       UpdateListModelToLocalDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLocalDatabaseFVM updateListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter local,BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await updateListModel.updateListModelToLocalDatabaseThereIsParameterFVM();
@@ -1277,6 +1404,7 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1286,17 +1414,19 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVM(
       DeleteModelToLocalDatabaseThereIsParameterAndDeleteModelToListModelDomainForLocalDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter local,BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await deleteModel.deleteModelToLocalDatabaseThereIsParameterFVM();
@@ -1304,7 +1434,8 @@ class FVM {
       _choiceNotNetworkException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1313,18 +1444,20 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteListModelToLocalDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLocalDatabaseFVM(
       DeleteListModelToLocalDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLocalDatabaseFVM deleteListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter local,BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
-        Function(LocalException) functionForResultLocalException})
+        Function(LocalException) functionForResultLocalException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await deleteListModel.deleteListModelToLocalDatabaseThereIsParameterFVM();
@@ -1333,6 +1466,7 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1342,18 +1476,20 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> insertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVM(
       InsertModelToNetworkDatabaseThereIsParameterAndInsertModelToListModelDomainForNetworkDatabaseFVM insertModel,
-      {Function functionForResultSuccess,
-      Function(DomainException) functionForResultDomainException,
-      Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException})
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo) functionForResultSuccess,
+        Function(DomainException) functionForResultDomainException,
+        Function(LocalException) functionForResultLocalException,
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await insertModel.insertModelToNetworkDatabaseThereIsParameterFVM();
@@ -1362,7 +1498,8 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1371,19 +1508,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> insertListModelToNetworkDatabaseThereIsParameterAndInsertListModelToListModelDomainForNetworkDatabaseFVM(
       InsertListModelToNetworkDatabaseThereIsParameterAndInsertListModelToListModelDomainForNetworkDatabaseFVM insertListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await insertListModel.insertListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1392,7 +1531,8 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1402,18 +1542,20 @@ class FVM {
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> updateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVM(
       UpdateModelToNetworkDatabaseThereIsParameterAndUpdateModelToListModelDomainForNetworkDatabaseFVM updateModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await updateModel.updateModelToNetworkDatabaseThereIsParameterFVM();
@@ -1422,7 +1564,8 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1431,19 +1574,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> updateListModelToNetworkDatabaseThereIsParameterAndUpdateListModelToListModelDomainForNetworkDatabaseFVM(
       UpdateListModelToNetworkDatabaseThereIsParameterAndUpdateListModelToListModelDomainForNetworkDatabaseFVM updateListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await updateListModel.updateListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1452,7 +1597,8 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1461,19 +1607,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVM(
       DeleteModelToNetworkDatabaseThereIsParameterAndDeleteModelToListModelDomainForNetworkDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM();
@@ -1482,7 +1630,8 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1491,19 +1640,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> deleteListModelToNetworkDatabaseThereIsParameterAndDeleteListModelToListModelDomainForNetworkDatabaseFVM(
       DeleteListModelToNetworkDatabaseThereIsParameterAndDeleteListModelToListModelDomainForNetworkDatabaseFVM deleteListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await deleteListModel.deleteListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1512,7 +1663,8 @@ class FVM {
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1521,19 +1673,21 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
   }
 
   static Future<void> insertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVM(
       InsertModelToLNDatabaseThereIsParameterAndInsertModelToListModelDomainForLNDatabaseFVM insertModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo, BaseTypeParameter local, BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabase = await insertModel.insertModelToNetworkDatabaseThereIsParameterFVM();
@@ -1542,16 +1696,18 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
     var resultListModelDomainForNetworkDatabase = insertModel.insertModelToListModelDomainForNetworkDatabaseFVM();
     if(!resultListModelDomainForNetworkDatabase.isSuccessResponse) {
       _choiceNotNetworkException(
-          resultListModelDomainForNetworkDatabase .getException,
+          resultListModelDomainForNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1561,6 +1717,7 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1570,18 +1727,25 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultNetworkDatabase.getData,
+        resultListModelDomainForNetworkDatabase.getData,
+        resultLocalDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
 
   static Future<void> insertListModelToLNDatabaseThereIsParameterAndInsertListModelToListModelDomainForLNDatabaseFVM(
       InsertListModelToLNDatabaseThereIsParameterAndInsertListModelToListModelDomainForLNDatabaseFVM insertListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo, BaseTypeParameter local, BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Insert Model FVM
     var resultNetworkDatabase = await insertListModel.insertListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1590,7 +1754,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1600,6 +1765,7 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1609,6 +1775,7 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1618,18 +1785,25 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultNetworkDatabase.getData,
+        resultListModelDomainForNetworkDatabase.getData,
+        resultLocalDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
 
   static Future<void> updateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM(
       UpdateModelToLNDatabaseThereIsParameterAndUpdateModelToListModelDomainForLNDatabaseFVM updateModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo, BaseTypeParameter local, BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabase = await updateModel.updateModelToNetworkDatabaseThereIsParameterFVM();
@@ -1638,7 +1812,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1648,6 +1823,7 @@ class FVM {
           resultListModelDomainForNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1657,6 +1833,7 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1666,18 +1843,25 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultNetworkDatabase.getData,
+        resultListModelDomainForNetworkDatabase.getData,
+        resultLocalDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
 
   static Future<void> updateListModelToLNDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLNDatabaseFVM(
       UpdateListModelToLNDatabaseThereIsParameterAndUpdateListModelToListModelDomainForLNDatabaseFVM updateListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo, BaseTypeParameter local, BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Update Model FVM
     var resultNetworkDatabase = await updateListModel.updateListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1686,7 +1870,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1696,6 +1881,7 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1705,6 +1891,7 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1714,18 +1901,25 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultNetworkDatabase.getData,
+        resultListModelDomainForNetworkDatabase.getData,
+        resultLocalDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
 
   static Future<void> deleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVM(
       DeleteModelToLNDatabaseThereIsParameterAndDeleteModelToListModelDomainForLNDatabaseFVM deleteModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo, BaseTypeParameter local, BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultNetworkDatabase = await deleteModel.deleteModelToNetworkDatabaseThereIsParameterFVM();
@@ -1734,7 +1928,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1743,7 +1938,8 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1752,7 +1948,8 @@ class FVM {
       _choiceNotNetworkException(
           resultLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1761,19 +1958,26 @@ class FVM {
       _choiceNotNetworkException(
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
-          functionForResultLocalException
+          functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultNetworkDatabase.getData,
+        resultListModelDomainForNetworkDatabase.getData,
+        resultLocalDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
 
   static Future<void> deleteListModelToLNDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLNDatabaseFVM(
       DeleteListModelToLNDatabaseThereIsParameterAndDeleteListModelToListModelDomainForLNDatabaseFVM deleteListModel,
-      {Function functionForResultSuccess,
+      {Function(BaseTypeParameter network,BaseTypeParameter networkTwo, BaseTypeParameter local, BaseTypeParameter localTwo) functionForResultSuccess,
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
-        Function(NetworkException) functionForResultNetworkException})
+        Function(NetworkException) functionForResultNetworkException,
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     // Delete Model FVM
     var resultNetworkDatabase = await deleteListModel.deleteListModelToNetworkDatabaseThereIsParameterFVM();
@@ -1782,7 +1986,8 @@ class FVM {
           resultNetworkDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
-          functionForResultNetworkException
+          functionForResultNetworkException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1792,6 +1997,7 @@ class FVM {
           resultListModelDomainForNetworkDatabase .getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1801,6 +2007,7 @@ class FVM {
           resultLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
@@ -1810,10 +2017,16 @@ class FVM {
           resultListModelDomainForLocalDatabase.getException,
           functionForResultDomainException,
           functionForResultLocalException,
+          functionForResultBaseExceptionAlwaysFiresOnError
       );
       return;
     }
-    functionForResultSuccess();
+    functionForResultSuccess(
+        resultNetworkDatabase.getData,
+        resultListModelDomainForNetworkDatabase.getData,
+        resultLocalDatabase.getData,
+        resultListModelDomainForLocalDatabase.getData
+    );
   }
   
   /* OTHER */
@@ -1821,7 +2034,8 @@ class FVM {
       BaseException baseException,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,
-      Function(NetworkException) functionForResultNetworkException
+      Function(NetworkException) functionForResultNetworkException, 
+      Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError
       )
   {
     if(baseException is DomainException) {
@@ -1831,12 +2045,14 @@ class FVM {
     } else if(baseException is NetworkException) {
       functionForResultNetworkException(baseException);
     }
+    functionForResultBaseExceptionAlwaysFiresOnError(baseException);
   }
 
   static void _choiceNotNetworkException(
       BaseException baseException,
       Function(DomainException) functionForResultDomainException,
       Function(LocalException) functionForResultLocalException,
+      Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError
       )
   {
     if(baseException is DomainException) {
@@ -1844,6 +2060,7 @@ class FVM {
     } else if(baseException is LocalException) {
       functionForResultLocalException(baseException);
     }
+    functionForResultBaseExceptionAlwaysFiresOnError(baseException);
   }
 
 }

@@ -68,7 +68,7 @@ class ReadyModelNetworkDatabaseFVM
       }
   }
 
-  static Future<Response<bool, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
+  static Future<Response<BaseTypeParameter, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
       ) async
@@ -80,13 +80,13 @@ class ReadyModelNetworkDatabaseFVM
               .toBaseModelNetworkDatabase()
       );
       if (response.isSuccessResponse) {
-        return Response.success(true);
+        return Response.success(response.getData);
       } else {
         return Response.exception(response.getException);
       }
   }
   
-  static Future<Response<bool, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+  static Future<Response<BaseTypeParameter, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
        BaseModelDomain baseModelDomain,
        InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
        ) async
@@ -96,13 +96,13 @@ class ReadyModelNetworkDatabaseFVM
          baseModelDomain.toBaseModelNetworkDatabase()
      );
      if (response.isSuccessResponse) {
-       return Response.success(true);
+       return Response.success(response.getData);
      } else {
        return Response.exception(response.getException);
      }
    }
 
- static Future<Response<bool, BaseException>> insertListModelToNetworkDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> insertListModelToNetworkDatabaseThereIsParameterFVM(
      BaseListModelDomain baseListModelDomain,
      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
@@ -112,13 +112,13 @@ class ReadyModelNetworkDatabaseFVM
        baseListModelDomain.toBaseListModelNetworkDatabase()
    );
    if (response.isSuccessResponse) {
-     return Response.success(true);
+     return Response.success(response.getData);
    } else {
      return Response.exception(response.getException);
    }
  }
  
- static Future<Response<bool, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
       ) async
@@ -130,13 +130,13 @@ class ReadyModelNetworkDatabaseFVM
               .toBaseModelNetworkDatabase()
       );
       if(response.isSuccessResponse) {
-        return Response.success(true);
+        return Response.success(response.getData);
       } else {
         return Response.exception(response.getException);
       }
   }
   
-  static Future<Response<bool, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+  static Future<Response<BaseTypeParameter, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
        BaseModelDomain baseModelDomain,
        UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
        ) async
@@ -146,13 +146,13 @@ class ReadyModelNetworkDatabaseFVM
          baseModelDomain.toBaseModelNetworkDatabase()
      );
      if(response.isSuccessResponse) {
-       return Response.success(true);
+       return Response.success(response.getData);
      } else {
        return Response.exception(response.getException);
      }
    }
 
- static Future<Response<bool, BaseException>> updateListModelToNetworkDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> updateListModelToNetworkDatabaseThereIsParameterFVM(
      BaseListModelDomain baseListModelDomain,
      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
@@ -162,13 +162,13 @@ class ReadyModelNetworkDatabaseFVM
        baseListModelDomain.toBaseListModelNetworkDatabase()
    );
    if (response.isSuccessResponse) {
-     return Response.success(true);
+     return Response.success(response.getData);
    } else {
      return Response.exception(response.getException);
    }
  }
 
- static Future<Response<bool, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
       ) async 
@@ -180,13 +180,13 @@ class ReadyModelNetworkDatabaseFVM
            .toBaseModelNetworkDatabase()
    );
    if(response.isSuccessResponse) {
-     return Response.success(true);
+     return Response.success(response.getData);
    } else {
      return Response.exception(response.getException);
    }
  }
 
- static Future<Response<bool, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
+ static Future<Response<BaseTypeParameter, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
      BaseModelDomain baseModelDomain,
      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
@@ -196,13 +196,13 @@ class ReadyModelNetworkDatabaseFVM
        baseModelDomain.toBaseModelNetworkDatabase()
    );
    if(response.isSuccessResponse) {
-     return Response.success(true);
+     return Response.success(response.getData);
    } else {
      return Response.exception(response.getException);
    }
  }
 
- static Future<Response<bool, BaseException>> deleteListModelToNetworkDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNetworkDatabaseThereIsParameterFVM(
      BaseListModelDomain baseListModelDomain,
      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
@@ -212,7 +212,7 @@ class ReadyModelNetworkDatabaseFVM
        baseListModelDomain.toBaseListModelNetworkDatabase()
    );
    if (response.isSuccessResponse) {
-     return Response.success(true);
+     return Response.success(response.getData);
    } else {
      return Response.exception(response.getException);
    }

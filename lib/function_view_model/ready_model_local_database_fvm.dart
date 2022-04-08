@@ -72,7 +72,7 @@ class ReadyModelLocalDatabaseFVM
     }
   }
 
-  static Future<Response<bool, BaseException>> insertModelToLocalDatabaseThereIsParameterFVM(
+  static Future<Response<BaseTypeParameter, BaseException>> insertModelToLocalDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -84,13 +84,13 @@ class ReadyModelLocalDatabaseFVM
             .toBaseModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
-  static Future<Response<bool, BaseException>> insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+  static Future<Response<BaseTypeParameter, BaseException>> insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
       BaseModelDomain baseModelDomain,
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -100,13 +100,13 @@ class ReadyModelLocalDatabaseFVM
         baseModelDomain.toBaseModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
-  static Future<Response<bool, BaseException>> insertListModelToLocalDatabaseThereIsParameterFVM(
+  static Future<Response<BaseTypeParameter, BaseException>> insertListModelToLocalDatabaseThereIsParameterFVM(
       BaseListModelDomain baseListModelDomain,
       InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -116,13 +116,13 @@ class ReadyModelLocalDatabaseFVM
         baseListModelDomain.toBaseListModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
- static Future<Response<bool, BaseException>> updateModelToLocalDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> updateModelToLocalDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -134,13 +134,13 @@ class ReadyModelLocalDatabaseFVM
             .toBaseModelLocalDatabase()
       );
     if(response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
-  static Future<Response<bool, BaseException>> updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+  static Future<Response<BaseTypeParameter, BaseException>> updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
       BaseModelDomain baseModelDomain,
       UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -150,13 +150,13 @@ class ReadyModelLocalDatabaseFVM
         baseModelDomain.toBaseModelLocalDatabase()
     );
     if(response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
-  static Future<Response<bool, BaseException>> updateListModelToLocalDatabaseThereIsParameterFVM(
+  static Future<Response<BaseTypeParameter, BaseException>> updateListModelToLocalDatabaseThereIsParameterFVM(
       BaseListModelDomain baseListModelDomain,
       UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -166,13 +166,13 @@ class ReadyModelLocalDatabaseFVM
         baseListModelDomain.toBaseListModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
- static Future<Response<bool, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVM(
+ static Future<Response<BaseTypeParameter, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVM(
       BaseViewModel baseViewModel,
       DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -184,13 +184,13 @@ class ReadyModelLocalDatabaseFVM
             .toBaseModelLocalDatabase()
     );
     if(response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
-  static Future<Response<bool, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
+  static Future<Response<BaseTypeParameter, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
       BaseModelDomain baseModelDomain,
       DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -200,13 +200,13 @@ class ReadyModelLocalDatabaseFVM
         baseModelDomain.toBaseModelLocalDatabase()
     );
     if(response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
   }
 
-  static Future<Response<bool, BaseException>> deleteListModelToLocalDatabaseThereIsParameterFVM(
+  static Future<Response<BaseTypeParameter, BaseException>> deleteListModelToLocalDatabaseThereIsParameterFVM(
       BaseListModelDomain baseListModelDomain,
       DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource,
       ) async
@@ -216,7 +216,7 @@ class ReadyModelLocalDatabaseFVM
         baseListModelDomain.toBaseListModelLocalDatabase()
     );
     if (response.isSuccessResponse) {
-      return Response.success(true);
+      return Response.success(response.getData);
     } else {
       return Response.exception(response.getException);
     }
