@@ -126,13 +126,16 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
+      var toListDelete = List.empty(growable: true);
+
       for(int i = 0; i < _listModelDomain.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
           if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
-            _listModelDomain.removeAt(i);
+            toListDelete.add(_listModelDomain[i]);
           }
         }
       }
+      _listModelDomain.removeWhere( (e) => toListDelete.contains(e));
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -146,13 +149,8 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
-      for(int i = 0; i < _listModelDomain.length; i++) {
-        if(_listModelDomain[i].uniqueId == model.uniqueId) {
-          _listModelDomain.removeAt(i);
-          return Response.success(true);
-        }
-      }
-      return Response.exception(LocalException(constDeveloper,"ListModelDomain Not isEquals Parameter UniqueId"));
+      _listModelDomain.removeWhere((item) => item.uniqueId == model.uniqueId);
+      return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
