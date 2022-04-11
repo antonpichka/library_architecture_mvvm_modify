@@ -2039,13 +2039,21 @@ class FVM {
       )
   {
     if(baseException is DomainException) {
-      functionForResultDomainException(baseException);
+      if(functionForResultDomainException != null) {
+        functionForResultDomainException(baseException);
+      }
     } else if(baseException is LocalException) {
-      functionForResultLocalException(baseException);
+      if(functionForResultLocalException != null) {
+        functionForResultLocalException(baseException);
+      }
     } else if(baseException is NetworkException) {
-      functionForResultNetworkException(baseException);
+      if(functionForResultNetworkException != null) {
+        functionForResultNetworkException(baseException);
+      }
     }
-    functionForResultBaseExceptionAlwaysFiresOnError(baseException);
+    if(functionForResultBaseExceptionAlwaysFiresOnError != null) {
+      functionForResultBaseExceptionAlwaysFiresOnError(baseException);
+    }
   }
 
   static void _choiceNotNetworkException(
@@ -2056,11 +2064,17 @@ class FVM {
       )
   {
     if(baseException is DomainException) {
-      functionForResultDomainException(baseException);
+      if(functionForResultDomainException != null) {
+        functionForResultDomainException(baseException);
+      }
     } else if(baseException is LocalException) {
-      functionForResultLocalException(baseException);
+      if(functionForResultLocalException != null) {
+        functionForResultLocalException(baseException);
+      }
     }
-    functionForResultBaseExceptionAlwaysFiresOnError(baseException);
+    if(functionForResultBaseExceptionAlwaysFiresOnError != null) {
+      functionForResultBaseExceptionAlwaysFiresOnError(baseException);
+    }
   }
 
 }
