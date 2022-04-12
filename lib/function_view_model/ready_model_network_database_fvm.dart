@@ -9,7 +9,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_network_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_network_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
@@ -23,8 +24,7 @@ class ReadyModelNetworkDatabaseFVM
       BaseListModelDomain baseListModelDomain
       ) async 
  {
-   var response = await getListModelFromNetworkDatabaseDataSource
-       .getListModelFromNetworkDatabaseDataSource();
+   var response = await getListModelFromNetworkDatabaseDataSource.getListModelFromNetworkDatabaseDataSource();
    if(response.isSuccessResponse) {
      baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
      return Response.success(true);
@@ -39,8 +39,7 @@ class ReadyModelNetworkDatabaseFVM
       BaseTypeParameter baseTypeParameter
       ) async
   {
-    var response = await getListModelFromNetworkDatabaseThereIsParameterDataSource
-        .getListModelFromNetworkDatabaseThereIsParameterDataSource(baseTypeParameter);
+    var response = await getListModelFromNetworkDatabaseThereIsParameterDataSource.getListModelFromNetworkDatabaseThereIsParameterDataSource(baseTypeParameter);
     if(response.isSuccessResponse) {
       baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(true);
@@ -55,8 +54,7 @@ class ReadyModelNetworkDatabaseFVM
       BaseTypeParameter baseTypeParameter
       ) async
   {
-      var response = await getModelFromNetworkDatabaseThereIsParameterDataSource
-          .getModelFromNetworkDatabaseThereIsParameterDataSource(baseTypeParameter);
+      var response = await getModelFromNetworkDatabaseThereIsParameterDataSource.getModelFromNetworkDatabaseThereIsParameterDataSource(baseTypeParameter);
       if(response.isSuccessResponse) {
         baseViewModel.setModel(
             response.getData.toBaseModelDomain(),
@@ -67,33 +65,14 @@ class ReadyModelNetworkDatabaseFVM
         return Response.exception(response.getException);
       }
   }
-
-  static Future<Response<BaseTypeParameter, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
-      BaseViewModel baseViewModel,
-      InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
-      ) async
-  {
-      var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
-          .insertModelToNetworkDatabaseThereIsParameterDataSource(
-          baseViewModel
-              .getModel(EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter)
-              .toBaseModelNetworkDatabase()
-      );
-      if (response.isSuccessResponse) {
-        return Response.success(response.getData);
-      } else {
-        return Response.exception(response.getException);
-      }
-  }
   
-  static Future<Response<BaseTypeParameter, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-       BaseModelDomain baseModelDomain,
+  static Future<Response<BaseTypeParameter, BaseException>> insertModelToNetworkDatabaseThereIsParameterFVM(
+       BaseModelNetworkDatabase baseModelNetworkDatabase,
        InsertModelToNetworkDatabaseThereIsParameterDataSource insertModelToNetworkDatabaseThereIsParameterDataSource,
        ) async
    {
-     var response = await insertModelToNetworkDatabaseThereIsParameterDataSource
-         .insertModelToNetworkDatabaseThereIsParameterDataSource(
-         baseModelDomain.toBaseModelNetworkDatabase()
+     var response = await insertModelToNetworkDatabaseThereIsParameterDataSource.insertModelToNetworkDatabaseThereIsParameterDataSource(
+         baseModelNetworkDatabase
      );
      if (response.isSuccessResponse) {
        return Response.success(response.getData);
@@ -103,13 +82,12 @@ class ReadyModelNetworkDatabaseFVM
    }
 
  static Future<Response<BaseTypeParameter, BaseException>> insertListModelToNetworkDatabaseThereIsParameterFVM(
-     BaseListModelDomain baseListModelDomain,
+     BaseListModelNetworkDatabase baseListModelNetworkDatabase,
      InsertListModelToNetworkDatabaseThereIsParameterDataSource insertListModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
  {
-   var response = await insertListModelToNetworkDatabaseThereIsParameterDataSource
-       .insertListModelToNetworkDatabaseThereIsParameterDataSource(
-       baseListModelDomain.toBaseListModelNetworkDatabase()
+   var response = await insertListModelToNetworkDatabaseThereIsParameterDataSource.insertListModelToNetworkDatabaseThereIsParameterDataSource(
+       baseListModelNetworkDatabase
    );
    if (response.isSuccessResponse) {
      return Response.success(response.getData);
@@ -117,49 +95,29 @@ class ReadyModelNetworkDatabaseFVM
      return Response.exception(response.getException);
    }
  }
- 
+
  static Future<Response<BaseTypeParameter, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVM(
-      BaseViewModel baseViewModel,
-      UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-      ) async
-  {
-      var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
-          .updateModelToNetworkDatabaseThereIsParameterDataSource(
-          baseViewModel
-              .getModel(EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter)
-              .toBaseModelNetworkDatabase()
-      );
-      if(response.isSuccessResponse) {
-        return Response.success(response.getData);
-      } else {
-        return Response.exception(response.getException);
-      }
-  }
-  
-  static Future<Response<BaseTypeParameter, BaseException>> updateModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-       BaseModelDomain baseModelDomain,
-       UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
-       ) async
-   {
-     var response = await updateModelToNetworkDatabaseThereIsParameterDataSource
-         .updateModelToNetworkDatabaseThereIsParameterDataSource(
-         baseModelDomain.toBaseModelNetworkDatabase()
-     );
-     if(response.isSuccessResponse) {
-       return Response.success(response.getData);
-     } else {
-       return Response.exception(response.getException);
-     }
+     BaseModelNetworkDatabase baseModelNetworkDatabase,
+     UpdateModelToNetworkDatabaseThereIsParameterDataSource updateModelToNetworkDatabaseThereIsParameterDataSource,
+     ) async
+ {
+   var response = await updateModelToNetworkDatabaseThereIsParameterDataSource.updateModelToNetworkDatabaseThereIsParameterDataSource(
+       baseModelNetworkDatabase
+   );
+   if(response.isSuccessResponse) {
+     return Response.success(response.getData);
+   } else {
+     return Response.exception(response.getException);
    }
+ }
 
  static Future<Response<BaseTypeParameter, BaseException>> updateListModelToNetworkDatabaseThereIsParameterFVM(
-     BaseListModelDomain baseListModelDomain,
+     BaseListModelNetworkDatabase baseListModelNetworkDatabase,
      UpdateListModelToNetworkDatabaseThereIsParameterDataSource updateListModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
  {
-   var response = await updateListModelToNetworkDatabaseThereIsParameterDataSource
-       .updateListModelToNetworkDatabaseThereIsParameterDataSource(
-       baseListModelDomain.toBaseListModelNetworkDatabase()
+   var response = await updateListModelToNetworkDatabaseThereIsParameterDataSource.updateListModelToNetworkDatabaseThereIsParameterDataSource(
+       baseListModelNetworkDatabase
    );
    if (response.isSuccessResponse) {
      return Response.success(response.getData);
@@ -169,31 +127,12 @@ class ReadyModelNetworkDatabaseFVM
  }
 
  static Future<Response<BaseTypeParameter, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVM(
-      BaseViewModel baseViewModel,
-      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
-      ) async 
- {
-   var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource
-       .deleteModelToNetworkDatabaseThereIsParameterDataSource(
-       baseViewModel
-           .getModel(EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter)
-           .toBaseModelNetworkDatabase()
-   );
-   if(response.isSuccessResponse) {
-     return Response.success(response.getData);
-   } else {
-     return Response.exception(response.getException);
-   }
- }
-
- static Future<Response<BaseTypeParameter, BaseException>> deleteModelToNetworkDatabaseThereIsParameterFVMVariantTwo(
-     BaseModelDomain baseModelDomain,
+     BaseModelNetworkDatabase baseModelNetworkDatabase,
      DeleteModelToNetworkDatabaseThereIsParameterDataSource deleteModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
  {
-   var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource
-       .deleteModelToNetworkDatabaseThereIsParameterDataSource(
-       baseModelDomain.toBaseModelNetworkDatabase()
+   var response =  await deleteModelToNetworkDatabaseThereIsParameterDataSource.deleteModelToNetworkDatabaseThereIsParameterDataSource(
+       baseModelNetworkDatabase
    );
    if(response.isSuccessResponse) {
      return Response.success(response.getData);
@@ -203,13 +142,12 @@ class ReadyModelNetworkDatabaseFVM
  }
 
  static Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNetworkDatabaseThereIsParameterFVM(
-     BaseListModelDomain baseListModelDomain,
+     BaseListModelNetworkDatabase baseListModelNetworkDatabase,
      DeleteListModelToNetworkDatabaseThereIsParameterDataSource deleteListModelToNetworkDatabaseThereIsParameterDataSource,
      ) async
  {
-   var response = await deleteListModelToNetworkDatabaseThereIsParameterDataSource
-       .deleteListModelToNetworkDatabaseThereIsParameterDataSource(
-       baseListModelDomain.toBaseListModelNetworkDatabase()
+   var response = await deleteListModelToNetworkDatabaseThereIsParameterDataSource.deleteListModelToNetworkDatabaseThereIsParameterDataSource(
+       baseListModelNetworkDatabase
    );
    if (response.isSuccessResponse) {
      return Response.success(response.getData);

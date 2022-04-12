@@ -9,7 +9,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_local_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_local_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
@@ -23,8 +24,7 @@ class ReadyModelLocalDatabaseFVM
       BaseListModelDomain baseListModelDomain
       ) async
   {
-    var response = await getListModelFromLocalDatabaseDataSource
-        .getListModelFromLocalDatabaseDataSource();
+    var response = await getListModelFromLocalDatabaseDataSource.getListModelFromLocalDatabaseDataSource();
     if(response.isSuccessResponse) {
       baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(true);
@@ -39,9 +39,8 @@ class ReadyModelLocalDatabaseFVM
       BaseTypeParameter baseTypeParameter
       ) async
   {
-    var response = await getListModelFromLocalDatabaseThereIsParameterDataSource
-        .getListModelFromLocalDatabaseThereIsParameterDataSource(
-         baseTypeParameter
+    var response = await getListModelFromLocalDatabaseThereIsParameterDataSource.getListModelFromLocalDatabaseThereIsParameterDataSource(
+        baseTypeParameter
     );
     if(response.isSuccessResponse) {
       baseListModelDomain.setListModelDomainFromBaseListModelDomain = response.getData.toBaseListModelDomain();
@@ -57,8 +56,7 @@ class ReadyModelLocalDatabaseFVM
       BaseTypeParameter baseTypeParameter
       ) async
   {
-    var response = await getModelFromLocalDatabaseThereIsParameterDataSource
-        .getModelFromLocalDatabaseThereIsParameterDataSource(
+    var response = await getModelFromLocalDatabaseThereIsParameterDataSource.getModelFromLocalDatabaseThereIsParameterDataSource(
         baseTypeParameter
     );
     if(response.isSuccessResponse) {
@@ -71,33 +69,14 @@ class ReadyModelLocalDatabaseFVM
       return Response.exception(response.getException);
     }
   }
-
+  
   static Future<Response<BaseTypeParameter, BaseException>> insertModelToLocalDatabaseThereIsParameterFVM(
-      BaseViewModel baseViewModel,
+      BaseModelLocalDatabase baseModelLocalDatabase,
       InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
       ) async
   {
-    var response = await insertModelToLocalDatabaseThereIsParameterDataSource
-        .insertModelToLocalDatabaseThereIsParameterDataSource(
-        baseViewModel
-            .getModel(EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter)
-            .toBaseModelLocalDatabase()
-    );
-    if (response.isSuccessResponse) {
-      return Response.success(response.getData);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<BaseTypeParameter, BaseException>> insertModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      BaseModelDomain baseModelDomain,
-      InsertModelToLocalDatabaseThereIsParameterDataSource insertModelToLocalDatabaseThereIsParameterDataSource,
-      ) async
-  {
-    var response = await insertModelToLocalDatabaseThereIsParameterDataSource
-        .insertModelToLocalDatabaseThereIsParameterDataSource(
-        baseModelDomain.toBaseModelLocalDatabase()
+    var response = await insertModelToLocalDatabaseThereIsParameterDataSource.insertModelToLocalDatabaseThereIsParameterDataSource(
+        baseModelLocalDatabase
     );
     if (response.isSuccessResponse) {
       return Response.success(response.getData);
@@ -107,13 +86,12 @@ class ReadyModelLocalDatabaseFVM
   }
 
   static Future<Response<BaseTypeParameter, BaseException>> insertListModelToLocalDatabaseThereIsParameterFVM(
-      BaseListModelDomain baseListModelDomain,
+      BaseListModelLocalDatabase baseListModelLocalDatabase,
       InsertListModelToLocalDatabaseThereIsParameterDataSource insertListModelToLocalDatabaseThereIsParameterDataSource,
       ) async
   {
-    var response = await insertListModelToLocalDatabaseThereIsParameterDataSource
-        .insertListModelToLocalDatabaseThereIsParameterDataSource(
-        baseListModelDomain.toBaseListModelLocalDatabase()
+    var response = await insertListModelToLocalDatabaseThereIsParameterDataSource.insertListModelToLocalDatabaseThereIsParameterDataSource(
+        baseListModelLocalDatabase
     );
     if (response.isSuccessResponse) {
       return Response.success(response.getData);
@@ -121,33 +99,14 @@ class ReadyModelLocalDatabaseFVM
       return Response.exception(response.getException);
     }
   }
-
- static Future<Response<BaseTypeParameter, BaseException>> updateModelToLocalDatabaseThereIsParameterFVM(
-      BaseViewModel baseViewModel,
-      UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
-      ) async
- {
-    var response = await updateModelToLocalDatabaseThereIsParameterDataSource
-        .updateModelToLocalDatabaseThereIsParameterDataSource(
-        baseViewModel
-            .getModel(EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter)
-            .toBaseModelLocalDatabase()
-      );
-    if(response.isSuccessResponse) {
-      return Response.success(response.getData);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<BaseTypeParameter, BaseException>> updateModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      BaseModelDomain baseModelDomain,
+  
+  static Future<Response<BaseTypeParameter, BaseException>> updateModelToLocalDatabaseThereIsParameterFVM(
+      BaseModelLocalDatabase baseModelLocalDatabase,
       UpdateModelToLocalDatabaseThereIsParameterDataSource updateModelToLocalDatabaseThereIsParameterDataSource,
       ) async
   {
-    var response = await updateModelToLocalDatabaseThereIsParameterDataSource
-        .updateModelToLocalDatabaseThereIsParameterDataSource(
-        baseModelDomain.toBaseModelLocalDatabase()
+    var response = await updateModelToLocalDatabaseThereIsParameterDataSource.updateModelToLocalDatabaseThereIsParameterDataSource(
+        baseModelLocalDatabase
     );
     if(response.isSuccessResponse) {
       return Response.success(response.getData);
@@ -157,13 +116,12 @@ class ReadyModelLocalDatabaseFVM
   }
 
   static Future<Response<BaseTypeParameter, BaseException>> updateListModelToLocalDatabaseThereIsParameterFVM(
-      BaseListModelDomain baseListModelDomain,
+      BaseListModelLocalDatabase baseListModelLocalDatabase,
       UpdateListModelToLocalDatabaseThereIsParameterDataSource updateListModelToLocalDatabaseThereIsParameterDataSource,
       ) async
   {
-    var response = await updateListModelToLocalDatabaseThereIsParameterDataSource
-        .updateListModelToLocalDatabaseThereIsParameterDataSource(
-        baseListModelDomain.toBaseListModelLocalDatabase()
+    var response = await updateListModelToLocalDatabaseThereIsParameterDataSource.updateListModelToLocalDatabaseThereIsParameterDataSource(
+        baseListModelLocalDatabase
     );
     if (response.isSuccessResponse) {
       return Response.success(response.getData);
@@ -172,32 +130,13 @@ class ReadyModelLocalDatabaseFVM
     }
   }
 
- static Future<Response<BaseTypeParameter, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVM(
-      BaseViewModel baseViewModel,
-      DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
-      ) async
- {
-    var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource
-        .deleteModelToLocalDatabaseThereIsParameterDataSource(
-        baseViewModel
-            .getModel(EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter)
-            .toBaseModelLocalDatabase()
-    );
-    if(response.isSuccessResponse) {
-      return Response.success(response.getData);
-    } else {
-      return Response.exception(response.getException);
-    }
-  }
-
-  static Future<Response<BaseTypeParameter, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVMVariantTwo(
-      BaseModelDomain baseModelDomain,
+  static Future<Response<BaseTypeParameter, BaseException>> deleteModelToLocalDatabaseThereIsParameterFVM(
+      BaseModelLocalDatabase baseModelLocalDatabase,
       DeleteModelToLocalDatabaseThereIsParameterDataSource deleteModelToLocalDatabaseThereIsParameterDataSource,
       ) async
   {
-    var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource
-        .deleteModelToLocalDatabaseThereIsParameterDataSource(
-        baseModelDomain.toBaseModelLocalDatabase()
+    var response =  await deleteModelToLocalDatabaseThereIsParameterDataSource.deleteModelToLocalDatabaseThereIsParameterDataSource(
+        baseModelLocalDatabase
     );
     if(response.isSuccessResponse) {
       return Response.success(response.getData);
@@ -207,13 +146,12 @@ class ReadyModelLocalDatabaseFVM
   }
 
   static Future<Response<BaseTypeParameter, BaseException>> deleteListModelToLocalDatabaseThereIsParameterFVM(
-      BaseListModelDomain baseListModelDomain,
+      BaseListModelLocalDatabase baseListModelLocalDatabase,
       DeleteListModelToLocalDatabaseThereIsParameterDataSource deleteListModelToLocalDatabaseThereIsParameterDataSource,
       ) async
   {
-    var response = await deleteListModelToLocalDatabaseThereIsParameterDataSource
-        .deleteListModelToLocalDatabaseThereIsParameterDataSource(
-        baseListModelDomain.toBaseListModelLocalDatabase()
+    var response = await deleteListModelToLocalDatabaseThereIsParameterDataSource.deleteListModelToLocalDatabaseThereIsParameterDataSource(
+        baseListModelLocalDatabase
     );
     if (response.isSuccessResponse) {
       return Response.success(response.getData);

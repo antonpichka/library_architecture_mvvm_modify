@@ -13,7 +13,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForInsertModelMethod(
+    return _methodForInsertModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseModelDomainVM.insertModelToLocalDatabaseThereIsParameter
@@ -24,7 +24,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForInsertListModelMethod(
+    return _methodForInsertListModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseListModelDomainVM.insertListModelToLocalDatabaseThereIsParameter
@@ -35,7 +35,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForUpdateModelMethod(
+    return _methodForUpdateModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseModelDomainVM.updateModelToLocalDatabaseThereIsParameter
@@ -46,7 +46,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForUpdateListModelMethod(
+    return _methodForUpdateListModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseListModelDomainVM.updateListModelToLocalDatabaseThereIsParameter
@@ -57,7 +57,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForDeleteModelMethod(
+    return _methodForDeleteModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseModelDomainVM.deleteModelToLocalDatabaseThereIsParameter
@@ -68,7 +68,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForDeleteListModelMethod(
+    return _methodForDeleteListModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseListModelDomainVM.deleteListModelToLocalDatabaseThereIsParameter
@@ -79,7 +79,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForInsertModelMethod(
+    return _methodForInsertModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseModelDomainVM.insertModelToNetworkDatabaseThereIsParameter
@@ -90,7 +90,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForInsertListModelMethod(
+    return _methodForInsertListModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseListModelDomainVM.insertListModelToNetworkDatabaseThereIsParameter
@@ -102,7 +102,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForUpdateModelMethod(
+    return _methodForUpdateModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseModelDomainVM.updateModelToNetworkDatabaseThereIsParameter
@@ -113,7 +113,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForUpdateListModelMethod(
+    return _methodForUpdateListModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseListModelDomainVM.updateListModelToNetworkDatabaseThereIsParameter
@@ -124,7 +124,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForDeleteModelMethod(
+    return _methodForDeleteModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseModelDomainVM.deleteModelToNetworkDatabaseThereIsParameter
@@ -135,14 +135,14 @@ class ReadyListModelDomainForLNDatabaseFVM
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain)
   {
-    return _codeForDeleteListModelMethod(
+    return _methodForDeleteListModel(
         baseViewModel,
         baseListModelDomain,
         EnumBaseListModelDomainVM.deleteListModelToNetworkDatabaseThereIsParameter
     );
   }
 
-  static Response<BaseTypeParameter, BaseException> _codeForInsertModelMethod(
+  static Response<BaseTypeParameter, BaseException> _methodForInsertModel(
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain,
       EnumBaseModelDomainVM enumBaseModelDomainObjectOperationViewModel)
@@ -157,7 +157,7 @@ class ReadyListModelDomainForLNDatabaseFVM
     }
   }
 
-  static Response<BaseTypeParameter, BaseException> _codeForInsertListModelMethod(
+  static Response<BaseTypeParameter, BaseException> _methodForInsertListModel(
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain,
       EnumBaseListModelDomainVM enumBaseListModelDomainObjectOperationViewModel)
@@ -172,7 +172,7 @@ class ReadyListModelDomainForLNDatabaseFVM
     }
   }
 
-  static Response<BaseTypeParameter, BaseException> _codeForUpdateModelMethod(
+  static Response<BaseTypeParameter, BaseException> _methodForUpdateModel(
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain,
       EnumBaseModelDomainVM enumBaseModelDomainObjectOperationViewModel)
@@ -187,7 +187,7 @@ class ReadyListModelDomainForLNDatabaseFVM
       }
   }
 
-  static Response<BaseTypeParameter, BaseException> _codeForUpdateListModelMethod(
+  static Response<BaseTypeParameter, BaseException> _methodForUpdateListModel(
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain,
       EnumBaseListModelDomainVM enumBaseListModelDomainObjectOperationViewModel)
@@ -202,7 +202,7 @@ class ReadyListModelDomainForLNDatabaseFVM
     }
   }
 
-  static Response<BaseTypeParameter, BaseException> _codeForDeleteModelMethod(
+  static Response<BaseTypeParameter, BaseException> _methodForDeleteModel(
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain,
       EnumBaseModelDomainVM enumBaseModelDomainObjectOperationViewModel)
@@ -217,7 +217,7 @@ class ReadyListModelDomainForLNDatabaseFVM
     }
   }
 
-  static Response<BaseTypeParameter, BaseException> _codeForDeleteListModelMethod(
+  static Response<BaseTypeParameter, BaseException> _methodForDeleteListModel(
       BaseViewModel baseViewModel,
       BaseListModelDomain baseListModelDomain,
       EnumBaseListModelDomainVM enumBaseListModelDomainObjectOperationViewModel)
