@@ -68,7 +68,9 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
   Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
   {
     try {
-      _listModelDomain.addAll(listModel);
+      for(T model in listModel) {
+        _listModelDomain.add(model.cloneObject());
+      }
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -78,7 +80,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
   Response<bool, BaseException> insertModelToListModelDomain(T model)
   {
     try {
-      _listModelDomain.add(model);
+      _listModelDomain.add(model.cloneObject());
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -93,7 +95,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
       }
 
       for(int i = 0; i < listModel.length; i++) {
-        _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
+        _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i].cloneObject();
       }
       return Response.success(true);
     } catch (e) {
@@ -107,7 +109,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
       if (_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-      _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
+      _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == model.uniqueId)] = model.cloneObject();
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
@@ -126,7 +128,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
       for(int i = 0; i < _listModelDomain.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
           if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
-            toListDelete.add(_listModelDomain[i]);
+            toListDelete.add(_listModelDomain[i].cloneObject());
           }
         }
       }
@@ -144,7 +146,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
-      _listModelDomain.removeWhere((item) => item.uniqueId == model.uniqueId);
+      _listModelDomain.removeWhere((item) => item.uniqueId == model.cloneObject().uniqueId);
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
