@@ -642,6 +642,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromLNDatabaseAndGetListFromLNDatabase[operation] = baseTypeParameter;
   }
 
+  void setBaseIteratorForEnum(
+      BaseIterator baseIterator,
+      Enum operation)
+  {
+    mapEnumAndBaseIterator[operation] = baseIterator;
+  }
+
   void setEnumTypeParameterForIteratorForListModelLNDatabase(
       EnumTypeParameter enumTypeParameter,
       EnumTypeParameterForIteratorForListModelLNDatabaseVM operation)
