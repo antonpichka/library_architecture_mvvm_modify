@@ -123,7 +123,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
-      var toListDelete = List.empty(growable: true);
+      List<T> toListDelete = List.empty(growable: true);
 
       for(int i = 0; i < _listModelDomain.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
@@ -132,7 +132,13 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
           }
         }
       }
-      _listModelDomain.removeWhere( (e) => toListDelete.contains(e));
+      for(int i = 0; i < _listModelDomain.length; i++) {
+        for(T deleteModelDomain in toListDelete) {
+          if(_listModelDomain[i].uniqueId == deleteModelDomain.uniqueId) {
+            _listModelDomain.removeAt(i);
+          }
+        }
+      }
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
