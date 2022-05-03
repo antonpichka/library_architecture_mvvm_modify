@@ -1,4 +1,0 @@
-enum EnumTypeParameterForIteratorForListModelLNDatabaseVM {
-  getListModelFromLocalDatabaseThereIsParameter,
-  getListModelFromNetworkDatabaseThereIsParameter,
-}

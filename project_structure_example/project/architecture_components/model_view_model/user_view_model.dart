@@ -1,4 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_repository/base_repository.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
@@ -12,7 +13,8 @@ class UserViewModel extends BaseViewModel {
       List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
       ItemCreator<BaseListModelDomain> itemCreator)
-      : super(listEnumBaseModelDomainVM,
+      : super(BaseRepository(null,null,null,null,null,null,null,null,null),
+              listEnumBaseModelDomainVM,
               listEnumBaseListModelDomainVM, 
               () => UserDomain.getDefaultUserDomain,
               itemCreator

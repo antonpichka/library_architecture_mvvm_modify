@@ -1,7 +1,0 @@
-enum EnumBaseTypeParameterForGetModelLNDatabaseAndGetListLNDatabaseVM {
-  getModelFromLocalDatabaseThereIsParameter,
-  getModelFromNetworkDatabaseThereIsParameter,
-
-  getListModelFromLocalDatabaseThereIsParameter,
-  getListModelFromNetworkDatabaseThereIsParameter,
-}

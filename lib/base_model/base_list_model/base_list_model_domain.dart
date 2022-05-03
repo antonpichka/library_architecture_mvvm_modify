@@ -152,7 +152,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
-      _listModelDomain.removeWhere((item) => item.uniqueId == model.cloneObject().uniqueId);
+      _listModelDomain.removeWhere((item) => item.uniqueId == model.uniqueId);
       return Response.success(true);
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));

@@ -1,6 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_local_database.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_network_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 
 class UserDomain extends BaseModelDomain {
   String name;
@@ -33,16 +32,9 @@ class UserDomain extends BaseModelDomain {
     // TODO: implement toString
     return super.toString();
   }
-
-  @override
-  BaseModelLocalDatabase toBaseModelLocalDatabase() {
+  
+  BaseModelNamedDatabase toBaseModelSqfliteDatabase() {
     // TODO: implement toBaseModelLocalDatabase
-    throw UnimplementedError();
-  }
-
-  @override
-  BaseModelNetworkDatabase toBaseModelNetworkDatabase() {
-    // TODO: implement toBaseModelNetworkDatabase
     throw UnimplementedError();
   }
 

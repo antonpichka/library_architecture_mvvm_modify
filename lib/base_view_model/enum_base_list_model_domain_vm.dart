@@ -1,12 +1,6 @@
 enum EnumBaseListModelDomainVM {
-  getListModelFromLocalDatabaseThereIsParameterAndNoThereIsParameter,
-  getListModelFromNetworkDatabaseThereIsParameterAndNoThereIsParameter,
-
-  insertListModelToLocalDatabaseThereIsParameter,
-  updateListModelToLocalDatabaseThereIsParameter,
-  deleteListModelToLocalDatabaseThereIsParameter,
-
-  insertListModelToNetworkDatabaseThereIsParameter,
-  updateListModelToNetworkDatabaseThereIsParameter,
-  deleteListModelToNetworkDatabaseThereIsParameter,
+  insertListModelToNamedDatabaseThereIsParameter,
+  updateListModelToNamedDatabaseThereIsParameter,
+  deleteListModelToNamedDatabaseThereIsParameter,
+  getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter,
 }
