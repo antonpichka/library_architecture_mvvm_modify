@@ -3,16 +3,16 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_named_dat
 
 abstract class BaseListModelNamedDatabase<T extends BaseModelNamedDatabase>
 {
-  List<T> _listModelLocalDatabase = List.empty();
+  List<T> _listModelNamedDatabase = List.empty();
 
   BaseListModelDomain toBaseListModelDomain();
 
-  set setListModelLocalDatabase(List<T> list) {
-    _listModelLocalDatabase = list;
+  set setListModelNamedDatabase(List<T> list) {
+    _listModelNamedDatabase = list;
   }
 
-  List<T> get getListModelLocalDatabase {
-    return _listModelLocalDatabase;
+  List<T> get getListModelNamedDatabase {
+    return _listModelNamedDatabase;
   }
 
 }

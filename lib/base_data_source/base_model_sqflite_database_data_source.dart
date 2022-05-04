@@ -86,12 +86,12 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace]) async
   {
     try {
-      if(listModel.getListModelLocalDatabase.isEmpty) {
+      if(listModel.getListModelNamedDatabase.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"List empty for insert"));
       }
       final db = await getDatabase;
       int result = 0;
-      for (BaseModelNamedDatabase model in listModel.getListModelLocalDatabase) {
+      for (BaseModelNamedDatabase model in listModel.getListModelNamedDatabase) {
         var resultInsert = await db.insert(
             table,
             model.toMap(),
@@ -147,12 +147,12 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       ) async
   {
     try {
-      if(listModel.getListModelLocalDatabase.isEmpty) {
+      if(listModel.getListModelNamedDatabase.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"List empty for update"));
       }
       final db = await getDatabase;
       int result = 0;
-      for (BaseModelNamedDatabase model in listModel.getListModelLocalDatabase) {
+      for (BaseModelNamedDatabase model in listModel.getListModelNamedDatabase) {
         var resultUpdate = await db.update(
           table,
           model.toMap(),
@@ -206,12 +206,12 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       ) async
   {
     try {
-      if(listModel.getListModelLocalDatabase.isEmpty) {
+      if(listModel.getListModelNamedDatabase.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"List empty for delete"));
       }
       final db = await getDatabase;
       int result = 0;
-      for (BaseModelNamedDatabase model in listModel.getListModelLocalDatabase) {
+      for (BaseModelNamedDatabase model in listModel.getListModelNamedDatabase) {
         var resultDelete = await db.delete(
           table,
           where: columnForUniqueId + '= ?',
