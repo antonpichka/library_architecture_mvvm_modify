@@ -6,7 +6,6 @@ abstract class BaseListModelNamedDatabase<T extends BaseModelNamedDatabase>
   List<T> _listModelNamedDatabase;
 
   BaseListModelNamedDatabase(this._listModelNamedDatabase);
-  BaseListModelNamedDatabase.fromListMap(List<Map<String,dynamic>> map);
 
   BaseListModelDomain toBaseListModelDomain();
 

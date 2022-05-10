@@ -4,7 +4,6 @@ abstract class BaseModelNamedDatabase {
   String uniqueId;
 
   BaseModelNamedDatabase(this.uniqueId);
-  BaseModelNamedDatabase.fromMap(Map<String,dynamic> map);
 
   BaseModelDomain toBaseModelDomain();
   Map<String, dynamic> toMap();
