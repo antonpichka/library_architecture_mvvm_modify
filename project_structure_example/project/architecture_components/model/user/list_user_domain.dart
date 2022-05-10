@@ -4,9 +4,7 @@ import 'user_domain.dart';
 
 class ListUserDomain extends BaseListModelDomain<UserDomain> {
 
-  ListUserDomain(List<UserDomain> list) {
-    setListModelDomain = list;
-  }
+  ListUserDomain(List<UserDomain> list) : super(list);
 
   @override
   BaseListModelDomain<BaseModelDomain> cloneObject() {

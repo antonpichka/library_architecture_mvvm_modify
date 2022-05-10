@@ -8,8 +8,10 @@ import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 abstract class BaseListModelDomain<T extends BaseModelDomain> implements AbilityToClone<BaseListModelDomain> {
-  List<T> _listModelDomain = List.empty();
+  List<T> _listModelDomain;
   BaseIterator _iterator;
+
+  BaseListModelDomain(this._listModelDomain);
 
   List<T> get getListModelDomain {
     return _listModelDomain;
