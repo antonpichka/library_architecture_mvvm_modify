@@ -85,14 +85,14 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
       this._listEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain,
-      {this.converterToBaseModelNamedDatabase,
-        this.converterToBaseListModelNamedDatabase,
-        this.insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM, 
-        this.insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM, 
-        this.updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM, 
-        this.updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM, 
-        this.deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM, 
-        this.deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM}
+      this.converterToBaseModelNamedDatabase,
+      this.converterToBaseListModelNamedDatabase,
+      this.insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this.insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this.updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this.updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this.deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this.deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM
       );
 
   BaseViewModel.forIterator(
@@ -101,17 +101,17 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
       this._listEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain,
-      {this.mapEnumAndBaseIterator, 
-        this.mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter, 
-        this.converterToBaseModelNamedDatabase,
-        this.converterToBaseListModelNamedDatabase,
-        this.insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-        this.insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-        this.updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-        this.updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-        this.deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-        this.deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-      });
+      this.mapEnumAndBaseIterator,
+      this.mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter,
+      this.converterToBaseModelNamedDatabase,
+      this.converterToBaseListModelNamedDatabase,
+      this.insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this.insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this.updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this.updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this.deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this.deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      );
 
   @override
   void dispose() {
