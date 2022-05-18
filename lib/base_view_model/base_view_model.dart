@@ -7,6 +7,7 @@ import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dar
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
@@ -71,9 +72,12 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   final ConverterToBaseModelNamedDatabase<T> converterToBaseModelNamedDatabase;
   final ConverterToBaseListModelNamedDatabase<Y> converterToBaseListModelNamedDatabase;
 
+  final Map<EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromNamedDatabaseAndGetListFromNamedDatabase = {
+    EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true),
+    EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true)
+  };
   Map<Enum,BaseIterator> mapEnumAndBaseIterator;
   Map<EnumTypeParameterForIteratorForListModelNamedDatabaseVM,EnumTypeParameter> mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter;
-  Map<EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromNamedDatabaseAndGetListFromNamedDatabase;
   Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain;
   Map<EnumBaseListModelDomainVM,Y> _mapEnumBaseListModelDomainVMAndBaseListModelDomain;
   Map<EnumBaseModelDomainVM,StreamController<T>> _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain;
