@@ -61,23 +61,23 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   final ItemCreator<Y> _initCreatorBaseListModelDomain;
 
   /* CIDBUACBFVM */
-  final InsertModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T> insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM;
-  final InsertListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM<Y> insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM;
-  final UpdateModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T> updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM;
-  final UpdateListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM<Y> updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM;
-  final DeleteModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T> deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM;
-  final DeleteListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM<Y> deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM;
+  final InsertModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T> _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM;
+  final InsertListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM<Y> _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM;
+  final UpdateModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T> _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM;
+  final UpdateListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM<Y> _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM;
+  final DeleteModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T> _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM;
+  final DeleteListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM<Y> _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM;
 
   /* Converter To Model */
-  final ConverterToBaseModelNamedDatabase<T> converterToBaseModelNamedDatabase;
-  final ConverterToBaseListModelNamedDatabase<Y> converterToBaseListModelNamedDatabase;
+  final ConverterToBaseModelNamedDatabase<T> _converterToBaseModelNamedDatabase;
+  final ConverterToBaseListModelNamedDatabase<Y> _converterToBaseListModelNamedDatabase;
 
   final Map<EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromNamedDatabaseAndGetListFromNamedDatabase = {
     EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true),
     EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true)
   };
-  Map<Enum,BaseIterator> mapEnumAndBaseIterator;
-  Map<EnumTypeParameterForIteratorForListModelNamedDatabaseVM,EnumTypeParameter> mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter;
+  Map<Enum,BaseIterator> _mapEnumAndBaseIterator = {};
+  Map<EnumTypeParameterForIteratorForListModelNamedDatabaseVM,EnumTypeParameter> _mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter = {};
   Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain;
   Map<EnumBaseListModelDomainVM,Y> _mapEnumBaseListModelDomainVMAndBaseListModelDomain;
   Map<EnumBaseModelDomainVM,StreamController<T>> _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain;
@@ -89,14 +89,14 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
       this._listEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain,
-      this.converterToBaseModelNamedDatabase,
-      this.converterToBaseListModelNamedDatabase,
-      this.insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-      this.insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-      this.updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-      this.updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-      this.deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-      this.deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM
+      this._converterToBaseModelNamedDatabase,
+      this._converterToBaseListModelNamedDatabase,
+      this._insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this._insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this._updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this._updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this._deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this._deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM
       );
 
   BaseViewModel.forIterator(
@@ -105,22 +105,22 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
       this._listEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain,
-      this.mapEnumAndBaseIterator,
-      this.mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter,
-      this.converterToBaseModelNamedDatabase,
-      this.converterToBaseListModelNamedDatabase,
-      this.insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-      this.insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-      this.updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-      this.updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
-      this.deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
-      this.deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this._mapEnumAndBaseIterator,
+      this._mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter,
+      this._converterToBaseModelNamedDatabase,
+      this._converterToBaseListModelNamedDatabase,
+      this._insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this._insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this._updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this._updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
+      this._deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
+      this._deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM,
       );
 
   @override
   void dispose() {
-    _disposeForAnyMap(mapEnumAndBaseIterator);
-    _disposeForAnyMap(mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter);
+    _disposeForAnyMap(_mapEnumAndBaseIterator);
+    _disposeForAnyMap(_mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter);
     _disposeForAnyMap(_mapEnumBaseTypeParameterVMAndBaseTypeParameterForGetModelFromNamedDatabaseAndGetListFromNamedDatabase);
     _disposeForAnyMap(_mapEnumBaseModelDomainVMAndBaseModelDomain);
     _disposeForAnyMap(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
@@ -225,14 +225,14 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
       BaseIterator baseIterator,
       Enum operation)
   {
-    mapEnumAndBaseIterator[operation] = baseIterator;
+    _mapEnumAndBaseIterator[operation] = baseIterator;
   }
 
   void setEnumTypeParameterForIteratorForListModelNamedDatabase(
       EnumTypeParameter enumTypeParameter,
       EnumTypeParameterForIteratorForListModelNamedDatabaseVM operation)
   {
-    mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter[operation] = enumTypeParameter;
+    _mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter[operation] = enumTypeParameter;
   }
 
   BaseTypeParameter getBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM operation)
@@ -304,8 +304,8 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   {
     return ReadyIteratorForBaseListModelNamedDatabaseFVM.callToMethodSetIteratorForListModelNamedDatabaseAndSetListModelNamedDatabaseUsingAnIteratorFVM(
         _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter],
-        mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter[EnumTypeParameterForIteratorForListModelNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter],
-        mapEnumAndBaseIterator);
+        _mapEnumTypeParameterForIteratorForListModelNamedDatabaseVMAndEnumTypeParameter[EnumTypeParameterForIteratorForListModelNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter],
+        _mapEnumAndBaseIterator);
   }
 
   /// End ReadyIteratorForBaseListModelNamedDatabaseFVM
@@ -336,13 +336,13 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseThereIsParameterFVM() async {
-    if(converterToBaseModelNamedDatabase == null) {
+    if(_converterToBaseModelNamedDatabase == null) {
       return throw Exception("null converterToBaseModelNamedDatabase");
     }
-    ConverterToBaseModelNamedDatabase ctmnd = converterToBaseModelNamedDatabase.cloneObject();
+    ConverterToBaseModelNamedDatabase ctmnd = _converterToBaseModelNamedDatabase.cloneObject();
     BaseModelDomain model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter].cloneObject();
-    if(insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM != null) {
-      InsertModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM cidbuacbfvm = insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM.cloneObject();
+    if(_insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM != null) {
+      InsertModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM cidbuacbfvm = _insertModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM.cloneObject();
       cidbuacbfvm.setBaseModelDomainCIDBUACBFVM = model;
 
       BaseListModelDomain listModelFromDatabase = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter].cloneObject();
@@ -360,13 +360,13 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseThereIsParameterFVM() async {
-    if(converterToBaseListModelNamedDatabase == null) {
+    if(_converterToBaseListModelNamedDatabase == null) {
       return throw Exception("null converterToBaseListModelNamedDatabase");
     }
-    ConverterToBaseListModelNamedDatabase ctmnd = converterToBaseListModelNamedDatabase.cloneObject();
+    ConverterToBaseListModelNamedDatabase ctmnd = _converterToBaseListModelNamedDatabase.cloneObject();
     BaseListModelDomain listModel = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter].cloneObject();
-    if(insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM != null) {
-      InsertListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM cidbuacbfvm = insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM.cloneObject();
+    if(_insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM != null) {
+      InsertListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM cidbuacbfvm = _insertListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM.cloneObject();
       cidbuacbfvm.setBaseListModelDomainCIDBUACBFVM = listModel;
 
       BaseListModelDomain listModelFromDatabase = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter].cloneObject();
@@ -384,13 +384,13 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseThereIsParameterFVM() async {
-    if(converterToBaseModelNamedDatabase == null) {
+    if(_converterToBaseModelNamedDatabase == null) {
       return throw Exception("null converterToBaseModelNamedDatabase");
     }
-    ConverterToBaseModelNamedDatabase ctmnd = converterToBaseModelNamedDatabase.cloneObject();
+    ConverterToBaseModelNamedDatabase ctmnd = _converterToBaseModelNamedDatabase.cloneObject();
     BaseModelDomain model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter].cloneObject();
-    if(updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM != null) {
-      UpdateModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM cidbuacbfvm = updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM.cloneObject();
+    if(_updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM != null) {
+      UpdateModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM cidbuacbfvm = _updateModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM.cloneObject();
       cidbuacbfvm.setBaseModelDomainCIDBUACBFVM = model;
 
       BaseListModelDomain listModelFromDatabase = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter].cloneObject();
@@ -408,13 +408,13 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseThereIsParameterFVM() async {
-    if(converterToBaseListModelNamedDatabase == null) {
+    if(_converterToBaseListModelNamedDatabase == null) {
       return throw Exception("null converterToBaseListModelNamedDatabase");
     }
-    ConverterToBaseListModelNamedDatabase ctmnd = converterToBaseListModelNamedDatabase.cloneObject();
+    ConverterToBaseListModelNamedDatabase ctmnd = _converterToBaseListModelNamedDatabase.cloneObject();
     BaseListModelDomain listModel = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter].cloneObject();
-    if(updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM != null) {
-      UpdateListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM cidbuacbfvm = updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM.cloneObject();
+    if(_updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM != null) {
+      UpdateListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM cidbuacbfvm = _updateListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM.cloneObject();
       cidbuacbfvm.setBaseListModelDomainCIDBUACBFVM = listModel;
 
       BaseListModelDomain listModelFromDatabase = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter].cloneObject();
@@ -432,13 +432,13 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseThereIsParameterFVM() async {
-    if(converterToBaseModelNamedDatabase == null) {
+    if(_converterToBaseModelNamedDatabase == null) {
       return throw Exception("null converterToBaseModelNamedDatabase");
     }
-    ConverterToBaseModelNamedDatabase ctmnd = converterToBaseModelNamedDatabase.cloneObject();
+    ConverterToBaseModelNamedDatabase ctmnd = _converterToBaseModelNamedDatabase.cloneObject();
     BaseModelDomain model = _getMapEnumBaseModelDomainVMAndBaseModelDomain[EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter].cloneObject();
-    if(deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM != null) {
-      DeleteModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM cidbuacbfvm = deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM.cloneObject();
+    if(_deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM != null) {
+      DeleteModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM cidbuacbfvm = _deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM.cloneObject();
       cidbuacbfvm.setBaseModelDomainCIDBUACBFVM = model;
 
       BaseListModelDomain listModelFromDatabase = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter].cloneObject();
@@ -456,13 +456,13 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>>
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseThereIsParameterFVM() async {
-    if(converterToBaseListModelNamedDatabase == null) {
+    if(_converterToBaseListModelNamedDatabase == null) {
       return throw Exception("null converterToBaseListModelNamedDatabase");
     }
-    ConverterToBaseListModelNamedDatabase ctmnd = converterToBaseListModelNamedDatabase.cloneObject();
+    ConverterToBaseListModelNamedDatabase ctmnd = _converterToBaseListModelNamedDatabase.cloneObject();
     BaseListModelDomain listModel = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter].cloneObject();
-    if(deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM != null) {
-      DeleteListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM cidbuacbfvm = deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM.cloneObject();
+    if(_deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM != null) {
+      DeleteListModelToNamedDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM cidbuacbfvm = _deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM.cloneObject();
       cidbuacbfvm.setBaseListModelDomainCIDBUACBFVM = listModel;
 
       BaseListModelDomain listModelFromDatabase = _getMapEnumBaseListModelDomainVMAndBaseListModelDomain[EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter].cloneObject();
