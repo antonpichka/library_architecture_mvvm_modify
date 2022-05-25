@@ -48,7 +48,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> getListModelFromNamedDatabaseFVM(
@@ -71,7 +73,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess();
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess();
+    }
   }
 
   static Future<void> getListModelFromNamedDatabaseThereIsParameterFVM(
@@ -94,7 +98,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess();
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess();
+    }
   }
 
   static Future<void> getModelFromNamedDatabaseThereIsParameterFVM(
@@ -117,7 +123,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess();
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess();
+    }
   }
 
   static Future<void> insertModelToNamedDatabaseThereIsParameterFVM(
@@ -141,7 +149,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> insertListModelToNamedDatabaseThereIsParameterFVM(
@@ -165,7 +175,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void insertModelToListModelDomainForNamedDatabaseFVM(
@@ -190,7 +202,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void insertListModelToListModelDomainForNamedDatabaseFVM(
@@ -214,7 +228,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
   
   static Future<void> updateModelToNamedDatabaseThereIsParameterFVM(
@@ -238,7 +254,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> updateListModelToNamedDatabaseThereIsParameterFVM(
@@ -262,7 +280,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void updateModelToListModelDomainForNamedDatabaseFVM(
@@ -286,7 +306,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void updateListModelToListModelDomainForNamedDatabaseFVM(
@@ -310,7 +332,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> deleteModelToNamedDatabaseThereIsParameterFVM(
@@ -334,7 +358,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> deleteListModelToNamedDatabaseThereIsParameterFVM(
@@ -358,7 +384,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void deleteModelToListModelDomainForNamedDatabaseFVM(
@@ -381,7 +409,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void deleteListModelToListModelDomainForNamedDatabaseFVM(
@@ -404,7 +434,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> insertModelToNamedDatabaseThereIsParameterAndInsertModelToListModelDomainForNamedDatabaseFVM(
@@ -438,7 +470,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> insertListModelToNamedDatabaseThereIsParameterAndInsertListModelToListModelDomainForNamedDatabaseFVM(
@@ -472,7 +506,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> updateModelToNamedDatabaseThereIsParameterAndUpdateModelToListModelDomainForNamedDatabaseFVM(
@@ -506,7 +542,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> updateListModelToNamedDatabaseThereIsParameterAndUpdateListModelToListModelDomainForNamedDatabaseFVM(
@@ -540,7 +578,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> deleteModelToNamedDatabaseThereIsParameterAndDeleteModelToListModelDomainForNamedDatabaseFVM(
@@ -574,7 +614,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static Future<void> deleteListModelToNamedDatabaseThereIsParameterAndDeleteListModelToListModelDomainForNamedDatabaseFVM(
@@ -608,7 +650,9 @@ class FVM {
       );
       return;
     }
-    functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData,resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    if(functionForResultSuccess != null) {
+      functionForResultSuccess(resultLocalDatabaseOrNetworkDatabase.getData, resultListModelDomainForLocalDatabaseOrNetworkDatabase.getData);
+    }
   }
 
   static void _choiceAllException(
