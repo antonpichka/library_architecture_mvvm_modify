@@ -1,6 +1,8 @@
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
@@ -12,7 +14,7 @@ import 'package:sqflite/sqflite.dart';
 
 abstract class BaseModelSqfliteDatabaseDataSource<
       T extends BaseModelNamedDatabase,
-      Y extends BaseListModelNamedDatabase<T>>
+      Y extends BaseListModelNamedDatabase<BaseListModelDomain,T>>
 {
   @protected
   final String fileDatabase;

@@ -1,19 +1,19 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 
-abstract class BaseListModelNamedDatabase<T extends BaseModelNamedDatabase>
+abstract class BaseListModelNamedDatabase<T extends BaseListModelDomain,Y extends BaseModelNamedDatabase>
 {
-  List<T> _listModelNamedDatabase;
+  List<Y> _listModelNamedDatabase;
 
   BaseListModelNamedDatabase(this._listModelNamedDatabase);
 
-  BaseListModelDomain toBaseListModelDomain();
+  T toBaseListModelDomain();
 
-  List<T> get getListModelNamedDatabase {
+  List<Y> get getListModelNamedDatabase {
     return _listModelNamedDatabase;
   }
 
-  set setListModelNamedDatabase(List<T> list) {
+  set setListModelNamedDatabase(List<Y> list) {
     _listModelNamedDatabase = list;
   }
 

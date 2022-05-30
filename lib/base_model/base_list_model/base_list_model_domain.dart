@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/ability_to_clone.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
@@ -7,33 +8,39 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_p
 import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
-abstract class BaseListModelDomain<T extends BaseModelDomain> implements AbilityToClone<BaseListModelDomain> {
-  List<T> _listModelDomain;
+abstract class BaseListModelDomain<T,Y extends BaseModelDomain>
+    implements AbilityToClone<T>
+{
+  List<Y> _listModelDomain;
   BaseIterator _iterator;
 
   BaseListModelDomain(this._listModelDomain);
 
-  List<T> get getListModelDomain {
+  @nonVirtual
+  List<Y> get getListModelDomain {
     return _listModelDomain;
   }
 
+  @nonVirtual
   set setListModelDomainFromBaseListModelDomain(BaseListModelDomain listModelDomain) {
     _listModelDomain = listModelDomain.getListModelDomain;
   }
 
-  set setListModelDomain(List<T> list) {
+  @nonVirtual
+  set setListModelDomain(List<Y> list) {
     _listModelDomain = list;
   }
 
+  @nonVirtual
   set _setIterator(BaseIterator newIterator) {
     _iterator = newIterator;
     _iterator.setList = _listModelDomain;
   }
 
-  Response<bool, BaseException> selectIteratorViaEnumTypeParameter(
+  @nonVirtual
+  Response<bool, BaseException> setIteratorForListModelNamedDatabaseAndSetListModelNamedDatabaseUsingAnIterator(
       EnumTypeParameter enumTypeParameter,
-      Map<Enum,BaseIterator> mapEnumAndBaseIterator
-      )
+      Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     try {
       if(mapEnumAndBaseIterator.isEmpty) {
@@ -67,10 +74,10 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
 
   /* Start Using to Classes ReadyListModelDomainForLNDatabaseFVM */
 
-  Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
+  Response<bool, BaseException> insertListModelToListModelDomain(List<Y> listModel)
   {
     try {
-      for(T model in listModel) {
+      for(Y model in listModel) {
         _listModelDomain.add(model.cloneObject());
       }
       return Response.success(true);
@@ -79,7 +86,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
     }
   }
   
-  Response<bool, BaseException> insertModelToListModelDomain(T model)
+  Response<bool, BaseException> insertModelToListModelDomain(Y model)
   {
     try {
       _listModelDomain.add(model.cloneObject());
@@ -89,7 +96,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
     }
   }
 
-  Response<bool, BaseException> updateListModelToListModelDomain(List<T> listModel)
+  Response<bool, BaseException> updateListModelToListModelDomain(List<Y> listModel)
   {
     try {
       if (_listModelDomain.isEmpty) {
@@ -105,7 +112,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
     }
   }
 
-  Response<bool, BaseException> updateModelToListModelDomain(T model)
+  Response<bool, BaseException> updateModelToListModelDomain(Y model)
   {
     try {
       if (_listModelDomain.isEmpty) {
@@ -118,14 +125,14 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
     }
   }
 
-  Response<bool, BaseException> deleteListModelToListModelDomain(List<T> listModel)
+  Response<bool, BaseException> deleteListModelToListModelDomain(List<Y> listModel)
   {
     try {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
 
-      List<T> toListDelete = List.empty(growable: true);
+      List<Y> toListDelete = List.empty(growable: true);
 
       for(int i = 0; i < _listModelDomain.length; i++) {
         for(int j = 0; j < listModel.length; j++) {
@@ -135,7 +142,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
         }
       }
       for(int i = 0; i < _listModelDomain.length; i++) {
-        for(T deleteModelDomain in toListDelete) {
+        for(Y deleteModelDomain in toListDelete) {
           if(_listModelDomain[i].uniqueId == deleteModelDomain.uniqueId) {
             _listModelDomain.removeAt(i);
           }
@@ -147,7 +154,7 @@ abstract class BaseListModelDomain<T extends BaseModelDomain> implements Ability
     }
   }
 
-  Response<bool, BaseException> deleteModelToListModelDomain(T model)
+  Response<bool, BaseException> deleteModelToListModelDomain(Y model)
   {
     try {
       if(_listModelDomain.isEmpty) {

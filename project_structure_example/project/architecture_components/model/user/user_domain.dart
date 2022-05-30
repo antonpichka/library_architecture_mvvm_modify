@@ -1,13 +1,9 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 
-class UserDomain extends BaseModelDomain {
+class UserDomain extends BaseModelDomain<UserDomain> {
   String name;
 
-  UserDomain({String uniqueId,this.name}) : super(uniqueId) {
-    // Yes Assistant
-//  this.baseModelAssistantByViewModelForDomain = /* My Realized */
-  }
+  UserDomain({String uniqueId,this.name}) : super(uniqueId);
 
   /// Start Getters Methods **/
 
@@ -26,29 +22,19 @@ class UserDomain extends BaseModelDomain {
 
   /// Start Ext Methods **/
 
-  // No TEST
   @override
   String toString() {
     // TODO: implement toString
     return super.toString();
   }
-  
-  BaseModelNamedDatabase toBaseModelSqfliteDatabase() {
-    // TODO: implement toBaseModelLocalDatabase
-    throw UnimplementedError();
-  }
 
   @override
-  BaseModelDomain cloneObject() {
-    return UserDomain(uniqueId: uniqueId,name: name);
+  UserDomain cloneObject() {
+    return UserDomain();
   }
 
   /// End Ext Methods **/
 
-  /// Start Custom Methods  **/
-
-
-  /// End Custom Methods  **/
 
   /// Start Const For CBFVM and Bool Methods **/
 

@@ -1,10 +1,10 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-abstract class BaseModelNamedDatabase {
+abstract class BaseModelNamedDatabase<T extends BaseModelDomain> {
   String uniqueId;
 
   BaseModelNamedDatabase(this.uniqueId);
 
-  BaseModelDomain toBaseModelDomain();
+  T toBaseModelDomain();
   Map<String, dynamic> toMap();
 }
