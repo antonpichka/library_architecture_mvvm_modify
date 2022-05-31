@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import '../../../project_structure_example/project/architecture_components/model/user/list_user_domain.dart';
-import '../../../project_structure_example/project/architecture_components/model/user/user_domain.dart';
+import '../../../example/project/architecture_components/model/user/list_user_domain.dart';
+import '../../../example/project/architecture_components/model/user/user_domain.dart';
 
 void main() {
   test("test method deleteListModelToListModelDomain Success", () {
@@ -14,8 +14,7 @@ void main() {
       UserDomain(uniqueId: "2",name: "Valeriy"),
     ];
 
-    var listUserDomain = ListUserDomain([]);
-    listUserDomain.setListModelDomain = listOne;
+    var listUserDomain = ListUserDomain(listOne);
     listUserDomain.deleteListModelToListModelDomain(listTwo);
 
     expect(listUserDomain.getListModelDomain.length, 2);

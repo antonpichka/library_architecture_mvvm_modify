@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/base_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
@@ -11,9 +11,9 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_named_dat
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_list_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_base_type_parameter_for_get_model_named_database_and_get_list_named_database_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_type_parameter_for_get_model_named_database_and_get_list_named_database_vm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_inputs_data_by_user_and_calculate_before_function_view_model/delete_list_model_to_named_database_there_is_parameter_used_provider_base_list_model_domain_cidbuacbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_inputs_data_by_user_and_calculate_before_function_view_model/delete_model_to_named_database_there_is_parameter_used_provider_base_model_domain_cidbuacbfvm.dart';
 import 'package:library_architecture_mvvm_modify/interface_check_inputs_data_by_user_and_calculate_before_function_view_model/insert_list_model_to_named_database_there_is_parameter_used_provider_base_list_model_domain_cidbuacbfvm.dart';
@@ -27,7 +27,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase,II extends DataSource<Z,X>> implements BaseDispose
+class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase,II extends BaseDataSource<Z,X>> implements BaseDispose
 {
   /* Init DataSource And Set Default Model Object */
   final II _dataSource;
@@ -222,7 +222,7 @@ class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z ex
 
   @nonVirtual
   set setEnumTypeParameterForIteratorForListModelNamedDatabase(EnumTypeParameter enumTypeParameterForIteratorForListModelNamedDatabase) {
-    this._enumTypeParameterForIteratorForListModelNamedDatabase = enumTypeParameterForIteratorForListModelNamedDatabase;
+    _enumTypeParameterForIteratorForListModelNamedDatabase = enumTypeParameterForIteratorForListModelNamedDatabase;
   }
 
   @nonVirtual
