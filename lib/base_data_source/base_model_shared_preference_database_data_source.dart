@@ -77,7 +77,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseDeleteModelToSharedPreferenceDatabaseDataSource(Map<String,dynamic> mapStringAndTypeForSP) async {
+  Future<Response<bool,LocalException>> baseDeleteModelToSharedPreferenceDatabaseDataSource(Map<String,TypeForSP> mapStringAndTypeForSP) async {
     try {
       final sP = await sharedPreferences;
       mapStringAndTypeForSP.forEach((key, value) {
@@ -90,7 +90,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<T,LocalException>> baseGetModelFromSharedPreferenceDatabaseDataSource(Map<String,dynamic> mapStringAndTypeForSP) async {
+  Future<Response<T,LocalException>> baseGetModelFromSharedPreferenceDatabaseDataSource(Map<String,TypeForSP> mapStringAndTypeForSP) async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};
@@ -126,6 +126,4 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
   }
-
-
 }

@@ -326,8 +326,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
         },
         onDowngrade: (Database db, int oldVersion, int newVersion) async {
           onDowngrade(db,oldVersion,newVersion);
-        }
-    );
+        });
   }
 
 }
