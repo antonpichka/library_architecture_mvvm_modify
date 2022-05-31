@@ -5,11 +5,6 @@ class BoolDomain extends BaseModelDomain {
 
   BoolDomain(this.field) : super('');
 
-  @override
-  BoolDomain cloneObject() {
-    return BoolDomain(field);
-  }
-
   static BoolDomain get getDefaultBoolDomain => BoolDomain(
       false
   );

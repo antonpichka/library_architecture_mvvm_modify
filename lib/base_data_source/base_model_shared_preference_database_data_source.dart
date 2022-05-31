@@ -40,9 +40,6 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   static SharedPreferences _sharedPreferences;
 
   @protected
-  Map<String,TypeForSP> toMap();
-
-  @protected
   T fromMapToBaseModelSharedPreferenceDatabase(Map<String, dynamic> map);
 
   @protected
@@ -80,10 +77,10 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseDeleteModelToSharedPreferenceDatabaseDataSource() async {
+  Future<Response<bool,LocalException>> baseDeleteModelToSharedPreferenceDatabaseDataSource(Map<String,dynamic> mapStringAndTypeForSP) async {
     try {
       final sP = await sharedPreferences;
-      toMap().forEach((key, value) {
+      mapStringAndTypeForSP.forEach((key, value) {
         sP.remove(key);
       });
       return Response.success(true);
@@ -93,12 +90,12 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<T,LocalException>> baseGetModelFromSharedPreferenceDatabaseDataSource() async {
+  Future<Response<T,LocalException>> baseGetModelFromSharedPreferenceDatabaseDataSource(Map<String,dynamic> mapStringAndTypeForSP) async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};
 
-      toMap().forEach((key, value) {
+      mapStringAndTypeForSP.forEach((key, value) {
         switch(value.getEnumTypeForSP) {
           case EnumTypeForSP.string:
             var strField = sP.getString(key) ?? "";

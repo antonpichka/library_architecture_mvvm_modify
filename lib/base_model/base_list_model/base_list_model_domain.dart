@@ -7,7 +7,7 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_p
 import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
-abstract class BaseListModelDomain<T extends BaseModelDomain>
+class BaseListModelDomain<T extends BaseModelDomain>
 {
   List<T> _listModelDomain;
   BaseIterator _iterator;

@@ -1,5 +1,5 @@
 
-abstract class BaseModelDomain {
+class BaseModelDomain {
   String uniqueId;
 
   BaseModelDomain(this.uniqueId);
