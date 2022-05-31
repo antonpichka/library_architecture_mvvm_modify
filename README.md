@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-Coming soon
+<img src="/diagram/library_architecture_mvvm_modify.png"/>
 
 ## Usage
 
