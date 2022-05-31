@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/base_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model/default.dart';
 import 'package:library_architecture_mvvm_modify/base_model/enum_domain.dart';
@@ -20,5 +21,17 @@ class EnumDomainViewModel extends BaseViewModel<EnumDomain,ListEnumDomain,Defaul
       null,
       null
   );
+
+  @override
+  @nonVirtual
+  ListEnumDomain cloneListModel(ListEnumDomain listModel) {
+    return ListEnumDomain(listModel.getListModelDomain);
+  }
+
+  @override
+  @nonVirtual
+  EnumDomain cloneModel(EnumDomain model) {
+    return EnumDomain(model.field);
+  }
 
 }

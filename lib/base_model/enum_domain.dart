@@ -4,15 +4,10 @@ enum DefaultEnumDomain {
   zero
 }
 
-class EnumDomain extends BaseModelDomain<EnumDomain> {
+class EnumDomain extends BaseModelDomain {
   Enum field;
 
   EnumDomain(this.field) : super('');
-
-  @override
-  EnumDomain cloneObject() {
-    return EnumDomain(field);
-  }
 
   static EnumDomain get getDefaultEnumDomain => EnumDomain(
       DefaultEnumDomain.zero

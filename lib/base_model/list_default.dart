@@ -7,7 +7,7 @@ class ListDefault extends BaseListModelNamedDatabase {
   ListDefault(List<BaseModelNamedDatabase<BaseModelDomain>> listModelNamedDatabase) : super(listModelNamedDatabase);
 
   @override
-  BaseListModelDomain<dynamic, BaseModelDomain> toBaseListModelDomain() {
+  BaseListModelDomain<BaseModelDomain> toBaseListModelDomain() {
     // TODO: implement toBaseListModelDomain
     throw UnimplementedError();
   }

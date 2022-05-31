@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/base_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/default.dart';
@@ -20,5 +21,17 @@ class BoolDomainViewModel extends BaseViewModel<BoolDomain,ListBoolDomain,Defaul
       null,
       null
   );
+
+  @override
+  @nonVirtual
+  ListBoolDomain cloneListModel(ListBoolDomain listModel) {
+    return ListBoolDomain(listModel.getListModelDomain);
+  }
+
+  @override
+  @nonVirtual
+  BoolDomain cloneModel(BoolDomain model) {
+    return BoolDomain(model.field);
+  }
 
 }

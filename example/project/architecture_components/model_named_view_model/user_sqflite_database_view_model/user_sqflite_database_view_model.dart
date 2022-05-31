@@ -40,4 +40,13 @@ class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDoma
       deleteModelToLNDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM,
       deleteListModelToLNDatabaseThereIsParameterUsedProviderBaseListModelDomainCIDBUACBFVM);
 
+  @override
+  ListUserDomain cloneListModel(ListUserDomain listModel) {
+    return ListUserDomain(listModel.getListModelDomain);
+  }
+
+  @override
+  UserDomain cloneModel(UserDomain model) {
+    return UserDomain(uniqueId: model.uniqueId,name: model.name);
+  }
 }

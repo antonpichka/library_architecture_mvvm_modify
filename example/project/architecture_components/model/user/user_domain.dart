@@ -1,6 +1,6 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-class UserDomain extends BaseModelDomain<UserDomain> {
+class UserDomain extends BaseModelDomain {
   String name;
 
   UserDomain({String uniqueId,this.name}) : super(uniqueId);
@@ -26,11 +26,6 @@ class UserDomain extends BaseModelDomain<UserDomain> {
   String toString() {
     // TODO: implement toString
     return super.toString();
-  }
-
-  @override
-  UserDomain cloneObject() {
-    return UserDomain(uniqueId: uniqueId, name: name);
   }
 
   /// End Ext Methods **/

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/base_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model/default.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int_domain.dart';
@@ -20,5 +21,17 @@ class IntDomainViewModel extends BaseViewModel<IntDomain,ListIntDomain,Default,L
       null,
       null
   );
+
+  @override
+  @nonVirtual
+  ListIntDomain cloneListModel(ListIntDomain listModel) {
+    return ListIntDomain(listModel.getListModelDomain);
+  }
+
+  @override
+  @nonVirtual
+  IntDomain cloneModel(IntDomain model) {
+    return IntDomain(model.field);
+  }
 
 }
