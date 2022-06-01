@@ -28,10 +28,7 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
   }
 
   /// Start Stream/Future Methods **/
-
-
-  /// End Stream/Future Methods **/
-
+  
   Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseForUsingAllNamedGetList {
     return _userSqfliteDatabaseViewModelUsingAll.getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
@@ -40,6 +37,8 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
     return _boolDomainViewModelForLoading.getStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
   }
 
+  /// End Stream/Future Methods **/
+
   /// Start Getters Methods **/
 
 
@@ -47,7 +46,7 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 
   /// Start Setters Methods **/
 
-  set setBoolDomainForLoadingNamedGet(bool isLoading) {
+  set setParameterFieldFromBoolDomainForLoadingNamedGet(bool isLoading) {
     _boolDomainViewModelForLoading.getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
         .field = isLoading;
   }
@@ -57,7 +56,7 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
   /* Other functions name any */
 
   Future<void> getListUserSqfliteDatabase() async {
-    setBoolDomainForLoadingNamedGet = true;
+    setParameterFieldFromBoolDomainForLoadingNamedGet = true;
     _boolDomainViewModelForLoading.notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
     await FVM.getListModelFromNamedDatabaseFVM(
         _userSqfliteDatabaseViewModelUsingAll,
@@ -67,8 +66,16 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
           }
           _userSqfliteDatabaseViewModelUsingAll.notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
         });
-    setBoolDomainForLoadingNamedGet = false;
+    setParameterFieldFromBoolDomainForLoadingNamedGet = false;
     _boolDomainViewModelForLoading.notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+  }
+
+  Future<void> deleteUserSqfliteDatabase(UserDomain userDomain) async {
+    _userSqfliteDatabaseViewModelUsingDeleteForAllDeleteData.setModel(userDomain, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
+    await FVM.deleteModelToNamedDatabaseThereIsParameterFVM(_userSqfliteDatabaseViewModelUsingDeleteForAllDeleteData);
+    _userSqfliteDatabaseViewModelUsingAll.setModel(userDomain, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
+    FVM.deleteModelToListModelDomainForNamedDatabaseFVM(_userSqfliteDatabaseViewModelUsingAll);
+    _userSqfliteDatabaseViewModelUsingAll.notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
 
 }

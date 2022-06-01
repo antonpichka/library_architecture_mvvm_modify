@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import '../../../example/project/architecture_components/model/user/list_user_domain.dart';
-import '../../../example/project/architecture_components/model/user/user_domain.dart';
+import '../../../example/model/user/list_user_domain.dart';
+import '../../../example/model/user/user_domain.dart';
 
 void main() {
   test("test method deleteListModelToListModelDomain Success", () {
