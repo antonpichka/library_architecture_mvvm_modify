@@ -1,7 +1,0 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
-import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
-
-abstract class DeleteModelToNamedDatabaseThereIsParameterUsedProviderBaseModelDomainCIDBUACBFVM<T extends BaseModelDomain>
-{
-  ResponseGenericBoolAndDomainException deleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM(T modelDomain, List<T> list);
-}

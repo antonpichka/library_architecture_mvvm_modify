@@ -114,7 +114,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await insertModel
         .insertModelToNamedDatabaseThereIsParameterFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -140,7 +139,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await insertListModel
         .insertListModelToNamedDatabaseThereIsParameterFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -167,7 +165,6 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError
       })
   {
-    // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel
         .insertModelToListModelDomainForNamedDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -193,7 +190,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
-    // Insert Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel
         .insertListModelToListModelDomainForNamedDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -219,7 +215,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await updateModel
         .updateModelToNamedDatabaseThereIsParameterFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -245,7 +240,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await updateListModel
         .updateListModelToNamedDatabaseThereIsParameterFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -271,7 +265,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
-    // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateModel
         .updateModelToListModelDomainForNamedDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -297,7 +290,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   {
-    // Update Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel
         .updateListModelToListModelDomainForNamedDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -323,7 +315,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await  deleteModel
         .deleteModelToNamedDatabaseThereIsParameterFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -349,7 +340,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Delete Model FVM
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await  deleteListModel
         .deleteListModelToNamedDatabaseThereIsParameterFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -373,8 +363,8 @@ class FVM {
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
         Function(NetworkException) functionForResultNetworkException,
-        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError}) {
-    // Delete Model FVM
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
+  {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel
         .deleteModelToListModelDomainForNamedDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -398,8 +388,8 @@ class FVM {
         Function(DomainException) functionForResultDomainException,
         Function(LocalException) functionForResultLocalException,
         Function(NetworkException) functionForResultNetworkException,
-        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError}) {
-    // Delete Model FVM
+        Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
+  {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteListModel
         .deleteListModelToListModelDomainForNamedDatabaseFVM();
     if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
@@ -425,7 +415,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Insert Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await insertModel.insertModelToNamedDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceAllException(
@@ -461,7 +450,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Insert Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await insertListModel.insertListModelToNamedDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceAllException(
@@ -497,7 +485,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Update Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await updateModel.updateModelToNamedDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceAllException(
@@ -533,7 +520,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Update Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await updateListModel.updateListModelToNamedDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceAllException(
@@ -569,7 +555,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Delete Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await deleteModel.deleteModelToNamedDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceAllException(
@@ -605,7 +590,6 @@ class FVM {
         Function(NetworkException) functionForResultNetworkException,
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
-    // Delete Model FVM
     var resultLocalDatabaseOrNetworkDatabase = await deleteListModel.deleteListModelToNamedDatabaseThereIsParameterFVM();
     if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
       _choiceAllException(
