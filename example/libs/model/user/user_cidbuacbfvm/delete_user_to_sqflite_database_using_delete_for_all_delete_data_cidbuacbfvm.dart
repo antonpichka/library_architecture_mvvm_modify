@@ -3,7 +3,6 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 import '../user_domain.dart';
 
 class DeleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM extends DeleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM<UserDomain>  {
-
   @override
   ResponseGenericBoolAndDomainException deleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM(UserDomain modelDomain, List<UserDomain> list) {
     return modelDomain.deleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM();

@@ -5,7 +5,6 @@ import '../user_sqflite_database.dart';
 import 'converter_to_user_sqflite_database.dart';
 
 class ConverterToListUserSqfliteDatabase extends ConverterToBaseListModelNamedDatabase<ListUserDomain,ListUserSqfliteDatabase> {
-
   @override
   ListUserSqfliteDatabase toBaseListModelNamedDatabase(ListUserDomain listModelDomain) {
     List<UserSqfliteDatabase> list = List.generate(listModelDomain.getListModelDomain.length, (index) =>
@@ -13,5 +12,4 @@ class ConverterToListUserSqfliteDatabase extends ConverterToBaseListModelNamedDa
     );
     return ListUserSqfliteDatabase(list);
   }
-
 }
