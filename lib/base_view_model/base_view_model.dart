@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_check_inputs_d
 import 'package:library_architecture_mvvm_modify/abstract_classes_check_inputs_data_by_user_and_calculate_before_function_view_model/update_model_to_named_database_there_is_parameter_cidbuacbfvm.dart';
 import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_named_model/converter_to_base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_named_model/converter_to_base_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/base_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
@@ -27,7 +27,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase,II extends BaseDataSource<Z,X>> implements BaseDispose
+abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase,II extends DataSource<Z,X>> implements BaseDispose
 {
   /* Init DataSource And Set Default Model Object */
   final II _dataSource;

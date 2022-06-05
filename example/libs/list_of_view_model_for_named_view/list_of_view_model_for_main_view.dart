@@ -11,12 +11,12 @@ import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_
 class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 {
   UserSqfliteDatabaseViewModelUsingAll _userSqfliteDatabaseViewModelUsingAll;
-  UserSqfliteDatabaseViewModelUsingDeleteForAllDeleteData _userSqfliteDatabaseViewModelUsingDeleteForAllDeleteData;
+  UserSqfliteDatabaseViewModelUsingDeleteForAll _userSqfliteDatabaseViewModelUsingDeleteForAllDeleteData;
   BoolDomainViewModel _boolDomainViewModelForLoading;
 
   ListOfViewModelForMainView() {
     _userSqfliteDatabaseViewModelUsingAll = UserSqfliteDatabaseViewModelUsingAll();
-    _userSqfliteDatabaseViewModelUsingDeleteForAllDeleteData = UserSqfliteDatabaseViewModelUsingDeleteForAllDeleteData();
+    _userSqfliteDatabaseViewModelUsingDeleteForAllDeleteData = UserSqfliteDatabaseViewModelUsingDeleteForAll();
     _boolDomainViewModelForLoading = BoolDomainViewModel();
   }
 

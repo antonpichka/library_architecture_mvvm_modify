@@ -13,7 +13,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_named_dat
 ///
 /// Contradicts the interface separation principle. Well, you will lose less time on development, since you will already have all the methods
 ///
-abstract class BaseDataSource<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase>
+abstract class DataSource<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase>
     implements
         InsertModelToNamedDatabaseThereIsParameterDataSource<T>,
         UpdateModelToNamedDatabaseThereIsParameterDataSource<T>,
@@ -25,5 +25,5 @@ abstract class BaseDataSource<T extends BaseModelNamedDatabase,Y extends BaseLis
         GetListModelFromNamedDatabaseThereIsParameterDataSource<Y>,
         GetModelFromNamedDatabaseThereIsParameterDataSource<T>
 {
-  BaseDataSource();
+  DataSource();
 }

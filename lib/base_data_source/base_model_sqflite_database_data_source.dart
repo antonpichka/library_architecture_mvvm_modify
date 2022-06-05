@@ -89,7 +89,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   {
     try {
       if(listModel.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(constDeveloper,"List empty for insert"));
+        return Response.exception(LocalException(constDeveloper,"List empty for insert_model"));
       }
       final db = await getDatabase;
       int result = 0;
@@ -106,7 +106,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(result > 0) {
         return Response.success(result);
       } else {
-        return Response.exception(LocalException(constDeveloper,"Zero element insert"));
+        return Response.exception(LocalException(constDeveloper,"Zero element insert_model"));
       }
     } catch (e) {
       return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));

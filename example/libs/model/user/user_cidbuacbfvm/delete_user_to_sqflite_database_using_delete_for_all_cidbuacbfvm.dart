@@ -2,7 +2,7 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_check_inputs_d
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 import '../user_domain.dart';
 
-class DeleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM extends DeleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM<UserDomain>  {
+class DeleteUserToSqfliteDatabaseUsingDeleteForAllCIDBUACBFVM extends DeleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM<UserDomain>  {
   @override
   ResponseGenericBoolAndDomainException deleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM(UserDomain modelDomain, List<UserDomain> list) {
     return modelDomain.deleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM();

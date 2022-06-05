@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_p
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'user_sqflite_database_data_source.dart';
 
-class UserSqfliteDatabaseDataSourceUsingDeleteForAllDeleteData extends UserSqfliteDatabaseDataSource {
-  static final UserSqfliteDatabaseDataSourceUsingDeleteForAllDeleteData db = UserSqfliteDatabaseDataSourceUsingDeleteForAllDeleteData._();
+class UserSqfliteDatabaseDataSourceUsingDeleteForAll extends UserSqfliteDatabaseDataSource {
+  static final UserSqfliteDatabaseDataSourceUsingDeleteForAll db = UserSqfliteDatabaseDataSourceUsingDeleteForAll._();
 
-  UserSqfliteDatabaseDataSourceUsingDeleteForAllDeleteData._();
+  UserSqfliteDatabaseDataSourceUsingDeleteForAll._();
 
   @override
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameterDataSource(UserSqfliteDatabase model) {
