@@ -13,11 +13,10 @@ import '../../model/user/user_ctnm/converter_to_list_user_sqflite_database.dart'
 import '../../model/user/user_ctnm/converter_to_user_sqflite_database.dart';
 import '../../model/user/user_domain.dart';
 import '../../model/user/user_sqflite_database.dart';
-import '../../model_named_data_source/user_sqflite_database_data_source/user_sqflite_database_data_source.dart';
 
-class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDomain,UserSqfliteDatabase,ListUserSqfliteDatabase,UserSqfliteDatabaseDataSource> {
+class UserSqfliteDatabaseViewModel<T> extends BaseViewModel<UserDomain,ListUserDomain,UserSqfliteDatabase,ListUserSqfliteDatabase,T> {
   UserSqfliteDatabaseViewModel(
-      UserSqfliteDatabaseDataSource dataSource,
+      T dataSource,
       List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
       InsertModelToNamedDatabaseThereIsParameterCIDBUACBFVM<UserDomain> insertModelToNamedDatabaseThereIsParameterCIDBUACBFVM,

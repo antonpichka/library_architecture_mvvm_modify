@@ -3,7 +3,7 @@ import '../../model/user/user_cidbuacbfvm/delete_user_to_sqflite_database_using_
 import '../../model_named_data_source/user_sqflite_database_data_source/user_sqflite_database_data_source_using_delete_for_all.dart';
 import 'user_sqflite_database_view_model.dart';
 
-class UserSqfliteDatabaseViewModelUsingDeleteForAll extends UserSqfliteDatabaseViewModel {
+class UserSqfliteDatabaseViewModelUsingDeleteForAll extends UserSqfliteDatabaseViewModel<UserSqfliteDatabaseDataSourceUsingDeleteForAll> {
   UserSqfliteDatabaseViewModelUsingDeleteForAll() : super(
       UserSqfliteDatabaseDataSourceUsingDeleteForAll.db,
       [EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter],

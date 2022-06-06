@@ -46,8 +46,9 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 
   /// Start Setters Methods **/
 
-  set setParameterFieldFromBoolDomainForLoadingNamedGet(bool isLoading) {
-    _boolDomainViewModelForLoading.getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
+  set setParameterFieldUsingGetFromBoolDomainViewModelForLoading(bool isLoading) {
+    _boolDomainViewModelForLoading
+        .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
         .field = isLoading;
   }
 
@@ -56,7 +57,7 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
   /* Other functions name any */
 
   Future<void> getListUserSqfliteDatabase() async {
-    setParameterFieldFromBoolDomainForLoadingNamedGet = true;
+    setParameterFieldUsingGetFromBoolDomainViewModelForLoading = true;
     _boolDomainViewModelForLoading.notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
     await FVM.getListModelFromNamedDatabaseFVM(
         _userSqfliteDatabaseViewModelUsingAll,
@@ -66,7 +67,7 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
           }
           _userSqfliteDatabaseViewModelUsingAll.notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
         });
-    setParameterFieldFromBoolDomainForLoadingNamedGet = false;
+    setParameterFieldUsingGetFromBoolDomainViewModelForLoading = false;
     _boolDomainViewModelForLoading.notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
   }
 

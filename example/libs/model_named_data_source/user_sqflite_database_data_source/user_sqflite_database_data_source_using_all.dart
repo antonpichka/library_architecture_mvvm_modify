@@ -1,11 +1,11 @@
-import '../../model/user/list_user_sqflite_database.dart';
-import '../../model/user/user_sqflite_database.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
-import 'user_sqflite_database_data_source.dart';
+import '../../model/user/list_user_sqflite_database.dart';
+import '../../model/user/user_sqflite_database.dart';
 
-class UserSqfliteDatabaseDataSourceUsingAll extends UserSqfliteDatabaseDataSource {
+class UserSqfliteDatabaseDataSourceUsingAll implements DataSource<UserSqfliteDatabase,ListUserSqfliteDatabase>{
   static final UserSqfliteDatabaseDataSourceUsingAll db = UserSqfliteDatabaseDataSourceUsingAll._();
 
   UserSqfliteDatabaseDataSourceUsingAll._();

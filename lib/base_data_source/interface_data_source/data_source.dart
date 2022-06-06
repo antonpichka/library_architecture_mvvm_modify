@@ -25,5 +25,4 @@ abstract class DataSource<T extends BaseModelNamedDatabase,Y extends BaseListMod
         GetListModelFromNamedDatabaseThereIsParameterDataSource<Y>,
         GetModelFromNamedDatabaseThereIsParameterDataSource<T>
 {
-  DataSource();
 }
