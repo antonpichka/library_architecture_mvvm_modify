@@ -1,4 +1,3 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
@@ -6,17 +5,16 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 ///  Better more specialized classes than 1 generic
 ///
 ///  Example:
-///  class DeleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM extends DeleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM<UserDomain>  {
+/// class DeleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM extends DeleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM<UserDomain>  {
 ///    @override
 ///     ResponseGenericBoolAndDomainException deleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM(UserDomain modelDomain, List<UserDomain> list) {
 ///       return modelDomain.deleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM();
 ///     }
 ///   }
 ///
-///
-abstract class DeleteListModelToNamedDatabaseThereIsParameterCIDBUACBFVM<T extends BaseModelDomain,Y extends BaseListModelDomain>
+abstract class InsertModelToNamedDatabaseFBDS<T extends BaseModelDomain>
 {
-  DeleteListModelToNamedDatabaseThereIsParameterCIDBUACBFVM();
+  InsertModelToNamedDatabaseFBDS();
 
-  ResponseGenericBoolAndDomainException deleteListModelToNamedDatabaseThereIsParameterCIDBUACBFVM(Y listModelDomain, List<T> list);
+  ResponseGenericBoolAndDomainException insertModelToNamedDatabaseFBDS(T modelDomain, List<T> list);
 }

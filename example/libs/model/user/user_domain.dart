@@ -22,7 +22,7 @@ class UserDomain extends BaseModelDomain {
 
   /// Start CBFVM and bool Methods **/
 
-  ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseUsingDeleteForAllDeleteDataCIDBUACBFVM() {
+  ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteForAll() {
     if(isEmptyParameterName()) {
       return ResponseGenericBoolAndDomainException.exception(DomainException(constIsEmptyParameterName));
     }

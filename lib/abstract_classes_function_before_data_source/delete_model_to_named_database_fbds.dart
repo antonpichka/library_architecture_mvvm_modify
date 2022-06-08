@@ -1,4 +1,3 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
@@ -13,9 +12,9 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 ///     }
 ///   }
 ///
-abstract class InsertListModelToNamedDatabaseThereIsParameterCIDBUACBFVM<T extends BaseModelDomain,Y extends BaseListModelDomain>
+abstract class DeleteModelToNamedDatabaseFBDS<T extends BaseModelDomain>
 {
-  InsertListModelToNamedDatabaseThereIsParameterCIDBUACBFVM();
+  DeleteModelToNamedDatabaseFBDS();
 
-  ResponseGenericBoolAndDomainException insertListModelToNamedDatabaseThereIsParameterCIDBUACBFVM(Y listModelDomain, List<T> list);
+  ResponseGenericBoolAndDomainException deleteModelToNamedDatabaseFBDS(T modelDomain, List<T> list);
 }
