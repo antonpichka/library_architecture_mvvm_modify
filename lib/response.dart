@@ -40,4 +40,14 @@ class Response<T,Y extends BaseException> {
       return false;
     }
   }
+
+  bool get isExceptionResponse {
+    if(_data == null &&
+        _exception != null)
+    {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

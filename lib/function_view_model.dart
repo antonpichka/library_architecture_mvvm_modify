@@ -16,7 +16,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  iteratorForListModelNamedDatabaseFVM
         .callToMethodSetIteratorForListModeNamedDatabaseAndSetListModelNamedDatabaseUsingAnIteratorFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -41,7 +41,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await getListModel
         .callToMethodGetListModelFromNamedDatabaseAndUseTheSettersFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -66,7 +66,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await getListModel
         .callToMethodGetListModelFromNamedDatabaseThereIsParameterAndUseTheSettersFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -91,7 +91,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await getModel
         .callToMethodGetModelFromNamedDatabaseThereIsParameterAndUseTheSettersFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -116,7 +116,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await insertModel
         .insertModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -141,7 +141,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await insertListModel
         .insertListModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -167,7 +167,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel
         .insertModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -192,7 +192,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel
         .insertListModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -217,7 +217,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await updateModel
         .updateModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -242,7 +242,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await updateListModel
         .updateListModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -267,7 +267,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateModel
         .updateModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -292,7 +292,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = updateListModel
         .updateListModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -317,7 +317,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await  deleteModel
         .deleteModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -342,7 +342,7 @@ class FVM {
   async {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = await  deleteListModel
         .deleteListModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -367,7 +367,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteModel
         .deleteModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -392,7 +392,7 @@ class FVM {
   {
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = deleteListModel
         .deleteListModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -416,7 +416,7 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultLocalDatabaseOrNetworkDatabase = await insertModel.insertModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -427,7 +427,7 @@ class FVM {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertModel.insertModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -451,7 +451,7 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultLocalDatabaseOrNetworkDatabase = await insertListModel.insertListModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -462,7 +462,7 @@ class FVM {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase = insertListModel.insertListModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -486,7 +486,7 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultLocalDatabaseOrNetworkDatabase = await updateModel.updateModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -497,7 +497,7 @@ class FVM {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  updateModel.updateModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -521,7 +521,7 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultLocalDatabaseOrNetworkDatabase = await updateListModel.updateListModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -532,7 +532,7 @@ class FVM {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  updateListModel.updateListModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -556,7 +556,7 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultLocalDatabaseOrNetworkDatabase = await deleteModel.deleteModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -567,7 +567,7 @@ class FVM {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  deleteModel.deleteModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,
@@ -591,7 +591,7 @@ class FVM {
         Function(BaseException) functionForResultBaseExceptionAlwaysFiresOnError})
   async {
     var resultLocalDatabaseOrNetworkDatabase = await deleteListModel.deleteListModelToNamedDatabaseThereIsParameterFVM();
-    if(!resultLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultLocalDatabaseOrNetworkDatabase.getException,
           functionForResultDomainException,
@@ -602,7 +602,7 @@ class FVM {
       return;
     }
     var resultListModelDomainForLocalDatabaseOrNetworkDatabase =  deleteListModel.deleteListModelToListModelDomainForNamedDatabaseFVM();
-    if(!resultListModelDomainForLocalDatabaseOrNetworkDatabase.isSuccessResponse) {
+    if(resultListModelDomainForLocalDatabaseOrNetworkDatabase.isExceptionResponse) {
       _choiceAllException(
           resultListModelDomainForLocalDatabaseOrNetworkDatabase .getException,
           functionForResultDomainException,

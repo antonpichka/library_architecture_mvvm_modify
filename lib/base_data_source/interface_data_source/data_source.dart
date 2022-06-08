@@ -10,9 +10,6 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 
-///
-/// Contradicts the interface separation principle. Well, you will lose less time on development, since you will already have all the methods
-///
 abstract class DataSource<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase>
     implements
         InsertModelToNamedDatabaseThereIsParameterDataSource<T>,
