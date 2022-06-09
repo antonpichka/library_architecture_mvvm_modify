@@ -35,10 +35,10 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase,GenericDataSource> implements BaseDispose
+abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase> implements BaseDispose
 {
   /* Init DataSource */
-  final GenericDataSource _dataSource;
+  final Object _dataSource;
 
   /* Init Objects */
   final List<EnumBaseModelDomainVM> _listEnumBaseModelDomainVM;
@@ -210,15 +210,6 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   /// End For Object GetListModel **/
-
-  /// Start Getters DataSource **/
-
-  @nonVirtual
-  GenericDataSource get getDataSource {
-    return _dataSource;
-  }
-
-  /// End Getters DataSource **/
   
   /// Start Base/EnumTypeParameter **/
 
