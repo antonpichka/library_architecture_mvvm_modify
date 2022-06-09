@@ -15,7 +15,7 @@ class UserSqfliteDatabase extends BaseModelNamedDatabase<UserDomain> {
 
   @override
   UserDomain toBaseModelDomain() {
-    return UserDomain(uniqueId: uniqueId,name: name);
+    return UserDomain(uniqueId,name);
   }
 
   @override

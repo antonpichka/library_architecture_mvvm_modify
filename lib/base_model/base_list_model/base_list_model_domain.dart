@@ -36,7 +36,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
   }
 
   @nonVirtual
-  Response<bool, BaseException> setIteratorForListModelNamedDatabaseAndSetListModelNamedDatabaseUsingAnIterator(
+  Response<bool, BaseException> runIteratorForGetListModel(
       EnumTypeParameter enumTypeParameter,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
@@ -72,7 +72,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
 
   /* Start Using to Classes ReadyListModelDomainForLNDatabaseFVM */
 
-  Response<bool, BaseException> insertListModelToListModelDomain(List<T> listModel)
+  Response<bool, BaseException> insertListModelToGetListModel(List<T> listModel)
   {
     try {
       for(T model in listModel) {
@@ -84,7 +84,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
     }
   }
   
-  Response<bool, BaseException> insertModelToListModelDomain(T model)
+  Response<bool, BaseException> insertModelToGetListModel(T model)
   {
     try {
       _listModelDomain.add(model);
@@ -94,7 +94,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
     }
   }
 
-  Response<bool, BaseException> updateListModelToListModelDomain(List<T> listModel)
+  Response<bool, BaseException> updateListModelToGetListModel(List<T> listModel)
   {
     try {
       if (_listModelDomain.isEmpty) {
@@ -110,7 +110,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
     }
   }
 
-  Response<bool, BaseException> updateModelToListModelDomain(T model)
+  Response<bool, BaseException> updateModelToGetListModel(T model)
   {
     try {
       if (_listModelDomain.isEmpty) {
@@ -123,7 +123,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
     }
   }
 
-  Response<bool, BaseException> deleteListModelToListModelDomain(List<T> listModel)
+  Response<bool, BaseException> deleteListModelToGetListModel(List<T> listModel)
   {
     try {
       if(_listModelDomain.isEmpty) {
@@ -152,13 +152,12 @@ class BaseListModelDomain<T extends BaseModelDomain>
     }
   }
 
-  Response<bool, BaseException> deleteModelToListModelDomain(T model)
+  Response<bool, BaseException> deleteModelToGetListModel(T model)
   {
     try {
       if(_listModelDomain.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
       }
-
       _listModelDomain.removeWhere((item) => item.uniqueId == model.uniqueId);
       return Response.success(true);
     } catch (e) {

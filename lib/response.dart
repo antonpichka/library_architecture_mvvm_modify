@@ -1,5 +1,8 @@
-
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 
 class Response<T,Y extends BaseException> {
   T _data;
@@ -29,6 +32,21 @@ class Response<T,Y extends BaseException> {
       return throw Exception();
     }
     return _exception;
+  }
+
+  String get getExceptionInString {
+    BaseException baseException = getException;
+    if (baseException is DomainException) {
+      return baseException.exceptionInString();
+    } else if (baseException is LocalException) {
+      return baseException.exceptionInString();
+    } else if (baseException is NetworkException) {
+      return baseException.exceptionInString();
+    }
+    if (kDebugMode) {
+      print("Debug (Any): ${baseException.exceptionInString()}");
+    }
+    return baseException.exceptionInString();
   }
 
   bool get isSuccessResponse {

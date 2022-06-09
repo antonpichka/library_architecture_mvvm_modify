@@ -7,10 +7,10 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_function_befor
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
+import '../../model/user/ctmnd/converter_to_list_user_sqflite_database.dart';
+import '../../model/user/ctmnd/converter_to_user_sqflite_database.dart';
 import '../../model/user/list_user_domain.dart';
 import '../../model/user/list_user_sqflite_database.dart';
-import '../../model/user/user_ctnm/converter_to_list_user_sqflite_database.dart';
-import '../../model/user/user_ctnm/converter_to_user_sqflite_database.dart';
 import '../../model/user/user_domain.dart';
 import '../../model/user/user_sqflite_database.dart';
 
@@ -46,6 +46,6 @@ class UserSqfliteDatabaseViewModel<T> extends BaseViewModel<UserDomain,ListUserD
 
   @override
   UserDomain cloneModel(UserDomain model) {
-    return UserDomain(uniqueId: model.uniqueId,name: model.name);
+    return UserDomain(model.uniqueId,model.name);
   }
 }

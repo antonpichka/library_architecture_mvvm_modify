@@ -1,4 +1,3 @@
-
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/map_data_code_and_network_exception.dart';
 
@@ -10,8 +9,11 @@ class NetworkException extends BaseException {
   NetworkException(
       this._statusCode,
       this._nameStatusCode,
-      this._descriptionStatusCode
-      );
+      this._descriptionStatusCode) : super("NetworkException");
+
+  static NetworkException parse(int statusCode)  {
+    return MapDataCodeAndNetworkException.mapCodeAndNetworkException[statusCode];
+  }
 
   int get getStatusCode {
     return _statusCode;
@@ -30,7 +32,8 @@ class NetworkException extends BaseException {
     return "$_statusCode : $_nameStatusCode : $_descriptionStatusCode";
   }
 
-  static NetworkException parse(int statusCode)  {
-    return MapDataCodeAndNetworkException.mapCodeAndNetworkException[statusCode];
+  @override
+  String exceptionInString() {
+    return toString();
   }
 }

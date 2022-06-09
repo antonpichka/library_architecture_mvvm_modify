@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 class UserDomain extends BaseModelDomain {
   String name;
 
-  UserDomain({String uniqueId,this.name}) : super(uniqueId);
+  UserDomain(String uniqueId,this.name) : super(uniqueId);
 
   /// Start Getters Methods **/
 
@@ -40,11 +40,10 @@ class UserDomain extends BaseModelDomain {
 
   @override
   String toString() {
-    return super.toString();
+    return "$uniqueId : $name";
   }
 
   /// End Ext Methods **/
-
 
   /// Start Const For CBFVM and Bool Methods **/
 
@@ -55,8 +54,8 @@ class UserDomain extends BaseModelDomain {
   /// Start Default state object for ViewModel object  **/
 
   static UserDomain get getDefaultUserDomain => UserDomain(
-      uniqueId: "",
-      name: ""
+      "",
+      ""
   );
 
   /// End Default state object for ViewModel object  **/
