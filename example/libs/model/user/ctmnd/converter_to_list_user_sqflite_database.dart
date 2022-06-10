@@ -1,4 +1,4 @@
-import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_named_model/converter_to_base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_model_named_database/converter_to_base_list_model_named_database.dart';
 import '../list_user_domain.dart';
 import '../list_user_sqflite_database.dart';
 import '../user_sqflite_database.dart';
