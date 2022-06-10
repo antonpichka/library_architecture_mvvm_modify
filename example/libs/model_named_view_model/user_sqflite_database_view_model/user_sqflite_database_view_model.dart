@@ -14,9 +14,9 @@ import '../../model/user/list_user_sqflite_database.dart';
 import '../../model/user/user_domain.dart';
 import '../../model/user/user_sqflite_database.dart';
 
-class UserSqfliteDatabaseViewModel<T> extends BaseViewModel<UserDomain,ListUserDomain,UserSqfliteDatabase,ListUserSqfliteDatabase,T> {
+class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDomain,UserSqfliteDatabase,ListUserSqfliteDatabase> {
   UserSqfliteDatabaseViewModel(
-      T dataSource,
+      Object dataSource,
       List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
       InsertModelToNamedDatabaseFBDS<UserDomain> insertModelToNamedDatabaseThereIsParameterCIDBUACBFVM,
