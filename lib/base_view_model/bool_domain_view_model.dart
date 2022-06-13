@@ -5,12 +5,14 @@ import 'package:library_architecture_mvvm_modify/base_model/list_bool_domain.dar
 import 'package:library_architecture_mvvm_modify/base_model/list_default.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-class BoolDomainViewModel extends BaseViewModel<BoolDomain,ListBoolDomain,Default,ListDefault> {
+class BoolDomainViewModel extends BaseViewModel<BoolDomain,ListBoolDomain,Default,ListDefault,Enum> {
   BoolDomainViewModel() : super(
       null,
       [],
       [], () => BoolDomain.getDefaultBoolDomain,
           () => ListBoolDomain([]),
+      null,
+      null,
       null,
       null,
       null,

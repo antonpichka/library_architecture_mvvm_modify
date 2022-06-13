@@ -14,7 +14,7 @@ import '../../model/user/list_user_sqflite_database.dart';
 import '../../model/user/user_domain.dart';
 import '../../model/user/user_sqflite_database.dart';
 
-class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDomain,UserSqfliteDatabase,ListUserSqfliteDatabase> {
+class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDomain,UserSqfliteDatabase,ListUserSqfliteDatabase,Enum> {
   UserSqfliteDatabaseViewModel(
       Object dataSource,
       List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
@@ -37,7 +37,9 @@ class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDoma
       updateModelToNamedDatabaseThereIsParameterCIDBUACBFVM,
       updateListModelToNamedDatabaseThereIsParameterCIDBUACBFVM,
       deleteModelToNamedDatabaseThereIsParameterCIDBUACBFVM,
-      deleteListModelToNamedDatabaseThereIsParameterCIDBUACBFVM);
+      deleteListModelToNamedDatabaseThereIsParameterCIDBUACBFVM,
+      null,
+      null);
 
   @override
   ListUserDomain cloneListModel(ListUserDomain listModel) {

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_model_named_database/converter_to_base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_model_named_database/converter_to_base_model_named_database.dart';
@@ -26,7 +27,6 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.da
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_type_parameter_for_get_model_named_database_and_get_list_named_database_vm.dart';
@@ -62,7 +62,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   /* Iterator */
   final Map<C,BaseIterator<T>> _mapEnumAndBaseIterator;
-  EnumTypeParameter _enumTypeParameterForBaseIterator;
+  BaseTypeParameter<C> _baseTypeParameterForBaseIterator;
 
   final Map<EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter = {
     EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true),
@@ -88,7 +88,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       this._deleteModelToNamedDatabaseFBDS,
       this._deleteListModelToNamedDatabaseFBDS,
       this._mapEnumAndBaseIterator,
-      this._enumTypeParameterForBaseIterator);
+      this._baseTypeParameterForBaseIterator);
 
   @override
   void dispose() {
@@ -208,8 +208,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   /// Start For Object GetListModel **/
   ///
   @nonVirtual
-  Response<bool, BaseException> setAndRunIteratorForGetListModel(EnumTypeParameter enumTypeParameter) {
-    setEnumTypeParameterForBaseIterator = enumTypeParameter;
+  Response<bool, BaseException> setAndRunIteratorForGetListModel(BaseTypeParameter<C> baseTypeParameterForBaseIterator) {
+    setBaseTypeParameterForBaseIterator = baseTypeParameterForBaseIterator;
     return _baseRunIteratorForGetListModel();
   }
 
@@ -297,13 +297,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  EnumTypeParameter get getEnumTypeParameterForBaseIterator {
-    return _enumTypeParameterForBaseIterator;
+  BaseTypeParameter<C> get getBaseTypeParameterForBaseIterator {
+    return _baseTypeParameterForBaseIterator;
   }
 
   @nonVirtual
-  set setEnumTypeParameterForBaseIterator(EnumTypeParameter enumTypeParameterForBaseIterator) {
-    _enumTypeParameterForBaseIterator = enumTypeParameterForBaseIterator;
+  set setBaseTypeParameterForBaseIterator(BaseTypeParameter<C> baseTypeParameterForBaseIterator) {
+    _baseTypeParameterForBaseIterator = baseTypeParameterForBaseIterator;
   }
 
   @nonVirtual
@@ -393,7 +393,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   Response<bool,BaseException> _baseRunIteratorForGetListModel() {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .runIteratorForGetListModel(_enumTypeParameterForBaseIterator, _mapEnumAndBaseIterator);
+        .runIteratorForGetListModel(_baseTypeParameterForBaseIterator, _mapEnumAndBaseIterator);
   }
 
   Future<Response<bool,BaseException>> _baseGetListModelFromNamedDatabaseAndUseTheSetters(GetListModelFromNamedDatabaseDataSource<X> getListModelFromNamedDatabaseDataSource) async {
