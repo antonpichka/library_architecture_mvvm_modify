@@ -20,7 +20,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
   }
 
   @nonVirtual
-  set setListModelDomainFromBaseListModelDomain(BaseListModelDomain listModelDomain) {
+  set setListModelDomainByBaseListModelDomain(BaseListModelDomain listModelDomain) {
     _listModelDomain = listModelDomain.getListModelDomain;
   }
 
