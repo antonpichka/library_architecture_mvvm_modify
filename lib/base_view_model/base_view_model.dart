@@ -35,7 +35,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase> implements BaseDispose
+abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain,Z extends BaseModelNamedDatabase,X extends BaseListModelNamedDatabase,C extends Enum> implements BaseDispose
 {
   /* Init DataSource */
   final Object _dataSource;
@@ -61,7 +61,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   final DeleteListModelToNamedDatabaseFBDS<T,Y> _deleteListModelToNamedDatabaseFBDS;
 
   /* Iterator */
-  Map<Enum,BaseIterator<T>> _mapEnumAndBaseIterator = {};
+  final Map<C,BaseIterator<T>> _mapEnumAndBaseIterator;
   EnumTypeParameter _enumTypeParameterForBaseIterator;
 
   final Map<EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter = {
@@ -74,21 +74,6 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain;
 
   BaseViewModel(
-      this._dataSource,
-      this._listEnumBaseModelDomainVM,
-      this._listEnumBaseListModelDomainVM,
-      this._initCreatorBaseModelDomain,
-      this._initCreatorBaseListModelDomain,
-      this._converterToBaseModelNamedDatabase,
-      this._converterToBaseListModelNamedDatabase,
-      this._insertModelToNamedDatabaseFBDS,
-      this._insertListModelToNamedDatabaseFBDS,
-      this._updateModelToNamedDatabaseFBDS,
-      this._updateListModelToNamedDatabaseFBDS,
-      this._deleteModelToNamedDatabaseFBDS,
-      this._deleteListModelToNamedDatabaseFBDS);
-
-  BaseViewModel.forIterator(
       this._dataSource,
       this._listEnumBaseModelDomainVM,
       this._listEnumBaseListModelDomainVM,
