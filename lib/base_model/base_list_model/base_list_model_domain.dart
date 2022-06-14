@@ -4,7 +4,6 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/enum_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
@@ -38,24 +37,24 @@ class BaseListModelDomain<T extends BaseModelDomain>
 
   @nonVirtual
   Response<bool, BaseException> runIteratorForGetListModel(
-      BaseTypeParameter baseTypeParameter,
+      BaseTypeParameter<Enum> baseTypeParameterForBaseIterator,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     try {
-      EnumTypeParameter enumTypeParameter = baseTypeParameter as EnumTypeParameter;
       if(mapEnumAndBaseIterator.isEmpty) {
         return Response.exception(LocalException(constDeveloper,"Map isEmpty"));
       }
       int i = 0;
+      Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
+      Enum firstItemEnum = mapEnumAndBaseIterator.keys.first;
       for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
-        if (enumTypeParameter.getParameter == itemEnum)
+        if (selectedEnum == itemEnum)
         {
           _setIterator = mapEnumAndBaseIterator[itemEnum];
           break;
         }
-        if (i >= (mapEnumAndBaseIterator.length-1))
-        {
-          _setIterator = mapEnumAndBaseIterator[itemEnum];
+        if (i >= (mapEnumAndBaseIterator.length-1)) {
+          _setIterator = mapEnumAndBaseIterator[firstItemEnum];
           break;
         }
         i++;
@@ -63,7 +62,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
       if(_iterator != null) {
         _listModelDomain = _iterator.getSortedList;
       } else {
-        return Response.exception(LocalException(constDeveloper,"null Iterator"));
+        return Response.exception(LocalException(constDeveloper,"Iterator null"));
       }
       return Response.success(true);
     } catch(e) {
