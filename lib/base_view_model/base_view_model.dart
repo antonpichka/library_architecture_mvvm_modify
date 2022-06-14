@@ -290,8 +290,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @nonVirtual
   void setMapEnumAndBaseIterator(
-      BaseIterator baseIterator,
-      Enum operation)
+      BaseIterator<T> baseIterator,
+      C operation)
   {
     _mapEnumAndBaseIterator[operation] = baseIterator;
   }
