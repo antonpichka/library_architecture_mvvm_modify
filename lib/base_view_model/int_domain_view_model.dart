@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model/list_default.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-class IntDomainViewModel extends BaseViewModel<IntDomain,ListIntDomain,Default,ListDefault,Enum> {
+class IntDomainViewModel extends BaseViewModel<IntDomain,ListIntDomain,Default<IntDomain>,ListDefault<ListIntDomain,Default<IntDomain>>,Enum> {
   IntDomainViewModel() : super(
       null,
       [],
@@ -22,12 +22,6 @@ class IntDomainViewModel extends BaseViewModel<IntDomain,ListIntDomain,Default,L
       null,
       null
   );
-
-  @override
-  @nonVirtual
-  ListIntDomain cloneListModel(ListIntDomain listModel) {
-    return ListIntDomain(listModel.getListModelDomain);
-  }
 
   @override
   @nonVirtual

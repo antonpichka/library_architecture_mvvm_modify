@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model/list_string_domain.d
 import 'package:library_architecture_mvvm_modify/base_model/string_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-class StringDomainViewModel extends BaseViewModel<StringDomain,ListStringDomain,Default,ListDefault,Enum> {
+class StringDomainViewModel extends BaseViewModel<StringDomain,ListStringDomain,Default<StringDomain>,ListDefault<ListStringDomain,Default<StringDomain>>,Enum> {
   StringDomainViewModel() : super(
       null,
       [],
@@ -22,12 +22,6 @@ class StringDomainViewModel extends BaseViewModel<StringDomain,ListStringDomain,
       null,
       null
   );
-
-  @override
-  @nonVirtual
-  ListStringDomain cloneListModel(ListStringDomain listModel) {
-    return ListStringDomain(listModel.getListModelDomain);
-  }
 
   @override
   @nonVirtual

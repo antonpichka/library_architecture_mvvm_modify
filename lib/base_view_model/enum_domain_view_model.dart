@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model/list_default.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_enum_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-class EnumDomainViewModel extends BaseViewModel<EnumDomain,ListEnumDomain,Default,ListDefault,Enum> {
+class EnumDomainViewModel extends BaseViewModel<EnumDomain,ListEnumDomain,Default<EnumDomain>,ListDefault<ListEnumDomain,Default<EnumDomain>>,Enum> {
   EnumDomainViewModel() : super(
       null,
       [],
@@ -22,12 +22,6 @@ class EnumDomainViewModel extends BaseViewModel<EnumDomain,ListEnumDomain,Defaul
       null,
       null
   );
-
-  @override
-  @nonVirtual
-  ListEnumDomain cloneListModel(ListEnumDomain listModel) {
-    return ListEnumDomain(listModel.getListModelDomain);
-  }
 
   @override
   @nonVirtual

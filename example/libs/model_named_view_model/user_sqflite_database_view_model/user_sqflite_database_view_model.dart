@@ -42,7 +42,7 @@ class UserSqfliteDatabaseViewModel extends BaseViewModel<UserDomain,ListUserDoma
       null);
 
   @override
-  ListUserDomain cloneListModel(ListUserDomain listModel) {
+  ListUserDomain _cloneListModel(ListUserDomain listModel) {
     return ListUserDomain(listModel.getListModelDomain);
   }
 

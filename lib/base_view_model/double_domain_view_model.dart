@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model/list_default.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_double_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 
-class DoubleDomainViewModel extends BaseViewModel<DoubleDomain,ListDoubleDomain,Default,ListDefault,Enum> {
+class DoubleDomainViewModel extends BaseViewModel<DoubleDomain,ListDoubleDomain,Default<DoubleDomain>,ListDefault<ListDoubleDomain,Default<DoubleDomain>>,Enum> {
   DoubleDomainViewModel() : super(
       null,
       [],
@@ -22,12 +22,6 @@ class DoubleDomainViewModel extends BaseViewModel<DoubleDomain,ListDoubleDomain,
       null,
       null
   );
-
-  @override
-  @nonVirtual
-  ListDoubleDomain cloneListModel(ListDoubleDomain listModel) {
-    return ListDoubleDomain(listModel.getListModelDomain);
-  }
 
   @override
   @nonVirtual

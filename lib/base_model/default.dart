@@ -1,11 +1,11 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 
-class Default extends BaseModelNamedDatabase {
+class Default<T extends BaseModelDomain> extends BaseModelNamedDatabase<T> {
   Default() : super('');
 
   @override
-  BaseModelDomain toBaseModelDomain() {
+  T toBaseModelDomain() {
     // TODO: implement toBaseModelDomain
     throw UnimplementedError();
   }
@@ -15,5 +15,4 @@ class Default extends BaseModelNamedDatabase {
     // TODO: implement toMap
     throw UnimplementedError();
   }
-
 }

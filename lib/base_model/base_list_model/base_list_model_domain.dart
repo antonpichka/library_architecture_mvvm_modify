@@ -14,10 +14,6 @@ class BaseListModelDomain<T extends BaseModelDomain>
 
   BaseListModelDomain(this._listModelDomain);
 
-  BaseListModelDomain.forIterator(this._listModelDomain,this._iterator) {
-    _iterator.setList = _listModelDomain;
-  }
-
   @nonVirtual
   List<T> get getListModelDomain {
     return _listModelDomain;
