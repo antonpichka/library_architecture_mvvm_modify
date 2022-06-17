@@ -14,6 +14,10 @@ class BaseListModelDomain<T extends BaseModelDomain>
 
   BaseListModelDomain(this._listModelDomain);
 
+  BaseListModelDomain.forIterator(this._listModelDomain,this._iterator) {
+    _iterator.setList = _listModelDomain;
+  }
+
   @nonVirtual
   List<T> get getListModelDomain {
     return _listModelDomain;
@@ -29,140 +33,104 @@ class BaseListModelDomain<T extends BaseModelDomain>
     _listModelDomain = list;
   }
 
-  @nonVirtual
   set _setIterator(BaseIterator newIterator) {
     _iterator = newIterator;
     _iterator.setList = _listModelDomain;
   }
 
   @nonVirtual
-  Response<bool, BaseException> runIteratorForGetListModel(
+  Response<List<T>, BaseException> runIteratorForGetListModel(
       BaseTypeParameter<Enum> baseTypeParameterForBaseIterator,
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
-    try {
-      if(mapEnumAndBaseIterator.isEmpty) {
-        return Response.exception(LocalException(constDeveloper,"Map isEmpty"));
+    if(mapEnumAndBaseIterator.isEmpty) {
+      return Response.exception(LocalException(constDeveloper,"Map isEmpty"));
+    }
+    int i = 0;
+    Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
+    Enum firstItemEnum = mapEnumAndBaseIterator.keys.first;
+    for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
+      if (selectedEnum == itemEnum)
+      {
+        _setIterator = mapEnumAndBaseIterator[itemEnum];
+        break;
       }
-      int i = 0;
-      Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
-      Enum firstItemEnum = mapEnumAndBaseIterator.keys.first;
-      for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
-        if (selectedEnum == itemEnum)
-        {
-          _setIterator = mapEnumAndBaseIterator[itemEnum];
-          break;
-        }
-        if (i >= (mapEnumAndBaseIterator.length-1)) {
-          _setIterator = mapEnumAndBaseIterator[firstItemEnum];
-          break;
-        }
-        i++;
+      if (i >= (mapEnumAndBaseIterator.length-1)) {
+        _setIterator = mapEnumAndBaseIterator[firstItemEnum];
+        break;
       }
-      if(_iterator != null) {
-        _listModelDomain = _iterator.getSortedList;
-      } else {
-        return Response.exception(LocalException(constDeveloper,"Iterator null"));
-      }
-      return Response.success(true);
-    } catch(e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+      i++;
+    }
+    if(_iterator != null) {
+      _listModelDomain = _iterator.getSortedList;
+      return Response.success(_listModelDomain);
+    } else {
+      return Response.exception(LocalException(constDeveloper,"Iterator null"));
     }
   }
 
-  /* Start Using to Classes ReadyListModelDomainForLNDatabaseFVM */
-
-  Response<bool, BaseException> insertListModelToGetListModel(List<T> listModel)
+  Response<bool, BaseException> insertListModelToGetListModel(List<T> insertListModel)
   {
-    try {
-      for(T model in listModel) {
-        _listModelDomain.add(model);
-      }
-      return Response.success(true);
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
+    _listModelDomain.addAll(insertListModel);
+    return Response.success(true);
   }
   
-  Response<bool, BaseException> insertModelToGetListModel(T model)
+  Response<bool, BaseException> insertModelToGetListModel(T insertModel)
   {
-    try {
-      _listModelDomain.add(model);
-      return Response.success(true);
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
-    }
+    _listModelDomain.add(insertModel);
+    return Response.success(true);
   }
 
-  Response<bool, BaseException> updateListModelToGetListModel(List<T> listModel)
+  Response<bool, BaseException> updateListModelToGetListModel(List<T> updateListModel)
   {
-    try {
-      if (_listModelDomain.isEmpty) {
-        return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
-      }
-
-      for(int i = 0; i < listModel.length; i++) {
-        _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
-      }
-      return Response.success(true);
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    if (_listModelDomain.isEmpty) {
+      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
     }
+    for(int i = 0; i < updateListModel.length; i++) {
+      _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateListModel[i].uniqueId)] = updateListModel[i];
+    }
+    return Response.success(true);
   }
 
-  Response<bool, BaseException> updateModelToGetListModel(T model)
+  Response<bool, BaseException> updateModelToGetListModel(T updateModel)
   {
-    try {
-      if (_listModelDomain.isEmpty) {
-        return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
-      }
-      _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
-      return Response.success(true);
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    if (_listModelDomain.isEmpty) {
+      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
     }
+    _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateModel.uniqueId)] = updateModel;
+    return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteListModelToGetListModel(List<T> listModel)
+  Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModelDomain)
   {
-    try {
-      if(_listModelDomain.isEmpty) {
-        return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
-      }
-
-      List<T> toListDelete = List.empty(growable: true);
-
-      for(int i = 0; i < _listModelDomain.length; i++) {
-        for(int j = 0; j < listModel.length; j++) {
-          if (_listModelDomain[i].uniqueId == listModel[j].uniqueId) {
-            toListDelete.add(_listModelDomain[i]);
-          }
+    if(_listModelDomain.isEmpty) {
+      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+    }
+    List<T> toListDelete = List.empty(growable: true);
+    for(int i = 0; i < _listModelDomain.length; i++) {
+      for(int j = 0; j < deleteListModelDomain.length; j++) {
+        if (_listModelDomain[i].uniqueId == deleteListModelDomain[j].uniqueId) {
+          toListDelete.add(_listModelDomain[i]);
         }
       }
-      for(int i = 0; i < _listModelDomain.length; i++) {
-        for(T deleteModelDomain in toListDelete) {
-          if(_listModelDomain[i].uniqueId == deleteModelDomain.uniqueId) {
-            _listModelDomain.removeAt(i);
-          }
+    }
+    for(int i = 0; i < _listModelDomain.length; i++) {
+      for(T deleteModelDomain in toListDelete) {
+        if(_listModelDomain[i].uniqueId == deleteModelDomain.uniqueId) {
+          _listModelDomain.removeAt(i);
         }
       }
-      return Response.success(true);
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
     }
+    return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteModelToGetListModel(T model)
+  Response<bool, BaseException> deleteModelToGetListModel(T deleteModel)
   {
-    try {
-      if(_listModelDomain.isEmpty) {
-        return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
-      }
-      _listModelDomain.removeWhere((item) => item.uniqueId == model.uniqueId);
-      return Response.success(true);
-    } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+    if(_listModelDomain.isEmpty) {
+      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
     }
+    _listModelDomain.removeWhere((item) => item.uniqueId == deleteModel.uniqueId);
+    return Response.success(true);
   }
 
  /* End Using to Classes ReadyListModelDomainForLNDatabaseFVM */

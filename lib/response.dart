@@ -18,14 +18,14 @@ class Response<T,Y extends BaseException> {
 
   T get getData {
     if(_data == null) {
-      return throw Exception();
+      return throw Exception("T null");
     }
     return _data;
   }
 
   BaseException get getException {
     if(_exception == null) {
-      return throw Exception();
+      return throw Exception("BaseException null");
     }
     return _exception;
   }

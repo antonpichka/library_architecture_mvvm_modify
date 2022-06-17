@@ -1,4 +1,4 @@
-abstract class MyObject {
+abstract class BaseObject {
   @override
   bool operator ==(Object other);
 
