@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-<img src="/diagram/library_architecture_mvvm_modify.png"/>
+<img src="/diagram/library_architecture_mvvm_modify_transparent.png"/>
 
 ## Usage
 
