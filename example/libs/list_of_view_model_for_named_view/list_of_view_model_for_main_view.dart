@@ -31,7 +31,7 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 
   /// Start Stream/Future Methods **/
   
-  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseForUsingAllNamedGetList {
+  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingAllNamedGetList {
     return _userSqfliteDatabaseViewModelUsingAll.getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
 
