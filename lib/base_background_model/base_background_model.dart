@@ -33,7 +33,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   /* Init DataSource */
   final Object _dataSource;
 
-  /* CTMND (Converter To Model Named Database */
+  /* CTMND (Converter To Model Named Database) */
   final ConverterToBaseModelNamedDatabase<T,Z> _converterToBaseModelNamedDatabase;
   final ConverterToBaseListModelNamedDatabase<Y,X> _converterToBaseListModelNamedDatabase;
 
@@ -90,10 +90,10 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   @nonVirtual
-  Future<Response<List<T>, BaseException>> setAndGetListModelFromNamedDatabaseThereIsParameter(BaseTypeParameter baseTypeParameter) {
+  Future<Response<List<T>, BaseException>> setAndGetListModelFromNamedDatabaseThereIsParameter(BaseTypeParameter newBaseTypeParameter) {
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
-        baseTypeParameter);
+        newBaseTypeParameter);
   }
 
   @nonVirtual
@@ -104,10 +104,10 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   @nonVirtual
-  Future<Response<T, BaseException>> setAndGetModelFromNamedDatabaseThereIsParameter(BaseTypeParameter baseTypeParameter) {
+  Future<Response<T, BaseException>> setAndGetModelFromNamedDatabaseThereIsParameter(BaseTypeParameter newBaseTypeParameter) {
     return _baseGetModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
-        baseTypeParameter
+        newBaseTypeParameter
     );
   }
 
@@ -292,10 +292,10 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameter(
       GetListModelFromNamedDatabaseThereIsParameterDataSource<X> getListModelFromNamedDatabaseThereIsParameterDataSource,
-      BaseTypeParameter baseTypeParameter)
+      BaseTypeParameter newBaseTypeParameter)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
-        .getListModelFromNamedDatabaseThereIsParameterDataSource(baseTypeParameter);
+        .getListModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
     if(response.isSuccessResponse) {
       Y baseListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(baseListModelDomain.getListModelDomain);
@@ -306,10 +306,10 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameter(
       GetModelFromNamedDatabaseThereIsParameterDataSource<Z> getModelFromNamedDatabaseThereIsParameterDataSource,
-      BaseTypeParameter baseTypeParameter)
+      BaseTypeParameter newBaseTypeParameter)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource
-        .getModelFromNamedDatabaseThereIsParameterDataSource(baseTypeParameter);
+        .getModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
     if(response.isSuccessResponse) {
       T modelDomain = response.getData.toBaseModelDomain();
       return Response.success(modelDomain);

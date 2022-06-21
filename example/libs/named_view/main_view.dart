@@ -16,7 +16,7 @@ class _MainView extends BaseViewState<MainView> {
   initState() {
     super.initState();
     _lo = ListOfViewModelForMainView();
-    _lo.getListUserSqfliteDatabase(() {
+    _lo.getListUserFromSqfliteDatabase(() {
       // Success
     });
   }

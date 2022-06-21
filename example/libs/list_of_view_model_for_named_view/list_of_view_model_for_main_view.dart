@@ -1,12 +1,9 @@
-import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view/base_list_of_view_model_for_named_view.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/bool_domain_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/response.dart';
 import '../model/user/user_domain.dart';
+import '../model_named_view_model/bool_domain_view_model/bool_domain_view_model_using_get_for_loading.dart';
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_all.dart';
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_delete_for_all.dart';
 
@@ -14,29 +11,29 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 {
   UserSqfliteDatabaseViewModelUsingAll _userSqfliteDatabaseViewModelUsingAll;
   UserSqfliteDatabaseViewModelUsingDeleteForAll _userSqfliteDatabaseViewModelUsingDeleteForAll;
-  BoolDomainViewModel _boolDomainViewModelForLoading;
+  BoolDomainViewModelUsingGetForLoading _boolDomainViewModelUsingGetForLoading;
 
   ListOfViewModelForMainView() {
     _userSqfliteDatabaseViewModelUsingAll = UserSqfliteDatabaseViewModelUsingAll();
     _userSqfliteDatabaseViewModelUsingDeleteForAll = UserSqfliteDatabaseViewModelUsingDeleteForAll();
-    _boolDomainViewModelForLoading = BoolDomainViewModel();
+    _boolDomainViewModelUsingGetForLoading = BoolDomainViewModelUsingGetForLoading();
   }
 
   @override
   void dispose() {
     _userSqfliteDatabaseViewModelUsingAll.dispose();
     _userSqfliteDatabaseViewModelUsingDeleteForAll.dispose();
-    _boolDomainViewModelForLoading.dispose();
+    _boolDomainViewModelUsingGetForLoading.dispose();
   }
 
   /// Start Stream/Future Methods **/
   
-  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingAllNamedGetList {
+  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetList {
     return _userSqfliteDatabaseViewModelUsingAll.getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
 
-  Stream<BoolDomain> get getStreamBoolDomainForLoadingNamedGet {
-    return _boolDomainViewModelForLoading.getStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+  Stream<BoolDomain> get getStreamBoolDomainUsingGetForLoading {
+    return _boolDomainViewModelUsingGetForLoading.getStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
   }
 
   /// End Stream/Future Methods **/
@@ -52,52 +49,59 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 
   /* Other functions name any */
 
-  Future<void> getListUserSqfliteDatabase(
+  Future<void> getListUserFromSqfliteDatabase(
       Function functionForSuccess)
   async {
     // 1
-    _boolDomainViewModelForLoading
+    _boolDomainViewModelUsingGetForLoading
         .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
         .field = true;
-    _boolDomainViewModelForLoading
+    _boolDomainViewModelUsingGetForLoading
         .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
-    Response<List<UserDomain>,BaseException> response = await _userSqfliteDatabaseViewModelUsingAll
+    var result = await _userSqfliteDatabaseViewModelUsingAll
         .getListModelFromNamedDatabaseAndUseTheSetters();
-    if(response.isExceptionResponse) {
-      _boolDomainViewModelForLoading
+    if(result.isExceptionResponse) {
+      _boolDomainViewModelUsingGetForLoading
           .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
           .field = false;
-      _boolDomainViewModelForLoading
+      _boolDomainViewModelUsingGetForLoading
           .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
       return;
     }
     _userSqfliteDatabaseViewModelUsingAll
         .notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    _boolDomainViewModelForLoading
+    _boolDomainViewModelUsingGetForLoading
         .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
         .field = false;
-    _boolDomainViewModelForLoading
+    _boolDomainViewModelUsingGetForLoading
         .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
     functionForSuccess();
     return;
   }
 
-  Future<void> deleteUserSqfliteDatabase(
+  Future<void> deleteUserToSqfliteDatabaseThereIsParameter(
       UserDomain userDomain,
       Function functionForSuccess,
       Function(String) functionForStringException)
   async {
     // 1
-    Response<BaseTypeParameter,BaseException> response = await _userSqfliteDatabaseViewModelUsingDeleteForAll
+    var result = await _userSqfliteDatabaseViewModelUsingDeleteForAll
         .setAndDeleteModelToNamedDatabaseThereIsParameter(userDomain);
-    if(response.isExceptionResponse) {
-      functionForStringException(response
+    if(result.isExceptionResponse) {
+      functionForStringException(result
           .getException
           .getSelectedExceptionInString);
       return;
     }
-    _userSqfliteDatabaseViewModelUsingAll
+    // 2
+    var resultTwo = _userSqfliteDatabaseViewModelUsingAll
         .setAndDeleteModelToGetListModel(userDomain);
+    if(resultTwo.isExceptionResponse) {
+      functionForStringException(resultTwo
+          .getException
+          .getSelectedExceptionInString);
+      return;
+    }
     _userSqfliteDatabaseViewModelUsingAll
         .notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
     functionForSuccess();
