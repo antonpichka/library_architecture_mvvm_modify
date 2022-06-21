@@ -7,17 +7,14 @@ import '../model_named_view_model/bool_domain_view_model/bool_domain_view_model_
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_all.dart';
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_delete_for_all.dart';
 
-class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
+class ListOfViewModelForMainView
+    extends BaseListOfViewModelForNamedView
 {
-  UserSqfliteDatabaseViewModelUsingAll _userSqfliteDatabaseViewModelUsingAll;
-  UserSqfliteDatabaseViewModelUsingDeleteForAll _userSqfliteDatabaseViewModelUsingDeleteForAll;
-  BoolDomainViewModelUsingGetForLoading _boolDomainViewModelUsingGetForLoading;
+  final UserSqfliteDatabaseViewModelUsingAll _userSqfliteDatabaseViewModelUsingAll = UserSqfliteDatabaseViewModelUsingAll();
+  final UserSqfliteDatabaseViewModelUsingDeleteForAll _userSqfliteDatabaseViewModelUsingDeleteForAll = UserSqfliteDatabaseViewModelUsingDeleteForAll();
+  final BoolDomainViewModelUsingGetForLoading _boolDomainViewModelUsingGetForLoading = BoolDomainViewModelUsingGetForLoading();
 
-  ListOfViewModelForMainView() {
-    _userSqfliteDatabaseViewModelUsingAll = UserSqfliteDatabaseViewModelUsingAll();
-    _userSqfliteDatabaseViewModelUsingDeleteForAll = UserSqfliteDatabaseViewModelUsingDeleteForAll();
-    _boolDomainViewModelUsingGetForLoading = BoolDomainViewModelUsingGetForLoading();
-  }
+  ListOfViewModelForMainView();
 
   @override
   void dispose() {
@@ -40,14 +37,13 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
 
   /// Start Getters Methods **/
 
-
   /// End Getters Methods **/
 
   /// Start Setters Methods **/
 
   /// End Setters Methods **/
 
-  /* Other functions name any */
+  /// Start Any Methods **/
 
   Future<void> getListUserFromSqfliteDatabase(
       Function functionForSuccess)
@@ -108,4 +104,5 @@ class ListOfViewModelForMainView extends BaseListOfViewModelForNamedView
     return;
   }
 
+  /// End Any Methods **/
 }

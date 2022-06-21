@@ -9,7 +9,6 @@ class UserDomain extends BaseModelDomain {
 
   /// Start Getters Methods **/
 
-
   /// End Getters Methods **/
 
   /// Start Setters Methods **/
