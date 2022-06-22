@@ -31,6 +31,6 @@ class BoolDomainViewModel extends BaseViewModel<BoolDomain,ListBoolDomain,Defaul
   @override
   @nonVirtual
   BoolDomain cloneModel(BoolDomain model) {
-    return BoolDomain(model.field);
+    return BoolDomain(model.isField);
   }
 }

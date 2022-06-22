@@ -1,9 +1,13 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
 class BoolDomain extends BaseModelDomain {
-  bool field;
+  bool isField;
 
-  BoolDomain(this.field) : super('');
+  BoolDomain(this.isField) : super('');
+
+  bool isNotField() {
+    return !isField;
+  }
 
   static BoolDomain get getDefaultBoolDomain => BoolDomain(
       false

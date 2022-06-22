@@ -51,7 +51,7 @@ class ListOfViewModelForMainView
     // 1
     _boolDomainViewModelUsingGetForLoading
         .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
-        .field = true;
+        .isField = true;
     _boolDomainViewModelUsingGetForLoading
         .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
     var result = await _userSqfliteDatabaseViewModelUsingAll
@@ -59,7 +59,7 @@ class ListOfViewModelForMainView
     if(result.isExceptionResponse) {
       _boolDomainViewModelUsingGetForLoading
           .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
-          .field = false;
+          .isField = false;
       _boolDomainViewModelUsingGetForLoading
           .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
       return;
@@ -68,7 +68,7 @@ class ListOfViewModelForMainView
         .notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
     _boolDomainViewModelUsingGetForLoading
         .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
-        .field = false;
+        .isField = false;
     _boolDomainViewModelUsingGetForLoading
         .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
     functionForSuccess();

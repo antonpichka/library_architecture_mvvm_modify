@@ -19,21 +19,21 @@ class UserDomain extends BaseModelDomain {
 
   /// End Setters Methods **/
 
-  /// Start CBFVM and bool Methods **/
+  /// Start FBDS and bool Methods **/
 
   ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteForAll() {
-    if(isEmptyParameterName()) {
-      return ResponseGenericBoolAndDomainException.exception(DomainException(constIsEmptyParameterName));
+    if(isEmptyByTrimParameterName()) {
+      return ResponseGenericBoolAndDomainException.exception(DomainException(constIsEmptyByTrimParameterName));
     }
     name += "deleteGo";
     return ResponseGenericBoolAndDomainException.success(true);
   }
 
-  bool isEmptyParameterName() {
-    return name.isEmpty;
+  bool isEmptyByTrimParameterName() {
+    return name.trim().isEmpty;
   }
 
-  /// End CBFVM and bool Methods **/
+  /// End FBDS and bool Methods **/
 
   /// Start Ext Methods **/
 
@@ -46,7 +46,7 @@ class UserDomain extends BaseModelDomain {
 
   /// Start Const For CBFVM and Bool Methods **/
 
-  static const String constIsEmptyParameterName = "constIsEmptyParameterName";
+  static const String constIsEmptyByTrimParameterName = "constIsEmptyByTrimParameterName";
 
   /// End Const For CBFVM and Bool Methods **/
 
