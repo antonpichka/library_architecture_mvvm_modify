@@ -28,7 +28,7 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_p
 import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_type_parameter_for_get_model_named_database_and_get_list_named_database_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_type_parameter_for_getters_vm.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
@@ -63,9 +63,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   final Map<C,BaseIterator<T>> _mapEnumAndBaseIterator;
   BaseTypeParameter<C> _baseTypeParameterForBaseIterator;
 
-  final Map<EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM,BaseTypeParameter> _mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter = {
-    EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true),
-    EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true)
+  final Map<EnumBaseTypeParameterForGettersVM,BaseTypeParameter> _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter = {
+    EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true),
+    EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter : BoolTypeParameter(true)
   };
   Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain;
   Map<EnumBaseListModelDomainVM,Y> _mapEnumBaseListModelDomainVMAndBaseListModelDomain;
@@ -92,7 +92,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @override
   void dispose() {
     _disposeForAnyMap(_mapEnumAndBaseIterator);
-    _disposeForAnyMap(_mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter);
+    _disposeForAnyMap(_mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter);
     _disposeForAnyMap(_mapEnumBaseModelDomainVMAndBaseModelDomain);
     _disposeForAnyMap(_mapEnumBaseListModelDomainVMAndBaseListModelDomain);
     _disposeForMapEnumAndStreamController(_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain);
@@ -132,8 +132,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<List<T>, BaseException>> setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseAndGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
-    setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(newBaseTypeParameter, EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter);
+  Future<Response<List<T>, BaseException>> setBaseTypeParameterForGettersAndGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
+    setBaseTypeParameterForGetters(newBaseTypeParameter, EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter);
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(_dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>);
   }
 
@@ -143,8 +143,8 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<T, BaseException>> setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseAndGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
-    setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(newBaseTypeParameter, EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getModelFromNamedDatabaseThereIsParameter);
+  Future<Response<T, BaseException>> setBaseTypeParameterForGettersAndGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
+    setBaseTypeParameterForGetters(newBaseTypeParameter, EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter);
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(_dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>);
   }
 
@@ -515,16 +515,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  BaseTypeParameter getBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM operation) {
-    return _mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter[operation];
+  BaseTypeParameter getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM operation) {
+    return _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[operation];
   }
 
   @nonVirtual
-  void setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(
+  void setBaseTypeParameterForGetters(
       BaseTypeParameter baseTypeParameter,
-      EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM operation)
+      EnumBaseTypeParameterForGettersVM operation)
   {
-    _mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter[operation] = baseTypeParameter;
+    _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[operation] = baseTypeParameter;
   }
 
   /// End Base/EnumTypeParameter **/
@@ -617,7 +617,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       GetListModelFromNamedDatabaseThereIsParameterDataSource<X> getListModelFromNamedDatabaseThereIsParameterDataSource)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
-        .getListModelFromNamedDatabaseThereIsParameterDataSource(_mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter[EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter]);
+        .getListModelFromNamedDatabaseThereIsParameterDataSource(getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter));
     if(response.isSuccessResponse) {
       Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
       baseListModelDomain.setListModelDomainByBaseListModelDomain = response.getData.toBaseListModelDomain();
@@ -631,7 +631,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       GetModelFromNamedDatabaseThereIsParameterDataSource<Z> getModelFromNamedDatabaseThereIsParameterDataSource)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource
-        .getModelFromNamedDatabaseThereIsParameterDataSource(_mapEnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVMAndBaseTypeParameter[EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getModelFromNamedDatabaseThereIsParameter]);
+        .getModelFromNamedDatabaseThereIsParameterDataSource(getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter));
     if(response.isSuccessResponse) {
       setModel(
           response.getData.toBaseModelDomain(),

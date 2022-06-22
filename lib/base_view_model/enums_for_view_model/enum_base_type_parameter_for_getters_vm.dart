@@ -1,4 +1,4 @@
-enum EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM {
+enum EnumBaseTypeParameterForGettersVM {
   getModelFromNamedDatabaseThereIsParameter,
   getListModelFromNamedDatabaseThereIsParameter,
 }
