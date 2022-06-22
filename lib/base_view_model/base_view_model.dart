@@ -132,7 +132,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<List<T>, BaseException>> setAndGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
+  Future<Response<List<T>, BaseException>> setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseAndGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
     setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(newBaseTypeParameter, EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getListModelFromNamedDatabaseThereIsParameter);
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(_dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>);
   }
@@ -143,7 +143,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<T, BaseException>> setAndGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
+  Future<Response<T, BaseException>> setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseAndGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(BaseTypeParameter newBaseTypeParameter) {
     setBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabase(newBaseTypeParameter, EnumBaseTypeParameterForGetModelNamedDatabaseAndGetListNamedDatabaseVM.getModelFromNamedDatabaseThereIsParameter);
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(_dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>);
   }
@@ -164,7 +164,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameter(T model) {
+  Future<Response<BaseTypeParameter, BaseException>> setModelAndInsertModelToNamedDatabaseThereIsParameter(T model) {
     setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -173,7 +173,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModelForFBDS) {
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
         getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter),
@@ -181,7 +181,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(T model,List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> setModelAndInsertModelToNamedDatabaseThereIsParameterAndListModelForFBDS(T model,List<T> listModelForFBDS) {
     setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -202,7 +202,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
+  Future<Response<BaseTypeParameter, BaseException>> setListModelAndInsertListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -211,7 +211,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModelForFBDS) {
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
         getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter),
@@ -219,7 +219,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> setListModelAndInsertListModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
     setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -240,7 +240,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameter(T model) {
+  Future<Response<BaseTypeParameter, BaseException>> setModelAndUpdateModelToNamedDatabaseThereIsParameter(T model) {
     setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -249,7 +249,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModelForFBDS) {
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
         getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter),
@@ -257,7 +257,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(T model,List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> setModelAndUpdateModelToNamedDatabaseThereIsParameterAndListModelForFBDS(T model,List<T> listModelForFBDS) {
     setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -278,7 +278,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
+  Future<Response<BaseTypeParameter, BaseException>> setListModelAndUpdateListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -287,7 +287,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModelForFBDS) {
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
         getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter),
@@ -295,7 +295,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> setListModelAndUpdateListModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
     setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -316,7 +316,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameter(T model) {
+  Future<Response<BaseTypeParameter, BaseException>> setModelAndDeleteModelToNamedDatabaseThereIsParameter(T model) {
     setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -325,7 +325,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModelForFBDS) {
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
         getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter),
@@ -333,7 +333,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(T model,List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> setModelAndDeleteModelToNamedDatabaseThereIsParameterAndListModelForFBDS(T model,List<T> listModelForFBDS) {
     setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -354,7 +354,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
+  Future<Response<BaseTypeParameter, BaseException>> setListModelAndDeleteListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -363,7 +363,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseAndListModelForFBDS(List<T> listModelForFBDS) {
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
         getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter),
@@ -371,7 +371,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> setListModelAndDeleteListModelToNamedDatabaseThereIsParameterAndListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
     setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -386,7 +386,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   /// Start For Object GetListModel **/
   ///
   @nonVirtual
-  Response<List<T>, BaseException> setAndRunIteratorForGetListModel(BaseTypeParameter<C> newBaseTypeParameterForBaseIterator) {
+  Response<List<T>, BaseException> setBaseTypeParameterForBaseIteratorAndRunIteratorForGetListModel(BaseTypeParameter<C> newBaseTypeParameterForBaseIterator) {
     setBaseTypeParameterForBaseIterator = newBaseTypeParameterForBaseIterator;
     return _baseRunIteratorForGetListModel();
   }
@@ -402,13 +402,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndInsertModelToGetListModel(T model) {
+  Response<bool, BaseException> setModelAndInsertModelToGetListModel(T model) {
     setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
     return _baseInsertModelToGetListModel(getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter));
   }
   
   @nonVirtual
-  Response<bool, BaseException> setNoGlobalAndInsertModelToGetListModel(T model) {
+  Response<bool, BaseException> defaultInsertModelToGetListModel(T model) {
     return _baseInsertModelToGetListModel(model);
   }
 
@@ -418,13 +418,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndInsertListModelToGetListModel(List<T> listModel) {
+  Response<bool, BaseException> setListModelAndInsertListModelToGetListModel(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
     return _baseInsertListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
-  Response<bool, BaseException> setNoGlobalAndInsertListModelToGetListModel(List<T> listModel) {
+  Response<bool, BaseException> defaultInsertListModelToGetListModel(List<T> listModel) {
     return _baseInsertListModelToGetListModel(listModel);
   }
 
@@ -434,13 +434,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndUpdateModelToGetListModel(T model) {
+  Response<bool, BaseException> setModelAndUpdateModelToGetListModel(T model) {
     setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
     return _baseUpdateModelToGetListModel(getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter));
   }
   
   @nonVirtual
-  Response<bool, BaseException> setNoGlobalAndUpdateModelToGetListModel(T model) {
+  Response<bool, BaseException> defaultUpdateModelToGetListModel(T model) {
     return _baseUpdateModelToGetListModel(model);
   }
 
@@ -450,13 +450,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndUpdateListModelToGetListModel(List<T> listModel) {
+  Response<bool, BaseException> setListModelAndUpdateListModelToGetListModel(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
     return _baseUpdateListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter));
   }
   
   @nonVirtual
-  Response<bool, BaseException> setNoGlobalAndUpdateListModelToGetListModel(List<T> listModel) {
+  Response<bool, BaseException> defaultUpdateListModelToGetListModel(List<T> listModel) {
     return _baseUpdateListModelToGetListModel(listModel);
   }
 
@@ -466,13 +466,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndDeleteModelToGetListModel(T model) {
+  Response<bool, BaseException> setModelAndDeleteModelToGetListModel(T model) {
     setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
     return _baseDeleteModelToGetListModel(getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
-  Response<bool, BaseException> setNoGlobalAndDeleteModelToGetListModel(T model) {
+  Response<bool, BaseException> defaultDeleteModelToGetListModel(T model) {
     return _baseDeleteModelToGetListModel(model);
   }
 
@@ -482,13 +482,13 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndDeleteListModelToGetListModel(List<T> listModel) {
+  Response<bool, BaseException> setListModelAndDeleteListModelToGetListModel(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
     return _baseDeleteListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter));
   }
   
   @nonVirtual
-  Response<bool, BaseException> setNoGlobalAndDeleteListModelToGetListModel(List<T> listModel) {
+  Response<bool, BaseException> defaultDeleteListModelToGetListModel(List<T> listModel) {
     return _baseDeleteListModelToGetListModel(listModel);
   }
 

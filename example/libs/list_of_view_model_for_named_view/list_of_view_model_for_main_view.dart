@@ -82,7 +82,7 @@ class ListOfViewModelForMainView
   async {
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingDeleteForAll
-        .setAndDeleteModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(userDomain,_userSqfliteDatabaseViewModelUsingAll.getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+        .setModelAndDeleteModelToNamedDatabaseThereIsParameterAndListModelForFBDS(userDomain,_userSqfliteDatabaseViewModelUsingAll.getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
     if(result.isExceptionResponse) {
       functionForStringException(result
           .getException
@@ -91,7 +91,7 @@ class ListOfViewModelForMainView
     }
     // 2
     var resultTwo = _userSqfliteDatabaseViewModelUsingAll
-        .setNoGlobalAndDeleteModelToGetListModel(userDomain);
+        .defaultDeleteModelToGetListModel(userDomain);
     if(resultTwo.isExceptionResponse) {
       functionForStringException(resultTwo
           .getException
