@@ -277,69 +277,99 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   @nonVirtual
-  Response<bool, BaseException> setAndInsertModelToGetListModel(T model) {
-    setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
-    return _baseInsertModelToGetListModel();
+  Response<bool, BaseException> insertModelToGetListModel() {
+    return _baseInsertModelToGetListModel(getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModel() {
-    return _baseInsertModelToGetListModel();
+  Response<bool, BaseException> setAndInsertModelToGetListModel(T model) {
+    setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
+    return _baseInsertModelToGetListModel(getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter));
+  }
+  
+  @nonVirtual
+  Response<bool, BaseException> setNoGlobalAndInsertModelToGetListModel(T model) {
+    return _baseInsertModelToGetListModel(model);
+  }
+
+  @nonVirtual
+  Response<bool, BaseException> insertListModelToGetListModel() {
+    return _baseInsertListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
   Response<bool, BaseException> setAndInsertListModelToGetListModel(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
-    return _baseInsertListModelToGetListModel();
+    return _baseInsertListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModel() {
-    return _baseInsertListModelToGetListModel();
+  Response<bool, BaseException> setNoGlobalAndInsertListModelToGetListModel(List<T> listModel) {
+    return _baseInsertListModelToGetListModel(listModel);
+  }
+
+  @nonVirtual
+  Response<bool, BaseException> updateModelToGetListModel() {
+    return _baseUpdateModelToGetListModel(getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
   Response<bool, BaseException> setAndUpdateModelToGetListModel(T model) {
     setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
-    return _baseUpdateModelToGetListModel();
+    return _baseUpdateModelToGetListModel(getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter));
+  }
+  
+  @nonVirtual
+  Response<bool, BaseException> setNoGlobalAndUpdateModelToGetListModel(T model) {
+    return _baseUpdateModelToGetListModel(model);
   }
 
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModel() {
-    return _baseUpdateModelToGetListModel();
+  Response<bool, BaseException> updateListModelToGetListModel() {
+    return _baseUpdateListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
   Response<bool, BaseException> setAndUpdateListModelToGetListModel(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
-    return _baseUpdateListModelToGetListModel();
+    return _baseUpdateListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter));
+  }
+  
+  @nonVirtual
+  Response<bool, BaseException> setNoGlobalAndUpdateListModelToGetListModel(List<T> listModel) {
+    return _baseUpdateListModelToGetListModel(listModel);
   }
 
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModel() {
-    return _baseUpdateListModelToGetListModel();
+  Response<bool, BaseException> deleteModelToGetListModel() {
+    return _baseDeleteModelToGetListModel(getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
   Response<bool, BaseException> setAndDeleteModelToGetListModel(T model) {
     setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
-    return _baseDeleteModelToGetListModel();
+    return _baseDeleteModelToGetListModel(getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModel() {
-    return _baseDeleteModelToGetListModel();
+  Response<bool, BaseException> setNoGlobalAndDeleteModelToGetListModel(T model) {
+    return _baseDeleteModelToGetListModel(model);
+  }
+
+  @nonVirtual
+  Response<bool, BaseException> deleteListModelToGetListModel() {
+    return _baseDeleteListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter));
   }
 
   @nonVirtual
   Response<bool, BaseException> setAndDeleteListModelToGetListModel(List<T> listModel) {
     setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
-    return _baseDeleteListModelToGetListModel();
+    return _baseDeleteListModelToGetListModel(getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter));
   }
-
+  
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModel() {
-    return _baseDeleteListModelToGetListModel();
+  Response<bool, BaseException> setNoGlobalAndDeleteListModelToGetListModel(List<T> listModel) {
+    return _baseDeleteListModelToGetListModel(listModel);
   }
 
   /// End For Object GetListModel **/
@@ -630,40 +660,34 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         .runIteratorForGetListModel(_baseTypeParameterForBaseIterator, _mapEnumAndBaseIterator);
   }
 
-  Response<bool, BaseException> _baseInsertModelToGetListModel() {
+  Response<bool, BaseException> _baseInsertModelToGetListModel(T model) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .insertModelToGetListModel(cloneModel(getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter))
-    );
+        .insertModelToGetListModel(cloneModel(model));
   }
 
-  Response<bool, BaseException> _baseInsertListModelToGetListModel() {
+  Response<bool, BaseException> _baseInsertListModelToGetListModel(List<T> listModel) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .insertListModelToGetListModel(_cloneListModel(getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter))
-    );
+        .insertListModelToGetListModel(_cloneListModel(listModel));
   }
 
-  Response<bool, BaseException> _baseUpdateModelToGetListModel() {
+  Response<bool, BaseException> _baseUpdateModelToGetListModel(T model) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .updateModelToGetListModel(cloneModel(getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter))
-    );
+        .updateModelToGetListModel(cloneModel(model));
   }
 
-  Response<bool, BaseException> _baseUpdateListModelToGetListModel() {
+  Response<bool, BaseException> _baseUpdateListModelToGetListModel(List<T> listModel) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .updateListModelToGetListModel(_cloneListModel(getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter))
-    );
+        .updateListModelToGetListModel(_cloneListModel(listModel));
   }
 
-  Response<bool, BaseException> _baseDeleteModelToGetListModel() {
+  Response<bool, BaseException> _baseDeleteModelToGetListModel(T model) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .deleteModelToGetListModel(cloneModel(getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter))
-    );
+        .deleteModelToGetListModel(cloneModel(model));
   }
 
-  Response<bool, BaseException> _baseDeleteListModelToGetListModel() {
+  Response<bool, BaseException> _baseDeleteListModelToGetListModel(List<T> listModel) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .deleteListModelToGetListModel(_cloneListModel(getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter))
-    );
+        .deleteListModelToGetListModel(_cloneListModel(listModel));
   }
 
   Map<EnumBaseModelDomainVM,T> get _getMapEnumBaseModelDomainVMAndBaseModelDomain {
@@ -699,73 +723,119 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Map<EnumBaseModelDomainVM,T> _creationAndGetMapEnumBaseModelDomainVMAndBaseModelDomain() {
-    if(_isCheckListToIsEqualsNullOrIsNotEmptyAndNoInsertEnumBaseModelDomainVM(_listEnumBaseModelDomainVM)) {
+    if(_isEqualsNullOrIsEmptyListEnumBaseModelDomainVM(_listEnumBaseModelDomainVM)) {
       return {};
     }
     Map<EnumBaseModelDomainVM,T> map = {};
-    for(EnumBaseModelDomainVM viewModelOperation in _listEnumBaseModelDomainVM) {
-      map[viewModelOperation] = _initCreatorBaseModelDomain();
+    bool isExistsItemForAllToListEnumBaseModelDomain = false;
+    for(EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
+      if(enumBaseModelDomainVM == EnumBaseModelDomainVM.all) {
+        isExistsItemForAllToListEnumBaseModelDomain = true;
+        break;
+      }
+    }
+    if(isExistsItemForAllToListEnumBaseModelDomain) {
+      for(EnumBaseModelDomainVM enumBaseModelDomainVM in EnumBaseModelDomainVM.values) {
+        map[enumBaseModelDomainVM] = _initCreatorBaseModelDomain();
+      }
+    } else {
+      for(EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
+        map[enumBaseModelDomainVM] = _initCreatorBaseModelDomain();
+      }
     }
     return map;
   }
 
   Map<EnumBaseModelDomainVM,StreamController<T>> _creationAndGetMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain() {
-    if(_isCheckListToIsEqualsNullOrIsNotEmptyAndNoInsertEnumBaseModelDomainVM(_listEnumBaseModelDomainVM)) {
+    if(_isEqualsNullOrIsEmptyListEnumBaseModelDomainVM(_listEnumBaseModelDomainVM)) {
       return {};
     }
     Map<EnumBaseModelDomainVM,StreamController<T>> map = {};
-    for(EnumBaseModelDomainVM viewModelOperation in _listEnumBaseModelDomainVM) {
-      map[viewModelOperation] = StreamController<T>.broadcast();
+    bool isExistsItemForAllToListEnumBaseModelDomain = false;
+    for(EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
+      if(enumBaseModelDomainVM == EnumBaseModelDomainVM.all) {
+        isExistsItemForAllToListEnumBaseModelDomain = true;
+        break;
+      }
+    }
+    if(isExistsItemForAllToListEnumBaseModelDomain) {
+      for(EnumBaseModelDomainVM enumBaseModelDomainVM in EnumBaseModelDomainVM.values) {
+        map[enumBaseModelDomainVM] = StreamController<T>.broadcast();
+      }
+    } else {
+      for (EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
+        map[enumBaseModelDomainVM] = StreamController<T>.broadcast();
+      }
     }
     return map;
   }
 
   Map<EnumBaseListModelDomainVM,Y> _creationAndGetMapEnumBaseListModelDomainVMAndBaseListModelDomain() {
-    if(_isCheckListToIsEqualsNullOrIsNotEmptyAndNoInsertEnumBaseListModelDomainVM(_listEnumBaseListModelDomainVM)) {
+    if(_isEqualsNullOrIsEmptyListEnumBaseListModelDomainVM(_listEnumBaseListModelDomainVM)) {
       return {};
     }
     Map<EnumBaseListModelDomainVM,Y> map = {};
-    for(EnumBaseListModelDomainVM viewModelOperation in _listEnumBaseListModelDomainVM) {
-      map[viewModelOperation] = _initCreatorBaseListModelDomain();
+    bool isExistsItemForAllToListEnumBaseListModelDomain = false;
+    for(EnumBaseListModelDomainVM enumBaseModelDomainVM in _listEnumBaseListModelDomainVM) {
+      if(enumBaseModelDomainVM == EnumBaseListModelDomainVM.all) {
+        isExistsItemForAllToListEnumBaseListModelDomain = true;
+        break;
+      }
+    }
+    if(isExistsItemForAllToListEnumBaseListModelDomain) {
+      for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in EnumBaseListModelDomainVM.values) {
+        map[enumBaseListModelDomainVM] = _initCreatorBaseListModelDomain();
+      }
+    } else {
+      for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in _listEnumBaseListModelDomainVM) {
+        map[enumBaseListModelDomainVM] = _initCreatorBaseListModelDomain();
+      }
     }
     return map;
   }
 
   Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _creationAndGetMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain() {
-    if(_isCheckListToIsEqualsNullOrIsNotEmptyAndNoInsertEnumBaseListModelDomainVM(_listEnumBaseListModelDomainVM)) {
+    if(_isEqualsNullOrIsEmptyListEnumBaseListModelDomainVM(_listEnumBaseListModelDomainVM)) {
       return {};
     }
     Map<EnumBaseListModelDomainVM,StreamController<List<T>>> map = {};
-    for(EnumBaseListModelDomainVM viewModelOperation in _listEnumBaseListModelDomainVM) {
-      map[viewModelOperation] = StreamController<List<T>>.broadcast();
+    bool isExistsItemForAllToListEnumBaseListModelDomain = false;
+    for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in _listEnumBaseListModelDomainVM) {
+      if(enumBaseListModelDomainVM == EnumBaseListModelDomainVM.all) {
+        isExistsItemForAllToListEnumBaseListModelDomain = true;
+        break;
+      }
+    }
+    if(isExistsItemForAllToListEnumBaseListModelDomain) {
+      for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in EnumBaseListModelDomainVM.values) {
+        map[enumBaseListModelDomainVM] = StreamController<List<T>>.broadcast();
+      }
+    } else {
+      for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in _listEnumBaseListModelDomainVM) {
+        map[enumBaseListModelDomainVM] = StreamController<List<T>>.broadcast();
+      }
     }
     return map;
   }
 
-  bool _isCheckListToIsEqualsNullOrIsNotEmptyAndNoInsertEnumBaseModelDomainVM(List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM)
+  bool _isEqualsNullOrIsEmptyListEnumBaseModelDomainVM(List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM)
   {
     if(listEnumBaseModelDomainVM == null) {
       return true;
     }
-    if(listEnumBaseModelDomainVM.isNotEmpty) {
+    if(listEnumBaseModelDomainVM.isEmpty) {
       return true;
-    }
-    for(EnumBaseModelDomainVM enumBaseModelDomainVM in EnumBaseModelDomainVM.values) {
-      listEnumBaseModelDomainVM.add(enumBaseModelDomainVM);
     }
     return false;
   }
 
-  bool _isCheckListToIsEqualsNullOrIsNotEmptyAndNoInsertEnumBaseListModelDomainVM(List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM)
+  bool _isEqualsNullOrIsEmptyListEnumBaseListModelDomainVM(List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM)
   {
     if(listEnumBaseListModelDomainVM == null) {
       return true;
     }
-    if(listEnumBaseListModelDomainVM.isNotEmpty) {
+    if(listEnumBaseListModelDomainVM.isEmpty) {
       return true;
-    }
-    for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in EnumBaseListModelDomainVM.values) {
-      listEnumBaseListModelDomainVM.add(enumBaseListModelDomainVM);
     }
     return false;
   }

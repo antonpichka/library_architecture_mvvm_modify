@@ -91,7 +91,7 @@ class ListOfViewModelForMainView
     }
     // 2
     var resultTwo = _userSqfliteDatabaseViewModelUsingAll
-        .setAndDeleteModelToGetListModel(userDomain);
+        .setNoGlobalAndDeleteModelToGetListModel(userDomain);
     if(resultTwo.isExceptionResponse) {
       functionForStringException(resultTwo
           .getException
