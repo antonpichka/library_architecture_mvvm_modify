@@ -153,113 +153,233 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(_dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>);
   }
 
-  @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameter(T model) {
-    setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
-    return _baseInsertModelToNamedDatabaseThereIsParameter(_dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>);
-  }
+  // start insert 4
 
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameter() {
-    return _baseInsertModelToNamedDatabaseThereIsParameter(_dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>);
+    return _baseInsertModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameterAndSetListForFBDSUsingGetList(T newModel,List<T> newListModelUsingGetList) {
-    setModel(newModel, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
-    setListModel(newListModelUsingGetList, EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    return _baseInsertModelToNamedDatabaseThereIsParameter(_dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>);
+  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameter(T model) {
+    setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
+    return _baseInsertModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameter(List<T> newListModel) {
-    setListModel(newListModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
-    return _baseInsertListModelToNamedDatabaseThereIsParameter(_dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>);
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+    return _baseInsertModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
   }
 
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(T model,List<T> listModelForFBDS) {
+    setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
+    return _baseInsertModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  // end insert 4
+
+  // start insertList 4
+  
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameter() {
-    return _baseInsertListModelToNamedDatabaseThereIsParameter(_dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>);
+    return _baseInsertListModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameterAndSetListForFBDSUsingGetList(List<T> newListModel,List<T> newListModelUsingGetList) {
-    setListModel(newListModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
-    setListModel(newListModelUsingGetList, EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    return _baseInsertListModelToNamedDatabaseThereIsParameter(_dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>);
+  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
+    setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
+    return _baseInsertListModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameter(T newModel) {
-    setModel(newModel, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
-    return _baseUpdateModelToNamedDatabaseThereIsParameter(_dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>);
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+    return _baseInsertListModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
   }
+
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
+    setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
+    return _baseInsertListModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  // end insertList 4
+
+  // start update 4
 
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameter() {
-    return _baseUpdateModelToNamedDatabaseThereIsParameter(_dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>);
+    return _baseUpdateModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameterAndSetListForFBDSUsingGetList(T newModel,List<T> newListModelUsingGetList) {
-    setModel(newModel, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
-    setListModel(newListModelUsingGetList, EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    return _baseUpdateModelToNamedDatabaseThereIsParameter(_dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>);
+  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameter(T model) {
+    setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
+    return _baseUpdateModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameter(List<T> newListModel) {
-    setListModel(newListModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
-    return _baseUpdateListModelToNamedDatabaseThereIsParameter(_dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>);
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+    return _baseUpdateModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
   }
+
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(T model,List<T> listModelForFBDS) {
+    setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
+    return _baseUpdateModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  // end update 4
+
+  // start updateList 4
 
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameter() {
-    return _baseUpdateListModelToNamedDatabaseThereIsParameter(_dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>);
+    return _baseUpdateListModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameterAndSetListForFBDSUsingGetList(List<T> newListModel,List<T> newListModelUsingGetList) {
-    setListModel(newListModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
-    setListModel(newListModelUsingGetList, EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    return _baseUpdateListModelToNamedDatabaseThereIsParameter(_dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>);
+  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
+    setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
+    return _baseUpdateListModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameter(T newModel) {
-    setModel(newModel, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
-    return _baseDeleteModelToNamedDatabaseThereIsParameter(_dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>);
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+    return _baseUpdateListModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
   }
+
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
+    setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
+    return _baseUpdateListModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  // end updateList 4
+
+  // start delete 4
 
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameter() {
-    return _baseDeleteModelToNamedDatabaseThereIsParameter(_dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>);
+    return _baseDeleteModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameterAndSetListForFBDSUsingGetList(T newModel,List<T> newListModelUsingGetList) {
-    setModel(newModel, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
-    setListModel(newListModelUsingGetList, EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    return _baseDeleteModelToNamedDatabaseThereIsParameter(_dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>);
+  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameter(T model) {
+    setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
+    return _baseDeleteModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameter(List<T> newListModel) {
-    setListModel(newListModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
-    return _baseDeleteListModelToNamedDatabaseThereIsParameter(_dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>);
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+    return _baseDeleteModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
   }
+
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(T model,List<T> listModelForFBDS) {
+    setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
+    return _baseDeleteModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
+        getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  // end delete 4
+
+  // start deleteList 4
 
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameter() {
-    return _baseDeleteListModelToNamedDatabaseThereIsParameter(_dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>);
+    return _baseDeleteListModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
 
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameterAndSetListForFBDSUsingGetList(List<T> newListModel,List<T> newListModelUsingGetList) {
-    setListModel(newListModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
-    setListModel(newListModelUsingGetList, EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-    return _baseDeleteListModelToNamedDatabaseThereIsParameter(_dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>);
+  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameter(List<T> listModel) {
+    setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
+    return _baseDeleteListModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter),
+        List.empty(growable: true));
   }
+
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModelForFBDS) {
+    return _baseDeleteListModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(List<T> listModel,List<T> listModelForFBDS) {
+    setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
+    return _baseDeleteListModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter),
+        listModelForFBDS);
+  }
+
+  // end deleteList 4
 
   /// End DataSource **/
 
@@ -524,19 +644,21 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseThereIsParameter(
-      InsertModelToNamedDatabaseThereIsParameterDataSource<Z> insertModelToNamedDatabaseThereIsParameterDataSource)
+      InsertModelToNamedDatabaseThereIsParameterDataSource<Z> insertModelToNamedDatabaseThereIsParameterDataSource,
+      T model,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
       return throw Exception("ConverterToBaseModelNamedDatabase null");
     }
-    T modelDomain = cloneModel(getModel(EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter));
+    T modelDomain = cloneModel(model);
     if(_insertModelToNamedDatabaseFBDS == null) {
       return await insertModelToNamedDatabaseThereIsParameterDataSource
           .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+    List<T> listModelDomainForFBDS = _cloneListModel(listModelForFBDS);
     ResponseGenericBoolAndDomainException response = _insertModelToNamedDatabaseFBDS
-        .insertModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDSUsingGetList);
+        .insertModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
     if(response.isSuccessResponse) {
       return await insertModelToNamedDatabaseThereIsParameterDataSource
           .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
@@ -546,41 +668,45 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseThereIsParameter(
-      InsertListModelToNamedDatabaseThereIsParameterDataSource<X> insertListModelToNamedDatabaseThereIsParameterDataSource)
+      InsertListModelToNamedDatabaseThereIsParameterDataSource<X> insertListModelToNamedDatabaseThereIsParameterDataSource,
+      List<T> listModel,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
       return throw Exception("ConverterToBaseListModelNamedDatabase null");
     }
-    BaseListModelDomain<T> listModelDomain = BaseListModelDomain(_cloneListModel(getListModel(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter)));
+    BaseListModelDomain<T> baseListModelDomain = BaseListModelDomain(_cloneListModel(listModel));
     if(_insertListModelToNamedDatabaseFBDS == null) {
       return await insertListModelToNamedDatabaseThereIsParameterDataSource
-          .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
+          .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+    List<T> listModelDomainForFBDS = _cloneListModel(listModelForFBDS);
     ResponseGenericBoolAndDomainException response = _insertListModelToNamedDatabaseFBDS
-        .insertListModelToNamedDatabaseFBDS(listModelDomain,listModelDomainForFBDSUsingGetList);
+        .insertListModelToNamedDatabaseFBDS(baseListModelDomain,listModelDomainForFBDS);
     if(response.isSuccessResponse) {
       return await insertListModelToNamedDatabaseThereIsParameterDataSource
-          .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
+          .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     } else {
       return Response.exception(response.getException);
     }
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseThereIsParameter(
-      UpdateModelToNamedDatabaseThereIsParameterDataSource<Z> updateModelToNamedDatabaseThereIsParameterDataSource)
+      UpdateModelToNamedDatabaseThereIsParameterDataSource<Z> updateModelToNamedDatabaseThereIsParameterDataSource,
+      T model,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
       return throw Exception("ConverterToBaseModelNamedDatabase null");
     }
-    T modelDomain = cloneModel(getModel(EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter));
+    T modelDomain = cloneModel(model);
     if(_updateModelToNamedDatabaseFBDS == null) {
       return await updateModelToNamedDatabaseThereIsParameterDataSource
           .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+    List<T> listModelDomainForFBDS = _cloneListModel(listModelForFBDS);
     ResponseGenericBoolAndDomainException response = _updateModelToNamedDatabaseFBDS
-        .updateModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDSUsingGetList);
+        .updateModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
     if(response.isSuccessResponse) {
       return await updateModelToNamedDatabaseThereIsParameterDataSource
           .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
@@ -590,41 +716,45 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseThereIsParameter(
-      UpdateListModelToNamedDatabaseThereIsParameterDataSource<X> updateListModelToNamedDatabaseThereIsParameterDataSource)
+      UpdateListModelToNamedDatabaseThereIsParameterDataSource<X> updateListModelToNamedDatabaseThereIsParameterDataSource,
+      List<T> listModel,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
       return throw Exception("ConverterToBaseListModelNamedDatabase null");
     }
-    BaseListModelDomain<T> listModelDomain = BaseListModelDomain(_cloneListModel(getListModel(EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter)));
+    BaseListModelDomain<T> baseListModelDomain = BaseListModelDomain(_cloneListModel(listModel));
     if(_updateListModelToNamedDatabaseFBDS == null) {
       return await updateListModelToNamedDatabaseThereIsParameterDataSource
-          .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
+          .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(listModelForFBDS);
     ResponseGenericBoolAndDomainException response = _updateListModelToNamedDatabaseFBDS
-        .updateListModelToNamedDatabaseFBDS(listModelDomain,listModelDomainForFBDSUsingGetList);
+        .updateListModelToNamedDatabaseFBDS(baseListModelDomain,listModelDomainForFBDSUsingGetList);
     if(response.isSuccessResponse) {
       return await updateListModelToNamedDatabaseThereIsParameterDataSource
-          .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
+          .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     } else {
       return Response.exception(response.getException);
     }
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseThereIsParameter(
-      DeleteModelToNamedDatabaseThereIsParameterDataSource<Z> deleteModelToNamedDatabaseThereIsParameterDataSource)
+      DeleteModelToNamedDatabaseThereIsParameterDataSource<Z> deleteModelToNamedDatabaseThereIsParameterDataSource,
+      T model,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
       return throw Exception("ConverterToBaseModelNamedDatabase null");
     }
-    T modelDomain = cloneModel(getModel(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter));
+    T modelDomain = cloneModel(model);
     if(_deleteModelToNamedDatabaseFBDS == null) {
       return await deleteModelToNamedDatabaseThereIsParameterDataSource
           .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+    List<T> listModelDomainForFBDS = _cloneListModel(listModelForFBDS);
     ResponseGenericBoolAndDomainException response = _deleteModelToNamedDatabaseFBDS
-        .deleteModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDSUsingGetList);
+        .deleteModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
     if(response.isSuccessResponse) {
       return await deleteModelToNamedDatabaseThereIsParameterDataSource
           .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
@@ -634,22 +764,24 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseThereIsParameter(
-      DeleteListModelToNamedDatabaseThereIsParameterDataSource<X> deleteListModelToNamedDatabaseThereIsParameterDataSource)
+      DeleteListModelToNamedDatabaseThereIsParameterDataSource<X> deleteListModelToNamedDatabaseThereIsParameterDataSource,
+      List<T> listModel,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
       return throw Exception("ConverterToBaseListModelNamedDatabase null");
     }
-    BaseListModelDomain<T> listModelDomain = BaseListModelDomain(_cloneListModel(getListModel(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter)));
+    BaseListModelDomain<T> baseListModelDomain = BaseListModelDomain(_cloneListModel(listModel));
     if(_deleteListModelToNamedDatabaseFBDS == null) {
       return await deleteListModelToNamedDatabaseThereIsParameterDataSource
-          .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
+          .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModel(getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+    List<T> listModelDomainForFBDS = _cloneListModel(listModelForFBDS);
     ResponseGenericBoolAndDomainException response = _deleteListModelToNamedDatabaseFBDS
-        .deleteListModelToNamedDatabaseFBDS(listModelDomain,listModelDomainForFBDSUsingGetList);
+        .deleteListModelToNamedDatabaseFBDS(baseListModelDomain,listModelDomainForFBDS);
     if(response.isSuccessResponse) {
       return await deleteListModelToNamedDatabaseThereIsParameterDataSource
-          .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
+          .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     } else {
       return Response.exception(response.getException);
     }

@@ -75,14 +75,14 @@ class ListOfViewModelForMainView
     return;
   }
 
-  Future<void> deleteUserToSqfliteDatabaseThereIsParameter(
+  Future<void> deleteUserToSqfliteDatabaseThereIsParameterForAll(
       UserDomain userDomain,
       Function functionForSuccess,
       Function(String) functionForStringException)
   async {
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingDeleteForAll
-        .setAndDeleteModelToNamedDatabaseThereIsParameter(userDomain);
+        .setAndDeleteModelToNamedDatabaseThereIsParameterAndSetListModelForFBDS(userDomain,_userSqfliteDatabaseViewModelUsingAll.getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
     if(result.isExceptionResponse) {
       functionForStringException(result
           .getException
