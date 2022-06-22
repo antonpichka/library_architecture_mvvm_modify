@@ -4,6 +4,6 @@ import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_
 class BoolDomainViewModelUsingGetForLoading extends BoolDomainViewModel {
   BoolDomainViewModelUsingGetForLoading() : super(
       [EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter],
-      null
+      []
   );
 }
