@@ -18,7 +18,8 @@ class MainBackground {
   }
 
   Future<void> _deleteUserToSqfliteDatabaseThereIsParameterForAll() async {
-    var result = await _userSqfliteDatabaseBackgroundModelUsingDeleteForAll.deleteModelToNamedDatabaseThereIsParameter();
+    var result = await _userSqfliteDatabaseBackgroundModelUsingDeleteForAll
+        .deleteUserToSqfliteDatabaseThereIsParameter();
     if(result.isExceptionResponse) {
       return _deleteUserToSqfliteDatabaseThereIsParameterForAll();
     }

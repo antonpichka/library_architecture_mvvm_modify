@@ -9,16 +9,12 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_function_befor
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
 import '../model/user/list_user_domain.dart';
 import '../model/user/user_domain.dart';
 
 class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum> {
   UserNamedDatabaseViewModel(
       Object dataSource,
-      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
-      List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,
       ConverterToBaseListModelNamedDatabase<ListUserDomain, Y> converterToBaseListModelNamedDatabase,
       InsertModelToNamedDatabaseFBDS<UserDomain> insertModelToNamedDatabaseFBDS,
@@ -28,8 +24,6 @@ class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y 
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
       : super(dataSource,
-      listEnumBaseModelDomainVM,
-      listEnumBaseListModelDomainVM,
           () => UserDomain.getDefaultUserDomain,
           () => ListUserDomain([]),
       converterToBaseModelNamedDatabase,

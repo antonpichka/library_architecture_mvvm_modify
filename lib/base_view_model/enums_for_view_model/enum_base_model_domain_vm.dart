@@ -1,5 +1,4 @@
 enum EnumBaseModelDomainVM {
-  all,
   insertModelToNamedDatabaseThereIsParameter,
   updateModelToNamedDatabaseThereIsParameter,
   deleteModelToNamedDatabaseThereIsParameter,

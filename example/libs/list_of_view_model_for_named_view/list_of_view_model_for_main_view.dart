@@ -1,16 +1,14 @@
 import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view/base_list_of_view_model_for_named_view.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool_domain.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
 import '../model/user/user_domain.dart';
 import '../model_named_view_model/bool_domain_view_model/bool_domain_view_model_using_get_for_loading.dart';
-import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_all.dart';
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_delete_for_all.dart';
+import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_get_list_no_parameter.dart';
 
 class ListOfViewModelForMainView
     extends BaseListOfViewModelForNamedView
 {
-  final UserSqfliteDatabaseViewModelUsingAll _userSqfliteDatabaseViewModelUsingAll = UserSqfliteDatabaseViewModelUsingAll();
+  final UserSqfliteDatabaseViewModelUsingGetListNoParameter _userSqfliteDatabaseViewModelUsingGetListNoParameter = UserSqfliteDatabaseViewModelUsingGetListNoParameter();
   final UserSqfliteDatabaseViewModelUsingDeleteForAll _userSqfliteDatabaseViewModelUsingDeleteForAll = UserSqfliteDatabaseViewModelUsingDeleteForAll();
   final BoolDomainViewModelUsingGetForLoading _boolDomainViewModelUsingGetForLoading = BoolDomainViewModelUsingGetForLoading();
 
@@ -18,19 +16,19 @@ class ListOfViewModelForMainView
 
   @override
   void dispose() {
-    _userSqfliteDatabaseViewModelUsingAll.dispose();
+    _userSqfliteDatabaseViewModelUsingGetListNoParameter.dispose();
     _userSqfliteDatabaseViewModelUsingDeleteForAll.dispose();
     _boolDomainViewModelUsingGetForLoading.dispose();
   }
 
   /// Start Stream/Future Methods **/
   
-  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetList {
-    return _userSqfliteDatabaseViewModelUsingAll.getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
+  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetListNoParameter {
+    return _userSqfliteDatabaseViewModelUsingGetListNoParameter.getStreamListUserSqfliteDatabaseUsingGetListNoParameter;
   }
 
   Stream<BoolDomain> get getStreamBoolDomainUsingGetForLoading {
-    return _boolDomainViewModelUsingGetForLoading.getStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+    return _boolDomainViewModelUsingGetForLoading.getStreamBoolDomainUsingGetForLoading;
   }
 
   /// End Stream/Future Methods **/
@@ -50,27 +48,27 @@ class ListOfViewModelForMainView
   async {
     // 1
     _boolDomainViewModelUsingGetForLoading
-        .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
+        .getBoolDomainUsingGetForLoading
         .isField = true;
     _boolDomainViewModelUsingGetForLoading
-        .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
-    var result = await _userSqfliteDatabaseViewModelUsingAll
-        .getListModelFromNamedDatabaseAndUseTheSetters();
+        .notifyStreamBoolDomainUsingGetForLoading();
+    var result = await _userSqfliteDatabaseViewModelUsingGetListNoParameter
+        .getListUserFromSqfliteDatabaseAndUseTheSetters();
     if(result.isExceptionResponse) {
       _boolDomainViewModelUsingGetForLoading
-          .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
+          .getBoolDomainUsingGetForLoading
           .isField = false;
       _boolDomainViewModelUsingGetForLoading
-          .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+          .notifyStreamBoolDomainUsingGetForLoading();
       return;
     }
-    _userSqfliteDatabaseViewModelUsingAll
-        .notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
+    _userSqfliteDatabaseViewModelUsingGetListNoParameter
+        .notifyStreamListUserSqfliteDatabaseUsingGetListNoParameter();
     _boolDomainViewModelUsingGetForLoading
-        .getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter)
+        .getBoolDomainUsingGetForLoading
         .isField = false;
     _boolDomainViewModelUsingGetForLoading
-        .notifyStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+        .notifyStreamBoolDomainUsingGetForLoading();
     functionForSuccess();
     return;
   }
@@ -82,7 +80,7 @@ class ListOfViewModelForMainView
   async {
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingDeleteForAll
-        .setModelAndDeleteModelToNamedDatabaseThereIsParameterAndListModelForFBDS(userDomain,_userSqfliteDatabaseViewModelUsingAll.getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter));
+        .setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDS(userDomain, _userSqfliteDatabaseViewModelUsingGetListNoParameter.getListUserSqfliteDatabaseUsingGetListNoParameter);
     if(result.isExceptionResponse) {
       functionForStringException(result
           .getException
@@ -90,16 +88,16 @@ class ListOfViewModelForMainView
       return;
     }
     // 2
-    var resultTwo = _userSqfliteDatabaseViewModelUsingAll
-        .defaultDeleteModelToGetListModel(userDomain);
+    var resultTwo = _userSqfliteDatabaseViewModelUsingGetListNoParameter
+        .defaultDeleteUserToGetListUser(userDomain);
     if(resultTwo.isExceptionResponse) {
       functionForStringException(resultTwo
           .getException
           .getSelectedExceptionInString);
       return;
     }
-    _userSqfliteDatabaseViewModelUsingAll
-        .notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
+    _userSqfliteDatabaseViewModelUsingGetListNoParameter
+        .notifyStreamListUserSqfliteDatabaseUsingGetListNoParameter();
     functionForSuccess();
     return;
   }

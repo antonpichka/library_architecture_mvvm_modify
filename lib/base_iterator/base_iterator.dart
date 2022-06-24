@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
 
-abstract class BaseIterator<T> implements Iterator<T> {
+abstract class BaseIterator<T extends BaseModelDomain> implements Iterator<T> {
   List<T> _list;
 
   @nonVirtual

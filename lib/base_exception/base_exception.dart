@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/domain_exception
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 
-abstract class BaseException {
+abstract class BaseException implements Exception {
   final String _nameClass;
   
   BaseException(this._nameClass) {

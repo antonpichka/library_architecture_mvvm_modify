@@ -57,12 +57,11 @@ class BaseListModelDomain<T extends BaseModelDomain>
       }
       i++;
     }
-    if(_iterator != null) {
-      _listModelDomain = _iterator.getSortedList;
-      return Response.success(_listModelDomain);
-    } else {
+    if(_iterator == null) {
       return Response.exception(LocalException(constDeveloper,"Iterator null"));
     }
+    _listModelDomain = _iterator.getSortedList;
+    return Response.success(_listModelDomain);
   }
 
   Response<bool, BaseException> insertListModelToGetListModel(List<T> insertListModel)

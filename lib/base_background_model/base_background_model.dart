@@ -68,6 +68,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   ///     return UserDomain(model.uniqueId,model.name);
   ///   }
   ///
+  @protected
   T cloneModel(T model);
 
   List<T> _cloneListModel(List<T> listModel) {
@@ -83,19 +84,15 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
 
   /// Start DataSource **/
   ///
+  @protected
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabase() {
     return _baseGetListModelFromNamedDatabase(
         _dataSource as GetListModelFromNamedDatabaseDataSource<X>);
   }
 
-  @nonVirtual
-  Future<Response<List<T>, BaseException>> setAndGetListModelFromNamedDatabaseThereIsParameter(BaseTypeParameter newBaseTypeParameter) {
-    return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
-        newBaseTypeParameter);
-  }
-
+  // start getListThereIsParameter 2
+  @protected
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseThereIsParameter() {
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
@@ -103,177 +100,215 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
         BoolTypeParameter(true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<T, BaseException>> setAndGetModelFromNamedDatabaseThereIsParameter(BaseTypeParameter newBaseTypeParameter) {
-    return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
-        newBaseTypeParameter
-    );
+  Future<Response<List<T>, BaseException>> defaultGetListModelFromNamedDatabaseThereIsParameter(
+      BaseTypeParameter newBaseTypeParameter)
+  {
+    return _baseGetListModelFromNamedDatabaseThereIsParameter(
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
+        newBaseTypeParameter);
   }
+  // end getListThereIsParameter 2
 
+  // start getModel 2
+  @protected
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseThereIsParameter() {
     return _baseGetModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
-        BoolTypeParameter(true)
-    );
+        BoolTypeParameter(true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameter(T newModelDomain) {
-    return _baseInsertModelToNamedDatabaseThereIsParameter(
-        _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>, 
-        newModelDomain,
-        List.empty());
+  Future<Response<T, BaseException>> defaultGetModelFromNamedDatabaseThereIsParameter(
+      BaseTypeParameter newBaseTypeParameter)
+  {
+    return _baseGetModelFromNamedDatabaseThereIsParameter(
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>, 
+        newBaseTypeParameter);
   }
+  // end getModel 2
 
+  // start insert 3
+  @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameter() {
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
         BaseModelDomain(""),
-        List.empty());
+        List.empty(growable: true));
+  }
+  
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> defaultInsertModelToNamedDatabaseThereIsParameter(
+      T newModelDomain) 
+  {
+    return _baseInsertModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>, 
+        newModelDomain,
+        List.empty(growable: true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertModelToNamedDatabaseThereIsParameterAndSetListForFBDS(T newModelDomain, List<T> newListModeDomainForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> defaultInsertModelToNamedDatabaseThereIsParameterAndDefaultListModelForFBDS(T newModelDomain, List<T> newListModeDomainForFBDS) {
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
         newModelDomain,
         newListModeDomainForFBDS);
   }
+  // end insert 3
 
-  @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameter(List<T> newListModelDomain) {
-    return _baseInsertListModelToNamedDatabaseThereIsParameter(
-        _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
-        newListModelDomain,
-        List.empty());
-  }
-
+  // start insertList 3
+  @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameter() {
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
-        List.empty(),
-        List.empty());
+        List.empty(growable: true),
+        List.empty(growable: true));
+  }
+  
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> defaultInsertListModelToNamedDatabaseThereIsParameter(List<T> newListModelDomain) {
+    return _baseInsertListModelToNamedDatabaseThereIsParameter(
+        _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        newListModelDomain,
+        List.empty(growable: true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndInsertListModelToNamedDatabaseThereIsParameterAndSetListForFBDS(List<T> newListModelDomain, List<T> newListModeDomainForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> defaultInsertListModelToNamedDatabaseThereIsParameterAndDefaultListModelForFBDS(List<T> newListModelDomain, List<T> newListModeDomainForFBDS) {
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
         newListModelDomain,
         newListModeDomainForFBDS);
   }
+  // end insertList 3
 
-  @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameter(T newModelDomain) {
-    return _baseUpdateModelToNamedDatabaseThereIsParameter(
-        _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
-        newModelDomain,
-        List.empty()
-    );
-  }
-
+  // start update 3
+  @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameter() {
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
         BaseModelDomain(""),
-        List.empty()
-    );
+        List.empty(growable: true));
   }
-
+  
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateModelToNamedDatabaseThereIsParameterAndSetListForFBDS(T newModelDomain,List<T> newListModeDomainForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> defaultUpdateModelToNamedDatabaseThereIsParameter(T newModelDomain) {
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
         newModelDomain,
-        newListModeDomainForFBDS
-    );
+        List.empty(growable: true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameter(List<T> newListModelDomain) {
-    return _baseUpdateListModelToNamedDatabaseThereIsParameter(
-        _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
-        newListModelDomain,
-        List.empty()
-    );
+  Future<Response<BaseTypeParameter, BaseException>> defaultUpdateModelToNamedDatabaseThereIsParameterAndDefaultListModelForFBDS(T newModelDomain,List<T> newListModeDomainForFBDS) {
+    return _baseUpdateModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>, 
+        newModelDomain, 
+        newListModeDomainForFBDS);
   }
+  // end update 3
 
+  // start updateList 3
+  @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameter() {
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
-        List.empty(),
-        List.empty()
-    );
+        List.empty(growable: true),
+        List.empty(growable: true));
+  }
+  
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> defaultUpdateListModelToNamedDatabaseThereIsParameter(List<T> newListModelDomain) {
+    return _baseUpdateListModelToNamedDatabaseThereIsParameter(
+        _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        newListModelDomain,
+        List.empty(growable: true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndUpdateListModelToNamedDatabaseThereIsParameterAndSetListForFBDS(List<T> newListModelDomain,List<T> newListModeDomainForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> defaultUpdateListModelToNamedDatabaseThereIsParameterAndDefaultListModelForFBDS(List<T> newListModelDomain,List<T> newListModeDomainForFBDS) {
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
         newListModelDomain,
         newListModeDomainForFBDS
     );
   }
+  // end updateList 3
 
-  @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameter(T newModelDomain) {
-    return _baseDeleteModelToNamedDatabaseThereIsParameter(
-        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>, 
-        newModelDomain, 
-        List.empty()
-    );
-  }
-
+  // start delete 3
+  @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameter() {
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
-        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>, 
+        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
         BaseModelDomain(""),
-        List.empty()
-    );
+        List.empty(growable: true));
+  }
+  
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> defaultDeleteModelToNamedDatabaseThereIsParameter(T newModelDomain) {
+    return _baseDeleteModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>, 
+        newModelDomain,
+        List.empty(growable: true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteModelToNamedDatabaseThereIsParameterAndSetListForFBDS(T newModelDomain,List<T> newListModeDomainForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> defaultDeleteModelToNamedDatabaseThereIsParameterAndDefaultListModelForFBDS(T newModelDomain,List<T> newListModeDomainForFBDS) {
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
         newModelDomain,
         newListModeDomainForFBDS
     );
   }
+  // end delete 3
 
-  @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameter(List<T> newListModelDomain) {
-    return _baseDeleteListModelToNamedDatabaseThereIsParameter(
-        _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
-        newListModelDomain,
-        List.empty()
-    );
-  }
-
+  // start deleteList 3
+  @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameter() {
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
-        List.empty(),
-        List.empty()
-    );
+        List.empty(growable: true),
+        List.empty(growable: true));
   }
 
+  @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> setAndDeleteListModelToNamedDatabaseThereIsParameterAndSetListForFBDS(List<T> newListModelDomain, List<T> newListModeDomainForFBDS) {
+  Future<Response<BaseTypeParameter, BaseException>> defaultDeleteListModelToNamedDatabaseThereIsParameter(List<T> newListModelDomain) {
+    return _baseDeleteListModelToNamedDatabaseThereIsParameter(
+        _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
+        newListModelDomain,
+        List.empty(growable: true));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> defaultDeleteListModelToNamedDatabaseThereIsParameterAndDefaultListModelForFBDS(List<T> newListModelDomain, List<T> newListModeDomainForFBDS) {
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
         newListModelDomain,
         newListModeDomainForFBDS
     );
   }
+  // end deleteList 3
   
   /// End DataSource **/
   ///
