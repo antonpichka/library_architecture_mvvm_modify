@@ -96,14 +96,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   BaseViewModel.alternative(
-      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
-      List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
+      List<EnumBaseModelDomainVM> newListEnumBaseModelDomainVM,
+      List<EnumBaseListModelDomainVM> newListEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain,
       this._mapEnumAndBaseIterator,
       this._baseTypeParameterForBaseIterator)
   {
-    _initAlternativeListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM(listEnumBaseModelDomainVM,listEnumBaseListModelDomainVM);
+    _initAlternativeListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM(newListEnumBaseModelDomainVM,newListEnumBaseListModelDomainVM);
     _initMaps();
   }
 
@@ -963,11 +963,15 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   void _initAlternativeListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM(
-      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
-      List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM)
+      List<EnumBaseModelDomainVM> newListEnumBaseModelDomainVM,
+      List<EnumBaseListModelDomainVM> newListEnumBaseListModelDomainVM)
   {
-    _listEnumBaseModelDomainVM.addAll(listEnumBaseModelDomainVM);
-    _listEnumBaseListModelDomainVM.addAll(listEnumBaseListModelDomainVM);
+    if(newListEnumBaseModelDomainVM != null) {
+      _listEnumBaseModelDomainVM.addAll(newListEnumBaseModelDomainVM);
+    }
+    if(newListEnumBaseListModelDomainVM != null) {
+      _listEnumBaseListModelDomainVM.addAll(newListEnumBaseListModelDomainVM);
+    }
   }
 
   void _initMaps() {
