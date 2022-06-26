@@ -17,7 +17,7 @@ class UserSqfliteDatabaseViewModelUsingDeleteForAll extends UserSqfliteDatabaseV
       null
   );
 
-  Future<Response<BaseTypeParameter, BaseException>> setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDSUsingDeleteForAll(
       UserDomain model,
       List<UserDomain> listModelForFBDS)
   {

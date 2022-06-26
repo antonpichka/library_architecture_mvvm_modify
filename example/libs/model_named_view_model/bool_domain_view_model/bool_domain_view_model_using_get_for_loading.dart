@@ -10,12 +10,12 @@ class BoolDomainViewModelUsingGetForLoading extends BoolDomainViewModel {
       null
   );
 
-  BoolDomain get getBoolDomainUsingGetForLoading {
-    return getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
-  }
-
   Stream<BoolDomain> get getStreamBoolDomainUsingGetForLoading {
     return getStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+  }
+
+  BoolDomain get getBoolDomainUsingGetForLoading {
+    return getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
   }
 
   void notifyStreamBoolDomainUsingGetForLoading() {

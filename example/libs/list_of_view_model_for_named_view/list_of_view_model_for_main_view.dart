@@ -43,7 +43,7 @@ class ListOfViewModelForMainView
 
   /// Start Any Methods **/
 
-  Future<void> getListUserFromSqfliteDatabase(
+  Future<void> getListUserFromSqfliteDatabaseAndUseTheSettersUsingGetListNoParameter(
       Function functionForSuccess)
   async {
     // 1
@@ -53,7 +53,7 @@ class ListOfViewModelForMainView
     _boolDomainViewModelUsingGetForLoading
         .notifyStreamBoolDomainUsingGetForLoading();
     var result = await _userSqfliteDatabaseViewModelUsingGetListNoParameter
-        .getListUserFromSqfliteDatabaseAndUseTheSetters();
+        .getListUserFromSqfliteDatabaseAndUseTheSettersUsingGetListNoParameter();
     if(result.isExceptionResponse) {
       _boolDomainViewModelUsingGetForLoading
           .getBoolDomainUsingGetForLoading
@@ -73,14 +73,14 @@ class ListOfViewModelForMainView
     return;
   }
 
-  Future<void> deleteUserToSqfliteDatabaseThereIsParameterForAll(
+  Future<void> setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDSUsingDeleteForAll(
       UserDomain userDomain,
       Function functionForSuccess,
       Function(String) functionForStringException)
   async {
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingDeleteForAll
-        .setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDS(userDomain, _userSqfliteDatabaseViewModelUsingGetListNoParameter.getListUserSqfliteDatabaseUsingGetListNoParameter);
+        .setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDSUsingDeleteForAll(userDomain, _userSqfliteDatabaseViewModelUsingGetListNoParameter.getListUserSqfliteDatabaseUsingGetListNoParameter);
     if(result.isExceptionResponse) {
       functionForStringException(result
           .getException
@@ -89,7 +89,7 @@ class ListOfViewModelForMainView
     }
     // 2
     var resultTwo = _userSqfliteDatabaseViewModelUsingGetListNoParameter
-        .defaultDeleteUserToGetListUser(userDomain);
+        .defaultDeleteUserSqfliteDatabaseToGetListUserSqfliteDatabaseUsingGetListNoParameter(userDomain);
     if(resultTwo.isExceptionResponse) {
       functionForStringException(resultTwo
           .getException

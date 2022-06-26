@@ -15,24 +15,24 @@ class UserSqfliteDatabaseViewModelUsingGetListNoParameter extends UserSqfliteDat
       null,
       null
   );
+  
+  Future<Response<List<UserDomain>, BaseException>> getListUserFromSqfliteDatabaseAndUseTheSettersUsingGetListNoParameter() {
+    return getListModelFromNamedDatabaseAndUseTheSetters();
+  }
+
+  Response<bool, BaseException> defaultDeleteUserSqfliteDatabaseToGetListUserSqfliteDatabaseUsingGetListNoParameter(UserDomain user) {
+    return defaultDeleteModelToGetListModel(user);
+  }
+
+  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetListNoParameter {
+    return getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
+  }
 
   List<UserDomain> get getListUserSqfliteDatabaseUsingGetListNoParameter {
     return getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
   
-  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetListNoParameter {
-    return getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-  }
-  
   void notifyStreamListUserSqfliteDatabaseUsingGetListNoParameter() {
     notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-  }
-
-  Future<Response<List<UserDomain>, BaseException>> getListUserFromSqfliteDatabaseAndUseTheSetters() {
-    return getListModelFromNamedDatabaseAndUseTheSetters();
-  }
-
-  Response<bool, BaseException> defaultDeleteUserToGetListUser(UserDomain user) {
-    return defaultDeleteModelToGetListModel(user);
   }
 }
