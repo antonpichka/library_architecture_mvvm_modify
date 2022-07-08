@@ -23,7 +23,7 @@ class UserDomain extends BaseModelDomain {
 
   ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteForAll() {
     if(isEmptyByTrimParameterName()) {
-      return ResponseGenericBoolAndDomainException.exception(DomainException(constIsEmptyByTrimParameterName));
+      return ResponseGenericBoolAndDomainException.exception(DomainException((UserDomain).toString(),constIsEmptyByTrimParameterName));
     }
     name += "deleteGo";
     return ResponseGenericBoolAndDomainException.success(true);

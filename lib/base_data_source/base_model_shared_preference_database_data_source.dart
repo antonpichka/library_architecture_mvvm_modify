@@ -38,6 +38,7 @@ enum EnumTypeForSP {
 abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNamedDatabase>
 {
   static SharedPreferences _sharedPreferences;
+  final String _nameClass = (BaseModelSharedPreferenceDatabaseDataSource).toString();
 
   @protected
   T fromMapToBaseModelSharedPreferenceDatabase(Map<String, dynamic> map);
@@ -72,7 +73,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(true);
     } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -85,7 +86,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(true);
     } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -123,7 +124,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
 
       return Response.success(model);
     } catch (e) {
-      return Response.exception(LocalException(e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
     }
   }
 }

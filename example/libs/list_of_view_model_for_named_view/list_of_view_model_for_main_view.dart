@@ -12,7 +12,9 @@ class ListOfViewModelForMainView
   final UserSqfliteDatabaseViewModelUsingDeleteForAll _userSqfliteDatabaseViewModelUsingDeleteForAll = UserSqfliteDatabaseViewModelUsingDeleteForAll();
   final BoolDomainViewModelUsingGetForLoading _boolDomainViewModelUsingGetForLoading = BoolDomainViewModelUsingGetForLoading();
 
-  ListOfViewModelForMainView();
+  ListOfViewModelForMainView() {
+    _init();
+  }
 
   @override
   void dispose() {
@@ -43,9 +45,7 @@ class ListOfViewModelForMainView
 
   /// Start Any Methods **/
 
-  Future<void> getListUserFromSqfliteDatabaseAndUseTheSettersUsingGetListNoParameter(
-      Function functionForSuccess)
-  async {
+  Future<void> _init() async {
     // 1
     _boolDomainViewModelUsingGetForLoading
         .getBoolDomainUsingGetForLoading
@@ -69,7 +69,6 @@ class ListOfViewModelForMainView
         .isField = false;
     _boolDomainViewModelUsingGetForLoading
         .notifyStreamBoolDomainUsingGetForLoading();
-    functionForSuccess();
     return;
   }
 
@@ -84,7 +83,7 @@ class ListOfViewModelForMainView
     if(result.isExceptionResponse) {
       functionForStringException(result
           .getException
-          .getSelectedExceptionInString);
+          .toString());
       return;
     }
     // 2
@@ -93,7 +92,7 @@ class ListOfViewModelForMainView
     if(resultTwo.isExceptionResponse) {
       functionForStringException(resultTwo
           .getException
-          .getSelectedExceptionInString);
+          .toString());
       return;
     }
     _userSqfliteDatabaseViewModelUsingGetListNoParameter

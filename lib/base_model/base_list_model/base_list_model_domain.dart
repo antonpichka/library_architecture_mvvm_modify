@@ -7,8 +7,8 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_p
 import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
-class BaseListModelDomain<T extends BaseModelDomain>
-{
+class BaseListModelDomain<T extends BaseModelDomain> {
+  final String _nameClass = (BaseListModelDomain).toString();
   List<T> _listModelDomain;
   BaseIterator _iterator;
 
@@ -40,7 +40,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
       Map<Enum,BaseIterator> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
-      return Response.exception(LocalException(constDeveloper,"Map isEmpty"));
+      return Response.exception(LocalException(_nameClass,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
     }
     int i = 0;
     Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
@@ -58,7 +58,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
       i++;
     }
     if(_iterator == null) {
-      return Response.exception(LocalException(constDeveloper,"Iterator null"));
+      return Response.exception(LocalException(_nameClass,constDeveloper,"Iterator null"));
     }
     _listModelDomain = _iterator.getSortedList;
     return Response.success(_listModelDomain);
@@ -79,7 +79,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
   Response<bool, BaseException> updateListModelToGetListModel(List<T> updateListModel)
   {
     if (_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     for(int i = 0; i < updateListModel.length; i++) {
       _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateListModel[i].uniqueId)] = updateListModel[i];
@@ -90,7 +90,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
   Response<bool, BaseException> updateModelToGetListModel(T updateModel)
   {
     if (_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateModel.uniqueId)] = updateModel;
     return Response.success(true);
@@ -99,7 +99,7 @@ class BaseListModelDomain<T extends BaseModelDomain>
   Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModelDomain)
   {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     List<T> toListDelete = List.empty(growable: true);
     for(int i = 0; i < _listModelDomain.length; i++) {
@@ -122,12 +122,9 @@ class BaseListModelDomain<T extends BaseModelDomain>
   Response<bool, BaseException> deleteModelToGetListModel(T deleteModel)
   {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     _listModelDomain.removeWhere((item) => item.uniqueId == deleteModel.uniqueId);
     return Response.success(true);
   }
-
- /* End Using to Classes ReadyListModelDomainForLNDatabaseFVM */
-
 }
