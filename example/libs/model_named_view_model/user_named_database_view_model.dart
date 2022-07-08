@@ -12,7 +12,7 @@ import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model
 import '../model/user/list_user_domain.dart';
 import '../model/user/user_domain.dart';
 
-class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum> {
+class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>,TypeParameterForBaseTypeParameter> extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum,TypeParameterForBaseTypeParameter> {
   UserNamedDatabaseViewModel(
       Object dataSource,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,
@@ -34,11 +34,11 @@ class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y 
       updateListModelToNamedDatabaseFBDS,
       deleteModelToNamedDatabaseFBDS,
       deleteListModelToNamedDatabaseFBDS,
-      null,
+      {},
       null);
 
   @override
-  UserDomain cloneModel(UserDomain model) {
+  UserDomain cloneModelDomain(UserDomain model) {
     return UserDomain(model.uniqueId,model.name);
   }
 }

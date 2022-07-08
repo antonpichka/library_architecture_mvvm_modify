@@ -12,7 +12,7 @@ import '../../model/user/user_domain.dart';
 import '../../model/user/user_sqflite_database.dart';
 import '../user_named_database_view_model.dart';
 
-class UserSqfliteDatabaseViewModel extends UserNamedDatabaseViewModel<UserSqfliteDatabase,ListUserSqfliteDatabase> {
+class UserSqfliteDatabaseViewModel<TypeParameterForBaseTypeParameter> extends UserNamedDatabaseViewModel<UserSqfliteDatabase,ListUserSqfliteDatabase,TypeParameterForBaseTypeParameter> {
   UserSqfliteDatabaseViewModel(
       Object dataSource,
       InsertModelToNamedDatabaseFBDS<UserDomain> insertModelToNamedDatabaseFBDS,

@@ -1,4 +1,4 @@
-abstract class BaseTypeParameter<T> {
+class BaseTypeParameter<T> {
   final T _parameter;
 
   BaseTypeParameter(this._parameter);

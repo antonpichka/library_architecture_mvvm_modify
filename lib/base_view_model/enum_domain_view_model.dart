@@ -9,7 +9,7 @@ import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
 
-class EnumDomainViewModel<T extends Enum> extends BaseViewModel<EnumDomain,ListEnumDomain,Default<EnumDomain>,ListDefault<ListEnumDomain,Default<EnumDomain>>,T> {
+class EnumDomainViewModel<T extends Enum,TypeParameterForBaseTypeParameter> extends BaseViewModel<EnumDomain,ListEnumDomain,Default<EnumDomain>,ListDefault<ListEnumDomain,Default<EnumDomain>>,T,TypeParameterForBaseTypeParameter> {
   EnumDomainViewModel(
       List<EnumBaseModelDomainVM> listEnumBaseModelDomain,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomain,
@@ -25,7 +25,7 @@ class EnumDomainViewModel<T extends Enum> extends BaseViewModel<EnumDomain,ListE
 
   @override
   @nonVirtual
-  EnumDomain cloneModel(EnumDomain model) {
-    return EnumDomain(model.field);
+  EnumDomain cloneModelDomain(EnumDomain modelDomain) {
+    return EnumDomain(modelDomain.field);
   }
 }
