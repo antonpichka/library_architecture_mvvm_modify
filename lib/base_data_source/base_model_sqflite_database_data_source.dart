@@ -30,8 +30,6 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   @protected
   final Function(Database,int,int) onDowngrade;
 
-  final String _nameClass = (BaseModelSqfliteDatabaseDataSource).toString();
-
   static final Map<String, Database> _mapFilenameAndDatabase = {};
 
   BaseModelSqfliteDatabaseDataSource(
@@ -78,7 +76,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       }
       return Response.success(result);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -90,7 +88,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   async {
     try {
       if(listModelSqfliteDatabase.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelSqfliteDatabase empty for insertListModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"ListModelSqfliteDatabase empty for insertListModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
       final db = await getDatabase;
       int iterationForInsert = 0;
@@ -107,10 +105,10 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(iterationForInsert > 0) {
         return Response.success(iterationForInsert);
       } else {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"Zero insert for insertListModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"Zero insert for insertListModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -134,10 +132,10 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(resultUpdate > 0) {
         return Response.success(resultUpdate);
       } else {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"Zero update for updateModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -149,7 +147,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   async {
     try {
       if(listModelSqfliteDatabase.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelSqfliteDatabase empty for updateListModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"ListModelSqfliteDatabase empty for updateListModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
       final db = await getDatabase;
       int calculateForUpdate = 0;
@@ -167,10 +165,10 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(calculateForUpdate > 0) {
         return Response.success(calculateForUpdate);
       } else {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"Zero update for updateListModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateListModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -191,10 +189,10 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(resultDelete > 0) {
         return Response.success(resultDelete);
       } else {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"Zero delete for deleteModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -206,7 +204,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   async {
     try {
       if(listModelSqfliteDatabase.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelSqfliteDatabase empty for deleteListModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"ListModelSqfliteDatabase empty for deleteListModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
       final db = await getDatabase;
       int calculateForDelete = 0;
@@ -223,10 +221,10 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(calculateForDelete > 0) {
         return Response.success(calculateForDelete);
       } else {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"Zero delete for deleteListModelToSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteListModelToSqfliteDatabaseThereIsParameterDataSource"));
       }
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -249,10 +247,10 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       if(maps.isNotEmpty) {
         return Response.success(fromMapToBaseModelSqfliteDatabase(maps[0]));
       } else {
-        return Response.exception(LocalException(_nameClass,constDeveloper,"Model not found for getModelSqfliteDatabaseThereIsParameterDataSource"));
+        return Response.exception(LocalException(this,constDeveloper,"Model not found for getModelSqfliteDatabaseThereIsParameterDataSource"));
       }
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -268,7 +266,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       Y listModelNamedDatabase = fromListMapToBaseListModelSqfliteDatabase(maps);
       return Response.success(listModelNamedDatabase);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -291,7 +289,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       Y listModelNamedDatabase = fromListMapToBaseListModelSqfliteDatabase(maps);
       return Response.success(listModelNamedDatabase);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
   
@@ -301,7 +299,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<
       int result = await db.delete(table);
       return Response.success(result);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 

@@ -3,7 +3,6 @@ import 'package:library_architecture_mvvm_modify/base_exception/local_exception.
 import 'package:library_architecture_mvvm_modify/constants.dart';
 
 class Response<T,Y extends BaseException> {
-  final String _nameClass = (Response).toString();
   T _data;
   Y _exception;
 
@@ -21,14 +20,14 @@ class Response<T,Y extends BaseException> {
 
   T get getData {
     if(_data == null) {
-      return throw LocalException(_nameClass,constDeveloper,"Data null");
+      return throw LocalException(this,constDeveloper,"Data null");
     }
     return _data;
   }
 
   BaseException get getException {
     if(_exception == null) {
-      return throw LocalException(_nameClass,constDeveloper,"Exception null");
+      return throw LocalException(this,constDeveloper,"Exception null");
     }
     return _exception;
   }

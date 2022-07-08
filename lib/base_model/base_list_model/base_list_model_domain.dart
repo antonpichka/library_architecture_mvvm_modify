@@ -8,7 +8,6 @@ import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 class BaseListModelDomain<T extends BaseModelDomain> {
-  final String _nameClass = (BaseListModelDomain).toString();
   List<T> _listModelDomain;
   BaseIterator _iterator;
 
@@ -20,27 +19,27 @@ class BaseListModelDomain<T extends BaseModelDomain> {
   }
 
   @nonVirtual
-  set setListModelDomainByBaseListModelDomain(BaseListModelDomain listModelDomain) {
-    _listModelDomain = listModelDomain.getListModelDomain;
+  set setParameterListModelDomain(List<T> listModelDomain) {
+    _listModelDomain = listModelDomain;
   }
-
+  
   @nonVirtual
-  set setListModelDomain(List<T> list) {
-    _listModelDomain = list;
+  set setFromBaseListModelDomainParameterListModelDomain(BaseListModelDomain baseListModelDomain) {
+    _listModelDomain = baseListModelDomain.getListModelDomain;
   }
 
-  set _setIterator(BaseIterator newIterator) {
-    _iterator = newIterator;
-    _iterator.setList = _listModelDomain;
+  set _setParameterIterator(BaseIterator iterator) {
+    _iterator = iterator;
+    _iterator.setParameterListModelDomain = _listModelDomain;
   }
 
   @nonVirtual
   Response<List<T>, BaseException> runIteratorForGetListModel(
-      BaseTypeParameter<Enum> baseTypeParameterForBaseIterator,
-      Map<Enum,BaseIterator> mapEnumAndBaseIterator)
+      BaseTypeParameter<Enum> baseTypeParameterForBaseIterator, 
+      Map<Enum,BaseIterator> mapEnumAndBaseIterator) 
   {
     if(mapEnumAndBaseIterator.isEmpty) {
-      return Response.exception(LocalException(_nameClass,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
+      return Response.exception(LocalException(this,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
     }
     int i = 0;
     Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
@@ -48,38 +47,35 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
       if (selectedEnum == itemEnum)
       {
-        _setIterator = mapEnumAndBaseIterator[itemEnum];
+        _setParameterIterator = mapEnumAndBaseIterator[itemEnum];
         break;
       }
       if (i >= (mapEnumAndBaseIterator.length-1)) {
-        _setIterator = mapEnumAndBaseIterator[firstItemEnum];
+        _setParameterIterator = mapEnumAndBaseIterator[firstItemEnum];
         break;
       }
       i++;
     }
     if(_iterator == null) {
-      return Response.exception(LocalException(_nameClass,constDeveloper,"Iterator null"));
+      return Response.exception(LocalException(this,constDeveloper,"Iterator null"));
     }
-    _listModelDomain = _iterator.getSortedList;
+    _listModelDomain = _iterator.getSortedListModelDomain;
     return Response.success(_listModelDomain);
   }
 
-  Response<bool, BaseException> insertListModelToGetListModel(List<T> insertListModel)
-  {
+  Response<bool, BaseException> insertListModelToGetListModel(List<T> insertListModel) {
     _listModelDomain.addAll(insertListModel);
     return Response.success(true);
   }
   
-  Response<bool, BaseException> insertModelToGetListModel(T insertModel)
-  {
+  Response<bool, BaseException> insertModelToGetListModel(T insertModel) {
     _listModelDomain.add(insertModel);
     return Response.success(true);
   }
 
-  Response<bool, BaseException> updateListModelToGetListModel(List<T> updateListModel)
-  {
-    if (_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
+  Response<bool, BaseException> updateListModelToGetListModel(List<T> updateListModel) {
+    if(_listModelDomain.isEmpty) {
+      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
     }
     for(int i = 0; i < updateListModel.length; i++) {
       _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateListModel[i].uniqueId)] = updateListModel[i];
@@ -87,24 +83,22 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(true);
   }
 
-  Response<bool, BaseException> updateModelToGetListModel(T updateModel)
-  {
-    if (_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
+  Response<bool, BaseException> updateModelToGetListModel(T updateModel) {
+    if(_listModelDomain.isEmpty) {
+      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
     }
     _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateModel.uniqueId)] = updateModel;
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModelDomain)
-  {
+  Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModel) {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
     }
     List<T> toListDelete = List.empty(growable: true);
     for(int i = 0; i < _listModelDomain.length; i++) {
-      for(int j = 0; j < deleteListModelDomain.length; j++) {
-        if (_listModelDomain[i].uniqueId == deleteListModelDomain[j].uniqueId) {
+      for(int j = 0; j < deleteListModel.length; j++) {
+        if (_listModelDomain[i].uniqueId == deleteListModel[j].uniqueId) {
           toListDelete.add(_listModelDomain[i]);
         }
       }
@@ -119,10 +113,9 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteModelToGetListModel(T deleteModel)
-  {
+  Response<bool, BaseException> deleteModelToGetListModel(T deleteModel) {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(_nameClass,constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
     }
     _listModelDomain.removeWhere((item) => item.uniqueId == deleteModel.uniqueId);
     return Response.success(true);

@@ -38,7 +38,6 @@ enum EnumTypeForSP {
 abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNamedDatabase>
 {
   static SharedPreferences _sharedPreferences;
-  final String _nameClass = (BaseModelSharedPreferenceDatabaseDataSource).toString();
 
   @protected
   T fromMapToBaseModelSharedPreferenceDatabase(Map<String, dynamic> map);
@@ -54,11 +53,11 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
 
   @protected
   Future<Response<bool,LocalException>> baseInsertModelToSharedPreferenceDatabaseThereIsParameterDataSource(
-      T localModel) async
+      T model) async
   {
     try {
       final sP = await sharedPreferences;
-      localModel.toMap().forEach((key, value) {
+      model.toMap().forEach((key, value) {
         if(value is String) {
           sP.setString(key, value);
         } else if(value is int) {
@@ -73,7 +72,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(true);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -86,7 +85,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(true);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
@@ -120,11 +119,10 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
             break;
         }
       });
-      var model = fromMapToBaseModelSharedPreferenceDatabase(map);
-
+      T model = fromMapToBaseModelSharedPreferenceDatabase(map);
       return Response.success(model);
     } catch (e) {
-      return Response.exception(LocalException(_nameClass,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 }

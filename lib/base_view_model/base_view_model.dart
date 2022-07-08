@@ -39,8 +39,6 @@ typedef ItemCreator<S> = S Function();
 
 abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,C extends Enum> implements BaseDispose
 {
-  final String _nameClass = (BaseViewModel).toString();
-
   /* Init Objects For Model */
   final List<EnumBaseModelDomainVM> _listEnumBaseModelDomainVM = List.empty(growable: true);
   final List<EnumBaseListModelDomainVM> _listEnumBaseListModelDomainVM = List.empty(growable: true);
@@ -823,7 +821,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   T getModel(EnumBaseModelDomainVM operation) {
     if(!_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseModelDomainVMAndBaseModelDomain[operation];
   }
@@ -832,7 +830,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   void setModel(T newModel,EnumBaseModelDomainVM operation) {
     if(!_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation)) {
-      throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      throw LocalException(this,constDeveloper,"$operation not found");
     }
     _mapEnumBaseModelDomainVMAndBaseModelDomain[operation] = newModel;
   }
@@ -841,7 +839,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<T> getFutureModel(EnumBaseModelDomainVM operation) async {
     if(!_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseModelDomainVMAndBaseModelDomain[operation];
   }
@@ -850,7 +848,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Stream<T> getStreamModel(EnumBaseModelDomainVM operation) {
     if(!_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation].stream;
   }
@@ -859,7 +857,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   void notifyStreamModel(EnumBaseModelDomainVM operation) {
     if(!_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain.containsKey(operation) || !_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation)) {
-      throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      throw LocalException(this,constDeveloper,"$operation not found");
     }
     _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation]
         .add(_mapEnumBaseModelDomainVMAndBaseModelDomain[operation]);
@@ -873,7 +871,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   List<T> getListModel(EnumBaseListModelDomainVM operation)  {
     if(!_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain;
   }
@@ -882,16 +880,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   void setListModel(List<T> newModel,EnumBaseListModelDomainVM operation) {
     if(!_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
-      throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      throw LocalException(this,constDeveloper,"$operation not found");
     }
-    _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].setListModelDomain = newModel;
+    _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].setParameterListModelDomain = newModel;
   }
 
   @protected
   @nonVirtual
   Future<List<T>> getFutureListModel(EnumBaseListModelDomainVM operation) async {
     if(!_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain;
   }
@@ -900,7 +898,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Stream<List<T>> getStreamListModel(EnumBaseListModelDomainVM operation) {
     if(!_mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain[operation].stream;
   }
@@ -909,7 +907,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   void notifyStreamListModel(EnumBaseListModelDomainVM operation) {
     if(!_mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain.containsKey(operation) || !_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
-      throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      throw LocalException(this,constDeveloper,"$operation not found");
     }
     _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain[operation]
         .add(_mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].getListModelDomain);
@@ -921,7 +919,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   Y _getBaseListModel(EnumBaseListModelDomainVM operation) {
     if(!_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
-      return throw LocalException(_nameClass,constDeveloper,"$operation not found");
+      return throw LocalException(this,constDeveloper,"$operation not found");
     }
     return _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation];
   }
@@ -1034,7 +1032,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         .getListModelFromNamedDatabaseDataSource();
     if(response.isSuccessResponse) {
       Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-      baseListModelDomain.setListModelDomainByBaseListModelDomain = response.getData.toBaseListModelDomain();
+      baseListModelDomain.setFromBaseListModelDomainParameterListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(baseListModelDomain.getListModelDomain);
     } else {
       return Response.exception(response.getException);
@@ -1049,7 +1047,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         .getListModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
     if(response.isSuccessResponse) {
       Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-      baseListModelDomain.setListModelDomainByBaseListModelDomain = response.getData.toBaseListModelDomain();
+      baseListModelDomain.setFromBaseListModelDomainParameterListModelDomain = response.getData.toBaseListModelDomain();
       return Response.success(baseListModelDomain.getListModelDomain);
     } else {
       return Response.exception(response.getException);
@@ -1079,7 +1077,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw LocalException(_nameClass,constDeveloper,"ConverterToBaseModelNamedDatabase null");
+      return throw LocalException(this,constDeveloper,"ConverterToBaseModelNamedDatabase null");
     }
     T modelDomain = cloneModel(model);
     if(_insertModelToNamedDatabaseFBDS == null) {
@@ -1103,7 +1101,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw LocalException(_nameClass,constDeveloper,"ConverterToBaseListModelNamedDatabase null");
+      return throw LocalException(this,constDeveloper,"ConverterToBaseListModelNamedDatabase null");
     }
     BaseListModelDomain<T> baseListModelDomain = BaseListModelDomain(_cloneListModel(listModel));
     if(_insertListModelToNamedDatabaseFBDS == null) {
@@ -1127,7 +1125,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw LocalException(_nameClass,constDeveloper,"ConverterToBaseModelNamedDatabase null");
+      return throw LocalException(this,constDeveloper,"ConverterToBaseModelNamedDatabase null");
     }
     T modelDomain = cloneModel(model);
     if(_updateModelToNamedDatabaseFBDS == null) {
@@ -1151,7 +1149,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw LocalException(_nameClass,constDeveloper,"ConverterToBaseListModelNamedDatabase null");
+      return throw LocalException(this,constDeveloper,"ConverterToBaseListModelNamedDatabase null");
     }
     BaseListModelDomain<T> baseListModelDomain = BaseListModelDomain(_cloneListModel(listModel));
     if(_updateListModelToNamedDatabaseFBDS == null) {
@@ -1175,7 +1173,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw LocalException(_nameClass,constDeveloper,"ConverterToBaseModelNamedDatabase null");
+      return throw LocalException(this,constDeveloper,"ConverterToBaseModelNamedDatabase null");
     }
     T modelDomain = cloneModel(model);
     if(_deleteModelToNamedDatabaseFBDS == null) {
@@ -1199,7 +1197,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw LocalException(_nameClass,constDeveloper,"ConverterToBaseListModelNamedDatabase null");
+      return throw LocalException(this,constDeveloper,"ConverterToBaseListModelNamedDatabase null");
     }
     BaseListModelDomain<T> baseListModelDomain = BaseListModelDomain(_cloneListModel(listModel));
     if(_deleteListModelToNamedDatabaseFBDS == null) {

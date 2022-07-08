@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 class DomainException extends BaseException {
   final String _nameError;
 
-  DomainException(String nameClassWhereWasTheMistake,this._nameError) : super((DomainException).toString(),nameClassWhereWasTheMistake);
+  DomainException(Object thisClass,this._nameError) : super((DomainException).toString(),thisClass);
 
   String get getNameError => _nameError;
 
