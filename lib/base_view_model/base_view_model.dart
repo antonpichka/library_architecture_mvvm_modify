@@ -50,7 +50,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   final Map<EnumBaseListModelDomainVM,Y> _mapEnumBaseListModelDomainVMAndBaseListModelDomain = {};
   final Map<EnumBaseModelDomainVM,StreamController<T>> _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain = {};
   final Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain = {};
-  final Map<EnumBaseTypeParameterForGettersVM,BaseTypeParameter<U>> _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter = {};
+  final Map<EnumBaseTypeParameterForGettersVM,U> _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter = {};
 
   /* Maps And BaseTypeParameterForBaseIterator For Iterator */
   final Map<C,BaseIterator<T>> _mapEnumAndBaseIterator;
@@ -161,7 +161,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @protected
   @nonVirtual
   Future<Response<List<T>, BaseException>> setBaseTypeParameterForGettersAndGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-      BaseTypeParameter<U> baseTypeParameter)
+      U baseTypeParameter)
   {
     setBaseTypeParameterForGetters(baseTypeParameter, EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter);
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
@@ -172,7 +172,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @protected
   @nonVirtual
   Future<Response<List<T>, BaseException>> defaultGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-      BaseTypeParameter<U> baseTypeParameter)
+      U baseTypeParameter)
   {
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
         _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U>,
@@ -795,7 +795,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  BaseTypeParameter<U> getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM operation) {
+  U getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM operation) {
     if(!_mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter.containsKey(operation)) {
       return throw LocalException(this,constDeveloper,"$operation not found");
     }
@@ -805,7 +805,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @protected
   @nonVirtual
   void setBaseTypeParameterForGetters(
-      BaseTypeParameter<U> baseTypeParameter,
+      U baseTypeParameter,
       EnumBaseTypeParameterForGettersVM operation)
   {
     if(!_mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter.containsKey(operation)) {
@@ -944,7 +944,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     }
     if(_dataSource is GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
-      _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter] = BaseTypeParameter(null);
+      _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter] = null;
     }
     if(_dataSource is InsertListModelToNamedDatabaseThereIsParameterDataSource<X>) {
       _listEnumBaseListModelDomainVM.add(EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
@@ -958,7 +958,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     if(_dataSource is GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
       _listEnumBaseListModelDomainVM.add(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-      _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter] = BaseTypeParameter(null);
+      _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter] = null;
     } else if(_dataSource is GetListModelFromNamedDatabaseDataSource<X>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
       _listEnumBaseListModelDomainVM.add(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
