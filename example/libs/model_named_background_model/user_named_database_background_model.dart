@@ -9,10 +9,11 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_function_befor
 import 'package:library_architecture_mvvm_modify/base_background_model/base_background_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import '../model/user/list_user_domain.dart';
 import '../model/user/user_domain.dart';
 
-class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>,TypeParameterForBaseTypeParameter> extends BaseBackgroundModel<UserDomain,ListUserDomain,T,Y,TypeParameterForBaseTypeParameter> {
+class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>,U extends BaseTypeParameter> extends BaseBackgroundModel<UserDomain,ListUserDomain,T,Y,U> {
   UserNamedDatabaseBackgroundModel(
       Object dataSource,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,

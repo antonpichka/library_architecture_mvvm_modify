@@ -28,7 +28,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,TypeParameterForBaseTypeParameter> {
+abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,U extends BaseTypeParameter> {
   /* Init DataSource */
   final Object _dataSource;
 
@@ -95,7 +95,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseThereIsParameter() {
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,TypeParameterForBaseTypeParameter>,
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U>,
         BoolTypeParameter(true));
   }
 
@@ -105,7 +105,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       BaseTypeParameter newBaseTypeParameter)
   {
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,TypeParameterForBaseTypeParameter>,
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U>,
         newBaseTypeParameter);
   }
   // end getListThereIsParameter 2
@@ -115,7 +115,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseThereIsParameter() {
     return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,TypeParameterForBaseTypeParameter>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U>,
         BoolTypeParameter(true));
   }
 
@@ -125,7 +125,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       BaseTypeParameter newBaseTypeParameter)
   {
     return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,TypeParameterForBaseTypeParameter>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U>,
         newBaseTypeParameter);
   }
   // end getModel 2
@@ -325,7 +325,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameter(
-      GetListModelFromNamedDatabaseThereIsParameterDataSource<X,TypeParameterForBaseTypeParameter> getListModelFromNamedDatabaseThereIsParameterDataSource,
+      GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U> getListModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
@@ -339,7 +339,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameter(
-      GetModelFromNamedDatabaseThereIsParameterDataSource<Z,TypeParameterForBaseTypeParameter> getModelFromNamedDatabaseThereIsParameterDataSource,
+      GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U> getModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource
