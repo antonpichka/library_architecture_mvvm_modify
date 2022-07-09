@@ -24,7 +24,7 @@ class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y 
       UpdateListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> updateListModelToNamedDatabaseFBDS,
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
-      : super(dataSource,
+      : super.noIterator(dataSource,
           () => UserDomain.getDefaultUserDomain,
           () => ListUserDomain([]),
       converterToBaseModelNamedDatabase,
@@ -34,9 +34,7 @@ class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y 
       updateModelToNamedDatabaseFBDS,
       updateListModelToNamedDatabaseFBDS,
       deleteModelToNamedDatabaseFBDS,
-      deleteListModelToNamedDatabaseFBDS,
-      {},
-      null);
+      deleteListModelToNamedDatabaseFBDS);
 
   @override
   UserDomain cloneModelDomain(UserDomain model) {
