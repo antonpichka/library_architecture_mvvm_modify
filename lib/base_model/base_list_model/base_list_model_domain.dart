@@ -9,7 +9,7 @@ import 'package:library_architecture_mvvm_modify/response.dart';
 
 class BaseListModelDomain<T extends BaseModelDomain> {
   List<T> _listModelDomain;
-  BaseIterator _iterator;
+  BaseIterator<T> _iterator;
 
   BaseListModelDomain(this._listModelDomain);
 
@@ -28,7 +28,7 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     _listModelDomain = baseListModelDomain.getListModelDomain;
   }
 
-  set _setParameterIterator(BaseIterator iterator) {
+  set _setParameterIterator(BaseIterator<T> iterator) {
     _iterator = iterator;
     _iterator.setParameterListModelDomain = _listModelDomain;
   }
@@ -36,14 +36,14 @@ class BaseListModelDomain<T extends BaseModelDomain> {
   @nonVirtual
   Response<List<T>, BaseException> runIteratorForGetListModel(
       BaseTypeParameter<Enum> baseTypeParameterForBaseIterator, 
-      Map<Enum,BaseIterator> mapEnumAndBaseIterator) 
+      Map<Enum,BaseIterator<T>> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
       return Response.exception(LocalException(this,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
     }
     int i = 0;
     Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
-    Enum firstItemEnum = mapEnumAndBaseIterator.keys.first;
+    Enum itemEnumFirst = mapEnumAndBaseIterator.keys.first;
     for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
       if (selectedEnum == itemEnum)
       {
@@ -51,13 +51,10 @@ class BaseListModelDomain<T extends BaseModelDomain> {
         break;
       }
       if (i >= (mapEnumAndBaseIterator.length-1)) {
-        _setParameterIterator = mapEnumAndBaseIterator[firstItemEnum];
+        _setParameterIterator = mapEnumAndBaseIterator[itemEnumFirst];
         break;
       }
       i++;
-    }
-    if(_iterator == null) {
-      return Response.exception(LocalException(this,constDeveloper,"Iterator null"));
     }
     _listModelDomain = _iterator.getSortedListModelDomain;
     return Response.success(_listModelDomain);
@@ -91,21 +88,21 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModel) {
+  Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModelDomain) {
     if(_listModelDomain.isEmpty) {
       return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
     }
-    List<T> toListDelete = List.empty(growable: true);
+    List<T> deleteListModelDomainForDelete = List.empty(growable: true);
     for(int i = 0; i < _listModelDomain.length; i++) {
-      for(int j = 0; j < deleteListModel.length; j++) {
-        if (_listModelDomain[i].uniqueId == deleteListModel[j].uniqueId) {
-          toListDelete.add(_listModelDomain[i]);
+      for(int j = 0; j < deleteListModelDomain.length; j++) {
+        if (_listModelDomain[i].uniqueId == deleteListModelDomain[j].uniqueId) {
+          deleteListModelDomainForDelete.add(_listModelDomain[i]);
         }
       }
     }
     for(int i = 0; i < _listModelDomain.length; i++) {
-      for(T deleteModelDomain in toListDelete) {
-        if(_listModelDomain[i].uniqueId == deleteModelDomain.uniqueId) {
+      for(T deleteModelDomainForDelete in deleteListModelDomainForDelete) {
+        if(_listModelDomain[i].uniqueId == deleteModelDomainForDelete.uniqueId) {
           _listModelDomain.removeAt(i);
         }
       }

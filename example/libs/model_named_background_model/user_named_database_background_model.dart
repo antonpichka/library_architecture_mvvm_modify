@@ -35,7 +35,7 @@ class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDoma
       deleteListModelToNamedDatabaseFBDS);
 
   @override
-  UserDomain cloneModel(UserDomain model) {
+  UserDomain cloneModelDomain(UserDomain model) {
     return UserDomain(model.uniqueId,model.name);
   }
 }

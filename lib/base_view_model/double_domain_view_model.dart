@@ -15,7 +15,7 @@ class DoubleDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends 
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomain,
       Map<T,BaseIterator> mapEnumAndBaseIterator,
       BaseTypeParameter<T> baseTypeParameterForBaseIterator) :
-        super.alternative(
+        super.noDataSource(
           listEnumBaseModelDomain,
           listEnumBaseListModelDomain,
           () => DoubleDomain.getDefaultDoubleDomain,

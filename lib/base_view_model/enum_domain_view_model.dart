@@ -15,7 +15,7 @@ class EnumDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends Ba
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomain,
       Map<T,BaseIterator> mapEnumAndBaseIterator,
       BaseTypeParameter<T> baseTypeParameterForBaseIterator) :
-        super.alternative(
+        super.noDataSource(
           listEnumBaseModelDomain,
           listEnumBaseListModelDomain,
           () => EnumDomain.getDefaultEnumDomain,
