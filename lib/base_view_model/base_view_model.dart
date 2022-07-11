@@ -86,16 +86,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       this._deleteModelToNamedDatabaseFBDS,
       this._deleteListModelToNamedDatabaseFBDS)
   {
-    _checkForNull([
-      _dataSource,
-      _initCreatorBaseModelDomain,
-      _initCreatorBaseListModelDomain,
-      _converterToBaseModelNamedDatabase,
-      _converterToBaseListModelNamedDatabase,
-      _mapEnumAndBaseIterator,
-      _enumTypeParameterForBaseIterator]);
     _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM();
-    _initMaps();
+    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
+    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
+    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
+    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
   }
 
   BaseViewModel.noIterator(
@@ -111,14 +106,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       this._deleteModelToNamedDatabaseFBDS,
       this._deleteListModelToNamedDatabaseFBDS)
   {
-    _checkForNull([
-      _dataSource,
-      _initCreatorBaseModelDomain,
-      _initCreatorBaseListModelDomain,
-      _converterToBaseModelNamedDatabase,
-      _converterToBaseListModelNamedDatabase]);
     _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM();
-    _initMaps();
+    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
+    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
+    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
+    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
   }
 
   BaseViewModel.noDataSource(
@@ -129,15 +121,12 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       this._mapEnumAndBaseIterator,
       this._enumTypeParameterForBaseIterator)
   {
-    _checkForNull([
-      listEnumBaseModelDomainVM,
-      listEnumBaseListModelDomainVM,
-      _initCreatorBaseModelDomain,
-      _initCreatorBaseListModelDomain,
-      _mapEnumAndBaseIterator,
-      _enumTypeParameterForBaseIterator]);
-    _initNoDataSourceListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM(listEnumBaseModelDomainVM,listEnumBaseListModelDomainVM);
-    _initMaps();
+    _initNoDataSourceListEnumBaseModelDomainVM(listEnumBaseModelDomainVM);
+    _initNoDataSourceListEnumBaseListModelDomainVM(listEnumBaseListModelDomainVM);
+    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
+    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
+    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
+    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
   }
 
   BaseViewModel.noDataSourceAndNoIterator(
@@ -146,13 +135,12 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain)
   {
-    _checkForNull([
-      listEnumBaseModelDomainVM,
-      listEnumBaseListModelDomainVM,
-      _initCreatorBaseModelDomain,
-      _initCreatorBaseListModelDomain]);
-    _initNoDataSourceListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM(listEnumBaseModelDomainVM,listEnumBaseListModelDomainVM);
-    _initMaps();
+    _initNoDataSourceListEnumBaseModelDomainVM(listEnumBaseModelDomainVM);
+    _initNoDataSourceListEnumBaseListModelDomainVM(listEnumBaseListModelDomainVM);
+    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
+    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
+    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
+    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
   }
 
   @override
@@ -1098,34 +1086,6 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   /// End BaseListModel **/
-  
-  void _checkForNull(List<Object> listObjectForCheckForNull) {
-    List<Object> listObjectForEqualsNull = List.empty(growable: true);
-    for(Object objectForCheckForNull in listObjectForCheckForNull) {
-      if(objectForCheckForNull != null) {
-        continue;
-      }
-      listObjectForEqualsNull.add(objectForCheckForNull);
-    }
-    if(listObjectForEqualsNull.isEmpty) {
-      return;
-    }
-    String printListObjectForEqualsNull = "";
-    int i = 0;
-    for(Object objectForEqualsNull in listObjectForEqualsNull) {
-      if(i > 0) {
-        printListObjectForEqualsNull += " and $objectForEqualsNull";
-      } else {
-        printListObjectForEqualsNull += "$objectForEqualsNull";
-      }
-      if(i >= (listObjectForEqualsNull.length-1)) {
-        printListObjectForEqualsNull += " equals null";
-        break;
-      }
-      i++;
-    }
-    throw LocalException(this,constDeveloper,printListObjectForEqualsNull);
-  }
 
   void _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM() {
     if(_dataSource is InsertModelToNamedDatabaseThereIsParameterDataSource<Z>) {
@@ -1160,63 +1120,70 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     }
   }
 
-  void _initNoDataSourceListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM(
-      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
+  void _initNoDataSourceListEnumBaseModelDomainVM(
+      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,)
+  {
+    if(listEnumBaseModelDomainVM == null) {
+      return;
+    }
+    if(listEnumBaseModelDomainVM.isEmpty) {
+      return;
+    }
+    _listEnumBaseModelDomainVM.addAll(listEnumBaseModelDomainVM);
+  }
+
+  void _initNoDataSourceListEnumBaseListModelDomainVM(
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM)
   {
-    _listEnumBaseModelDomainVM.addAll(listEnumBaseModelDomainVM);
+    if(listEnumBaseListModelDomainVM == null) {
+      return;
+    }
+    if(listEnumBaseListModelDomainVM.isEmpty) {
+      return;
+    }
     _listEnumBaseListModelDomainVM.addAll(listEnumBaseListModelDomainVM);
   }
   
-  void _initMaps() {
-    _mapEnumBaseModelDomainVMAndBaseModelDomain.addAll(_creationAndGetMapEnumBaseModelDomainVMAndBaseModelDomain());
-    _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain.addAll(_creationAndGetMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain());
-    _mapEnumBaseListModelDomainVMAndBaseListModelDomain.addAll(_creationAndGetMapEnumBaseListModelDomainVMAndBaseListModelDomain());
-    _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain.addAll(_creationAndGetMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain());
-  }
-
-  Map<EnumBaseModelDomainVM,T> _creationAndGetMapEnumBaseModelDomainVMAndBaseModelDomain() {
+  void _initMapEnumBaseModelDomainVMAndBaseModelDomain() {
     if(_listEnumBaseModelDomainVM.isEmpty) {
-      return {};
+      return;
     }
-    Map<EnumBaseModelDomainVM,T> map = {};
+    if(_initCreatorBaseModelDomain == null) {
+      return;
+    }
     for(EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
-      map[enumBaseModelDomainVM] = _initCreatorBaseModelDomain();
+      _mapEnumBaseModelDomainVMAndBaseModelDomain[enumBaseModelDomainVM] = _initCreatorBaseModelDomain();
     }
-    return map;
   }
 
-  Map<EnumBaseModelDomainVM,StreamController<T>> _creationAndGetMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain() {
+  void _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain() {
     if(_listEnumBaseModelDomainVM.isEmpty) {
-      return {};
+      return;
     }
-    Map<EnumBaseModelDomainVM,StreamController<T>> map = {};
-    for (EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
-      map[enumBaseModelDomainVM] = StreamController<T>.broadcast();
+    for(EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
+      _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[enumBaseModelDomainVM] = StreamController<T>.broadcast();
     }
-    return map;
   }
 
-  Map<EnumBaseListModelDomainVM,Y> _creationAndGetMapEnumBaseListModelDomainVMAndBaseListModelDomain() {
+  void _initMapEnumBaseListModelDomainVMAndBaseListModelDomain() {
     if(_listEnumBaseListModelDomainVM.isEmpty) {
-      return {};
+      return;
     }
-    Map<EnumBaseListModelDomainVM,Y> map = {};
+    if(_initCreatorBaseListModelDomain == null) {
+      return;
+    }
     for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in _listEnumBaseListModelDomainVM) {
-      map[enumBaseListModelDomainVM] = _initCreatorBaseListModelDomain();
+      _mapEnumBaseListModelDomainVMAndBaseListModelDomain[enumBaseListModelDomainVM] = _initCreatorBaseListModelDomain();
     }
-    return map;
   }
 
-  Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _creationAndGetMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain() {
+  void _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain() {
     if(_listEnumBaseListModelDomainVM.isEmpty) {
-      return {};
+      return;
     }
-    Map<EnumBaseListModelDomainVM,StreamController<List<T>>> map = {};
     for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in _listEnumBaseListModelDomainVM) {
-      map[enumBaseListModelDomainVM] = StreamController<List<T>>.broadcast();
+      _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain[enumBaseListModelDomainVM] = StreamController<List<T>>.broadcast();
     }
-    return map;
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseAndUseTheSetters(
