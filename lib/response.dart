@@ -49,6 +49,13 @@ class Response<T,Y extends BaseException> {
     return _exception;
   }
 
+  CancelOperationWithoutErrorAndSuccess get getCancelOperationWithoutErrorAndSuccess {
+    if(_cancelOperationWithoutErrorAndSuccess == null) {
+      return throw LocalException(this,constDeveloper,"CancelOperationWithoutErrorAndSuccess null");
+    }
+    return _cancelOperationWithoutErrorAndSuccess;
+  }
+
   bool get isSuccessResponse {
     if(_data == null) {
       return false;

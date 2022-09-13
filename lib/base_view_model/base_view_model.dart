@@ -182,7 +182,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseAndUseTheSetters()
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseAndUseTheSetters(
         _dataSource as GetListModelFromNamedDatabaseDataSource<X>);
@@ -194,7 +194,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseThereIsParameterAndUseTheSetters()
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
         _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
@@ -207,7 +207,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       BaseTypeParameter baseTypeParameter)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setBaseTypeParameterForGetters(baseTypeParameter, EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter);
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
@@ -221,7 +221,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       BaseTypeParameter baseTypeParameter)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
         _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
@@ -233,6 +233,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @protected
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseThereIsParameterAndUseTheSetters() {
+    if(_dataSource == null) {
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
+    }
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
         getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter));
@@ -244,7 +247,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       BaseTypeParameter baseTypeParameter)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setBaseTypeParameterForGetters(baseTypeParameter, EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter);
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
@@ -258,7 +261,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       BaseTypeParameter baseTypeParameter)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
@@ -271,7 +274,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -285,7 +288,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -299,7 +302,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T model)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
     return _baseInsertModelToNamedDatabaseThereIsParameter(
@@ -315,7 +318,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setModel(model, EnumBaseModelDomainVM.insertModelToNamedDatabaseThereIsParameter);
     return _baseInsertModelToNamedDatabaseThereIsParameter(
@@ -330,7 +333,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T model)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -345,7 +348,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -359,7 +362,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -373,7 +376,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -387,7 +390,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModel)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
@@ -403,7 +406,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setListModel(listModel, EnumBaseListModelDomainVM.insertListModelToNamedDatabaseThereIsParameter);
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
@@ -418,7 +421,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModel)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -433,7 +436,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -447,7 +450,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -461,7 +464,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -475,7 +478,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T model)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
@@ -491,7 +494,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setModel(model, EnumBaseModelDomainVM.updateModelToNamedDatabaseThereIsParameter);
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
@@ -506,7 +509,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T model)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -521,7 +524,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -535,7 +538,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -549,7 +552,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -563,7 +566,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModel)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
@@ -579,7 +582,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setListModel(listModel, EnumBaseListModelDomainVM.updateListModelToNamedDatabaseThereIsParameter);
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
@@ -594,7 +597,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModel)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -609,7 +612,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -623,7 +626,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -637,7 +640,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -651,7 +654,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T model)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
@@ -667,7 +670,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setModel(model, EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
@@ -682,7 +685,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T model)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -708,7 +711,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -722,7 +725,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -736,7 +739,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModel)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
@@ -752,7 +755,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     setListModel(listModel, EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
@@ -767,7 +770,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModel)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -782,7 +785,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -1191,13 +1194,15 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseDataSource
         .getListModelFromNamedDatabaseDataSource();
-    if(response.isSuccessResponse) {
-      Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-      baseListModelDomain.setFromBaseListModelDomainParameterListModelDomain = response.getData.toBaseListModelDomain();
-      return Response.success(baseListModelDomain.getListModelDomain);
-    } else {
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
+    baseListModelDomain.setFromBaseListModelDomainParameterListModelDomain = response.getData.toBaseListModelDomain();
+    return Response.success(baseListModelDomain.getListModelDomain);
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
@@ -1206,13 +1211,15 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
         .getListModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
-    if(response.isSuccessResponse) {
-      Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
-      baseListModelDomain.setFromBaseListModelDomainParameterListModelDomain = response.getData.toBaseListModelDomain();
-      return Response.success(baseListModelDomain.getListModelDomain);
-    } else {
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    Y baseListModelDomain = _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
+    baseListModelDomain.setFromBaseListModelDomainParameterListModelDomain = response.getData.toBaseListModelDomain();
+    return Response.success(baseListModelDomain.getListModelDomain);
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
@@ -1221,15 +1228,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource
         .getModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
-    if(response.isSuccessResponse) {
-      setModel(
-          response.getData.toBaseModelDomain(),
-          EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter
-      );
-      return Response.success(getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter));
-    } else {
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    setModel(response.getData.toBaseModelDomain(), EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
+    return Response.success(getModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseThereIsParameter(
@@ -1245,15 +1251,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return await insertModelToNamedDatabaseThereIsParameterDataSource
           .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModelDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _insertModelToNamedDatabaseFBDS
-        .insertModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await insertModelToNamedDatabaseThereIsParameterDataSource
-          .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
-    } else {
+        .insertModelToNamedDatabaseFBDS(modelDomain,_cloneListModelDomain(newListModelDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await insertModelToNamedDatabaseThereIsParameterDataSource
+        .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseThereIsParameter(
@@ -1269,15 +1276,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return await insertListModelToNamedDatabaseThereIsParameterDataSource
           .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModelDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _insertListModelToNamedDatabaseFBDS
-        .insertListModelToNamedDatabaseFBDS(baseListModelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await insertListModelToNamedDatabaseThereIsParameterDataSource
-          .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
-    } else {
+        .insertListModelToNamedDatabaseFBDS(baseListModelDomain,_cloneListModelDomain(newListModelDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await insertListModelToNamedDatabaseThereIsParameterDataSource
+        .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseThereIsParameter(
@@ -1293,15 +1301,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return await updateModelToNamedDatabaseThereIsParameterDataSource
           .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModelDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _updateModelToNamedDatabaseFBDS
-        .updateModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await updateModelToNamedDatabaseThereIsParameterDataSource
-          .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
-    } else {
+        .updateModelToNamedDatabaseFBDS(modelDomain,_cloneListModelDomain(newListModelDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await updateModelToNamedDatabaseThereIsParameterDataSource
+          .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseThereIsParameter(
@@ -1317,15 +1326,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return await updateListModelToNamedDatabaseThereIsParameterDataSource
           .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     }
-    List<T> listModelDomainForFBDSUsingGetList = _cloneListModelDomain(newListModelDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _updateListModelToNamedDatabaseFBDS
-        .updateListModelToNamedDatabaseFBDS(baseListModelDomain,listModelDomainForFBDSUsingGetList);
-    if(response.isSuccessResponse) {
-      return await updateListModelToNamedDatabaseThereIsParameterDataSource
-          .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
-    } else {
+        .updateListModelToNamedDatabaseFBDS(baseListModelDomain,_cloneListModelDomain(newListModelDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await updateListModelToNamedDatabaseThereIsParameterDataSource
+        .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseThereIsParameter(
@@ -1341,15 +1351,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return await deleteModelToNamedDatabaseThereIsParameterDataSource
           .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModelDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _deleteModelToNamedDatabaseFBDS
-        .deleteModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await deleteModelToNamedDatabaseThereIsParameterDataSource
-          .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
-    } else {
+        .deleteModelToNamedDatabaseFBDS(modelDomain,_cloneListModelDomain(newListModelDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await deleteModelToNamedDatabaseThereIsParameterDataSource
+        .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseThereIsParameter(
@@ -1365,15 +1376,16 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return await deleteListModelToNamedDatabaseThereIsParameterDataSource
           .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModelDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _deleteListModelToNamedDatabaseFBDS
-        .deleteListModelToNamedDatabaseFBDS(baseListModelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await deleteListModelToNamedDatabaseThereIsParameterDataSource
-          .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
-    } else {
+        .deleteListModelToNamedDatabaseFBDS(baseListModelDomain,_cloneListModelDomain(newListModelDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await deleteListModelToNamedDatabaseThereIsParameterDataSource
+        .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomain));
   }
 
   Response<List<T>,BaseException> _baseRunIteratorForGetListModel(BaseTypeParameter<EnumIterator> baseTypeParameterForBaseIterator) {
@@ -1422,9 +1434,10 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       if(streamController == null) {
         continue;
       }
-      if(!streamController.isClosed) {
-        streamController.close();
+      if(streamController.isClosed) {
+        continue;
       }
+      streamController.close();
     }
   }
 }
