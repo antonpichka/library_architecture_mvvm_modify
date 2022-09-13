@@ -1,18 +1,35 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/cancel_operation_without_error_and_success.dart';
 import 'package:library_architecture_mvvm_modify/constants.dart';
 
 class Response<T,Y extends BaseException> {
   T _data;
   Y _exception;
+  CancelOperationWithoutErrorAndSuccess _cancelOperationWithoutErrorAndSuccess;
 
   Response.success(this._data) {
     if(_exception != null) {
       _exception = null;
     }
+    if(_cancelOperationWithoutErrorAndSuccess != null) {
+      _cancelOperationWithoutErrorAndSuccess = null;
+    }
   }
 
   Response.exception(this._exception) {
+    if(_data != null) {
+      _data = null;
+    }
+    if(_cancelOperationWithoutErrorAndSuccess != null) {
+      _cancelOperationWithoutErrorAndSuccess = null;
+    }
+  }
+
+  Response.cancelOperationWithoutErrorAndSuccess(this._cancelOperationWithoutErrorAndSuccess) {
+    if(_exception != null) {
+      _exception = null;
+    }
     if(_data != null) {
       _data = null;
     }
@@ -33,22 +50,23 @@ class Response<T,Y extends BaseException> {
   }
 
   bool get isSuccessResponse {
-    if(_data != null &&
-        _exception == null)
-    {
-      return true;
-    } else {
+    if(_data == null) {
       return false;
     }
+    return true;
   }
 
   bool get isExceptionResponse {
-    if(_data == null &&
-        _exception != null)
-    {
-      return true;
-    } else {
+    if(_exception == null) {
       return false;
     }
+    return true;
+  }
+
+  bool get isCanceledOperationWithoutErrorAndSuccess {
+    if(_cancelOperationWithoutErrorAndSuccess == null) {
+      return false;
+    }
+    return true;
   }
 }
