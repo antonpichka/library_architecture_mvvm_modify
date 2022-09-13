@@ -197,7 +197,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-        _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
+        _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
         getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter));
   }
 
@@ -211,7 +211,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     }
     setBaseTypeParameterForGetters(baseTypeParameter, EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter);
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-        _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
+        _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
         getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter));
   }
 
@@ -224,7 +224,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-        _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
+        _dataSource as  GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
         baseTypeParameter);
   }
   // end getListThereIsParameterAndUseTheSetters 3
@@ -234,7 +234,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseThereIsParameterAndUseTheSetters() {
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
         getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter));
   }
 
@@ -248,7 +248,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     }
     setBaseTypeParameterForGetters(baseTypeParameter, EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter);
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
         getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter));
   }
 
@@ -261,7 +261,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
         baseTypeParameter);
   }
   // end getThereIsParameterAndUseTheSetters 3
@@ -1097,7 +1097,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     if(_dataSource is DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.deleteModelToNamedDatabaseThereIsParameter);
     }
-    if(_dataSource is GetModelFromNamedDatabaseThereIsParameterDataSource<Z>) {
+    if(_dataSource is GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.getModelFromNamedDatabaseThereIsParameter);
       _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseThereIsParameter] = null;
     }
@@ -1110,7 +1110,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
     if(_dataSource is DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>) {
       _listEnumBaseListModelDomainVM.add(EnumBaseListModelDomainVM.deleteListModelToNamedDatabaseThereIsParameter);
     }
-    if(_dataSource is GetListModelFromNamedDatabaseThereIsParameterDataSource<X>) {
+    if(_dataSource is GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
       _listEnumBaseListModelDomainVM.add(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
       _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseThereIsParameter] = null;
@@ -1201,7 +1201,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-      GetListModelFromNamedDatabaseThereIsParameterDataSource<X> getListModelFromNamedDatabaseThereIsParameterDataSource,
+      GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter> getListModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
@@ -1216,7 +1216,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameterAndUseTheSetters(
-      GetModelFromNamedDatabaseThereIsParameterDataSource<Z> getModelFromNamedDatabaseThereIsParameterDataSource,
+      GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter> getModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource

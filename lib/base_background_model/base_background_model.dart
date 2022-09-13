@@ -103,7 +103,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
         BoolTypeParameter(true));
   }
 
@@ -116,7 +116,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
         newBaseTypeParameter);
   }
   // end getListThereIsParameter 2
@@ -129,7 +129,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
         BoolTypeParameter(true));
   }
 
@@ -142,7 +142,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
         newBaseTypeParameter);
   }
   // end getModelThereIsParameter 2
@@ -418,7 +418,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameter(
-      GetListModelFromNamedDatabaseThereIsParameterDataSource<X> getListModelFromNamedDatabaseThereIsParameterDataSource,
+      GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter> getListModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
@@ -432,7 +432,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameter(
-      GetModelFromNamedDatabaseThereIsParameterDataSource<Z> getModelFromNamedDatabaseThereIsParameterDataSource,
+      GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter> getModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource
