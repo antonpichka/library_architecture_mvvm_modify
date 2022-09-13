@@ -9,9 +9,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_there_is_parameter_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 
-abstract class DataSource<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase,U extends BaseTypeParameter>
+abstract class DataSource<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase>
     implements
         InsertModelToNamedDatabaseThereIsParameterDataSource<T>,
         UpdateModelToNamedDatabaseThereIsParameterDataSource<T>,
@@ -20,7 +19,7 @@ abstract class DataSource<T extends BaseModelNamedDatabase,Y extends BaseListMod
         UpdateListModelToNamedDatabaseThereIsParameterDataSource<Y>,
         DeleteListModelToNamedDatabaseThereIsParameterDataSource<Y>,
         GetListModelFromNamedDatabaseDataSource<Y>,
-        GetListModelFromNamedDatabaseThereIsParameterDataSource<Y,U>,
-        GetModelFromNamedDatabaseThereIsParameterDataSource<T,U>
+        GetListModelFromNamedDatabaseThereIsParameterDataSource<Y>,
+        GetModelFromNamedDatabaseThereIsParameterDataSource<T>
 {
 }

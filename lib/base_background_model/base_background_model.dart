@@ -30,7 +30,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,U extends BaseTypeParameter> {
+abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>> {
   /* Init DataSource */
   final Object _dataSource;
 
@@ -103,20 +103,20 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U>,
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
         BoolTypeParameter(true));
   }
 
   @protected
   @nonVirtual
   Future<Response<List<T>, BaseException>> defaultGetListModelFromNamedDatabaseThereIsParameter(
-      U newBaseTypeParameter)
+      BaseTypeParameter newBaseTypeParameter)
   {
     if(_dataSource == null) {
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U>,
+        _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X>,
         newBaseTypeParameter);
   }
   // end getListThereIsParameter 2
@@ -129,20 +129,20 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
         BoolTypeParameter(true));
   }
 
   @protected
   @nonVirtual
   Future<Response<T, BaseException>> defaultGetModelFromNamedDatabaseThereIsParameter(
-      U newBaseTypeParameter)
+      BaseTypeParameter newBaseTypeParameter)
   {
     if(_dataSource == null) {
       throw LocalException(this,constDeveloper,"$_dataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
-        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U>,
+        _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z>,
         newBaseTypeParameter);
   }
   // end getModelThereIsParameter 2
@@ -418,7 +418,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameter(
-      GetListModelFromNamedDatabaseThereIsParameterDataSource<X,U> getListModelFromNamedDatabaseThereIsParameterDataSource,
+      GetListModelFromNamedDatabaseThereIsParameterDataSource<X> getListModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
@@ -432,7 +432,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameter(
-      GetModelFromNamedDatabaseThereIsParameterDataSource<Z,U> getModelFromNamedDatabaseThereIsParameterDataSource,
+      GetModelFromNamedDatabaseThereIsParameterDataSource<Z> getModelFromNamedDatabaseThereIsParameterDataSource,
       BaseTypeParameter newBaseTypeParameter)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource

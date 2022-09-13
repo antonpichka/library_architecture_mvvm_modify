@@ -9,7 +9,7 @@ import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_list_model_domain_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enums_for_view_model/enum_base_model_domain_vm.dart';
 
-class IntDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends BaseViewModel<IntDomain,ListIntDomain,Default<IntDomain>,ListDefault<ListIntDomain,Default<IntDomain>>,T,U> {
+class IntDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends BaseViewModel<IntDomain,ListIntDomain,Default<IntDomain>,ListDefault<ListIntDomain,Default<IntDomain>>,T> {
   IntDomainViewModel(
       List<EnumBaseModelDomainVM> listEnumBaseModelDomain,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomain,
