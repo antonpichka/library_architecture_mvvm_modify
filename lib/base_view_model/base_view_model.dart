@@ -35,8 +35,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,EnumIterator extends Enum> implements BaseDispose
-{
+abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,EnumIterator extends Enum> implements BaseDispose {
   /* Init Objects For Model */
   final List<EnumBaseModelDomainVM> _listEnumBaseModelDomainVM = List.empty(growable: true);
   final List<EnumBaseListModelDomainVM> _listEnumBaseListModelDomainVM = List.empty(growable: true);
@@ -1407,37 +1406,37 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   Response<List<T>,BaseException> _baseRunIteratorForGetListModel(BaseTypeParameter<EnumIterator> baseTypeParameterForBaseIterator) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .runIteratorForGetListModel(baseTypeParameterForBaseIterator, _mapEnumAndBaseIterator);
+        .runIteratorForGetListModel(thisClass,baseTypeParameterForBaseIterator, _mapEnumAndBaseIterator);
   }
 
   Response<bool, BaseException> _baseInsertModelToGetListModel(T modelDomain) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .insertModelToGetListModel(cloneModelDomain(modelDomain));
+        .insertModelToGetListModel(thisClass,cloneModelDomain(modelDomain));
   }
 
   Response<bool, BaseException> _baseInsertListModelToGetListModel(List<T> listModelDomain) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .insertListModelToGetListModel(_cloneListModelDomain(listModelDomain));
+        .insertListModelToGetListModel(thisClass,_cloneListModelDomain(listModelDomain));
   }
 
   Response<bool, BaseException> _baseUpdateModelToGetListModel(T modelDomain) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .updateModelToGetListModel(cloneModelDomain(modelDomain));
+        .updateModelToGetListModel(thisClass,cloneModelDomain(modelDomain));
   }
 
   Response<bool, BaseException> _baseUpdateListModelToGetListModel(List<T> listModelDomain) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .updateListModelToGetListModel(_cloneListModelDomain(listModelDomain));
+        .updateListModelToGetListModel(thisClass,_cloneListModelDomain(listModelDomain));
   }
 
   Response<bool, BaseException> _baseDeleteModelToGetListModel(T modelDomain) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .deleteModelToGetListModel(cloneModelDomain(modelDomain));
+        .deleteModelToGetListModel(thisClass,cloneModelDomain(modelDomain));
   }
 
   Response<bool, BaseException> _baseDeleteListModelToGetListModel(List<T> listModelDomain) {
     return _getBaseListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter)
-        .deleteListModelToGetListModel(_cloneListModelDomain(listModelDomain));
+        .deleteListModelToGetListModel(thisClass,_cloneListModelDomain(listModelDomain));
   }
 
   void _disposeForMapEnumAndStreamController(Map<Enum,StreamController> map) {

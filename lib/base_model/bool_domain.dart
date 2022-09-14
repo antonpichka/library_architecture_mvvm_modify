@@ -5,7 +5,7 @@ class BoolDomain extends BaseModelDomain {
 
   BoolDomain(this.isField) : super('');
 
-  bool isNotField() {
+  bool isNotFieldParameterIsField() {
     return !isField;
   }
 

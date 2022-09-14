@@ -15,7 +15,7 @@ void main() {
     ];
 
     var listUserDomain = ListUserDomain(listOne);
-    listUserDomain.deleteListModelToGetListModel(listTwo);
+    listUserDomain.deleteListModelToGetListModel(ListUserDomain,listTwo);
 
     expect(listUserDomain.getListModelDomain.length, 2);
     expect(listUserDomain.getListModelDomain[0].uniqueId == "1"

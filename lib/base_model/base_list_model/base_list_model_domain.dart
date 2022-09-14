@@ -35,18 +35,18 @@ class BaseListModelDomain<T extends BaseModelDomain> {
 
   @nonVirtual
   Response<List<T>, BaseException> runIteratorForGetListModel(
+      Object thisClass,
       BaseTypeParameter<Enum> baseTypeParameterForBaseIterator, 
       Map<Enum,BaseIterator<T>> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
-      return Response.exception(LocalException(this,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
+      return Response.exception(LocalException(thisClass,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
     }
     int i = 0;
     Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
     Enum itemEnumFirst = mapEnumAndBaseIterator.keys.first;
     for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
-      if (selectedEnum == itemEnum)
-      {
+      if (selectedEnum == itemEnum) {
         _setParameterIterator = mapEnumAndBaseIterator[itemEnum];
         break;
       }
@@ -60,19 +60,19 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(_listModelDomain);
   }
 
-  Response<bool, BaseException> insertListModelToGetListModel(List<T> insertListModel) {
+  Response<bool, BaseException> insertListModelToGetListModel(Object thisClass,List<T> insertListModel) {
     _listModelDomain.addAll(insertListModel);
     return Response.success(true);
   }
   
-  Response<bool, BaseException> insertModelToGetListModel(T insertModel) {
+  Response<bool, BaseException> insertModelToGetListModel(Object thisClass,T insertModel) {
     _listModelDomain.add(insertModel);
     return Response.success(true);
   }
 
-  Response<bool, BaseException> updateListModelToGetListModel(List<T> updateListModel) {
+  Response<bool, BaseException> updateListModelToGetListModel(Object thisClass,List<T> updateListModel) {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(thisClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     for(int i = 0; i < updateListModel.length; i++) {
       _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateListModel[i].uniqueId)] = updateListModel[i];
@@ -80,17 +80,17 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(true);
   }
 
-  Response<bool, BaseException> updateModelToGetListModel(T updateModel) {
+  Response<bool, BaseException> updateModelToGetListModel(Object thisClass,T updateModel) {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(thisClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     _listModelDomain[_listModelDomain.indexWhere((element) => element.uniqueId == updateModel.uniqueId)] = updateModel;
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteListModelToGetListModel(List<T> deleteListModelDomain) {
+  Response<bool, BaseException> deleteListModelToGetListModel(Object thisClass,List<T> deleteListModelDomain) {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(thisClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     List<T> deleteListModelDomainForDelete = List.empty(growable: true);
     for(int i = 0; i < _listModelDomain.length; i++) {
@@ -110,9 +110,9 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteModelToGetListModel(T deleteModel) {
+  Response<bool, BaseException> deleteModelToGetListModel(Object thisClass,T deleteModel) {
     if(_listModelDomain.isEmpty) {
-      return Response.exception(LocalException(this,constDeveloper,"ListModelDomain isEmpty"));
+      return Response.exception(LocalException(thisClass,constDeveloper,"ListModelDomain isEmpty"));
     }
     _listModelDomain.removeWhere((item) => item.uniqueId == deleteModel.uniqueId);
     return Response.success(true);
