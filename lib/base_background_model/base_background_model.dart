@@ -31,9 +31,6 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 typedef ItemCreator<S> = S Function();
 
 abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>> {
-  /* Init ThisClass */
-  final Object _thisClass;
-
   /* Init DataSource */
   final Object _dataSource;
 
@@ -50,7 +47,6 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   final DeleteListModelToNamedDatabaseFBDS<T,Y> _deleteListModelToNamedDatabaseFBDS;
 
   BaseBackgroundModel(
-      this._thisClass,
       this._dataSource,
       this._converterToBaseModelNamedDatabase,
       this._converterToBaseListModelNamedDatabase,
@@ -87,13 +83,27 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
 
   /// End Clone **/
 
+  /// Start ThisClass **/
+
+  ///   Example Using:
+  ///
+  ///   Object thisClass() {
+  ///     return this;
+  ///   }
+  ///
+  ///
+  @protected
+  Object thisClass();
+
+  /// End ThisClass **/
+
   /// Start DataSource **/
   ///
   @protected
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabase() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabase(
         _dataSource as GetListModelFromNamedDatabaseDataSource<X>);
@@ -104,7 +114,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
@@ -117,7 +127,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       BaseTypeParameter newBaseTypeParameter)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
@@ -130,7 +140,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
@@ -143,7 +153,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       BaseTypeParameter newBaseTypeParameter)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
@@ -156,7 +166,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -170,7 +180,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain) 
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>, 
@@ -184,7 +194,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain, List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -198,7 +208,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -212,7 +222,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -226,7 +236,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain, List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -240,7 +250,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -254,7 +264,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -268,7 +278,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain,List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>, 
@@ -282,7 +292,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -296,7 +306,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -310,7 +320,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain,List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -325,7 +335,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -339,7 +349,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>, 
@@ -353,7 +363,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain,List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -368,7 +378,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -382,7 +392,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -396,7 +406,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain, List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -452,7 +462,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
+      return throw LocalException(thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
     T modelDomain = cloneModelDomain(newModelDomain);
     if(_insertModelToNamedDatabaseFBDS == null) {
@@ -477,7 +487,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
+      return throw LocalException(thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
     BaseListModelDomain<T> listModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(newListModeDomain));
     if(_insertListModelToNamedDatabaseFBDS == null) {
@@ -502,7 +512,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
+      return throw LocalException(thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
     T modelDomain = cloneModelDomain(newModelDomain);
     if(_updateModelToNamedDatabaseFBDS == null) {
@@ -527,7 +537,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
+      return throw LocalException(thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
     BaseListModelDomain<T> listModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(newListModelDomain));
     if(_updateListModelToNamedDatabaseFBDS == null) {
@@ -552,7 +562,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
+      return throw LocalException(thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
     T modelDomain = cloneModelDomain(newModelDomain);
     if(_deleteModelToNamedDatabaseFBDS == null) {
@@ -577,7 +587,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
+      return throw LocalException(thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
     BaseListModelDomain<T> listModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(newListModelDomain));
     if(_deleteListModelToNamedDatabaseFBDS == null) {

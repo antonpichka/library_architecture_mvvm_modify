@@ -7,7 +7,6 @@ import 'user_sqflite_database_background_model.dart';
 
 class UserSqfliteDatabaseBackgroundModelUsingDeleteForAll extends UserSqfliteDatabaseBackgroundModel {
   UserSqfliteDatabaseBackgroundModelUsingDeleteForAll() : super(
-      UserSqfliteDatabaseBackgroundModelUsingDeleteForAll,
       UserSqfliteDatabaseDataSourceUsingDeleteForAll.db,
       null,
       null,
@@ -16,6 +15,11 @@ class UserSqfliteDatabaseBackgroundModelUsingDeleteForAll extends UserSqfliteDat
       DeleteUserToSqfliteDatabaseFBDSUsingDeleteForAll(),
       null
   );
+
+  @override
+  Object thisClass() {
+    return this;
+  }
 
   Future<Response<BaseTypeParameter, BaseException>> deleteUserToSqfliteDatabaseThereIsParameter() {
     return deleteModelToNamedDatabaseThereIsParameter();

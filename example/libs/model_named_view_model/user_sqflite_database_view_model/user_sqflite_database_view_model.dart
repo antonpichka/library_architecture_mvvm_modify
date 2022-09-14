@@ -12,9 +12,8 @@ import '../../model/user/user_domain.dart';
 import '../../model/user/user_sqflite_database.dart';
 import '../user_named_database_view_model.dart';
 
-class UserSqfliteDatabaseViewModel extends UserNamedDatabaseViewModel<UserSqfliteDatabase,ListUserSqfliteDatabase> {
+abstract class UserSqfliteDatabaseViewModel extends UserNamedDatabaseViewModel<UserSqfliteDatabase,ListUserSqfliteDatabase> {
   UserSqfliteDatabaseViewModel(
-      Object thisClass,
       Object dataSource,
       InsertModelToNamedDatabaseFBDS<UserDomain> insertModelToNamedDatabaseFBDS,
       InsertListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> insertListModelToNamedDatabaseFBDS,
@@ -23,7 +22,6 @@ class UserSqfliteDatabaseViewModel extends UserNamedDatabaseViewModel<UserSqflit
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
       : super(
-      thisClass,
       dataSource,
       ConverterToUserSqfliteDatabase(),
       ConverterToListUserSqfliteDatabase(),

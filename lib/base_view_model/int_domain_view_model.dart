@@ -16,7 +16,6 @@ class IntDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends Bas
       Map<T,BaseIterator> mapEnumAndBaseIterator,
       BaseTypeParameter<T> baseTypeParameterForBaseIterator) :
         super.noDataSource(
-          IntDomainViewModel,
           listEnumBaseModelDomain,
           listEnumBaseListModelDomain,
               () => IntDomain.getDefaultIntDomain,
@@ -28,5 +27,10 @@ class IntDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends Bas
   @nonVirtual
   IntDomain cloneModelDomain(IntDomain modelDomain) {
     return IntDomain(modelDomain.field);
+  }
+
+  @override
+  Object thisClass() {
+    return this;
   }
 }

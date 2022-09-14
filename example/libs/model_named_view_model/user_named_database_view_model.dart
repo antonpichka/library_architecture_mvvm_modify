@@ -12,9 +12,8 @@ import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model
 import '../model/user/list_user_domain.dart';
 import '../model/user/user_domain.dart';
 
-class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum> {
+abstract class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum> {
   UserNamedDatabaseViewModel(
-      Object thisClass,
       Object dataSource,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,
       ConverterToBaseListModelNamedDatabase<ListUserDomain, Y> converterToBaseListModelNamedDatabase,
@@ -25,7 +24,6 @@ class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y 
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
       : super.noIterator(
-      thisClass,
       dataSource,
           () => UserDomain.getDefaultUserDomain,
           () => ListUserDomain([]),

@@ -16,7 +16,6 @@ class BoolDomainViewModel<T extends Enum> extends BaseViewModel<BoolDomain,ListB
       Map<T,BaseIterator> mapEnumAndBaseIterator,
       BaseTypeParameter<T> baseTypeParameterForBaseIterator) :
         super.noDataSource(
-          BoolDomainViewModel,
           listEnumBaseModelDomain,
           listEnumBaseListModelDomain,
               () => BoolDomain.getDefaultBoolDomain,
@@ -28,5 +27,10 @@ class BoolDomainViewModel<T extends Enum> extends BaseViewModel<BoolDomain,ListB
   @nonVirtual
   BoolDomain cloneModelDomain(BoolDomain modelDomain) {
     return BoolDomain(modelDomain.isField);
+  }
+
+  @override
+  Object thisClass() {
+    return this;
   }
 }
