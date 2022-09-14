@@ -16,6 +16,7 @@ class DoubleDomainViewModel<T extends Enum> extends BaseViewModel<DoubleDomain,L
       Map<T,BaseIterator> mapEnumAndBaseIterator,
       BaseTypeParameter<T> baseTypeParameterForBaseIterator) :
         super.noDataSource(
+          DoubleDomainViewModel,
           listEnumBaseModelDomain,
           listEnumBaseListModelDomain,
           () => DoubleDomain.getDefaultDoubleDomain,

@@ -14,6 +14,7 @@ import '../user_named_database_view_model.dart';
 
 class UserSqfliteDatabaseViewModel extends UserNamedDatabaseViewModel<UserSqfliteDatabase,ListUserSqfliteDatabase> {
   UserSqfliteDatabaseViewModel(
+      Object thisClass,
       Object dataSource,
       InsertModelToNamedDatabaseFBDS<UserDomain> insertModelToNamedDatabaseFBDS,
       InsertListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> insertListModelToNamedDatabaseFBDS,
@@ -21,7 +22,9 @@ class UserSqfliteDatabaseViewModel extends UserNamedDatabaseViewModel<UserSqflit
       UpdateListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> updateListModelToNamedDatabaseFBDS,
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
-      : super(dataSource,
+      : super(
+      thisClass,
+      dataSource,
       ConverterToUserSqfliteDatabase(),
       ConverterToListUserSqfliteDatabase(),
       insertModelToNamedDatabaseFBDS,

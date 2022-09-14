@@ -8,6 +8,7 @@ import 'user_sqflite_database_view_model.dart';
 
 class UserSqfliteDatabaseViewModelUsingDeleteForAll extends UserSqfliteDatabaseViewModel {
   UserSqfliteDatabaseViewModelUsingDeleteForAll() : super(
+      UserSqfliteDatabaseViewModelUsingDeleteForAll,
       UserSqfliteDatabaseDataSourceUsingDeleteForAll.db,
       null,
       null,

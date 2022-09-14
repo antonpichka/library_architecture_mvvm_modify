@@ -14,6 +14,7 @@ import '../model/user/user_domain.dart';
 
 class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum> {
   UserNamedDatabaseViewModel(
+      Object thisClass,
       Object dataSource,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,
       ConverterToBaseListModelNamedDatabase<ListUserDomain, Y> converterToBaseListModelNamedDatabase,
@@ -23,7 +24,9 @@ class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y 
       UpdateListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> updateListModelToNamedDatabaseFBDS,
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
-      : super.noIterator(dataSource,
+      : super.noIterator(
+      thisClass,
+      dataSource,
           () => UserDomain.getDefaultUserDomain,
           () => ListUserDomain([]),
       converterToBaseModelNamedDatabase,

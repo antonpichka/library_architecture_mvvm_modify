@@ -16,6 +16,7 @@ class StringDomainViewModel<T extends Enum,U extends BaseTypeParameter> extends 
       Map<T,BaseIterator> mapEnumAndBaseIterator,
       BaseTypeParameter<T> baseTypeParameterForBaseIterator) :
         super.noDataSource(
+          StringDomainViewModel,
           listEnumBaseModelDomain,
           listEnumBaseListModelDomain,
               () => StringDomain.getDefaultStringDomain,

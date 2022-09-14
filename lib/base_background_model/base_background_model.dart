@@ -31,6 +31,9 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 typedef ItemCreator<S> = S Function();
 
 abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>> {
+  /* Init ThisClass */
+  final Object _thisClass;
+
   /* Init DataSource */
   final Object _dataSource;
 
@@ -47,6 +50,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   final DeleteListModelToNamedDatabaseFBDS<T,Y> _deleteListModelToNamedDatabaseFBDS;
 
   BaseBackgroundModel(
+      this._thisClass,
       this._dataSource,
       this._converterToBaseModelNamedDatabase,
       this._converterToBaseListModelNamedDatabase,
@@ -89,7 +93,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabase() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabase(
         _dataSource as GetListModelFromNamedDatabaseDataSource<X>);
@@ -100,7 +104,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
@@ -113,7 +117,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       BaseTypeParameter newBaseTypeParameter)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetListModelFromNamedDatabaseThereIsParameterDataSource<X,BaseTypeParameter>,
@@ -126,7 +130,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
@@ -139,7 +143,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       BaseTypeParameter newBaseTypeParameter)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseThereIsParameter(
         _dataSource as GetModelFromNamedDatabaseThereIsParameterDataSource<Z,BaseTypeParameter>,
@@ -152,7 +156,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -166,7 +170,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain) 
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>, 
@@ -180,7 +184,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain, List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -194,7 +198,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -208,7 +212,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -222,7 +226,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain, List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseThereIsParameter(
         _dataSource as InsertListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -236,7 +240,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -250,7 +254,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -264,7 +268,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain,List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateModelToNamedDatabaseThereIsParameterDataSource<Z>, 
@@ -278,7 +282,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -292,7 +296,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -306,7 +310,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain,List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseThereIsParameter(
         _dataSource as UpdateListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -321,7 +325,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -335,7 +339,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>, 
@@ -349,7 +353,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       T newModelDomain,List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteModelToNamedDatabaseThereIsParameterDataSource<Z>,
@@ -364,7 +368,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseThereIsParameter() {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -378,7 +382,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -392,7 +396,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<T> newListModelDomain, List<T> newListModeDomainForFBDS)
   {
     if(_dataSource == null) {
-      throw LocalException(this,constDeveloper,"$_dataSource equals null");
+      return throw LocalException(_thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseThereIsParameter(
         _dataSource as DeleteListModelToNamedDatabaseThereIsParameterDataSource<X>,
@@ -409,12 +413,11 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseDataSource
         .getListModelFromNamedDatabaseDataSource();
-    if(response.isSuccessResponse) {
-      Y baseListModelDomain = response.getData.toBaseListModelDomain();
-      return Response.success(baseListModelDomain.getListModelDomain);
-    } else {
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    Y baseListModelDomain = response.getData.toBaseListModelDomain();
+    return Response.success(baseListModelDomain.getListModelDomain);
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseThereIsParameter(
@@ -423,12 +426,11 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseThereIsParameterDataSource
         .getListModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
-    if(response.isSuccessResponse) {
-      Y baseListModelDomain = response.getData.toBaseListModelDomain();
-      return Response.success(baseListModelDomain.getListModelDomain);
-    } else {
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    Y baseListModelDomain = response.getData.toBaseListModelDomain();
+    return Response.success(baseListModelDomain.getListModelDomain);
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseThereIsParameter(
@@ -437,12 +439,11 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseThereIsParameterDataSource
         .getModelFromNamedDatabaseThereIsParameterDataSource(newBaseTypeParameter);
-    if(response.isSuccessResponse) {
-      T modelDomain = response.getData.toBaseModelDomain();
-      return Response.success(modelDomain);
-    } else {
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    T modelDomain = response.getData.toBaseModelDomain();
+    return Response.success(modelDomain);
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseThereIsParameter(
@@ -451,22 +452,23 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw Exception("ConverterToBaseModelNamedDatabase null");
+      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
     T modelDomain = cloneModelDomain(newModelDomain);
     if(_insertModelToNamedDatabaseFBDS == null) {
       return await insertModelToNamedDatabaseThereIsParameterDataSource
           .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModeDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _insertModelToNamedDatabaseFBDS
-        .insertModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await insertModelToNamedDatabaseThereIsParameterDataSource
-          .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
-    } else {
+        .insertModelToNamedDatabaseFBDS(modelDomain,_cloneListModelDomain(newListModeDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await insertModelToNamedDatabaseThereIsParameterDataSource
+        .insertModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseThereIsParameter(
@@ -475,22 +477,23 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw Exception("ConverterToBaseListModelNamedDatabase null");
+      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
     BaseListModelDomain<T> listModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(newListModeDomain));
     if(_insertListModelToNamedDatabaseFBDS == null) {
       return await insertListModelToNamedDatabaseThereIsParameterDataSource
           .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModeDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _insertListModelToNamedDatabaseFBDS
-        .insertListModelToNamedDatabaseFBDS(listModelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await insertListModelToNamedDatabaseThereIsParameterDataSource
-          .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
-    } else {
+        .insertListModelToNamedDatabaseFBDS(listModelDomain,_cloneListModelDomain(newListModeDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await insertListModelToNamedDatabaseThereIsParameterDataSource
+        .insertListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseThereIsParameter(
@@ -499,22 +502,23 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw Exception("ConverterToBaseModelNamedDatabase null");
+      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
     T modelDomain = cloneModelDomain(newModelDomain);
     if(_updateModelToNamedDatabaseFBDS == null) {
       return await updateModelToNamedDatabaseThereIsParameterDataSource
           .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModeDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _updateModelToNamedDatabaseFBDS
-        .updateModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await updateModelToNamedDatabaseThereIsParameterDataSource
-          .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
-    } else {
+        .updateModelToNamedDatabaseFBDS(modelDomain,_cloneListModelDomain(newListModeDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await updateModelToNamedDatabaseThereIsParameterDataSource
+        .updateModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseThereIsParameter(
@@ -523,22 +527,23 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw Exception("ConverterToBaseListModelNamedDatabase null");
+      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
     BaseListModelDomain<T> listModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(newListModelDomain));
     if(_updateListModelToNamedDatabaseFBDS == null) {
       return await updateListModelToNamedDatabaseThereIsParameterDataSource
           .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModeDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _updateListModelToNamedDatabaseFBDS
-        .updateListModelToNamedDatabaseFBDS(listModelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await updateListModelToNamedDatabaseThereIsParameterDataSource
-          .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
-    } else {
+        .updateListModelToNamedDatabaseFBDS(listModelDomain,_cloneListModelDomain(newListModeDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await updateListModelToNamedDatabaseThereIsParameterDataSource
+        .updateListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseThereIsParameter(
@@ -547,22 +552,23 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
-      return throw Exception("ConverterToBaseModelNamedDatabase null");
+      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
     T modelDomain = cloneModelDomain(newModelDomain);
     if(_deleteModelToNamedDatabaseFBDS == null) {
       return await deleteModelToNamedDatabaseThereIsParameterDataSource
           .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModeDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _deleteModelToNamedDatabaseFBDS
-        .deleteModelToNamedDatabaseFBDS(modelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await deleteModelToNamedDatabaseThereIsParameterDataSource
-          .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
-    } else {
+        .deleteModelToNamedDatabaseFBDS(modelDomain,_cloneListModelDomain(newListModeDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await deleteModelToNamedDatabaseThereIsParameterDataSource
+        .deleteModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomain));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseThereIsParameter(
@@ -571,21 +577,22 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
       List<BaseModelDomain> newListModeDomainForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
-      return throw Exception("ConverterToBaseListModelNamedDatabase null");
+      return throw LocalException(_thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
     BaseListModelDomain<T> listModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(newListModelDomain));
     if(_deleteListModelToNamedDatabaseFBDS == null) {
       return await deleteListModelToNamedDatabaseThereIsParameterDataSource
           .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
     }
-    List<T> listModelDomainForFBDS = _cloneListModelDomain(newListModeDomainForFBDS);
     ResponseGenericBoolAndDomainException response = _deleteListModelToNamedDatabaseFBDS
-        .deleteListModelToNamedDatabaseFBDS(listModelDomain,listModelDomainForFBDS);
-    if(response.isSuccessResponse) {
-      return await deleteListModelToNamedDatabaseThereIsParameterDataSource
-          .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
-    } else {
+        .deleteListModelToNamedDatabaseFBDS(listModelDomain,_cloneListModelDomain(newListModeDomainForFBDS));
+    if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
+    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    }
+    return await deleteListModelToNamedDatabaseThereIsParameterDataSource
+        .deleteListModelToNamedDatabaseThereIsParameterDataSource(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelDomain));
   }
 }

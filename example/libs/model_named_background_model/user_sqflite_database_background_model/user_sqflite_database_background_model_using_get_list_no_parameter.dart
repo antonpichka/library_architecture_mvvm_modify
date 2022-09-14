@@ -6,6 +6,7 @@ import 'user_sqflite_database_background_model.dart';
 
 class UserSqfliteDatabaseBackgroundModelUsingGetListNoParameter extends UserSqfliteDatabaseBackgroundModel {
   UserSqfliteDatabaseBackgroundModelUsingGetListNoParameter() : super(
+      UserSqfliteDatabaseBackgroundModelUsingGetListNoParameter,
       UserSqfliteDatabaseDataSourceUsingGetListNoParameter.db,
       null,
       null,

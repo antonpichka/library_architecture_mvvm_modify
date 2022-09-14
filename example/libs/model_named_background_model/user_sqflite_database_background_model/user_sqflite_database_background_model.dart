@@ -14,6 +14,7 @@ import '../user_named_database_background_model.dart';
 
 class UserSqfliteDatabaseBackgroundModel extends UserNamedDatabaseBackgroundModel<UserSqfliteDatabase,ListUserSqfliteDatabase> {
   UserSqfliteDatabaseBackgroundModel(
+      Object thisClass,
       Object dataSource,
       InsertModelToNamedDatabaseFBDS<UserDomain> insertModelToNamedDatabaseFBDS,
       InsertListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> insertListModelToNamedDatabaseFBDS,
@@ -21,7 +22,9 @@ class UserSqfliteDatabaseBackgroundModel extends UserNamedDatabaseBackgroundMode
       UpdateListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> updateListModelToNamedDatabaseFBDS,
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
-      : super(dataSource,
+      : super(
+      thisClass,
+      dataSource,
       ConverterToUserSqfliteDatabase(),
       ConverterToListUserSqfliteDatabase(),
       insertModelToNamedDatabaseFBDS,

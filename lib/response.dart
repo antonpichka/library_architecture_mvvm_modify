@@ -56,13 +56,6 @@ class Response<T,Y extends BaseException> {
     return _cancelOperationWithoutErrorAndSuccess;
   }
 
-  bool get isSuccessResponse {
-    if(_data == null) {
-      return false;
-    }
-    return true;
-  }
-
   bool get isExceptionResponse {
     if(_exception == null) {
       return false;

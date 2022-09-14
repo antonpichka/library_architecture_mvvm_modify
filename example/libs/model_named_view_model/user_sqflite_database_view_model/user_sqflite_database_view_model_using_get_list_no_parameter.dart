@@ -7,6 +7,7 @@ import 'user_sqflite_database_view_model.dart';
 
 class UserSqfliteDatabaseViewModelUsingGetListNoParameter extends UserSqfliteDatabaseViewModel {
   UserSqfliteDatabaseViewModelUsingGetListNoParameter() : super(
+      UserSqfliteDatabaseViewModelUsingGetListNoParameter,
       UserSqfliteDatabaseDataSourceUsingGetListNoParameter.db,
       null,
       null,

@@ -14,6 +14,7 @@ import '../model/user/user_domain.dart';
 
 class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseBackgroundModel<UserDomain,ListUserDomain,T,Y> {
   UserNamedDatabaseBackgroundModel(
+      Object thisClass,
       Object dataSource,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,
       ConverterToBaseListModelNamedDatabase<ListUserDomain, Y> converterToBaseListModelNamedDatabase,
@@ -23,7 +24,9 @@ class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDoma
       UpdateListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> updateListModelToNamedDatabaseFBDS,
       DeleteModelToNamedDatabaseFBDS<UserDomain> deleteModelToNamedDatabaseFBDS,
       DeleteListModelToNamedDatabaseFBDS<UserDomain, ListUserDomain> deleteListModelToNamedDatabaseFBDS)
-      : super(dataSource,
+      : super(
+      thisClass,
+      dataSource,
       converterToBaseModelNamedDatabase,
       converterToBaseListModelNamedDatabase,
       insertModelToNamedDatabaseFBDS,
