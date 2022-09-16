@@ -13,7 +13,7 @@ class ListOfViewModelForMainView
   final BoolDomainViewModelUsingGetForLoading _boolDomainViewModelUsingGetForLoading = BoolDomainViewModelUsingGetForLoading();
 
   ListOfViewModelForMainView() {
-    _init();
+    _getListUserFromSqfliteDatabaseAndUseTheSettersAndAlsoOneTasks();
   }
 
   @override
@@ -25,12 +25,12 @@ class ListOfViewModelForMainView
 
   /// Start Stream/Future Methods **/
   
-  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetListNoParameter {
-    return _userSqfliteDatabaseViewModelUsingGetListNoParameter.getStreamListUserSqfliteDatabaseUsingGetListNoParameter;
+  Stream<List<UserDomain>> get getStreamListUserUsingGetListNoParameter {
+    return _userSqfliteDatabaseViewModelUsingGetListNoParameter.getStreamListUserUsingGetListNoParameter;
   }
 
-  Stream<BoolDomain> get getStreamBoolDomainUsingGetForLoading {
-    return _boolDomainViewModelUsingGetForLoading.getStreamBoolDomainUsingGetForLoading;
+  Stream<BoolDomain> get getStreamBoolUsingGetForLoading {
+    return _boolDomainViewModelUsingGetForLoading.getStreamBoolUsingGetForLoading;
   }
 
   /// End Stream/Future Methods **/
@@ -45,41 +45,42 @@ class ListOfViewModelForMainView
 
   /// Start Any Methods **/
 
-  Future<void> _init() async {
-    // 1
+  Future<void> _getListUserFromSqfliteDatabaseAndUseTheSettersAndAlsoOneTasks()
+  async {
     _boolDomainViewModelUsingGetForLoading
-        .getBoolDomainUsingGetForLoading
+        .getBoolUsingGetForLoading
         .isField = true;
     _boolDomainViewModelUsingGetForLoading
-        .notifyStreamBoolDomainUsingGetForLoading();
+        .notifyStreamBoolUsingGetForLoading();
+    // 1
     var result = await _userSqfliteDatabaseViewModelUsingGetListNoParameter
-        .getListUserFromSqfliteDatabaseAndUseTheSettersUsingGetListNoParameter();
+        .getListUserFromSqfliteDatabaseAndUseTheSetters();
     if(result.isExceptionResponse) {
       _boolDomainViewModelUsingGetForLoading
-          .getBoolDomainUsingGetForLoading
+          .getBoolUsingGetForLoading
           .isField = false;
       _boolDomainViewModelUsingGetForLoading
-          .notifyStreamBoolDomainUsingGetForLoading();
+          .notifyStreamBoolUsingGetForLoading();
       return;
     }
     _userSqfliteDatabaseViewModelUsingGetListNoParameter
-        .notifyStreamListUserSqfliteDatabaseUsingGetListNoParameter();
+        .notifyStreamListUserUsingGetListNoParameter();
     _boolDomainViewModelUsingGetForLoading
-        .getBoolDomainUsingGetForLoading
+        .getBoolUsingGetForLoading
         .isField = false;
     _boolDomainViewModelUsingGetForLoading
-        .notifyStreamBoolDomainUsingGetForLoading();
+        .notifyStreamBoolUsingGetForLoading();
     return;
   }
 
-  Future<void> setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDSUsingDeleteForAll(
+  Future<void> setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDSAndAlsoTwoTasks(
       UserDomain userDomain,
       Function functionForSuccess,
       Function(String) functionForStringException)
   async {
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingDeleteForAll
-        .setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDSUsingDeleteForAll(userDomain, _userSqfliteDatabaseViewModelUsingGetListNoParameter.getListUserSqfliteDatabaseUsingGetListNoParameter);
+        .setUserAndDeleteUserToSqfliteDatabaseThereIsParameterAndDefaultListUserForFBDS(userDomain, _userSqfliteDatabaseViewModelUsingGetListNoParameter.getListUserUsingGetListNoParameter);
     if(result.isExceptionResponse) {
       functionForStringException(result
           .getException
@@ -88,7 +89,7 @@ class ListOfViewModelForMainView
     }
     // 2
     var resultTwo = _userSqfliteDatabaseViewModelUsingGetListNoParameter
-        .defaultDeleteUserSqfliteDatabaseToGetListUserSqfliteDatabaseUsingGetListNoParameter(userDomain);
+        .defaultDeleteUserToGetListUser(userDomain);
     if(resultTwo.isExceptionResponse) {
       functionForStringException(resultTwo
           .getException
@@ -96,7 +97,7 @@ class ListOfViewModelForMainView
       return;
     }
     _userSqfliteDatabaseViewModelUsingGetListNoParameter
-        .notifyStreamListUserSqfliteDatabaseUsingGetListNoParameter();
+        .notifyStreamListUserUsingGetListNoParameter();
     functionForSuccess();
     return;
   }

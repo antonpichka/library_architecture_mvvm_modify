@@ -88,23 +88,25 @@ class BaseListModelDomain<T extends BaseModelDomain> {
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteListModelToGetListModel(Object thisClass,List<T> deleteListModelDomain) {
+  Response<bool, BaseException> deleteListModelToGetListModel(Object thisClass,List<T> listModelDomainToDelete) {
     if(_listModelDomain.isEmpty) {
       return Response.exception(LocalException(thisClass,constDeveloper,"ListModelDomain isEmpty"));
     }
-    List<T> deleteListModelDomainForDelete = List.empty(growable: true);
+    List<T> listModelDomainForDelete = List.empty(growable: true);
     for(int i = 0; i < _listModelDomain.length; i++) {
-      for(int j = 0; j < deleteListModelDomain.length; j++) {
-        if (_listModelDomain[i].uniqueId == deleteListModelDomain[j].uniqueId) {
-          deleteListModelDomainForDelete.add(_listModelDomain[i]);
+      for(int j = 0; j < listModelDomainToDelete.length; j++) {
+        if(_listModelDomain[i].uniqueId != listModelDomainToDelete[j].uniqueId) {
+          continue;
         }
+        listModelDomainForDelete.add(_listModelDomain[i]);
       }
     }
     for(int i = 0; i < _listModelDomain.length; i++) {
-      for(T deleteModelDomainForDelete in deleteListModelDomainForDelete) {
-        if(_listModelDomain[i].uniqueId == deleteModelDomainForDelete.uniqueId) {
-          _listModelDomain.removeAt(i);
+      for(T itemModelDomainForDelete in listModelDomainForDelete) {
+        if(_listModelDomain[i].uniqueId != itemModelDomainForDelete.uniqueId) {
+          continue;
         }
+        _listModelDomain.removeAt(i);
       }
     }
     return Response.success(true);

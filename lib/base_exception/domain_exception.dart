@@ -9,6 +9,6 @@ class DomainException extends BaseException {
 
   @override
   String exceptionInString() {
-    return "\n - NameError($_nameError\n)";
+    return "NameError: $_nameError";
   }
 }

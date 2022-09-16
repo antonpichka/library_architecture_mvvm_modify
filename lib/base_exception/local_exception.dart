@@ -12,6 +12,6 @@ class LocalException extends BaseException {
 
   @override
   String exceptionInString() {
-    return "\n - Code($_code\n)\n - Message($_message\n)";
+    return "Code: $_code | Message: $_message";
   }
 }

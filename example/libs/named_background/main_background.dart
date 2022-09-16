@@ -10,18 +10,20 @@ class MainBackground {
   Future<void> selectAndRunTask(String nameTask) async {
     switch(nameTask) {
       case "deleteUserToSqfliteDatabaseThereIsParameterForAll":
-        await _deleteUserToSqfliteDatabaseThereIsParameterForAll();
+        await _deleteUserToSqfliteDatabaseThereIsParameterAndAlsoOneTasks();
         break;
       case "two":
         break;
     }
   }
 
-  Future<void> _deleteUserToSqfliteDatabaseThereIsParameterForAll() async {
+  Future<void> _deleteUserToSqfliteDatabaseThereIsParameterAndAlsoOneTasks()
+  async {
+    // 1
     var result = await _userSqfliteDatabaseBackgroundModelUsingDeleteForAll
         .deleteUserToSqfliteDatabaseThereIsParameter();
     if(result.isExceptionResponse) {
-      return _deleteUserToSqfliteDatabaseThereIsParameterForAll();
+      return _deleteUserToSqfliteDatabaseThereIsParameterAndAlsoOneTasks();
     }
     return;
   }

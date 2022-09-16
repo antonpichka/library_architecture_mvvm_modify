@@ -44,11 +44,11 @@ class UserDomain extends BaseModelDomain {
 
   /// End Ext Methods **/
 
-  /// Start Const For CBFVM and Bool Methods **/
+  /// Start Const For FBDS and Bool Methods **/
 
   static const String constIsEmptyByTrimParameterName = "constIsEmptyByTrimParameterName";
 
-  /// End Const For CBFVM and Bool Methods **/
+  /// End Const For FBDS and Bool Methods **/
 
   /// Start Default state object for ViewModel object  **/
 

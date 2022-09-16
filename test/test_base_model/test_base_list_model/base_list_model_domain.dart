@@ -11,15 +11,15 @@ void main() {
     ];
 
     List<UserDomain> listTwo = [
-      UserDomain("2","Valeriy"),
+      UserDomain("1","Jacob"),
     ];
 
     var listUserDomain = ListUserDomain(listOne);
-    listUserDomain.deleteListModelToGetListModel(ListUserDomain,listTwo);
+    listUserDomain.deleteListModelToGetListModel(listUserDomain,listTwo);
 
     expect(listUserDomain.getListModelDomain.length, 2);
-    expect(listUserDomain.getListModelDomain[0].uniqueId == "1"
-        && listUserDomain.getListModelDomain[0].name == "Jacob",true);
+    expect(listUserDomain.getListModelDomain[0].uniqueId == "2"
+        && listUserDomain.getListModelDomain[0].name == "Valeriy",true);
     expect(listUserDomain.getListModelDomain[1].uniqueId == "3"
         && listUserDomain.getListModelDomain[1].name == "Djigurda",true);
   });

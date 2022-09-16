@@ -21,23 +21,23 @@ class UserSqfliteDatabaseViewModelUsingGetListNoParameter extends UserSqfliteDat
     return this;
   }
   
-  Future<Response<List<UserDomain>, BaseException>> getListUserFromSqfliteDatabaseAndUseTheSettersUsingGetListNoParameter() {
+  Future<Response<List<UserDomain>, BaseException>> getListUserFromSqfliteDatabaseAndUseTheSetters() {
     return getListModelFromNamedDatabaseAndUseTheSetters();
   }
 
-  Response<bool, BaseException> defaultDeleteUserSqfliteDatabaseToGetListUserSqfliteDatabaseUsingGetListNoParameter(UserDomain user) {
+  Response<bool, BaseException> defaultDeleteUserToGetListUser(UserDomain user) {
     return defaultDeleteModelToGetListModel(user);
   }
 
-  Stream<List<UserDomain>> get getStreamListUserSqfliteDatabaseUsingGetListNoParameter {
+  Stream<List<UserDomain>> get getStreamListUserUsingGetListNoParameter {
     return getStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
 
-  List<UserDomain> get getListUserSqfliteDatabaseUsingGetListNoParameter {
+  List<UserDomain> get getListUserUsingGetListNoParameter {
     return getListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
   
-  void notifyStreamListUserSqfliteDatabaseUsingGetListNoParameter() {
+  void notifyStreamListUserUsingGetListNoParameter() {
     notifyStreamListModel(EnumBaseListModelDomainVM.getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter);
   }
 }

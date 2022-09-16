@@ -29,7 +29,7 @@ class NetworkException extends BaseException {
 
   @override
   String exceptionInString() {
-    return "\n - StatusCode($_statusCode\n)\n - NameStatusCode($_nameStatusCode\n)\n - DescriptionStatusCode($_descriptionStatusCode\n)";
+    return "StatusCode: $_statusCode | NameStatusCode: $_nameStatusCode | DescriptionStatusCode: $_descriptionStatusCode";
   }
 }
 
