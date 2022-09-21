@@ -22,11 +22,6 @@ class BaseListModelDomain<T extends BaseModelDomain> {
   set setParameterListModelDomain(List<T> listModelDomain) {
     _listModelDomain = listModelDomain;
   }
-  
-  @nonVirtual
-  set setFromBaseListModelDomainParameterListModelDomain(BaseListModelDomain baseListModelDomain) {
-    _listModelDomain = baseListModelDomain.getListModelDomain;
-  }
 
   set _setParameterIterator(BaseIterator<T> iterator) {
     _iterator = iterator;

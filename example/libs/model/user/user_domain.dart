@@ -21,7 +21,7 @@ class UserDomain extends BaseModelDomain {
 
   /// Start FBDS and bool Methods **/
 
-  ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteForAll() {
+  ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP() {
     if(isEmptyByTrimParameterName()) {
       return ResponseGenericBoolAndDomainException.exception(DomainException(this,constIsEmptyByTrimParameterName));
     }

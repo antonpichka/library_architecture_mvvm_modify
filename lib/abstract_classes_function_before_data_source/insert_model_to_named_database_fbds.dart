@@ -5,5 +5,5 @@ abstract class InsertModelToNamedDatabaseFBDS<T extends BaseModelDomain>
 {
   InsertModelToNamedDatabaseFBDS();
 
-  ResponseGenericBoolAndDomainException insertModelToNamedDatabaseFBDS(T modelDomain, List<T> list);
+  ResponseGenericBoolAndDomainException insertModelToNamedDatabase(T modelDomain, List<T> listModelDomainForCheck);
 }

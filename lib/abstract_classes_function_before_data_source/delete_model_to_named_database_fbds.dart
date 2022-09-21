@@ -5,5 +5,5 @@ abstract class DeleteModelToNamedDatabaseFBDS<T extends BaseModelDomain>
 {
   DeleteModelToNamedDatabaseFBDS();
 
-  ResponseGenericBoolAndDomainException deleteModelToNamedDatabaseFBDS(T modelDomain, List<T> list);
+  ResponseGenericBoolAndDomainException deleteModelToNamedDatabase(T modelDomain, List<T> listModelDomainForCheck);
 }

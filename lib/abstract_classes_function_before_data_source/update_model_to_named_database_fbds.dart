@@ -5,5 +5,5 @@ abstract class UpdateModelToNamedDatabaseFBDS<T extends BaseModelDomain>
 {
   UpdateModelToNamedDatabaseFBDS();
 
-  ResponseGenericBoolAndDomainException updateModelToNamedDatabaseFBDS(T modelDomain,List<T> list);
+  ResponseGenericBoolAndDomainException updateModelToNamedDatabase(T modelDomain,List<T> listModelDomainForCheck);
 }

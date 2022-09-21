@@ -58,42 +58,40 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   }
 
   @protected
-  Future<Response<int,LocalException>> baseInsertModelToSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseInsertModelToSqfliteDatabaseTIP(
       T model,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace])
   async {
     try {
       final db = await getDatabase;
-      var resultInsert = await db.insert(
+      int resultInsert = await db.insert(
           table,
           model.toMap(),
           conflictAlgorithm: conflictAlgorithm
       );
-      var result = 0;
-      if(resultInsert > 0) {
-        result++;
+      if(resultInsert <= 0) {
+        return Response.exception(LocalException(this,constDeveloper,"Zero update for insertModelToSqfliteDatabaseTIP $resultInsert"));
       }
-      return Response.success(result);
+      return Response.success(resultInsert);
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseInsertListModelToSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseInsertListModelToSqfliteDatabaseTIP(
       Y listModelSqfliteDatabase,
       String table,
       [ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.replace])
   async {
     try {
-      if(listModelSqfliteDatabase.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(this,constDeveloper,"ListModelSqfliteDatabase empty for insertListModelToSqfliteDatabaseThereIsParameterDataSource"));
-      }
       final db = await getDatabase;
       int iterationForInsert = 0;
-      for (BaseModelNamedDatabase model in listModelSqfliteDatabase.getListModelNamedDatabase) {
-        var resultInsert = await db.insert(
+      for(BaseModelNamedDatabase model in listModelSqfliteDatabase
+          .getListModelNamedDatabase)
+      {
+        int resultInsert = await db.insert(
             table,
             model.toMap(),
             conflictAlgorithm: conflictAlgorithm
@@ -102,18 +100,17 @@ abstract class BaseModelSqfliteDatabaseDataSource<
           iterationForInsert++;
         }
       }
-      if(iterationForInsert > 0) {
-        return Response.success(iterationForInsert);
-      } else {
-        return Response.exception(LocalException(this,constDeveloper,"Zero insert for insertListModelToSqfliteDatabaseThereIsParameterDataSource"));
+      if(iterationForInsert <= 0) {
+        return Response.exception(LocalException(this,constDeveloper,"Zero insert for insertListModelToSqfliteDatabaseTIP $iterationForInsert"));
       }
+      return Response.success(iterationForInsert);
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseUpdateModelOrUpdateModelsToSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseUpdateModelOrUpdateModelsToSqfliteDatabaseTIP(
       T model,
       BaseTypeParameter baseTypeParameter,
       String table,
@@ -122,37 +119,34 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   async {
     try {
       final db = await getDatabase;
-
-      var resultUpdate = await db.update(
+      int resultUpdate = await db.update(
         table,
         model.toMap(),
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
-      if(resultUpdate > 0) {
-        return Response.success(resultUpdate);
-      } else {
-        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateModelToSqfliteDatabaseThereIsParameterDataSource"));
+      if(resultUpdate <= 0) {
+        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateModelToSqfliteDatabaseTIP $resultUpdate"));
       }
+      return Response.success(resultUpdate);
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseUpdateListModelToSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseUpdateListModelToSqfliteDatabaseTIP(
       Y listModelSqfliteDatabase,
       String table,
       String columnForUniqueId)
   async {
     try {
-      if(listModelSqfliteDatabase.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(this,constDeveloper,"ListModelSqfliteDatabase empty for updateListModelToSqfliteDatabaseThereIsParameterDataSource"));
-      }
       final db = await getDatabase;
       int calculateForUpdate = 0;
-      for (BaseModelNamedDatabase model in listModelSqfliteDatabase.getListModelNamedDatabase) {
-        var resultUpdate = await db.update(
+      for(BaseModelNamedDatabase model in listModelSqfliteDatabase
+          .getListModelNamedDatabase)
+      {
+        int resultUpdate = await db.update(
           table,
           model.toMap(),
           where: columnForUniqueId + '= ?',
@@ -162,18 +156,17 @@ abstract class BaseModelSqfliteDatabaseDataSource<
           calculateForUpdate = calculateForUpdate + resultUpdate;
         }
       }
-      if(calculateForUpdate > 0) {
-        return Response.success(calculateForUpdate);
-      } else {
-        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateListModelToSqfliteDatabaseThereIsParameterDataSource"));
+      if(calculateForUpdate <= 0) {
+        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateListModelToSqfliteDatabaseTIP $calculateForUpdate"));
       }
+      return Response.success(calculateForUpdate);
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseDeleteModelOrDeleteModelsToSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseDeleteModelOrDeleteModelsToSqfliteDatabaseTIP(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -186,29 +179,27 @@ abstract class BaseModelSqfliteDatabaseDataSource<
         where: columnForWhere + columnForWhereOperationMark,
         whereArgs: [baseTypeParameter.getParameter],
       );
-      if(resultDelete > 0) {
-        return Response.success(resultDelete);
-      } else {
-        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteModelToSqfliteDatabaseThereIsParameterDataSource"));
+      if(resultDelete <= 0) {
+        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteModelToSqfliteDatabaseTIP $resultDelete"));
       }
+      return Response.success(resultDelete);
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<int,LocalException>> baseDeleteListModelToSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<int,LocalException>> baseDeleteListModelToSqfliteDatabaseTIP(
       Y listModelSqfliteDatabase,
       String table,
       String columnForUniqueId)
   async {
     try {
-      if(listModelSqfliteDatabase.getListModelNamedDatabase.isEmpty) {
-        return Response.exception(LocalException(this,constDeveloper,"ListModelSqfliteDatabase empty for deleteListModelToSqfliteDatabaseThereIsParameterDataSource"));
-      }
       final db = await getDatabase;
       int calculateForDelete = 0;
-      for (BaseModelNamedDatabase model in listModelSqfliteDatabase.getListModelNamedDatabase) {
+      for (BaseModelNamedDatabase model in listModelSqfliteDatabase
+          .getListModelNamedDatabase)
+      {
         var resultDelete = await db.delete(
           table,
           where: columnForUniqueId + '= ?',
@@ -218,18 +209,17 @@ abstract class BaseModelSqfliteDatabaseDataSource<
           calculateForDelete = calculateForDelete + resultDelete ;
         }
       }
-      if(calculateForDelete > 0) {
-        return Response.success(calculateForDelete);
-      } else {
-        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteListModelToSqfliteDatabaseThereIsParameterDataSource"));
+      if(calculateForDelete <= 0) {
+        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteListModelToSqfliteDatabaseTIP $calculateForDelete"));
       }
+      return Response.success(calculateForDelete);
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<T,LocalException>> baseGetModelFromSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<T,LocalException>> baseGetModelFromSqfliteDatabaseParameterBaseType(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -238,40 +228,35 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   async {
     try {
       final db = await getDatabase;
-
-      final List<Map<String, dynamic>> maps = await db.query(
+      List<Map<String, dynamic>> maps = await db.query(
           table,
           where: columnForWhere + columnForWhereOperationMark,
           whereArgs: [baseTypeParameter.getParameter]
       );
-      if(maps.isNotEmpty) {
-        return Response.success(fromMapToBaseModelSqfliteDatabase(maps[0]));
-      } else {
-        return Response.exception(LocalException(this,constDeveloper,"Model not found for getModelSqfliteDatabaseThereIsParameterDataSource"));
+      if(maps.isEmpty) {
+        return Response.exception(LocalException(this,constDeveloper,"Model not found for getModelFromSqfliteDatabaseParameterBaseType"));
       }
+      return Response.success(fromMapToBaseModelSqfliteDatabase(maps[0]));
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<Y,LocalException>> baseGetListModelFromSqfliteDatabaseDataSource(
+  Future<Response<Y,LocalException>> baseGetListModelFromSqfliteDatabaseNP(
       String table)
   async {
     try {
       final db = await getDatabase;
-
-      final List<Map<String, dynamic>> maps = await db.query(table);
-
-      Y listModelNamedDatabase = fromListMapToBaseListModelSqfliteDatabase(maps);
-      return Response.success(listModelNamedDatabase);
+      List<Map<String, dynamic>> maps = await db.query(table);
+      return Response.success(fromListMapToBaseListModelSqfliteDatabase(maps));
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
 
   @protected
-  Future<Response<Y,LocalException>> baseGetListModelFromSqfliteDatabaseThereIsParameterDataSource(
+  Future<Response<Y,LocalException>> baseGetListModelFromSqfliteDatabaseParameterBaseType(
       BaseTypeParameter baseTypeParameter,
       String table,
       String columnForWhere,
@@ -279,21 +264,20 @@ abstract class BaseModelSqfliteDatabaseDataSource<
   {
     try {
       final db = await getDatabase;
-
-      final List<Map<String, dynamic>> maps = await db.query(
+      List<Map<String, dynamic>> maps = await db.query(
           table,
           where: columnForWhere + columnForWhereOperationMark,
           whereArgs: [baseTypeParameter.getParameter]
       );
-
-      Y listModelNamedDatabase = fromListMapToBaseListModelSqfliteDatabase(maps);
-      return Response.success(listModelNamedDatabase);
+      return Response.success(fromListMapToBaseListModelSqfliteDatabase(maps));
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }
   }
   
-  Future<Response<int,LocalException>> baseClearAllModelToSqfliteDatabaseDataSource(String table) async {
+  Future<Response<int,LocalException>> baseClearTableToSqfliteDatabase(
+      String table)
+  async {
     try {
       final db = await getDatabase;
       int result = await db.delete(table);

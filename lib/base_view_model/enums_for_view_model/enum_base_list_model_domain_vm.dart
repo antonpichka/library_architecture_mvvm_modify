@@ -1,6 +1,7 @@
 enum EnumBaseListModelDomainVM {
-  insertListModelToNamedDatabaseThereIsParameter,
-  updateListModelToNamedDatabaseThereIsParameter,
-  deleteListModelToNamedDatabaseThereIsParameter,
-  getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter,
+  insertListModelToNamedDatabaseTIP,
+  updateListModelToNamedDatabaseTIP,
+  deleteListModelToNamedDatabaseTIP,
+  getListModelFromNamedDatabaseParameterNamed,
+  getListModelFromNamedDatabaseNP,
 }

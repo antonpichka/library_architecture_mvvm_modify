@@ -52,9 +52,9 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseInsertModelToSharedPreferenceDatabaseThereIsParameterDataSource(
-      T model) async
-  {
+  Future<Response<bool,LocalException>> baseInsertModelToSharedPreferenceDatabaseTIP(
+      T model)
+  async {
     try {
       final sP = await sharedPreferences;
       model.toMap().forEach((key, value) {
@@ -77,7 +77,9 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<bool,LocalException>> baseDeleteModelToSharedPreferenceDatabaseDataSource(Map<String,TypeForSP> mapStringAndTypeForSP) async {
+  Future<Response<bool,LocalException>> baseDeleteModelToSharedPreferenceDatabaseTIP(
+      Map<String,TypeForSP> mapStringAndTypeForSP)
+  async {
     try {
       final sP = await sharedPreferences;
       mapStringAndTypeForSP.forEach((key, value) {
@@ -90,7 +92,9 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   }
 
   @protected
-  Future<Response<T,LocalException>> baseGetModelFromSharedPreferenceDatabaseDataSource(Map<String,TypeForSP> mapStringAndTypeForSP) async {
+  Future<Response<T,LocalException>> baseGetModelFromSharedPreferenceDatabaseParameterMapStringAndTypeForSP(
+      Map<String,TypeForSP> mapStringAndTypeForSP)
+  async {
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};
@@ -119,8 +123,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
             break;
         }
       });
-      T model = fromMapToBaseModelSharedPreferenceDatabase(map);
-      return Response.success(model);
+      return Response.success(fromMapToBaseModelSharedPreferenceDatabase(map));
     } catch (e) {
       return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
     }

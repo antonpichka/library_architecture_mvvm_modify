@@ -1,9 +1,9 @@
-import '../model_named_background_model/user_sqflite_database_background_model/user_sqflite_database_background_model_using_delete_for_all.dart';
+import '../model_named_background_model/user_sqflite_database_background_model/user_sqflite_database_background_model_using_delete_np_for_all.dart';
 
 class MainBackground {
   static final MainBackground firebaseMessagingBackground = MainBackground._();
 
-  final UserSqfliteDatabaseBackgroundModelUsingDeleteForAll _userSqfliteDatabaseBackgroundModelUsingDeleteForAll = UserSqfliteDatabaseBackgroundModelUsingDeleteForAll();
+  final UserSqfliteDatabaseBackgroundModelUsingDeleteNPForAll _userSqfliteDatabaseBackgroundModelUsingDeleteForAll = UserSqfliteDatabaseBackgroundModelUsingDeleteNPForAll();
 
   MainBackground._();
 
@@ -21,7 +21,7 @@ class MainBackground {
   async {
     // 1
     var result = await _userSqfliteDatabaseBackgroundModelUsingDeleteForAll
-        .deleteUserToSqfliteDatabaseThereIsParameter();
+        .deleteUserToSqfliteDatabaseNP();
     if(result.isExceptionResponse) {
       return _deleteUserToSqfliteDatabaseThereIsParameterAndAlsoOneTasks();
     }

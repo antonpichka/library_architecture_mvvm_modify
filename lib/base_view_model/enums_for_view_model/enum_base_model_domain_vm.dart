@@ -1,7 +1,7 @@
 enum EnumBaseModelDomainVM {
-  insertModelToNamedDatabaseThereIsParameter,
-  updateModelToNamedDatabaseThereIsParameter,
-  deleteModelToNamedDatabaseThereIsParameter,
-  getModelFromNamedDatabaseThereIsParameter,
-  getListModelFromNamedDatabaseThereIsParameterAndNoThereIsParameter,
+  insertModelToNamedDatabaseTIP,
+  updateModelToNamedDatabaseTIP,
+  deleteModelToNamedDatabaseTIP,
+  getModelFromNamedDatabaseParameterNamed,
+  getModelFromNamedDatabaseNP,
 }
