@@ -4,7 +4,9 @@ import '../../model/user/user_domain.dart';
 import '../../model_named_data_source/user_sqflite_database_data_source/user_sqflite_database_data_source_using_get_list_np.dart';
 import 'user_sqflite_database_background_model.dart';
 
-class UserSqfliteDatabaseBackgroundModelUsingGetListNP extends UserSqfliteDatabaseBackgroundModel {
+class UserSqfliteDatabaseBackgroundModelUsingGetListNP
+    extends UserSqfliteDatabaseBackgroundModel
+{
   UserSqfliteDatabaseBackgroundModelUsingGetListNP() : super(
       UserSqfliteDatabaseDataSourceUsingGetListNP.db,
       null,

@@ -12,7 +12,9 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_named_dat
 import '../model/user/list_user_domain.dart';
 import '../model/user/user_domain.dart';
 
-abstract class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>> extends BaseBackgroundModel<UserDomain,ListUserDomain,T,Y> {
+abstract class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>>
+    extends BaseBackgroundModel<UserDomain,ListUserDomain,T,Y>
+{
   UserNamedDatabaseBackgroundModel(
       Object dataSource,
       ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,

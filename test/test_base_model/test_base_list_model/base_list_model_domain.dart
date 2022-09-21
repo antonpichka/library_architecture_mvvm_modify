@@ -3,7 +3,7 @@ import '../../../example/libs/model/user/list_user_domain.dart';
 import '../../../example/libs/model/user/user_domain.dart';
 
 void main() {
-  test("test method deleteListModelToListModelDomain Success", () {
+  test("test method deleteListModelToGetListModel Success", () {
     List<UserDomain> listOne = [
       UserDomain("1","Jacob"),
       UserDomain("2","Valeriy"),
