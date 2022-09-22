@@ -1,4 +1,8 @@
-enum EnumBaseTypeParameterForGettersVM {
+enum EnumBaseTypeParameterVM {
   getModelFromNamedDatabaseParameterNamed,
   getListModelFromNamedDatabaseParameterNamed,
+  updateModelToNamedDatabaseParameterNamed,
+  deleteModelToNamedDatabaseParameterNamed,
+  updateListModelToNamedDatabaseParameterNamed,
+  deleteListModelToNamedDatabaseParameterNamed
 }

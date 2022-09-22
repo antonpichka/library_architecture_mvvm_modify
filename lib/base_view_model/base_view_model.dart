@@ -9,8 +9,10 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_function_befor
 import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_database_fbds.dart';
 import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_database_fbds.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_named_database_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_named_database_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_named_database_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_named_database_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_named_database_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_named_database_parameter_named_data_source.dart';
@@ -21,8 +23,10 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_named_database_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_named_database_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_named_database_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
@@ -54,7 +58,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   /* Maps For Model And Stream And BaseTypeParameter */
   final Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain = {};
   final Map<EnumBaseListModelDomainVM,Y> _mapEnumBaseListModelDomainVMAndBaseListModelDomain = {};
-  final Map<EnumBaseTypeParameterForGettersVM,BaseTypeParameter> _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter = {};
+  final Map<EnumBaseTypeParameterVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameter = {};
   final Map<EnumBaseModelDomainVM,StreamController<T>> _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain = {};
   final Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain = {};
 
@@ -242,14 +246,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedUsingStateBaseTypeParameterForGetters()
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetListModelFromNamedDatabaseParameterNamed(
         _dataSource as  GetListModelFromNamedDatabaseParameterNamedDataSource<X,BaseTypeParameter>,
-        getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseParameterNamed));
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
@@ -277,14 +281,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingStateBaseTypeParameterForGetters()
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingStateBaseTypeParameter()
   async {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     Response<List<T>, BaseException> result = await _baseGetListModelFromNamedDatabaseParameterNamed(
         _dataSource as  GetListModelFromNamedDatabaseParameterNamedDataSource<X,BaseTypeParameter>,
-        getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getListModelFromNamedDatabaseParameterNamed));
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
     if(result.isExceptionResponse) {
       return Response.exception(result.getException);
     }
@@ -346,14 +350,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedUsingStateBaseTypeParameterForGetters()
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseGetModelFromNamedDatabaseParameterNamed(
         _dataSource as GetModelFromNamedDatabaseParameterNamedDataSource<Z,BaseTypeParameter>,
-        getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseParameterNamed));
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
@@ -379,14 +383,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelUsingStateBaseTypeParameterForGetters()
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelUsingStateBaseTypeParameter()
   async {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     Response<T, BaseException> result = await _baseGetModelFromNamedDatabaseParameterNamed(
         _dataSource as GetModelFromNamedDatabaseParameterNamedDataSource<Z,BaseTypeParameter>,
-        getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM.getModelFromNamedDatabaseParameterNamed));
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
     if(result.isExceptionResponse) {
       return Response.exception(result.getException);
     }
@@ -610,6 +614,33 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
   // end updateNP 1
 
+  // start updateParameterNamed 2
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseParameterNamed(
+      BaseTypeParameter baseTypeParameter)
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedDatabaseParameterNamed(
+        _dataSource as UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        baseTypeParameter);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedDatabaseParameterNamed(
+        _dataSource as UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        getBaseTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedDatabaseParameterNamed));
+  }
+  // end updateParameterNamed 2
+
   // start updateListTIP 4
   @protected
   @nonVirtual
@@ -679,6 +710,33 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         _dataSource as UpdateListModelToNamedDatabaseNPDataSource);
   }
   // end updateListNP 1
+
+  // start updateListParameterNamed 2
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseParameterNamed(
+      BaseTypeParameter baseTypeParameter)
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseUpdateListModelToNamedDatabaseParameterNamed(
+        _dataSource as UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        baseTypeParameter);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseUpdateListModelToNamedDatabaseParameterNamed(
+        _dataSource as UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        getBaseTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedDatabaseParameterNamed));
+  }
+  // end updateListParameterNamed 2
 
   // start deleteTIP 4
   @protected
@@ -751,6 +809,33 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
   // end deleteNP 1
 
+  // start deleteParameterNamed 2
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseParameterNamed(
+      BaseTypeParameter baseTypeParameter)
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseDeleteModelToNamedDatabaseParameterNamed(
+        _dataSource as DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        baseTypeParameter);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseDeleteModelToNamedDatabaseParameterNamed(
+        _dataSource as DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        getBaseTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedDatabaseParameterNamed));
+  }
+  // end deleteParameterNamed 2
+
   // start deleteListTIP 4
   @protected
   @nonVirtual
@@ -820,6 +905,33 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         _dataSource as DeleteListModelToNamedDatabaseNPDataSource);
   }
   // end deleteListNP 1
+
+  // start deleteListParameterNamed 2
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseParameterNamed(
+      BaseTypeParameter baseTypeParameter)
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseDeleteListModelToNamedDatabaseParameterNamed(
+        _dataSource as DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        baseTypeParameter);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
+  {
+    if(_dataSource == null) {
+      return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
+    return _baseDeleteListModelToNamedDatabaseParameterNamed(
+        _dataSource as DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+        getBaseTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedDatabaseParameterNamed));
+  }
+  // end deleteListParameterNamed 2
   /// End DataSource **/
 
   /// Start For GetListModelParameterNamed **/
@@ -1079,23 +1191,23 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  BaseTypeParameter getBaseTypeParameterForGetters(EnumBaseTypeParameterForGettersVM operation) {
-    if(!_mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter.containsKey(operation)) {
+  BaseTypeParameter getBaseTypeParameter(EnumBaseTypeParameterVM operation) {
+    if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
-    return _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[operation];
+    return _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation];
   }
 
   @protected
   @nonVirtual
-  void setBaseTypeParameterForGetters(
-      EnumBaseTypeParameterForGettersVM operation,
+  void setBaseTypeParameter(
+      EnumBaseTypeParameterVM operation,
       BaseTypeParameter baseTypeParameter)
   {
-    if(!_mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter.containsKey(operation)) {
+    if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
-    _mapEnumBaseTypeParameterForGettersVMAndBaseTypeParameter[operation] = baseTypeParameter;
+    _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = baseTypeParameter;
   }
   /// End Base/EnumTypeParameter **/
 
@@ -1322,10 +1434,10 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseParameterNamed(
       GetListModelFromNamedDatabaseParameterNamedDataSource<X,BaseTypeParameter> getListModelFromNamedDatabaseParameterNamedDataSource,
-      BaseTypeParameter newBaseTypeParameter)
+      BaseTypeParameter baseTypeParameter)
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseParameterNamedDataSource
-        .getListModelFromNamedDatabaseParameterNamed(newBaseTypeParameter);
+        .getListModelFromNamedDatabaseParameterNamed(baseTypeParameter);
     if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
@@ -1356,10 +1468,10 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseParameterNamed(
       GetModelFromNamedDatabaseParameterNamedDataSource<Z,BaseTypeParameter> getModelFromNamedDatabaseParameterNamedDataSource,
-      BaseTypeParameter newBaseTypeParameter)
+      BaseTypeParameter baseTypeParameter)
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseParameterNamedDataSource
-        .getModelFromNamedDatabaseParameterNamed(newBaseTypeParameter);
+        .getModelFromNamedDatabaseParameterNamed(baseTypeParameter);
     if(response.isExceptionResponse) {
       return Response.exception(response.getException);
     }
@@ -1467,6 +1579,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         .updateModelToNamedDatabaseNP();
   }
 
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseParameterNamed(
+      UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> updateModelToNamedDatabaseParameterNamedDataSource,
+      BaseTypeParameter baseTypeParameter)
+  async {
+    return await updateModelToNamedDatabaseParameterNamedDataSource
+        .updateModelToNamedDatabaseParameterNamed(baseTypeParameter);
+  }
+
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseTIPUsingListModelForFBDS(
       UpdateListModelToNamedDatabaseTIPDataSource<X> updateListModelToNamedDatabaseTIPDataSource,
       List<T> newListModelDomain,
@@ -1497,6 +1617,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   async {
     return await updateListModelToNamedDatabaseNPDataSource
         .updateListModelToNamedDatabaseNP();
+  }
+
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseParameterNamed(
+      UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> updateListModelToNamedDatabaseParameterNamedDataSource,
+      BaseTypeParameter baseTypeParameter)
+  async {
+    return await updateListModelToNamedDatabaseParameterNamedDataSource
+        .updateListModelToNamedDatabaseParameterNamed(baseTypeParameter);
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseTIPUsingListModelForFBDS(
@@ -1531,6 +1659,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
         .deleteModelToNamedDatabaseNP();
   }
 
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseParameterNamed(
+      DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> deleteModelToNamedDatabaseParameterNamedDataSource,
+      BaseTypeParameter baseTypeParameter)
+  async {
+    return await deleteModelToNamedDatabaseParameterNamedDataSource
+        .deleteModelToNamedDatabaseParameterNamed(baseTypeParameter);
+  }
+
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseTIPUsingListModelForFBDS(
       DeleteListModelToNamedDatabaseTIPDataSource<X> deleteListModelToNamedDatabaseTIPDataSource,
       List<T> newListModelDomain,
@@ -1561,6 +1697,14 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   async {
     return await deleteListModelToNamedDatabaseNPDataSource
         .deleteListModelToNamedDatabaseNP();
+  }
+
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseParameterNamed(
+      DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> deleteListModelToNamedDatabaseParameterNamedDataSource,
+      BaseTypeParameter baseTypeParameter)
+  async {
+    return await deleteListModelToNamedDatabaseParameterNamedDataSource
+        .deleteListModelToNamedDatabaseParameterNamed(baseTypeParameter);
   }
 
   Response<List<T>,BaseException> _baseRunIteratorForGetListModel(
