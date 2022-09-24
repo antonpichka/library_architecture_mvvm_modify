@@ -7,10 +7,7 @@ class BoolDomainViewModelUsingGetNPForLoading
 {
   BoolDomainViewModelUsingGetNPForLoading() : super(
       [EnumBaseModelDomainVM.getModelFromNamedDatabaseNP],
-      [],
-      null,
-      null
-  );
+      []);
 
   Stream<BoolDomain> get getStreamBoolUsingGetNPForLoading {
     return getStreamModel(EnumBaseModelDomainVM.getModelFromNamedDatabaseNP);

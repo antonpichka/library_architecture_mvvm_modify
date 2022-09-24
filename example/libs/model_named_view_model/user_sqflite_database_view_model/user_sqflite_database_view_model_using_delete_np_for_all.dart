@@ -7,15 +7,10 @@ import 'user_sqflite_database_view_model.dart';
 class UserSqfliteDatabaseViewModelUsingDeleteNPForAll
     extends UserSqfliteDatabaseViewModel
 {
-  UserSqfliteDatabaseViewModelUsingDeleteNPForAll() : super(
-      UserSqfliteDatabaseDataSourceUsingDeleteNPForAll.db,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-  );
+  UserSqfliteDatabaseViewModelUsingDeleteNPForAll() : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor()
+  {
+    setDataSource = UserSqfliteDatabaseDataSourceUsingDeleteNPForAll.db;
+  }
 
   @override
   Object thisClass() {

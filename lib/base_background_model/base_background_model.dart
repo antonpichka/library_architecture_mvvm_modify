@@ -36,35 +36,28 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>> {
-  /* Init DataSource */
-  final Object _dataSource;
-
+abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>>
+{
   /* CTMND (Converter To Model Named Database) */
   final ConverterToBaseModelNamedDatabase<T,Z> _converterToBaseModelNamedDatabase;
   final ConverterToBaseListModelNamedDatabase<Y,X> _converterToBaseListModelNamedDatabase;
 
-  /* FBDS (Function Before Data Source) */
-  final InsertModelToNamedDatabaseFBDS<T> _insertModelToNamedDatabaseFBDS;
-  final InsertListModelToNamedDatabaseFBDS<T,Y> _insertListModelToNamedDatabaseFBDS;
-  final UpdateModelToNamedDatabaseFBDS<T> _updateModelToNamedDatabaseFBDS;
-  final UpdateListModelToNamedDatabaseFBDS<T,Y> _updateListModelToNamedDatabaseFBDS;
-  final DeleteModelToNamedDatabaseFBDS<T> _deleteModelToNamedDatabaseFBDS;
-  final DeleteListModelToNamedDatabaseFBDS<T,Y> _deleteListModelToNamedDatabaseFBDS;
+  /* Init DataSource */
+  Object _dataSource;
 
-  BaseBackgroundModel(
-      this._dataSource,
+  /* FBDS (Function Before Data Source) */
+  InsertModelToNamedDatabaseFBDS<T> _insertModelToNamedDatabaseFBDS;
+  InsertListModelToNamedDatabaseFBDS<T,Y> _insertListModelToNamedDatabaseFBDS;
+  UpdateModelToNamedDatabaseFBDS<T> _updateModelToNamedDatabaseFBDS;
+  UpdateListModelToNamedDatabaseFBDS<T,Y> _updateListModelToNamedDatabaseFBDS;
+  DeleteModelToNamedDatabaseFBDS<T> _deleteModelToNamedDatabaseFBDS;
+  DeleteListModelToNamedDatabaseFBDS<T,Y> _deleteListModelToNamedDatabaseFBDS;
+
+  BaseBackgroundModel.usingMethodSetDataSourceToBodyConstructor(
       this._converterToBaseModelNamedDatabase,
-      this._converterToBaseListModelNamedDatabase,
-      this._insertModelToNamedDatabaseFBDS,
-      this._insertListModelToNamedDatabaseFBDS,
-      this._updateModelToNamedDatabaseFBDS,
-      this._updateListModelToNamedDatabaseFBDS,
-      this._deleteModelToNamedDatabaseFBDS,
-      this._deleteListModelToNamedDatabaseFBDS);
+      this._converterToBaseListModelNamedDatabase);
 
   /// Start Clone **/
-
   ///   Be sure to implement these methods as shown in the example below. The result of all date source methods depends on the implementation of that method.
   ///   Briefly, what this method does: Does not leave a reference to the object that will be sent to the data source and you can do whatever you want with
   ///   it without fear that it will change in the view model. Basically, this method appeared when FBDS (Function Before Data Source) appeared
@@ -86,11 +79,9 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
     list.addAll(listModelDomain);
     return list;
   }
-
   /// End Clone **/
 
   /// Start ThisClass **/
-
   ///   Example Using:
   ///
   ///   Object thisClass() {
@@ -100,16 +91,15 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   ///
   @protected
   Object thisClass();
-
   /// End ThisClass **/
 
   /// Start DataSource **/
   ///
-
   // start getListNP 1
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNP() {
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNP()
+  {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -426,9 +416,54 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
         _dataSource as DeleteListModelToNamedDatabaseNPDataSource);
   }
   // end deleteListNP 1
-
   /// End DataSource **/
-  ///
+
+  /// Start Setters DataSource **/
+  @protected
+  @nonVirtual
+  set setDataSource(Object dataSource) {
+    _dataSource = dataSource;
+  }
+  /// End Setters DataSource **/
+
+  /// Start Setters FBDS **/
+  @protected
+  @nonVirtual
+  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS insertModelToNamedDatabaseFBDS) {
+    _insertModelToNamedDatabaseFBDS = insertModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS updateModelToNamedDatabaseFBDS) {
+    _updateModelToNamedDatabaseFBDS = updateModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS deleteModelToNamedDatabaseFBDS) {
+    _deleteModelToNamedDatabaseFBDS = deleteModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS insertListModelToNamedDatabaseFBDS) {
+    _insertListModelToNamedDatabaseFBDS = insertListModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS updateListModelToNamedDatabaseFBDS) {
+    _updateListModelToNamedDatabaseFBDS = updateListModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS deleteListModelToNamedDatabaseFBDS) {
+    _deleteListModelToNamedDatabaseFBDS = deleteListModelToNamedDatabaseFBDS;
+  }
+  /// End Setters FBDS **/
+
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseNP(
       GetListModelFromNamedDatabaseNPDataSource<X> getListModelFromNamedDatabaseNPDataSource)
   async {

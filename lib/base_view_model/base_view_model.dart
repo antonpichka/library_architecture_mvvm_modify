@@ -44,16 +44,16 @@ import 'package:library_architecture_mvvm_modify/constants.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
-typedef ItemCreator<S> = S Function();
+typedef CreatorModelDomain<S> = S Function();
 
 abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,EnumIterator extends Enum> implements BaseDispose {
-  /* Init Objects For Model */
+  /* Init Default Model */
+  final CreatorModelDomain<T> _initCreatorBaseModelDomain;
+  final CreatorModelDomain<Y> _initCreatorBaseListModelDomain;
+
+  /* Init List Objects For Model */
   final List<EnumBaseModelDomainVM> _listEnumBaseModelDomainVM = List.empty(growable: true);
   final List<EnumBaseListModelDomainVM> _listEnumBaseListModelDomainVM = List.empty(growable: true);
-
-  /* Init Default Model */
-  final ItemCreator<T> _initCreatorBaseModelDomain;
-  final ItemCreator<Y> _initCreatorBaseListModelDomain;
 
   /* Maps For Model And Stream And BaseTypeParameter */
   final Map<EnumBaseModelDomainVM,T> _mapEnumBaseModelDomainVMAndBaseModelDomain = {};
@@ -63,11 +63,12 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   final Map<EnumBaseListModelDomainVM,StreamController<List<T>>> _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain = {};
 
   /* Maps And BaseTypeParameterForBaseIterator For Iterator */
-  Map<EnumIterator,BaseIterator<T>> _mapEnumAndBaseIterator = {};
+  final Map<EnumIterator,BaseIterator<T>> _mapEnumAndBaseIterator = {};
   BaseTypeParameter<EnumIterator> _enumTypeParameterForBaseIterator = BaseTypeParameter<EnumIterator>(null);
 
   /* Init DataSource */
   Object _dataSource;
+  bool _isExistsDataSource;
   
   /* CTMND (Converter To Model Named Database) */
   ConverterToBaseModelNamedDatabase<T,Z> _converterToBaseModelNamedDatabase;
@@ -81,70 +82,22 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   DeleteModelToNamedDatabaseFBDS<T> _deleteModelToNamedDatabaseFBDS;
   DeleteListModelToNamedDatabaseFBDS<T,Y> _deleteListModelToNamedDatabaseFBDS;
 
-  BaseViewModel(
-      this._dataSource,
-      this._initCreatorBaseModelDomain,
-      this._initCreatorBaseListModelDomain,
+  BaseViewModel.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
       this._converterToBaseModelNamedDatabase,
       this._converterToBaseListModelNamedDatabase,
-      this._insertModelToNamedDatabaseFBDS,
-      this._insertListModelToNamedDatabaseFBDS,
-      this._updateModelToNamedDatabaseFBDS,
-      this._updateListModelToNamedDatabaseFBDS,
-      this._deleteModelToNamedDatabaseFBDS,
-      this._deleteListModelToNamedDatabaseFBDS,
-      this._mapEnumAndBaseIterator,
-      this._enumTypeParameterForBaseIterator,)
-  {
-    _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM();
-    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
-    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
-    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
-    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
-  }
-
-  BaseViewModel.noIterator(
-      this._dataSource,
       this._initCreatorBaseModelDomain,
-      this._initCreatorBaseListModelDomain,
-      this._converterToBaseModelNamedDatabase,
-      this._converterToBaseListModelNamedDatabase,
-      this._insertModelToNamedDatabaseFBDS,
-      this._insertListModelToNamedDatabaseFBDS,
-      this._updateModelToNamedDatabaseFBDS,
-      this._updateListModelToNamedDatabaseFBDS,
-      this._deleteModelToNamedDatabaseFBDS,
-      this._deleteListModelToNamedDatabaseFBDS)
+      this._initCreatorBaseListModelDomain)
   {
-    _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM();
-    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
-    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
-    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
-    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
+    _isExistsDataSource = true;
   }
 
   BaseViewModel.noDataSource(
       List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
       List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
       this._initCreatorBaseModelDomain,
-      this._initCreatorBaseListModelDomain,
-      this._mapEnumAndBaseIterator,
-      this._enumTypeParameterForBaseIterator)
-  {
-    _initNoDataSourceListEnumBaseModelDomainVM(listEnumBaseModelDomainVM);
-    _initNoDataSourceListEnumBaseListModelDomainVM(listEnumBaseListModelDomainVM);
-    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
-    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
-    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
-    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
-  }
-
-  BaseViewModel.noDataSourceAndNoIterator(
-      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,
-      List<EnumBaseListModelDomainVM> listEnumBaseListModelDomainVM,
-      this._initCreatorBaseModelDomain,
       this._initCreatorBaseListModelDomain)
   {
+    _isExistsDataSource = false;
     _initNoDataSourceListEnumBaseModelDomainVM(listEnumBaseModelDomainVM);
     _initNoDataSourceListEnumBaseListModelDomainVM(listEnumBaseListModelDomainVM);
     _initMapEnumBaseModelDomainVMAndBaseModelDomain();
@@ -202,6 +155,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -213,6 +169,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNPAndSetListModel()
   async {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -236,6 +195,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamed(
       BaseTypeParameter baseTypeParameter)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -248,6 +210,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -261,6 +226,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModel(
       BaseTypeParameter baseTypeParameter)
   async {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -283,6 +251,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingStateBaseTypeParameter()
   async {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -307,6 +278,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -318,6 +292,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseNPAndSetModel()
   async {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -340,6 +317,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamed(
       BaseTypeParameter baseTypeParameter)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -352,6 +332,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -365,6 +348,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModel(
       BaseTypeParameter baseTypeParameter)
   async {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -385,6 +371,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelUsingStateBaseTypeParameter()
   async {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -408,6 +397,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIP(
       T modelDomain)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -421,6 +413,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingStateModel()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -436,6 +431,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T modelDomain,
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -450,6 +448,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingStateModelAndListModelForFBDS(
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -465,6 +466,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -479,6 +483,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIP(
       List<T> listModelDomain)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -490,7 +497,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModel() {
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModel()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -506,6 +517,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelDomain,
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -520,6 +534,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModelAndListModelForFBDS(
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -535,6 +552,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -549,6 +569,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIP(
       T modelDomain)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -562,6 +585,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingStateModel()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -577,6 +603,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T modelDomain,
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -591,6 +620,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingStateModelAndListModelForFBDS(
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -606,6 +638,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -620,6 +655,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseParameterNamed(
       BaseTypeParameter baseTypeParameter)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -632,6 +670,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -647,6 +688,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIP(
       List<T> listModelDomain)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -658,7 +702,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModel() {
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModel()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -674,6 +722,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelDomain,
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -688,6 +739,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModelAndListModelForFBDS(
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -703,6 +757,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -717,6 +774,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseParameterNamed(
       BaseTypeParameter baseTypeParameter)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -729,6 +789,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -744,6 +807,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIP(
       T modelDomain)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -757,6 +823,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingStateModel()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -772,6 +841,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       T modelDomain,
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -786,6 +858,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingStateModelAndListModelForFBDS(
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -801,6 +876,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -815,6 +893,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseParameterNamed(
       BaseTypeParameter baseTypeParameter)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -827,6 +908,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -842,6 +926,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIP(
       List<T> listModelDomain)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -853,7 +940,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModel() {
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModel()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -869,6 +960,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       List<T> listModelDomain,
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -883,6 +977,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModelAndListModelForFBDS(
       List<T> listModelDomainForFBDS)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -898,6 +995,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseNP()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -912,6 +1012,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseParameterNamed(
       BaseTypeParameter baseTypeParameter)
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -924,6 +1027,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseParameterNamedUsingStateBaseTypeParameter()
   {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -1316,7 +1422,86 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
   /// End BaseListModel **/
 
+  /// Start Setters DataSource **/
+  @protected
+  @nonVirtual
+  set setDataSource(Object dataSource) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _dataSource = dataSource;
+    _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM();
+    _initMapEnumBaseModelDomainVMAndBaseModelDomain();
+    _initMapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain();
+    _initMapEnumBaseListModelDomainVMAndBaseListModelDomain();
+    _initMapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain();
+  }
+  /// End Setters DataSource **/
+
+  /// Start Setters FBDS **/
+  @protected
+  @nonVirtual
+  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS insertModelToNamedDatabaseFBDS) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _insertModelToNamedDatabaseFBDS = insertModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS updateModelToNamedDatabaseFBDS) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _updateModelToNamedDatabaseFBDS = updateModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS deleteModelToNamedDatabaseFBDS) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _deleteModelToNamedDatabaseFBDS = deleteModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS insertListModelToNamedDatabaseFBDS) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _insertListModelToNamedDatabaseFBDS = insertListModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS updateListModelToNamedDatabaseFBDS) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _updateListModelToNamedDatabaseFBDS = updateListModelToNamedDatabaseFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS deleteListModelToNamedDatabaseFBDS) {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    _deleteListModelToNamedDatabaseFBDS = deleteListModelToNamedDatabaseFBDS;
+  }
+  /// End Setters FBDS **/
+
+  bool get _isNotExistsDataSource {
+    return !_isExistsDataSource;
+  }
+
   void _initListEnumBaseModelDomainVMAndEnumBaseListModelDomainVM() {
+    if(_dataSource == null) {
+      throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+    }
     if(_dataSource is InsertModelToNamedDatabaseTIPDataSource<Z>) {
       _listEnumBaseModelDomainVM.add(EnumBaseModelDomainVM.insertModelToNamedDatabaseTIP);
     }
@@ -1350,7 +1535,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   }
 
   void _initNoDataSourceListEnumBaseModelDomainVM(
-      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM,)
+      List<EnumBaseModelDomainVM> listEnumBaseModelDomainVM)
   {
     if(listEnumBaseModelDomainVM == null) {
       return;
@@ -1378,7 +1563,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return;
     }
     if(_initCreatorBaseModelDomain == null) {
-      return;
+      throw LocalException(thisClass,constDeveloper,"InitCreatorBaseModelDomain equals null");
     }
     for(EnumBaseModelDomainVM enumBaseModelDomainVM in _listEnumBaseModelDomainVM) {
       _mapEnumBaseModelDomainVMAndBaseModelDomain[enumBaseModelDomainVM] = _initCreatorBaseModelDomain();
@@ -1399,7 +1584,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
       return;
     }
     if(_initCreatorBaseListModelDomain == null) {
-      return;
+      throw LocalException(thisClass,constDeveloper,"InitCreatorBaseListModelDomain equals null");
     }
     for(EnumBaseListModelDomainVM enumBaseListModelDomainVM in _listEnumBaseListModelDomainVM) {
       _mapEnumBaseListModelDomainVMAndBaseListModelDomain[enumBaseListModelDomainVM] = _initCreatorBaseListModelDomain();

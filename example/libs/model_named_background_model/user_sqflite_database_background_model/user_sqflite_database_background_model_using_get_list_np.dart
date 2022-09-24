@@ -7,15 +7,9 @@ import 'user_sqflite_database_background_model.dart';
 class UserSqfliteDatabaseBackgroundModelUsingGetListNP
     extends UserSqfliteDatabaseBackgroundModel
 {
-  UserSqfliteDatabaseBackgroundModelUsingGetListNP() : super(
-      UserSqfliteDatabaseDataSourceUsingGetListNP.db,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-  );
+  UserSqfliteDatabaseBackgroundModelUsingGetListNP() : super.usingMethodSetDataSourceToBodyConstructor() {
+    setDataSource = UserSqfliteDatabaseDataSourceUsingGetListNP.db;
+  }
 
   @override
   Object thisClass() {

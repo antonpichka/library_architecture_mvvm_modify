@@ -8,15 +8,10 @@ import 'user_sqflite_database_view_model.dart';
 class UserSqfliteDatabaseViewModelUsingGetListNP
     extends UserSqfliteDatabaseViewModel
 {
-  UserSqfliteDatabaseViewModelUsingGetListNP() : super(
-      UserSqfliteDatabaseDataSourceUsingGetListNP.db,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-  );
+  UserSqfliteDatabaseViewModelUsingGetListNP() : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor()
+  {
+    setDataSource = UserSqfliteDatabaseDataSourceUsingGetListNP.db;
+  }
 
   @override
   Object thisClass() {
