@@ -1329,11 +1329,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  void setModel(EnumBaseModelDomainVM operation,T newModel) {
+  void setModel(EnumBaseModelDomainVM operation,T modelDomain) {
     if(!_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation)) {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
-    _mapEnumBaseModelDomainVMAndBaseModelDomain[operation] = newModel;
+    _mapEnumBaseModelDomainVMAndBaseModelDomain[operation] = modelDomain;
   }
 
   @protected
@@ -1357,7 +1357,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @protected
   @nonVirtual
   void notifyStreamModel(EnumBaseModelDomainVM operation) {
-    if(!_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain.containsKey(operation) || !_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation)) {
+    if(!_mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain.containsKey(operation) ||
+        !_mapEnumBaseModelDomainVMAndBaseModelDomain.containsKey(operation))
+    {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
     _mapEnumBaseModelDomainVMAndStreamControllerForBaseModelDomain[operation]
@@ -1377,11 +1379,11 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  void setListModel(EnumBaseListModelDomainVM operation,List<T> newListModel) {
+  void setListModel(EnumBaseListModelDomainVM operation,List<T> listModelDomain) {
     if(!_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
-    _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].setParameterListModelDomain = newListModel;
+    _mapEnumBaseListModelDomainVMAndBaseListModelDomain[operation].setParameterListModelDomain = listModelDomain;
   }
 
   @protected
@@ -1405,7 +1407,9 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   @protected
   @nonVirtual
   void notifyStreamListModel(EnumBaseListModelDomainVM operation) {
-    if(!_mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain.containsKey(operation) || !_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation)) {
+    if(!_mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain.containsKey(operation) ||
+        !_mapEnumBaseListModelDomainVMAndBaseListModelDomain.containsKey(operation))
+    {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
     _mapEnumBaseListModelDomainVMAndStreamControllerForListBaseModelDomain[operation]
@@ -1441,7 +1445,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
   /// Start Setters FBDS **/
   @protected
   @nonVirtual
-  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS insertModelToNamedDatabaseFBDS) {
+  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS<T> insertModelToNamedDatabaseFBDS) {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
@@ -1450,7 +1454,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS updateModelToNamedDatabaseFBDS) {
+  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS<T> updateModelToNamedDatabaseFBDS) {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
@@ -1459,7 +1463,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS deleteModelToNamedDatabaseFBDS) {
+  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS<T> deleteModelToNamedDatabaseFBDS) {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
@@ -1468,7 +1472,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS insertListModelToNamedDatabaseFBDS) {
+  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS<T,Y> insertListModelToNamedDatabaseFBDS) {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
@@ -1477,7 +1481,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS updateListModelToNamedDatabaseFBDS) {
+  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS<T,Y> updateListModelToNamedDatabaseFBDS) {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
@@ -1486,7 +1490,7 @@ abstract class BaseViewModel<T extends BaseModelDomain,Y extends BaseListModelDo
 
   @protected
   @nonVirtual
-  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS deleteListModelToNamedDatabaseFBDS) {
+  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS<T,Y> deleteListModelToNamedDatabaseFBDS) {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }

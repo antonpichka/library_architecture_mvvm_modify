@@ -429,37 +429,37 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   /// Start Setters FBDS **/
   @protected
   @nonVirtual
-  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS insertModelToNamedDatabaseFBDS) {
+  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS<T> insertModelToNamedDatabaseFBDS) {
     _insertModelToNamedDatabaseFBDS = insertModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS updateModelToNamedDatabaseFBDS) {
+  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS<T> updateModelToNamedDatabaseFBDS) {
     _updateModelToNamedDatabaseFBDS = updateModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS deleteModelToNamedDatabaseFBDS) {
+  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS<T> deleteModelToNamedDatabaseFBDS) {
     _deleteModelToNamedDatabaseFBDS = deleteModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS insertListModelToNamedDatabaseFBDS) {
+  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS<T,Y> insertListModelToNamedDatabaseFBDS) {
     _insertListModelToNamedDatabaseFBDS = insertListModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS updateListModelToNamedDatabaseFBDS) {
+  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS<T,Y> updateListModelToNamedDatabaseFBDS) {
     _updateListModelToNamedDatabaseFBDS = updateListModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS deleteListModelToNamedDatabaseFBDS) {
+  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS<T,Y> deleteListModelToNamedDatabaseFBDS) {
     _deleteListModelToNamedDatabaseFBDS = deleteListModelToNamedDatabaseFBDS;
   }
   /// End Setters FBDS **/
