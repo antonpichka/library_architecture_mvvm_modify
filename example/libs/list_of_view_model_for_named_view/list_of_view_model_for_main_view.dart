@@ -1,7 +1,7 @@
 import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view/base_list_of_view_model_for_named_view.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool_domain.dart';
-import '../model/user/user_domain.dart';
-import '../model_named_view_model/bool_domain_view_model/bool_domain_view_model_using_get_np_for_loading.dart';
+import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import '../model/user/user.dart';
+import '../model_named_view_model/bool_view_model/bool_view_model_using_get_np_for_loading.dart';
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_delete_np_for_all.dart';
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_get_list_np.dart';
 
@@ -10,7 +10,7 @@ class ListOfViewModelForMainView
 {
   final UserSqfliteDatabaseViewModelUsingGetListNP _userSqfliteDatabaseViewModelUsingGetListNP = UserSqfliteDatabaseViewModelUsingGetListNP();
   final UserSqfliteDatabaseViewModelUsingDeleteNPForAll _userSqfliteDatabaseViewModelUsingDeleteNPForAll = UserSqfliteDatabaseViewModelUsingDeleteNPForAll();
-  final BoolDomainViewModelUsingGetNPForLoading _boolDomainViewModelUsingGetNPForLoading = BoolDomainViewModelUsingGetNPForLoading();
+  final BoolViewModelUsingGetNPForLoading _boolViewModelUsingGetNPForLoading = BoolViewModelUsingGetNPForLoading();
 
   ListOfViewModelForMainView() {
     _getListUserFromSqfliteDatabaseNPAndSetListUserAndAlsoOneTasks();
@@ -20,17 +20,17 @@ class ListOfViewModelForMainView
   void dispose() {
     _userSqfliteDatabaseViewModelUsingGetListNP.dispose();
     _userSqfliteDatabaseViewModelUsingDeleteNPForAll.dispose();
-    _boolDomainViewModelUsingGetNPForLoading.dispose();
+    _boolViewModelUsingGetNPForLoading.dispose();
   }
 
   /// Start Stream/Future Methods **/
   
-  Stream<List<UserDomain>> get getStreamListUserUsingGetListNP {
+  Stream<List<User>> get getStreamListUserUsingGetListNP {
     return _userSqfliteDatabaseViewModelUsingGetListNP.getStreamListUserUsingGetListNP;
   }
 
-  Stream<BoolDomain> get getStreamBoolUsingGetNPForLoading {
-    return _boolDomainViewModelUsingGetNPForLoading.getStreamBoolUsingGetNPForLoading;
+  Stream<Bool> get getStreamBoolUsingGetNPForLoading {
+    return _boolViewModelUsingGetNPForLoading.getStreamBoolUsingGetNPForLoading;
   }
 
   /// End Stream/Future Methods **/
@@ -47,41 +47,41 @@ class ListOfViewModelForMainView
 
   Future<void> _getListUserFromSqfliteDatabaseNPAndSetListUserAndAlsoOneTasks()
   async {
-    _boolDomainViewModelUsingGetNPForLoading
+    _boolViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         .isField = true;
-    _boolDomainViewModelUsingGetNPForLoading
+    _boolViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingGetListNP
         .getListUserFromSqfliteDatabaseNPAndSetListUser();
-    if(result.isExceptionResponse) {
-      _boolDomainViewModelUsingGetNPForLoading
+    if(result.isExceptionResponse()) {
+      _boolViewModelUsingGetNPForLoading
           .getBoolUsingGetNPForLoading
           .isField = false;
-      _boolDomainViewModelUsingGetNPForLoading
+      _boolViewModelUsingGetNPForLoading
           .notifyStreamBoolUsingGetNPForLoading();
       return;
     }
     _userSqfliteDatabaseViewModelUsingGetListNP
         .notifyStreamListUserUsingGetListNP();
-    _boolDomainViewModelUsingGetNPForLoading
+    _boolViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         .isField = false;
-    _boolDomainViewModelUsingGetNPForLoading
+    _boolViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     return;
   }
 
   Future<void> deleteUserToSqfliteDatabaseNPAndAlsoTwoTasks(
-      UserDomain userDomain,
+      User user,
       Function functionForSuccess,
       Function(String) functionForStringException)
   async {
     // 1
     var result = await _userSqfliteDatabaseViewModelUsingDeleteNPForAll
         .deleteUserToSqfliteDatabaseNP();
-    if(result.isExceptionResponse) {
+    if(result.isExceptionResponse()) {
       functionForStringException(result
           .getException
           .toString());
@@ -89,8 +89,8 @@ class ListOfViewModelForMainView
     }
     // 2
     var resultTwo = _userSqfliteDatabaseViewModelUsingGetListNP
-        .deleteUserToGetListUserNP(userDomain);
-    if(resultTwo.isExceptionResponse) {
+        .deleteUserToGetListUserNP(user);
+    if(resultTwo.isExceptionResponse()) {
       functionForStringException(resultTwo
           .getException
           .toString());

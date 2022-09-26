@@ -25,7 +25,7 @@ class MainBackground {
     // 1
     var result = await _userSqfliteDatabaseBackgroundModelUsingDeleteNPForAll
         .deleteUserToSqfliteDatabaseNP();
-    if(result.isExceptionResponse) {
+    if(result.isExceptionResponse()) {
       return _deleteUserToSqfliteDatabaseNPAndAlsoOneTasks();
     }
     return;

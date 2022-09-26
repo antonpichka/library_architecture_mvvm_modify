@@ -3,23 +3,23 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import '../model/user/list_user_domain.dart';
-import '../model/user/user_domain.dart';
+import '../model/user/list_user.dart';
+import '../model/user/user.dart';
 
-abstract class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<UserDomain>,Y extends BaseListModelNamedDatabase<ListUserDomain,T>>
-    extends BaseViewModel<UserDomain,ListUserDomain,T,Y,Enum>
+abstract class UserNamedDatabaseViewModel<T extends BaseModelNamedDatabase<User>,Y extends BaseListModelNamedDatabase<ListUser,T>>
+    extends BaseViewModel<User,ListUser,T,Y,Enum>
 {
   UserNamedDatabaseViewModel.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
-      ConverterToBaseModelNamedDatabase<UserDomain, T> converterToBaseModelNamedDatabase,
-      ConverterToBaseListModelNamedDatabase<ListUserDomain, Y> converterToBaseListModelNamedDatabase)
+      ConverterToBaseModelNamedDatabase<User, T> converterToBaseModelNamedDatabase,
+      ConverterToBaseListModelNamedDatabase<ListUser, Y> converterToBaseListModelNamedDatabase)
       : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
       converterToBaseModelNamedDatabase,
       converterToBaseListModelNamedDatabase,
-          () => UserDomain.getDefaultUserDomain,
-          () => ListUserDomain([]));
+          () => User.getDefaultUser,
+          () => ListUser([]));
 
   @override
-  UserDomain cloneModelDomain(UserDomain model) {
-    return UserDomain(model.uniqueId,model.name);
+  User cloneModel(User model) {
+    return User(model.uniqueId,model.name);
   }
 }

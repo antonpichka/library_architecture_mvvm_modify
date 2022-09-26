@@ -1,7 +1,9 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
-import 'user_domain.dart';
+import 'user.dart';
 
-class UserSqfliteDatabase extends BaseModelNamedDatabase<UserDomain> {
+class UserSqfliteDatabase
+    extends BaseModelNamedDatabase<User>
+{
   String name;
 
   UserSqfliteDatabase(String uniqueId,this.name) : super(uniqueId);
@@ -9,13 +11,12 @@ class UserSqfliteDatabase extends BaseModelNamedDatabase<UserDomain> {
   UserSqfliteDatabase fromMap(Map<String,dynamic> map) {
     return UserSqfliteDatabase(
         map[columnUniqueId],
-        map[columnName]
-    );
+        map[columnName]);
   }
 
   @override
-  UserDomain toBaseModelDomain() {
-    return UserDomain(uniqueId,name);
+  User toBaseModel() {
+    return User(uniqueId,name);
   }
 
   @override

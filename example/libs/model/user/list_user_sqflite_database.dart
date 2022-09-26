@@ -1,17 +1,18 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
-import 'list_user_domain.dart';
-import 'user_domain.dart';
+import 'list_user.dart';
+import 'user.dart';
 import 'user_sqflite_database.dart';
 
-class ListUserSqfliteDatabase extends BaseListModelNamedDatabase<ListUserDomain,UserSqfliteDatabase> {
-
+class ListUserSqfliteDatabase
+    extends BaseListModelNamedDatabase<ListUser,UserSqfliteDatabase>
+{
   ListUserSqfliteDatabase(List<UserSqfliteDatabase> listModelNamedDatabase) : super(listModelNamedDatabase);
 
   @override
-  ListUserDomain toBaseListModelDomain() {
-    List<UserDomain> list = List.generate(getListModelNamedDatabase.length, (index) {
-      return getListModelNamedDatabase[index].toBaseModelDomain();
+  ListUser toBaseListModel() {
+    List<User> list = List.generate(getListModelNamedDatabase.length, (index) {
+      return getListModelNamedDatabase[index].toBaseModel();
     });
-    return ListUserDomain(list);
+    return ListUser(list);
   }
 }

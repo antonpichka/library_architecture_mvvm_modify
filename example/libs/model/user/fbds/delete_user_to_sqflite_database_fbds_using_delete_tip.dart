@@ -1,14 +1,15 @@
 import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_database_fbds.dart';
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
-import '../user_domain.dart';
+import '../user.dart';
 
 class DeleteUserToSqfliteDatabaseFBDSUsingDeleteTIP
-    extends DeleteModelToNamedDatabaseFBDS<UserDomain>
+    extends DeleteModelToNamedDatabaseFBDS<User>
 {
   @override
   ResponseGenericBoolAndDomainException deleteModelToNamedDatabase(
-      UserDomain modelDomain, List<UserDomain> list)
+      User model,
+      List<User> listModelForCheck)
   {
-    return modelDomain.deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP();
+    return model.deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP();
   }
 }

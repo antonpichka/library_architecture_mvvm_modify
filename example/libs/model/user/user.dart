@@ -1,11 +1,13 @@
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
 
-class UserDomain extends BaseModelDomain {
+class User
+    extends BaseModel
+{
   String name;
 
-  UserDomain(String uniqueId,this.name) : super(uniqueId);
+  User(String uniqueId,this.name) : super(uniqueId);
 
   /// Start Getters Methods **/
 
@@ -52,10 +54,7 @@ class UserDomain extends BaseModelDomain {
 
   /// Start Default state object for ViewModel object  **/
 
-  static UserDomain get getDefaultUserDomain => UserDomain(
-      "",
-      ""
-  );
+  static User get getDefaultUser => User("", "");
 
   /// End Default state object for ViewModel object  **/
 }

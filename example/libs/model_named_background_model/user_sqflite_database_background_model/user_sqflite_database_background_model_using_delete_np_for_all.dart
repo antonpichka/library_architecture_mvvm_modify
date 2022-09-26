@@ -7,7 +7,9 @@ import 'user_sqflite_database_background_model.dart';
 class UserSqfliteDatabaseBackgroundModelUsingDeleteNPForAll
     extends UserSqfliteDatabaseBackgroundModel
 {
-  UserSqfliteDatabaseBackgroundModelUsingDeleteNPForAll() : super.usingMethodSetDataSourceToBodyConstructor() {
+  UserSqfliteDatabaseBackgroundModelUsingDeleteNPForAll()
+      : super.usingMethodSetDataSourceToBodyConstructor()
+  {
     setDataSource = UserSqfliteDatabaseDataSourceUsingDeleteNPForAll.db;
   }
 

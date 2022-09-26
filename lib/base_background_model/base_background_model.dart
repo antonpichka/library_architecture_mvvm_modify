@@ -25,9 +25,9 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/constants.dart';
@@ -36,7 +36,7 @@ import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domai
 
 typedef ItemCreator<S> = S Function();
 
-abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListModelDomain<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>>
+abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>>
 {
   /* CTMND (Converter To Model Named Database) */
   final ConverterToBaseModelNamedDatabase<T,Z> _converterToBaseModelNamedDatabase;
@@ -64,20 +64,20 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   ///
   ///   Example Using:
   ///
-  ///   UserDomain cloneModel(UserDomain model) {
-  ///     return UserDomain(model.uniqueId,model.name);
+  ///   User cloneModel(User model) {
+  ///     return User(model.uniqueId,model.name);
   ///   }
   ///
   @protected
-  T cloneModelDomain(T modelDomain);
+  T cloneModel(T model);
 
-  List<T> _cloneListModelDomain(List<T> listModelDomain) {
-    if(listModelDomain.isEmpty) {
+  List<T> _cloneListModel(List<T> listModel) {
+    if(listModel.isEmpty) {
       return [];
     }
-    List<T> list  = List.empty(growable: true);
-    list.addAll(listModelDomain);
-    return list;
+    List<T> listModelForCopy  = List.empty(growable: true);
+    listModelForCopy.addAll(listModel);
+    return listModelForCopy;
   }
   /// End Clone **/
 
@@ -103,8 +103,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
-    return _baseGetListModelFromNamedDatabaseNP(
-        _dataSource as GetListModelFromNamedDatabaseNPDataSource<X>);
+    return _baseGetListModelFromNamedDatabaseNP(_dataSource as GetListModelFromNamedDatabaseNPDataSource<X>);
   }
   // end getListNP 1
 
@@ -131,8 +130,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
-    return _baseGetModelFromNamedDatabaseNP(
-        _dataSource as GetModelFromNamedDatabaseNPDataSource<Z>);
+    return _baseGetModelFromNamedDatabaseNP(_dataSource as GetModelFromNamedDatabaseNPDataSource<Z>);
   }
   // end getNP 1
 
@@ -155,30 +153,30 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIP(
-      T modelDomain)
+      T model)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as InsertModelToNamedDatabaseTIPDataSource<Z>,
-        modelDomain,
+        model,
         List.empty(growable: true));
   }
 
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingListModelForFBDS(
-      T modelDomain,
-      List<T> listModelDomainForFBDS)
+      T model,
+      List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as InsertModelToNamedDatabaseTIPDataSource<Z>,
-        modelDomain,
-        listModelDomainForFBDS);
+        model,
+        listModelForFBDS);
   }
   // end insertTIP 2
 
@@ -190,8 +188,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
-    return _baseInsertModelToNamedDatabaseNP(
-        _dataSource as InsertModelToNamedDatabaseNPDataSource);
+    return _baseInsertModelToNamedDatabaseNP(_dataSource as InsertModelToNamedDatabaseNPDataSource);
   }
   // end insertNP 1
 
@@ -199,30 +196,30 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIP(
-      List<T> listModelDomain)
+      List<T> listModel)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as InsertListModelToNamedDatabaseTIPDataSource<X>,
-        listModelDomain,
+        listModel,
         List.empty(growable: true));
   }
 
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingListModelForFBDS(
-      List<T> listModelDomain,
-      List<T> listModelDomainForFBDS)
+      List<T> listModel,
+      List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseInsertListModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as InsertListModelToNamedDatabaseTIPDataSource<X>,
-        listModelDomain,
-        listModelDomainForFBDS);
+        listModel,
+        listModelForFBDS);
   }
   // end insertListTIP 2
 
@@ -234,8 +231,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
-    return _baseInsertListModelToNamedDatabaseNP(
-        _dataSource as InsertListModelToNamedDatabaseNPDataSource);
+    return _baseInsertListModelToNamedDatabaseNP(_dataSource as InsertListModelToNamedDatabaseNPDataSource);
   }
   // end insertListNP 1
 
@@ -243,30 +239,30 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIP(
-      T modelDomain)
+      T model)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as UpdateModelToNamedDatabaseTIPDataSource<Z>,
-        modelDomain,
+        model,
         List.empty(growable: true));
   }
 
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingListModelForFBDS(
-      T modelDomain,
-      List<T> listModelDomainForFBDS)
+      T model,
+      List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as UpdateModelToNamedDatabaseTIPDataSource<Z>,
-        modelDomain,
-        listModelDomainForFBDS);
+        model,
+        listModelForFBDS);
   }
   // end updateTIP 2
 
@@ -278,8 +274,7 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
-    return _baseUpdateModelToNamedDatabaseNP(
-        _dataSource as UpdateModelToNamedDatabaseNPDataSource);
+    return _baseUpdateModelToNamedDatabaseNP(_dataSource as UpdateModelToNamedDatabaseNPDataSource);
   }
   // end updateNP 1
 
@@ -287,30 +282,30 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIP(
-      List<T> listModelDomain)
+      List<T> listModel)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as UpdateListModelToNamedDatabaseTIPDataSource<X>,
-        listModelDomain,
+        listModel,
         List.empty(growable: true));
   }
 
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingListModelForFBDS(
-      List<T> listModelDomain,
-      List<T> listModelDomainForFBDS)
+      List<T> listModel,
+      List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseUpdateListModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as UpdateListModelToNamedDatabaseTIPDataSource<X>,
-        listModelDomain,
-        listModelDomainForFBDS
+        listModel,
+        listModelForFBDS
     );
   }
   // end updateListTIP 2
@@ -331,30 +326,31 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   // start deleteTIP 2
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIP(T modelDomain)
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIP(
+      T model)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as DeleteModelToNamedDatabaseTIPDataSource<Z>,
-        modelDomain,
+        model,
         List.empty(growable: true));
   }
 
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingListModelForFBDS(
-      T modelDomain,
-      List<T> listModelDomainForFBDS)
+      T model,
+      List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as DeleteModelToNamedDatabaseTIPDataSource<Z>,
-        modelDomain,
-        listModelDomainForFBDS
+        model,
+        listModelForFBDS
     );
   }
   // end deleteTIP 2
@@ -376,30 +372,30 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIP(
-      List<T> listModelDomain)
+      List<T> listModel)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as DeleteListModelToNamedDatabaseTIPDataSource<X>,
-        listModelDomain,
+        listModel,
         List.empty(growable: true));
   }
 
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingListModelForFBDS(
-      List<T> listModelDomain,
-      List<T> listModelDomainForFBDS)
+      List<T> listModel,
+      List<T> listModelForFBDS)
   {
     if(_dataSource == null) {
       return throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
     return _baseDeleteListModelToNamedDatabaseTIPUsingListModelForFBDS(
         _dataSource as DeleteListModelToNamedDatabaseTIPDataSource<X>,
-        listModelDomain,
-        listModelDomainForFBDS
+        listModel,
+        listModelForFBDS
     );
   }
   // end deleteListTIP 2
@@ -429,37 +425,49 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   /// Start Setters FBDS **/
   @protected
   @nonVirtual
-  set setInsertModelToNamedDatabaseFBDS(InsertModelToNamedDatabaseFBDS<T> insertModelToNamedDatabaseFBDS) {
+  set setInsertModelToNamedDatabaseFBDS(
+      InsertModelToNamedDatabaseFBDS<T> insertModelToNamedDatabaseFBDS)
+  {
     _insertModelToNamedDatabaseFBDS = insertModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateModelToNamedDatabaseFBDS(UpdateModelToNamedDatabaseFBDS<T> updateModelToNamedDatabaseFBDS) {
+  set setUpdateModelToNamedDatabaseFBDS(
+      UpdateModelToNamedDatabaseFBDS<T> updateModelToNamedDatabaseFBDS)
+  {
     _updateModelToNamedDatabaseFBDS = updateModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteModelToNamedDatabaseFBDS(DeleteModelToNamedDatabaseFBDS<T> deleteModelToNamedDatabaseFBDS) {
+  set setDeleteModelToNamedDatabaseFBDS(
+      DeleteModelToNamedDatabaseFBDS<T> deleteModelToNamedDatabaseFBDS)
+  {
     _deleteModelToNamedDatabaseFBDS = deleteModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setInsertListModelToNamedDatabaseFBDS(InsertListModelToNamedDatabaseFBDS<T,Y> insertListModelToNamedDatabaseFBDS) {
+  set setInsertListModelToNamedDatabaseFBDS(
+      InsertListModelToNamedDatabaseFBDS<T,Y> insertListModelToNamedDatabaseFBDS)
+  {
     _insertListModelToNamedDatabaseFBDS = insertListModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateListModelToNamedDatabaseFBDS(UpdateListModelToNamedDatabaseFBDS<T,Y> updateListModelToNamedDatabaseFBDS) {
+  set setUpdateListModelToNamedDatabaseFBDS(
+      UpdateListModelToNamedDatabaseFBDS<T,Y> updateListModelToNamedDatabaseFBDS)
+  {
     _updateListModelToNamedDatabaseFBDS = updateListModelToNamedDatabaseFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteListModelToNamedDatabaseFBDS(DeleteListModelToNamedDatabaseFBDS<T,Y> deleteListModelToNamedDatabaseFBDS) {
+  set setDeleteListModelToNamedDatabaseFBDS(
+      DeleteListModelToNamedDatabaseFBDS<T,Y> deleteListModelToNamedDatabaseFBDS)
+  {
     _deleteListModelToNamedDatabaseFBDS = deleteListModelToNamedDatabaseFBDS;
   }
   /// End Setters FBDS **/
@@ -469,16 +477,13 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseNPDataSource
         .getListModelFromNamedDatabaseNP();
-    if(response.isExceptionResponse) {
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
-    return Response.success(response
-        .getData
-        .toBaseListModelDomain()
-        .getListModelDomain);
+    return Response.success(response.getData.toBaseListModel().getListModel);
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseParameterNamed(
@@ -487,16 +492,13 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<X,BaseException> response = await getListModelFromNamedDatabaseParameterNamedDataSource
         .getListModelFromNamedDatabaseParameterNamed(baseTypeParameter);
-    if(response.isExceptionResponse) {
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
-    return Response.success(response
-        .getData
-        .toBaseListModelDomain()
-        .getListModelDomain);
+    return Response.success(response.getData.toBaseListModel().getListModel);
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseNP(
@@ -504,15 +506,13 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseNPDataSource
         .getModelFromNamedDatabaseNP();
-    if(response.isExceptionResponse) {
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
-    return Response.success(response
-        .getData
-        .toBaseModelDomain());
+    return Response.success(response.getData.toBaseModel());
   }
 
   Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseParameterNamed(
@@ -521,72 +521,70 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
   async {
     Response<Z,BaseException> response = await getModelFromNamedDatabaseParameterNamedDataSource
         .getModelFromNamedDatabaseParameterNamed(baseTypeParameter);
-    if(response.isExceptionResponse) {
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
-    return Response.success(response
-        .getData
-        .toBaseModelDomain());
+    return Response.success(response.getData.toBaseModel());
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseTIPUsingListModelForFBDS(
       InsertModelToNamedDatabaseTIPDataSource<Z> insertModelToNamedDatabaseTIPDataSource,
-      T modelDomain,
-      List<T> listModelDomainForFBDS)
+      T model,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
       return throw LocalException(thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
-    T modelDomainCloning = cloneModelDomain(modelDomain);
+    T modelForClone = cloneModel(model);
     if(_insertModelToNamedDatabaseFBDS == null) {
       return await insertModelToNamedDatabaseTIPDataSource
-          .insertModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomainCloning));
+          .insertModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
     }
     ResponseGenericBoolAndDomainException response = _insertModelToNamedDatabaseFBDS
-        .insertModelToNamedDatabase(modelDomainCloning,_cloneListModelDomain(listModelDomainForFBDS));
-    if(response.isExceptionResponse) {
+        .insertModelToNamedDatabase(modelForClone,_cloneListModel(listModelForFBDS));
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
     return await insertModelToNamedDatabaseTIPDataSource
-        .insertModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomainCloning));
+        .insertModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseNP(
       InsertModelToNamedDatabaseNPDataSource insertModelToNamedDatabaseNPDataSource)
-  async {
-    return await insertModelToNamedDatabaseNPDataSource
+  {
+    return insertModelToNamedDatabaseNPDataSource
         .insertModelToNamedDatabaseNP();
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseTIPUsingListModelForFBDS(
       InsertListModelToNamedDatabaseTIPDataSource<X> insertListModelToNamedDatabaseTIPDataSource,
-      List<T> listModelDomain,
-      List<T> listModelDomainForFBDS)
+      List<T> listModel,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
       return throw LocalException(thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
-    BaseListModelDomain<T> baseListModelDomainWhereCloningListModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(listModelDomain));
+    BaseListModel<T> listModelForClone = BaseListModel<T>(_cloneListModel(listModel));
     if(_insertListModelToNamedDatabaseFBDS == null) {
       return await insertListModelToNamedDatabaseTIPDataSource
-          .insertListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomainWhereCloningListModelDomain));
+          .insertListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
     }
     ResponseGenericBoolAndDomainException response = _insertListModelToNamedDatabaseFBDS
-        .insertListModelToNamedDatabase(baseListModelDomainWhereCloningListModelDomain,_cloneListModelDomain(listModelDomainForFBDS));
-    if(response.isExceptionResponse) {
+        .insertListModelToNamedDatabase(listModelForClone,_cloneListModel(listModelForFBDS));
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
     return await insertListModelToNamedDatabaseTIPDataSource
-        .insertListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomainWhereCloningListModelDomain));
+        .insertListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseNP(
@@ -598,129 +596,129 @@ abstract class BaseBackgroundModel<T extends BaseModelDomain,Y extends BaseListM
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseTIPUsingListModelForFBDS(
       UpdateModelToNamedDatabaseTIPDataSource<Z> updateModelToNamedDatabaseTIPDataSource,
-      T modelDomain,
-      List<T> listModelDomainForFBDS)
+      T model,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
       return throw LocalException(thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
-    T modelDomainCloning = cloneModelDomain(modelDomain);
+    T modelForClone = cloneModel(model);
     if(_updateModelToNamedDatabaseFBDS == null) {
       return await updateModelToNamedDatabaseTIPDataSource
-          .updateModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomainCloning));
+          .updateModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
     }
     ResponseGenericBoolAndDomainException response = _updateModelToNamedDatabaseFBDS
-        .updateModelToNamedDatabase(modelDomainCloning,_cloneListModelDomain(listModelDomainForFBDS));
-    if(response.isExceptionResponse) {
+        .updateModelToNamedDatabase(modelForClone,_cloneListModel(listModelForFBDS));
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
     return await updateModelToNamedDatabaseTIPDataSource
-        .updateModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomainCloning));
+        .updateModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseNP(
       UpdateModelToNamedDatabaseNPDataSource updateModelToNamedDatabaseNPDataSource)
-  async {
-    return await updateModelToNamedDatabaseNPDataSource
+  {
+    return updateModelToNamedDatabaseNPDataSource
         .updateModelToNamedDatabaseNP();
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseTIPUsingListModelForFBDS(
       UpdateListModelToNamedDatabaseTIPDataSource<X> updateListModelToNamedDatabaseTIPDataSource,
-      List<T> listModelDomain,
-      List<T> listModelDomainForFBDS)
+      List<T> listModel,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
       return throw LocalException(thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
-    BaseListModelDomain<T> baseListModelDomainWhereCloningListModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(listModelDomain));
+    BaseListModel<T> listModelForClone = BaseListModel<T>(_cloneListModel(listModel));
     if(_updateListModelToNamedDatabaseFBDS == null) {
       return await updateListModelToNamedDatabaseTIPDataSource
-          .updateListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomainWhereCloningListModelDomain));
+          .updateListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
     }
     ResponseGenericBoolAndDomainException response = _updateListModelToNamedDatabaseFBDS
-        .updateListModelToNamedDatabase(baseListModelDomainWhereCloningListModelDomain,_cloneListModelDomain(listModelDomainForFBDS));
-    if(response.isExceptionResponse) {
+        .updateListModelToNamedDatabase(listModelForClone,_cloneListModel(listModelForFBDS));
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
     return await updateListModelToNamedDatabaseTIPDataSource
-        .updateListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomainWhereCloningListModelDomain));
+        .updateListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseNP(
       UpdateListModelToNamedDatabaseNPDataSource updateListModelToNamedDatabaseNPDataSource)
-  async {
-    return await updateListModelToNamedDatabaseNPDataSource
+  {
+    return updateListModelToNamedDatabaseNPDataSource
         .updateListModelToNamedDatabaseNP();
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseTIPUsingListModelForFBDS(
       DeleteModelToNamedDatabaseTIPDataSource<Z> deleteModelToNamedDatabaseTIPDataSource,
-      T modelDomain,
-      List<T> listModelDomainForFBDS)
+      T model,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseModelNamedDatabase == null) {
       return throw LocalException(thisClass,constDeveloper,"ConverterToBaseModelNamedDatabase equals null");
     }
-    T modelDomainCloning = cloneModelDomain(modelDomain);
+    T modelForClone = cloneModel(model);
     if(_deleteModelToNamedDatabaseFBDS == null) {
       return await deleteModelToNamedDatabaseTIPDataSource
-          .deleteModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomainCloning));
+          .deleteModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
     }
     ResponseGenericBoolAndDomainException response = _deleteModelToNamedDatabaseFBDS
-        .deleteModelToNamedDatabase(modelDomainCloning,_cloneListModelDomain(listModelDomainForFBDS));
-    if(response.isExceptionResponse) {
+        .deleteModelToNamedDatabase(modelForClone,_cloneListModel(listModelForFBDS));
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
     return await deleteModelToNamedDatabaseTIPDataSource
-        .deleteModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelDomainCloning));
+        .deleteModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseNP(
       DeleteModelToNamedDatabaseNPDataSource deleteModelToNamedDatabaseNPDataSource)
-  async {
-    return await deleteModelToNamedDatabaseNPDataSource
+  {
+    return deleteModelToNamedDatabaseNPDataSource
         .deleteModelToNamedDatabaseNP();
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseTIPUsingListModelForFBDS(
       DeleteListModelToNamedDatabaseTIPDataSource<X> deleteListModelToNamedDatabaseTIPDataSource,
-      List<T> listModelDomain,
-      List<T> listModelDomainForFBDS)
+      List<T> listModel,
+      List<T> listModelForFBDS)
   async {
     if(_converterToBaseListModelNamedDatabase == null) {
       return throw LocalException(thisClass,constDeveloper,"ConverterToBaseListModelNamedDatabase equals null");
     }
-    BaseListModelDomain<T> baseListModelDomainWhereCloningListModelDomain = BaseListModelDomain<T>(_cloneListModelDomain(listModelDomain));
+    BaseListModel<T> listModelForClone = BaseListModel<T>(_cloneListModel(listModel));
     if(_deleteListModelToNamedDatabaseFBDS == null) {
       return await deleteListModelToNamedDatabaseTIPDataSource
-          .deleteListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomainWhereCloningListModelDomain));
+          .deleteListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
     }
     ResponseGenericBoolAndDomainException response = _deleteListModelToNamedDatabaseFBDS
-        .deleteListModelToNamedDatabase(baseListModelDomainWhereCloningListModelDomain,_cloneListModelDomain(listModelDomainForFBDS));
-    if(response.isExceptionResponse) {
+        .deleteListModelToNamedDatabase(listModelForClone,_cloneListModel(listModelForFBDS));
+    if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess) {
+    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
       return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
     }
     return await deleteListModelToNamedDatabaseTIPDataSource
-        .deleteListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(baseListModelDomainWhereCloningListModelDomain));
+        .deleteListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
   }
 
   Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseNP(
       DeleteListModelToNamedDatabaseNPDataSource deleteListModelToNamedDatabaseNPDataSource)
-  async {
-    return await deleteListModelToNamedDatabaseNPDataSource
+  {
+    return deleteListModelToNamedDatabaseNPDataSource
         .deleteListModelToNamedDatabaseNP();
   }
 }

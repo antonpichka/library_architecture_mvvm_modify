@@ -1,25 +1,27 @@
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_domain.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class BaseIterator<T extends BaseModelDomain> implements Iterator<T> {
-  List<T> _listModelDomain;
+abstract class BaseIterator<T extends BaseModel>
+    implements Iterator<T>
+{
+  List<T> _listModel;
 
   @nonVirtual
-  List<T> get getSortedListModelDomain {
-    List<T> listModelDomain = List.empty(growable: true);
+  List<T> get getSortedListModel {
+    List<T> listModel = List.empty(growable: true);
     while(moveNext()) {
-      var item = current;
-      listModelDomain.add(item);
+      T itemModel = current;
+      listModel.add(itemModel);
     }
-    return listModelDomain;
+    return listModel;
   }
 
   @protected
   @nonVirtual
-  List<T> get getListModelDomain => _listModelDomain;
+  List<T> get getListModel => _listModel;
 
   @nonVirtual
-  set setParameterListModelDomain(List<T> listModelDomain) {
-    _listModelDomain = listModelDomain;
+  set setParameterListModel(List<T> listModel) {
+    _listModel = listModel;
   }
 }

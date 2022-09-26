@@ -1,4 +1,4 @@
-enum EnumBaseModelDomainVM {
+enum EnumBaseModelVM {
   insertModelToNamedDatabaseTIP,
   updateModelToNamedDatabaseTIP,
   deleteModelToNamedDatabaseTIP,
