@@ -1,6 +1,8 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 
-class NetworkException extends BaseException {
+class NetworkException
+    extends BaseException
+{
   final int _statusCode;
   final String _nameStatusCode;
   final String _descriptionStatusCode;
@@ -9,7 +11,8 @@ class NetworkException extends BaseException {
       Object thisClass,
       this._statusCode,
       this._nameStatusCode,
-      this._descriptionStatusCode) : super((NetworkException).toString(),thisClass);
+      this._descriptionStatusCode)
+      : super((NetworkException).toString(),thisClass);
 
   static NetworkException byStatusCode(Object thisClass,int statusCode)  {
     return _DataInMapNetworkException.getMapCodeAndNetworkException(thisClass)[statusCode];

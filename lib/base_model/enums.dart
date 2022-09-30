@@ -4,7 +4,9 @@ enum EnumsDefault {
   zero
 }
 
-class Enums extends BaseModel {
+class Enums
+    extends BaseModel
+{
   Enum field;
 
   Enums(this.field) : super('');

@@ -1,7 +1,8 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 class Bool
-    extends BaseModel {
+    extends BaseModel
+{
   bool isField;
 
   Bool(this.isField) : super('');

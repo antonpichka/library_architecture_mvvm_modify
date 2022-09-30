@@ -13,6 +13,4 @@ class ListDefault<T extends BaseListModel,Y extends BaseModelNamedDatabase>
     // TODO: implement toBaseListModelDomain
     throw UnimplementedError();
   }
-
-
 }

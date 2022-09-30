@@ -1,6 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-abstract class BaseViewState<T extends StatefulWidget> extends State<T> with WidgetsBindingObserver {
+abstract class BaseViewState<T extends StatefulWidget>
+    extends State<T>
+    with WidgetsBindingObserver
+{
   @override
   void initState() {
     super.initState();
