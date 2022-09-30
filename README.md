@@ -9,7 +9,7 @@ Coming soon
 
 ## Usage
 
-View directory "example"
+View directory <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/example">library_architecture_mvvm_modify/example</a>
 
 ## License
 
