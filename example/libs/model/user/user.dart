@@ -14,15 +14,12 @@ class User
   /// End Getters Methods **/
 
   /// Start Setters Methods **/
-
   set setParameterName(String name) {
     this.name = name;
   }
-
   /// End Setters Methods **/
 
   /// Start FBDS and bool Methods **/
-
   ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP() {
     if(isEmptyByTrimParameterName()) {
       return ResponseGenericBoolAndDomainException.exception(DomainException(this,constIsEmptyByTrimParameterName));
@@ -34,27 +31,20 @@ class User
   bool isEmptyByTrimParameterName() {
     return name.trim().isEmpty;
   }
-
   /// End FBDS and bool Methods **/
 
   /// Start Ext Methods **/
-
   @override
   String toString() {
     return "$uniqueId : $name";
   }
-
   /// End Ext Methods **/
 
   /// Start Const For FBDS and Bool Methods **/
-
   static const String constIsEmptyByTrimParameterName = "constIsEmptyByTrimParameterName";
-
   /// End Const For FBDS and Bool Methods **/
 
   /// Start Default state object for ViewModel object  **/
-
   static User get getDefaultUser => User("", "");
-
   /// End Default state object for ViewModel object  **/
 }
