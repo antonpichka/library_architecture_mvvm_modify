@@ -1,3 +1,19 @@
+/*
+ * Designed and developed by 2022 JacobOdd (Anton Pichka)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_model_named_database/converter_to_base_list_model_named_database.dart';
@@ -127,9 +143,12 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   ///   }
   ///
   @protected
-  T cloneModel(T model);
+  T cloneModel(
+      T model);
 
-  List<T> _cloneListModel(List<T> listModel) {
+  List<T> _cloneListModel(
+      List<T> listModel)
+  {
     if(listModel.isEmpty) {
       return [];
     }
@@ -1054,7 +1073,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start insertToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModelParameterNamed(T model) {
+  Response<bool, BaseException> insertModelToGetListModelParameterNamed(
+      T model)
+  {
     return _baseInsertModelToGetListModel(model,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed));
   }
@@ -1070,7 +1091,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start insertListToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModelParameterNamed(List<T> listModel) {
+  Response<bool, BaseException> insertListModelToGetListModelParameterNamed(
+      List<T> listModel)
+  {
     return _baseInsertListModelToGetListModel(listModel,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed));
   }
@@ -1086,7 +1109,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start updateToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModelParameterNamed(T model) {
+  Response<bool, BaseException> updateModelToGetListModelParameterNamed(
+      T model)
+  {
     return _baseUpdateModelToGetListModel(model,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed));
   }
@@ -1102,7 +1127,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start updateListToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModelParameterNamed(List<T> listModel) {
+  Response<bool, BaseException> updateListModelToGetListModelParameterNamed(
+      List<T> listModel)
+  {
     return _baseUpdateListModelToGetListModel(listModel,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed));
   }
@@ -1118,7 +1145,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start deleteToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModelParameterNamed(T model) {
+  Response<bool, BaseException> deleteModelToGetListModelParameterNamed(
+      T model)
+  {
     return _baseDeleteModelToGetListModel(model,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed));
   }
@@ -1134,7 +1163,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start deleteListToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModelParameterNamed(List<T> listModel) {
+  Response<bool, BaseException> deleteListModelToGetListModelParameterNamed(
+      List<T> listModel)
+  {
     return _baseDeleteListModelToGetListModel(listModel,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed));
   }
@@ -1171,7 +1202,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start insertToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModelNP(T model) {
+  Response<bool, BaseException> insertModelToGetListModelNP(
+      T model)
+  {
     return _baseInsertModelToGetListModel(model,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP));
   }
@@ -1187,7 +1220,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start insertListToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModelNP(List<T> listModel) {
+  Response<bool, BaseException> insertListModelToGetListModelNP(
+      List<T> listModel)
+  {
     return _baseInsertListModelToGetListModel(listModel,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP));
   }
@@ -1203,7 +1238,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start updateToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModelNP(T model) {
+  Response<bool, BaseException> updateModelToGetListModelNP(
+      T model)
+  {
     return _baseUpdateModelToGetListModel(model,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP));
   }
@@ -1219,7 +1256,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start updateListToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModelNP(List<T> listModel) {
+  Response<bool, BaseException> updateListModelToGetListModelNP(
+      List<T> listModel)
+  {
     return _baseUpdateListModelToGetListModel(listModel,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP));
   }
@@ -1235,7 +1274,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start deleteToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModelNP(T model) {
+  Response<bool, BaseException> deleteModelToGetListModelNP(
+      T model)
+  {
     return _baseDeleteModelToGetListModel(model,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP));
   }
@@ -1251,7 +1292,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start deleteListToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModelNP(List<T> listModel) {
+  Response<bool, BaseException> deleteListModelToGetListModelNP(
+      List<T> listModel)
+  {
     return _baseDeleteListModelToGetListModel(listModel,
         _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP));
   }
@@ -1283,7 +1326,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  set setEnumTypeParameterForBaseIterator(BaseTypeParameter<EnumIterator> enumTypeParameterForBaseIterator) {
+  set setEnumTypeParameterForBaseIterator(
+      BaseTypeParameter<EnumIterator> enumTypeParameterForBaseIterator)
+  {
     _enumTypeParameterForBaseIterator = enumTypeParameterForBaseIterator;
   }
 
@@ -1299,7 +1344,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = baseTypeParameter;
   }
 
-  BaseTypeParameter _getBaseTypeParameter(EnumBaseTypeParameterVM operation) {
+  BaseTypeParameter _getBaseTypeParameter(
+      EnumBaseTypeParameterVM operation)
+  {
     if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1310,7 +1357,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   /// Start Model **/
   @protected
   @nonVirtual
-  T getModel(EnumBaseModelVM operation) {
+  T getModel(
+      EnumBaseModelVM operation)
+  {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1319,7 +1368,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  void setModel(EnumBaseModelVM operation,T model) {
+  void setModel(
+      EnumBaseModelVM operation,
+      T model)
+  {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1328,7 +1380,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<T> getFutureModel(EnumBaseModelVM operation) async {
+  Future<T> getFutureModel(
+      EnumBaseModelVM operation)
+  async {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1337,7 +1391,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Stream<T> getStreamModel(EnumBaseModelVM operation) {
+  Stream<T> getStreamModel(
+      EnumBaseModelVM operation)
+  {
     if(!_mapEnumBaseModelVMAndStreamControllerForBaseModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1346,7 +1402,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  void notifyStreamModel(EnumBaseModelVM operation) {
+  void notifyStreamModel(
+      EnumBaseModelVM operation)
+  {
     if(!_mapEnumBaseModelVMAndStreamControllerForBaseModel.containsKey(operation) ||
         !_mapEnumBaseModelVMAndBaseModel.containsKey(operation))
     {
@@ -1360,7 +1418,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   /// Start ListModel **/
   @protected
   @nonVirtual
-  List<T> getListModel(EnumBaseListModelVM operation)  {
+  List<T> getListModel(
+      EnumBaseListModelVM operation)
+  {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1369,7 +1429,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  void setListModel(EnumBaseListModelVM operation,List<T> listModel) {
+  void setListModel(
+      EnumBaseListModelVM operation,
+      List<T> listModel)
+  {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1378,7 +1441,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<List<T>> getFutureListModel(EnumBaseListModelVM operation) async {
+  Future<List<T>> getFutureListModel(
+      EnumBaseListModelVM operation)
+  async {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1387,7 +1452,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Stream<List<T>> getStreamListModel(EnumBaseListModelVM operation) {
+  Stream<List<T>> getStreamListModel(
+      EnumBaseListModelVM operation)
+  {
     if(!_mapEnumBaseListModelVMAndStreamControllerForListBaseModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1396,7 +1463,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  void notifyStreamListModel(EnumBaseListModelVM operation) {
+  void notifyStreamListModel(
+      EnumBaseListModelVM operation)
+  {
     if(!_mapEnumBaseListModelVMAndStreamControllerForListBaseModel.containsKey(operation) ||
         !_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation))
     {
@@ -1408,7 +1477,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   /// End ListModel **/
 
   /// Start BaseListModel **/
-  Y _getBaseListModel(EnumBaseListModelVM operation) {
+  Y _getBaseListModel(
+      EnumBaseListModelVM operation)
+  {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
       return throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
@@ -1419,10 +1490,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   /// Start Setters DataSource **/
   @protected
   @nonVirtual
-  set setDataSource(Object dataSource) {
-    if(_isNotExistsDataSource) {
-      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
+  set setDataSource(
+      Object dataSource)
+  {
     _dataSource = dataSource;
     _initListEnumBaseModelVMAndListEnumBaseListModelVMAndListEnumBaseTypeParameterVM();
     _initMapEnumBaseModelVMAndBaseModel();
@@ -1506,6 +1576,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   }
 
   void _initListEnumBaseModelVMAndListEnumBaseListModelVMAndListEnumBaseTypeParameterVM() {
+    if(_isNotExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
     if(_dataSource == null) {
       throw LocalException(thisClass,constDeveloper,"DataSource equals null");
     }
@@ -1558,6 +1631,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   void _initNoDataSourceListEnumBaseModelVM(
       List<EnumBaseModelVM> listEnumBaseModelVM)
   {
+    if(_isExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call noDataSource: $_isNotExistsDataSource");
+    }
     if(listEnumBaseModelVM == null) {
       return;
     }
@@ -1570,6 +1646,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   void _initNoDataSourceListEnumBaseListModelVM(
       List<EnumBaseListModelVM> listEnumBaseListModelVM)
   {
+    if(_isExistsDataSource) {
+      throw LocalException(thisClass,constDeveloper,"Constructor call noDataSource: $_isNotExistsDataSource");
+    }
     if(listEnumBaseListModelVM == null) {
       return;
     }

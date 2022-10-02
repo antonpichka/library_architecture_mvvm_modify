@@ -1,3 +1,19 @@
+/*
+ * Designed and developed by 2022 JacobOdd (Anton Pichka)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
@@ -7,20 +23,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 class TypeForSP {
   final EnumTypeForSP _enumTypeForSP;
 
-  TypeForSP.typeString() :
-       _enumTypeForSP =  EnumTypeForSP.string;
+  TypeForSP.typeString()
+      : _enumTypeForSP =  EnumTypeForSP.string;
 
-  TypeForSP.typeInt() :
-        _enumTypeForSP =  EnumTypeForSP.int;
+  TypeForSP.typeInt()
+      : _enumTypeForSP =  EnumTypeForSP.int;
 
-  TypeForSP.typeBool() :
-        _enumTypeForSP =  EnumTypeForSP.bool;
+  TypeForSP.typeBool()
+      : _enumTypeForSP =  EnumTypeForSP.bool;
 
-  TypeForSP.typeDouble() :
-        _enumTypeForSP =  EnumTypeForSP.double;
+  TypeForSP.typeDouble()
+      : _enumTypeForSP =  EnumTypeForSP.double;
 
-  TypeForSP.typeListString() :
-        _enumTypeForSP =  EnumTypeForSP.listString;
+  TypeForSP.typeListString()
+      : _enumTypeForSP =  EnumTypeForSP.listString;
 
   EnumTypeForSP get getEnumTypeForSP {
     return _enumTypeForSP;
@@ -40,10 +56,12 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
   static SharedPreferences _sharedPreferences;
 
   @protected
-  T fromMapToBaseModelSharedPreferenceDatabase(Map<String, dynamic> map);
+  T fromMapToBaseModelSharedPreferenceDatabase(
+      Map<String, dynamic> map);
 
   @protected
-  Future<SharedPreferences> get sharedPreferences async {
+  Future<SharedPreferences> get sharedPreferences
+  async {
     if(_sharedPreferences != null) {
       return _sharedPreferences;
     }
@@ -98,7 +116,6 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
     try {
       final sP = await sharedPreferences;
       Map<String,dynamic> map = {};
-
       mapStringAndTypeForSP.forEach((key, value) {
         switch(value.getEnumTypeForSP) {
           case EnumTypeForSP.string:

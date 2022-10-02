@@ -1,3 +1,19 @@
+/*
+ * Designed and developed by 2022 JacobOdd (Anton Pichka)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
@@ -41,13 +57,16 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
       );
   
   @protected
-  T fromMapToBaseModelSqfliteDatabase(Map<String, dynamic> map);
+  T fromMapToBaseModelSqfliteDatabase(
+      Map<String, dynamic> map);
 
   @protected
-  Y fromListMapToBaseListModelSqfliteDatabase(List<Map<String, dynamic>> map);
+  Y fromListMapToBaseListModelSqfliteDatabase(
+      List<Map<String, dynamic>> map);
 
   @protected
-  Future<Database> get getDatabase async {
+  Future<Database> get getDatabase
+  async {
     if (_mapFilenameAndDatabase.containsKey(fileDatabase)) {
       return _mapFilenameAndDatabase[fileDatabase];
     }
@@ -285,7 +304,8 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
     }
   }
 
-  _initDB() async {
+  _initDB()
+  async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, fileDatabase);
     return await openDatabase(path, version: version,
