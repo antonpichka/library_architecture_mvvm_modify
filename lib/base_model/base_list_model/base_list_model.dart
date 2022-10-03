@@ -16,11 +16,10 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/constants.dart';
+import 'package:library_architecture_mvvm_modify/cancel_operation_without_error_and_success.dart';
 import 'package:library_architecture_mvvm_modify/response.dart';
 
 class BaseListModel<T extends BaseModel>
@@ -52,7 +51,7 @@ class BaseListModel<T extends BaseModel>
       Map<Enum,BaseIterator<T>> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
-      return Response.exception(LocalException(thisClass,constDeveloper,"MapEnumAndBaseIterator isEmpty"));
+      return Response.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutErrorAndSuccess(thisClass,"MapEnumAndBaseIterator isEmpty"));
     }
     int i = 0;
     Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
@@ -87,7 +86,7 @@ class BaseListModel<T extends BaseModel>
   Response<bool, BaseException> updateListModelToGetListModel(Object thisClass,List<T> listModel)
   {
     if(_listModel.isEmpty) {
-      return Response.exception(LocalException(thisClass,constDeveloper,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutErrorAndSuccess(thisClass,"ListModel isEmpty"));
     }
     for(int i = 0; i < listModel.length; i++) {
       _listModel[_listModel.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
@@ -98,7 +97,7 @@ class BaseListModel<T extends BaseModel>
   Response<bool, BaseException> updateModelToGetListModel(Object thisClass,T model)
   {
     if(_listModel.isEmpty) {
-      return Response.exception(LocalException(thisClass,constDeveloper,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutErrorAndSuccess(thisClass,"ListModel isEmpty"));
     }
     _listModel[_listModel.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
     return Response.success(true);
@@ -107,7 +106,7 @@ class BaseListModel<T extends BaseModel>
   Response<bool, BaseException> deleteListModelToGetListModel(Object thisClass,List<T> listModel)
   {
     if(_listModel.isEmpty) {
-      return Response.exception(LocalException(thisClass,constDeveloper,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutErrorAndSuccess(thisClass,"ListModel isEmpty"));
     }
     List<T> listModelForDelete = List.empty(growable: true);
     for(int i = 0; i < _listModel.length; i++) {
@@ -132,7 +131,7 @@ class BaseListModel<T extends BaseModel>
   Response<bool, BaseException> deleteModelToGetListModel(Object thisClass,T model)
   {
     if(_listModel.isEmpty) {
-      return Response.exception(LocalException(thisClass,constDeveloper,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutErrorAndSuccess(thisClass,"ListModel isEmpty"));
     }
     _listModel.removeWhere((item) => item.uniqueId == model.uniqueId);
     return Response.success(true);
