@@ -15,8 +15,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:library_architecture_mvvm_modify/base_view_state/base_view_state.dart';
-
+import 'package:library_architecture_mvvm_modify/base_view/base_view.dart';
 import '../list_of_view_model_for_named_view/list_of_view_model_for_main_view.dart';
 
 class MainView extends StatefulWidget {
@@ -25,7 +24,7 @@ class MainView extends StatefulWidget {
   _MainView createState() => _MainView();
 }
 
-class _MainView extends BaseViewState<MainView> {
+class _MainView extends BaseView<MainView> {
   final ListOfViewModelForMainView _lo =
   ListOfViewModelForMainView();
 

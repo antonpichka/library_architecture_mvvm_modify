@@ -46,9 +46,9 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/constants.dart';
-import 'package:library_architecture_mvvm_modify/response.dart';
-import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/constants.dart';
+import 'package:library_architecture_mvvm_modify/response/response.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
 
 typedef ItemCreator<S> = S Function();
 

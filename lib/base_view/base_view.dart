@@ -14,12 +14,21 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/constants.dart';
+import 'package:flutter/material.dart';
 
-class CancelOperationWithoutErrorAndSuccess {
-  CancelOperationWithoutErrorAndSuccess(Object thisClass,String message) {
-    printWarning("===start_to_trace_cancel_operation_without_error_and_success===\n");
-    printWarning("WhereHappenedCancelOperationWithoutErrorAndSuccess(Class): ${thisClass.runtimeType}\nMessage: $message\n");
-    printWarning("===end_to_trace_cancel_operation_without_error_and_success===\n");
+abstract class BaseView<T extends StatefulWidget>
+    extends State<T>
+    with WidgetsBindingObserver
+{
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+  
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 }

@@ -17,7 +17,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/response.dart';
+import 'package:library_architecture_mvvm_modify/response/response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TypeForSP {

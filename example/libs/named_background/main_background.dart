@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
+import 'package:library_architecture_mvvm_modify/base_background/base_background.dart';
 import '../model_named_background_model/user_sqflite_database_background_model/user_sqflite_database_background_model_using_delete_np_for_all.dart';
 
-class MainBackground {
-  static final MainBackground firebaseMessagingBackground =
+class MainBackground
+    extends BaseBackground<String>
+{
+  static final MainBackground mainBackground =
   MainBackground._();
 
   final UserSqfliteDatabaseBackgroundModelUsingDeleteNPForAll _userSqfliteDatabaseBackgroundModelUsingDeleteNPForAll =
@@ -25,25 +28,26 @@ class MainBackground {
 
   MainBackground._();
 
-  Future<void> selectAndRunTask(
-      String nameTask)
+  @override
+  Future<void> selectAndRunATask(
+      String selectATask)
   async {
-    switch(nameTask) {
-      case "deleteUserToSqfliteDatabaseThereIsParameterForAll":
-        await _deleteUserToSqfliteDatabaseNPAndAlsoOneTasks();
+    switch(selectATask) {
+      case "deleteUserToSqfliteDatabaseNPAndInGeneralOneTask":
+        await _deleteUserToSqfliteDatabaseNPAndInGeneralOneTask();
         break;
       case "two":
         break;
     }
   }
 
-  Future<void> _deleteUserToSqfliteDatabaseNPAndAlsoOneTasks()
+  Future<void> _deleteUserToSqfliteDatabaseNPAndInGeneralOneTask()
   async {
     // 1
     var result = await _userSqfliteDatabaseBackgroundModelUsingDeleteNPForAll
         .deleteUserToSqfliteDatabaseNP();
     if(result.isExceptionResponse()) {
-      return _deleteUserToSqfliteDatabaseNPAndAlsoOneTasks();
+      return _deleteUserToSqfliteDatabaseNPAndInGeneralOneTask();
     }
     return;
   }

@@ -16,7 +16,7 @@
 
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
 
 class User
     extends BaseModel

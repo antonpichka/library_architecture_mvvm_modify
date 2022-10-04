@@ -56,9 +56,9 @@ import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_p
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_type_parameter_vm.dart';
-import 'package:library_architecture_mvvm_modify/constants.dart';
-import 'package:library_architecture_mvvm_modify/response.dart';
-import 'package:library_architecture_mvvm_modify/response_generic_bool_and_domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/constants.dart';
+import 'package:library_architecture_mvvm_modify/response/response.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
 
 typedef CreatorModel<S> = S Function();
 
