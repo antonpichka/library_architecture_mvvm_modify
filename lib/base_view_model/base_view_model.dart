@@ -1411,6 +1411,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
     _mapEnumBaseModelVMAndStreamControllerForBaseModel[operation]
+        .sink
         .add(_mapEnumBaseModelVMAndBaseModel[operation]);
   }
   /// End Model **/
@@ -1472,6 +1473,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
     _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[operation]
+        .sink
         .add(_mapEnumBaseListModelVMAndBaseListModel[operation].getListModel);
   }
   /// End ListModel **/
