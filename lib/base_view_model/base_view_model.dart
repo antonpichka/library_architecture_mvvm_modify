@@ -2055,9 +2055,6 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(map == null) {
       return;
     }
-    if(map.isEmpty) {
-      return;
-    }
     for(StreamController streamController in map.values) {
       if(streamController == null) {
         continue;
