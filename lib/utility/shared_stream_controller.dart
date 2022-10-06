@@ -17,7 +17,7 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import '../utility/constants.dart';
+import 'constants.dart';
 
 /*
   initialize only in view classes
