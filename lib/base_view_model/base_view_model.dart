@@ -60,14 +60,16 @@ import 'package:library_architecture_mvvm_modify/utility/constants.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
 import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
 
-typedef CreatorModel<S> = S Function();
+typedef InitObject<S> = S Function();
 
 abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,EnumIterator extends Enum>
     implements BaseDispose
 {
-  /* Init Default Model */
-  final CreatorModel<T> _initCreatorBaseModel;
-  final CreatorModel<Y> _initCreatorBaseListModel;
+  /* Init Objects */
+  final InitObject<T> _initObjectBaseModel;
+  final InitObject<Y> _initObjectBaseListModel;
+  final InitObject<StreamController<T>> _initObjectStreamControllerForBaseModel;
+  final InitObject<StreamController<List<T>>> _initObjectStreamControllerForBaseListModel;
 
   /* Init List Objects For Model And BaseTypeParameter */
   final List<EnumBaseModelVM> _listEnumBaseModelVM = List.empty(growable: true);
@@ -104,8 +106,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   BaseViewModel.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
       this._converterToBaseModelNamedDatabase,
       this._converterToBaseListModelNamedDatabase,
-      this._initCreatorBaseModel,
-      this._initCreatorBaseListModel)
+      this._initObjectBaseModel,
+      this._initObjectBaseListModel,
+      [this._initObjectStreamControllerForBaseModel,
+        this._initObjectStreamControllerForBaseListModel])
   {
     _isExistsDataSource = true;
   }
@@ -113,8 +117,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   BaseViewModel.noDataSource(
       List<EnumBaseModelVM> listEnumBaseModelVM,
       List<EnumBaseListModelVM> listEnumBaseListModelVM,
-      this._initCreatorBaseModel,
-      this._initCreatorBaseListModel)
+      this._initObjectBaseModel,
+      this._initObjectBaseListModel,
+      [this._initObjectStreamControllerForBaseModel,
+        this._initObjectStreamControllerForBaseListModel])
   {
     _isExistsDataSource = false;
     _initNoDataSourceListEnumBaseModelVM(listEnumBaseModelVM);
@@ -1664,11 +1670,11 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(_listEnumBaseModelVM.isEmpty) {
       return;
     }
-    if(_initCreatorBaseModel == null) {
-      throw LocalException(thisClass,constDeveloper,"InitCreatorBaseModel equals null");
+    if(_initObjectBaseModel == null) {
+      throw LocalException(thisClass,constDeveloper,"InitObjectBaseModel equals null");
     }
     for(EnumBaseModelVM enumBaseModelVM in _listEnumBaseModelVM) {
-      _mapEnumBaseModelVMAndBaseModel[enumBaseModelVM] = _initCreatorBaseModel();
+      _mapEnumBaseModelVMAndBaseModel[enumBaseModelVM] = _initObjectBaseModel();
     }
   }
 
@@ -1677,7 +1683,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       return;
     }
     for(EnumBaseModelVM enumBaseModelVM in _listEnumBaseModelVM) {
-      _mapEnumBaseModelVMAndStreamControllerForBaseModel[enumBaseModelVM] = StreamController<T>.broadcast();
+      _mapEnumBaseModelVMAndStreamControllerForBaseModel[enumBaseModelVM] = _initObjectStreamControllerForBaseModel() ?? StreamController<T>.broadcast();
     }
   }
 
@@ -1685,11 +1691,11 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(_listEnumBaseListModelVM.isEmpty) {
       return;
     }
-    if(_initCreatorBaseListModel == null) {
-      throw LocalException(thisClass,constDeveloper,"InitCreatorBaseListModel equals null");
+    if(_initObjectBaseListModel == null) {
+      throw LocalException(thisClass,constDeveloper,"InitObjectBaseListModel equals null");
     }
     for(EnumBaseListModelVM enumBaseListModelVM in _listEnumBaseListModelVM) {
-      _mapEnumBaseListModelVMAndBaseListModel[enumBaseListModelVM] = _initCreatorBaseListModel();
+      _mapEnumBaseListModelVMAndBaseListModel[enumBaseListModelVM] = _initObjectBaseListModel();
     }
   }
 
@@ -1698,7 +1704,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       return;
     }
     for(EnumBaseListModelVM enumBaseListModelVM in _listEnumBaseListModelVM) {
-      _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[enumBaseListModelVM] = StreamController<List<T>>.broadcast();
+      _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[enumBaseListModelVM] = _initObjectStreamControllerForBaseListModel() ?? StreamController<List<T>>.broadcast();
     }
   }
 
