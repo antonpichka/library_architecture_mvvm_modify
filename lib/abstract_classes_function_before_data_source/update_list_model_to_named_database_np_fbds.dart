@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_database_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
-import '../user.dart';
 
-class DeleteUserToSqfliteDatabaseFBDSUsingDeleteTIP
-    extends DeleteModelToNamedDatabaseFBDS<User>
+abstract class UpdateListModelToNamedDatabaseNPFBDS<T extends BaseTypeParameter>
 {
-  @override
-  ResponseGenericBoolAndDomainException deleteModelToNamedDatabase(
-      User model,
-      List<User> listModelForCheck)
-  {
-    return model.deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP();
-  }
+  UpdateListModelToNamedDatabaseNPFBDS();
+
+  ResponseGenericBoolAndDomainException updateListModelToNamedDatabaseNP(
+      T typeParameterForFBDS);
 }

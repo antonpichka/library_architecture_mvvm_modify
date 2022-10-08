@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
 
-abstract class InsertModelToNamedDatabaseFBDS<T extends BaseModel>
+abstract class UpdateModelToNamedDatabaseNPFBDS<T extends BaseTypeParameter>
 {
-  InsertModelToNamedDatabaseFBDS();
+  UpdateModelToNamedDatabaseNPFBDS();
 
-  ResponseGenericBoolAndDomainException insertModelToNamedDatabase(
-      T model,
-      List<T> listModelForCheck);
+  ResponseGenericBoolAndDomainException updateModelToNamedDatabaseNP(
+      T typeParameterForFBDS);
 }

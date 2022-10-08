@@ -16,13 +16,14 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
 
-abstract class DeleteListModelToNamedDatabaseFBDS<T extends BaseModel,Y extends BaseListModel<T>>
+abstract class DeleteListModelToNamedDatabaseTIPFBDS<T extends BaseModel,Y extends BaseListModel<T>,Z extends BaseTypeParameter>
 {
-  DeleteListModelToNamedDatabaseFBDS();
+  DeleteListModelToNamedDatabaseTIPFBDS();
 
-  ResponseGenericBoolAndDomainException deleteListModelToNamedDatabase(
+  ResponseGenericBoolAndDomainException deleteListModelToNamedDatabaseTIP(
       Y listModel,
-      List<T> listModelForCheck);
+      Z typeParameterForFBDS);
 }
