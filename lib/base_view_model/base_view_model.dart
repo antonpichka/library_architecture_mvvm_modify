@@ -266,7 +266,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseGetListModelFromNamedDatabaseParameterNamed(
         _dataSource as  GetListModelFromNamedDatabaseParameterNamedDataSource<X,BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
+        getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
@@ -306,7 +306,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     Response<List<T>, BaseException> result = await _baseGetListModelFromNamedDatabaseParameterNamed(
         _dataSource as  GetListModelFromNamedDatabaseParameterNamedDataSource<X,BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
+        getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
@@ -385,7 +385,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseGetModelFromNamedDatabaseParameterNamed(
         _dataSource as GetModelFromNamedDatabaseParameterNamedDataSource<Z,BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
+        getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
@@ -424,7 +424,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     Response<T, BaseException> result = await _baseGetModelFromNamedDatabaseParameterNamed(
         _dataSource as GetModelFromNamedDatabaseParameterNamedDataSource<Z,BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
+        getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
@@ -775,7 +775,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseUpdateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedDatabaseParameterNamed),
         BaseTypeParameter(null));
   }
 
@@ -810,7 +810,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseUpdateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedDatabaseParameterNamed),
         typeParameterForFBDS);
   }
   // end updateParameterNamed 4
@@ -948,7 +948,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseUpdateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedDatabaseParameterNamed),
         BaseTypeParameter(null));
   }
 
@@ -983,7 +983,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseUpdateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedDatabaseParameterNamed),
         typeParameterForFBDS);
   }
   // end updateListParameterNamed 4
@@ -1121,7 +1121,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseDeleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedDatabaseParameterNamed),
         BaseTypeParameter(null));
   }
 
@@ -1156,7 +1156,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseDeleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedDatabaseParameterNamed),
         typeParameterForFBDS);
   }
   // end deleteParameterNamed 4
@@ -1294,7 +1294,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseDeleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedDatabaseParameterNamed),
         BaseTypeParameter(null));
   }
 
@@ -1329,7 +1329,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     }
     return _baseDeleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         _dataSource as DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
-        _getTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedDatabaseParameterNamed),
+        getTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedDatabaseParameterNamed),
         typeParameterForFBDS);
   }
   // end deleteListParameterNamed 4
@@ -1628,7 +1628,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = typeParameter;
   }
 
-  BaseTypeParameter _getTypeParameter(
+  BaseTypeParameter getTypeParameter(
       EnumBaseTypeParameterVM operation)
   {
     if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
