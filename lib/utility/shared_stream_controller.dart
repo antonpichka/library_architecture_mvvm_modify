@@ -15,6 +15,7 @@
  */
 
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'constants.dart';
@@ -23,12 +24,30 @@ import 'constants.dart';
   initialize only in view classes
  */
 class SharedStreamController<T extends Enum,Y extends BaseModel> {
+  static Map<Enum,BaseModel> _mapEnumAndBaseModel = {};
   static Map<Enum,StreamController<BaseModel>> _mapEnumAndStreamControllerForBaseModel = {};
 
   /*
-     call to main.dart
+     call to main.dart or to main_view.dart to method initState();
    */
-  static void setMapEnumAndStreamControllerForBaseModel(
+  static void setMapEnumAndBaseModelAndSetMapEnumAndStreamControllerForBaseModel(
+      Map<Enum,BaseModel> mapEnumAndBaseModel,
+      Map<Enum,StreamController<BaseModel>> mapEnumAndStreamControllerForBaseModel)
+  {
+    _setMapEnumAndBaseModel(mapEnumAndBaseModel);
+    _setMapEnumAndStreamControllerForBaseModel(mapEnumAndStreamControllerForBaseModel);
+  }
+
+  static void _setMapEnumAndBaseModel(
+      Map<Enum,BaseModel> mapEnumAndBaseModel)
+  {
+    if(_mapEnumAndBaseModel.isNotEmpty) {
+      throw LocalException(SharedStreamController,constDeveloper,"setMapEnumAndBaseModel method can only be called once");
+    }
+    _mapEnumAndBaseModel = mapEnumAndBaseModel;
+  }
+
+  static void _setMapEnumAndStreamControllerForBaseModel(
       Map<Enum,StreamController<BaseModel>> mapEnumAndStreamControllerForBaseModel)
   {
     if(_mapEnumAndStreamControllerForBaseModel.isNotEmpty) {
@@ -55,6 +74,7 @@ class SharedStreamController<T extends Enum,Y extends BaseModel> {
     }
   }
 
+  @protected
   Stream<Y> getStreamModel(
       Object thisClass,
       T enums)
@@ -65,16 +85,28 @@ class SharedStreamController<T extends Enum,Y extends BaseModel> {
     return _mapEnumAndStreamControllerForBaseModel[enums].stream;
   }
 
-  void notifyStreamModel(
+  @protected
+  void setModel(
       Object thisClass,
       T enums,
       Y model)
+  {
+    if(!_mapEnumAndBaseModel.containsKey(enums)) {
+      throw LocalException(thisClass,constDeveloper,"$enums not found");
+    }
+    _mapEnumAndBaseModel[enums] = model;
+  }
+
+  @protected
+  void notifyStreamModel(
+      Object thisClass,
+      T enums)
   {
     if(!_mapEnumAndStreamControllerForBaseModel.containsKey(enums)) {
       throw LocalException(thisClass,constDeveloper,"$enums not found");
     }
     _mapEnumAndStreamControllerForBaseModel[enums]
         .sink
-        .add(model);
+        .add(_mapEnumAndBaseModel[enums]);
   }
 }
