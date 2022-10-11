@@ -18,6 +18,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/cancel_operation_without_exception_and_success/cancel_operation_without_exception_and_success.dart';
 import 'constants.dart';
 
 /*
@@ -98,12 +99,15 @@ class SharedStreamController<T extends Enum,Y extends BaseModel> {
   }
 
   @protected
-  void notifyStreamModel(
+  void notifyStreamModelIfHasListener(
       Object thisClass,
       T enums)
   {
     if(!_mapEnumAndStreamControllerForBaseModel.containsKey(enums)) {
       throw LocalException(thisClass,constDeveloper,"$enums not found");
+    }
+    if(!_mapEnumAndStreamControllerForBaseModel[enums].hasListener) {
+      throw CancelOperationWithoutExceptionAndSuccess(thisClass,"$enums stream has no listener");
     }
     _mapEnumAndStreamControllerForBaseModel[enums]
         .sink

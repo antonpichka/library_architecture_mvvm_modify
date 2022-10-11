@@ -22,14 +22,14 @@ import 'package:library_architecture_mvvm_modify/utility/constants.dart';
 class Response<T,Y extends BaseException> {
   T _data;
   Y _exception;
-  CancelOperationWithoutExceptionAndSuccess _cancelOperationWithoutErrorAndSuccess;
+  CancelOperationWithoutExceptionAndSuccess _cancelOperationWithoutExceptionAndSuccess;
 
   Response.success(this._data) {
     if(_exception != null) {
       _exception = null;
     }
-    if(_cancelOperationWithoutErrorAndSuccess != null) {
-      _cancelOperationWithoutErrorAndSuccess = null;
+    if(_cancelOperationWithoutExceptionAndSuccess != null) {
+      _cancelOperationWithoutExceptionAndSuccess = null;
     }
   }
 
@@ -37,12 +37,12 @@ class Response<T,Y extends BaseException> {
     if(_data != null) {
       _data = null;
     }
-    if(_cancelOperationWithoutErrorAndSuccess != null) {
-      _cancelOperationWithoutErrorAndSuccess = null;
+    if(_cancelOperationWithoutExceptionAndSuccess != null) {
+      _cancelOperationWithoutExceptionAndSuccess = null;
     }
   }
 
-  Response.cancelOperationWithoutErrorAndSuccess(this._cancelOperationWithoutErrorAndSuccess) {
+  Response.cancelOperationWithoutExceptionAndSuccess(this._cancelOperationWithoutExceptionAndSuccess) {
     if(_exception != null) {
       _exception = null;
     }
@@ -65,11 +65,11 @@ class Response<T,Y extends BaseException> {
     return _exception;
   }
 
-  CancelOperationWithoutExceptionAndSuccess get getCancelOperationWithoutErrorAndSuccess {
-    if(_cancelOperationWithoutErrorAndSuccess == null) {
-      return throw LocalException(this,constDeveloper,"CancelOperationWithoutErrorAndSuccess null");
+  CancelOperationWithoutExceptionAndSuccess get getCancelOperationWithoutExceptionAndSuccess {
+    if(_cancelOperationWithoutExceptionAndSuccess == null) {
+      return throw LocalException(this,constDeveloper,"CancelOperationWithoutExceptionAndSuccess null");
     }
-    return _cancelOperationWithoutErrorAndSuccess;
+    return _cancelOperationWithoutExceptionAndSuccess;
   }
 
   bool isExceptionResponse() {
@@ -79,8 +79,8 @@ class Response<T,Y extends BaseException> {
     return true;
   }
 
-  bool isCanceledOperationWithoutErrorAndSuccess() {
-    if(_cancelOperationWithoutErrorAndSuccess == null) {
+  bool isCanceledOperationWithoutExceptionAndSuccess() {
+    if(_cancelOperationWithoutExceptionAndSuccess == null) {
       return false;
     }
     return true;

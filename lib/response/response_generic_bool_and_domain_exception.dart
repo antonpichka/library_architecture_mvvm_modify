@@ -23,5 +23,5 @@ class ResponseGenericBoolAndDomainException
 {
   ResponseGenericBoolAndDomainException.success(bool success) : super.success(success);
   ResponseGenericBoolAndDomainException.exception(DomainException exception) : super.exception(exception);
-  ResponseGenericBoolAndDomainException.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutExceptionAndSuccess cancelOperationWithoutErrorAndSuccess) : super.cancelOperationWithoutErrorAndSuccess(cancelOperationWithoutErrorAndSuccess);
+  ResponseGenericBoolAndDomainException.cancelOperationWithoutErrorAndSuccess(CancelOperationWithoutExceptionAndSuccess cancelOperationWithoutErrorAndSuccess) : super.cancelOperationWithoutExceptionAndSuccess(cancelOperationWithoutErrorAndSuccess);
 }

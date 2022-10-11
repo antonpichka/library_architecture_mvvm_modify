@@ -228,8 +228,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
-    if(result.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(result.getCancelOperationWithoutErrorAndSuccess);
+    if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
     _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseNP)
         .setParameterListModel = result.getData;
@@ -286,8 +286,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
-    if(result.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(result.getCancelOperationWithoutErrorAndSuccess);
+    if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
     _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed)
         .setParameterListModel = result.getData;
@@ -310,8 +310,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
-    if(result.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(result.getCancelOperationWithoutErrorAndSuccess);
+    if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
     _getBaseListModel(EnumBaseListModelVM.getListModelFromNamedDatabaseParameterNamed)
         .setParameterListModel = result.getData;
@@ -348,8 +348,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
-    if(result.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(result.getCancelOperationWithoutErrorAndSuccess);
+    if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
     setModel(EnumBaseModelVM.getModelFromNamedDatabaseNP,result.getData);
     return Response.success(getModel(EnumBaseModelVM.getModelFromNamedDatabaseNP));
@@ -405,8 +405,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
-    if(result.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(result.getCancelOperationWithoutErrorAndSuccess);
+    if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
     setModel(EnumBaseModelVM.getModelFromNamedDatabaseParameterNamed,result.getData);
     return Response.success(getModel(EnumBaseModelVM.getModelFromNamedDatabaseParameterNamed));
@@ -428,8 +428,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isExceptionResponse()) {
       return Response.exception(result.getException);
     }
-    if(result.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(result.getCancelOperationWithoutErrorAndSuccess);
+    if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
     setModel(EnumBaseModelVM.getModelFromNamedDatabaseParameterNamed,result.getData);
     return Response.success(getModel(EnumBaseModelVM.getModelFromNamedDatabaseParameterNamed));
@@ -2065,8 +2065,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseListModel().getListModel);
   }
@@ -2080,8 +2080,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseListModel().getListModel);
   }
@@ -2094,8 +2094,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseModel());
   }
@@ -2109,8 +2109,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseModel());
   }
@@ -2133,8 +2133,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertModelToNamedDatabaseTIPDataSource
         .insertModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
@@ -2153,8 +2153,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertModelToNamedDatabaseNPDataSource
         .insertModelToNamedDatabaseNP();
@@ -2178,8 +2178,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertListModelToNamedDatabaseTIPDataSource
         .insertListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
@@ -2198,8 +2198,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertListModelToNamedDatabaseNPDataSource
         .insertListModelToNamedDatabaseNP();
@@ -2223,8 +2223,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateModelToNamedDatabaseTIPDataSource
         .updateModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
@@ -2243,8 +2243,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateModelToNamedDatabaseNPDataSource
         .updateModelToNamedDatabaseNP();
@@ -2264,8 +2264,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateModelToNamedDatabaseParameterNamedDataSource
         .updateModelToNamedDatabaseParameterNamed(typeParameter);
@@ -2289,8 +2289,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateListModelToNamedDatabaseTIPDataSource
         .updateListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
@@ -2309,8 +2309,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateListModelToNamedDatabaseNPDataSource
         .updateListModelToNamedDatabaseNP();
@@ -2330,8 +2330,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateListModelToNamedDatabaseParameterNamedDataSource
         .updateListModelToNamedDatabaseParameterNamed(typeParameter);
@@ -2355,8 +2355,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteModelToNamedDatabaseTIPDataSource
         .deleteModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
@@ -2375,8 +2375,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteModelToNamedDatabaseNPDataSource
         .deleteModelToNamedDatabaseNP();
@@ -2396,8 +2396,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteModelToNamedDatabaseParameterNamedDataSource
         .deleteModelToNamedDatabaseParameterNamed(typeParameter);
@@ -2421,8 +2421,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteListModelToNamedDatabaseTIPDataSource
         .deleteListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
@@ -2441,8 +2441,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return deleteListModelToNamedDatabaseNPDataSource
         .deleteListModelToNamedDatabaseNP();
@@ -2462,8 +2462,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteListModelToNamedDatabaseParameterNamedDataSource
         .deleteListModelToNamedDatabaseParameterNamed(typeParameter);

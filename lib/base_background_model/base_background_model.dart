@@ -815,8 +815,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseListModel().getListModel);
   }
@@ -830,8 +830,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseListModel().getListModel);
   }
@@ -844,8 +844,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseModel());
   }
@@ -859,8 +859,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return Response.success(response.getData.toBaseModel());
   }
@@ -883,8 +883,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertModelToNamedDatabaseTIPDataSource
         .insertModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
@@ -903,8 +903,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertModelToNamedDatabaseNPDataSource
         .insertModelToNamedDatabaseNP();
@@ -928,8 +928,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertListModelToNamedDatabaseTIPDataSource
         .insertListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
@@ -948,8 +948,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await insertListModelToNamedDatabaseNPDataSource
         .insertListModelToNamedDatabaseNP();
@@ -973,8 +973,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateModelToNamedDatabaseTIPDataSource
         .updateModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
@@ -993,8 +993,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateModelToNamedDatabaseNPDataSource
         .updateModelToNamedDatabaseNP();
@@ -1014,8 +1014,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateModelToNamedDatabaseParameterNamedDataSource
         .updateModelToNamedDatabaseParameterNamed(typeParameter);
@@ -1039,8 +1039,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateListModelToNamedDatabaseTIPDataSource
         .updateListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
@@ -1059,8 +1059,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateListModelToNamedDatabaseNPDataSource
         .updateListModelToNamedDatabaseNP();
@@ -1080,8 +1080,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await updateListModelToNamedDatabaseParameterNamedDataSource
         .updateListModelToNamedDatabaseParameterNamed(typeParameter);
@@ -1105,8 +1105,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteModelToNamedDatabaseTIPDataSource
         .deleteModelToNamedDatabaseTIP(_converterToBaseModelNamedDatabase.toBaseModelNamedDatabase(modelForClone));
@@ -1125,8 +1125,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteModelToNamedDatabaseNPDataSource
         .deleteModelToNamedDatabaseNP();
@@ -1146,8 +1146,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteModelToNamedDatabaseParameterNamedDataSource
         .deleteModelToNamedDatabaseParameterNamed(typeParameter);
@@ -1171,8 +1171,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteListModelToNamedDatabaseTIPDataSource
         .deleteListModelToNamedDatabaseTIP(_converterToBaseListModelNamedDatabase.toBaseListModelNamedDatabase(listModelForClone));
@@ -1191,8 +1191,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return deleteListModelToNamedDatabaseNPDataSource
         .deleteListModelToNamedDatabaseNP();
@@ -1212,8 +1212,8 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
-    if(response.isCanceledOperationWithoutErrorAndSuccess()) {
-      return Response.cancelOperationWithoutErrorAndSuccess(response.getCancelOperationWithoutErrorAndSuccess);
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
     return await deleteListModelToNamedDatabaseParameterNamedDataSource
         .deleteListModelToNamedDatabaseParameterNamed(typeParameter);
