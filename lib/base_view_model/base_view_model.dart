@@ -1616,6 +1616,15 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     _enumTypeParameterForBaseIterator = enumTypeParameterForBaseIterator;
   }
 
+  BaseTypeParameter getTypeParameter(
+      EnumBaseTypeParameterVM operation)
+  {
+    if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
+      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+    }
+    return _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation];
+  }
+
   @protected
   @nonVirtual
   void setTypeParameter(
@@ -1628,13 +1637,16 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = typeParameter;
   }
 
-  BaseTypeParameter getTypeParameter(
-      EnumBaseTypeParameterVM operation)
+  @protected
+  @nonVirtual
+  void setTypeParameterUsingClone(
+      EnumBaseTypeParameterVM operation,
+      BaseTypeParameter typeParameter)
   {
     if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
-    return _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation];
+    _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = BaseTypeParameter(typeParameter.getParameter);
   }
   /// End Base/EnumTypeParameter **/
 
@@ -1660,6 +1672,18 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
     _mapEnumBaseModelVMAndBaseModel[operation] = model;
+  }
+
+  @protected
+  @nonVirtual
+  void setModelUsingClone(
+      EnumBaseModelVM operation,
+      T model)
+  {
+    if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
+      throw LocalException(thisClass,constDeveloper,"$operation not found");
+    }
+    _mapEnumBaseModelVMAndBaseModel[operation] = cloneModel(model);
   }
 
   @protected
@@ -1721,7 +1745,21 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
       throw LocalException(thisClass,constDeveloper,"$operation not found");
     }
-    _mapEnumBaseListModelVMAndBaseListModel[operation].setParameterListModel = listModel;
+    _mapEnumBaseListModelVMAndBaseListModel[operation]
+        .setParameterListModel = listModel;
+  }
+
+  @protected
+  @nonVirtual
+  void setListModelUsingClone(
+      EnumBaseListModelVM operation,
+      List<T> listModel)
+  {
+    if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
+      throw LocalException(thisClass,constDeveloper,"$operation not found");
+    }
+    _mapEnumBaseListModelVMAndBaseListModel[operation]
+        .setParameterListModel = _cloneListModel(listModel);
   }
 
   @protected
