@@ -15,13 +15,13 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception_and_cancel_operation_without_exception_and_success.dart';
 
 abstract class UpdateListModelToNamedDatabaseParameterNamedFBDS<T extends BaseTypeParameter,Y extends BaseTypeParameter>
 {
   UpdateListModelToNamedDatabaseParameterNamedFBDS();
 
-  ResponseGenericBoolAndDomainException updateListModelToNamedDatabaseParameterNamed(
+  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess updateListModelToNamedDatabaseParameterNamed(
       T typeParameter,
       Y typeParameterForFBDS);
 }

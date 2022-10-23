@@ -16,7 +16,7 @@
 
 import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception_and_cancel_operation_without_exception_and_success.dart';
 
 class User
     extends BaseModel
@@ -36,12 +36,12 @@ class User
   /// End Setters Methods **/
 
   /// Start FBDS and bool Methods **/
-  ResponseGenericBoolAndDomainException deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP() {
+  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP() {
     if(isEmptyByTrimParameterName()) {
-      return ResponseGenericBoolAndDomainException.exception(DomainException(this,constIsEmptyByTrimParameterName));
+      return ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.exception(DomainException(this,constIsEmptyByTrimParameterName));
     }
     name += "deleteGo";
-    return ResponseGenericBoolAndDomainException.success(true);
+    return ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.success(true);
   }
 
   bool isEmptyByTrimParameterName() {

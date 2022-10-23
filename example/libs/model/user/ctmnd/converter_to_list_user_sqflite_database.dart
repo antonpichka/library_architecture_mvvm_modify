@@ -27,8 +27,8 @@ class ConverterToListUserSqfliteDatabase
   ListUserSqfliteDatabase toBaseListModelNamedDatabase(
       ListUser listModel)
   {
-    List<UserSqfliteDatabase> list = List.generate(listModel.getListModel.length, (index) =>
-        ConverterToUserSqfliteDatabase().toBaseModelNamedDatabase(listModel.getListModel[index])
+    List<UserSqfliteDatabase> list = List.generate(listModel.getParameterListModel.length, (index) =>
+        ConverterToUserSqfliteDatabase().toBaseModelNamedDatabase(listModel.getParameterListModel[index])
     );
     return ListUserSqfliteDatabase(list);
   }

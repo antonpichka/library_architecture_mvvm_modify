@@ -16,13 +16,13 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception_and_cancel_operation_without_exception_and_success.dart';
 
 abstract class UpdateModelToNamedDatabaseTIPFBDS<T extends BaseModel,Z extends BaseTypeParameter>
 {
   UpdateModelToNamedDatabaseTIPFBDS();
 
-  ResponseGenericBoolAndDomainException updateModelToNamedDatabaseTIP(
+  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess updateModelToNamedDatabaseTIP(
       T model,
       Z typeParameterForFBDS);
 }

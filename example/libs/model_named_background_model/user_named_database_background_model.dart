@@ -28,7 +28,7 @@ abstract class UserNamedDatabaseBackgroundModel<T extends BaseModelNamedDatabase
   UserNamedDatabaseBackgroundModel.usingMethodSetDataSourceToBodyConstructor(
       ConverterToBaseModelNamedDatabase<User, T> converterToBaseModelNamedDatabase,
       ConverterToBaseListModelNamedDatabase<ListUser, Y> converterToBaseListModelNamedDatabase,)
-      : super.usingMethodSetDataSourceToBodyConstructor(
+      : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
       converterToBaseModelNamedDatabase,
       converterToBaseListModelNamedDatabase);
 

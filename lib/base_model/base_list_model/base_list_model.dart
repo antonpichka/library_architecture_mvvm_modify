@@ -30,7 +30,7 @@ class BaseListModel<T extends BaseModel>
   BaseListModel(this._listModel);
 
   @nonVirtual
-  List<T> get getListModel {
+  List<T> get getParameterListModel {
     return _listModel;
   }
 
@@ -47,25 +47,25 @@ class BaseListModel<T extends BaseModel>
   @nonVirtual
   Response<List<T>, BaseException> runIteratorForGetListModel(
       Object thisClass,
-      BaseTypeParameter<Enum> baseTypeParameterForBaseIterator, 
+      BaseTypeParameter<Enum> typeParameterForBaseIterator,
       Map<Enum,BaseIterator<T>> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
       return Response.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess(thisClass,"MapEnumAndBaseIterator isEmpty"));
     }
-    int i = 0;
-    Enum selectedEnum = baseTypeParameterForBaseIterator.getParameter;
-    Enum itemEnumFirst = mapEnumAndBaseIterator.keys.first;
+    int iteration = 0;
+    Enum selectedEnumByTypeParameterForBaseIterator = typeParameterForBaseIterator.getParameter;
+    Enum firstItemEnumByMap = mapEnumAndBaseIterator.keys.first;
     for(Enum itemEnum in mapEnumAndBaseIterator.keys) {
-      if (selectedEnum == itemEnum) {
+      if(selectedEnumByTypeParameterForBaseIterator == itemEnum) {
         _setParameterIterator = mapEnumAndBaseIterator[itemEnum];
         break;
       }
-      if (i >= (mapEnumAndBaseIterator.length-1)) {
-        _setParameterIterator = mapEnumAndBaseIterator[itemEnumFirst];
+      if(iteration >= (mapEnumAndBaseIterator.length-1)) {
+        _setParameterIterator = mapEnumAndBaseIterator[firstItemEnumByMap];
         break;
       }
-      i++;
+      iteration++;
     }
     _listModel = _iterator.getSortedListModel;
     return Response.success(_listModel);

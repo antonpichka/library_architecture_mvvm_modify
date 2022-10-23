@@ -30,10 +30,10 @@ void main() {
     ];
     ListUser listUser = ListUser(listOne);
     listUser.deleteListModelToGetListModel(listUser,listTwo);
-    expect(listUser.getListModel.length, 2);
-    expect(listUser.getListModel[0].uniqueId == "2"
-        && listUser.getListModel[0].name == "Valeriy",true);
-    expect(listUser.getListModel[1].uniqueId == "3"
-        && listUser.getListModel[1].name == "Djigurda",true);
+    expect(listUser.getParameterListModel.length, 2);
+    expect(listUser.getParameterListModel[0].uniqueId == "2"
+        && listUser.getParameterListModel[0].name == "Valeriy",true);
+    expect(listUser.getParameterListModel[1].uniqueId == "3"
+        && listUser.getParameterListModel[1].name == "Djigurda",true);
   });
 }
