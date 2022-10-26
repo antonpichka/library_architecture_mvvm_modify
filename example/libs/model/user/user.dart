@@ -47,6 +47,11 @@ class User
   bool isEmptyByTrimParameterName() {
     return name.trim().isEmpty;
   }
+
+  bool isEqualsUser(User user) {
+    return uniqueId == user.uniqueId &&
+        name == user.name;
+  }
   /// End FBDS and bool Methods **/
 
   /// Start Ext Methods **/
@@ -61,6 +66,6 @@ class User
   /// End Const For FBDS and Bool Methods **/
 
   /// Start Default state object for ViewModel object  **/
-  static User get getDefaultUser => User("", "");
+  static User get getDefaultUser => User("uniqueId", "ToshaCriminal");
   /// End Default state object for ViewModel object  **/
 }

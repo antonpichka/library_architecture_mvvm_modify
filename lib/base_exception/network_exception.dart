@@ -28,7 +28,7 @@ class NetworkException
       this._statusCode,
       this._nameStatusCode,
       this._descriptionStatusCode)
-      : super((NetworkException).toString(),thisClass);
+      : super(NetworkException,thisClass);
 
   static NetworkException byStatusCode(
       Object thisClass,

@@ -26,7 +26,7 @@ class LocalException
       Object thisClass,
       this._code,
       this._message)
-      : super((LocalException).toString(),thisClass);
+      : super(LocalException,thisClass);
 
   String get getCode => _code;
 

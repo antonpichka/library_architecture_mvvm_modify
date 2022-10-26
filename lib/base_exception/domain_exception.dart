@@ -24,7 +24,7 @@ class DomainException
   DomainException(
       Object thisClass,
       this._nameError)
-      : super((DomainException).toString(),thisClass);
+      : super(DomainException,thisClass);
 
   String get getNameError => _nameError;
 

@@ -21,11 +21,11 @@ abstract class BaseException
     implements Exception
 {
   BaseException(
-      String nameClassException,
+      Type typeClassException,
       Object thisClass)
   {
     printError("===start_to_trace_exception===\n");
-    printError("NameClassException: $nameClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInString()}\n");
+    printError("NameClassException: $typeClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInString()}\n");
     printError("===end_to_trace_exception===\n");
   }
 
