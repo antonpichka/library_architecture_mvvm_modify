@@ -26,6 +26,10 @@ class ABView {
   BWidget bWidget = BWidget();
 }
 
+enum EnumAWidgetForModel {
+  user
+}
+
 class AWidget {
   final SharedStreamController _sharedStreamController =
   SharedStreamController();
@@ -37,12 +41,12 @@ class AWidget {
   }
 
   Stream<User> get getStreamModelForWidget {
-    return _sharedStreamController.getStreamModelForWidget(this, ABView, AWidget, User);
+    return _sharedStreamController.getStreamModelForWidget(this, ABView, AWidget, EnumAWidgetForModel.user);
   }
 
   void listenGo() {
     _sharedStreamController
-        .getStreamModelForWidget(this, ABView, AWidget, User)
+        .getStreamModelForWidget(this, ABView, AWidget, EnumAWidgetForModel.user)
         .listen((event) {
           _isListen = true;
           if (kDebugMode) {
@@ -53,13 +57,17 @@ class AWidget {
 
   void setModel() {
     _sharedStreamController
-        .setModelForWidget(this, ABView, BWidget, User, User("OpaTOP1", "JacobOdd"));
+        .setModelForWidget(this, ABView, BWidget, EnumBWidgetForModel.user, User("OpaTOP1", "JacobOdd"));
   }
 
   void notify() {
     _sharedStreamController
-        .notifyStreamModelForWidgetIfHasListener(this, ABView, BWidget, User);
+        .notifyStreamModelForWidgetIfHasListener(this, ABView, BWidget, EnumBWidgetForModel.user);
   }
+}
+
+enum EnumBWidgetForModel {
+  user
 }
 
 class BWidget {
@@ -73,12 +81,12 @@ class BWidget {
   }
 
   Stream<User> get getStreamModelForWidget {
-    return _sharedStreamController.getStreamModelForWidget(this, ABView, BWidget, User);
+    return _sharedStreamController.getStreamModelForWidget(this, ABView, BWidget, EnumBWidgetForModel.user);
   }
 
   void listenGo() {
     _sharedStreamController
-        .getStreamModelForWidget(this, ABView, BWidget, User)
+        .getStreamModelForWidget(this, ABView, BWidget, EnumBWidgetForModel.user)
         .listen((event) {
           _isListen = true;
           if (kDebugMode) {
@@ -89,20 +97,20 @@ class BWidget {
 
   void setModel() {
     _sharedStreamController
-        .setModelForWidget(this, ABView, AWidget, User, User("top100(", "GraySs"));
+        .setModelForWidget(this, ABView, AWidget, EnumAWidgetForModel.user, User("top100(", "GraySs"));
   }
 
   void notify() {
     _sharedStreamController
-        .notifyStreamModelForWidgetIfHasListener(this, ABView, AWidget, User);
+        .notifyStreamModelForWidgetIfHasListener(this, ABView, AWidget, EnumAWidgetForModel.user);
   }
 }
 
 void main() {
-  SharedStreamController.setMapForViewAndWidget(
+  SharedStreamController.setMapForWidgetAndView(
       mapModelForWidget: {ABView : {
-        AWidget : {User : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)},
-        BWidget : {User : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)}
+        AWidget : {EnumAWidgetForModel.user : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)},
+        BWidget : {EnumBWidgetForModel.user : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)}
       }},
       mapModelForView: {});
   ABView abView = ABView();
