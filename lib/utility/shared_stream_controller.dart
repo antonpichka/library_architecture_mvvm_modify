@@ -18,52 +18,50 @@ import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/cancel_operation_without_exception_and_success/cancel_operation_without_exception_and_success.dart';
+import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 import 'constants.dart';
 
 /*
   initialize only in view classes
  */
 class SharedStreamController {
-  static Map<Type,Map<Type,Map<Type,BaseModel>>> _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndModel = {};
-  static Map<Type,Map<Type,Map<Type,StreamController<BaseModel>>>> _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel = {};
+  static Map<Type,Map<Type,Map<Type,SCModel>>> _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel = {};
 
-  static Map<Type,Map<Type,BaseModel>> _mapTypeViewAndMapTypeModelAndModel = {};
-  static Map<Type,Map<Type,StreamController<BaseModel>>> _mapTypeViewAndMapTypeModelAndStreamControllerForModel = {};
+  static Map<Type,Map<Type,SCModel>> _mapTypeViewAndMapTypeModelAndSCModel = {};
 
+  static bool isDispose = false;
   /*
      call to main.dart or to main_view.dart to method initState();
    */
   static void setMapForViewAndWidget(
-      {Map<Type,Map<Type,Map<Type,BaseModel>>> mapModelForWidget,
-      Map<Type,Map<Type,Map<Type,StreamController<BaseModel>>>> mapStreamControllerForModelForWidget,
-      Map<Type,Map<Type,BaseModel>> mapModelForView,
-      Map<Type,Map<Type,StreamController<BaseModel>>> mapStreamControllerForModelForView})
+      {Map<Type,Map<Type,Map<Type,SCModel>>> mapModelForWidget,
+      Map<Type,Map<Type,SCModel>> mapModelForView})
   {
-    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndModel = mapModelForWidget;
-    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel = mapStreamControllerForModelForWidget;
-    _mapTypeViewAndMapTypeModelAndModel = mapModelForView;
-    _mapTypeViewAndMapTypeModelAndStreamControllerForModel = mapStreamControllerForModelForView;
+    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel = mapModelForWidget;
+    _mapTypeViewAndMapTypeModelAndSCModel = mapModelForView;
   }
 
   /*
      call to main_view.dart to method dispose();
    */
-  static void dispose() {
+  static bool dispose() {
     _disposeForWidget();
     _disposeForView();
+    return isDispose;
   }
 
   static void _disposeForWidget() {
-    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel == null) {
+    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel == null) {
+      isDispose = false;
       return;
     }
-    Iterator<Map<Type,Map<Type,StreamController<BaseModel>>>> iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel.values.iterator;
+    Iterator<Map<Type,Map<Type,SCModel>>> iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.values.iterator;
     while(iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
-      Iterator<Map<Type,StreamController<BaseModel>>> iteratorMapTypeModelAndStreamControllerForBaseModel =  iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
+      Iterator<Map<Type,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel =  iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
       while(iteratorMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
-        Iterator<StreamController<BaseModel>> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
+        Iterator<SCModel> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
         while(iteratorStreamControllerForBaseModel.moveNext()) {
-          StreamController<BaseModel> streamControllerForBaseModel = iteratorStreamControllerForBaseModel.current;
+          StreamController<BaseModel> streamControllerForBaseModel = iteratorStreamControllerForBaseModel.current.streamController;
           if(streamControllerForBaseModel == null) {
             continue;
           }
@@ -74,17 +72,19 @@ class SharedStreamController {
         }
       }
     }
+    isDispose = true;
   }
 
   static void _disposeForView() {
-    if(_mapTypeViewAndMapTypeModelAndStreamControllerForModel == null) {
+    if(_mapTypeViewAndMapTypeModelAndSCModel == null) {
+      isDispose = false;
       return;
     }
-    Iterator<Map<Type,StreamController<BaseModel>>> iteratorMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeModelAndStreamControllerForModel.values.iterator;
+    Iterator<Map<Type,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeModelAndSCModel.values.iterator;
     while(iteratorMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
-      Iterator<StreamController<BaseModel>> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
+      Iterator<SCModel> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
       while(iteratorStreamControllerForBaseModel.moveNext()) {
-        StreamController<BaseModel> streamControllerForBaseModel = iteratorStreamControllerForBaseModel.current;
+        StreamController<BaseModel> streamControllerForBaseModel = iteratorStreamControllerForBaseModel.current.streamController;
         if(streamControllerForBaseModel == null) {
           continue;
         }
@@ -94,6 +94,7 @@ class SharedStreamController {
         streamControllerForBaseModel.close();
       }
     }
+    isDispose = true;
   }
 
   Stream<BaseModel> getStreamModelForWidget(
@@ -102,10 +103,21 @@ class SharedStreamController {
       Type typeWidget,
       Type typeModel)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,constDeveloper,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel[typeView][typeWidget][typeModel].stream;
+    return _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][typeModel].streamController.stream;
+  }
+
+  Stream<BaseModel> getStreamModelForView(
+      Object thisClass,
+      Type typeView,
+      Type typeModel)
+  {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,constDeveloper,"$typeView not found");
+    }
+    return _mapTypeViewAndMapTypeModelAndSCModel[typeView][typeModel].streamController.stream;
   }
 
   void setModelForWidget(
@@ -115,41 +127,11 @@ class SharedStreamController {
       Type typeModel,
       BaseModel model)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,constDeveloper,"$typeView not found");
     }
-    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndModel[typeView][typeWidget][typeModel] = model;
-  }
-
-  void notifyStreamModelForWidgetIfHasListener(
-      Object thisClass,
-      Type typeView,
-      Type typeWidget,
-      Type typeModel)
-  {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel.containsKey(typeView)) {
-      throw LocalException(thisClass,constDeveloper,"$typeView not found");
-    }
-    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel[typeView][typeWidget][typeModel].hasListener) {
-      throw CancelOperationWithoutExceptionAndSuccess(thisClass,"$typeView & $typeWidget & $typeModel stream has no listener");
-    }
-    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel[typeView][typeWidget][typeModel].isClosed) {
-      throw LocalException(thisClass,constDeveloper,"$typeView & $typeWidget & $typeModel stream closed");
-    }
-    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndStreamControllerForModel[typeView][typeWidget][typeModel]
-        .sink
-        .add(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndModel[typeView][typeWidget][typeModel]);
-  }
-
-  Stream<BaseModel> getStreamModelForView(
-      Object thisClass,
-      Type typeView,
-      Type typeModel)
-  {
-    if(!_mapTypeViewAndMapTypeModelAndStreamControllerForModel.containsKey(typeView)) {
-      return throw LocalException(thisClass,constDeveloper,"$typeView not found");
-    }
-    return _mapTypeViewAndMapTypeModelAndStreamControllerForModel[typeView][typeModel].stream;
+    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][typeModel]
+        .setParameterModel = model;
   }
 
   void setModelForView(
@@ -158,10 +140,30 @@ class SharedStreamController {
       Type typeModel,
       BaseModel model)
   {
-    if(!_mapTypeViewAndMapTypeModelAndModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,constDeveloper,"$typeView not found");
     }
-    _mapTypeViewAndMapTypeModelAndModel[typeView][typeModel] = model;
+    _mapTypeViewAndMapTypeModelAndSCModel[typeView][typeModel]
+        .setParameterModel = model;
+  }
+
+  void notifyStreamModelForWidgetIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Type typeWidget,
+      Type typeModel)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,constDeveloper,"$typeView not found");
+    }
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][typeModel].streamController.hasListener) {
+      throw CancelOperationWithoutExceptionAndSuccess(thisClass,"$typeView & $typeWidget & $typeModel stream has no listener");
+    }
+    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][typeModel].streamController.isClosed) {
+      throw LocalException(thisClass,constDeveloper,"$typeView & $typeWidget & $typeModel stream closed");
+    }
+    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][typeModel]
+        .notifyStreamModel();
   }
 
   void notifyStreamModelForViewIfHasListener(
@@ -169,17 +171,16 @@ class SharedStreamController {
       Type typeView,
       Type typeModel)
   {
-    if(!_mapTypeViewAndMapTypeModelAndStreamControllerForModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,constDeveloper,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapTypeModelAndStreamControllerForModel[typeView][typeModel].hasListener) {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel[typeView][typeModel].streamController.hasListener) {
       throw CancelOperationWithoutExceptionAndSuccess(thisClass,"$typeView & $typeModel stream has no listener");
     }
-    if(_mapTypeViewAndMapTypeModelAndStreamControllerForModel[typeView][typeModel].isClosed) {
+    if(_mapTypeViewAndMapTypeModelAndSCModel[typeView][typeModel].streamController.isClosed) {
       throw LocalException(thisClass,constDeveloper,"$typeView & $typeModel stream closed");
     }
-    _mapTypeViewAndMapTypeModelAndStreamControllerForModel[typeView][typeModel]
-        .sink
-        .add(_mapTypeViewAndMapTypeModelAndModel[typeView][typeModel]);
+    _mapTypeViewAndMapTypeModelAndSCModel[typeView][typeModel]
+        .notifyStreamModel();
   }
 }

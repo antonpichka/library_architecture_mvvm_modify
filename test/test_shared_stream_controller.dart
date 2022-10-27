@@ -17,6 +17,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
 import '../example/libs/model/user/user.dart';
 
@@ -29,10 +30,21 @@ class AWidget {
   final SharedStreamController _sharedStreamController =
   SharedStreamController();
 
+  bool _isListen = false;
+
+  bool get getIsListen {
+    return _isListen;
+  }
+
+  Stream<User> get getStreamModelForWidget {
+    return _sharedStreamController.getStreamModelForWidget(this, ABView, AWidget, User);
+  }
+
   void listenGo() {
     _sharedStreamController
         .getStreamModelForWidget(this, ABView, AWidget, User)
         .listen((event) {
+          _isListen = true;
           if (kDebugMode) {
             print("A: ${event.toString()}");
           }
@@ -54,10 +66,21 @@ class BWidget {
   final SharedStreamController _sharedStreamController =
   SharedStreamController();
 
+  bool _isListen = false;
+
+  bool get getIsListen {
+    return _isListen;
+  }
+
+  Stream<User> get getStreamModelForWidget {
+    return _sharedStreamController.getStreamModelForWidget(this, ABView, BWidget, User);
+  }
+
   void listenGo() {
     _sharedStreamController
         .getStreamModelForWidget(this, ABView, BWidget, User)
         .listen((event) {
+          _isListen = true;
           if (kDebugMode) {
             print("B: ${event.toString()}");
           }
@@ -76,28 +99,30 @@ class BWidget {
 }
 
 void main() {
-  test("test SharedStreamController Success", () {
-    SharedStreamController.setMapForViewAndWidget(
-        mapModelForWidget:  {ABView : {
-          AWidget : {User : User.getDefaultUser},
-          BWidget : {User : User.getDefaultUser}
-        }},
-        mapStreamControllerForModelForWidget: {ABView : {
-          AWidget : {User : StreamController<User>.broadcast()},
-          BWidget : {User : StreamController<User>.broadcast()}
-        }});
-    ABView abView = ABView();
-    abView.aWidget.listenGo();
-    abView.bWidget.listenGo();
+  SharedStreamController.setMapForViewAndWidget(
+      mapModelForWidget: {ABView : {
+        AWidget : {User : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)},
+        BWidget : {User : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)}
+      }},
+      mapModelForView: {});
+  ABView abView = ABView();
+  abView.aWidget.listenGo();
+  abView.bWidget.listenGo();
 
+  test("test SharedStreamController Success", () async {
     abView.aWidget.setModel();
     abView.aWidget.notify();
     abView.bWidget.setModel();
     abView.bWidget.notify();
 
-    SharedStreamController.dispose();
+    await Future.delayed(const Duration(seconds: 5));
+    expect(abView.aWidget.getIsListen,equals(true));
+    expect(abView.bWidget.getIsListen,equals(true));
+  });
 
-    abView.bWidget.setModel();
-    abView.bWidget.notify();
+  test("test SharedStreamController Dispose", () {
+    var result = SharedStreamController.dispose();
+      
+    expect(result, equals(true));
   });
 }
