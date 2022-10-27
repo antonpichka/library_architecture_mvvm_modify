@@ -29,7 +29,7 @@ class SharedStreamController {
 
   static Map<Type,Map<Type,SCModel>> _mapTypeViewAndMapTypeModelAndSCModel = {};
 
-  static bool isDispose = false;
+  static bool _isDispose = false;
   /*
      call to main.dart or to main_view.dart to method initState();
    */
@@ -47,12 +47,12 @@ class SharedStreamController {
   static bool dispose() {
     _disposeForWidget();
     _disposeForView();
-    return isDispose;
+    return _isDispose;
   }
 
   static void _disposeForWidget() {
     if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel == null) {
-      isDispose = false;
+      _isDispose = false;
       return;
     }
     Iterator<Map<Type,Map<Type,SCModel>>> iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.values.iterator;
@@ -72,12 +72,12 @@ class SharedStreamController {
         }
       }
     }
-    isDispose = true;
+    _isDispose = true;
   }
 
   static void _disposeForView() {
     if(_mapTypeViewAndMapTypeModelAndSCModel == null) {
-      isDispose = false;
+      _isDispose = false;
       return;
     }
     Iterator<Map<Type,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeModelAndSCModel.values.iterator;
@@ -94,7 +94,7 @@ class SharedStreamController {
         streamControllerForBaseModel.close();
       }
     }
-    isDispose = true;
+    _isDispose = true;
   }
 
   Stream<BaseModel> getStreamModelForWidget(
