@@ -21,7 +21,6 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/utility/constants.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -88,11 +87,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
           conflictAlgorithm: conflictAlgorithm
       );
       if(resultInsert <= 0) {
-        return Response.exception(LocalException(this,constDeveloper,"Zero update for insertModelToSqfliteDatabaseTIP $resultInsert"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,"Zero insert for insertModelToSqfliteDatabaseTIP $resultInsert"));
       }
       return Response.success(resultInsert);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -118,11 +117,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
         }
       }
       if(iterationForInsert <= 0) {
-        return Response.exception(LocalException(this,constDeveloper,"Zero insert for insertListModelToSqfliteDatabaseTIP $iterationForInsert"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,"Zero insert for insertListModelToSqfliteDatabaseTIP $iterationForInsert"));
       }
       return Response.success(iterationForInsert);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -143,11 +142,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
         whereArgs: [baseTypeParameter.getParameter],
       );
       if(resultUpdate <= 0) {
-        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateModelToSqfliteDatabaseTIP $resultUpdate"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.developer,"Zero update for updateModelToSqfliteDatabaseTIP $resultUpdate"));
       }
       return Response.success(resultUpdate);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -174,11 +173,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
         }
       }
       if(calculateForUpdate <= 0) {
-        return Response.exception(LocalException(this,constDeveloper,"Zero update for updateListModelToSqfliteDatabaseTIP $calculateForUpdate"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.developer,"Zero update for updateListModelToSqfliteDatabaseTIP $calculateForUpdate"));
       }
       return Response.success(calculateForUpdate);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -197,11 +196,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
         whereArgs: [baseTypeParameter.getParameter],
       );
       if(resultDelete <= 0) {
-        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteModelToSqfliteDatabaseTIP $resultDelete"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.developer,"Zero delete for deleteModelToSqfliteDatabaseTIP $resultDelete"));
       }
       return Response.success(resultDelete);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -214,7 +213,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
     try {
       final db = await getDatabase;
       int calculateForDelete = 0;
-      for (BaseModelNamedDatabase model in listModelSqfliteDatabase
+      for(BaseModelNamedDatabase model in listModelSqfliteDatabase
           .getListModelNamedDatabase)
       {
         var resultDelete = await db.delete(
@@ -227,11 +226,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
         }
       }
       if(calculateForDelete <= 0) {
-        return Response.exception(LocalException(this,constDeveloper,"Zero delete for deleteListModelToSqfliteDatabaseTIP $calculateForDelete"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.developer,"Zero delete for deleteListModelToSqfliteDatabaseTIP $calculateForDelete"));
       }
       return Response.success(calculateForDelete);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -251,11 +250,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
           whereArgs: [baseTypeParameter.getParameter]
       );
       if(maps.isEmpty) {
-        return Response.exception(LocalException(this,constDeveloper,"Model not found for getModelFromSqfliteDatabaseParameterBaseType"));
+        return Response.exception(LocalException(this,EnumGuiltyForLocalException.developer,"Model not found for getModelFromSqfliteDatabaseParameterBaseType"));
       }
       return Response.success(fromMapToBaseModelSqfliteDatabase(maps[0]));
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -268,7 +267,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
       List<Map<String, dynamic>> maps = await db.query(table);
       return Response.success(fromListMapToBaseListModelSqfliteDatabase(maps));
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -288,7 +287,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
       );
       return Response.success(fromListMapToBaseListModelSqfliteDatabase(maps));
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
   
@@ -300,12 +299,11 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
       int result = await db.delete(table);
       return Response.success(result);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
-  _initDB()
-  async {
+  _initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, fileDatabase);
     return await openDatabase(path, version: version,

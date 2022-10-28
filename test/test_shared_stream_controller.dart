@@ -15,25 +15,41 @@
  */
 
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:library_architecture_mvvm_modify/utility/constants.dart';
 import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
 import '../example/libs/model/user/user.dart';
 
 class ABView {
-  AWidget aWidget = AWidget();
-  BWidget bWidget = BWidget();
+  final AWidgetForABView aWidget = AWidgetForABView();
+  final BWidgetForABView bWidget = BWidgetForABView();
+
+  void initSetAndNotify() {
+    var user = User("top World", "OOOOps");
+    var userTwo = User("top WorldTwo", "OOOOpsTwo");
+    SharedStreamController.setModelsForListOfWidget(
+        this,
+        ABView,
+        {
+          AWidgetForABView : {EnumAWidgetForABViewForModel.user : user},
+          BWidgetForABView : {EnumBWidgetForABViewForModel.user : userTwo}
+        });
+    SharedStreamController.notifyStreamModelsForListOfWidgetIfHasListener(
+        this,
+        ABView,
+        {
+          AWidgetForABView : [EnumAWidgetForABViewForModel.user],
+          BWidgetForABView : [EnumBWidgetForABViewForModel.user],
+        });
+  }
 }
 
-enum EnumAWidgetForModel {
+enum EnumAWidgetForABViewForModel {
   user
 }
 
-class AWidget {
-  final SharedStreamController _sharedStreamController =
-  SharedStreamController();
-
+class AWidgetForABView {
   bool _isListen = false;
 
   bool get getIsListen {
@@ -41,39 +57,34 @@ class AWidget {
   }
 
   Stream<User> get getStreamModelForWidget {
-    return _sharedStreamController.getStreamModelForWidget(this, ABView, AWidget, EnumAWidgetForModel.user);
+    return SharedStreamController.getStreamModelForWidget(this, ABView, AWidgetForABView, EnumAWidgetForABViewForModel.user);
   }
 
   void listenGo() {
-    _sharedStreamController
-        .getStreamModelForWidget(this, ABView, AWidget, EnumAWidgetForModel.user)
+    SharedStreamController
+        .getStreamModelForWidget(this, ABView, AWidgetForABView, EnumAWidgetForABViewForModel.user)
         .listen((event) {
           _isListen = true;
-          if (kDebugMode) {
-            print("A: ${event.toString()}");
-          }
+          debugPrint("A: ${event.toString()}");
         });
   }
 
   void setModel() {
-    _sharedStreamController
-        .setModelForWidget(this, ABView, BWidget, EnumBWidgetForModel.user, User("OpaTOP1", "JacobOdd"));
+    SharedStreamController
+        .setModelForWidget(this, ABView, BWidgetForABView, EnumBWidgetForABViewForModel.user, User("TOP1", "JacobOdd"));
   }
 
   void notify() {
-    _sharedStreamController
-        .notifyStreamModelForWidgetIfHasListener(this, ABView, BWidget, EnumBWidgetForModel.user);
+    SharedStreamController
+        .notifyStreamModelForWidgetIfHasListener(this, ABView, BWidgetForABView, EnumBWidgetForABViewForModel.user);
   }
 }
 
-enum EnumBWidgetForModel {
+enum EnumBWidgetForABViewForModel {
   user
 }
 
-class BWidget {
-  final SharedStreamController _sharedStreamController =
-  SharedStreamController();
-
+class BWidgetForABView {
   bool _isListen = false;
 
   bool get getIsListen {
@@ -81,43 +92,42 @@ class BWidget {
   }
 
   Stream<User> get getStreamModelForWidget {
-    return _sharedStreamController.getStreamModelForWidget(this, ABView, BWidget, EnumBWidgetForModel.user);
+    return SharedStreamController.getStreamModelForWidget(this, ABView, BWidgetForABView, EnumBWidgetForABViewForModel.user);
   }
 
   void listenGo() {
-    _sharedStreamController
-        .getStreamModelForWidget(this, ABView, BWidget, EnumBWidgetForModel.user)
+    SharedStreamController
+        .getStreamModelForWidget(this, ABView, BWidgetForABView, EnumBWidgetForABViewForModel.user)
         .listen((event) {
           _isListen = true;
-          if (kDebugMode) {
-            print("B: ${event.toString()}");
-          }
+          debugPrint("B: ${event.toString()}");
         });
   }
 
   void setModel() {
-    _sharedStreamController
-        .setModelForWidget(this, ABView, AWidget, EnumAWidgetForModel.user, User("top100(", "GraySs"));
+    SharedStreamController
+        .setModelForWidget(this, ABView, AWidgetForABView, EnumAWidgetForABViewForModel.user, User("top100(", "GraySs"));
   }
 
   void notify() {
-    _sharedStreamController
-        .notifyStreamModelForWidgetIfHasListener(this, ABView, AWidget, EnumAWidgetForModel.user);
+    SharedStreamController
+        .notifyStreamModelForWidgetIfHasListener(this, ABView, AWidgetForABView, EnumAWidgetForABViewForModel.user);
   }
 }
 
 void main() {
   SharedStreamController.setMapForWidgetAndView(
-      mapModelForWidget: {ABView : {
-        AWidget : {EnumAWidgetForModel.user : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)},
-        BWidget : {EnumBWidgetForModel.user : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)}
-      }},
-      mapModelForView: {});
+      mapModelForWidget: {
+        ABView : {
+          AWidgetForABView : {EnumAWidgetForABViewForModel.user : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)},
+          BWidgetForABView : {EnumBWidgetForABViewForModel.user : SCModel(StreamController<User>.broadcast(), User.getDefaultUser)}
+        }});
   ABView abView = ABView();
   abView.aWidget.listenGo();
   abView.bWidget.listenGo();
 
   test("test SharedStreamController Success", () async {
+    abView.initSetAndNotify();
     abView.aWidget.setModel();
     abView.aWidget.notify();
     abView.bWidget.setModel();

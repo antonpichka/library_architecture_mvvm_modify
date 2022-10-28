@@ -24,15 +24,16 @@ abstract class BaseException
       Type typeClassException,
       Object thisClass)
   {
-    printError("===start_to_trace_exception===\n");
-    printError("NameClassException: $typeClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInString()}\n");
-    printError("===end_to_trace_exception===\n");
+    debugPrintError("===start_to_trace_exception===\n");
+    debugPrintError("NameClassException: $typeClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInString()}\n");
+    debugPrintError("===end_to_trace_exception===\n");
   }
 
   @protected
   String exceptionInString();
   
   @override
+  @nonVirtual
   String toString() {
     return exceptionInString();
   }

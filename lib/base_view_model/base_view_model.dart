@@ -46,7 +46,6 @@ import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/e
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_type_parameter_vm.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
-import 'package:library_architecture_mvvm_modify/utility/constants.dart';
 
 typedef InitObject<S> = S Function();
 
@@ -124,7 +123,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getListModelFromNamedDatabaseNP();
   }
@@ -136,7 +135,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getListModelFromNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -183,7 +182,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getListModelFromNamedDatabaseParameterNamed(typeParameter);
   }
@@ -196,7 +195,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getListModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
@@ -282,7 +281,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<T, BaseException>> getModelFromNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getModelFromNamedDatabaseNP();
   }
@@ -294,7 +293,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getModelFromNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -339,7 +338,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getModelFromNamedDatabaseParameterNamed(typeParameter);
   }
@@ -352,7 +351,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.getModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
@@ -437,7 +436,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       T model)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertModelToNamedDatabaseTIP(model);
   }
@@ -450,7 +449,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
         model,
@@ -482,7 +481,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertModelToNamedDatabaseNP();
   }
@@ -494,7 +493,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertModelToNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -508,7 +507,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<T> listModel)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertListModelToNamedDatabaseTIP(listModel);
   }
@@ -521,7 +520,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
         listModel,
@@ -553,7 +552,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertListModelToNamedDatabaseNP();
   }
@@ -565,7 +564,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertListModelToNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -579,7 +578,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       T model)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseTIP(model);
   }
@@ -592,7 +591,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
         model,
@@ -624,7 +623,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseNP();
   }
@@ -636,7 +635,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -650,7 +649,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseParameterNamed(typeParameter);
   }
@@ -663,7 +662,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
@@ -696,7 +695,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<T> listModel)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseTIP(listModel);
   }
@@ -709,7 +708,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
         listModel,
@@ -741,7 +740,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseNP();
   }
@@ -753,7 +752,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -767,7 +766,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseParameterNamed(typeParameter);
   }
@@ -780,7 +779,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
@@ -813,7 +812,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       T model)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseTIP(model);
   }
@@ -826,7 +825,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
         model,
@@ -858,7 +857,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseNP();
   }
@@ -870,7 +869,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -884,7 +883,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseParameterNamed(typeParameter);
   }
@@ -897,7 +896,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
@@ -930,7 +929,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<T> listModel)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseTIP(listModel);
   }
@@ -943,7 +942,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
         listModel,
@@ -975,7 +974,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseNP();
   }
@@ -987,7 +986,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
   }
@@ -1001,7 +1000,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseParameterNamed(typeParameter);
   }
@@ -1014,7 +1013,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
@@ -1353,7 +1352,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseTypeParameterVM operation)
   {
     if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation];
   }
@@ -1365,7 +1364,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = typeParameter;
   }
@@ -1377,7 +1376,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       BaseTypeParameter typeParameter)
   {
     if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = BaseTypeParameter(typeParameter.getParameter);
   }
@@ -1390,7 +1389,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseModelVM operation)
   {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseModelVMAndBaseModel[operation];
   }
@@ -1402,7 +1401,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       T model)
   {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelVMAndBaseModel[operation] = model;
   }
@@ -1414,7 +1413,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       T model)
   {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelVMAndBaseModel[operation] = cloneModel(model);
   }
@@ -1425,7 +1424,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseModelVM operation)
   async {
     if(!_mapEnumBaseModelVMAndBaseModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseModelVMAndBaseModel[operation];
   }
@@ -1436,7 +1435,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseModelVM operation)
   {
     if(!_mapEnumBaseModelVMAndStreamControllerForBaseModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseModelVMAndStreamControllerForBaseModel[operation].stream;
   }
@@ -1449,7 +1448,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(!_mapEnumBaseModelVMAndStreamControllerForBaseModel.containsKey(operation) ||
         !_mapEnumBaseModelVMAndBaseModel.containsKey(operation))
     {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelVMAndStreamControllerForBaseModel[operation]
         .sink
@@ -1464,7 +1463,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseListModelVM operation)
   {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseListModelVMAndBaseListModel[operation].getParameterListModel;
   }
@@ -1476,7 +1475,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<T> listModel)
   {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseListModelVMAndBaseListModel[operation]
         .setParameterListModel = listModel;
@@ -1489,7 +1488,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<T> listModel)
   {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseListModelVMAndBaseListModel[operation]
         .setParameterListModel = cloneListModel(listModel);
@@ -1501,7 +1500,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseListModelVM operation)
   async {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseListModelVMAndBaseListModel[operation].getParameterListModel;
   }
@@ -1512,7 +1511,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseListModelVM operation)
   {
     if(!_mapEnumBaseListModelVMAndStreamControllerForListBaseModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[operation].stream;
   }
@@ -1525,7 +1524,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(!_mapEnumBaseListModelVMAndStreamControllerForListBaseModel.containsKey(operation) ||
         !_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation))
     {
-      throw LocalException(thisClass,constDeveloper,"$operation not found");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[operation]
         .sink
@@ -1538,7 +1537,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       EnumBaseListModelVM operation)
   {
     if(!_mapEnumBaseListModelVMAndBaseListModel.containsKey(operation)) {
-      return throw LocalException(thisClass,constDeveloper,"$operation not found");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     return _mapEnumBaseListModelVMAndBaseListModel[operation];
   }
@@ -1567,10 +1566,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   void _initListEnumBaseModelVMAndListEnumBaseListModelVMAndListEnumBaseTypeParameterVM() {
     if(_isNotExistsDataSource) {
-      throw LocalException(thisClass,constDeveloper,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     if(getDataSource == null) {
-      throw LocalException(thisClass,constDeveloper,"DataSource equals null");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
     if(getDataSource is InsertModelToNamedDatabaseTIPDataSource<Z>) {
       _listEnumBaseModelVM.add(EnumBaseModelVM.insertModelToNamedDatabaseTIP);
@@ -1622,7 +1621,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<EnumBaseModelVM> listEnumBaseModelVM)
   {
     if(_isExistsDataSource) {
-      throw LocalException(thisClass,constDeveloper,"Constructor call noDataSource: $_isNotExistsDataSource");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call noDataSource: $_isNotExistsDataSource");
     }
     if(listEnumBaseModelVM == null) {
       return;
@@ -1637,7 +1636,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       List<EnumBaseListModelVM> listEnumBaseListModelVM)
   {
     if(_isExistsDataSource) {
-      throw LocalException(thisClass,constDeveloper,"Constructor call noDataSource: $_isNotExistsDataSource");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call noDataSource: $_isNotExistsDataSource");
     }
     if(listEnumBaseListModelVM == null) {
       return;
@@ -1653,7 +1652,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       return;
     }
     if(_initObjectBaseModel == null) {
-      throw LocalException(thisClass,constDeveloper,"InitObjectBaseModel equals null");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"InitObjectBaseModel equals null");
     }
     for(EnumBaseModelVM enumBaseModelVM in _listEnumBaseModelVM) {
       _mapEnumBaseModelVMAndBaseModel[enumBaseModelVM] = _initObjectBaseModel();
@@ -1674,7 +1673,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       return;
     }
     if(_initObjectBaseListModel == null) {
-      throw LocalException(thisClass,constDeveloper,"InitObjectBaseListModel equals null");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"InitObjectBaseListModel equals null");
     }
     for(EnumBaseListModelVM enumBaseListModelVM in _listEnumBaseListModelVM) {
       _mapEnumBaseListModelVMAndBaseListModel[enumBaseListModelVM] = _initObjectBaseListModel();

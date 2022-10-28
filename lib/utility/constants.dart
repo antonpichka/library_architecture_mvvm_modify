@@ -16,16 +16,16 @@
 
 import 'package:flutter/foundation.dart';
 
-const constDeveloper = "Developer";
-
-void printError(String text) {
+void debugPrint(String text) {
   if (kDebugMode) {
-    print('\x1B[31m$text\x1B[0m');
+    print(text);
   }
 }
 
-void printWarning(String text) {
-  if (kDebugMode) {
-    print('\x1B[33m$text\x1B[0m');
-  }
+void debugPrintError(String text) {
+  debugPrint('\x1B[31m$text\x1B[0m');
+}
+
+void debugPrintInfo(String text) {
+  debugPrint('\x1B[34m$text\x1B[0m');
 }

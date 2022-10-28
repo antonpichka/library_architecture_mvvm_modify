@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/cancel_operation_without_exception_and_success/cancel_operation_without_exception_and_success.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
 
-class ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess
-    extends Response<bool,DomainException>
+class ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS
+    extends Response<bool,LocalException>
 {
-  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.success(bool success) : super.success(success);
-  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.exception(DomainException exception) : super.exception(exception);
-  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess cancelOperationWithoutExceptionAndSuccess) : super.cancelOperationWithoutExceptionAndSuccess(cancelOperationWithoutExceptionAndSuccess);
+  ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS.success(bool success) : super.success(success);
+  ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS.exception(LocalException exception) : super.exception(exception);
+  ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS.cancelOWEAndS(CancelOperationWithoutExceptionAndSuccess cancelOperationWithoutExceptionAndSuccess) : super.cancelOperationWithoutExceptionAndSuccess(cancelOperationWithoutExceptionAndSuccess);
 }

@@ -90,7 +90,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(true);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -105,7 +105,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(true);
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -142,7 +142,7 @@ abstract class BaseModelSharedPreferenceDatabaseDataSource<T extends BaseModelNa
       });
       return Response.success(fromMapToBaseModelSharedPreferenceDatabase(map));
     } catch (e) {
-      return Response.exception(LocalException(this,e.runtimeType.toString(),e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 }

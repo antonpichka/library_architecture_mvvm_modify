@@ -17,7 +17,6 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/cancel_operation_without_exception_and_success/cancel_operation_without_exception_and_success.dart';
-import 'package:library_architecture_mvvm_modify/utility/constants.dart';
 
 class Response<T,Y extends BaseException> {
   T _data;
@@ -53,21 +52,21 @@ class Response<T,Y extends BaseException> {
 
   T get getData {
     if(_data == null) {
-      return throw LocalException(this,constDeveloper,"Data null");
+      return throw LocalException(this,EnumGuiltyForLocalException.developer,"Data null");
     }
     return _data;
   }
 
   BaseException get getException {
     if(_exception == null) {
-      return throw LocalException(this,constDeveloper,"Exception null");
+      return throw LocalException(this,EnumGuiltyForLocalException.developer,"Exception null");
     }
     return _exception;
   }
 
   CancelOperationWithoutExceptionAndSuccess get getCancelOperationWithoutExceptionAndSuccess {
     if(_cancelOperationWithoutExceptionAndSuccess == null) {
-      return throw LocalException(this,constDeveloper,"CancelOperationWithoutExceptionAndSuccess null");
+      return throw LocalException(this,EnumGuiltyForLocalException.developer,"CancelOperationWithoutExceptionAndSuccess null");
     }
     return _cancelOperationWithoutExceptionAndSuccess;
   }

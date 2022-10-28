@@ -35,11 +35,15 @@ class BaseListModel<T extends BaseModel>
   }
 
   @nonVirtual
-  set setParameterListModel(List<T> listModel) {
+  set setParameterListModel(
+      List<T> listModel)
+  {
     _listModel = listModel;
   }
 
-  set _setParameterIterator(BaseIterator<T> iterator) {
+  set _setParameterIterator(
+      BaseIterator<T> iterator)
+  {
     _iterator = iterator;
     _iterator.setParameterListModel = _listModel;
   }
@@ -51,7 +55,8 @@ class BaseListModel<T extends BaseModel>
       Map<Enum,BaseIterator<T>> mapEnumAndBaseIterator)
   {
     if(mapEnumAndBaseIterator.isEmpty) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess(thisClass,"MapEnumAndBaseIterator isEmpty"));
+      return Response.cancelOperationWithoutExceptionAndSuccess(
+          CancelOperationWithoutExceptionAndSuccess(thisClass,"MapEnumAndBaseIterator isEmpty"));
     }
     int iteration = 0;
     Enum selectedEnumByTypeParameterForBaseIterator = typeParameterForBaseIterator.getParameter;
@@ -71,22 +76,29 @@ class BaseListModel<T extends BaseModel>
     return Response.success(_listModel);
   }
 
-  Response<bool, BaseException> insertListModelToGetListModel(Object thisClass,List<T> listModel)
+  Response<bool, BaseException> insertListModelToGetListModel(
+      Object thisClass,
+      List<T> listModel)
   {
     _listModel.addAll(listModel);
     return Response.success(true);
   }
   
-  Response<bool, BaseException> insertModelToGetListModel(Object thisClass,T model)
+  Response<bool, BaseException> insertModelToGetListModel(
+      Object thisClass,
+      T model)
   {
     _listModel.add(model);
     return Response.success(true);
   }
 
-  Response<bool, BaseException> updateListModelToGetListModel(Object thisClass,List<T> listModel)
+  Response<bool, BaseException> updateListModelToGetListModel(
+      Object thisClass,
+      List<T> listModel)
   {
     if(_listModel.isEmpty) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutExceptionAndSuccess(
+          CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
     for(int i = 0; i < listModel.length; i++) {
       _listModel[_listModel.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
@@ -94,19 +106,25 @@ class BaseListModel<T extends BaseModel>
     return Response.success(true);
   }
 
-  Response<bool, BaseException> updateModelToGetListModel(Object thisClass,T model)
+  Response<bool, BaseException> updateModelToGetListModel(
+      Object thisClass,
+      T model)
   {
     if(_listModel.isEmpty) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutExceptionAndSuccess(
+          CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
     _listModel[_listModel.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteListModelToGetListModel(Object thisClass,List<T> listModel)
+  Response<bool, BaseException> deleteListModelToGetListModel(
+      Object thisClass,
+      List<T> listModel)
   {
     if(_listModel.isEmpty) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutExceptionAndSuccess(
+          CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
     List<T> listModelForDelete = List.empty(growable: true);
     for(int i = 0; i < _listModel.length; i++) {
@@ -128,10 +146,13 @@ class BaseListModel<T extends BaseModel>
     return Response.success(true);
   }
 
-  Response<bool, BaseException> deleteModelToGetListModel(Object thisClass,T model)
+  Response<bool, BaseException> deleteModelToGetListModel(
+      Object thisClass,
+      T model)
   {
     if(_listModel.isEmpty) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
+      return Response.cancelOperationWithoutExceptionAndSuccess(
+          CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
     _listModel.removeWhere((item) => item.uniqueId == model.uniqueId);
     return Response.success(true);

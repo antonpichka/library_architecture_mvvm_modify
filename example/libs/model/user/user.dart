@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_exception/domain_exception.dart';
+import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception_and_cancel_operation_without_exception_and_success.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_local_exception_and_cancel_owe_and_s.dart';
 
 class User
     extends BaseModel
@@ -36,12 +36,13 @@ class User
   /// End Setters Methods **/
 
   /// Start FBDS and bool Methods **/
-  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP() {
+  ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS deleteUserToSqfliteDatabaseFBDSUsingDeleteTIP() {
     if(isEmptyByTrimParameterName()) {
-      return ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.exception(DomainException(this,constIsEmptyByTrimParameterName));
+      return ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS.exception(
+          LocalException.whereTheUserIsGuilty(this,constIsEmptyByTrimParameterName));
     }
     name += "deleteGo";
-    return ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess.success(true);
+    return ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS.success(true);
   }
 
   bool isEmptyByTrimParameterName() {
@@ -66,6 +67,6 @@ class User
   /// End Const For FBDS and Bool Methods **/
 
   /// Start Default state object for ViewModel object  **/
-  static User get getDefaultUser => User("uniqueId", "ToshaCriminal");
+  static User get getDefaultUser => User("uniqueId", "nickname");
   /// End Default state object for ViewModel object  **/
 }

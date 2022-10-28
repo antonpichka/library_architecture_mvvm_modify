@@ -17,8 +17,12 @@
 import 'package:library_architecture_mvvm_modify/base_background/base_background.dart';
 import '../model_named_background_model/user_sqflite_database_background_model/user_sqflite_database_background_model_using_delete_np_for_all.dart';
 
+enum EnumMainBackground {
+  deleteUserToSqfliteDatabaseNPAndInGeneralOneTask
+}
+
 class MainBackground
-    extends BaseBackground<String>
+    extends BaseBackground<EnumMainBackground>
 {
   static final MainBackground mainBackground =
   MainBackground._();
@@ -30,13 +34,11 @@ class MainBackground
 
   @override
   Future<void> selectAndRunATask(
-      String selectATask)
+      EnumMainBackground selectATask)
   async {
     switch(selectATask) {
-      case "deleteUserToSqfliteDatabaseNPAndInGeneralOneTask":
+      case EnumMainBackground.deleteUserToSqfliteDatabaseNPAndInGeneralOneTask:
         await _deleteUserToSqfliteDatabaseNPAndInGeneralOneTask();
-        break;
-      case "two":
         break;
     }
   }

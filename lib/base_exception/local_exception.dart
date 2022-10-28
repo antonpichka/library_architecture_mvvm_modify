@@ -14,27 +14,45 @@
  * limitations under the License.
  */
 
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
+
+// Who is in fault?
+enum EnumGuiltyForLocalException {
+  developer,
+  device,
+  user
+}
 
 class LocalException
     extends BaseException
 {
-  final String _code;
+  final EnumGuiltyForLocalException _enumGuiltyForLocalException;
   final String _message;
 
   LocalException(
       Object thisClass,
-      this._code,
+      this._enumGuiltyForLocalException,
       this._message)
       : super(LocalException,thisClass);
 
-  String get getCode => _code;
+  LocalException.whereTheUserIsGuilty(thisClass,this._message) :
+        _enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
+        super(LocalException,thisClass);
 
+  @nonVirtual
+  EnumGuiltyForLocalException get getEnumGuiltyForLocalException => _enumGuiltyForLocalException;
+
+  @nonVirtual
   String get getMessage => _message;
 
   @override
+  @nonVirtual
   String exceptionInString() {
-    return "Code: $_code | "
+    if(_enumGuiltyForLocalException == EnumGuiltyForLocalException.developer) {
+      throw LocalException(this, _enumGuiltyForLocalException, "it makes no sense to show exceptions where the developer is to Guilty (That is you).\n Well I'll show the exception message again in console: $_message");
+    }
+    return "EnumGuiltyForLocalException: ${_enumGuiltyForLocalException.name} | "
         "Message: $_message";
   }
 }

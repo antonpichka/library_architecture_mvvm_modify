@@ -15,12 +15,12 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_domain_exception_and_cancel_operation_without_exception_and_success.dart';
+import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_local_exception_and_cancel_owe_and_s.dart';
 
 abstract class DeleteListModelToNamedDatabaseNPFBDS<T extends BaseTypeParameter>
 {
   DeleteListModelToNamedDatabaseNPFBDS();
 
-  ResponseGenericBoolAndDomainExceptionAndCancelOperationWithoutExceptionAndSuccess deleteListModelToNamedDatabaseNP(
+  ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS deleteListModelToNamedDatabaseNP(
       T typeParameterForFBDS);
 }
