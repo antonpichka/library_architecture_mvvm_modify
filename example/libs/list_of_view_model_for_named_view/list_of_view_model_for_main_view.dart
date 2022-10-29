@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view/base_list_of_view_model_for_named_view.dart';
+import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view_or_named_widget_for_named_view/base_list_of_view_model_for_named_view_or_named_widget_for_named_view.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import '../model/user/user.dart';
 import '../model_named_view_model/bool_view_model/bool_view_model_using_get_np_for_loading.dart';
@@ -22,7 +22,7 @@ import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_
 import '../model_named_view_model/user_sqflite_database_view_model/user_sqflite_database_view_model_using_get_list_np.dart';
 
 class ListOfViewModelForMainView
-    extends BaseListOfViewModelForNamedView
+    extends BaseListOfViewModelForNamedViewOrNamedWidgetForNamedView
 {
   final UserSqfliteDatabaseViewModelUsingGetListNP _userSqfliteDatabaseViewModelUsingGetListNP =
   UserSqfliteDatabaseViewModelUsingGetListNP();
