@@ -54,6 +54,9 @@ View directory <a href="https://github.com/JacobOdd/library_architecture_mvvm_mo
 ### ViewOrWidgetForView
 - Coming soon
 
+### Other
+- Coming Soon
+
 ## License
 ```xml
 Designed and developed by 2022 JacobOdd (Anton Pichka)
