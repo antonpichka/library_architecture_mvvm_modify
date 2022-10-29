@@ -16,7 +16,7 @@
 
 import 'package:flutter/material.dart';
 
-abstract class BaseView<T extends StatefulWidget>
+abstract class BaseViewOrWidgetForView<T extends StatefulWidget>
     extends State<T>
     with WidgetsBindingObserver
 {
