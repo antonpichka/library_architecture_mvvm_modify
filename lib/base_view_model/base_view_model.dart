@@ -56,8 +56,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   /* Init Objects */
   final InitObject<T> _initObjectBaseModel;
   final InitObject<Y> _initObjectBaseListModel;
-  final InitObject<StreamController<T>> _initObjectStreamControllerForBaseModel;
-  final InitObject<StreamController<List<T>>> _initObjectStreamControllerForBaseListModel;
+  InitObject<StreamController<T>> _initObjectStreamControllerForBaseModel;
+  InitObject<StreamController<List<T>>> _initObjectStreamControllerForBaseListModel;
 
   /* Init List Objects For Model And BaseTypeParameter */
   final List<EnumBaseModelVM> _listEnumBaseModelVM = List.empty(growable: true);
@@ -1663,8 +1663,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(_listEnumBaseModelVM.isEmpty) {
       return;
     }
+    _initObjectStreamControllerForBaseModel ??= () => StreamController<T>.broadcast();
     for(EnumBaseModelVM enumBaseModelVM in _listEnumBaseModelVM) {
-      _mapEnumBaseModelVMAndStreamControllerForBaseModel[enumBaseModelVM] = _initObjectStreamControllerForBaseModel() ?? ()=> StreamController<T>.broadcast();
+      _mapEnumBaseModelVMAndStreamControllerForBaseModel[enumBaseModelVM] = _initObjectStreamControllerForBaseModel();
     }
   }
 
@@ -1684,8 +1685,9 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(_listEnumBaseListModelVM.isEmpty) {
       return;
     }
+    _initObjectStreamControllerForBaseListModel ??= ()=> StreamController<List<T>>.broadcast();
     for(EnumBaseListModelVM enumBaseListModelVM in _listEnumBaseListModelVM) {
-      _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[enumBaseListModelVM] = _initObjectStreamControllerForBaseListModel() ?? ()=> StreamController<List<T>>.broadcast();
+      _mapEnumBaseListModelVMAndStreamControllerForListBaseModel[enumBaseListModelVM] = _initObjectStreamControllerForBaseListModel();
     }
   }
 
