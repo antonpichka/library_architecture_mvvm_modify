@@ -1,0 +1,32 @@
+name: library_arch_mvvm_modify_counter
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  library_architecture_mvvm_modify:
+    git:
+      url: https://github.com/JacobOdd/library_architecture_mvvm_modify.git
+      ref: 694c617b7ef915fbd1671fba2a991811a5a2c7bb # commit hash
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - resources/icons/
+    - resources/sound/
+    - resources/langs/

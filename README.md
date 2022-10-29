@@ -5,11 +5,54 @@ Coming soon
 
 ## Diagram
 
-<img src="/diagram/library_architecture_mvvm_modify_transparent.png"/>
+<img src="/assets/library_architecture_mvvm_modify_transparent.png"/>
 
-## Usage
+## Examples
 
-View directory <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/example">library_architecture_mvvm_modify/example</a>
+View directory <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/examples">library_architecture_mvvm_modify/examples</a>
+
+<div style="text-align: center">
+    <table>
+        <tr>
+            <td style="text-align: center">
+                <img src="/assets/counter.gif" width="200"/>
+            </td>            
+            <td style="text-align: center">
+                Coming Soon
+            </td>
+            <td style="text-align: center">
+                Coming Soon
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+               Coming Soon
+            </td>
+            <td style="text-align: center">
+               Coming Soon
+            </td>
+            <td style="text-align: center">
+               Coming Soon
+            </td>
+        </tr>
+    </table>
+</div>
+
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/examples/library_arch_mvvm_modify_counter">Counter</a>
+
+## Documentation
+
+### DataSource
+- Coming soon
+
+### ViewModel
+- Coming soon
+
+### ListOfViewModelForViewOrWidgetForView
+- Coming soon
+
+### ViewOrWidgetForView
+- Coming soon
 
 ## License
 ```xml
