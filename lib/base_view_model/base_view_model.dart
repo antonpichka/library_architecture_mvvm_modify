@@ -1655,7 +1655,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"InitObjectBaseModel equals null");
     }
     for(EnumBaseModelVM enumBaseModelVM in _listEnumBaseModelVM) {
-      _mapEnumBaseModelVMAndBaseModel[enumBaseModelVM] = _initObjectBaseModel();
+      _mapEnumBaseModelVMAndBaseModel[enumBaseModelVM] = cloneModel(_initObjectBaseModel());
     }
   }
 

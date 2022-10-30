@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/MainView.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/intTextWidgetForMainView.dart';
+import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntTextWidgetForMainView.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
@@ -12,7 +12,7 @@ void main() {
       mapModelForWidget: {
         MainView : {
           IntTextWidgetForMainView : {
-            EnumIntTextWidgetForMainViewForModel.Int : SCModel(StreamController<Int>.broadcast(),Int.getDefaultInt)
+            EnumIntTextWidgetForMainViewForModel.Int : SCModel(StreamController<Int>.broadcast(),Int(0))
           }
         }
       });

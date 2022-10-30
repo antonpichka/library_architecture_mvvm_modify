@@ -45,22 +45,12 @@ class LocalException
 
   @nonVirtual
   String get getMessage {
-    if(_enumGuiltyForLocalException == EnumGuiltyForLocalException.developer) {
-      throw LocalException(this, _enumGuiltyForLocalException,
-          "it makes no sense to show exceptions where the developer is to Guilty (That is you)."
-          "\n Well I'll show the exception message again in console: $_message");
-    }
     return _message;
   }
 
   @override
   @nonVirtual
   String exceptionInString() {
-    if(_enumGuiltyForLocalException == EnumGuiltyForLocalException.developer) {
-      throw LocalException(this, _enumGuiltyForLocalException,
-          "it makes no sense to show exceptions where the developer is to Guilty (That is you)."
-          "\n Well I'll show the exception message again in console: $_message");
-    }
     return "EnumGuiltyForLocalException: ${_enumGuiltyForLocalException.name} | "
         "Message: $_message";
   }

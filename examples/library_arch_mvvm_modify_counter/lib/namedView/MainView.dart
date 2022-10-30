@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/listOfViewModelForNamedView/ListOfViewModelForMainView.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/intTextWidgetForMainView.dart';
+import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntTextWidgetForMainView.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
 import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';

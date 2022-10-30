@@ -18,7 +18,7 @@ View directory <a href="https://github.com/JacobOdd/library_architecture_mvvm_mo
                 <img src="/assets/counter.gif" width="200"/>
             </td>            
             <td style="text-align: center">
-                Coming Soon
+                <img src="/assets/infinite_list.gif" width="200"/>
             </td>
             <td style="text-align: center">
                 Coming Soon
@@ -39,6 +39,7 @@ View directory <a href="https://github.com/JacobOdd/library_architecture_mvvm_mo
 </div>
 
 - <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/examples/library_arch_mvvm_modify_counter">Counter</a>
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
 
 ## Documentation
 
