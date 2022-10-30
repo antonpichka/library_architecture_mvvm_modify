@@ -140,8 +140,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "694c617b7ef915fbd1671fba2a991811a5a2c7bb"
-      resolved-ref: "694c617b7ef915fbd1671fba2a991811a5a2c7bb"
+      ref: e277318656070c9d4e258c345638301bf51d4afe
+      resolved-ref: e277318656070c9d4e258c345638301bf51d4afe
       url: "https://github.com/JacobOdd/library_architecture_mvvm_modify.git"
     source: git
     version: "0.0.1"

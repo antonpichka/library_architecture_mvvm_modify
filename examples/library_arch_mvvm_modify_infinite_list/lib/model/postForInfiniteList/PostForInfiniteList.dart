@@ -77,5 +77,9 @@ class PostForInfiniteList
     return index >= listPost.length;
   }
 
+  @override
+  String toString() {
+    return "${listPost.toString()} : $hasReachedMax : ${enumWhatIsTheException.name}";
+  }
   static PostForInfiniteList get getDefaultPostForInfiniteList => PostForInfiniteList(List.empty(), false, EnumWhatIsTheException.noException);
 }

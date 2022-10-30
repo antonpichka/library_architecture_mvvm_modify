@@ -92,4 +92,23 @@ class ListOfViewModelForPostsListWidgetForMainView
         .notifyStreamPostForInfiniteListUsingGetNP();
     return;
   }
+
+  Future<void> getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostAndInGeneralOneTaskExceptionItInitMethod()
+  async {
+    // 1
+    var resultOne = await _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
+        .getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPost(IntTypeParameter(0));
+    if(resultOne.isExceptionResponse()) {
+      _postForInfiniteListViewModelUsingGetNP
+          .getPostForInfiniteListUsingGetNP
+          .setFromBaseExceptionParameterEnumWhatIsTheException = resultOne.getException;
+      return;
+    }
+    _postForInfiniteListViewModelUsingGetNP
+        .getPostForInfiniteListUsingGetNP
+        .setParameterListPost = _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.getListPostUsingGetListParameterStartIndex;
+    _postForInfiniteListViewModelUsingGetNP
+        .notifyStreamPostForInfiniteListUsingGetNP();
+    return;
+  }
 }

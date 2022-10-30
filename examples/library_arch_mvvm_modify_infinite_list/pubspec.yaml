@@ -12,7 +12,7 @@ dependencies:
   library_architecture_mvvm_modify:
     git:
       url: https://github.com/JacobOdd/library_architecture_mvvm_modify.git
-      ref: 694c617b7ef915fbd1671fba2a991811a5a2c7bb # commit hash
+      ref: e277318656070c9d4e258c345638301bf51d4afe # commit hash
 
   cupertino_icons: ^1.0.2
   http: ^0.13.0
