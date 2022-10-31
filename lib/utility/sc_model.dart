@@ -22,7 +22,7 @@ import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 class SCModel {
   final IStreams iStreams;
   BaseModel model;
-  BaseListModel listModel;
+  final BaseListModel listModel;
 
   SCModel(
       this.iStreams,

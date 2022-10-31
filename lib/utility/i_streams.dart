@@ -17,11 +17,11 @@
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class IStreams<ExampleStreamControllerForModel,ExampleStreamControllerForListModel>
+abstract class IStreams
     implements BaseDispose
 {
-  ExampleStreamControllerForModel get getTheObjectControllingTheStreamForModel;
-  ExampleStreamControllerForListModel get getTheObjectControllingTheStreamForListModel;
+  Object get getTheObjectControllingTheStreamForModel;
+  Object get getTheObjectControllingTheStreamForListModel;
   Object get getStreamModel;
   Object get getStreamListModel;
   bool get hasListenerForModel;
