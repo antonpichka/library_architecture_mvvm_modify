@@ -1,18 +1,19 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/MainView.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntTextWidgetForMainView.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_controller.dart';
 import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedStreamController.setMapForWidgetAndView(
+  SharedStreamController.ssc.setMapForWidgetAndView(
       mapModelForWidget: {
         MainView : {
           IntTextWidgetForMainView : {
-            EnumIntTextWidgetForMainViewForModel.Int : SCModel(StreamController<Int>.broadcast(),Int(0))
+            EnumIntTextWidgetForMainViewForModel.Int : SCModel(DefaultStreamController<Int>(),Int(0),ListInt([]))
           }
         }
       });

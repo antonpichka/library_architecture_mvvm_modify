@@ -26,7 +26,9 @@ class _MainViewState
   @override
   void dispose() {
     _lo.dispose();
-    SharedStreamController.dispose();
+    SharedStreamController
+        .ssc
+        .dispose();
     super.dispose();
   }
 
@@ -55,8 +57,12 @@ class _MainViewState
             child: const Icon(Icons.add),
             onPressed: () => _lo.incrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
                 functionForSuccess: (Int int) {
-                  SharedStreamController.setModelForWidget(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int, int);
-                  SharedStreamController.notifyStreamModelForWidgetIfHasListener(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int);
+                  SharedStreamController
+                      .ssc
+                      .setModelForWidget(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int, int);
+                  SharedStreamController
+                      .ssc
+                      .notifyStreamModelForWidgetIfHasListener(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int);
                 }),
           ),
           const SizedBox(height: 8),
@@ -64,8 +70,12 @@ class _MainViewState
             child: const Icon(Icons.remove),
             onPressed: () => _lo.decrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
                 functionForSuccess: (Int int) {
-                  SharedStreamController.setModelForWidget(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int, int);
-                  SharedStreamController.notifyStreamModelForWidgetIfHasListener(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int);
+                  SharedStreamController
+                      .ssc
+                      .setModelForWidget(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int, int);
+                  SharedStreamController
+                      .ssc
+                      .notifyStreamModelForWidgetIfHasListener(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int);
                 }),
           ),
         ],

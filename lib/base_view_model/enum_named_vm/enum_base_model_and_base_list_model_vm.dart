@@ -14,10 +14,16 @@
  * limitations under the License.
  */
 
-enum EnumBaseModelVM {
+enum EnumBaseModelAndBaseListModelVM {
   insertModelToNamedDatabaseTIP,
   updateModelToNamedDatabaseTIP,
   deleteModelToNamedDatabaseTIP,
   getModelFromNamedDatabaseParameterNamed,
   getModelFromNamedDatabaseNP,
+
+  insertListModelToNamedDatabaseTIP,
+  updateListModelToNamedDatabaseTIP,
+  deleteListModelToNamedDatabaseTIP,
+  getListModelFromNamedDatabaseParameterNamed,
+  getListModelFromNamedDatabaseNP,
 }

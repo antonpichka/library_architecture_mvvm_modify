@@ -26,6 +26,7 @@ class _IntTextWidgetForMainViewState
   void initState() {
     super.initState();
     SharedStreamController
+        .ssc
         .getStreamModelForWidget(this,MainView,IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int,)
         .listen((event) {
           _lo.setIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(event);

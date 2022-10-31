@@ -1,7 +1,7 @@
 name: library_architecture_mvvm_modify
-description: MVVM Modify
+description: MVVM Modification
 version: 0.0.1
-homepage: "Library Architecture MVVM modification"
+homepage:
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -20,6 +20,4 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
-flutter:
 

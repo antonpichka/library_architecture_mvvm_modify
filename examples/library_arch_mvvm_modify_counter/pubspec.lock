@@ -125,11 +125,9 @@ packages:
   library_architecture_mvvm_modify:
     dependency: "direct main"
     description:
-      path: "."
-      ref: e277318656070c9d4e258c345638301bf51d4afe
-      resolved-ref: e277318656070c9d4e258c345638301bf51d4afe
-      url: "https://github.com/JacobOdd/library_architecture_mvvm_modify.git"
-    source: git
+      path: "../.."
+      relative: true
+    source: path
     version: "0.0.1"
   matcher:
     dependency: transitive

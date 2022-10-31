@@ -14,35 +14,20 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 
-class SCModel {
-  final IStreams iStreams;
-  BaseModel model;
-  BaseListModel listModel;
-
-  SCModel(
-      this.iStreams,
-      this.model,
-      this.listModel);
-
-  @nonVirtual
-  set setParameterModel(
-      BaseModel model)
-  {
-    this.model = model;
-  }
-
-  @nonVirtual
-  void notifyStreamModel() {
-    iStreams.notifyStreamModel(model);
-  }
-
-  @nonVirtual
-  void notifyStreamListModel() {
-    iStreams.notifyStreamListModel(listModel.getParameterListModel);
-  }
+abstract class IStreams<ExampleStreamControllerForModel,ExampleStreamControllerForListModel>
+    implements BaseDispose
+{
+  ExampleStreamControllerForModel get getTheObjectControllingTheStreamForModel;
+  ExampleStreamControllerForListModel get getTheObjectControllingTheStreamForListModel;
+  Object get getStreamModel;
+  Object get getStreamListModel;
+  bool get hasListenerForModel;
+  bool get hasListenerForListModel;
+  bool get isClosedForModel;
+  bool get isClosedForListModel;
+  void notifyStreamModel(BaseModel model);
+  void notifyStreamListModel(List<BaseModel> listModel);
 }

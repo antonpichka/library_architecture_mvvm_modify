@@ -55,7 +55,6 @@ class ListOfViewModelForPostsListWidgetForMainView
         .getBoolUsingGetNPForAntiSpam
         .isField = true;
     // 1
-    print("Length: ${_postForInfiniteListViewModelUsingGetNP.getPostForInfiniteListUsingGetNP.listPost.length}");
     var resultOne = await _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
         .getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPost(IntTypeParameter(_postForInfiniteListViewModelUsingGetNP.getPostForInfiniteListUsingGetNP.listPost.length));
     if(resultOne.isExceptionResponse()) {

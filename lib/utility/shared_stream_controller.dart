@@ -17,23 +17,24 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 
 /*
   initialize only in view classes
  */
 class SharedStreamController {
-  static Map<Type,Map<Type,Map<Enum,SCModel>>> _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel = {};
+  static final SharedStreamController ssc = SharedStreamController._();
 
-  static Map<Type,Map<Enum,SCModel>> _mapTypeViewAndMapTypeModelAndSCModel = {};
-
-  static bool _isDispose = false;
+  Map<Type,Map<Type,Map<Enum,SCModel>>> _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel = {};
+  Map<Type,Map<Enum,SCModel>> _mapTypeViewAndMapTypeModelAndSCModel = {};
+  bool _isDispose = false;
 
   SharedStreamController._();
   /*
      call to main.dart or to main_view.dart to method initState();
    */
-  static void setMapForWidgetAndView(
+  void setMapForWidgetAndView(
       {Map<Type,Map<Type,Map<Enum,SCModel>>> mapModelForWidget,
       Map<Type,Map<Enum,SCModel>> mapModelForView})
   {
@@ -44,60 +45,13 @@ class SharedStreamController {
   /*
      call to main_view.dart to method dispose();
    */
-  static bool dispose() {
+  bool dispose() {
     _disposeForWidget();
     _disposeForView();
     return _isDispose;
   }
 
-  static void _disposeForWidget() {
-    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel == null) {
-      _isDispose = false;
-      return;
-    }
-    Iterator<Map<Type,Map<Enum,SCModel>>> iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.values.iterator;
-    while(iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
-      Iterator<Map<Enum,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel =  iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
-      while(iteratorMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
-        Iterator<SCModel> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
-        while(iteratorStreamControllerForBaseModel.moveNext()) {
-          StreamController<BaseModel> streamControllerForBaseModel = iteratorStreamControllerForBaseModel.current.streamController;
-          if(streamControllerForBaseModel == null) {
-            continue;
-          }
-          if(streamControllerForBaseModel.isClosed) {
-            continue;
-          }
-          streamControllerForBaseModel.close();
-        }
-      }
-    }
-    _isDispose = true;
-  }
-
-  static void _disposeForView() {
-    if(_mapTypeViewAndMapTypeModelAndSCModel == null) {
-      _isDispose = false;
-      return;
-    }
-    Iterator<Map<Enum,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeModelAndSCModel.values.iterator;
-    while(iteratorMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
-      Iterator<SCModel> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
-      while(iteratorStreamControllerForBaseModel.moveNext()) {
-        StreamController<BaseModel> streamControllerForBaseModel = iteratorStreamControllerForBaseModel.current.streamController;
-        if(streamControllerForBaseModel == null) {
-          continue;
-        }
-        if(streamControllerForBaseModel.isClosed) {
-          continue;
-        }
-        streamControllerForBaseModel.close();
-      }
-    }
-    _isDispose = true;
-  }
-
-  static Stream<BaseModel> getStreamModelForWidget(
+  IStreams getIStreamsForWidget(
       Object thisClass,
       Type typeView,
       Type typeWidget,
@@ -106,10 +60,10 @@ class SharedStreamController {
     if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].streamController.stream;
+    return _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams;
   }
 
-  static Stream<BaseModel> getStreamModelForView(
+  IStreams getIStreamsForView(
       Object thisClass,
       Type typeView,
       Enum enumModel)
@@ -117,10 +71,56 @@ class SharedStreamController {
     if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].streamController.stream;
+    return _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams;
   }
 
-  static void setModelForWidget(
+  Stream<BaseModel> getStreamModelForWidget(
+      Object thisClass,
+      Type typeView,
+      Type typeWidget,
+      Enum enumModel)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    return _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.getStreamModel;
+  }
+
+  Stream<List<BaseModel>> getStreamListModelForWidget(
+      Object thisClass,
+      Type typeView,
+      Type typeWidget,
+      Enum enumModel)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    return _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.getStreamListModel;
+  }
+
+  Stream<BaseModel> getStreamModelForView(
+      Object thisClass,
+      Type typeView,
+      Enum enumModel)
+  {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    return _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams.getStreamModel;
+  }
+
+  Stream<List<BaseModel>> getStreamListModelForView(
+      Object thisClass,
+      Type typeView,
+      Enum enumModel)
+  {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    return _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams.getStreamListModel;
+  }
+
+  void setModelForWidget(
       Object thisClass,
       Type typeView,
       Type typeWidget,
@@ -134,10 +134,25 @@ class SharedStreamController {
         .setParameterModel = model;
   }
 
-  static void setModelsForListOfWidget(
+  void setListModelForWidget(
       Object thisClass,
       Type typeView,
-      Map<Type,Map<Enum,BaseModel>> mapTypeWidgetAndMapEnumModelAndModel,)
+      Type typeWidget,
+      Enum enumModel,
+      List<BaseModel> model)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel]
+        .listModel
+        .setParameterListModel = model;
+  }
+
+  void setModelsForListOfWidget(
+      Object thisClass,
+      Type typeView,
+      Map<Type,Map<Enum,BaseModel>> mapTypeWidgetAndMapEnumModelAndModel)
   {
     if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
@@ -150,7 +165,24 @@ class SharedStreamController {
     });
   }
 
-  static void setModelForView(
+  void setListsModelsForListOfWidget(
+      Object thisClass,
+      Type typeView,
+      Map<Type,Map<Enum,List<BaseModel>>> mapTypeWidgetAndMapEnumModelAndListsModels)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    mapTypeWidgetAndMapEnumModelAndListsModels.forEach((Type typeWidget, Map<Enum,List<BaseModel>> mapEnumModelAndListsModels) {
+      mapEnumModelAndListsModels.forEach((Enum enumModel, List<BaseModel> model) {
+        _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel]
+            .listModel
+            .setParameterListModel = model;
+      });
+    });
+  }
+
+  void setModelForView(
       Object thisClass,
       Type typeView,
       Enum enumModel,
@@ -163,7 +195,21 @@ class SharedStreamController {
         .setParameterModel = model;
   }
 
-  static void notifyStreamModelForWidgetIfHasListener(
+  void setListModelForView(
+      Object thisClass,
+      Type typeView,
+      Enum enumModel,
+      List<BaseModel> model)
+  {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel]
+        .listModel
+        .setParameterListModel = model;
+  }
+
+  void notifyStreamModelForWidgetIfHasListener(
       Object thisClass,
       Type typeView,
       Type typeWidget,
@@ -172,17 +218,36 @@ class SharedStreamController {
     if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].streamController.hasListener) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
     }
-    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].streamController.isClosed) {
+    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
     }
     _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel]
         .notifyStreamModel();
   }
 
-  static void notifyStreamModelsForListOfWidgetIfHasListener(
+  void notifyStreamListModelForWidgetIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Type typeWidget,
+      Enum enumModel)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+    }
+    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+    }
+    _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel]
+        .notifyStreamListModel();
+  }
+
+  void notifyStreamModelsForListOfWidgetIfHasListener(
       Object thisClass,
       Type typeView,
       Map<Type,List<Enum>> mapTypeWidgetAndListOfEnumModel)
@@ -192,10 +257,10 @@ class SharedStreamController {
     }
     mapTypeWidgetAndListOfEnumModel.forEach((Type typeWidget, List<Enum> listOfEnumModel) {
       for(Enum enumModel in listOfEnumModel) {
-        if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].streamController.hasListener) {
+        if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
           throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
         }
-        if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].streamController.isClosed) {
+        if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
           throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
         }
         _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel]
@@ -204,7 +269,29 @@ class SharedStreamController {
     });
   }
 
-  static void notifyStreamModelForViewIfHasListener(
+  void notifyStreamListsModelsForListOfWidgetIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Map<Type,List<Enum>> mapTypeWidgetAndListOfEnumModel)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    mapTypeWidgetAndListOfEnumModel.forEach((Type typeWidget, List<Enum> listOfEnumModel) {
+      for(Enum enumModel in listOfEnumModel) {
+        if(!_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
+          throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+        }
+        if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
+          throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+        }
+        _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel[typeView][typeWidget][enumModel]
+            .notifyStreamListModel();
+      }
+    });
+  }
+
+  void notifyStreamModelForViewIfHasListener(
       Object thisClass,
       Type typeView,
       Enum enumModel)
@@ -212,13 +299,70 @@ class SharedStreamController {
     if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].streamController.hasListener) {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams.hasListenerForModel) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream has no listener");
     }
-    if(_mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].streamController.isClosed) {
+    if(_mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams.isClosedForModel) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream closed");
     }
     _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel]
         .notifyStreamModel();
+  }
+
+  void notifyStreamListModelForViewIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Enum enumModel)
+  {
+    if(!_mapTypeViewAndMapTypeModelAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    if(!_mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams.hasListenerForModel) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream has no listener");
+    }
+    if(_mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel].iStreams.isClosedForModel) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream closed");
+    }
+    _mapTypeViewAndMapTypeModelAndSCModel[typeView][enumModel]
+        .notifyStreamListModel();
+  }
+
+  void _disposeForWidget() {
+    if(_mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel == null) {
+      _isDispose = false;
+      return;
+    }
+    Iterator<Map<Type,Map<Enum,SCModel>>> iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeWidgetAndMapTypeModelAndSCModel.values.iterator;
+    while(iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
+      Iterator<Map<Enum,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel =  iteratorMapTypeWidgetAndMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
+      while(iteratorMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
+        Iterator<SCModel> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
+        while(iteratorStreamControllerForBaseModel.moveNext()) {
+          SCModel scModel = iteratorStreamControllerForBaseModel.current;
+          scModel
+              .iStreams
+              .dispose();
+        }
+      }
+    }
+    _isDispose = true;
+  }
+
+  void _disposeForView() {
+    if(_mapTypeViewAndMapTypeModelAndSCModel == null) {
+      _isDispose = false;
+      return;
+    }
+    Iterator<Map<Enum,SCModel>> iteratorMapTypeModelAndStreamControllerForBaseModel = _mapTypeViewAndMapTypeModelAndSCModel.values.iterator;
+    while(iteratorMapTypeModelAndStreamControllerForBaseModel.moveNext()) {
+      Iterator<SCModel> iteratorStreamControllerForBaseModel  = iteratorMapTypeModelAndStreamControllerForBaseModel.current.values.iterator;
+      while(iteratorStreamControllerForBaseModel.moveNext()) {
+        SCModel scModel = iteratorStreamControllerForBaseModel.current;
+        scModel
+            .iStreams
+            .dispose();
+      }
+    }
+    _isDispose = true;
   }
 }

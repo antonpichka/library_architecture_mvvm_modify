@@ -5,6 +5,8 @@ import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_controller.dart';
+import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 
 abstract class PostNamedDatabaseViewModel<T extends BaseModelNamedDatabase<Post>,Y extends BaseListModelNamedDatabase<ListPost,T>>
     extends BaseViewModel<Post,ListPost,T,Y,Enum>
@@ -15,8 +17,7 @@ abstract class PostNamedDatabaseViewModel<T extends BaseModelNamedDatabase<Post>
       : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
       converterToBaseModelNamedDatabase,
       converterToBaseListModelNamedDatabase,
-          ()=> Post.getDefaultPost,
-          ()=> ListPost([]));
+          ()=> SCModel(DefaultStreamController<Post>(),Post.getDefaultPost,ListPost([])));
 
   @override
   Post cloneModel(

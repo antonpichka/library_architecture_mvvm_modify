@@ -4,20 +4,20 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model_named_dat
 class PostJsonPlaceholderDatabase
     extends BaseModelNamedDatabase<Post>
 {
-  final String uniqueId;
+  final int id;
   final String title;
   final String body;
 
   PostJsonPlaceholderDatabase(
-      this.uniqueId,
+      this.id,
       this.title,
-      this.body) : super(uniqueId);
+      this.body) : super(id.toString());
 
   static PostJsonPlaceholderDatabase fromMap(
       Map<String,dynamic> map)
   {
     return PostJsonPlaceholderDatabase(
-        map[constParameterId].toString(),
+        map[constParameterId],
         map[constParameterTitle],
         map[constParameterBody]);
   }
@@ -30,7 +30,7 @@ class PostJsonPlaceholderDatabase
   @override
   Map<String, dynamic> toMap() {
     return {
-      constParameterId : uniqueId,
+      constParameterId : id,
       constParameterTitle : title,
       constParameterBody : body
     };

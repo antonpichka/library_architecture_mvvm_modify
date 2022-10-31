@@ -4,10 +4,6 @@ import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteList
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
 import '../../model/post/Post.dart';
 
-enum EnumPostsListWidgetForMainViewForModel {
-  PostForInfiniteList,
-}
-
 class PostsListWidgetForMainView
     extends StatefulWidget
 {

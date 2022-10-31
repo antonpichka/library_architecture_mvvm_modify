@@ -12,7 +12,8 @@ import 'package:http/http.dart' as http;
 class PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex
     implements GetListModelFromNamedDatabaseParameterNamedDataSource<ListPostJsonPlaceholderDatabase,IntTypeParameter>
 {
-  static final PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex db = PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex._();
+  static final PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex db =
+  PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex._();
 
   PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex._();
 

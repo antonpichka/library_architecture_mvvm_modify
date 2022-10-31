@@ -6,14 +6,10 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  library_architecture_mvvm_modify:
+    path: ../../
   flutter:
     sdk: flutter
-
-  library_architecture_mvvm_modify:
-    git:
-      url: https://github.com/JacobOdd/library_architecture_mvvm_modify.git
-      ref: e277318656070c9d4e258c345638301bf51d4afe # commit hash
-
   cupertino_icons: ^1.0.2
   http: ^0.13.0
 
