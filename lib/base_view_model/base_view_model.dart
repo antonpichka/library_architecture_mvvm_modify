@@ -37,8 +37,8 @@ import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart'
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
@@ -126,7 +126,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNP()
   {
     if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,'Constructor call thereIsDataSource...: $_isExistsDataSource');
     }
     return super.getListModelFromNamedDatabaseNP();
   }
@@ -159,7 +159,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
         .setParameterListModel = result.getData;
     return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP]
         .listModel
-        .getParameterListModel);
+        .listModel);
   }
 
   @protected
@@ -179,7 +179,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
         .setParameterListModel = result.getData;
     return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP]
         .listModel
-        .getParameterListModel);
+        .listModel);
   }
   // end getListNP 4
 
@@ -235,7 +235,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
         .setParameterListModel = result.getData;
     return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed]
         .listModel
-        .getParameterListModel);
+        .listModel);
   }
 
   @protected
@@ -265,7 +265,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
         .setParameterListModel = result.getData;
     return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed]
         .listModel
-        .getParameterListModel);
+        .listModel);
   }
 
   @protected
@@ -1490,7 +1490,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].listModel.getParameterListModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].listModel.listModel;
   }
 
   @protected
@@ -1529,7 +1529,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].listModel.getParameterListModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].listModel.listModel;
   }
 
   @protected

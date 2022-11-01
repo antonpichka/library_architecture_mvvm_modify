@@ -59,8 +59,8 @@ import 'package:library_architecture_mvvm_modify/base_data_source/interface_data
 import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
@@ -880,7 +880,7 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return Response.success(response.getData.toBaseListModel().getParameterListModel);
+    return Response.success(response.getData.toBaseListModel().listModel);
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
@@ -913,7 +913,7 @@ abstract class BaseBackgroundModel<T extends BaseModel,Y extends BaseListModel<T
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return Response.success(response.getData.toBaseListModel().getParameterListModel);
+    return Response.success(response.getData.toBaseListModel().listModel);
   }
 
   Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(

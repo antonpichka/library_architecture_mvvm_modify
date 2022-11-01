@@ -16,6 +16,7 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
+// ignore: must_be_immutable
 class Bool
     extends BaseModel
 {
@@ -26,6 +27,9 @@ class Bool
   bool isNotFieldParameterIsField() {
     return !isField;
   }
+
+  @override
+  List<Object> get props => [uniqueId,isField];
 
   static Bool get getDefaultBool => Bool(false);
 }

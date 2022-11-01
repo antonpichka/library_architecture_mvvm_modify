@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-abstract class BaseObject {
-  @override
-  bool operator ==(Object other);
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 
-  @override
-  int get hashCode;
+abstract class BaseListModelNamedDatabase<T extends BaseListModel,Y extends BaseModelNamedDatabase>
+{
+  final List<Y> listModelNamedDatabase;
 
-  @override
-  String toString();
+  BaseListModelNamedDatabase(this.listModelNamedDatabase);
+
+  T toBaseListModel();
 }

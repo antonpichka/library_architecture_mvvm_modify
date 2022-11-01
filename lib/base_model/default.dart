@@ -33,4 +33,7 @@ class Default<T extends BaseModel>
     // TODO: implement toMap
     throw UnimplementedError();
   }
+
+  @override
+  List<Object> get props => [uniqueId];
 }

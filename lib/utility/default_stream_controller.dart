@@ -19,7 +19,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 
 class DefaultStreamController<T extends BaseModel>
-    implements IStreams
+    implements IStreams<T>
 {
   final StreamController<T> _streamControllerForModel =
   StreamController.broadcast();
@@ -62,7 +62,7 @@ class DefaultStreamController<T extends BaseModel>
 
   @override
   void notifyStreamModel(
-      BaseModel model)
+      T model)
   {
     _streamControllerForModel
         .sink
@@ -71,7 +71,7 @@ class DefaultStreamController<T extends BaseModel>
 
   @override
   void notifyStreamListModel(
-      List<BaseModel> listModel)
+      List<T> listModel)
   {
     _streamControllerForListModel
         .sink

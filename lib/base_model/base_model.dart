@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_model/base_object.dart';
+import 'package:equatable/equatable.dart';
 
-class BaseModel
-    extends BaseObject
+// ignore: must_be_immutable
+abstract class BaseModel
+    extends Equatable
 {
   String uniqueId;
 

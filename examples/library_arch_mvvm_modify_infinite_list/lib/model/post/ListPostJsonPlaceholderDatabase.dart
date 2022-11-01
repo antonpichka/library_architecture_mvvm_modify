@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/PostJsonPlaceholderDatabase.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model_named_database.dart';
 import 'Post.dart';
 
 class ListPostJsonPlaceholderDatabase
@@ -10,7 +10,7 @@ class ListPostJsonPlaceholderDatabase
 
   @override
   ListPost toBaseListModel() {
-    List<Post> listPost = List.generate(getListModelNamedDatabase.length, (index) => getListModelNamedDatabase[index].toBaseModel());
+    List<Post> listPost = List.generate(listModelNamedDatabase.length, (index) => listModelNamedDatabase[index].toBaseModel());
     return ListPost(listPost);
   }
 }

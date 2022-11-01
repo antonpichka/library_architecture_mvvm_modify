@@ -16,12 +16,16 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
+// ignore: must_be_immutable
 class Int
     extends BaseModel
 {
   int field;
 
   Int(this.field) : super('');
+
+  @override
+  List<Object> get props => [uniqueId,field];
 
   static Int get getDefaultInt => Int(0);
 }

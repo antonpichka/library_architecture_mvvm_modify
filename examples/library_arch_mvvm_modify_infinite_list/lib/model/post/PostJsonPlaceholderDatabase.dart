@@ -13,7 +13,7 @@ class PostJsonPlaceholderDatabase
       this.title,
       this.body) : super(id.toString());
 
-  static PostJsonPlaceholderDatabase fromMap(
+  factory PostJsonPlaceholderDatabase.fromMap(
       Map<String,dynamic> map)
   {
     return PostJsonPlaceholderDatabase(
@@ -35,6 +35,9 @@ class PostJsonPlaceholderDatabase
       constParameterBody : body
     };
   }
+
+  @override
+  List<Object> get props => [uniqueId,id,title,body];
 
   static const constParameterId = "id";
   static const constParameterTitle = "title";

@@ -17,8 +17,8 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
@@ -104,8 +104,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
     try {
       final db = await getDatabase;
       int iterationForInsert = 0;
-      for(BaseModelNamedDatabase model in listModelSqfliteDatabase
-          .getListModelNamedDatabase)
+      for(BaseModelNamedDatabase model in listModelSqfliteDatabase.listModelNamedDatabase)
       {
         int resultInsert = await db.insert(
             table,
@@ -159,8 +158,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
     try {
       final db = await getDatabase;
       int calculateForUpdate = 0;
-      for(BaseModelNamedDatabase model in listModelSqfliteDatabase
-          .getListModelNamedDatabase)
+      for(BaseModelNamedDatabase model in listModelSqfliteDatabase.listModelNamedDatabase)
       {
         int resultUpdate = await db.update(
           table,
@@ -213,8 +211,7 @@ abstract class BaseModelSqfliteDatabaseDataSource<T extends BaseModelNamedDataba
     try {
       final db = await getDatabase;
       int calculateForDelete = 0;
-      for(BaseModelNamedDatabase model in listModelSqfliteDatabase
-          .getListModelNamedDatabase)
+      for(BaseModelNamedDatabase model in listModelSqfliteDatabase.listModelNamedDatabase)
       {
         var resultDelete = await db.delete(
           table,

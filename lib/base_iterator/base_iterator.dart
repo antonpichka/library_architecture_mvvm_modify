@@ -20,7 +20,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 abstract class BaseIterator<T extends BaseModel>
     implements Iterator<T>
 {
-  List<T> _listModel;
+  List<T> listModel;
 
   @nonVirtual
   List<T> get getSortedListModel {
@@ -32,14 +32,10 @@ abstract class BaseIterator<T extends BaseModel>
     return listModel;
   }
 
-  @protected
-  @nonVirtual
-  List<T> get getListModel => _listModel;
-
   @nonVirtual
   set setParameterListModel(
       List<T> listModel)
   {
-    _listModel = listModel;
+    this.listModel = listModel;
   }
 }

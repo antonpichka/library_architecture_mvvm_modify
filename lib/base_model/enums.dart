@@ -20,12 +20,16 @@ enum EnumsDefault {
   zero
 }
 
+// ignore: must_be_immutable
 class Enums
     extends BaseModel
 {
   Enum field;
 
   Enums(this.field) : super('');
+
+  @override
+  List<Object> get props => [uniqueId,field];
 
   static Enums get getDefaultEnums => Enums(EnumsDefault.zero);
 }

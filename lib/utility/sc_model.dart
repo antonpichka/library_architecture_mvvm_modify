@@ -15,14 +15,14 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 
-class SCModel {
-  final IStreams iStreams;
-  BaseModel model;
-  final BaseListModel listModel;
+class SCModel<T extends BaseModel> {
+  final IStreams<T> iStreams;
+  T model;
+  final BaseListModel<T> listModel;
 
   SCModel(
       this.iStreams,
@@ -31,7 +31,7 @@ class SCModel {
 
   @nonVirtual
   set setParameterModel(
-      BaseModel model)
+      T model)
   {
     this.model = model;
   }
@@ -43,6 +43,6 @@ class SCModel {
 
   @nonVirtual
   void notifyStreamListModel() {
-    iStreams.notifyStreamListModel(listModel.getParameterListModel);
+    iStreams.notifyStreamListModel(listModel.listModel);
   }
 }

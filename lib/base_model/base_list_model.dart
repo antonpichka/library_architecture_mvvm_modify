@@ -24,28 +24,23 @@ import 'package:library_architecture_mvvm_modify/response/response.dart';
 
 class BaseListModel<T extends BaseModel>
 {
-  List<T> _listModel;
+  List<T> listModel;
   BaseIterator<T> _iterator;
 
-  BaseListModel(this._listModel);
-
-  @nonVirtual
-  List<T> get getParameterListModel {
-    return _listModel;
-  }
+  BaseListModel(this.listModel);
 
   @nonVirtual
   set setParameterListModel(
       List<T> listModel)
   {
-    _listModel = listModel;
+    this.listModel = listModel;
   }
 
   set _setParameterIterator(
       BaseIterator<T> iterator)
   {
     _iterator = iterator;
-    _iterator.setParameterListModel = _listModel;
+    _iterator.setParameterListModel = listModel;
   }
 
   @nonVirtual
@@ -72,15 +67,15 @@ class BaseListModel<T extends BaseModel>
       }
       iteration++;
     }
-    _listModel = _iterator.getSortedListModel;
-    return Response.success(_listModel);
+    setParameterListModel = _iterator.getSortedListModel;
+    return Response.success(listModel);
   }
 
   Response<bool, BaseException> insertListModelToGetListModel(
       Object thisClass,
       List<T> listModel)
   {
-    _listModel.addAll(listModel);
+    this.listModel.addAll(listModel);
     return Response.success(true);
   }
   
@@ -88,7 +83,7 @@ class BaseListModel<T extends BaseModel>
       Object thisClass,
       T model)
   {
-    _listModel.add(model);
+    listModel.add(model);
     return Response.success(true);
   }
 
@@ -96,12 +91,12 @@ class BaseListModel<T extends BaseModel>
       Object thisClass,
       List<T> listModel)
   {
-    if(_listModel.isEmpty) {
+    if(this.listModel.isEmpty) {
       return Response.cancelOperationWithoutExceptionAndSuccess(
           CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
     for(int i = 0; i < listModel.length; i++) {
-      _listModel[_listModel.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
+      this.listModel[this.listModel.indexWhere((element) => element.uniqueId == listModel[i].uniqueId)] = listModel[i];
     }
     return Response.success(true);
   }
@@ -110,11 +105,11 @@ class BaseListModel<T extends BaseModel>
       Object thisClass,
       T model)
   {
-    if(_listModel.isEmpty) {
+    if(listModel.isEmpty) {
       return Response.cancelOperationWithoutExceptionAndSuccess(
           CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
-    _listModel[_listModel.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
+    listModel[listModel.indexWhere((element) => element.uniqueId == model.uniqueId)] = model;
     return Response.success(true);
   }
 
@@ -122,25 +117,25 @@ class BaseListModel<T extends BaseModel>
       Object thisClass,
       List<T> listModel)
   {
-    if(_listModel.isEmpty) {
+    if(this.listModel.isEmpty) {
       return Response.cancelOperationWithoutExceptionAndSuccess(
           CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
     List<T> listModelForDelete = List.empty(growable: true);
-    for(int i = 0; i < _listModel.length; i++) {
+    for(int i = 0; i < this.listModel.length; i++) {
       for(int j = 0; j < listModel.length; j++) {
-        if(_listModel[i].uniqueId != listModel[j].uniqueId) {
+        if(this.listModel[i].uniqueId != listModel[j].uniqueId) {
           continue;
         }
-        listModelForDelete.add(_listModel[i]);
+        listModelForDelete.add(this.listModel[i]);
       }
     }
-    for(int i = 0; i < _listModel.length; i++) {
+    for(int i = 0; i < this.listModel.length; i++) {
       for(T itemModelForDelete in listModelForDelete) {
-        if(_listModel[i].uniqueId != itemModelForDelete.uniqueId) {
+        if(this.listModel[i].uniqueId != itemModelForDelete.uniqueId) {
           continue;
         }
-        _listModel.removeAt(i);
+        this.listModel.removeAt(i);
       }
     }
     return Response.success(true);
@@ -150,11 +145,11 @@ class BaseListModel<T extends BaseModel>
       Object thisClass,
       T model)
   {
-    if(_listModel.isEmpty) {
+    if(listModel.isEmpty) {
       return Response.cancelOperationWithoutExceptionAndSuccess(
           CancelOperationWithoutExceptionAndSuccess(thisClass,"ListModel isEmpty"));
     }
-    _listModel.removeWhere((item) => item.uniqueId == model.uniqueId);
+    listModel.removeWhere((item) => item.uniqueId == model.uniqueId);
     return Response.success(true);
   }
 }

@@ -16,12 +16,16 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
+// ignore: must_be_immutable
 class Double
     extends BaseModel
 {
   double field;
 
   Double(this.field) : super('');
+
+  @override
+  List<Object> get props => [uniqueId,field];
 
   static Double get getDefaultDouble => Double(0.0);
 }

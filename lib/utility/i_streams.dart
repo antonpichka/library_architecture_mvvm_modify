@@ -17,7 +17,7 @@
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class IStreams
+abstract class IStreams<T extends BaseModel>
     implements BaseDispose
 {
   Object get getTheObjectControllingTheStreamForModel;
@@ -28,6 +28,6 @@ abstract class IStreams
   bool get hasListenerForListModel;
   bool get isClosedForModel;
   bool get isClosedForListModel;
-  void notifyStreamModel(BaseModel model);
-  void notifyStreamListModel(List<BaseModel> listModel);
+  void notifyStreamModel(T model);
+  void notifyStreamListModel(List<T> listModel);
 }

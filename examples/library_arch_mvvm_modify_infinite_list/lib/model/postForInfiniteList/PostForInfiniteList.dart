@@ -11,6 +11,7 @@ enum EnumPostForInfiniteListItStatus {
   serverNotWorkItNetworkException
 }
 
+// ignore: must_be_immutable
 class PostForInfiniteList
     extends BaseModel
 {
@@ -81,5 +82,9 @@ class PostForInfiniteList
   String toString() {
     return "${listPost.toString()} : $hasReachedMax : ${enumWhatIsTheException.name}";
   }
+
+  @override
+  List<Object> get props => [uniqueId,listPost,hasReachedMax,enumWhatIsTheException];
+
   static PostForInfiniteList get getDefaultPostForInfiniteList => PostForInfiniteList(List.empty(), false, EnumWhatIsTheException.noException);
 }
