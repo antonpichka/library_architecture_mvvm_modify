@@ -42,25 +42,20 @@ Coming soon
 ## Documentation
 
 ### Architecture Components
-
-#### DataSource
-- Coming soon
-
-#### ViewModel
-- Coming soon
-##### FBDS
-- Coming soon
-##### CTMND
-- Coming soon
-
-#### ListOfViewModelForViewOrWidgetForView
-- Coming soon
-
-#### ViewOrWidgetForView
-- Coming soon
-
-### Other Components
-- Coming Soon
+- #### DataSource
+  - Coming soon
+- #### ViewModel
+  - Coming soon
+  - ##### FBDS
+    - Coming soon
+  - ##### CTMND
+    - Coming soon
+- #### ListOfViewModelForViewOrWidgetForView
+  - Coming soon
+- #### ViewOrWidgetForView
+  - Coming soon
+  - ##### SharedStreamController
+    - Coming soon
 
 ## License
 ```xml
