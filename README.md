@@ -45,7 +45,6 @@ Coming soon
 - #### DataSource
 - #### ViewModel
   - ##### FBDS
-  - ##### CTMND
 - #### ListOfViewModelForViewOrWidgetForView
 - #### ViewOrWidgetForView
   - ##### SharedStreamController
