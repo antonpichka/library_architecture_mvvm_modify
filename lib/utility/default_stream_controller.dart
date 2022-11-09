@@ -15,10 +15,10 @@
  */
 
 import 'dart:async';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 
-class DefaultStreamController<T extends BaseModel>
+class DefaultStreamController<T extends BaseModelNamedDatabase>
     implements IStreams<T>
 {
   final StreamController<T> _streamControllerForModel =
@@ -37,44 +37,44 @@ class DefaultStreamController<T extends BaseModel>
   }
 
   @override
-  StreamController<T> get getTheObjectControllingTheStreamForModel => _streamControllerForModel;
+  StreamController<T> get getTheObjectControllingTheStreamForModelNamedDatabase => _streamControllerForModel;
 
   @override
-  StreamController<List<T>> get getTheObjectControllingTheStreamForListModel => _streamControllerForListModel;
+  StreamController<List<T>> get getTheObjectControllingTheStreamForListModelNamedDatabase => _streamControllerForListModel;
 
   @override
-  Stream<T> get getStreamModel => _streamControllerForModel.stream;
+  Stream<T> get getStreamModelNamedDatabase => _streamControllerForModel.stream;
 
   @override
-  Stream<List<T>> get getStreamListModel => _streamControllerForListModel.stream;
+  Stream<List<T>> get getStreamListModelNamedDatabase => _streamControllerForListModel.stream;
 
   @override
-  bool get hasListenerForModel => _streamControllerForModel.hasListener;
+  bool get hasListenerForModelNamedDatabase => _streamControllerForModel.hasListener;
 
   @override
-  bool get hasListenerForListModel => _streamControllerForListModel.hasListener;
+  bool get hasListenerForListModelNamedDatabase => _streamControllerForListModel.hasListener;
 
   @override
-  bool get isClosedForModel => _streamControllerForModel.isClosed;
+  bool get isClosedForModelNamedDatabase => _streamControllerForModel.isClosed;
 
   @override
-  bool get isClosedForListModel => _streamControllerForListModel.isClosed;
+  bool get isClosedForListModelNamedDatabase => _streamControllerForListModel.isClosed;
 
   @override
-  void notifyStreamModel(
-      T model)
+  void notifyStreamModelNamedDatabase(
+      T modelNamedDatabase)
   {
     _streamControllerForModel
         .sink
-        .add(model);
+        .add(modelNamedDatabase);
   }
 
   @override
-  void notifyStreamListModel(
-      List<T> listModel)
+  void notifyStreamListModelNamedDatabase(
+      List<T> listModelNamedDatabase)
   {
     _streamControllerForListModel
         .sink
-        .add(listModel);
+        .add(listModelNamedDatabase);
   }
 }

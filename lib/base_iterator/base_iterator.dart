@@ -15,27 +15,27 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
 
-abstract class BaseIterator<T extends BaseModel>
+abstract class BaseIterator<T extends BaseModelNamedDatabase>
     implements Iterator<T>
 {
-  List<T> listModel;
+  List<T> listModelNamedDatabase;
 
   @nonVirtual
-  List<T> get getSortedListModel {
-    List<T> listModel = List.empty(growable: true);
+  List<T> get getSortedListModelNamedDatabase {
+    List<T> listModelNamedDatabase = List.empty(growable: true);
     while(moveNext()) {
-      T itemModel = current;
-      listModel.add(itemModel);
+      T itemModelNamedDatabase = current;
+      listModelNamedDatabase.add(itemModelNamedDatabase);
     }
-    return listModel;
+    return listModelNamedDatabase;
   }
 
   @nonVirtual
-  set setParameterListModel(
-      List<T> listModel)
+  set setParameterListModelNamedDatabase(
+      List<T> listModelNamedDatabase)
   {
-    this.listModel = listModel;
+    this.listModelNamedDatabase = listModelNamedDatabase;
   }
 }

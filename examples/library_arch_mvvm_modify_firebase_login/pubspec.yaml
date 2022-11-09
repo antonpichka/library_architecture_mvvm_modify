@@ -1,0 +1,34 @@
+name: library_arch_mvvm_modify_firebase_login
+description: A new Flutter project.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  library_architecture_mvvm_modify:
+    path: ../../
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  font_awesome_flutter: ^10.1.0
+  formz: ^0.4.0
+  google_fonts: ^3.0.1
+  firebase_auth: ^3.6.2
+  firebase_core: ^1.20.0
+  google_sign_in: ^5.4.0
+
+dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - resources/icons/
+    - resources/sound/
+    - resources/langs/

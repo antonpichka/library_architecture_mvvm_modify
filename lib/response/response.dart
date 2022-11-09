@@ -17,6 +17,7 @@
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/cancel_operation_without_exception_and_success/cancel_operation_without_exception_and_success.dart';
+import 'package:flutter/foundation.dart';
 
 class Response<T,Y extends BaseException> {
   T _data;
@@ -50,6 +51,7 @@ class Response<T,Y extends BaseException> {
     }
   }
 
+  @nonVirtual
   T get getData {
     if(_data == null) {
       return throw LocalException(this,EnumGuiltyForLocalException.developer,"Data null");
@@ -57,6 +59,7 @@ class Response<T,Y extends BaseException> {
     return _data;
   }
 
+  @nonVirtual
   BaseException get getException {
     if(_exception == null) {
       return throw LocalException(this,EnumGuiltyForLocalException.developer,"Exception null");
@@ -64,6 +67,7 @@ class Response<T,Y extends BaseException> {
     return _exception;
   }
 
+  @nonVirtual
   CancelOperationWithoutExceptionAndSuccess get getCancelOperationWithoutExceptionAndSuccess {
     if(_cancelOperationWithoutExceptionAndSuccess == null) {
       return throw LocalException(this,EnumGuiltyForLocalException.developer,"CancelOperationWithoutExceptionAndSuccess null");
@@ -71,6 +75,7 @@ class Response<T,Y extends BaseException> {
     return _cancelOperationWithoutExceptionAndSuccess;
   }
 
+  @nonVirtual
   bool isExceptionResponse() {
     if(_exception == null) {
       return false;
@@ -78,6 +83,7 @@ class Response<T,Y extends BaseException> {
     return true;
   }
 
+  @nonVirtual
   bool isCanceledOperationWithoutExceptionAndSuccess() {
     if(_cancelOperationWithoutExceptionAndSuccess == null) {
       return false;

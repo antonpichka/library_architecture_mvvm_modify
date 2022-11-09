@@ -15,34 +15,34 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 
-class SCModel<T extends BaseModel> {
+class SCModel<T extends BaseModelNamedDatabase> {
   final IStreams<T> iStreams;
-  T model;
-  final BaseListModel<T> listModel;
+  T modelNamedDatabase;
+  final BaseListModelNamedDatabase<T> listModelNamedDatabase;
 
   SCModel(
       this.iStreams,
-      this.model,
-      this.listModel);
+      this.modelNamedDatabase,
+      this.listModelNamedDatabase);
 
   @nonVirtual
-  set setParameterModel(
-      T model)
+  set setParameterModelNamedDatabase(
+      T modelNamedDatabase)
   {
-    this.model = model;
+    this.modelNamedDatabase = modelNamedDatabase;
   }
 
   @nonVirtual
-  void notifyStreamModel() {
-    iStreams.notifyStreamModel(model);
+  void notifyStreamModelNamedDatabase() {
+    iStreams.notifyStreamModelNamedDatabase(modelNamedDatabase);
   }
 
   @nonVirtual
-  void notifyStreamListModel() {
-    iStreams.notifyStreamListModel(listModel.listModel);
+  void notifyStreamListModelNamedDatabase() {
+    iStreams.notifyStreamListModelNamedDatabase(listModelNamedDatabase.listModelNamedDatabase);
   }
 }

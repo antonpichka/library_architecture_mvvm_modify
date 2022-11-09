@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/listOfViewModelForNamedView/ListOfViewModelForMainView.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntTextWidgetForMainView.dart';
-import 'package:library_architecture_mvvm_modify/base_model/int.dart';
+import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntWithoutDatabaseTextWidgetForMainView.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/int_without_database.dart';
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
 import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
 
@@ -45,7 +45,7 @@ class _MainViewState
             const Text(
               'You have pushed the button this many times:',
             ),
-            IntTextWidgetForMainView(),
+            IntWithoutDatabaseTextWidgetForMainView(),
           ],
         ),
       ),
@@ -55,27 +55,27 @@ class _MainViewState
         children: <Widget>[
           FloatingActionButton(
             child: const Icon(Icons.add),
-            onPressed: () => _lo.incrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
-                functionForSuccess: (Int int) {
+            onPressed: () => _lo.incrementFieldByIntWithoutDatabaseUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+                functionForSuccess: (IntWithoutDatabase int) {
                   SharedStreamController
                       .ssc
-                      .setModelForWidget(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int, int);
+                      .setModelNamedDatabaseForWidget(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase, int);
                   SharedStreamController
                       .ssc
-                      .notifyStreamModelForWidgetIfHasListener(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int);
+                      .notifyStreamModelNamedDatabaseForWidgetIfHasListener(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase);
                 }),
           ),
           const SizedBox(height: 8),
           FloatingActionButton(
             child: const Icon(Icons.remove),
-            onPressed: () => _lo.decrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
-                functionForSuccess: (Int int) {
+            onPressed: () => _lo.decrementFieldByIntWithoutDatabaseUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+                functionForSuccess: (IntWithoutDatabase int) {
                   SharedStreamController
                       .ssc
-                      .setModelForWidget(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int, int);
+                      .setModelNamedDatabaseForWidget(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase, int);
                   SharedStreamController
                       .ssc
-                      .notifyStreamModelForWidgetIfHasListener(this, MainView, IntTextWidgetForMainView, EnumIntTextWidgetForMainViewForModel.Int);
+                      .notifyStreamModelNamedDatabaseForWidgetIfHasListener(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase);
                 }),
           ),
         ],

@@ -1,35 +1,35 @@
-import 'package:library_arch_mvvm_modify_counter/modelNamedViewModel/intViewModel/IntViewModelUsingGetNPForIncrementAndDecrement.dart';
+import 'package:library_arch_mvvm_modify_counter/modelNamedViewModel/intWithoutDatabaseViewModel/IntWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement.dart';
 import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view_or_named_widget_for_named_view/base_list_of_view_model_for_named_view_or_named_widget_for_named_view.dart';
-import 'package:library_architecture_mvvm_modify/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/int_without_database.dart';
 
 class ListOfViewModelForMainView
     extends BaseListOfViewModelForNamedViewOrNamedWidgetForNamedView
 {
-  final IntViewModelUsingGetNPForIncrementAndDecrement _intViewModelUsingGetNPForIncrementAndDecrement =
-  IntViewModelUsingGetNPForIncrementAndDecrement();
+  final IntWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement _intWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement =
+  IntWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement();
 
   @override
   void dispose() {
-    _intViewModelUsingGetNPForIncrementAndDecrement.dispose();
+    _intWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement.dispose();
   }
 
-  void incrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
-      {Function(Int int) functionForSuccess})
+  void incrementFieldByIntWithoutDatabaseUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+      {Function(IntWithoutDatabase int) functionForSuccess})
   {
-    _intViewModelUsingGetNPForIncrementAndDecrement
-        .getIntUsingGetNPForIncrementAndDecrement
+    _intWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement
+        .getIntWithoutDatabaseUsingGetNPForIncrementAndDecrement
         .field++;
-    functionForSuccess(_intViewModelUsingGetNPForIncrementAndDecrement
-        .getIntUsingGetNPForIncrementAndDecrement);
+    functionForSuccess(_intWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement
+        .getIntWithoutDatabaseUsingGetNPForIncrementAndDecrement);
   }
 
-  void decrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
-      {Function(Int int) functionForSuccess})
+  void decrementFieldByIntWithoutDatabaseUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+      {Function(IntWithoutDatabase int) functionForSuccess})
   {
-    _intViewModelUsingGetNPForIncrementAndDecrement
-        .getIntUsingGetNPForIncrementAndDecrement
+    _intWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement
+        .getIntWithoutDatabaseUsingGetNPForIncrementAndDecrement
         .field--;
-    functionForSuccess(_intViewModelUsingGetNPForIncrementAndDecrement
-        .getIntUsingGetNPForIncrementAndDecrement);
+    functionForSuccess(_intWithoutDatabaseViewModelUsingGetNPForIncrementAndDecrement
+        .getIntWithoutDatabaseUsingGetNPForIncrementAndDecrement);
   }
 }

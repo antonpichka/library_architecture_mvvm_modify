@@ -15,19 +15,19 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
 
-abstract class IStreams<T extends BaseModel>
+abstract class IStreams<T extends BaseModelNamedDatabase>
     implements BaseDispose
 {
-  Object get getTheObjectControllingTheStreamForModel;
-  Object get getTheObjectControllingTheStreamForListModel;
-  Object get getStreamModel;
-  Object get getStreamListModel;
-  bool get hasListenerForModel;
-  bool get hasListenerForListModel;
-  bool get isClosedForModel;
-  bool get isClosedForListModel;
-  void notifyStreamModel(T model);
-  void notifyStreamListModel(List<T> listModel);
+  Object get getTheObjectControllingTheStreamForModelNamedDatabase;
+  Object get getTheObjectControllingTheStreamForListModelNamedDatabase;
+  Object get getStreamModelNamedDatabase;
+  Object get getStreamListModelNamedDatabase;
+  bool get hasListenerForModelNamedDatabase;
+  bool get hasListenerForListModelNamedDatabase;
+  bool get isClosedForModelNamedDatabase;
+  bool get isClosedForListModelNamedDatabase;
+  void notifyStreamModelNamedDatabase(T modelNamedDatabase);
+  void notifyStreamListModelNamedDatabase(List<T> listModelNamedDatabase);
 }

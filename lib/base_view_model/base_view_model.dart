@@ -16,53 +16,49 @@
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_model_named_database/converter_to_base_list_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_converters_to_model_named_database/converter_to_base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_background_model/base_background_model.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_list_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/delete_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_model_from_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_list_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/insert_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_list_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/update_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_iterator/base_iterator.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_and_base_list_model_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_named_database_and_base_list_model_named_database_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_type_parameter_vm.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_database_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_database_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_database_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_database_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_database_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_database_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_database_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_database_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_list_model_to_named_database_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_model_to_named_database_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_database_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_database_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_database_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_database_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 
 typedef InitObject<S> = S Function();
 
-abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z extends BaseModelNamedDatabase<T>,X extends BaseListModelNamedDatabase<Y,Z>,EnumIterator extends Enum>
-    extends BaseBackgroundModel<T,Y,Z,X>
+abstract class BaseViewModel<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase<T>,EnumIterator extends Enum>
+    extends BaseBackgroundModel<T,Y>
     implements BaseDispose
 {
   /* Init Objects */
   final InitObject<SCModel> _initObjectSCModel;
 
   /* Init List Objects For Model And BaseTypeParameter */
-  final List<EnumBaseModelAndBaseListModelVM> _listEnumBaseModelAndBaseListModelVM = List.empty(growable: true);
+  final List<EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM> _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM = List.empty(growable: true);
   final List<EnumBaseTypeParameterVM> _listEnumBaseTypeParameterVM = List.empty(growable: true);
 
   /* Maps For Model And StreamModel And BaseTypeParameter */
-  final Map<EnumBaseModelAndBaseListModelVM,SCModel> _mapEnumBaseModelAndBaseListModelVMAndSCModel = {};
+  final Map<EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM,SCModel> _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel = {};
   final Map<EnumBaseTypeParameterVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameter = {};
 
   /* Maps And BaseTypeParameterForBaseIterator For Iterator */
@@ -73,30 +69,34 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   bool _isExistsDataSource;
 
   // Where parameter initObjectSCModel. SCModel parameter IStreams init DefaultStreamController();
-  BaseViewModel.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(
-      ConverterToBaseModelNamedDatabase<T,Z> converterToBaseModelNamedDatabase,
-      ConverterToBaseListModelNamedDatabase<Y,X> converterToBaseListModelNamedDatabase,
-      this._initObjectSCModel)
-      : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(converterToBaseModelNamedDatabase,converterToBaseListModelNamedDatabase)
+  BaseViewModel.thereIsDataSource(
+      Object dataSource,
+      this._initObjectSCModel) : super.thereIsDataSource(dataSource)
   {
     _isExistsDataSource = true;
+    _initListEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndListEnumBaseTypeParameterVM();
+    _initMapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel();
+    _initMapEnumBaseTypeParameterVMAndBaseTypeParameter();
   }
 
   // Where parameter initObjectSCModel. SCModel parameter IStreams init DefaultStreamController();
   BaseViewModel.noDataSource(
-      List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM,
-      this._initObjectSCModel)
-      : super.thereIsDataSourceUsingMethodSetDataSourceToBodyConstructor(null, null)
+      List<EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM> listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM,
+      this._initObjectSCModel) : super.thereIsDataSource(null)
   {
     _isExistsDataSource = false;
-    _initNoDataSourceListEnumBaseModelAndBaseListModelVM(listEnumBaseModelAndBaseListModelVM);
-    _initMapEnumBaseModelVMAndSCModel();
+    _initNoDataSourceListEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM(listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM);
+    _initMapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel();
+  }
+
+  bool get _isNotExistsDataSource {
+    return !_isExistsDataSource;
   }
 
   @override
   void dispose() {
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel.forEach((
-        EnumBaseModelAndBaseListModelVM enumBaseModelAndBaseListModelVM,
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.forEach((
+        EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM enumBaseModelAndBaseListModelVM,
         SCModel scModel)
     {
       scModel
@@ -112,8 +112,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   {
     return SCModel(
         scModel.iStreams,
-        scModel.model,
-        scModel.listModel);
+        scModel.modelNamedDatabase,
+        scModel.listModelNamedDatabase);
   }
   /// End Clone **/
 
@@ -145,7 +145,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNPAndSetListModel()
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNPAndSetListModelNamedDatabase()
   async {
     Response<List<T>, BaseException> result = await getListModelFromNamedDatabaseNP();
     if(result.isExceptionResponse()) {
@@ -154,17 +154,17 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP]
-        .listModel
-        .setParameterListModel = result.getData;
-    return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP]
-        .listModel
-        .listModel);
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = result.getData;
+    return Response.success(_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP]
+        .listModelNamedDatabase
+        .listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNPAndSetListModelUsingTypeParameterForFBDS(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNPAndSetListModelNamedDatabaseUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   async {
     Response<List<T>, BaseException> result = await getListModelFromNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
@@ -174,12 +174,12 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP]
-        .listModel
-        .setParameterListModel = result.getData;
-    return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP]
-        .listModel
-        .listModel);
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = result.getData;
+    return Response.success(_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP]
+        .listModelNamedDatabase
+        .listModelNamedDatabase);
   }
   // end getListNP 4
 
@@ -220,7 +220,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModel(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelNamedDatabase(
       BaseTypeParameter typeParameter)
   async {
     Response<List<T>, BaseException> result = await getListModelFromNamedDatabaseParameterNamed(typeParameter);
@@ -230,24 +230,24 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed]
-        .listModel
-        .setParameterListModel = result.getData;
-    return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed]
-        .listModel
-        .listModel);
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = result.getData;
+    return Response.success(_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed]
+        .listModelNamedDatabase
+        .listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingStateTypeParameter()
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelNamedDatabaseUsingStateTypeParameter()
   {
-    return getListModelFromNamedDatabaseParameterNamedAndSetListModel(getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
+    return getListModelFromNamedDatabaseParameterNamedAndSetListModelNamedDatabase(getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingTypeParameterForFBDS(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelNamedDatabaseUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
@@ -260,12 +260,12 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed]
-        .listModel
-        .setParameterListModel = result.getData;
-    return Response.success(_mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed]
-        .listModel
-        .listModel);
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = result.getData;
+    return Response.success(_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed]
+        .listModelNamedDatabase
+        .listModelNamedDatabase);
   }
 
   @protected
@@ -280,10 +280,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingStateTypeParameterAndTypeParameterForFBDS(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedAndSetListModelNamedDatabaseUsingStateTypeParameterAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
-    return getListModelFromNamedDatabaseParameterNamedAndSetListModelUsingTypeParameterForFBDS(
+    return getListModelFromNamedDatabaseParameterNamedAndSetListModelNamedDatabaseUsingTypeParameterForFBDS(
         getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed),
         typeParameterForFBDS);
   }
@@ -315,7 +315,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseNPAndSetModel()
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseNPAndSetModelNamedDatabase()
   async {
     Response<T, BaseException> result = await getModelFromNamedDatabaseNP();
     if(result.isExceptionResponse()) {
@@ -324,13 +324,13 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseNP,result.getData);
-    return Response.success(getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseNP));
+    setModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseNP,result.getData);
+    return Response.success(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseNP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseNPAndSetModelUsingTypeParameterForFBDS(
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseNPAndSetModelNamedDatabaseUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   async {
     Response<T, BaseException> result = await getModelFromNamedDatabaseNPUsingTypeParameterForFBDS(typeParameterForFBDS);
@@ -340,8 +340,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseNP,result.getData);
-    return Response.success(getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseNP));
+    setModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseNP,result.getData);
+    return Response.success(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseNP));
   }
   // end getNP 4
 
@@ -382,7 +382,7 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModel(
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelNamedDatabase(
       BaseTypeParameter typeParameter)
   async {
     Response<T, BaseException> result = await getModelFromNamedDatabaseParameterNamed(typeParameter);
@@ -392,20 +392,20 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseParameterNamed,result.getData);
-    return Response.success(getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseParameterNamed));
+    setModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseParameterNamed,result.getData);
+    return Response.success(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelUsingStateTypeParameter()
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelNamedDatabaseUsingStateTypeParameter()
   {
-    return getModelFromNamedDatabaseParameterNamedAndSetModel(getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
+    return getModelFromNamedDatabaseParameterNamedAndSetModelNamedDatabase(getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelUsingTypeParameterForFBDS(
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelNamedDatabaseUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
@@ -418,8 +418,8 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     if(result.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(result.getCancelOperationWithoutExceptionAndSuccess);
     }
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseParameterNamed,result.getData);
-    return Response.success(getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseParameterNamed));
+    setModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseParameterNamed,result.getData);
+    return Response.success(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseParameterNamed));
   }
 
   @protected
@@ -434,10 +434,10 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   @protected
   @nonVirtual
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelUsingStateTypeParameterAndTypeParameterForFBDS(
+  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedAndSetModelNamedDatabaseUsingStateTypeParameterAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
-    return getModelFromNamedDatabaseParameterNamedAndSetModelUsingTypeParameterForFBDS(
+    return getModelFromNamedDatabaseParameterNamedAndSetModelNamedDatabaseUsingTypeParameterForFBDS(
         getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed),
         typeParameterForFBDS);
   }
@@ -448,43 +448,43 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIP(
-      T model)
+      T modelNamedDatabase)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    return super.insertModelToNamedDatabaseTIP(model);
+    return super.insertModelToNamedDatabaseTIP(modelNamedDatabase);
   }
 
   @override
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      T model,
+      T modelNamedDatabase,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        model,
+        modelNamedDatabase,
         typeParameterForFBDS);
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingStateModel()
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingStateModelNamedDatabase()
   {
-    return insertModelToNamedDatabaseTIP(getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedDatabaseTIP));
+    return insertModelToNamedDatabaseTIP(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertModelToNamedDatabaseTIP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingStateModelAndTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingStateModelNamedDatabaseAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     return insertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedDatabaseTIP),
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertModelToNamedDatabaseTIP),
         typeParameterForFBDS);
   }
   // end insertTIP 4
@@ -519,43 +519,43 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIP(
-      List<T> listModel)
+      List<T> listModelNamedDatabase)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    return super.insertListModelToNamedDatabaseTIP(listModel);
+    return super.insertListModelToNamedDatabaseTIP(listModelNamedDatabase);
   }
 
   @override
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      List<T> listModel,
+      List<T> listModelNamedDatabase,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.insertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        listModel,
+        listModelNamedDatabase,
         typeParameterForFBDS);
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModel()
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModelNamedDatabase()
   {
-    return insertListModelToNamedDatabaseTIP(getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedDatabaseTIP));
+    return insertListModelToNamedDatabaseTIP(getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertListModelToNamedDatabaseTIP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModelAndTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingStateListModelNamedDatabaseAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     return insertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedDatabaseTIP),
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertListModelToNamedDatabaseTIP),
         typeParameterForFBDS);
   }
   // end insertListTIP 4
@@ -590,43 +590,43 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIP(
-      T model)
+      T modelNamedDatabase)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    return super.updateModelToNamedDatabaseTIP(model);
+    return super.updateModelToNamedDatabaseTIP(modelNamedDatabase);
   }
 
   @override
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      T model,
+      T modelNamedDatabase,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        model,
+        modelNamedDatabase,
         typeParameterForFBDS);
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingStateModel()
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingStateModelNamedDatabase()
   {
-    return updateModelToNamedDatabaseTIP(getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedDatabaseTIP));
+    return updateModelToNamedDatabaseTIP(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateModelToNamedDatabaseTIP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingStateModelAndTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingStateModelNamedDatabaseAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     return updateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedDatabaseTIP),
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateModelToNamedDatabaseTIP),
         typeParameterForFBDS);
   }
   // end updateTIP 4
@@ -707,43 +707,43 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIP(
-      List<T> listModel)
+      List<T> listModelNamedDatabase)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    return super.updateListModelToNamedDatabaseTIP(listModel);
+    return super.updateListModelToNamedDatabaseTIP(listModelNamedDatabase);
   }
 
   @override
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      List<T> listModel,
+      List<T> listModelNamedDatabase,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.updateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        listModel,
+        listModelNamedDatabase,
         typeParameterForFBDS);
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModel()
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModelNamedDatabase()
   {
-    return updateListModelToNamedDatabaseTIP(getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedDatabaseTIP));
+    return updateListModelToNamedDatabaseTIP(getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateListModelToNamedDatabaseTIP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModelAndTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingStateListModelNamedDatabaseAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     return updateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedDatabaseTIP),
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateListModelToNamedDatabaseTIP),
         typeParameterForFBDS);
   }
   // end updateListTIP 4
@@ -824,43 +824,43 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIP(
-      T model)
+      T modelNamedDatabase)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    return super.deleteModelToNamedDatabaseTIP(model);
+    return super.deleteModelToNamedDatabaseTIP(modelNamedDatabase);
   }
 
   @override
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      T model,
+      T modelNamedDatabase,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        model,
+        modelNamedDatabase,
         typeParameterForFBDS);
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingStateModel()
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingStateModelNamedDatabase()
   {
-    return deleteModelToNamedDatabaseTIP(getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedDatabaseTIP));
+    return deleteModelToNamedDatabaseTIP(getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteModelToNamedDatabaseTIP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingStateModelAndTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingStateModelNamedDatabaseAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     return deleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedDatabaseTIP),
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteModelToNamedDatabaseTIP),
         typeParameterForFBDS);
   }
   // end deleteTIP 4
@@ -941,43 +941,43 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIP(
-      List<T> listModel)
+      List<T> listModelNamedDatabase)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    return super.deleteListModelToNamedDatabaseTIP(listModel);
+    return super.deleteListModelToNamedDatabaseTIP(listModelNamedDatabase);
   }
 
   @override
   @protected
   @nonVirtual
   Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      List<T> listModel,
+      List<T> listModelNamedDatabase,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(_isNotExistsDataSource) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     return super.deleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        listModel,
+        listModelNamedDatabase,
         typeParameterForFBDS);
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModel()
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModelNamedDatabase()
   {
-    return deleteListModelToNamedDatabaseTIP(getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedDatabaseTIP));
+    return deleteListModelToNamedDatabaseTIP(getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteListModelToNamedDatabaseTIP));
   }
 
   @protected
   @nonVirtual
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModelAndTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingStateListModelNamedDatabaseAndTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     return deleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedDatabaseTIP),
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteListModelToNamedDatabaseTIP),
         typeParameterForFBDS);
   }
   // end deleteListTIP 4
@@ -1058,140 +1058,140 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start runIteratorForGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<List<T>, BaseException> runIteratorForGetListModelParameterNamed(
+  Response<List<T>, BaseException> runIteratorForGetListModelNamedDatabaseParameterNamed(
       BaseTypeParameter<EnumIterator> enumTypeParameterForBaseIterator)
   {
-    return _baseRunIteratorForGetListModel(
+    return _baseRunIteratorForGetListModelNamedDatabase(
         enumTypeParameterForBaseIterator,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<List<T>, BaseException> runIteratorForGetListModelParameterNamedUsingStateEnumTypeParameterForBaseIterator() {
-    return _baseRunIteratorForGetListModel(
+  Response<List<T>, BaseException> runIteratorForGetListModelNamedDatabaseParameterNamedUsingStateEnumTypeParameterForBaseIterator() {
+    return _baseRunIteratorForGetListModelNamedDatabase(
         getEnumTypeParameterForBaseIterator,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // end runIteratorForGetListParameterNamed 2
 
   // start insertToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModelParameterNamed(
+  Response<bool, BaseException> insertModelNamedDatabaseToGetListModelNamedDatabaseParameterNamed(
       T model)
   {
-    return _baseInsertModelToGetListModel(
+    return _baseInsertModelNamedDatabaseToGetListModelNamedDatabase(
         model,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModelParameterNamedUsingStateModel() {
-    return _baseInsertModelToGetListModel(
-        getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+  Response<bool, BaseException> insertModelNamedDatabaseToGetListModelNamedDatabaseParameterNamedUsingStateModelNamedDatabase() {
+    return _baseInsertModelNamedDatabaseToGetListModelNamedDatabase(
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // end insertToGetListParameterNamed 2
 
   // start insertListToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModelParameterNamed(
+  Response<bool, BaseException> insertListModelNamedDatabaseToGetListModelNamedDatabaseParameterNamed(
       List<T> listModel)
   {
-    return _baseInsertListModelToGetListModel(
+    return _baseInsertListModelNamedDatabaseToGetListModelNamedDatabase(
         listModel,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModelParameterNamedUsingStateListModel() {
-    return _baseInsertListModelToGetListModel(
-        getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+  Response<bool, BaseException> insertListModelNamedDatabaseToGetListModelNamedDatabaseParameterNamedUsingStateListModelNamedDatabase() {
+    return _baseInsertListModelNamedDatabaseToGetListModelNamedDatabase(
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertListModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // end insertListToGetListParameterNamed 2
 
   // start updateToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModelParameterNamed(
-      T model)
+  Response<bool, BaseException> updateModelNamedDatabaseToGetListModelNamedDatabaseParameterNamed(
+      T modelNamedDatabase)
   {
-    return _baseUpdateModelToGetListModel(
-        model,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+    return _baseUpdateModelNamedDatabaseToGetListModelNamedDatabase(
+        modelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModelParameterNamedUsingStateModel() {
-    return _baseUpdateModelToGetListModel(
-        getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+  Response<bool, BaseException> updateModelNamedDatabaseToGetListModelNamedDatabaseParameterNamedUsingStateModelNamedDatabase() {
+    return _baseUpdateModelNamedDatabaseToGetListModelNamedDatabase(
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // start updateToGetListParameterNamed 2
 
   // start updateListToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModelParameterNamed(
-      List<T> listModel)
+  Response<bool, BaseException> updateListModelNamedDatabaseToGetListModelNamedDatabaseParameterNamed(
+      List<T> listModelNamedDatabase)
   {
-    return _baseUpdateListModelToGetListModel(
-        listModel,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+    return _baseUpdateListModelNamedDatabaseToGetListModelNamedDatabase(
+        listModelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModelParameterNamedUsingStateListModel() {
-    return _baseUpdateListModelToGetListModel(
-        getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+  Response<bool, BaseException> updateListModelNamedDatabaseToGetListModelNamedDatabaseParameterNamedUsingStateListModelNamedDatabase() {
+    return _baseUpdateListModelNamedDatabaseToGetListModelNamedDatabase(
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateListModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // end updateListToGetListParameterNamed 2
 
   // start deleteToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModelParameterNamed(
-      T model)
+  Response<bool, BaseException> deleteModelNamedDatabaseToGetListModelNamedDatabaseParameterNamed(
+      T modelNamedDatabase)
   {
-    return _baseDeleteModelToGetListModel(
-        model,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+    return _baseDeleteModelNamedDatabaseToGetListModelNamedDatabase(
+        modelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModelParameterNamedUsingStateModel() {
-    return _baseDeleteModelToGetListModel(
-        getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+  Response<bool, BaseException> deleteModelNamedDatabaseToGetListModelNamedDatabaseParameterNamedUsingStateModelNamedDatabase() {
+    return _baseDeleteModelNamedDatabaseToGetListModelNamedDatabase(
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // end deleteToGetListParameterNamed 2
 
   // start deleteListToGetListParameterNamed 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModelParameterNamed(
-      List<T> listModel)
+  Response<bool, BaseException> deleteListModelNamedDatabaseToGetListModelNamedDatabaseParameterNamed(
+      List<T> listModelNamedDatabase)
   {
-    return _baseDeleteListModelToGetListModel(
-        listModel,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+    return _baseDeleteListModelNamedDatabaseToGetListModelNamedDatabase(
+        listModelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModelParameterNamedUsingStateListModel() {
-    return _baseDeleteListModelToGetListModel(
-        getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed].listModel);
+  Response<bool, BaseException> deleteListModelNamedDatabaseToGetListModelNamedDatabaseParameterNamedUsingStateListModelNamedDatabase() {
+    return _baseDeleteListModelNamedDatabaseToGetListModelNamedDatabase(
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteListModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed].listModelNamedDatabase);
   }
   // end deleteListToGetListParameterNamed 2
   /// End For GetListModelParameterNamed **/
@@ -1201,140 +1201,140 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
   // start runIteratorForGetListNP 2
   @protected
   @nonVirtual
-  Response<List<T>, BaseException> runIteratorForGetListModelNP(
+  Response<List<T>, BaseException> runIteratorForGetListModelNamedDatabaseNP(
       BaseTypeParameter<EnumIterator> enumTypeParameterForBaseIterator)
   {
-    return _baseRunIteratorForGetListModel(
+    return _baseRunIteratorForGetListModelNamedDatabase(
         enumTypeParameterForBaseIterator,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<List<T>, BaseException> runIteratorForGetListModelNPUsingStateEnumTypeParameterForBaseIterator() {
-    return _baseRunIteratorForGetListModel(
+  Response<List<T>, BaseException> runIteratorForGetListModelNamedDatabaseNPUsingStateEnumTypeParameterForBaseIterator() {
+    return _baseRunIteratorForGetListModelNamedDatabase(
         getEnumTypeParameterForBaseIterator,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // end runIteratorForGetListNP 2
 
   // start insertToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModelNP(
-      T model)
+  Response<bool, BaseException> insertModelNamedDatabaseToGetListModelNamedDatabaseNP(
+      T modelNamedDatabase)
   {
-    return _baseInsertModelToGetListModel(
-        model,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+    return _baseInsertModelNamedDatabaseToGetListModelNamedDatabase(
+        modelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertModelToGetListModelNPUsingStateModel() {
-    return _baseInsertModelToGetListModel(
-        getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+  Response<bool, BaseException> insertModelNamedDatabaseToGetListModelNamedDatabaseNPUsingStateModelNamedDatabase() {
+    return _baseInsertModelNamedDatabaseToGetListModelNamedDatabase(
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // end insertToGetListNP 2
 
   // start insertListToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModelNP(
-      List<T> listModel)
+  Response<bool, BaseException> insertListModelNamedDatabaseToGetListModelNamedDatabaseNP(
+      List<T> listModelNamedDatabase)
   {
-    return _baseInsertListModelToGetListModel(
-        listModel,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+    return _baseInsertListModelNamedDatabaseToGetListModelNamedDatabase(
+        listModelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> insertListModelToGetListModelNPUsingStateListModel() {
-    return _baseInsertListModelToGetListModel(
-        getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+  Response<bool, BaseException> insertListModelNamedDatabaseToGetListModelNamedDatabaseNPUsingStateListModelNamedDatabase() {
+    return _baseInsertListModelNamedDatabaseToGetListModelNamedDatabase(
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertListModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // end insertListToGetListNP 2
 
   // start updateToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModelNP(
-      T model)
+  Response<bool, BaseException> updateModelNamedDatabaseToGetListModelNamedDatabaseNP(
+      T modelNamedDatabase)
   {
-    return _baseUpdateModelToGetListModel(
-        model,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+    return _baseUpdateModelNamedDatabaseToGetListModelNamedDatabase(
+        modelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateModelToGetListModelNPUsingStateModel() {
-    return _baseUpdateModelToGetListModel(
-        getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+  Response<bool, BaseException> updateModelNamedDatabaseToGetListModelNamedDatabaseNPUsingStateModelNamedDatabase() {
+    return _baseUpdateModelNamedDatabaseToGetListModelNamedDatabase(
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // start updateToGetListNP 2
 
   // start updateListToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModelNP(
-      List<T> listModel)
+  Response<bool, BaseException> updateListModelNamedDatabaseToGetListModelNamedDatabaseNP(
+      List<T> listModelNamedDatabase)
   {
-    return _baseUpdateListModelToGetListModel(
-        listModel,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+    return _baseUpdateListModelNamedDatabaseToGetListModelNamedDatabase(
+        listModelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> updateListModelToGetListModelNPUsingStateListModel() {
-    return _baseUpdateListModelToGetListModel(
-        getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+  Response<bool, BaseException> updateListModelNamedDatabaseToGetListModelNamedDatabaseNPUsingStateListModelNamedDatabase() {
+    return _baseUpdateListModelNamedDatabaseToGetListModelNamedDatabase(
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateListModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // end updateListToGetListNP 2
 
   // start deleteToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModelNP(
-      T model)
+  Response<bool, BaseException> deleteModelNamedDatabaseToGetListModelNamedDatabaseNP(
+      T modelNamedDatabase)
   {
-    return _baseDeleteModelToGetListModel(
-        model,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+    return _baseDeleteModelNamedDatabaseToGetListModelNamedDatabase(
+        modelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteModelToGetListModelNPUsingStateModel() {
-    return _baseDeleteModelToGetListModel(
-        getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+  Response<bool, BaseException> deleteModelNamedDatabaseToGetListModelNamedDatabaseNPUsingStateModelNamedDatabase() {
+    return _baseDeleteModelNamedDatabaseToGetListModelNamedDatabase(
+        getModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // end deleteToGetListNP 2
 
   // start deleteListToGetListNP 2
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModelNP(
-      List<T> listModel)
+  Response<bool, BaseException> deleteListModelNamedDatabaseToGetListModelNamedDatabaseNP(
+      List<T> listModelNamedDatabase)
   {
-    return _baseDeleteListModelToGetListModel(
-        listModel,
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+    return _baseDeleteListModelNamedDatabaseToGetListModelNamedDatabase(
+        listModelNamedDatabase,
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Response<bool, BaseException> deleteListModelToGetListModelNPUsingStateListModel() {
-    return _baseDeleteListModelToGetListModel(
-        getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedDatabaseTIP),
-        _mapEnumBaseModelAndBaseListModelVMAndSCModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP].listModel);
+  Response<bool, BaseException> deleteListModelNamedDatabaseToGetListModelNamedDatabaseNPUsingStateListModelNamedDatabase() {
+    return _baseDeleteListModelNamedDatabaseToGetListModelNamedDatabase(
+        getListModelNamedDatabase(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteListModelToNamedDatabaseTIP),
+        _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP].listModelNamedDatabase);
   }
   // end deleteListToGetListNP 2
   /// End For GetListModelNP **/
@@ -1399,258 +1399,296 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
 
   /// Start IStreams **/
   IStreams getIStreams(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].iStreams;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].iStreams;
   }
   /// End IStreams **/
 
-  /// Start Model **/
+  /// Start ModelNamedDatabase **/
   @protected
   @nonVirtual
-  T getModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  T getModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].model;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].modelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  void setModel(
-      EnumBaseModelAndBaseListModelVM operation,
-      T model)
+  void setModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation,
+      T modelNamedDatabase)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].setParameterModel = model;
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].setParameterModelNamedDatabase = modelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  void setModelUsingClone(
-      EnumBaseModelAndBaseListModelVM operation,
-      T model)
+  void setModelNamedDatabaseUsingClone(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation,
+      T modelNamedDatabase)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].setParameterModel = cloneModel(model);
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].setParameterModelNamedDatabase = cloneModelNamedDatabase(modelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Future<T> getFutureModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  Future<T> getFutureModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   async {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].model;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].modelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  Stream<T> getStreamModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  Stream<T> getStreamModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].iStreams.getStreamModel;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].iStreams.getStreamModelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  void notifyStreamModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  void notifyStreamModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation) ||
-        !_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation))
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation) ||
+        !_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation))
     {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation]
-        .notifyStreamModel();
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation]
+        .notifyStreamModelNamedDatabase();
   }
-  /// End Model **/
+  /// End ModelNamedDatabase **/
   
-  /// Start ListModel **/
+  /// Start ListModelNamedDatabase **/
   @protected
   @nonVirtual
-  List<T> getListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  List<T> getListModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].listModel.listModel;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].listModelNamedDatabase.listModelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  void setListModel(
-      EnumBaseModelAndBaseListModelVM operation,
-      List<T> listModel)
+  void setListModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation,
+      List<T> listModelNamedDatabase)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation]
-        .listModel
-        .setParameterListModel = listModel;
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = listModelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  void setListModelUsingClone(
-      EnumBaseModelAndBaseListModelVM operation,
-      List<T> listModel)
+  void setListModelNamedDatabaseUsingClone(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation,
+      List<T> listModelNamedDatabase)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation]
-        .listModel
-        .setParameterListModel = cloneListModel(listModel);
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = cloneListModelNamedDatabase(listModelNamedDatabase);
   }
 
   @protected
   @nonVirtual
-  Future<List<T>> getFutureListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  Future<List<T>> getFutureListModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   async {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].listModel.listModel;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].listModelNamedDatabase.listModelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  Stream<List<T>> getStreamListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  Stream<List<T>> getStreamListModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation].iStreams.getStreamListModel;
+    return _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation].iStreams.getStreamListModelNamedDatabase;
   }
 
   @protected
   @nonVirtual
-  void notifyStreamListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+  void notifyStreamListModelNamedDatabase(
+      EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndSCModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndSCModel[operation]
-        .notifyStreamListModel();
+    _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[operation]
+        .notifyStreamListModelNamedDatabase();
   }
-  /// End ListModel **/
+  /// End ListModelNamedDatabase **/
 
-  /// Start Setters DataSource **/
-  @override
-  @protected
-  @nonVirtual
-  set setDataSource(
-      Object dataSource)
+  Response<List<T>,BaseException> _baseRunIteratorForGetListModelNamedDatabase(
+      BaseTypeParameter<EnumIterator> typeParameterForBaseIterator,
+      Y listModelNamedDatabase)
   {
-    super.setDataSource = dataSource;
-    _initListEnumBaseModelVMAndListEnumBaseListModelVMAndListEnumBaseTypeParameterVM();
-    _initMapEnumBaseModelVMAndSCModel();
-    _initMapEnumBaseTypeParameterVMAndBaseTypeParameter();
-  }
-  /// End Setters DataSource **/
-
-  bool get _isNotExistsDataSource {
-    return !_isExistsDataSource;
+    return listModelNamedDatabase
+        .runIteratorForGetListModelNamedDatabase(thisClass, typeParameterForBaseIterator, _mapEnumAndBaseIterator);
   }
 
-  void _initListEnumBaseModelVMAndListEnumBaseListModelVMAndListEnumBaseTypeParameterVM() {
+  Response<bool, BaseException> _baseInsertModelNamedDatabaseToGetListModelNamedDatabase(
+      T modelNamedDatabase,
+      Y listModelNamedDatabase)
+  {
+    return listModelNamedDatabase
+        .insertModelNamedDatabaseToGetListModelNamedDatabase(thisClass, cloneModelNamedDatabase(modelNamedDatabase));
+  }
+
+  Response<bool, BaseException> _baseInsertListModelNamedDatabaseToGetListModelNamedDatabase(
+      List<T> listModelNamedDatabaseForInsert,
+      Y listModelNamedDatabase)
+  {
+    return listModelNamedDatabase
+        .insertListModelNamedDatabaseToGetListModelNamedDatabase(thisClass, cloneListModelNamedDatabase(listModelNamedDatabaseForInsert));
+  }
+
+  Response<bool, BaseException> _baseUpdateModelNamedDatabaseToGetListModelNamedDatabase(
+      T modelNamedDatabase,
+      Y listModelNamedDatabase)
+  {
+    return listModelNamedDatabase
+        .updateModelNamedDatabaseToGetListModelNamedDatabase(thisClass, cloneModelNamedDatabase(modelNamedDatabase));
+  }
+
+  Response<bool, BaseException> _baseUpdateListModelNamedDatabaseToGetListModelNamedDatabase(
+      List<T> listModelNamedDatabaseForUpdate,
+      Y listModelNamedDatabase)
+  {
+    return listModelNamedDatabase
+        .updateListModelNamedDatabaseToGetListModelNamedDatabase(thisClass, cloneListModelNamedDatabase(listModelNamedDatabaseForUpdate));
+  }
+
+  Response<bool, BaseException> _baseDeleteModelNamedDatabaseToGetListModelNamedDatabase(
+      T modelNamedDatabase,
+      Y listModelNamedDatabase)
+  {
+    return listModelNamedDatabase
+        .deleteModelNamedDatabaseToGetListModelNamedDatabase(thisClass, cloneModelNamedDatabase(modelNamedDatabase));
+  }
+
+  Response<bool, BaseException> _baseDeleteListModelNamedDatabaseToGetListModelNamedDatabase(
+      List<T> listModelNamedDatabaseForDelete,
+      Y listModelNamedDatabase)
+  {
+    return listModelNamedDatabase
+        .deleteListModelNamedDatabaseToGetListModelNamedDatabase(thisClass, cloneListModelNamedDatabase(listModelNamedDatabaseForDelete));
+  }
+
+  void _initListEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndListEnumBaseTypeParameterVM() {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    if(getDataSource == null) {
+    if(dataSource == null) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    if(getDataSource is InsertModelToNamedDatabaseTIPDataSource<Z>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.insertModelToNamedDatabaseTIP);
+    if(dataSource is InsertModelToNamedDatabaseTIPDataSource<T>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertModelToNamedDatabaseTIP);
     }
-    if(getDataSource is UpdateModelToNamedDatabaseTIPDataSource<Z>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.updateModelToNamedDatabaseTIP);
+    if(dataSource is UpdateModelToNamedDatabaseTIPDataSource<T>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateModelToNamedDatabaseTIP);
     }
-    if(getDataSource is DeleteModelToNamedDatabaseTIPDataSource<Z>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.deleteModelToNamedDatabaseTIP);
+    if(dataSource is DeleteModelToNamedDatabaseTIPDataSource<T>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteModelToNamedDatabaseTIP);
     }
-    if(getDataSource is GetModelFromNamedDatabaseParameterNamedDataSource<Z,BaseTypeParameter>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseParameterNamed);
+    if(dataSource is GetModelFromNamedDatabaseParameterNamedDataSource<T,BaseTypeParameter>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseParameterNamed);
       _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.getModelFromNamedDatabaseParameterNamed);
     }
-    if(getDataSource is GetModelFromNamedDatabaseNPDataSource<Z>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getModelFromNamedDatabaseNP);
+    if(dataSource is GetModelFromNamedDatabaseNPDataSource<T>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getModelFromNamedDatabaseNP);
     }
-    if(getDataSource is InsertListModelToNamedDatabaseTIPDataSource<X>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.insertListModelToNamedDatabaseTIP);
+    if(dataSource is InsertListModelToNamedDatabaseTIPDataSource<Y>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.insertListModelToNamedDatabaseTIP);
     }
-    if(getDataSource is UpdateListModelToNamedDatabaseTIPDataSource<X>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.updateListModelToNamedDatabaseTIP);
+    if(dataSource is UpdateListModelToNamedDatabaseTIPDataSource<Y>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.updateListModelToNamedDatabaseTIP);
     }
-    if(getDataSource is DeleteListModelToNamedDatabaseTIPDataSource<X>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedDatabaseTIP);
+    if(dataSource is DeleteListModelToNamedDatabaseTIPDataSource<Y>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.deleteListModelToNamedDatabaseTIP);
     }
-    if(getDataSource is GetListModelFromNamedDatabaseParameterNamedDataSource<X,BaseTypeParameter>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseParameterNamed);
+    if(dataSource is GetListModelFromNamedDatabaseParameterNamedDataSource<Y,BaseTypeParameter>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseParameterNamed);
       _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.getListModelFromNamedDatabaseParameterNamed);
     }
-    if(getDataSource is GetListModelFromNamedDatabaseNPDataSource<X>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getListModelFromNamedDatabaseNP);
+    if(dataSource is GetListModelFromNamedDatabaseNPDataSource<Y>) {
+      _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.add(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.getListModelFromNamedDatabaseNP);
     }
-    if(getDataSource is UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
+    if(dataSource is UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
       _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.updateModelToNamedDatabaseParameterNamed);
     }
-    if(getDataSource is DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
+    if(dataSource is DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
       _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.deleteModelToNamedDatabaseParameterNamed);
     }
-    if(getDataSource is UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
+    if(dataSource is UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
       _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.updateListModelToNamedDatabaseParameterNamed);
     }
-    if(getDataSource is DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
+    if(dataSource is DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>) {
       _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.deleteListModelToNamedDatabaseParameterNamed);
     }
   }
 
-  void _initNoDataSourceListEnumBaseModelAndBaseListModelVM(
-      List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM)
+  void _initNoDataSourceListEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM(
+      List<EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM> listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM)
   {
     if(_isExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call noDataSource: $_isNotExistsDataSource");
     }
-    if(listEnumBaseModelAndBaseListModelVM == null) {
+    if(listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM == null) {
       return;
     }
-    if(listEnumBaseModelAndBaseListModelVM.isEmpty) {
+    if(listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.isEmpty) {
       return;
     }
-    _listEnumBaseModelAndBaseListModelVM.addAll(listEnumBaseModelAndBaseListModelVM);
+    _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.addAll(listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM);
   }
-  
-  void _initMapEnumBaseModelVMAndSCModel() {
-    if(_listEnumBaseModelAndBaseListModelVM.isEmpty) {
+
+  void _initMapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel() {
+    if(_listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM.isEmpty) {
       return;
     }
     if(_initObjectSCModel == null) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"InitObjectSCModel equals null");
     }
-    for(EnumBaseModelAndBaseListModelVM enumBaseModelVM in _listEnumBaseModelAndBaseListModelVM) {
-      _mapEnumBaseModelAndBaseListModelVMAndSCModel[enumBaseModelVM] = _cloneSCModel(_initObjectSCModel());
+    for(EnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM enumBaseModelVM in _listEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVM) {
+      _mapEnumBaseModelNamedDatabaseAndBaseListModelNamedDatabaseVMAndSCModel[enumBaseModelVM] = _cloneSCModel(_initObjectSCModel());
     }
   }
 
@@ -1661,61 +1699,5 @@ abstract class BaseViewModel<T extends BaseModel,Y extends BaseListModel<T>,Z ex
     for(EnumBaseTypeParameterVM enumBaseTypeParameterVM in _listEnumBaseTypeParameterVM) {
       _mapEnumBaseTypeParameterVMAndBaseTypeParameter[enumBaseTypeParameterVM] = BaseTypeParameter(null);
     }
-  }
-
-  Response<List<T>,BaseException> _baseRunIteratorForGetListModel(
-      BaseTypeParameter<EnumIterator> baseTypeParameterForBaseIterator,
-      Y listModel)
-  {
-    return listModel
-        .runIteratorForGetListModel(thisClass, baseTypeParameterForBaseIterator, _mapEnumAndBaseIterator);
-  }
-
-  Response<bool, BaseException> _baseInsertModelToGetListModel(
-      T model,
-      Y listModel)
-  {
-    return listModel
-        .insertModelToGetListModel(thisClass, cloneModel(model));
-  }
-
-  Response<bool, BaseException> _baseInsertListModelToGetListModel(
-      List<T> listModelForInsert,
-      Y listModel)
-  {
-    return listModel
-        .insertListModelToGetListModel(thisClass, cloneListModel(listModelForInsert));
-  }
-
-  Response<bool, BaseException> _baseUpdateModelToGetListModel(
-      T model,
-      Y listModel)
-  {
-    return listModel
-        .updateModelToGetListModel(thisClass, cloneModel(model));
-  }
-
-  Response<bool, BaseException> _baseUpdateListModelToGetListModel(
-      List<T> listModelForUpdate,
-      Y listModel)
-  {
-    return listModel
-        .updateListModelToGetListModel(thisClass, cloneListModel(listModelForUpdate));
-  }
-
-  Response<bool, BaseException> _baseDeleteModelToGetListModel(
-      T model,
-      Y listModel)
-  {
-    return listModel
-        .deleteModelToGetListModel(thisClass, cloneModel(model));
-  }
-
-  Response<bool, BaseException> _baseDeleteListModelToGetListModel(
-      List<T> listModelForDelete,
-      Y listModel)
-  {
-    return listModel
-        .deleteListModelToGetListModel(thisClass, cloneListModel(listModelForDelete));
   }
 }

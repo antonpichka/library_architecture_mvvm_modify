@@ -1,6 +1,6 @@
-import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteList/PostForInfiniteList.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/modelNamedViewModel/boolViewModel/BoolViewModelUsingGetNPForAntiSpam.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/modelNamedViewModel/postForInfiniteListViewModel/PostForInfiniteListViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteListWithoutDatabase/PostForInfiniteListWithoutDatabase.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelNamedViewModel/boolWithoutDatabaseViewModel/BoolWithoutDatabaseViewModelUsingGetNPForAntiSpam.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelNamedViewModel/postForInfiniteListWithoutDatabaseViewModel/PostForInfiniteListWithoutDatabaseViewModelUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelNamedViewModel/postJsonPlaceholderDatabaseViewModel/PostJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.dart';
 import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view_or_named_widget_for_named_view/base_list_of_view_model_for_named_view_or_named_widget_for_named_view.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/int_type_parameter.dart';
@@ -10,104 +10,104 @@ class ListOfViewModelForPostsListWidgetForMainView
 {
   final PostJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex =
   PostJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex();
-  final PostForInfiniteListViewModelUsingGetNP _postForInfiniteListViewModelUsingGetNP =
-  PostForInfiniteListViewModelUsingGetNP();
-  final BoolViewModelUsingGetNPForAntiSpam _boolViewModelUsingGetNPForAntiSpam =
-  BoolViewModelUsingGetNPForAntiSpam();
+  final PostForInfiniteListWithoutDatabaseViewModelUsingGetNP _postForInfiniteListWithoutDatabaseViewModelUsingGetNP =
+  PostForInfiniteListWithoutDatabaseViewModelUsingGetNP();
+  final BoolWithoutDatabaseViewModelUsingGetNPForAntiSpam _boolWithoutDatabaseViewModelUsingGetNPForAntiSpam =
+  BoolWithoutDatabaseViewModelUsingGetNPForAntiSpam();
 
   @override
   void dispose() {
     _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.dispose();
-    _postForInfiniteListViewModelUsingGetNP.dispose();
-    _boolViewModelUsingGetNPForAntiSpam.dispose();
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP.dispose();
+    _boolWithoutDatabaseViewModelUsingGetNPForAntiSpam.dispose();
   }
 
-  Stream<PostForInfiniteList> get getStreamPostForInfiniteListUsingGetNP {
-    return _postForInfiniteListViewModelUsingGetNP.getStreamPostForInfiniteListUsingGetNP;
+  Stream<PostForInfiniteListWithoutDatabase> get getStreamPostForInfiniteListWithoutDatabaseUsingGetNP {
+    return _postForInfiniteListWithoutDatabaseViewModelUsingGetNP.getStreamPostForInfiniteListWithoutDatabaseUsingGetNP;
   }
 
-  void setPostForInfiniteListUsingGetNPAndCloneAndInGeneralZeroTask(
-      PostForInfiniteList postForInfiniteList)
+  void setPostForInfiniteListWithoutDatabaseUsingGetNPAndCloneAndInGeneralZeroTask(
+      PostForInfiniteListWithoutDatabase postForInfiniteList)
   {
-    _postForInfiniteListViewModelUsingGetNP
-        .setPostForInfiniteListUsingGetNPAndClone(postForInfiniteList);
-    _postForInfiniteListViewModelUsingGetNP
-        .notifyStreamPostForInfiniteListUsingGetNP();
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .setPostForInfiniteListWithoutDatabaseUsingGetNPAndClone(postForInfiniteList);
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .notifyStreamPostForInfiniteListWithoutDatabaseUsingGetNP();
     return;
   }
 
-  Future<void> getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostAndInGeneralOneTask()
+  Future<void> getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostJsonPlaceholderDatabaseAndInGeneralOneTask()
   async {
     await Future.delayed(Duration(milliseconds: 1000));
-    if(_boolViewModelUsingGetNPForAntiSpam
-        .getBoolUsingGetNPForAntiSpam
+    if(_boolWithoutDatabaseViewModelUsingGetNPForAntiSpam
+        .getBoolWithoutDatabaseUsingGetNPForAntiSpam
         .isField)
     {
       return;
     }
-    if(_postForInfiniteListViewModelUsingGetNP
-        .getPostForInfiniteListUsingGetNP
+    if(_postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .getPostForInfiniteListWithoutDatabaseUsingGetNP
         .hasReachedMax)
     {
       return;
     }
-    _boolViewModelUsingGetNPForAntiSpam
-        .getBoolUsingGetNPForAntiSpam
+    _boolWithoutDatabaseViewModelUsingGetNPForAntiSpam
+        .getBoolWithoutDatabaseUsingGetNPForAntiSpam
         .isField = true;
     // 1
     var resultOne = await _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
-        .getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPost(IntTypeParameter(_postForInfiniteListViewModelUsingGetNP.getPostForInfiniteListUsingGetNP.listPost.length));
+        .getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostJsonPlaceholderDatabase(IntTypeParameter(_postForInfiniteListWithoutDatabaseViewModelUsingGetNP.getPostForInfiniteListWithoutDatabaseUsingGetNP.listPostJsonPlaceholderDatabase.length));
     if(resultOne.isExceptionResponse()) {
-      _boolViewModelUsingGetNPForAntiSpam
-          .getBoolUsingGetNPForAntiSpam
+      _boolWithoutDatabaseViewModelUsingGetNPForAntiSpam
+          .getBoolWithoutDatabaseUsingGetNPForAntiSpam
           .isField = false;
-      _postForInfiniteListViewModelUsingGetNP
-          .getPostForInfiniteListUsingGetNP
+      _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+          .getPostForInfiniteListWithoutDatabaseUsingGetNP
           .setFromBaseExceptionParameterEnumWhatIsTheException = resultOne.getException;
       return;
     }
     if(_postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
-        .getListPostUsingGetListParameterStartIndex
+        .getListPostJsonPlaceholderDatabaseUsingGetListParameterStartIndex
         .isEmpty)
     {
-      _boolViewModelUsingGetNPForAntiSpam
-          .getBoolUsingGetNPForAntiSpam
+      _boolWithoutDatabaseViewModelUsingGetNPForAntiSpam
+          .getBoolWithoutDatabaseUsingGetNPForAntiSpam
           .isField = false;
-      _postForInfiniteListViewModelUsingGetNP
-          .getPostForInfiniteListUsingGetNP
+      _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+          .getPostForInfiniteListWithoutDatabaseUsingGetNP
           .setParameterHasReachedMax = true;
-      _postForInfiniteListViewModelUsingGetNP
-          .notifyStreamPostForInfiniteListUsingGetNP();
+      _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+          .notifyStreamPostForInfiniteListWithoutDatabaseUsingGetNP();
       return;
     }
-    _boolViewModelUsingGetNPForAntiSpam
-        .getBoolUsingGetNPForAntiSpam
+    _boolWithoutDatabaseViewModelUsingGetNPForAntiSpam
+        .getBoolWithoutDatabaseUsingGetNPForAntiSpam
         .isField = false;
-    _postForInfiniteListViewModelUsingGetNP
-        .getPostForInfiniteListUsingGetNP
-        .listPost
-        .addAll(_postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.getListPostUsingGetListParameterStartIndex);
-    _postForInfiniteListViewModelUsingGetNP
-        .notifyStreamPostForInfiniteListUsingGetNP();
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .getPostForInfiniteListWithoutDatabaseUsingGetNP
+        .listPostJsonPlaceholderDatabase
+        .addAll(_postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.getListPostJsonPlaceholderDatabaseUsingGetListParameterStartIndex);
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .notifyStreamPostForInfiniteListWithoutDatabaseUsingGetNP();
     return;
   }
 
-  Future<void> getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostAndInGeneralOneTaskExceptionItInitMethod()
+  Future<void> getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostJsonPlaceholderDatabaseAndInGeneralOneTaskExceptionItInitMethod()
   async {
     // 1
     var resultOne = await _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
-        .getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPost(IntTypeParameter(0));
+        .getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostJsonPlaceholderDatabase(IntTypeParameter(0));
     if(resultOne.isExceptionResponse()) {
-      _postForInfiniteListViewModelUsingGetNP
-          .getPostForInfiniteListUsingGetNP
+      _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+          .getPostForInfiniteListWithoutDatabaseUsingGetNP
           .setFromBaseExceptionParameterEnumWhatIsTheException = resultOne.getException;
       return;
     }
-    _postForInfiniteListViewModelUsingGetNP
-        .getPostForInfiniteListUsingGetNP
-        .setParameterListPost = _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.getListPostUsingGetListParameterStartIndex;
-    _postForInfiniteListViewModelUsingGetNP
-        .notifyStreamPostForInfiniteListUsingGetNP();
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .getPostForInfiniteListWithoutDatabaseUsingGetNP
+        .setParameterListPostJsonPlaceholderDatabase = _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex.getListPostJsonPlaceholderDatabaseUsingGetListParameterStartIndex;
+    _postForInfiniteListWithoutDatabaseViewModelUsingGetNP
+        .notifyStreamPostForInfiniteListWithoutDatabaseUsingGetNP();
     return;
   }
 }

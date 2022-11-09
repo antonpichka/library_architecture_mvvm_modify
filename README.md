@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-<img src="/assets/library_architecture_mvvm_modify_transparent.png"/>
+<img src="/assets/library_architecture_mvvm_modify.png"/>
 
 ## Examples
 
@@ -43,19 +43,14 @@ Coming soon
 
 ### Architecture Components
 - #### DataSource
-  - Coming soon
 - #### ViewModel
-  - Coming soon
   - ##### FBDS
-    - Coming soon
   - ##### CTMND
-    - Coming soon
 - #### ListOfViewModelForViewOrWidgetForView
-  - Coming soon
 - #### ViewOrWidgetForView
-  - Coming soon
   - ##### SharedStreamController
-    - Coming soon
+- #### BackgroundModel
+- #### Background
 
 ## License
 ```xml

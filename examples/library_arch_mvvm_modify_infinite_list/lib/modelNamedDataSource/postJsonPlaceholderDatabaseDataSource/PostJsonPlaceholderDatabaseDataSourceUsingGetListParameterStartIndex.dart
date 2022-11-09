@@ -1,15 +1,16 @@
 import 'dart:convert';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPostJsonPlaceholderDatabase.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/PostJsonPlaceholderDatabase.dart';
-import 'package:library_architecture_mvvm_modify/base_data_source/interface_data_source/get_list_model_from_named_database_parameter_named_data_source.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholderDatabase/ListPostJsonPlaceholderDatabase.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholderDatabase/PostJsonPlaceholderDatabase.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/dataSource/DefaultHttpClientDatabaseDataSource.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/int_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_database_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
-import 'package:http/http.dart' as http;
 
 class PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex
+    extends DefaultHttpClientDatabaseDataSource
     implements GetListModelFromNamedDatabaseParameterNamedDataSource<ListPostJsonPlaceholderDatabase,IntTypeParameter>
 {
   static final PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex db =
@@ -22,7 +23,7 @@ class PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex
       IntTypeParameter startIndex)
   async {
     try {
-      final response = await http.get(
+      final response = await getHttpClient.get(
         Uri.https(
           'jsonplaceholder.typicode.com',
           '/posts',
@@ -30,7 +31,7 @@ class PostJsonPlaceholderDatabaseDataSourceUsingGetListParameterStartIndex
         ),
       );
       if(response.statusCode != 200) {
-        throw NetworkException.byStatusCode(this,response.statusCode);
+        return throw NetworkException.byStatusCode(this,response.statusCode);
       }
       final body = json.decode(response.body) as List;
       List<PostJsonPlaceholderDatabase> listPostJsonPlaceholderDatabase = body.map((dynamic json) {

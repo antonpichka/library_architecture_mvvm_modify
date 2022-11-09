@@ -16,7 +16,7 @@
 
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_streams.dart';
 import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 
@@ -26,20 +26,27 @@ import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
 class SharedStreamController {
   static final SharedStreamController ssc = SharedStreamController._();
 
-  Map<Type,Map<Type,Map<Enum,SCModel>>> _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel = {};
-  Map<Type,Map<Enum,SCModel>> _mapTypeViewAndMapEnumModelAndSCModel = {};
+  Map<Type,Map<Type,Map<Enum,SCModel>>> _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel = {};
+  Map<Type,Map<Enum,SCModel>> _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel = {};
   bool _isDispose = false;
+  int _delayInSeconds = 10;
 
   SharedStreamController._();
   /*
      call to main.dart or to main_view.dart to method initState();
    */
-  void setMapForWidgetAndView(
+  void setParameterMapForWidgetAndView(
       {Map<Type,Map<Type,Map<Enum,SCModel>>> mapModelForWidget,
       Map<Type,Map<Enum,SCModel>> mapModelForView})
   {
-    _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel = mapModelForWidget ?? {};
-    _mapTypeViewAndMapEnumModelAndSCModel = mapModelForView ?? {};
+    _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel = mapModelForWidget ?? {};
+    _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel = mapModelForView ?? {};
+  }
+
+  set setParameterDelayInSeconds(
+      int delayInSeconds)
+  {
+    _delayInSeconds = delayInSeconds;
   }
 
   /*
@@ -55,284 +62,472 @@ class SharedStreamController {
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams;
+    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams;
   }
 
   IStreams getIStreamsForView(
       Object thisClass,
       Type typeView,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams;
+    return _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams;
   }
 
-  Stream<BaseModel> getStreamModelForWidget(
+  Stream<BaseModelNamedDatabase> getStreamModelNamedDatabaseForWidget(
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.getStreamModel;
+    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.getStreamModelNamedDatabase;
   }
 
-  Stream<List<BaseModel>> getStreamListModelForWidget(
+  Stream<List<BaseModelNamedDatabase>> getStreamListModelNamedDatabaseForWidget(
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.getStreamListModel;
+    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.getStreamListModelNamedDatabase;
   }
 
-  Stream<BaseModel> getStreamModelForView(
+  Stream<BaseModelNamedDatabase> getStreamModelNamedDatabaseForView(
       Object thisClass,
       Type typeView,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams.getStreamModel;
+    return _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.getStreamModelNamedDatabase;
   }
 
-  Stream<List<BaseModel>> getStreamListModelForView(
+  Stream<List<BaseModelNamedDatabase>> getStreamListModelNamedDatabaseForView(
       Object thisClass,
       Type typeView,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams.getStreamListModel;
+    return _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.getStreamListModelNamedDatabase;
   }
 
-  void setModelForWidget(
+  void setModelNamedDatabaseForWidget(
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel,
-      BaseModel model)
+      Enum enumModelNamedDatabase,
+      BaseModelNamedDatabase modelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-        .setParameterModel = model;
+    _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+        .setParameterModelNamedDatabase = modelNamedDatabase;
   }
 
-  void setListModelForWidget(
+  void setListModelNamedDatabaseForWidget(
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel,
-      List<BaseModel> model)
+      Enum enumModelNamedDatabase,
+      List<BaseModelNamedDatabase> listModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-        .listModel
-        .setParameterListModel = model;
+    _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = listModelNamedDatabase;
   }
 
-  void setModelsForListOfWidget(
+  void setModelNamedDatabaseForListWidget(
       Object thisClass,
       Type typeView,
-      Map<Type,Map<Enum,BaseModel>> mapTypeWidgetAndMapEnumModelAndModel)
+      Map<Type,Map<Enum,BaseModelNamedDatabase>> mapTypeWidgetAndMapEnumModelNamedDatabaseAndModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    mapTypeWidgetAndMapEnumModelAndModel.forEach((Type typeWidget, Map<Enum,BaseModel> mapEnumModelAndModel) {
-      mapEnumModelAndModel.forEach((Enum enumModel, BaseModel model) {
-        _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-            .setParameterModel = model;
+    mapTypeWidgetAndMapEnumModelNamedDatabaseAndModelNamedDatabase.forEach((Type typeWidget, Map<Enum,BaseModelNamedDatabase> mapEnumModelNamedDatabaseAndModelNamedDatabase) {
+      mapEnumModelNamedDatabaseAndModelNamedDatabase.forEach((Enum enumModelNamedDatabase, BaseModelNamedDatabase modelNamedDatabase) {
+        _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+            .setParameterModelNamedDatabase = modelNamedDatabase;
       });
     });
   }
 
-  void setListsModelsForListOfWidget(
+  void setListModelNamedDatabaseForListWidget(
       Object thisClass,
       Type typeView,
-      Map<Type,Map<Enum,List<BaseModel>>> mapTypeWidgetAndMapEnumModelAndListsModels)
+      Map<Type,Map<Enum,List<BaseModelNamedDatabase>>> mapTypeWidgetAndMapEnumModelNamedDatabaseAndListModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    mapTypeWidgetAndMapEnumModelAndListsModels.forEach((Type typeWidget, Map<Enum,List<BaseModel>> mapEnumModelAndListsModels) {
-      mapEnumModelAndListsModels.forEach((Enum enumModel, List<BaseModel> model) {
-        _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-            .listModel
-            .setParameterListModel = model;
+    mapTypeWidgetAndMapEnumModelNamedDatabaseAndListModelNamedDatabase.forEach((Type typeWidget, Map<Enum,List<BaseModelNamedDatabase>> mapEnumModelNamedDatabaseAndListModelNamedDatabase) {
+      mapEnumModelNamedDatabaseAndListModelNamedDatabase.forEach((Enum enumModelNamedDatabase, List<BaseModelNamedDatabase> listModelNamedDatabase) {
+        _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+            .listModelNamedDatabase
+            .setParameterListModelNamedDatabase = listModelNamedDatabase;
       });
     });
   }
 
-  void setModelForView(
+  void setModelNamedDatabaseForView(
       Object thisClass,
       Type typeView,
-      Enum enumModel,
-      BaseModel model)
+      Enum enumModelNamedDatabase,
+      BaseModelNamedDatabase modelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel]
-        .setParameterModel = model;
+    _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+        .setParameterModelNamedDatabase = modelNamedDatabase;
   }
 
-  void setListModelForView(
+  void setListModelNamedDatabaseForView(
       Object thisClass,
       Type typeView,
-      Enum enumModel,
-      List<BaseModel> model)
+      Enum enumModelNamedDatabase,
+      List<BaseModelNamedDatabase> modelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel]
-        .listModel
-        .setParameterListModel = model;
+    _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+        .listModelNamedDatabase
+        .setParameterListModelNamedDatabase = modelNamedDatabase;
   }
 
-  void notifyStreamModelForWidgetIfHasListener(
+  void notifyStreamModelNamedDatabaseForWidgetIfHasListener(
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel)
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.hasListenerForModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
     }
-    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
     }
-    _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-        .notifyStreamModel();
+    _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+        .notifyStreamModelNamedDatabase();
   }
 
-  void notifyStreamListModelForWidgetIfHasListener(
+  Future<void> notifyStreamModelNamedDatabaseForWidgetIfHasListenerUsingDelayInSeconds(
       Object thisClass,
       Type typeView,
       Type typeWidget,
-      Enum enumModel)
-  {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+      Enum enumModelNamedDatabase)
+  async {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForModelNamedDatabase) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
     }
-    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+    int iteration = 0;
+    while(iteration < _delayInSeconds) {
+      if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+          .iStreams
+          .hasListenerForModelNamedDatabase)
+      {
+        _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+            .notifyStreamModelNamedDatabase();
+        return;
+      }
+      await Future.delayed(const Duration(seconds: 1));
+      iteration++;
+      if(iteration >= _delayInSeconds) {
+        return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
+      }
     }
-    _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-        .notifyStreamListModel();
+    return;
   }
 
-  void notifyStreamModelsForListOfWidgetIfHasListener(
+  void notifyStreamListModelNamedDatabaseForWidgetIfHasListener(
       Object thisClass,
       Type typeView,
-      Map<Type,List<Enum>> mapTypeWidgetAndListOfEnumModel)
+      Type typeWidget,
+      Enum enumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    mapTypeWidgetAndListOfEnumModel.forEach((Type typeWidget, List<Enum> listOfEnumModel) {
-      for(Enum enumModel in listOfEnumModel) {
-        if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
-          throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.hasListenerForListModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
+    }
+    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForListModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
+    }
+    _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+        .notifyStreamListModelNamedDatabase();
+  }
+
+  Future<void> notifyStreamListModelNamedDatabaseForWidgetIfHasListenerUsingDelayInSeconds(
+      Object thisClass,
+      Type typeView,
+      Type typeWidget,
+      Enum enumModelNamedDatabase)
+  async {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForListModelNamedDatabase) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
+    }
+    int iteration = 0;
+    while(iteration < _delayInSeconds) {
+      if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+          .iStreams
+          .hasListenerForListModelNamedDatabase)
+      {
+        _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+            .notifyStreamListModelNamedDatabase();
+        return;
+      }
+      await Future.delayed(const Duration(seconds: 1));
+      iteration++;
+      if(iteration >= _delayInSeconds) {
+        return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
+      }
+    }
+    return;
+  }
+
+  void notifyStreamModelNamedDatabaseForListWidgetIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Map<Type,List<Enum>> mapTypeWidgetAndListEnumModelNamedDatabase)
+  {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    mapTypeWidgetAndListEnumModelNamedDatabase.forEach((Type typeWidget, List<Enum> listEnumModelNamedDatabase) {
+      for(Enum enumModelNamedDatabase in listEnumModelNamedDatabase) {
+        if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.hasListenerForModelNamedDatabase) {
+          return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
         }
-        if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
-          throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+        if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForModelNamedDatabase) {
+          return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
         }
-        _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-            .notifyStreamModel();
+        _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+            .notifyStreamModelNamedDatabase();
       }
     });
   }
 
-  void notifyStreamListsModelsForListOfWidgetIfHasListener(
+  void notifyStreamModelNamedDatabaseForListWidgetIfHasListenerUsingDelayInSeconds(
       Object thisClass,
       Type typeView,
-      Map<Type,List<Enum>> mapTypeWidgetAndListOfEnumModel)
+      Map<Type,List<Enum>> mapTypeWidgetAndListEnumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    mapTypeWidgetAndListOfEnumModel.forEach((Type typeWidget, List<Enum> listOfEnumModel) {
-      for(Enum enumModel in listOfEnumModel) {
-        if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForModel) {
-          throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+    mapTypeWidgetAndListEnumModelNamedDatabase.forEach((Type typeWidget, List<Enum> listEnumModelNamedDatabase) async {
+      for(Enum enumModelNamedDatabase in listEnumModelNamedDatabase) {
+        if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForModelNamedDatabase) {
+          return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
         }
-        if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForModel) {
-          throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+        int iteration = 0;
+        while(iteration < _delayInSeconds) {
+          if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+              .iStreams
+              .hasListenerForModelNamedDatabase)
+          {
+            _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+                .notifyStreamModelNamedDatabase();
+            break;
+          }
+          await Future.delayed(const Duration(seconds: 1));
+          iteration++;
+          if(iteration >= _delayInSeconds) {
+            return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
+          }
         }
-        _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel[typeView][typeWidget][enumModel]
-            .notifyStreamListModel();
       }
     });
   }
 
-  void notifyStreamModelForViewIfHasListener(
+  void notifyStreamListModelNamedDatabaseForListWidgetIfHasListener(
       Object thisClass,
       Type typeView,
-      Enum enumModel)
+      Map<Type,List<Enum>> mapTypeWidgetAndListEnumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams.hasListenerForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream has no listener");
-    }
-    if(_mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams.isClosedForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream closed");
-    }
-    _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel]
-        .notifyStreamModel();
+    mapTypeWidgetAndListEnumModelNamedDatabase.forEach((Type typeWidget, List<Enum> listOfEnumModel) {
+      for(Enum enumModel in listOfEnumModel) {
+        if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModel].iStreams.hasListenerForListModelNamedDatabase) {
+          return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream has no listener");
+        }
+        if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModel].iStreams.isClosedForListModelNamedDatabase) {
+          return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModel stream closed");
+        }
+        _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModel]
+            .notifyStreamListModelNamedDatabase();
+      }
+    });
   }
 
-  void notifyStreamListModelForViewIfHasListener(
+  void notifyStreamListModelNamedDatabaseForListWidgetIfHasListenerUsingDelayInSeconds(
       Object thisClass,
       Type typeView,
-      Enum enumModel)
+      Map<Type,List<Enum>> mapTypeWidgetAndListEnumModelNamedDatabase)
   {
-    if(!_mapTypeViewAndMapEnumModelAndSCModel.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(!_mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams.hasListenerForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream has no listener");
+    mapTypeWidgetAndListEnumModelNamedDatabase.forEach((Type typeWidget, List<Enum> listEnumModelNamedDatabase) async {
+      for(Enum enumModelNamedDatabase in listEnumModelNamedDatabase) {
+        if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase].iStreams.isClosedForListModelNamedDatabase) {
+          return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream closed");
+        }
+        int iteration = 0;
+        while(iteration < _delayInSeconds) {
+          if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+              .iStreams
+              .hasListenerForListModelNamedDatabase)
+          {
+            _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel[typeView][typeWidget][enumModelNamedDatabase]
+                .notifyStreamListModelNamedDatabase();
+            break;
+          }
+          await Future.delayed(const Duration(seconds: 1));
+          iteration++;
+          if(iteration >= _delayInSeconds) {
+            return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $typeWidget & $enumModelNamedDatabase stream has no listener");
+          }
+        }
+      }
+    });
+  }
+
+  void notifyStreamModelNamedDatabaseForViewIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Enum enumModelNamedDatabase)
+  {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    if(_mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel].iStreams.isClosedForModel) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModel stream closed");
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.hasListenerForModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream has no listener");
     }
-    _mapTypeViewAndMapEnumModelAndSCModel[typeView][enumModel]
-        .notifyStreamListModel();
+    if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.isClosedForModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream closed");
+    }
+    _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+        .notifyStreamModelNamedDatabase();
+  }
+
+  Future<void> notifyStreamModelNamedDatabaseForViewIfHasListenerUsingDelayInSeconds(
+      Object thisClass,
+      Type typeView,
+      Enum enumModelNamedDatabase)
+  async {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.isClosedForModelNamedDatabase) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream closed");
+    }
+    int iteration = 0;
+    while(iteration < _delayInSeconds) {
+      if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+          .iStreams
+          .hasListenerForModelNamedDatabase)
+      {
+        _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+            .notifyStreamModelNamedDatabase();
+        return;
+      }
+      await Future.delayed(const Duration(seconds: 1));
+      iteration++;
+      if(iteration >= _delayInSeconds) {
+        return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream has no listener");
+      }
+    }
+    return;
+  }
+
+  void notifyStreamListModelNamedDatabaseForViewIfHasListener(
+      Object thisClass,
+      Type typeView,
+      Enum enumModelNamedDatabase)
+  {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.hasListenerForListModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream has no listener");
+    }
+    if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.isClosedForListModelNamedDatabase) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream closed");
+    }
+    _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+        .notifyStreamListModelNamedDatabase();
+  }
+
+  Future<void> notifyStreamListModelNamedDatabaseForViewIfHasListenerUsingDelayInSeconds(
+      Object thisClass,
+      Type typeView,
+      Enum enumModelNamedDatabase)
+  async {
+    if(!_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.containsKey(typeView)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView not found");
+    }
+    if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase].iStreams.isClosedForListModelNamedDatabase) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream closed");
+    }
+    int iteration = 0;
+    while(iteration < _delayInSeconds) {
+      if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+          .iStreams
+          .hasListenerForListModelNamedDatabase)
+      {
+        _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel[typeView][enumModelNamedDatabase]
+            .notifyStreamListModelNamedDatabase();
+        return;
+      }
+      await Future.delayed(const Duration(seconds: 1));
+      iteration++;
+      if(iteration >= _delayInSeconds) {
+        return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$typeView & $enumModelNamedDatabase stream has no listener");
+      }
+    }
+    return;
   }
 
   void _disposeForWidget() {
-    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel == null) {
+    if(_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel == null) {
       _isDispose = false;
       return;
     }
-    Iterator<Map<Type,Map<Enum,SCModel>>> iteratorMapTypeWidgetAndMapEnumModelAndSCModel = _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndSCModel.values.iterator;
+    Iterator<Map<Type,Map<Enum,SCModel>>> iteratorMapTypeWidgetAndMapEnumModelAndSCModel = _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedDatabaseAndSCModel.values.iterator;
     while(iteratorMapTypeWidgetAndMapEnumModelAndSCModel.moveNext()) {
       Iterator<Map<Enum,SCModel>> iteratorMapEnumModelAndSCModel =  iteratorMapTypeWidgetAndMapEnumModelAndSCModel.current.values.iterator;
       while(iteratorMapEnumModelAndSCModel.moveNext()) {
@@ -349,11 +544,11 @@ class SharedStreamController {
   }
 
   void _disposeForView() {
-    if(_mapTypeViewAndMapEnumModelAndSCModel == null) {
+    if(_mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel == null) {
       _isDispose = false;
       return;
     }
-    Iterator<Map<Enum,SCModel>> iteratorMapEnumModelAndSCModel = _mapTypeViewAndMapEnumModelAndSCModel.values.iterator;
+    Iterator<Map<Enum,SCModel>> iteratorMapEnumModelAndSCModel = _mapTypeViewAndMapEnumModelNamedDatabaseAndSCModel.values.iterator;
     while(iteratorMapEnumModelAndSCModel.moveNext()) {
       Iterator<SCModel> iteratorSCModel  = iteratorMapEnumModelAndSCModel.current.values.iterator;
       while(iteratorSCModel.moveNext()) {

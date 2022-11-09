@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named_database.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_local_exception_and_cancel_owe_and_s.dart';
 
-abstract class DeleteListModelToNamedDatabaseTIPFBDS<T extends BaseModel,Y extends BaseListModel<T>,Z extends BaseTypeParameter>
+abstract class DeleteListModelToNamedDatabaseTIPFBDS<T extends BaseListModelNamedDatabase,Y extends BaseTypeParameter>
 {
   DeleteListModelToNamedDatabaseTIPFBDS();
 
   ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS deleteListModelToNamedDatabaseTIP(
-      Y listModel,
-      Z typeParameterForFBDS);
+      T listModelNamedDatabase,
+      Y typeParameterForFBDS);
 }
