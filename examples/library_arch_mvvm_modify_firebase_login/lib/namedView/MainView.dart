@@ -32,6 +32,6 @@ class _MainViewState
         appBar: AppBar(
           title: Text("LibraryArchMVVMModifyFirebaseLogin"),
         ),
-        body: PostsListWidgetForMainView());
+        body: Container());
   }
 }

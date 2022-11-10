@@ -47,7 +47,7 @@ Coming soon
   - ##### FBDS
 - #### ListOfViewModelForViewOrWidgetForView
 - #### ViewOrWidgetForView
-  - ##### SharedStreamController
+  - ##### ShareStreamsBetweenViews
 - #### BackgroundModel
 - #### Background
 

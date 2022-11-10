@@ -15,10 +15,12 @@
  */
 
 enum EnumBaseTypeParameterVM {
-  getModelFromNamedDatabaseParameterNamed,
-  getListModelFromNamedDatabaseParameterNamed,
-  updateModelToNamedDatabaseParameterNamed,
-  deleteModelToNamedDatabaseParameterNamed,
-  updateListModelToNamedDatabaseParameterNamed,
-  deleteListModelToNamedDatabaseParameterNamed
+  getModelFromNamedParameterNamed,
+  getListModelFromNamedParameterNamed,
+  insertModelToNamedParameterNamed,
+  updateModelToNamedParameterNamed,
+  deleteModelToNamedParameterNamed,
+  insertListModelToNamedParameterNamed,
+  updateListModelToNamedParameterNamed,
+  deleteListModelToNamedParameterNamed
 }

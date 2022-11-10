@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/listOfViewModelForNamedView/listOfViewModelForNamedWidgetForMainView/ListOfViewModelForPostsListWidgetForMainView.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteListWithoutDatabase/PostForInfiniteListWithoutDatabase.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholderDatabase/PostJsonPlaceholderDatabase.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteListWithoutLibrary/PostForInfiniteListWithoutLibrary.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholder/PostJsonPlaceholder.dart';
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
 
 class PostsListWidgetForMainView
@@ -36,20 +36,20 @@ class _PostsListWidgetForMainViewState
 
   @override
   Widget build(BuildContext context) {
-    _lo.getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostJsonPlaceholderDatabaseAndInGeneralOneTaskExceptionItInitMethod();
-    return StreamBuilder<PostForInfiniteListWithoutDatabase>(
-        stream: _lo.getStreamPostForInfiniteListWithoutDatabaseUsingGetNP,
-        builder: (BuildContext buildContext, AsyncSnapshot<PostForInfiniteListWithoutDatabase> asyncSnapshot)
+    _lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTaskExceptionItInitMethod();
+    return StreamBuilder<PostForInfiniteListWithoutLibrary>(
+        stream: _lo.getStreamPostForInfiniteListWithoutLibraryUsingGetNP,
+        builder: (BuildContext buildContext, AsyncSnapshot<PostForInfiniteListWithoutLibrary> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           }
-          PostForInfiniteListWithoutDatabase postForInfiniteList = asyncSnapshot.data;
-          switch(postForInfiniteList.getEnumPostForInfiniteListWithoutDatabaseItStatus) {
-            case EnumPostForInfiniteListWithoutDatabaseItStatus.success:
+          PostForInfiniteListWithoutLibrary postForInfiniteList = asyncSnapshot.data;
+          switch(postForInfiniteList.getEnumPostForInfiniteListWithoutLibrary) {
+            case EnumPostForInfiniteListWithoutLibrary.success:
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  if(postForInfiniteList.isFromIndexMoreOrEqualParameterLengthByListPostJsonPlaceholderDatabase(index)) {
+                  if(postForInfiniteList.isFromIndexMoreOrEqualParameterLengthByListPostJsonPlaceholder(index)) {
                     return Center(
                       child: SizedBox(
                         height: 24,
@@ -58,24 +58,24 @@ class _PostsListWidgetForMainViewState
                     );
                   }
                   TextTheme textTheme = Theme.of(context).textTheme;
-                  PostJsonPlaceholderDatabase itemPostJsonPlaceholderDatabase = postForInfiniteList.listPostJsonPlaceholderDatabase[index];
+                  PostJsonPlaceholder itemPostJsonPlaceholder = postForInfiniteList.listPostJsonPlaceholder[index];
                   return Material(
                     child: ListTile(
-                      leading: Text('${itemPostJsonPlaceholderDatabase.uniqueId}', style: textTheme.caption),
-                      title: Text(itemPostJsonPlaceholderDatabase.title),
+                      leading: Text('${itemPostJsonPlaceholder.uniqueId}', style: textTheme.caption),
+                      title: Text(itemPostJsonPlaceholder.title),
                       isThreeLine: true,
-                      subtitle: Text(itemPostJsonPlaceholderDatabase.body),
+                      subtitle: Text(itemPostJsonPlaceholder.body),
                       dense: true,
                     ),
                   );
                 },
-                itemCount: postForInfiniteList.getParameterLengthByListPostJsonPlaceholderDatabase,
+                itemCount: postForInfiniteList.getParameterLengthByListPostJsonPlaceholder,
                 controller: _scrollController);
-            case EnumPostForInfiniteListWithoutDatabaseItStatus.isEmptyListOfPost:
+            case EnumPostForInfiniteListWithoutLibrary.isEmptyListOfPost:
               return Center(child: Text('no posts'));
-            case EnumPostForInfiniteListWithoutDatabaseItStatus.noInternetItLocalException:
+            case EnumPostForInfiniteListWithoutLibrary.noInternetItLocalException:
               return Center(child: Text('no Internet. Connect to the Internet'));
-            case EnumPostForInfiniteListWithoutDatabaseItStatus.serverNotWorkItNetworkException:
+            case EnumPostForInfiniteListWithoutLibrary.serverNotWorkItNetworkException:
               return Center(child: Text('failed to fetch posts'));
             default:
               return Container();
@@ -85,7 +85,7 @@ class _PostsListWidgetForMainViewState
 
   void _onScroll() {
     if (_isBottom)
-      _lo.getListPostFromJsonPlaceholderDatabaseParameterStartIndexAndSetListPostJsonPlaceholderDatabaseAndInGeneralOneTask();
+      _lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTask();
   }
 
   bool get _isBottom {

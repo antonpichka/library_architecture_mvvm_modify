@@ -15,85 +15,89 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_list_model_to_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_list_model_to_named_database_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_list_model_to_named_database_tip_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_database_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_database_tip_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_list_model_from_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_list_model_from_named_database_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_model_from_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_model_from_named_database_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_list_model_to_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_list_model_to_named_database_tip_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_model_to_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_model_to_named_database_tip_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_database_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_database_tip_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_database_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_database_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_database_tip_fbds.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/insert_list_model_to_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/insert_list_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/insert_model_to_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/insert_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_database_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_database_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_database_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_database_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_list_model_to_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_list_model_to_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_list_model_to_named_tip_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/delete_model_to_named_tip_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_list_model_from_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_list_model_from_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_model_from_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/get_model_from_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_list_model_to_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_list_model_to_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_list_model_to_named_tip_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_model_to_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_model_to_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/insert_model_to_named_tip_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_list_model_to_named_tip_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/abstract_classes_function_before_data_source/update_model_to_named_tip_fbds.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/delete_model_to_named_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_list_model_from_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_list_model_to_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_list_model_to_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_list_model_to_named_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_model_to_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_model_to_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/insert_model_to_named_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_list_model_to_named_tip_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named_database.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named_database.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/response/response.dart';
 import 'package:library_architecture_mvvm_modify/response/response_generic_bool_and_local_exception_and_cancel_owe_and_s.dart';
 
-typedef ItemCreator<S> = S Function();
-
-abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends BaseListModelNamedDatabase<T>>
+abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListModelNamed<T>>
 {
   /* Init DataSource */
   @protected
   final Object dataSource;
 
   /* FBDS (Function Before Data Source) */
-  InsertModelToNamedDatabaseTIPFBDS<T,BaseTypeParameter> _insertModelToNamedDatabaseTIPFBDS;
-  InsertListModelToNamedDatabaseTIPFBDS<Y,BaseTypeParameter> _insertListModelToNamedDatabaseTIPFBDS;
-  UpdateModelToNamedDatabaseTIPFBDS<T,BaseTypeParameter> _updateModelToNamedDatabaseTIPFBDS;
-  UpdateListModelToNamedDatabaseTIPFBDS<Y,BaseTypeParameter> _updateListModelToNamedDatabaseTIPFBDS;
-  DeleteModelToNamedDatabaseTIPFBDS<T,BaseTypeParameter> _deleteModelToNamedDatabaseTIPFBDS;
-  DeleteListModelToNamedDatabaseTIPFBDS<Y,BaseTypeParameter> _deleteListModelToNamedDatabaseTIPFBDS;
+  InsertModelToNamedTIPFBDS<T,BaseTypeParameter> _insertModelToNamedTIPFBDS;
+  InsertListModelToNamedTIPFBDS<Y,BaseTypeParameter> _insertListModelToNamedTIPFBDS;
+  UpdateModelToNamedTIPFBDS<T,BaseTypeParameter> _updateModelToNamedTIPFBDS;
+  UpdateListModelToNamedTIPFBDS<Y,BaseTypeParameter> _updateListModelToNamedTIPFBDS;
+  DeleteModelToNamedTIPFBDS<T,BaseTypeParameter> _deleteModelToNamedTIPFBDS;
+  DeleteListModelToNamedTIPFBDS<Y,BaseTypeParameter> _deleteListModelToNamedTIPFBDS;
 
-  GetListModelFromNamedDatabaseNPFBDS<BaseTypeParameter> _getListModelFromNamedDatabaseNPFBDS;
-  GetModelFromNamedDatabaseNPFBDS<BaseTypeParameter> _getModelFromNamedDatabaseNPFBDS;
-  InsertModelToNamedDatabaseNPFBDS<BaseTypeParameter> _insertModelToNamedDatabaseNPFBDS;
-  InsertListModelToNamedDatabaseNPFBDS<BaseTypeParameter> _insertListModelToNamedDatabaseNPFBDS;
-  UpdateModelToNamedDatabaseNPFBDS<BaseTypeParameter> _updateModelToNamedDatabaseNPFBDS;
-  UpdateListModelToNamedDatabaseNPFBDS<BaseTypeParameter> _updateListModelToNamedDatabaseNPFBDS;
-  DeleteModelToNamedDatabaseNPFBDS<BaseTypeParameter> _deleteModelToNamedDatabaseNPFBDS;
-  DeleteListModelToNamedDatabaseNPFBDS<BaseTypeParameter> _deleteListModelToNamedDatabaseNPFBDS;
+  GetListModelFromNamedNPFBDS<BaseTypeParameter> _getListModelFromNamedNPFBDS;
+  GetModelFromNamedNPFBDS<BaseTypeParameter> _getModelFromNamedNPFBDS;
+  InsertModelToNamedNPFBDS<BaseTypeParameter> _insertModelToNamedNPFBDS;
+  InsertListModelToNamedNPFBDS<BaseTypeParameter> _insertListModelToNamedDatabaseNPFBDS;
+  UpdateModelToNamedNPFBDS<BaseTypeParameter> _updateModelToNamedNPFBDS;
+  UpdateListModelToNamedNPFBDS<BaseTypeParameter> _updateListModelToNamedNPFBDS;
+  DeleteModelToNamedNPFBDS<BaseTypeParameter> _deleteModelToNamedNPFBDS;
+  DeleteListModelToNamedNPFBDS<BaseTypeParameter> _deleteListModelToNamedNPFBDS;
 
-  GetListModelFromNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _getListModelFromNamedDatabaseParameterNamedFBDS;
-  GetModelFromNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _getModelFromNamedDatabaseParameterNamedFBDS;
-  UpdateModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _updateModelToNamedDatabaseParameterNamedFBDS;
-  UpdateListModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _updateListModelToNamedDatabaseParameterNamedFBDS;
-  DeleteModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _deleteModelToNamedDatabaseParameterNamedFBDS;
-  DeleteListModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _deleteListModelToNamedDatabaseParameterNamedFBDS;
+  GetListModelFromNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _getListModelFromNamedParameterNamedFBDS;
+  GetModelFromNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _getModelFromNamedParameterNamedFBDS;
+  InsertModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _insertModelToNamedParameterNamedFBDS;
+  InsertListModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _insertListModelToNamedParameterNamedFBDS;
+  UpdateModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _updateModelToNamedParameterNamedFBDS;
+  UpdateListModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _updateListModelToNamedParameterNamedFBDS;
+  DeleteModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _deleteModelToNamedParameterNamedFBDS;
+  DeleteListModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _deleteListModelToNamedParameterNamedFBDS;
 
   BaseBackgroundModel.thereIsDataSource(this.dataSource);
 
@@ -109,20 +113,20 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
   ///   }
   ///
   @protected
-  T cloneModelNamedDatabase(
-      T modelNamedDatabase);
+  T cloneModelNamed(
+      T modelNamed);
 
   @protected
   @nonVirtual
-  List<T> cloneListModelNamedDatabase(
-      List<T> listModelNamedDatabase)
+  List<T> cloneListModelNamed(
+      List<T> listModelNamed)
   {
-    if(listModelNamedDatabase.isEmpty) {
+    if(listModelNamed.isEmpty) {
       return [];
     }
-    List<T> listModelNamedDatabaseForCopy = List.empty(growable: true);
-    listModelNamedDatabaseForCopy.addAll(listModelNamedDatabase);
-    return listModelNamedDatabaseForCopy;
+    List<T> listModelNamedForCopy = List.empty(growable: true);
+    listModelNamedForCopy.addAll(listModelNamed);
+    return listModelNamedForCopy;
   }
   /// End Clone **/
 
@@ -142,50 +146,50 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
   ///
   // start getListNP 2
   @protected
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNP()
+  Future<Response<List<T>, BaseException>> getListModelFromNamedNP()
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetListModelFromNamedDatabaseNP(dataSource as GetListModelFromNamedDatabaseNPDataSource<Y>);
+    return _baseGetListModelFromNamedNP(dataSource as GetListModelFromNamedNPDataSource<Y>);
   }
 
   @protected
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedNPUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetListModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as GetListModelFromNamedDatabaseNPDataSource<Y>,
+    return _baseGetListModelFromNamedNPUsingTypeParameterForFBDS(
+        dataSource as GetListModelFromNamedNPDataSource<Y>,
         typeParameterForFBDS);
   }
   // end getListNP 2
 
   // start getListParameterNamed 2
   @protected
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamed(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedParameterNamed(
       BaseTypeParameter typeParameter)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetListModelFromNamedDatabaseParameterNamed(
-        dataSource as GetListModelFromNamedDatabaseParameterNamedDataSource<Y,BaseTypeParameter>,
+    return _baseGetListModelFromNamedParameterNamed(
+        dataSource as GetListModelFromNamedParameterNamedDataSource<Y,BaseTypeParameter>,
         typeParameter);
   }
 
   @protected
-  Future<Response<List<T>, BaseException>> getListModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
+  Future<Response<List<T>, BaseException>> getListModelFromNamedParameterNamedUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetListModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as GetListModelFromNamedDatabaseParameterNamedDataSource<Y,BaseTypeParameter>,
+    return _baseGetListModelFromNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as GetListModelFromNamedParameterNamedDataSource<Y,BaseTypeParameter>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -193,50 +197,50 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
 
   // start getNP 2
   @protected
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseNP()
+  Future<Response<T, BaseException>> getModelFromNamedNP()
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetModelFromNamedDatabaseNP(dataSource as GetModelFromNamedDatabaseNPDataSource<T>);
+    return _baseGetModelFromNamedNP(dataSource as GetModelFromNamedNPDataSource<T>);
   }
 
   @protected
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
+  Future<Response<T, BaseException>> getModelFromNamedNPUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as GetModelFromNamedDatabaseNPDataSource<T>,
+    return _baseGetModelFromNamedNPUsingTypeParameterForFBDS(
+        dataSource as GetModelFromNamedNPDataSource<T>,
         typeParameterForFBDS);
   }
   // end getNP 2
 
   // start getParameterNamed 2
   @protected
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamed(
+  Future<Response<T, BaseException>> getModelFromNamedParameterNamed(
       BaseTypeParameter typeParameter)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetModelFromNamedDatabaseParameterNamed(
-        dataSource as GetModelFromNamedDatabaseParameterNamedDataSource<T,BaseTypeParameter>,
+    return _baseGetModelFromNamedParameterNamed(
+        dataSource as GetModelFromNamedParameterNamedDataSource<T,BaseTypeParameter>,
         typeParameter);
   }
 
   @protected
-  Future<Response<T, BaseException>> getModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
+  Future<Response<T, BaseException>> getModelFromNamedParameterNamedUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseGetModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as GetModelFromNamedDatabaseParameterNamedDataSource<T,BaseTypeParameter>,
+    return _baseGetModelFromNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as GetModelFromNamedParameterNamedDataSource<T,BaseTypeParameter>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -244,190 +248,248 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
 
   // start insertTIP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIP(
-      T modelNamedDatabase)
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedTIP(
+      T modelNamed)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseInsertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as InsertModelToNamedDatabaseTIPDataSource<T>,
-        modelNamedDatabase,
+    return _baseInsertModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as InsertModelToNamedTIPDataSource<T>,
+        modelNamed,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      T modelNamedDatabase,
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedTIPUsingTypeParameterForFBDS(
+      T modelNamed,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseInsertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as InsertModelToNamedDatabaseTIPDataSource<T>,
-        modelNamedDatabase,
+    return _baseInsertModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as InsertModelToNamedTIPDataSource<T>,
+        modelNamed,
         typeParameterForFBDS);
   }
   // end insertTIP 2
 
   // start insertNP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseNP()
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedNP()
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseInsertModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as InsertModelToNamedDatabaseNPDataSource,
+    return _baseInsertModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as InsertModelToNamedNPDataSource,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedDatabaseNPUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedNPUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseInsertModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as InsertModelToNamedDatabaseNPDataSource,
+    return _baseInsertModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as InsertModelToNamedNPDataSource,
         typeParameterForFBDS);
   }
   // end insertNP 2
 
-  // start insertListTIP 2
+  // start insertParameterNamed 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIP(
-      List<T> listModelNamedDatabase)
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseInsertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as InsertListModelToNamedDatabaseTIPDataSource<Y>,
-        listModelNamedDatabase,
-        BaseTypeParameter(null));
-  }
-
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      List<T> listModelNamedDatabase,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseInsertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as InsertListModelToNamedDatabaseTIPDataSource<Y>,
-        listModelNamedDatabase,
-        typeParameterForFBDS);
-  }
-  // end insertListTIP 2
-
-  // start insertListNP 2
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseNP()
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseInsertListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as InsertListModelToNamedDatabaseNPDataSource,
-        BaseTypeParameter(null));
-  }
-
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseInsertListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as InsertListModelToNamedDatabaseNPDataSource,
-        typeParameterForFBDS);
-  }
-  // end insertListNP 2
-
-  // start updateTIP 2
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIP(
-      T modelNamedDatabase)
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseUpdateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as UpdateModelToNamedDatabaseTIPDataSource<T>,
-        modelNamedDatabase,
-        BaseTypeParameter(null));
-  }
-
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      T modelNamedDatabase,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseUpdateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as UpdateModelToNamedDatabaseTIPDataSource<T>,
-        modelNamedDatabase,
-        typeParameterForFBDS);
-  }
-  // end updateTIP 2
-
-  // start updateNP 2
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseNP()
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseUpdateModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as UpdateModelToNamedDatabaseNPDataSource,
-        BaseTypeParameter(null));
-  }
-
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(dataSource == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
-    }
-    return _baseUpdateModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as UpdateModelToNamedDatabaseNPDataSource,
-        typeParameterForFBDS);
-  }
-  // end updateNP 2
-
-  // start updateParameterNamed 2
-  @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseParameterNamed(
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedParameterNamed(
       BaseTypeParameter typeParameter)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseInsertModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as InsertModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> insertModelToNamedParameterNamedUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseInsertModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as InsertModelToNamedParameterNamedDataSource<BaseTypeParameter>,
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end insertParameterNamed 2
+
+  // start insertListTIP 2
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedTIP(
+      List<T> listModelNamed)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseInsertListModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as InsertListModelToNamedTIPDataSource<Y>,
+        listModelNamed,
+        BaseTypeParameter(null));
+  }
+
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedTIPUsingTypeParameterForFBDS(
+      List<T> listModelNamed,
+      BaseTypeParameter typeParameterForFBDS)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseInsertListModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as InsertListModelToNamedTIPDataSource<Y>,
+        listModelNamed,
+        typeParameterForFBDS);
+  }
+  // end insertListTIP 2
+
+  // start insertListNP 2
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedNP()
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseInsertListModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as InsertListModelToNamedNPDataSource,
+        BaseTypeParameter(null));
+  }
+
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedNPUsingTypeParameterForFBDS(
+      BaseTypeParameter typeParameterForFBDS)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseInsertListModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as InsertListModelToNamedNPDataSource,
+        typeParameterForFBDS);
+  }
+  // end insertListNP 2
+
+  // start insertListParameterNamed 2
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedParameterNamed(
+      BaseTypeParameter typeParameter)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseInsertListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as InsertListModelToNamedParameterNamedDataSource<BaseTypeParameter>,
+        typeParameter,
+        BaseTypeParameter(null));
+  }
+
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> insertListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      BaseTypeParameter typeParameter,
+      BaseTypeParameter typeParameterForFBDS)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseInsertListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as InsertListModelToNamedParameterNamedDataSource<BaseTypeParameter>,
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end insertListParameterNamed 2
+
+  // start updateTIP 2
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedTIP(
+      T modelNamed)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as UpdateModelToNamedTIPDataSource<T>,
+        modelNamed,
+        BaseTypeParameter(null));
+  }
+
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedTIPUsingTypeParameterForFBDS(
+      T modelNamed,
+      BaseTypeParameter typeParameterForFBDS)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as UpdateModelToNamedTIPDataSource<T>,
+        modelNamed,
+        typeParameterForFBDS);
+  }
+  // end updateTIP 2
+
+  // start updateNP 2
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedNP()
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as UpdateModelToNamedNPDataSource,
+        BaseTypeParameter(null));
+  }
+
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedNPUsingTypeParameterForFBDS(
+      BaseTypeParameter typeParameterForFBDS)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as UpdateModelToNamedNPDataSource,
+        typeParameterForFBDS);
+  }
+  // end updateNP 2
+
+  // start updateParameterNamed 2
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedParameterNamed(
+      BaseTypeParameter typeParameter)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as UpdateModelToNamedParameterNamedDataSource<BaseTypeParameter>,
+        typeParameter,
+        BaseTypeParameter(null));
+  }
+
+  @protected
+  Future<Response<BaseTypeParameter, BaseException>> updateModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      BaseTypeParameter typeParameter,
+      BaseTypeParameter typeParameterForFBDS)
+  {
+    if(dataSource == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
+    }
+    return _baseUpdateModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as UpdateModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -435,82 +497,82 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
 
   // start updateListTIP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIP(
-      List<T> listModelNamedDatabase)
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedTIP(
+      List<T> listModelNamed)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as UpdateListModelToNamedDatabaseTIPDataSource<Y>,
-        listModelNamedDatabase,
+    return _baseUpdateListModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as UpdateListModelToNamedTIPDataSource<Y>,
+        listModelNamed,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      List<T> listModelNamedDatabase,
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedTIPUsingTypeParameterForFBDS(
+      List<T> listModelNamed,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as UpdateListModelToNamedDatabaseTIPDataSource<Y>,
-        listModelNamedDatabase,
+    return _baseUpdateListModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as UpdateListModelToNamedTIPDataSource<Y>,
+        listModelNamed,
         typeParameterForFBDS);
   }
   // end updateListTIP 2
 
   // start updateListNP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseNP()
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedNP()
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as UpdateListModelToNamedDatabaseNPDataSource,
+    return _baseUpdateListModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as UpdateListModelToNamedNPDataSource,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedNPUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as UpdateListModelToNamedDatabaseNPDataSource,
+    return _baseUpdateListModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as UpdateListModelToNamedNPDataSource,
         typeParameterForFBDS);
   }
   // end updateListNP 2
 
   // start updateListParameterNamed 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseParameterNamed(
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedParameterNamed(
       BaseTypeParameter typeParameter)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseUpdateListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as UpdateListModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> updateListModelToNamedParameterNamedUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseUpdateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseUpdateListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as UpdateListModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -518,82 +580,82 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
 
   // start deleteTIP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIP(
-      T modelNamedDatabase)
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedTIP(
+      T modelNamed)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as DeleteModelToNamedDatabaseTIPDataSource<T>,
-        modelNamedDatabase,
+    return _baseDeleteModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as DeleteModelToNamedTIPDataSource<T>,
+        modelNamed,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      T modelNamedDatabase,
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedTIPUsingTypeParameterForFBDS(
+      T modelNamed,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as DeleteModelToNamedDatabaseTIPDataSource<T>,
-        modelNamedDatabase,
+    return _baseDeleteModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as DeleteModelToNamedTIPDataSource<T>,
+        modelNamed,
         typeParameterForFBDS);
   }
   // end deleteTIP 2
 
   // start deleteNP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseNP()
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedNP()
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as DeleteModelToNamedDatabaseNPDataSource,
+    return _baseDeleteModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as DeleteModelToNamedNPDataSource,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseNPUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedNPUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as DeleteModelToNamedDatabaseNPDataSource,
+    return _baseDeleteModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as DeleteModelToNamedNPDataSource,
         typeParameterForFBDS);
   }
   // end deleteNP 2
 
   // start deleteParameterNamed 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseParameterNamed(
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedParameterNamed(
       BaseTypeParameter typeParameter)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as DeleteModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> deleteModelToNamedParameterNamedUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as DeleteModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -601,82 +663,82 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
 
   // start deleteListTIP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIP(
-      List<T> listModelNamedDatabase)
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedTIP(
+      List<T> listModelNamed)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as DeleteListModelToNamedDatabaseTIPDataSource<Y>,
-        listModelNamedDatabase,
+    return _baseDeleteListModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as DeleteListModelToNamedTIPDataSource<Y>,
+        listModelNamed,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      List<T> listModelNamedDatabase,
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedTIPUsingTypeParameterForFBDS(
+      List<T> listModelNamed,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-        dataSource as DeleteListModelToNamedDatabaseTIPDataSource<Y>,
-        listModelNamedDatabase,
+    return _baseDeleteListModelToNamedTIPUsingTypeParameterForFBDS(
+        dataSource as DeleteListModelToNamedTIPDataSource<Y>,
+        listModelNamed,
         typeParameterForFBDS);
   }
   // end deleteListTIP 2
 
   // start deleteListNP 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseNP()
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedNP()
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as DeleteListModelToNamedDatabaseNPDataSource,
+    return _baseDeleteListModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as DeleteListModelToNamedNPDataSource,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedNPUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-        dataSource as DeleteListModelToNamedDatabaseNPDataSource,
+    return _baseDeleteListModelToNamedNPUsingTypeParameterForFBDS(
+        dataSource as DeleteListModelToNamedNPDataSource,
         typeParameterForFBDS);
   }
   // end deleteListNP 2
 
   // start deleteListParameterNamed 2
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseParameterNamed(
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedParameterNamed(
       BaseTypeParameter typeParameter)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as DeleteListModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         BaseTypeParameter(null));
   }
 
   @protected
-  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
+  Future<Response<BaseTypeParameter, BaseException>> deleteListModelToNamedParameterNamedUsingTypeParameterForFBDS(
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   {
     if(dataSource == null) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"DataSource equals null");
     }
-    return _baseDeleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-        dataSource as DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+        dataSource as DeleteListModelToNamedParameterNamedDataSource<BaseTypeParameter>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -686,236 +748,252 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
   /// Start Setters FBDS **/
   @protected
   @nonVirtual
-  set setInsertModelToNamedDatabaseTIPFBDS(
-      InsertModelToNamedDatabaseTIPFBDS<T,BaseTypeParameter> insertModelToNamedDatabaseTIPFBDS)
+  set setInsertModelToNamedTIPFBDS(
+      InsertModelToNamedTIPFBDS<T,BaseTypeParameter> insertModelToNamedTIPFBDS)
   {
-    _insertModelToNamedDatabaseTIPFBDS = insertModelToNamedDatabaseTIPFBDS;
+    _insertModelToNamedTIPFBDS = insertModelToNamedTIPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateModelToNamedDatabaseTIPFBDS(
-      UpdateModelToNamedDatabaseTIPFBDS<T,BaseTypeParameter> updateModelToNamedDatabaseTIPFBDS)
+  set setUpdateModelToNamedTIPFBDS(
+      UpdateModelToNamedTIPFBDS<T,BaseTypeParameter> updateModelToNamedTIPFBDS)
   {
-    _updateModelToNamedDatabaseTIPFBDS = updateModelToNamedDatabaseTIPFBDS;
+    _updateModelToNamedTIPFBDS = updateModelToNamedTIPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteModelToNamedDatabaseTIPFBDS(
-      DeleteModelToNamedDatabaseTIPFBDS<T,BaseTypeParameter> deleteModelToNamedDatabaseTIPFBDS)
+  set setDeleteModelToNamedTIPFBDS(
+      DeleteModelToNamedTIPFBDS<T,BaseTypeParameter> deleteModelToNamedTIPFBDS)
   {
-    _deleteModelToNamedDatabaseTIPFBDS = deleteModelToNamedDatabaseTIPFBDS;
+    _deleteModelToNamedTIPFBDS = deleteModelToNamedTIPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setInsertListModelToNamedDatabaseTIPFBDS(
-      InsertListModelToNamedDatabaseTIPFBDS<Y,BaseTypeParameter> insertListModelToNamedDatabaseTIPFBDS)
+  set setInsertListModelToNamedTIPFBDS(
+      InsertListModelToNamedTIPFBDS<Y,BaseTypeParameter> insertListModelToNamedTIPFBDS)
   {
-    _insertListModelToNamedDatabaseTIPFBDS = insertListModelToNamedDatabaseTIPFBDS;
+    _insertListModelToNamedTIPFBDS = insertListModelToNamedTIPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateListModelToNamedDatabaseTIPFBDS(
-      UpdateListModelToNamedDatabaseTIPFBDS<Y,BaseTypeParameter> updateListModelToNamedDatabaseTIPFBDS)
+  set setUpdateListModelToNamedTIPFBDS(
+      UpdateListModelToNamedTIPFBDS<Y,BaseTypeParameter> updateListModelToNamedTIPFBDS)
   {
-    _updateListModelToNamedDatabaseTIPFBDS = updateListModelToNamedDatabaseTIPFBDS;
+    _updateListModelToNamedTIPFBDS = updateListModelToNamedTIPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteListModelToNamedDatabaseTIPFBDS(
-      DeleteListModelToNamedDatabaseTIPFBDS<Y,BaseTypeParameter> deleteListModelToNamedDatabaseTIPFBDS)
+  set setDeleteListModelToNamedTIPFBDS(
+      DeleteListModelToNamedTIPFBDS<Y,BaseTypeParameter> deleteListModelToNamedTIPFBDS)
   {
-    _deleteListModelToNamedDatabaseTIPFBDS = deleteListModelToNamedDatabaseTIPFBDS;
+    _deleteListModelToNamedTIPFBDS = deleteListModelToNamedTIPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setGetListModelFromNamedDatabaseNPFBDS(
-      GetListModelFromNamedDatabaseNPFBDS<BaseTypeParameter> getListModelFromNamedDatabaseNPFBDS)
+  set setGetListModelFromNamedNPFBDS(
+      GetListModelFromNamedNPFBDS<BaseTypeParameter> getListModelFromNamedNPFBDS)
   {
-    _getListModelFromNamedDatabaseNPFBDS = getListModelFromNamedDatabaseNPFBDS;
+    _getListModelFromNamedNPFBDS = getListModelFromNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setGetModelFromNamedDatabaseNPFBDS(
-      GetModelFromNamedDatabaseNPFBDS<BaseTypeParameter> getModelFromNamedDatabaseNPFBDS)
+  set setGetModelFromNamedNPFBDS(
+      GetModelFromNamedNPFBDS<BaseTypeParameter> getModelFromNamedNPFBDS)
   {
-    _getModelFromNamedDatabaseNPFBDS = getModelFromNamedDatabaseNPFBDS;
+    _getModelFromNamedNPFBDS = getModelFromNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setInsertModelToNamedDatabaseNPFBDS(
-      InsertModelToNamedDatabaseNPFBDS<BaseTypeParameter> insertModelToNamedDatabaseNPFBDS)
+  set setInsertModelToNamedNPFBDS(
+      InsertModelToNamedNPFBDS<BaseTypeParameter> insertModelToNamedNPFBDS)
   {
-    _insertModelToNamedDatabaseNPFBDS = insertModelToNamedDatabaseNPFBDS;
+    _insertModelToNamedNPFBDS = insertModelToNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateModelToNamedDatabaseNPFBDS(
-      UpdateModelToNamedDatabaseNPFBDS<BaseTypeParameter> updateModelToNamedDatabaseNPFBDS)
+  set setUpdateModelToNamedNPFBDS(
+      UpdateModelToNamedNPFBDS<BaseTypeParameter> updateModelToNamedNPFBDS)
   {
-    _updateModelToNamedDatabaseNPFBDS = updateModelToNamedDatabaseNPFBDS;
+    _updateModelToNamedNPFBDS = updateModelToNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteModelToNamedDatabaseNPFBDS(
-      DeleteModelToNamedDatabaseNPFBDS<BaseTypeParameter> deleteModelToNamedDatabaseNPFBDS)
+  set setDeleteModelToNamedNPFBDS(
+      DeleteModelToNamedNPFBDS<BaseTypeParameter> deleteModelToNamedNPFBDS)
   {
-    _deleteModelToNamedDatabaseNPFBDS = deleteModelToNamedDatabaseNPFBDS;
+    _deleteModelToNamedNPFBDS = deleteModelToNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setInsertListModelToNamedDatabaseNPFBDS(
-      InsertListModelToNamedDatabaseNPFBDS<BaseTypeParameter> insertListModelToNamedDatabaseNPFBDS)
+  set setInsertListModelToNamedNPFBDS(
+      InsertListModelToNamedNPFBDS<BaseTypeParameter> insertListModelToNamedNPFBDS)
   {
-    _insertListModelToNamedDatabaseNPFBDS = insertListModelToNamedDatabaseNPFBDS;
+    _insertListModelToNamedDatabaseNPFBDS = insertListModelToNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateListModelToNamedDatabaseNPFBDS(
-      UpdateListModelToNamedDatabaseNPFBDS<BaseTypeParameter> updateListModelToNamedDatabaseNPFBDS)
+  set setUpdateListModelToNamedNPFBDS(
+      UpdateListModelToNamedNPFBDS<BaseTypeParameter> updateListModelToNamedNPFBDS)
   {
-    _updateListModelToNamedDatabaseNPFBDS = updateListModelToNamedDatabaseNPFBDS;
+    _updateListModelToNamedNPFBDS = updateListModelToNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteListModelToNamedDatabaseNPFBDS(
-      DeleteListModelToNamedDatabaseNPFBDS<BaseTypeParameter> deleteListModelToNamedDatabaseNPFBDS)
+  set setDeleteListModelToNamedNPFBDS(
+      DeleteListModelToNamedNPFBDS<BaseTypeParameter> deleteListModelToNamedNPFBDS)
   {
-    _deleteListModelToNamedDatabaseNPFBDS = deleteListModelToNamedDatabaseNPFBDS;
+    _deleteListModelToNamedNPFBDS = deleteListModelToNamedNPFBDS;
   }
 
   @protected
   @nonVirtual
-  set setGetListModelFromNamedDatabaseParameterNamedFBDS(
-      GetListModelFromNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> getListModelFromNamedDatabaseParameterNamedFBDS)
+  set setGetListModelFromNamedParameterNamedFBDS(
+      GetListModelFromNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> getListModelFromNamedParameterNamedFBDS)
   {
-    _getListModelFromNamedDatabaseParameterNamedFBDS = getListModelFromNamedDatabaseParameterNamedFBDS;
+    _getListModelFromNamedParameterNamedFBDS = getListModelFromNamedParameterNamedFBDS;
   }
 
   @protected
   @nonVirtual
-  set setGetModelFromNamedDatabaseParameterNamedFBDS(
-      GetModelFromNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> getModelFromNamedDatabaseParameterNamedFBDS)
+  set setGetModelFromNamedParameterNamedFBDS(
+      GetModelFromNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> getModelFromNamedParameterNamedFBDS)
   {
-    _getModelFromNamedDatabaseParameterNamedFBDS = getModelFromNamedDatabaseParameterNamedFBDS;
+    _getModelFromNamedParameterNamedFBDS = getModelFromNamedParameterNamedFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateModelToNamedDatabaseParameterNamedFBDS(
-      UpdateModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> updateModelToNamedDatabaseParameterNamedFBDS)
+  set setInsertModelToNamedParameterNamedFBDS(
+      InsertModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> insertModelToNamedParameterNamedFBDS)
   {
-    _updateModelToNamedDatabaseParameterNamedFBDS = updateModelToNamedDatabaseParameterNamedFBDS;
+    _insertModelToNamedParameterNamedFBDS = insertModelToNamedParameterNamedFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteModelToNamedDatabaseParameterNamedFBDS(
-      DeleteModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> deleteModelToNamedDatabaseParameterNamedFBDS)
+  set setUpdateModelToNamedParameterNamedFBDS(
+      UpdateModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> updateModelToNamedParameterNamedFBDS)
   {
-    _deleteModelToNamedDatabaseParameterNamedFBDS = deleteModelToNamedDatabaseParameterNamedFBDS;
+    _updateModelToNamedParameterNamedFBDS = updateModelToNamedParameterNamedFBDS;
   }
 
   @protected
   @nonVirtual
-  set setUpdateListModelToNamedDatabaseParameterNamedFBDS(
-      UpdateListModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> updateListModelToNamedDatabaseParameterNamedFBDS)
+  set setDeleteModelToNamedParameterNamedFBDS(
+      DeleteModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> deleteModelToNamedParameterNamedFBDS)
   {
-    _updateListModelToNamedDatabaseParameterNamedFBDS = updateListModelToNamedDatabaseParameterNamedFBDS;
+    _deleteModelToNamedParameterNamedFBDS = deleteModelToNamedParameterNamedFBDS;
   }
 
   @protected
   @nonVirtual
-  set setDeleteListModelToNamedDatabaseParameterNamedFBDS(
-      DeleteListModelToNamedDatabaseParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> deleteListModelToNamedDatabaseParameterNamedFBDS)
+  set setInsertListModelToNamedParameterNamedFBDS(
+      InsertListModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> insertListModelToNamedParameterNamedFBDS)
   {
-    _deleteListModelToNamedDatabaseParameterNamedFBDS = deleteListModelToNamedDatabaseParameterNamedFBDS;
+    _insertListModelToNamedParameterNamedFBDS = insertListModelToNamedParameterNamedFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setUpdateListModelToNamedParameterNamedFBDS(
+      UpdateListModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> updateListModelToNamedParameterNamedFBDS)
+  {
+    _updateListModelToNamedParameterNamedFBDS = updateListModelToNamedParameterNamedFBDS;
+  }
+
+  @protected
+  @nonVirtual
+  set setDeleteListModelToNamedParameterNamedFBDS(
+      DeleteListModelToNamedParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> deleteListModelToNamedParameterNamedFBDS)
+  {
+    _deleteListModelToNamedParameterNamedFBDS = deleteListModelToNamedParameterNamedFBDS;
   }
   /// End Setters FBDS **/
 
-  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseNP(
-      GetListModelFromNamedDatabaseNPDataSource<Y> getListModelFromNamedDatabaseNPDataSource)
+  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedNP(
+      GetListModelFromNamedNPDataSource<Y> getListModelFromNamedNPDataSource)
   async {
-    Response<Y,BaseException> response = await getListModelFromNamedDatabaseNPDataSource
-        .getListModelFromNamedDatabaseNP();
+    Response<Y,BaseException> response = await getListModelFromNamedNPDataSource
+        .getListModelFromNamedNP();
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return Response.success(response.getData.listModelNamedDatabase);
+    return Response.success(response.getData.listModelNamed);
   }
 
-  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
-      GetListModelFromNamedDatabaseNPDataSource<Y> getListModelFromNamedDatabaseNPDataSource,
+  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedNPUsingTypeParameterForFBDS(
+      GetListModelFromNamedNPDataSource<Y> getListModelFromNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_getListModelFromNamedDatabaseNPFBDS == null) {
-      return await _baseGetListModelFromNamedDatabaseNP(getListModelFromNamedDatabaseNPDataSource);
+    if(_getListModelFromNamedNPFBDS == null) {
+      return await _baseGetListModelFromNamedNP(getListModelFromNamedNPDataSource);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getListModelFromNamedDatabaseNPFBDS
-        .getListModelFromNamedDatabaseNP(typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getListModelFromNamedNPFBDS
+        .getListModelFromNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await _baseGetListModelFromNamedDatabaseNP(getListModelFromNamedDatabaseNPDataSource);
+    return await _baseGetListModelFromNamedNP(getListModelFromNamedNPDataSource);
   }
 
-  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseParameterNamed(
-      GetListModelFromNamedDatabaseParameterNamedDataSource<Y,BaseTypeParameter> getListModelFromNamedDatabaseParameterNamedDataSource,
+  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedParameterNamed(
+      GetListModelFromNamedParameterNamedDataSource<Y,BaseTypeParameter> getListModelFromNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter)
   async {
-    Response<Y,BaseException> response = await getListModelFromNamedDatabaseParameterNamedDataSource
-        .getListModelFromNamedDatabaseParameterNamed(typeParameter);
+    Response<Y,BaseException> response = await getListModelFromNamedParameterNamedDataSource
+        .getListModelFromNamedParameterNamed(typeParameter);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return Response.success(response.getData.listModelNamedDatabase);
+    return Response.success(response.getData.listModelNamed);
   }
 
-  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-      GetListModelFromNamedDatabaseParameterNamedDataSource<Y,BaseTypeParameter> getListModelFromNamedDatabaseParameterNamedDataSource,
+  Future<Response<List<T>,BaseException>> _baseGetListModelFromNamedParameterNamedUsingTypeParameterForFBDS(
+      GetListModelFromNamedParameterNamedDataSource<Y,BaseTypeParameter> getListModelFromNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_getListModelFromNamedDatabaseParameterNamedFBDS == null) {
-      return await _baseGetListModelFromNamedDatabaseParameterNamed(getListModelFromNamedDatabaseParameterNamedDataSource,typeParameter);
+    if(_getListModelFromNamedParameterNamedFBDS == null) {
+      return await _baseGetListModelFromNamedParameterNamed(getListModelFromNamedParameterNamedDataSource,typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getListModelFromNamedDatabaseParameterNamedFBDS
-        .getListModelFromNamedDatabaseParameterNamed(typeParameter,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getListModelFromNamedParameterNamedFBDS
+        .getListModelFromNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await _baseGetListModelFromNamedDatabaseParameterNamed(getListModelFromNamedDatabaseParameterNamedDataSource,typeParameter);
+    return await _baseGetListModelFromNamedParameterNamed(getListModelFromNamedParameterNamedDataSource,typeParameter);
   }
 
-  Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseNP(
-      GetModelFromNamedDatabaseNPDataSource<T> getModelFromNamedDatabaseNPDataSource)
+  Future<Response<T,BaseException>> _baseGetModelFromNamedNP(
+      GetModelFromNamedNPDataSource<T> getModelFromNamedNPDataSource)
   async {
-    Response<T,BaseException> response = await getModelFromNamedDatabaseNPDataSource
-        .getModelFromNamedDatabaseNP();
+    Response<T,BaseException> response = await getModelFromNamedNPDataSource
+        .getModelFromNamedNP();
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
@@ -925,30 +1003,30 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
     return Response.success(response.getData);
   }
 
-  Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseNPUsingTypeParameterForFBDS(
-      GetModelFromNamedDatabaseNPDataSource<T> getModelFromNamedDatabaseNPDataSource,
+  Future<Response<T,BaseException>> _baseGetModelFromNamedNPUsingTypeParameterForFBDS(
+      GetModelFromNamedNPDataSource<T> getModelFromNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_getModelFromNamedDatabaseNPFBDS == null) {
-      return await _baseGetModelFromNamedDatabaseNP(getModelFromNamedDatabaseNPDataSource);
+    if(_getModelFromNamedNPFBDS == null) {
+      return await _baseGetModelFromNamedNP(getModelFromNamedNPDataSource);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getModelFromNamedDatabaseNPFBDS
-        .getModelFromNamedDatabaseNP(typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getModelFromNamedNPFBDS
+        .getModelFromNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await _baseGetModelFromNamedDatabaseNP(getModelFromNamedDatabaseNPDataSource);
+    return await _baseGetModelFromNamedNP(getModelFromNamedNPDataSource);
   }
 
-  Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseParameterNamed(
-      GetModelFromNamedDatabaseParameterNamedDataSource<T,BaseTypeParameter> getModelFromNamedDatabaseParameterNamedDataSource,
+  Future<Response<T,BaseException>> _baseGetModelFromNamedParameterNamed(
+      GetModelFromNamedParameterNamedDataSource<T,BaseTypeParameter> getModelFromNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter)
   async {
-    Response<T,BaseException> response = await getModelFromNamedDatabaseParameterNamedDataSource
-        .getModelFromNamedDatabaseParameterNamed(typeParameter);
+    Response<T,BaseException> response = await getModelFromNamedParameterNamedDataSource
+        .getModelFromNamedParameterNamed(typeParameter);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
@@ -958,358 +1036,400 @@ abstract class BaseBackgroundModel<T extends BaseModelNamedDatabase,Y extends Ba
     return Response.success(response.getData);
   }
 
-  Future<Response<T,BaseException>> _baseGetModelFromNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-      GetModelFromNamedDatabaseParameterNamedDataSource<T,BaseTypeParameter> getModelFromNamedDatabaseParameterNamedDataSource,
+  Future<Response<T,BaseException>> _baseGetModelFromNamedParameterNamedUsingTypeParameterForFBDS(
+      GetModelFromNamedParameterNamedDataSource<T,BaseTypeParameter> getModelFromNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_getModelFromNamedDatabaseParameterNamedFBDS == null) {
-      return await _baseGetModelFromNamedDatabaseParameterNamed(getModelFromNamedDatabaseParameterNamedDataSource,typeParameter);
+    if(_getModelFromNamedParameterNamedFBDS == null) {
+      return await _baseGetModelFromNamedParameterNamed(getModelFromNamedParameterNamedDataSource,typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getModelFromNamedDatabaseParameterNamedFBDS
-        .getModelFromNamedDatabaseParameterNamed(typeParameter,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _getModelFromNamedParameterNamedFBDS
+        .getModelFromNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await _baseGetModelFromNamedDatabaseParameterNamed(getModelFromNamedDatabaseParameterNamedDataSource,typeParameter);
+    return await _baseGetModelFromNamedParameterNamed(getModelFromNamedParameterNamedDataSource,typeParameter);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      InsertModelToNamedDatabaseTIPDataSource<T> insertModelToNamedDatabaseTIPDataSource,
-      T modelNamedDatabase,
+  Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedTIPUsingTypeParameterForFBDS(
+      InsertModelToNamedTIPDataSource<T> insertModelToNamedTIPDataSource,
+      T modelNamed,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    T modelNamedDatabaseForClone = cloneModelNamedDatabase(modelNamedDatabase);
-    if(_insertModelToNamedDatabaseTIPFBDS == null) {
-      return await insertModelToNamedDatabaseTIPDataSource
-          .insertModelToNamedDatabaseTIP(modelNamedDatabaseForClone);
+    T modelNamedForClone = cloneModelNamed(modelNamed);
+    if(_insertModelToNamedTIPFBDS == null) {
+      return await insertModelToNamedTIPDataSource
+          .insertModelToNamedTIP(modelNamedForClone);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertModelToNamedDatabaseTIPFBDS
-        .insertModelToNamedDatabaseTIP(modelNamedDatabaseForClone,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertModelToNamedTIPFBDS
+        .insertModelToNamedTIP(modelNamedForClone,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await insertModelToNamedDatabaseTIPDataSource
-        .insertModelToNamedDatabaseTIP(modelNamedDatabaseForClone);
+    return await insertModelToNamedTIPDataSource
+        .insertModelToNamedTIP(modelNamedForClone);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      InsertModelToNamedDatabaseNPDataSource insertModelToNamedDatabaseNPDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedNPUsingTypeParameterForFBDS(
+      InsertModelToNamedNPDataSource insertModelToNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_insertModelToNamedDatabaseNPFBDS == null) {
-      return await insertModelToNamedDatabaseNPDataSource
-          .insertModelToNamedDatabaseNP();
+    if(_insertModelToNamedNPFBDS == null) {
+      return await insertModelToNamedNPDataSource
+          .insertModelToNamedNP();
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertModelToNamedDatabaseNPFBDS
-        .insertModelToNamedDatabaseNP(typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertModelToNamedNPFBDS
+        .insertModelToNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await insertModelToNamedDatabaseNPDataSource
-        .insertModelToNamedDatabaseNP();
+    return await insertModelToNamedNPDataSource
+        .insertModelToNamedNP();
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      InsertListModelToNamedDatabaseTIPDataSource<Y> insertListModelToNamedDatabaseTIPDataSource,
-      List<T> listModelNamedDatabase,
+  Future<Response<BaseTypeParameter,BaseException>> _baseInsertModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      InsertModelToNamedParameterNamedDataSource<BaseTypeParameter> insertModelToNamedParameterNamedDataSource,
+      BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseListModelNamedDatabase<T> listModelNamedDatabaseForClone = BaseListModelNamedDatabase(cloneListModelNamedDatabase(listModelNamedDatabase));
-    if(_insertListModelToNamedDatabaseTIPFBDS == null) {
-      return await insertListModelToNamedDatabaseTIPDataSource
-          .insertListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone);
+    if(_insertModelToNamedParameterNamedFBDS == null) {
+      return await insertModelToNamedParameterNamedDataSource
+          .insertModelToNamedParameterNamed(typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertListModelToNamedDatabaseTIPFBDS
-        .insertListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertModelToNamedParameterNamedFBDS
+        .insertModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await insertListModelToNamedDatabaseTIPDataSource
-        .insertListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone);
+    return await insertModelToNamedParameterNamedDataSource
+        .insertModelToNamedParameterNamed(typeParameter);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      InsertListModelToNamedDatabaseNPDataSource insertListModelToNamedDatabaseNPDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedTIPUsingTypeParameterForFBDS(
+      InsertListModelToNamedTIPDataSource<Y> insertListModelToNamedTIPDataSource,
+      List<T> listModelNamed,
+      BaseTypeParameter typeParameterForFBDS)
+  async {
+    BaseListModelNamed<T> listModelNamedForClone = BaseListModelNamed(cloneListModelNamed(listModelNamed));
+    if(_insertListModelToNamedTIPFBDS == null) {
+      return await insertListModelToNamedTIPDataSource
+          .insertListModelToNamedTIP(listModelNamedForClone);
+    }
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertListModelToNamedTIPFBDS
+        .insertListModelToNamedTIP(listModelNamedForClone,typeParameterForFBDS);
+    if(response.isExceptionResponse()) {
+      return Response.exception(response.getException);
+    }
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
+    }
+    return await insertListModelToNamedTIPDataSource
+        .insertListModelToNamedTIP(listModelNamedForClone);
+  }
+
+  Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedNPUsingTypeParameterForFBDS(
+      InsertListModelToNamedNPDataSource insertListModelToNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
     if(_insertListModelToNamedDatabaseNPFBDS == null) {
-      return await insertListModelToNamedDatabaseNPDataSource
-          .insertListModelToNamedDatabaseNP();
+      return await insertListModelToNamedNPDataSource
+          .insertListModelToNamedNP();
     }
     ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertListModelToNamedDatabaseNPFBDS
-        .insertListModelToNamedDatabaseNP(typeParameterForFBDS);
+        .insertListModelToNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await insertListModelToNamedDatabaseNPDataSource
-        .insertListModelToNamedDatabaseNP();
+    return await insertListModelToNamedNPDataSource
+        .insertListModelToNamedNP();
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      UpdateModelToNamedDatabaseTIPDataSource<T> updateModelToNamedDatabaseTIPDataSource,
-      T modelNamedDatabase,
-      BaseTypeParameter typeParameterForFBDS)
-  async {
-    T modelNamedDatabaseForClone = cloneModelNamedDatabase(modelNamedDatabase);
-    if(_updateModelToNamedDatabaseTIPFBDS == null) {
-      return await updateModelToNamedDatabaseTIPDataSource
-          .updateModelToNamedDatabaseTIP(modelNamedDatabaseForClone);
-    }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateModelToNamedDatabaseTIPFBDS
-        .updateModelToNamedDatabaseTIP(modelNamedDatabaseForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
-      return Response.exception(response.getException);
-    }
-    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
-    }
-    return await updateModelToNamedDatabaseTIPDataSource
-        .updateModelToNamedDatabaseTIP(modelNamedDatabaseForClone);
-  }
-
-  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      UpdateModelToNamedDatabaseNPDataSource updateModelToNamedDatabaseNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
-  async {
-    if(_updateModelToNamedDatabaseNPFBDS == null) {
-      return await updateModelToNamedDatabaseNPDataSource
-          .updateModelToNamedDatabaseNP();
-    }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateModelToNamedDatabaseNPFBDS
-        .updateModelToNamedDatabaseNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
-      return Response.exception(response.getException);
-    }
-    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
-      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
-    }
-    return await updateModelToNamedDatabaseNPDataSource
-        .updateModelToNamedDatabaseNP();
-  }
-
-  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-      UpdateModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> updateModelToNamedDatabaseParameterNamedDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseInsertListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      InsertListModelToNamedParameterNamedDataSource<BaseTypeParameter> insertListModelToNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_updateModelToNamedDatabaseParameterNamedFBDS == null) {
-      return await updateModelToNamedDatabaseParameterNamedDataSource
-          .updateModelToNamedDatabaseParameterNamed(typeParameter);
+    if(_insertListModelToNamedParameterNamedFBDS == null) {
+      return await insertListModelToNamedParameterNamedDataSource
+          .insertListModelToNamedParameterNamed(typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateModelToNamedDatabaseParameterNamedFBDS
-        .updateModelToNamedDatabaseParameterNamed(typeParameter,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _insertListModelToNamedParameterNamedFBDS
+        .insertListModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await updateModelToNamedDatabaseParameterNamedDataSource
-        .updateModelToNamedDatabaseParameterNamed(typeParameter);
+    return await insertListModelToNamedParameterNamedDataSource
+        .insertListModelToNamedParameterNamed(typeParameter);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      UpdateListModelToNamedDatabaseTIPDataSource<Y> updateListModelToNamedDatabaseTIPDataSource,
-      List<T> listModelNamedDatabase,
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedTIPUsingTypeParameterForFBDS(
+      UpdateModelToNamedTIPDataSource<T> updateModelToNamedTIPDataSource,
+      T modelNamed,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseListModelNamedDatabase<T> listModelNamedDatabaseForClone = BaseListModelNamedDatabase<T>(cloneListModelNamedDatabase(listModelNamedDatabase));
-    if(_updateListModelToNamedDatabaseTIPFBDS == null) {
-      return await updateListModelToNamedDatabaseTIPDataSource
-          .updateListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone);
+    T modelNamedForClone = cloneModelNamed(modelNamed);
+    if(_updateModelToNamedTIPFBDS == null) {
+      return await updateModelToNamedTIPDataSource
+          .updateModelToNamedTIP(modelNamedForClone);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateListModelToNamedDatabaseTIPFBDS
-        .updateListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateModelToNamedTIPFBDS
+        .updateModelToNamedTIP(modelNamedForClone,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await updateListModelToNamedDatabaseTIPDataSource
-        .updateListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone);
+    return await updateModelToNamedTIPDataSource
+        .updateModelToNamedTIP(modelNamedForClone);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      UpdateListModelToNamedDatabaseNPDataSource updateListModelToNamedDatabaseNPDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedNPUsingTypeParameterForFBDS(
+      UpdateModelToNamedNPDataSource updateModelToNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_updateListModelToNamedDatabaseNPFBDS == null) {
-      return await updateListModelToNamedDatabaseNPDataSource
-          .updateListModelToNamedDatabaseNP();
+    if(_updateModelToNamedNPFBDS == null) {
+      return await updateModelToNamedNPDataSource
+          .updateModelToNamedNP();
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateListModelToNamedDatabaseNPFBDS
-        .updateListModelToNamedDatabaseNP(typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateModelToNamedNPFBDS
+        .updateModelToNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await updateListModelToNamedDatabaseNPDataSource
-        .updateListModelToNamedDatabaseNP();
+    return await updateModelToNamedNPDataSource
+        .updateModelToNamedNP();
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-      UpdateListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> updateListModelToNamedDatabaseParameterNamedDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      UpdateModelToNamedParameterNamedDataSource<BaseTypeParameter> updateModelToNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_updateListModelToNamedDatabaseParameterNamedFBDS == null) {
-      return await updateListModelToNamedDatabaseParameterNamedDataSource
-          .updateListModelToNamedDatabaseParameterNamed(typeParameter);
+    if(_updateModelToNamedParameterNamedFBDS == null) {
+      return await updateModelToNamedParameterNamedDataSource
+          .updateModelToNamedParameterNamed(typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateListModelToNamedDatabaseParameterNamedFBDS
-        .updateListModelToNamedDatabaseParameterNamed(typeParameter,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateModelToNamedParameterNamedFBDS
+        .updateModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await updateListModelToNamedDatabaseParameterNamedDataSource
-        .updateListModelToNamedDatabaseParameterNamed(typeParameter);
+    return await updateModelToNamedParameterNamedDataSource
+        .updateModelToNamedParameterNamed(typeParameter);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      DeleteModelToNamedDatabaseTIPDataSource<T> deleteModelToNamedDatabaseTIPDataSource,
-      T modelNamedDatabase,
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedTIPUsingTypeParameterForFBDS(
+      UpdateListModelToNamedTIPDataSource<Y> updateListModelToNamedTIPDataSource,
+      List<T> listModelNamed,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    T modelNamedDatabaseForClone = cloneModelNamedDatabase(modelNamedDatabase);
-    if(_deleteModelToNamedDatabaseTIPFBDS == null) {
-      return await deleteModelToNamedDatabaseTIPDataSource
-          .deleteModelToNamedDatabaseTIP(modelNamedDatabaseForClone);
+    BaseListModelNamed<T> listModelNamedForClone = BaseListModelNamed<T>(cloneListModelNamed(listModelNamed));
+    if(_updateListModelToNamedTIPFBDS == null) {
+      return await updateListModelToNamedTIPDataSource
+          .updateListModelToNamedTIP(listModelNamedForClone);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteModelToNamedDatabaseTIPFBDS
-        .deleteModelToNamedDatabaseTIP(modelNamedDatabaseForClone,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateListModelToNamedTIPFBDS
+        .updateListModelToNamedTIP(listModelNamedForClone,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await deleteModelToNamedDatabaseTIPDataSource
-        .deleteModelToNamedDatabaseTIP(modelNamedDatabaseForClone);
+    return await updateListModelToNamedTIPDataSource
+        .updateListModelToNamedTIP(listModelNamedForClone);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      DeleteModelToNamedDatabaseNPDataSource deleteModelToNamedDatabaseNPDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedNPUsingTypeParameterForFBDS(
+      UpdateListModelToNamedNPDataSource updateListModelToNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_deleteModelToNamedDatabaseNPFBDS == null) {
-      return await deleteModelToNamedDatabaseNPDataSource
-          .deleteModelToNamedDatabaseNP();
+    if(_updateListModelToNamedNPFBDS == null) {
+      return await updateListModelToNamedNPDataSource
+          .updateListModelToNamedNP();
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteModelToNamedDatabaseNPFBDS
-        .deleteModelToNamedDatabaseNP(typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateListModelToNamedNPFBDS
+        .updateListModelToNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await deleteModelToNamedDatabaseNPDataSource
-        .deleteModelToNamedDatabaseNP();
+    return await updateListModelToNamedNPDataSource
+        .updateListModelToNamedNP();
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-      DeleteModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> deleteModelToNamedDatabaseParameterNamedDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseUpdateListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      UpdateListModelToNamedParameterNamedDataSource<BaseTypeParameter> updateListModelToNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_deleteModelToNamedDatabaseParameterNamedFBDS == null) {
-      return await deleteModelToNamedDatabaseParameterNamedDataSource
-          .deleteModelToNamedDatabaseParameterNamed(typeParameter);
+    if(_updateListModelToNamedParameterNamedFBDS == null) {
+      return await updateListModelToNamedParameterNamedDataSource
+          .updateListModelToNamedParameterNamed(typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteModelToNamedDatabaseParameterNamedFBDS
-        .deleteModelToNamedDatabaseParameterNamed(typeParameter,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _updateListModelToNamedParameterNamedFBDS
+        .updateListModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await deleteModelToNamedDatabaseParameterNamedDataSource
-        .deleteModelToNamedDatabaseParameterNamed(typeParameter);
+    return await updateListModelToNamedParameterNamedDataSource
+        .updateListModelToNamedParameterNamed(typeParameter);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseTIPUsingTypeParameterForFBDS(
-      DeleteListModelToNamedDatabaseTIPDataSource<Y> deleteListModelToNamedDatabaseTIPDataSource,
-      List<T> listModelNamedDatabase,
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedTIPUsingTypeParameterForFBDS(
+      DeleteModelToNamedTIPDataSource<T> deleteModelToNamedTIPDataSource,
+      T modelNamed,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseListModelNamedDatabase<T> listModelNamedDatabaseForClone = BaseListModelNamedDatabase<T>(cloneListModelNamedDatabase(listModelNamedDatabase));
-    if(_deleteListModelToNamedDatabaseTIPFBDS == null) {
-      return await deleteListModelToNamedDatabaseTIPDataSource
-          .deleteListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone);
+    T modelNamedForClone = cloneModelNamed(modelNamed);
+    if(_deleteModelToNamedTIPFBDS == null) {
+      return await deleteModelToNamedTIPDataSource
+          .deleteModelToNamedTIP(modelNamedForClone);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteListModelToNamedDatabaseTIPFBDS
-        .deleteListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteModelToNamedTIPFBDS
+        .deleteModelToNamedTIP(modelNamedForClone,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await deleteListModelToNamedDatabaseTIPDataSource
-        .deleteListModelToNamedDatabaseTIP(listModelNamedDatabaseForClone);
+    return await deleteModelToNamedTIPDataSource
+        .deleteModelToNamedTIP(modelNamedForClone);
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseNPUsingTypeParameterForFBDS(
-      DeleteListModelToNamedDatabaseNPDataSource deleteListModelToNamedDatabaseNPDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedNPUsingTypeParameterForFBDS(
+      DeleteModelToNamedNPDataSource deleteModelToNamedNPDataSource,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_deleteListModelToNamedDatabaseNPFBDS == null) {
-      return await deleteListModelToNamedDatabaseNPDataSource
-          .deleteListModelToNamedDatabaseNP();
+    if(_deleteModelToNamedNPFBDS == null) {
+      return await deleteModelToNamedNPDataSource
+          .deleteModelToNamedNP();
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteListModelToNamedDatabaseNPFBDS
-        .deleteListModelToNamedDatabaseNP(typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteModelToNamedNPFBDS
+        .deleteModelToNamedNP(typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return deleteListModelToNamedDatabaseNPDataSource
-        .deleteListModelToNamedDatabaseNP();
+    return await deleteModelToNamedNPDataSource
+        .deleteModelToNamedNP();
   }
 
-  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedDatabaseParameterNamedUsingTypeParameterForFBDS(
-      DeleteListModelToNamedDatabaseParameterNamedDataSource<BaseTypeParameter> deleteListModelToNamedDatabaseParameterNamedDataSource,
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      DeleteModelToNamedParameterNamedDataSource<BaseTypeParameter> deleteModelToNamedParameterNamedDataSource,
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    if(_deleteListModelToNamedDatabaseParameterNamedFBDS == null) {
-      return await deleteListModelToNamedDatabaseParameterNamedDataSource
-          .deleteListModelToNamedDatabaseParameterNamed(typeParameter);
+    if(_deleteModelToNamedParameterNamedFBDS == null) {
+      return await deleteModelToNamedParameterNamedDataSource
+          .deleteModelToNamedParameterNamed(typeParameter);
     }
-    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteListModelToNamedDatabaseParameterNamedFBDS
-        .deleteListModelToNamedDatabaseParameterNamed(typeParameter,typeParameterForFBDS);
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteModelToNamedParameterNamedFBDS
+        .deleteModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionResponse()) {
       return Response.exception(response.getException);
     }
     if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
       return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
     }
-    return await deleteListModelToNamedDatabaseParameterNamedDataSource
-        .deleteListModelToNamedDatabaseParameterNamed(typeParameter);
+    return await deleteModelToNamedParameterNamedDataSource
+        .deleteModelToNamedParameterNamed(typeParameter);
+  }
+
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedTIPUsingTypeParameterForFBDS(
+      DeleteListModelToNamedTIPDataSource<Y> deleteListModelToNamedTIPDataSource,
+      List<T> listModelNamed,
+      BaseTypeParameter typeParameterForFBDS)
+  async {
+    BaseListModelNamed<T> listModelNamedForClone = BaseListModelNamed<T>(cloneListModelNamed(listModelNamed));
+    if(_deleteListModelToNamedTIPFBDS == null) {
+      return await deleteListModelToNamedTIPDataSource
+          .deleteListModelToNamedTIP(listModelNamedForClone);
+    }
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteListModelToNamedTIPFBDS
+        .deleteListModelToNamedTIP(listModelNamedForClone,typeParameterForFBDS);
+    if(response.isExceptionResponse()) {
+      return Response.exception(response.getException);
+    }
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
+    }
+    return await deleteListModelToNamedTIPDataSource
+        .deleteListModelToNamedTIP(listModelNamedForClone);
+  }
+
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedNPUsingTypeParameterForFBDS(
+      DeleteListModelToNamedNPDataSource deleteListModelToNamedNPDataSource,
+      BaseTypeParameter typeParameterForFBDS)
+  async {
+    if(_deleteListModelToNamedNPFBDS == null) {
+      return await deleteListModelToNamedNPDataSource
+          .deleteListModelToNamedNP();
+    }
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteListModelToNamedNPFBDS
+        .deleteListModelToNamedNP(typeParameterForFBDS);
+    if(response.isExceptionResponse()) {
+      return Response.exception(response.getException);
+    }
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
+    }
+    return deleteListModelToNamedNPDataSource
+        .deleteListModelToNamedNP();
+  }
+
+  Future<Response<BaseTypeParameter,BaseException>> _baseDeleteListModelToNamedParameterNamedUsingTypeParameterForFBDS(
+      DeleteListModelToNamedParameterNamedDataSource<BaseTypeParameter> deleteListModelToNamedParameterNamedDataSource,
+      BaseTypeParameter typeParameter,
+      BaseTypeParameter typeParameterForFBDS)
+  async {
+    if(_deleteListModelToNamedParameterNamedFBDS == null) {
+      return await deleteListModelToNamedParameterNamedDataSource
+          .deleteListModelToNamedParameterNamed(typeParameter);
+    }
+    ResponseGenericBoolAndLocalExceptionAndCancelOWEAndS response = _deleteListModelToNamedParameterNamedFBDS
+        .deleteListModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
+    if(response.isExceptionResponse()) {
+      return Response.exception(response.getException);
+    }
+    if(response.isCanceledOperationWithoutExceptionAndSuccess()) {
+      return Response.cancelOperationWithoutExceptionAndSuccess(response.getCancelOperationWithoutExceptionAndSuccess);
+    }
+    return await deleteListModelToNamedParameterNamedDataSource
+        .deleteListModelToNamedParameterNamed(typeParameter);
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/listOfViewModelForNamedView/ListOfViewModelForMainView.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntWithoutDatabaseTextWidgetForMainView.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/int_without_database.dart';
+import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntWithoutLibraryTextWidgetForMainView.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/int_without_library.dart';
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
-import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream.dart';
+import 'package:library_architecture_mvvm_modify/utility/share_streams_between_views.dart';
 
 class MainView
     extends StatefulWidget
@@ -26,7 +27,7 @@ class _MainViewState
   @override
   void dispose() {
     _lo.dispose();
-    SharedStreamController
+    ShareStreamsBetweenViews
         .ssc
         .dispose();
     super.dispose();
@@ -45,7 +46,7 @@ class _MainViewState
             const Text(
               'You have pushed the button this many times:',
             ),
-            IntWithoutDatabaseTextWidgetForMainView(),
+            IntWithoutLibraryTextWidgetForMainView(),
           ],
         ),
       ),
@@ -55,27 +56,31 @@ class _MainViewState
         children: <Widget>[
           FloatingActionButton(
             child: const Icon(Icons.add),
-            onPressed: () => _lo.incrementFieldByIntWithoutDatabaseUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
-                functionForSuccess: (IntWithoutDatabase int) {
-                  SharedStreamController
+            onPressed: () => _lo.incrementFieldByIntWithoutLibraryUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+                functionForSuccess: (IntWithoutLibrary intWithoutLibrary) {
+                  ShareStreamsBetweenViews
                       .ssc
-                      .setModelNamedDatabaseForWidget(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase, int);
-                  SharedStreamController
+                      .getIStreamForWidget<DefaultStream<IntWithoutLibrary>>(MainView, IntWithoutLibraryTextWidgetForMainView, EnumIntWithoutLibraryTextWidgetForMainView.IntWithoutDatabase)
+                      .setModelNamed = intWithoutLibrary;
+                  ShareStreamsBetweenViews
                       .ssc
-                      .notifyStreamModelNamedDatabaseForWidgetIfHasListener(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase);
+                      .getIStreamForWidget<DefaultStream<IntWithoutLibrary>>(MainView, IntWithoutLibraryTextWidgetForMainView, EnumIntWithoutLibraryTextWidgetForMainView.IntWithoutDatabase)
+                      .notifyStreamModelNamed(this);
                 }),
           ),
           const SizedBox(height: 8),
           FloatingActionButton(
             child: const Icon(Icons.remove),
-            onPressed: () => _lo.decrementFieldByIntWithoutDatabaseUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
-                functionForSuccess: (IntWithoutDatabase int) {
-                  SharedStreamController
+            onPressed: () => _lo.decrementFieldByIntWithoutLibraryUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+                functionForSuccess: (IntWithoutLibrary intWithoutLibrary) {
+                  ShareStreamsBetweenViews
                       .ssc
-                      .setModelNamedDatabaseForWidget(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase, int);
-                  SharedStreamController
+                      .getIStreamForWidget<DefaultStream<IntWithoutLibrary>>(MainView, IntWithoutLibraryTextWidgetForMainView, EnumIntWithoutLibraryTextWidgetForMainView.IntWithoutDatabase)
+                      .setModelNamed = intWithoutLibrary;
+                  ShareStreamsBetweenViews
                       .ssc
-                      .notifyStreamModelNamedDatabaseForWidgetIfHasListener(this, MainView, IntWithoutDatabaseTextWidgetForMainView, EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase);
+                      .getIStreamForWidget<DefaultStream<IntWithoutLibrary>>(MainView, IntWithoutLibraryTextWidgetForMainView, EnumIntWithoutLibraryTextWidgetForMainView.IntWithoutDatabase)
+                      .notifyStreamModelNamed(this);
                 }),
           ),
         ],

@@ -20,18 +20,17 @@ import 'package:library_architecture_mvvm_modify/base_exception/base_exception.d
 class NetworkException
     extends BaseException
 {
-  final int _statusCode;
-  final String _nameStatusCode;
-  final String _descriptionStatusCode;
+  final int statusCode;
+  final String nameStatusCode;
+  final String descriptionStatusCode;
 
   NetworkException(
       Object thisClass,
-      this._statusCode,
-      this._nameStatusCode,
-      this._descriptionStatusCode)
-      : super(NetworkException,thisClass);
+      this.statusCode,
+      this.nameStatusCode,
+      this.descriptionStatusCode) : super(NetworkException,thisClass);
 
-  static NetworkException byStatusCode(
+  factory NetworkException.fromStatusCode(
       Object thisClass,
       int statusCode)
   {
@@ -261,26 +260,11 @@ class NetworkException
     }
   }
 
-  @nonVirtual
-  int get getStatusCode {
-    return _statusCode;
-  }
-
-  @nonVirtual
-  String get getNameStatusCode {
-    return _nameStatusCode;
-  }
-
-  @nonVirtual
-  String get getDescriptionStatusCode {
-    return _descriptionStatusCode;
-  }
-
   @override
   @nonVirtual
   String exceptionInString() {
-    return "StatusCode: $_statusCode | "
-        "NameStatusCode: $_nameStatusCode | "
-        "DescriptionStatusCode: $_descriptionStatusCode";
+    return "StatusCode: $statusCode | "
+        "NameStatusCode: $nameStatusCode | "
+        "DescriptionStatusCode: $descriptionStatusCode";
   }
 }

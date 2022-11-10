@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/MainView.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntWithoutDatabaseTextWidgetForMainView.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/int_without_database.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/list_int_without_database.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream_controller.dart';
-import 'package:library_architecture_mvvm_modify/utility/sc_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/shared_stream_controller.dart';
+import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntWithoutLibraryTextWidgetForMainView.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/int_without_library.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/list_int_without_library.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream.dart';
+import 'package:library_architecture_mvvm_modify/utility/share_streams_between_views.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedStreamController.ssc.setParameterMapForWidgetAndView(
+  ShareStreamsBetweenViews.ssc.setMapForWidgetAndView(
       mapModelForWidget: {
         MainView : {
-          IntWithoutDatabaseTextWidgetForMainView : {
-            EnumIntWithoutDatabaseTextWidgetForMainViewForModel.IntWithoutDatabase : SCModel(DefaultStreamController<IntWithoutDatabase>(),IntWithoutDatabase.getIntWithoutDatabase,ListIntWithoutDatabase([]))
+          IntWithoutLibraryTextWidgetForMainView : {
+            EnumIntWithoutLibraryTextWidgetForMainView.IntWithoutDatabase : DefaultStream<IntWithoutLibrary>(IntWithoutLibrary.getIntWithoutLibrary,ListIntWithoutLibrary([]))
           }
         }
       });

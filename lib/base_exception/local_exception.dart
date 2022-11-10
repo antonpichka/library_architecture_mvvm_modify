@@ -27,31 +27,23 @@ enum EnumGuiltyForLocalException {
 class LocalException
     extends BaseException
 {
-  final EnumGuiltyForLocalException _enumGuiltyForLocalException;
-  final String _message;
+  final EnumGuiltyForLocalException enumGuiltyForLocalException;
+  final String message;
 
   LocalException(
       Object thisClass,
-      this._enumGuiltyForLocalException,
-      this._message)
+      this.enumGuiltyForLocalException,
+      this.message)
       : super(LocalException,thisClass);
 
-  LocalException.whereTheUserIsGuilty(thisClass,this._message) :
-        _enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
+  LocalException.whereTheUserIsGuilty(thisClass,this.message) :
+        enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
         super(LocalException,thisClass);
-
-  @nonVirtual
-  EnumGuiltyForLocalException get getEnumGuiltyForLocalException => _enumGuiltyForLocalException;
-
-  @nonVirtual
-  String get getMessage {
-    return _message;
-  }
 
   @override
   @nonVirtual
   String exceptionInString() {
-    return "EnumGuiltyForLocalException: ${_enumGuiltyForLocalException.name} | "
-        "Message: $_message";
+    return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
+        "Message: $message";
   }
 }

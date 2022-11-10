@@ -15,7 +15,7 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/utility/constants.dart';
+import 'package:library_architecture_mvvm_modify/utility/utility.dart';
 
 abstract class BaseException
     implements Exception

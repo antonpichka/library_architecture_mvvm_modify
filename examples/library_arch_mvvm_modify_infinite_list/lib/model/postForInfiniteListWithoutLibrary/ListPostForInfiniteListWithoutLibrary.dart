@@ -1,0 +1,8 @@
+import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteListWithoutLibrary/PostForInfiniteListWithoutLibrary.dart';
+import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named.dart';
+
+class ListPostForInfiniteListWithoutLibrary
+    extends BaseListModelNamed<PostForInfiniteListWithoutLibrary>
+{
+  ListPostForInfiniteListWithoutLibrary(List<PostForInfiniteListWithoutLibrary> listModelNamed) : super(listModelNamed);
+}
