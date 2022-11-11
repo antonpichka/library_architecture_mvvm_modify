@@ -6,7 +6,7 @@ class UserFirebaseAuth
 {
   User user;
 
-  UserFirebaseAuth(this.user) : super(user.uniqueId);
+  UserFirebaseAuth(this.user) : super(user.id);
 
   static UserFirebaseAuth get getUserFirebaseAuth => UserFirebaseAuth(User.getUser);
 

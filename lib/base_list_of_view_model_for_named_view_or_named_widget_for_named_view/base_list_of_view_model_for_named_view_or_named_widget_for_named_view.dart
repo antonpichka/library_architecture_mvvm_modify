@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 
 abstract class BaseListOfViewModelForNamedViewOrNamedWidgetForNamedView
-    implements BaseDispose
+    implements IDispose
 {
 }

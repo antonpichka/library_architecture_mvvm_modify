@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/listOfViewModelForNamedView/listOfViewModelForNamedWidgetForMainView/ListOfViewModelForPostsListWidgetForMainView.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/postForInfiniteListWithoutLibrary/PostForInfiniteListWithoutLibrary.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholder/ListPostJsonPlaceholder.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholder/PostJsonPlaceholder.dart';
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
 
@@ -37,19 +37,19 @@ class _PostsListWidgetForMainViewState
   @override
   Widget build(BuildContext context) {
     _lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTaskExceptionItInitMethod();
-    return StreamBuilder<PostForInfiniteListWithoutLibrary>(
-        stream: _lo.getStreamPostForInfiniteListWithoutLibraryUsingGetNP,
-        builder: (BuildContext buildContext, AsyncSnapshot<PostForInfiniteListWithoutLibrary> asyncSnapshot)
+    return StreamBuilder<ListPostJsonPlaceholder>(
+        stream: _lo.getStreamListPostJsonPlaceholderUsingGetListParameterIntForStartIndex,
+        builder: (BuildContext buildContext, AsyncSnapshot<ListPostJsonPlaceholder> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           }
-          PostForInfiniteListWithoutLibrary postForInfiniteList = asyncSnapshot.data;
-          switch(postForInfiniteList.getEnumPostForInfiniteListWithoutLibrary) {
-            case EnumPostForInfiniteListWithoutLibrary.success:
+          ListPostJsonPlaceholder listPostJsonPlaceholder = asyncSnapshot.data;
+          switch(listPostJsonPlaceholder.getEnumListPostJsonPlaceholder) {
+            case EnumListPostJsonPlaceholder.success:
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  if(postForInfiniteList.isFromIndexMoreOrEqualParameterLengthByListPostJsonPlaceholder(index)) {
+                  if(listPostJsonPlaceholder.isFromIndexMoreOrEqualParameterLengthByListPostJsonPlaceholder(index)) {
                     return Center(
                       child: SizedBox(
                         height: 24,
@@ -58,24 +58,24 @@ class _PostsListWidgetForMainViewState
                     );
                   }
                   TextTheme textTheme = Theme.of(context).textTheme;
-                  PostJsonPlaceholder itemPostJsonPlaceholder = postForInfiniteList.listPostJsonPlaceholder[index];
+                  PostJsonPlaceholder itemPostJsonPlaceholder = listPostJsonPlaceholder.listModelNamed[index];
                   return Material(
                     child: ListTile(
-                      leading: Text('${itemPostJsonPlaceholder.uniqueId}', style: textTheme.caption),
-                      title: Text(itemPostJsonPlaceholder.title),
+                      leading: Text('${itemPostJsonPlaceholder.post.id}', style: textTheme.caption),
+                      title: Text(itemPostJsonPlaceholder.post.title),
                       isThreeLine: true,
-                      subtitle: Text(itemPostJsonPlaceholder.body),
+                      subtitle: Text(itemPostJsonPlaceholder.post.body),
                       dense: true,
                     ),
                   );
                 },
-                itemCount: postForInfiniteList.getParameterLengthByListPostJsonPlaceholder,
+                itemCount: listPostJsonPlaceholder.getParameterLengthByListPostJsonPlaceholder,
                 controller: _scrollController);
-            case EnumPostForInfiniteListWithoutLibrary.isEmptyListOfPost:
+            case EnumListPostJsonPlaceholder.isEmptyListPostJsonPlaceholder:
               return Center(child: Text('no posts'));
-            case EnumPostForInfiniteListWithoutLibrary.noInternetItLocalException:
+            case EnumListPostJsonPlaceholder.noInternetItLocalException:
               return Center(child: Text('no Internet. Connect to the Internet'));
-            case EnumPostForInfiniteListWithoutLibrary.serverNotWorkItNetworkException:
+            case EnumListPostJsonPlaceholder.serverNotWorkItNetworkException:
               return Center(child: Text('failed to fetch posts'));
             default:
               return Container();

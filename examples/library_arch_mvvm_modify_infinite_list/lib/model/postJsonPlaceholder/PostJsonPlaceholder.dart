@@ -1,28 +1,27 @@
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/customModel/Post.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
 
 class PostJsonPlaceholder
     extends BaseModelNamed
 {
-  int id;
-  String title;
-  String body;
+  Post post;
 
-  PostJsonPlaceholder(
-      this.id,
-      this.title,
-      this.body) : super(id.toString());
+  PostJsonPlaceholder.success(this.post) : super.success(post.id.toString());
+
+  PostJsonPlaceholder.exception(BaseException exception) : super.exception(exception);
 
   factory PostJsonPlaceholder.fromMap(
       Map<String,dynamic> map)
   {
-    return PostJsonPlaceholder(
+    return PostJsonPlaceholder.success(Post(
         map[constParameterId],
         map[constParameterTitle],
-        map[constParameterBody]);
+        map[constParameterBody]));
   }
-
+  static PostJsonPlaceholder get getPostJsonPlaceholder => PostJsonPlaceholder.success(Post.getPost);
+  static const constPostsUrl = "/posts";
   static const constParameterId = "id";
   static const constParameterTitle = "title";
   static const constParameterBody = "body";
-  static PostJsonPlaceholder get getPostJsonPlaceholder => PostJsonPlaceholder(0,"", "");
 }

@@ -6,7 +6,7 @@ class UserTempCache
 {
   User user;
 
-  UserTempCache(this.user) : super(user.uniqueId);
+  UserTempCache(this.user) : super(user.id);
 
   static UserTempCache get getUserTempCache => UserTempCache(User.getUser);
   static const constUserTempCache = "__user_temp_cache__";

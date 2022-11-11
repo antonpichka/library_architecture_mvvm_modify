@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/response/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
 abstract class UpdateListModelToNamedNPDataSource
 {
-  Future<Response<BaseTypeParameter,BaseException>> updateListModelToNamedNP();
+  Future<Response> updateListModelToNamedNP();
 }

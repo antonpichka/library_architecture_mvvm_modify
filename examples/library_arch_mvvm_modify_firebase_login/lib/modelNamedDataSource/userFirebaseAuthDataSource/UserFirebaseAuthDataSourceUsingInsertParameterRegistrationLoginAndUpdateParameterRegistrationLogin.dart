@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/customDataSource/DefaultFirebaseAuthDataSource.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/customTypeParameter/RegistrationLoginTypeParameter.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelNamedDataSource/userFirebaseAuthDataSource/UserFirebaseAuthDataSource.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/customException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/customModel/RegistrationLogin.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/customTypeParameter/RegistrationLoginTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify/interface_data_source/update_mo
 import 'package:library_architecture_mvvm_modify/response/response.dart';
 
 class UserFirebaseAuthDataSourceUsingInsertParameterRegistrationLoginAndUpdateParameterRegistrationLogin
-    extends DefaultFirebaseAuthDataSource
+    extends UserFirebaseAuthDataSource
     implements
         InsertModelToNamedParameterNamedDataSource<RegistrationLoginTypeParameter>,
         UpdateModelToNamedParameterNamedDataSource<RegistrationLoginTypeParameter>
@@ -27,9 +27,9 @@ class UserFirebaseAuthDataSourceUsingInsertParameterRegistrationLoginAndUpdatePa
           password: registrationLogin.password);
       return Response.success(BoolTypeParameter(true));
     } on FirebaseAuthException catch (e) {
-      return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
+      return Response.getException(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
     } catch (_) {
-      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Response.getException(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 
@@ -44,9 +44,9 @@ class UserFirebaseAuthDataSourceUsingInsertParameterRegistrationLoginAndUpdatePa
           password: registrationLogin.password);
       return Response.success(BoolTypeParameter(true));
     } on FirebaseAuthException catch (e) {
-      return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
+      return Response.getException(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
     } catch (_) {
-      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Response.getException(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 }

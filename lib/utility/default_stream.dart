@@ -15,26 +15,26 @@
  */
 
 import 'dart:async';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_list_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream.dart';
 
-class DefaultStream<T extends BaseModelNamed>
-    implements IStream<T>
+class DefaultStream<T extends BaseModelNamed,Y extends BaseListModelNamed<T>>
+    implements IStream<T,Y>
 {
   final StreamController<T> _streamControllerForModelNamed;
-  final StreamController<List<T>> _streamControllerForListModelNamed;
-  final BaseListModelNamed<T> _listModelNamed;
+  final StreamController<Y> _streamControllerForListModelNamed;
   final int _delayInSeconds;
   T _modelNamed;
+  Y _listModelNamed;
 
   DefaultStream(
       this._modelNamed,
       this._listModelNamed,
       [this._delayInSeconds = 30]) :
-        _streamControllerForModelNamed =  StreamController.broadcast(),
-        _streamControllerForListModelNamed = StreamController.broadcast();
+        _streamControllerForModelNamed =  StreamController<T>.broadcast(),
+        _streamControllerForListModelNamed = StreamController<Y>.broadcast();
 
 
   @override
@@ -51,27 +51,26 @@ class DefaultStream<T extends BaseModelNamed>
   Stream<T> get getStreamModelNamed => _streamControllerForModelNamed.stream;
 
   @override
-  Stream<List<T>> get getStreamListModelNamed => _streamControllerForListModelNamed.stream;
+  Stream<Y> get getStreamListModelNamed => _streamControllerForListModelNamed.stream;
 
   @override
   T get getModelNamed => _modelNamed;
 
   @override
-  BaseListModelNamed<T> get getListModelNamed => _listModelNamed;
+  Y get getListModelNamed => _listModelNamed;
 
   @override
   set setModelNamed(
-      T modelNamedDatabase)
+      T modelNamed)
   {
-    _modelNamed = modelNamedDatabase;
+    _modelNamed = modelNamed;
   }
 
   @override
   set setListModelNamed(
-      List<T> listModelNamedDatabase)
+      Y listModelNamed)
   {
-    _listModelNamed
-        .setParameterListModelNamed = listModelNamedDatabase;
+    _listModelNamed = listModelNamed;
   }
 
   @override
@@ -101,7 +100,7 @@ class DefaultStream<T extends BaseModelNamed>
     }
     _streamControllerForListModelNamed
         .sink
-        .add(_listModelNamed.listModelNamed);
+        .add(_listModelNamed);
   }
 
   @override
@@ -139,14 +138,14 @@ class DefaultStream<T extends BaseModelNamed>
       if(_streamControllerForListModelNamed.hasListener) {
         _streamControllerForListModelNamed
             .sink
-            .add(_listModelNamed.listModelNamed);
+            .add(_listModelNamed);
         break;
       }
       await Future.delayed(const Duration(seconds: 1));
-      iteration++;
       if(iteration >= _delayInSeconds) {
         throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
       }
+      iteration++;
     }
   }
 }

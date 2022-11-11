@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_dispose/base_dispose.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_list_model_named.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_list_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
 
-abstract class IStream<T extends BaseModelNamed>
-    implements BaseDispose
+abstract class IStream<T extends BaseModelNamed, Y extends BaseListModelNamed<T>>
+    implements IDispose
 {
   Object get getStreamModelNamed;
   Object get getStreamListModelNamed;
   T get getModelNamed;
-  BaseListModelNamed<T> get getListModelNamed;
+  Y get getListModelNamed;
   set setModelNamed(T modelNamed);
-  set setListModelNamed(List<T> listModelNamed);
+  set setListModelNamed(Y listModelNamed);
   void notifyStreamModelNamed(Object thisClass);
   void notifyStreamModelNamedUsingDelayInSeconds(Object thisClass);
   void notifyStreamListModelNamed(Object thisClass);

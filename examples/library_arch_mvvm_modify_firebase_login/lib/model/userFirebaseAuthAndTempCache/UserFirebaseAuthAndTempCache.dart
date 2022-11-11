@@ -7,7 +7,7 @@ class UserFirebaseAuthAndTempCache
 {
   User user;
 
-  UserFirebaseAuthAndTempCache(this.user) : super(user.uniqueId);
+  UserFirebaseAuthAndTempCache(this.user) : super(user.id);
 
   factory UserFirebaseAuthAndTempCache.fromFirebaseUser(
       firebase_auth.User firebaseUser)

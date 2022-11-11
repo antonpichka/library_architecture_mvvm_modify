@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named.dart';
-import 'package:library_architecture_mvvm_modify/response/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
 
 abstract class GetModelFromNamedNPDataSource<T extends BaseModelNamed>
 {
-  Future<Response<T,BaseException>> getModelFromNamedNP();
+  Future<T> getModelFromNamedNP();
 }

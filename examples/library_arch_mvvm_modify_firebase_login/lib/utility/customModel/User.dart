@@ -1,14 +1,10 @@
-import 'package:library_architecture_mvvm_modify/base_model_named_database/base_model_named.dart';
-
-class User
-    extends BaseModelNamed
-{
+class User {
   String id;
   String email;
   String name;
   String photo;
 
-  User(this.id,this.email,this.name,this.photo) : super(id);
+  User(this.id,this.email,this.name,this.photo);
 
   static User get getUser => User("","","","");
 
