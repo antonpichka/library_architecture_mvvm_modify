@@ -25,6 +25,20 @@ class BaseModelNamed {
   BaseModelNamed.exception(this.exception);
 
   @nonVirtual
+  set setParameterUniqueId(
+      String uniqueId)
+  {
+    this.uniqueId = uniqueId;
+  }
+
+  @nonVirtual
+  set setParameterException(
+      BaseException exception)
+  {
+    this.exception = exception;
+  }
+
+  @nonVirtual
   bool isExceptionNotNull() {
     if(exception == null) {
       return false;

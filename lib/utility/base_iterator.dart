@@ -24,12 +24,12 @@ abstract class BaseIterator<T extends BaseModelNamed>
 
   @nonVirtual
   List<T> get getSortedListModelNamed {
-    List<T> listModelNamedDatabase = List.empty(growable: true);
+    List<T> listModelNamed = List.empty(growable: true);
     while(moveNext()) {
       T itemModelNamed = current;
-      listModelNamedDatabase.add(itemModelNamed);
+      listModelNamed.add(itemModelNamed);
     }
-    return listModelNamedDatabase;
+    return listModelNamed;
   }
 
   @nonVirtual

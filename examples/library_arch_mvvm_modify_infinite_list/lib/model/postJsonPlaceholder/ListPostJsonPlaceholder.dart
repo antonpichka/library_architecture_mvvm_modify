@@ -67,13 +67,13 @@ class ListPostJsonPlaceholder
     this.enumWhatIsTheException = enumWhatIsTheException;
   }
 
-  void setAndAddingToListFromListPostJsonPlaceholderParametersListPostJsonPlaceholderAndHasReachedMaxAndEnumWhatIsTheException(
+  void insertListPostJsonPlaceholderToListAndSetFromListPostJsonPlaceholderParametersHasReachedMaxAndEnumWhatIsTheException(
       ListPostJsonPlaceholder listPostJsonPlaceholder)
   {
     hasReachedMax = listPostJsonPlaceholder.hasReachedMax;
     enumWhatIsTheException = listPostJsonPlaceholder.enumWhatIsTheException;
     if(hasNotReachedMax()) {
-      insertListModelNamedToGetListModelNamed(this, listPostJsonPlaceholder.listModelNamed);
+      insertListPostJsonPlaceholderToList(listPostJsonPlaceholder.listModelNamed);
       return;
     }
   }
@@ -84,6 +84,12 @@ class ListPostJsonPlaceholder
     exception = listPostJsonPlaceholder.exception;
     hasReachedMax = listPostJsonPlaceholder.hasReachedMax;
     enumWhatIsTheException = listPostJsonPlaceholder.enumWhatIsTheException;
+  }
+
+  bool insertListPostJsonPlaceholderToList(
+      List<PostJsonPlaceholder> listPostJsonPlaceholder)
+  {
+    return super.insertListModelNamedToList(this,listPostJsonPlaceholder);
   }
 
   bool isFromIndexMoreOrEqualParameterLengthByListPostJsonPlaceholder(

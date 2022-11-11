@@ -60,7 +60,7 @@ class ListOfViewModelForPostsListWidgetForMainView
     }
     _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
         .getListPostJsonPlaceholderUsingGetListParameterIntForStartIndex
-        .setAndAddingToListFromListPostJsonPlaceholderParametersListPostJsonPlaceholderAndHasReachedMaxAndEnumWhatIsTheException(listPostJsonPlaceholder);
+        .insertListPostJsonPlaceholderToListAndSetFromListPostJsonPlaceholderParametersHasReachedMaxAndEnumWhatIsTheException(listPostJsonPlaceholder);
     _postJsonPlaceholderDatabaseViewModelUsingGetListParameterStartIndex
         .notifyStreamListPostJsonPlaceholderUsingGetListParameterIntForStartIndex();
     return;

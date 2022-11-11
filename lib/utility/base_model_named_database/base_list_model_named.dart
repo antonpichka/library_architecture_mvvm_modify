@@ -23,15 +23,16 @@ import 'package:library_architecture_mvvm_modify/utility/base_model_named_databa
 class BaseListModelNamed<T extends BaseModelNamed> {
   List<T> listModelNamed;
   BaseException exception;
-  BaseIterator<T> _iterator;
   final Map<Enum,BaseIterator<T>> _mapEnumAndIterator = {};
+  BaseIterator<T> _iterator;
   Enum _enumForIteratorSelection;
 
   BaseListModelNamed.success(this.listModelNamed);
   BaseListModelNamed.exception(this.exception);
 
+  @protected
   @nonVirtual
-  List<T> runIteratorForGetListModelNamed(
+  List<T> runIteratorForListModelNamed(
       Object thisClass)
   {
     if(_mapEnumAndIterator.isEmpty) {
@@ -55,19 +56,21 @@ class BaseListModelNamed<T extends BaseModelNamed> {
   }
 
   @nonVirtual
-  set setParameterListModelNamed(
-      List<T> listModelNamed)
-  {
-    this.listModelNamed = listModelNamed;
-  }
-
-  @nonVirtual
   set setParameterException(
       BaseException exception)
   {
     this.exception = exception;
   }
 
+  @protected
+  @nonVirtual
+  set setParameterListModelNamed(
+      List<T> listModelNamed)
+  {
+    this.listModelNamed = listModelNamed;
+  }
+
+  @protected
   @nonVirtual
   void setEnumAndIteratorToMap(
       Enum key,
@@ -76,6 +79,7 @@ class BaseListModelNamed<T extends BaseModelNamed> {
     _mapEnumAndIterator[key] = iterator;
   }
 
+  @protected
   @nonVirtual
   set setEnumForIteratorSelection(
       Enum enumForIteratorSelection)
@@ -98,7 +102,9 @@ class BaseListModelNamed<T extends BaseModelNamed> {
     return true;
   }
 
-  bool insertModelNamedToGetListModelNamed(
+  @protected
+  @nonVirtual
+  bool insertModelNamedToList(
       Object thisClass,
       T modelNamed)
   {
@@ -106,7 +112,9 @@ class BaseListModelNamed<T extends BaseModelNamed> {
     return true;
   }
 
-  bool updateModelNamedToGetListModelNamed(
+  @protected
+  @nonVirtual
+  bool updateModelNamedToList(
       Object thisClass,
       T modelNamed)
   {
@@ -114,7 +122,9 @@ class BaseListModelNamed<T extends BaseModelNamed> {
     return true;
   }
 
-  bool deleteModelNamedToGetListModelNamed(
+  @protected
+  @nonVirtual
+  bool deleteModelNamedToList(
       Object thisClass,
       T modelNamed)
   {
@@ -122,23 +132,27 @@ class BaseListModelNamed<T extends BaseModelNamed> {
     return true;
   }
 
-  bool insertListModelNamedToGetListModelNamed(
+  @protected
+  @nonVirtual
+  bool insertListModelNamedToList(
       Object thisClass,
       List<T> listModelNamed)
   {
     if(listModelNamed.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModel isEmpty");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModelNamed isEmpty");
     }
     this.listModelNamed.addAll(listModelNamed);
     return true;
   }
 
-  bool updateListModelNamedToGetListModelNamed(
+  @protected
+  @nonVirtual
+  bool updateListModelNamedToList(
       Object thisClass,
       List<T> listModelNamed)
   {
     if(listModelNamed.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModel isEmpty");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModelNamed isEmpty");
     }
     for(int i = 0; i < listModelNamed.length; i++) {
       this.listModelNamed[this.listModelNamed.indexWhere((element) => element.uniqueId == listModelNamed[i].uniqueId)] = listModelNamed[i];
@@ -146,12 +160,14 @@ class BaseListModelNamed<T extends BaseModelNamed> {
     return true;
   }
 
-  bool deleteListModelNamedToGetListModelNamed(
+  @protected
+  @nonVirtual
+  bool deleteListModelNamedToList(
       Object thisClass,
       List<T> listModelNamed)
   {
     if(listModelNamed.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModel isEmpty");
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModelNamed isEmpty");
     }
     List<T> listModelNamedForDelete = List.empty(growable: true);
     for(int i = 0; i < this.listModelNamed.length; i++) {
@@ -163,8 +179,8 @@ class BaseListModelNamed<T extends BaseModelNamed> {
       }
     }
     for(int i = 0; i < this.listModelNamed.length; i++) {
-      for(T itemModelNamedForDelete in listModelNamedForDelete) {
-        if(this.listModelNamed[i].uniqueId != itemModelNamedForDelete.uniqueId) {
+      for(int j = 0; j < listModelNamedForDelete.length; j++) {
+        if(this.listModelNamed[i].uniqueId != listModelNamedForDelete[j].uniqueId) {
           continue;
         }
         this.listModelNamed.removeAt(i);
