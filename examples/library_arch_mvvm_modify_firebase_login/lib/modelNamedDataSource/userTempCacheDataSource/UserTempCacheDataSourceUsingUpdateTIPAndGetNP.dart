@@ -1,37 +1,38 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/userTempCache/UserTempCache.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelNamedDataSource/userTempCacheDataSource/UserTempCacheDataSource.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/base_type_parameter/bool_type_parameter.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelNamed/userTempCache/UserTempCache.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/TempCache.dart';
 import 'package:library_architecture_mvvm_modify/interface_data_source/get_model_from_named_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_data_source/update_model_to_named_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/response/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
 class UserTempCacheDataSourceUsingUpdateTIPAndGetNP
-    extends UserTempCacheDataSource
     implements
         UpdateModelToNamedTIPDataSource<UserTempCache>,
         GetModelFromNamedNPDataSource<UserTempCache>
 {
+  final TempCache _tempCache;
+
+  UserTempCacheDataSourceUsingUpdateTIPAndGetNP(this._tempCache);
+
   @override
-  Future<Response<BoolTypeParameter, BaseException>> updateModelToNamedTIP(
+  Future<Response> updateModelToNamedTIP(
       UserTempCache modelNamed)
   async {
     try {
-      getTempCache.write<UserTempCache>(UserTempCache.constUserTempCache, modelNamed);
-      return Response.success(BoolTypeParameter(true));
+      _tempCache.write<UserTempCache>(UserTempCache.constUserTempCache, modelNamed);
+      return Response.success(true);
     } catch (e) {
-      return Response.getException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
   @override
-  Future<Response<UserTempCache, BaseException>> getModelFromNamedNP()
+  Future<UserTempCache> getModelFromNamedNP()
   async {
     try {
-      return Response.success(getTempCache.read<UserTempCache>(UserTempCache.constUserTempCache));
+      return _tempCache.read<UserTempCache>(UserTempCache.constUserTempCache);
     } catch (e) {
-      return Response.getException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return UserTempCache.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 }

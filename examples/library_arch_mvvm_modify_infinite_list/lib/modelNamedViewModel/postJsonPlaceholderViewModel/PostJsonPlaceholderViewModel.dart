@@ -1,9 +1,9 @@
-import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholder/ListPostJsonPlaceholder.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/postJsonPlaceholder/PostJsonPlaceholder.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/customModel/Post.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelNamed/postJsonPlaceholder/ListPostJsonPlaceholder.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelNamed/postJsonPlaceholder/PostJsonPlaceholder.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/model/Post.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 
 abstract class PostJsonPlaceholderViewModel
     extends BaseViewModel<PostJsonPlaceholder,ListPostJsonPlaceholder,Enum>
@@ -11,8 +11,8 @@ abstract class PostJsonPlaceholderViewModel
   PostJsonPlaceholderViewModel.thereIsDataSource(Object dataSource) : super.thereIsDataSource(dataSource);
 
   @override
-  IStream<PostJsonPlaceholder,ListPostJsonPlaceholder> initAndCloneIStream() {
-    return DefaultStream<PostJsonPlaceholder,ListPostJsonPlaceholder>(PostJsonPlaceholder.getPostJsonPlaceholder,ListPostJsonPlaceholder.success([]));
+  IStreamModel<PostJsonPlaceholder,ListPostJsonPlaceholder> initIStreamModel() {
+    return DefaultStreamModel<PostJsonPlaceholder,ListPostJsonPlaceholder>(PostJsonPlaceholder.getPostJsonPlaceholder,ListPostJsonPlaceholder.success([]));
   }
 
   @override

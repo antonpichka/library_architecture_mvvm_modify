@@ -33,7 +33,7 @@ class Response {
   }
 
   @nonVirtual
-  bool isExceptionResponse() {
+  bool isExceptionNotNull() {
     if(_exception == null) {
       return false;
     }

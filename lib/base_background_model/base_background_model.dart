@@ -15,7 +15,6 @@
  */
 
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_data_source/delete_list_model_to_named_parameter_named_data_source.dart';
@@ -100,6 +99,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
 
   BaseBackgroundModel.thereIsDataSource(this.dataSource);
 
+  @protected
   DataSource getDataSource<DataSource extends Object>() {
     return dataSource;
   }
@@ -800,7 +800,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _getListModelFromNamedNPFBDS
         .getListModelFromNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       BaseListModelNamed<T> listModelNamed = BaseListModelNamed<T>.exception(response.getException());
       return listModelNamed;
     }
@@ -824,7 +824,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _getListModelFromNamedParameterNamedFBDS
         .getListModelFromNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       BaseListModelNamed<T> listModelNamed = BaseListModelNamed<T>.exception(response.getException());
       return listModelNamed;
     }
@@ -846,7 +846,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _getModelFromNamedNPFBDS
         .getModelFromNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       BaseModelNamed modelNamed = BaseModelNamed.exception(response.getException());
       return modelNamed;
     }
@@ -871,7 +871,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _getModelFromNamedParameterNamedFBDS
         .getModelFromNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       BaseModelNamed modelNamed = BaseModelNamed.exception(response.getException());
       return modelNamed;
     }
@@ -890,7 +890,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _insertModelToNamedTIPFBDS
         .insertModelToNamedTIP(modelNamedForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await insertModelToNamedTIPDataSource
@@ -907,7 +907,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _insertModelToNamedNPFBDS
         .insertModelToNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await insertModelToNamedNPDataSource
@@ -925,7 +925,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _insertModelToNamedParameterNamedFBDS
         .insertModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await insertModelToNamedParameterNamedDataSource
@@ -944,7 +944,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _insertListModelToNamedTIPFBDS
         .insertListModelToNamedTIP(listModelNamedForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await insertListModelToNamedTIPDataSource
@@ -961,7 +961,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _insertListModelToNamedDatabaseNPFBDS
         .insertListModelToNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await insertListModelToNamedNPDataSource
@@ -979,7 +979,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _insertListModelToNamedParameterNamedFBDS
         .insertListModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await insertListModelToNamedParameterNamedDataSource
@@ -998,7 +998,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _updateModelToNamedTIPFBDS
         .updateModelToNamedTIP(modelNamedForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await updateModelToNamedTIPDataSource
@@ -1015,7 +1015,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _updateModelToNamedNPFBDS
         .updateModelToNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await updateModelToNamedNPDataSource
@@ -1033,7 +1033,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _updateModelToNamedParameterNamedFBDS
         .updateModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await updateModelToNamedParameterNamedDataSource
@@ -1052,7 +1052,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _updateListModelToNamedTIPFBDS
         .updateListModelToNamedTIP(listModelNamedForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await updateListModelToNamedTIPDataSource
@@ -1069,7 +1069,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _updateListModelToNamedNPFBDS
         .updateListModelToNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await updateListModelToNamedNPDataSource
@@ -1087,7 +1087,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _updateListModelToNamedParameterNamedFBDS
         .updateListModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await updateListModelToNamedParameterNamedDataSource
@@ -1106,7 +1106,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _deleteModelToNamedTIPFBDS
         .deleteModelToNamedTIP(modelNamedForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await deleteModelToNamedTIPDataSource
@@ -1123,7 +1123,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _deleteModelToNamedNPFBDS
         .deleteModelToNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await deleteModelToNamedNPDataSource
@@ -1141,7 +1141,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _deleteModelToNamedParameterNamedFBDS
         .deleteModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await deleteModelToNamedParameterNamedDataSource
@@ -1160,7 +1160,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _deleteListModelToNamedTIPFBDS
         .deleteListModelToNamedTIP(listModelNamedForClone,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await deleteListModelToNamedTIPDataSource
@@ -1177,7 +1177,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _deleteListModelToNamedNPFBDS
         .deleteListModelToNamedNP(typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return deleteListModelToNamedNPDataSource
@@ -1195,7 +1195,7 @@ abstract class BaseBackgroundModel<T extends BaseModelNamed,Y extends BaseListMo
     }
     Response response = _deleteListModelToNamedParameterNamedFBDS
         .deleteListModelToNamedParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionResponse()) {
+    if(response.isExceptionNotNull()) {
       return response;
     }
     return await deleteListModelToNamedParameterNamedDataSource

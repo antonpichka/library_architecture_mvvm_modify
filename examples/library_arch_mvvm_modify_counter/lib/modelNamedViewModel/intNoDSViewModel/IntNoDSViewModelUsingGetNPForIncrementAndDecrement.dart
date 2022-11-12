@@ -2,8 +2,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_model_named_databa
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_int_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_named_and_base_list_model_named_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/int_no_ds_view_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 
 class IntNoDSViewModelUsingGetNPForIncrementAndDecrement
     extends IntNoDSViewModel
@@ -11,8 +11,8 @@ class IntNoDSViewModelUsingGetNPForIncrementAndDecrement
   IntNoDSViewModelUsingGetNPForIncrementAndDecrement() : super([EnumBaseModelNamedAndBaseListModelNamedVM.getModelFromNamedNP]);
 
   @override
-  IStream<IntNoDS,ListIntNoDS> initAndCloneIStream() {
-    return DefaultStream<IntNoDS,ListIntNoDS>(IntNoDS.getIntNoDS, ListIntNoDS([]));
+  IStreamModel<IntNoDS,ListIntNoDS> initIStreamModel() {
+    return DefaultStreamModel<IntNoDS,ListIntNoDS>(IntNoDS.getIntNoDS, ListIntNoDS([]));
   }
 
   @override

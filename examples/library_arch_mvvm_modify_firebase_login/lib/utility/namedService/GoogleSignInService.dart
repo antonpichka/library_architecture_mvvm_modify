@@ -1,0 +1,13 @@
+import 'package:google_sign_in/google_sign_in.dart';
+
+class GoogleSignInService {
+  static GoogleSignIn _googleSignIn;
+
+  static GoogleSignIn get getGoogleSignIn {
+    if(_googleSignIn != null) {
+      return _googleSignIn;
+    }
+    _googleSignIn = GoogleSignIn.standard();
+    return _googleSignIn;
+  }
+}
