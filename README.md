@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-<img src="/assets/library_architecture_mvvm_modify_1_0_4.png"/>
+<img src="/assets/library_architecture_mvvm_modify_1_0_6.png"/>
 
 ## Examples
 
@@ -43,11 +43,12 @@ Coming soon
 
 ### Architecture Components
 - #### DataSource
+  - ##### Service
 - #### ViewModel
   - ##### FBDS
 - #### ListOfViewModelForViewOrWidgetForView
 - #### ViewOrWidgetForView
-  - ##### ShareStreamsBetweenViews
+  - ##### ManageForDistributingStreamsBetweenViews
 - #### BackgroundModel
 - #### Background
 
