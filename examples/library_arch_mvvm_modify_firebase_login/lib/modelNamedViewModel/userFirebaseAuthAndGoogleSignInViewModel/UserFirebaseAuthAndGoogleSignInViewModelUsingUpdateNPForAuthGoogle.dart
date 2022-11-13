@@ -9,12 +9,12 @@ class UserFirebaseAuthAndGoogleSignInViewModelUsingUpdateNPForAuthGoogle
 {
   UserFirebaseAuthAndGoogleSignInViewModelUsingUpdateNPForAuthGoogle(FirebaseAuth firebaseAuth,GoogleSignIn googleSignIn) : super.thereIsDataSource(UserFirebaseAuthAndGoogleSignInDataSourceUsingUpdateNPForAuthGoogle(firebaseAuth, googleSignIn));
 
-  Future<Response> updateUserToFirebaseAuthAndGoogleSignInNP() {
-    return super.updateModelToNamedNP();
-  }
-
   @override
   Object thisClass() {
     return this;
+  }
+
+  Future<Response> updateUserToFirebaseAuthAndGoogleSignInNP() {
+    return super.updateModelToNamedNP();
   }
 }

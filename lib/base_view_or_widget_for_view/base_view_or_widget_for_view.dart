@@ -15,11 +15,17 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:library_architecture_mvvm_modify/base_list_of_view_model_for_named_view_or_named_widget_for_named_view/base_list_of_view_model_for_named_view_or_named_widget_for_named_view.dart';
 
-abstract class BaseViewOrWidgetForView<T extends StatefulWidget>
+abstract class BaseViewOrWidgetForView<T extends StatefulWidget,Y extends BaseListOfViewModelForNamedViewOrNamedWidgetForNamedView>
     extends State<T>
     with WidgetsBindingObserver
 {
+  @protected
+  final Y lo;
+
+  BaseViewOrWidgetForView(this.lo);
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +34,7 @@ abstract class BaseViewOrWidgetForView<T extends StatefulWidget>
   
   @override
   void dispose() {
+    lo.dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

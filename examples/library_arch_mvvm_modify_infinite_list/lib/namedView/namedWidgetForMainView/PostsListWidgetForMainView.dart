@@ -12,12 +12,12 @@ class PostsListWidgetForMainView
 }
 
 class _PostsListWidgetForMainViewState
-    extends BaseViewOrWidgetForView<PostsListWidgetForMainView>
+    extends BaseViewOrWidgetForView<PostsListWidgetForMainView,ListOfViewModelForPostsListWidgetForMainView>
 {
-  final ListOfViewModelForPostsListWidgetForMainView _lo =
-  ListOfViewModelForPostsListWidgetForMainView();
   final ScrollController _scrollController =
   ScrollController();
+
+  _PostsListWidgetForMainViewState() : super(ListOfViewModelForPostsListWidgetForMainView());
 
   @override
   void initState() {
@@ -30,15 +30,14 @@ class _PostsListWidgetForMainViewState
     _scrollController
         ..removeListener(_onScroll)
         ..dispose();
-    _lo.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTaskExceptionItInitMethod();
+    lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTaskExceptionItInitMethod();
     return StreamBuilder<ListPostJsonPlaceholder>(
-        stream: _lo.getStreamListPostJsonPlaceholderUsingGetListParameterIntForStartIndex,
+        stream: lo.getStreamListPostJsonPlaceholderUsingGetListParameterIntForStartIndex,
         builder: (BuildContext buildContext, AsyncSnapshot<ListPostJsonPlaceholder> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
@@ -85,7 +84,7 @@ class _PostsListWidgetForMainViewState
 
   void _onScroll() {
     if (_isBottom)
-      _lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTask();
+      lo.getListPostFromJsonPlaceholderParameterIntAndSetListPostJsonPlaceholderAndInGeneralOneTask();
   }
 
   bool get _isBottom {

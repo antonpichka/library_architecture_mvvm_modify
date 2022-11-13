@@ -19,10 +19,9 @@ class IntNoDSTextWidgetForMainView
 }
 
 class _IntNoDSTextWidgetForMainViewState
-    extends BaseViewOrWidgetForView<IntNoDSTextWidgetForMainView>
+    extends BaseViewOrWidgetForView<IntNoDSTextWidgetForMainView,ListOfViewModelForIntNoDSTextWidgetForMainView>
 {
-  final ListOfViewModelForIntNoDSTextWidgetForMainView _lo =
-  ListOfViewModelForIntNoDSTextWidgetForMainView();
+  _IntNoDSTextWidgetForMainViewState() : super(ListOfViewModelForIntNoDSTextWidgetForMainView());
 
   @override
   void initState() {
@@ -32,20 +31,19 @@ class _IntNoDSTextWidgetForMainViewState
         .getIStreamModelNamedForWidget<DefaultStreamModelNamed<IntNoDS,ListIntNoDS>>(MainView,IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
         .getStreamModelNamed
         .listen((event) {
-          _lo.setIntNoDSUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(event);
+          lo.setIntNoDSUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(event);
         });
   }
 
   @override
   void dispose() {
-    _lo.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<IntNoDS>(
-        stream: _lo.getStreamIntNoDSUsingGetNPForIncrementAndDecrement,
+        stream: lo.getStreamIntNoDSUsingGetNPForIncrementAndDecrement,
         builder: (BuildContext buildContext, AsyncSnapshot<IntNoDS> asyncSnapshot) {
           if(asyncSnapshot.data == null) {
             return Text(

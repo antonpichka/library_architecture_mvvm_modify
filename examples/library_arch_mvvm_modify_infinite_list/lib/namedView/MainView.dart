@@ -11,10 +11,9 @@ class MainView
 }
 
 class _MainViewState
-    extends BaseViewOrWidgetForView<MainView>
+    extends BaseViewOrWidgetForView<MainView,ListOfViewModelForMainView>
 {
-  final ListOfViewModelForMainView _lo =
-  ListOfViewModelForMainView();
+  _MainViewState() : super(ListOfViewModelForMainView());
 
   @override
   void initState() {
@@ -23,7 +22,6 @@ class _MainViewState
 
   @override
   void dispose() {
-    _lo.dispose();
     super.dispose();
   }
 

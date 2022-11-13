@@ -15,10 +15,9 @@ class MainView
 }
 
 class _MainViewState
-    extends BaseViewOrWidgetForView<MainView>
+    extends BaseViewOrWidgetForView<MainView,ListOfViewModelForMainView>
 {
-  final ListOfViewModelForMainView _lo =
-  ListOfViewModelForMainView();
+  _MainViewState() : super(ListOfViewModelForMainView());
 
   @override
   void initState() {
@@ -27,7 +26,6 @@ class _MainViewState
 
   @override
   void dispose() {
-    _lo.dispose();
     ManagerForDistributingStreamsBetweenViews
         .ssc
         .dispose();
@@ -57,7 +55,7 @@ class _MainViewState
         children: <Widget>[
           FloatingActionButton(
             child: const Icon(Icons.add),
-            onPressed: () => _lo.incrementFieldByIntNoDSUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+            onPressed: () => lo.incrementFieldByIntNoDSUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
                 functionForSuccess: (IntNoDS intWithoutLibrary) {
                   ManagerForDistributingStreamsBetweenViews
                       .ssc
@@ -72,7 +70,7 @@ class _MainViewState
           const SizedBox(height: 8),
           FloatingActionButton(
             child: const Icon(Icons.remove),
-            onPressed: () => _lo.decrementFieldByIntNoDSUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
+            onPressed: () => lo.decrementFieldByIntNoDSUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(
                 functionForSuccess: (IntNoDS intWithoutLibrary) {
                   ManagerForDistributingStreamsBetweenViews
                       .ssc
