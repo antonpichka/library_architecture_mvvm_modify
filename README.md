@@ -50,7 +50,8 @@ Coming soon
 - #### ViewOrWidgetForView
   - ##### ManageForDistributingStreamsBetweenViews
 - #### BackgroundModel
-- #### Background
+
+### Utility
 
 ## License
 ```xml
