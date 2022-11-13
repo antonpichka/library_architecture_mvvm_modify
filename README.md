@@ -44,12 +44,12 @@ Coming soon
 ### Architecture Components
 - #### DataSource
   - ##### Service
+- #### BackgroundModel
 - #### ViewModel
   - ##### FBDS
 - #### ListOfViewModelForViewOrWidgetForView
 - #### ViewOrWidgetForView
   - ##### ManageForDistributingStreamsBetweenViews
-- #### BackgroundModel
 
 ### Utility
 
