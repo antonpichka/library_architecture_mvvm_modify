@@ -19,22 +19,30 @@ import 'package:library_architecture_mvvm_modify/utility/base_model_named_databa
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_bool_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_named_and_base_list_model_named_vm.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_parameter.dart';
 
-abstract class BoolNoDSViewModel<T extends Enum>
-    extends BaseViewModel<BoolNoDS,ListBoolNoDS,T>
+abstract class BoolNoDSViewModel
+    extends BaseViewModel<BoolNoDS,ListBoolNoDS>
 {
   BoolNoDSViewModel(List<EnumBaseModelNamedAndBaseListModelNamedVM> listEnumBaseModelNamedAndBaseListModelNamedVM) : super.noDataSource(listEnumBaseModelNamedAndBaseListModelNamedVM);
 
   @override
   @nonVirtual
-  BoolNoDS cloneModelNamed(
+  BoolNoDS cloneModelNamedForSuccess(
       BoolNoDS modelNamed)
   {
     return BoolNoDS(modelNamed.isField);
   }
 
   @override
-  ListBoolNoDS cloneListModelNamed(ListBoolNoDS listModelNamed) {
+  @nonVirtual
+  ListBoolNoDS cloneListModelNamedForSuccess(ListBoolNoDS listModelNamed) {
     return ListBoolNoDS(listModelNamed.listModelNamed);
+  }
+
+  @override
+  @nonVirtual
+  IStreamBaseTypeParameter initIStreamBaseTypeParameter() {
+    return null;
   }
 }

@@ -18,10 +18,10 @@ import 'dart:async';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_list_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_model_named.dart';
 
-class DefaultStreamModel<T extends BaseModelNamed,Y extends BaseListModelNamed<T>>
-    implements IStreamModel<T,Y>
+class DefaultStreamModelNamed<T extends BaseModelNamed,Y extends BaseListModelNamed<T>>
+    implements IStreamModelNamed<T,Y>
 {
   final StreamController<T> _streamControllerForModelNamed;
   final StreamController<Y> _streamControllerForListModelNamed;
@@ -29,7 +29,7 @@ class DefaultStreamModel<T extends BaseModelNamed,Y extends BaseListModelNamed<T
   T _modelNamed;
   Y _listModelNamed;
 
-  DefaultStreamModel(
+  DefaultStreamModelNamed(
       this._modelNamed,
       this._listModelNamed,
       [this._delayInSeconds = 30]) :

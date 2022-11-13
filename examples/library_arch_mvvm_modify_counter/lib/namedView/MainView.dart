@@ -4,7 +4,7 @@ import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainVie
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/int_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_int_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/base_view_or_widget_for_view/base_view_or_widget_for_view.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/manager_for_distributing_streams_between_views.dart';
 
 class MainView
@@ -61,11 +61,11 @@ class _MainViewState
                 functionForSuccess: (IntNoDS intWithoutLibrary) {
                   ManagerForDistributingStreamsBetweenViews
                       .ssc
-                      .getIStreamModelForWidget<DefaultStreamModel<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
+                      .getIStreamModelNamedForWidget<DefaultStreamModelNamed<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
                       .setModelNamed = intWithoutLibrary;
                   ManagerForDistributingStreamsBetweenViews
                       .ssc
-                      .getIStreamModelForWidget<DefaultStreamModel<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
+                      .getIStreamModelNamedForWidget<DefaultStreamModelNamed<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
                       .notifyStreamModelNamed(this);
                 }),
           ),
@@ -76,11 +76,11 @@ class _MainViewState
                 functionForSuccess: (IntNoDS intWithoutLibrary) {
                   ManagerForDistributingStreamsBetweenViews
                       .ssc
-                      .getIStreamModelForWidget<DefaultStreamModel<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
+                      .getIStreamModelNamedForWidget<DefaultStreamModelNamed<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
                       .setModelNamed = intWithoutLibrary;
                   ManagerForDistributingStreamsBetweenViews
                       .ssc
-                      .getIStreamModelForWidget<DefaultStreamModel<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
+                      .getIStreamModelNamedForWidget<DefaultStreamModelNamed<IntNoDS,ListIntNoDS>>(MainView, IntNoDSTextWidgetForMainView, EnumIntNoDSTextWidgetForMainView.IntNoDS)
                       .notifyStreamModelNamed(this);
                 }),
           ),

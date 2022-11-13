@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_counter/namedView/MainView.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntNoDSTextWidgetForMainView.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/int_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_int_no_ds.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/manager_for_distributing_streams_between_views.dart';
 
 void main() {
@@ -12,7 +12,7 @@ void main() {
       mapModelForWidget: {
         MainView : {
           IntNoDSTextWidgetForMainView : {
-            EnumIntNoDSTextWidgetForMainView.IntNoDS : DefaultStreamModel<IntNoDS,ListIntNoDS>(IntNoDS.getIntNoDS,ListIntNoDS([]))
+            EnumIntNoDSTextWidgetForMainView.IntNoDS : DefaultStreamModelNamed<IntNoDS,ListIntNoDS>(IntNoDS.getIntNoDS,ListIntNoDS([]))
           }
         }
       });

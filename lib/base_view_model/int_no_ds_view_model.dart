@@ -15,26 +15,34 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/int_no_ds.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_int_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_named_and_base_list_model_named_vm.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/int_no_ds.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_int_no_ds.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_parameter.dart';
 
-abstract class IntNoDSViewModel<T extends Enum>
-    extends BaseViewModel<IntNoDS,ListIntNoDS,T>
+abstract class IntNoDSViewModel
+    extends BaseViewModel<IntNoDS,ListIntNoDS>
 {
   IntNoDSViewModel(List<EnumBaseModelNamedAndBaseListModelNamedVM> listEnumBaseModelNamedAndBaseListModelNamedVM) : super.noDataSource(listEnumBaseModelNamedAndBaseListModelNamedVM);
 
   @override
   @nonVirtual
-  IntNoDS cloneModelNamed(
+  IntNoDS cloneModelNamedForSuccess(
       IntNoDS modelNamed)
   {
     return IntNoDS(modelNamed.field);
   }
 
   @override
-  ListIntNoDS cloneListModelNamed(ListIntNoDS listModelNamed) {
+  @nonVirtual
+  ListIntNoDS cloneListModelNamedForSuccess(ListIntNoDS listModelNamed) {
     return ListIntNoDS(listModelNamed.listModelNamed);
+  }
+
+  @override
+  @nonVirtual
+  IStreamBaseTypeParameter initIStreamBaseTypeParameter() {
+    return null;
   }
 }

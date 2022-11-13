@@ -2,21 +2,28 @@ import 'package:library_arch_mvvm_modify_infinite_list/modelNamed/postJsonPlaceh
 import 'package:library_arch_mvvm_modify_infinite_list/modelNamed/postJsonPlaceholder/PostJsonPlaceholder.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/utility/model/Post.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_model_named.dart';
 
 abstract class PostJsonPlaceholderViewModel
-    extends BaseViewModel<PostJsonPlaceholder,ListPostJsonPlaceholder,Enum>
+    extends BaseViewModel<PostJsonPlaceholder,ListPostJsonPlaceholder>
 {
   PostJsonPlaceholderViewModel.thereIsDataSource(Object dataSource) : super.thereIsDataSource(dataSource);
 
   @override
-  IStreamModel<PostJsonPlaceholder,ListPostJsonPlaceholder> initIStreamModel() {
-    return DefaultStreamModel<PostJsonPlaceholder,ListPostJsonPlaceholder>(PostJsonPlaceholder.getPostJsonPlaceholder,ListPostJsonPlaceholder.success([]));
+  IStreamModelNamed<PostJsonPlaceholder,ListPostJsonPlaceholder> initIStreamModelForSuccess() {
+    return DefaultStreamModelNamed<PostJsonPlaceholder,ListPostJsonPlaceholder>(PostJsonPlaceholder.getPostJsonPlaceholder,ListPostJsonPlaceholder.success([]));
   }
 
   @override
-  PostJsonPlaceholder cloneModelNamed(
+  IStreamBaseTypeParameter initIStreamBaseTypeParameter() {
+    return DefaultStreamBaseTypeParameter();
+  }
+
+  @override
+  PostJsonPlaceholder cloneModelNamedForSuccess(
       PostJsonPlaceholder modelNamed)
   {
     return PostJsonPlaceholder.success(Post(
@@ -26,7 +33,7 @@ abstract class PostJsonPlaceholderViewModel
   }
 
   @override
-  ListPostJsonPlaceholder cloneListModelNamed(
+  ListPostJsonPlaceholder cloneListModelNamedForSuccess(
       ListPostJsonPlaceholder listModelNamed)
   {
     return ListPostJsonPlaceholder.success(listModelNamed.listModelNamed);

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_list_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 
-abstract class IStreamModel<T extends BaseModelNamed, Y extends BaseListModelNamed<T>>
+abstract class IStreamModelNamed<T extends BaseModelNamed, Y extends BaseListModelNamed<T>>
     implements IDispose
 {
   Object get getStreamModelNamed;

@@ -15,6 +15,7 @@
  */
 
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_background_model/base_background_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_named_and_base_list_model_named_vm.dart';
@@ -40,10 +41,11 @@ import 'package:library_architecture_mvvm_modify/utility/base_model_named_databa
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_model_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNamed<T>,EnumIterator extends Enum>
+abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNamed<T>>
     extends BaseBackgroundModel<T,Y>
     implements IDispose
 {
@@ -52,8 +54,8 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   final List<EnumBaseTypeParameterVM> _listEnumBaseTypeParameterVM = List.empty(growable: true);
 
   /* Maps For Model And StreamModel And BaseTypeParameter */
-  final Map<EnumBaseModelNamedAndBaseListModelNamedVM,IStreamModel<T,Y>> _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel = {};
-  final Map<EnumBaseTypeParameterVM,BaseTypeParameter> _mapEnumBaseTypeParameterVMAndBaseTypeParameter = {};
+  final Map<EnumBaseModelNamedAndBaseListModelNamedVM,IStreamModelNamed<T,Y>> _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed = {};
+  final Map<EnumBaseTypeParameterVM,IStreamBaseTypeParameter> _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter = {};
 
   /* Init DataSource */
   final bool _isExistsDataSource;
@@ -63,8 +65,8 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
   {
     _initListEnumBaseModelNamedAndBaseListModelNamedAndListEnumBaseTypeParameterVM();
-    _initMapEnumBaseModelNamedAndBaseListModelNamedVMAndIStream();
-    _initMapEnumBaseTypeParameterVMAndBaseTypeParameter();
+    _initMapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed();
+    _initMapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter();
   }
 
   // Where parameter initObjectSCModel. SCModel parameter IStreams init DefaultStreamController();
@@ -72,7 +74,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       : _isExistsDataSource = false, super.thereIsDataSource(null)
   {
     _initNoDataSourceListEnumBaseModelNamedAndBaseListModelNamedVM(listEnumBaseModelNamedAndBaseListModelNamedVM);
-    _initMapEnumBaseModelNamedAndBaseListModelNamedVMAndIStream();
+    _initMapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed();
   }
 
   bool get _isNotExistsDataSource {
@@ -81,16 +83,18 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
 
   @override
   void dispose() {
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.forEach((
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.forEach((
         EnumBaseModelNamedAndBaseListModelNamedVM enumBaseModelAndBaseListModelVM,
-        IStreamModel<T,Y> iStreamModel)
+        IStreamModelNamed<T,Y> iStreamModel)
     {
       iStreamModel.dispose();
     });
   }
   /// Start Clone **/
   ///
-  IStreamModel<T,Y> initIStreamModel();
+  IStreamModelNamed<T,Y> initIStreamModelForSuccess();
+
+  IStreamBaseTypeParameter initIStreamBaseTypeParameter();
   /// End Clone **/
 
   /// Start DataSource **/
@@ -124,9 +128,9 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   Future<Y> getListModelFromNamedNPAndSetListModelNamed()
   async {
     Y listModelNamed = await getListModelFromNamedNP();
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP]
         .setListModelNamed = listModelNamed;
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP].getListModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP].getListModelNamed;
   }
 
   @protected
@@ -135,9 +139,9 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   async {
     Y listModelNamed = await getListModelFromNamedNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP]
         .setListModelNamed = listModelNamed;
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP].getListModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedNP].getListModelNamed;
   }
   // end getListNP 4
 
@@ -173,7 +177,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Y> getListModelFromNamedParameterNamedUsingStateTypeParameter()
   {
-    return getListModelFromNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed));
+    return getListModelFromNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed));
   }
 
   @protected
@@ -182,16 +186,16 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameter)
   async {
     Y listModelNamed = await getListModelFromNamedParameterNamed(typeParameter);
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed]
         .setListModelNamed = listModelNamed;
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed].getListModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed].getListModelNamed;
   }
 
   @protected
   @nonVirtual
   Future<Y> getListModelFromNamedParameterNamedAndSetListModelNamedUsingStateTypeParameter()
   {
-    return getListModelFromNamedParameterNamedAndSetListModelNamed(getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed));
+    return getListModelFromNamedParameterNamedAndSetListModelNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed));
   }
 
   @protected
@@ -203,9 +207,9 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
     Y listModelNamed = await getListModelFromNamedParameterNamedUsingTypeParameterForFBDS(
         typeParameter,
         typeParameterForFBDS);
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed]
         .setListModelNamed = listModelNamed;
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed].getListModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[EnumBaseModelNamedAndBaseListModelNamedVM.getListModelFromNamedParameterNamed].getListModelNamed;
   }
 
   @protected
@@ -214,7 +218,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return getListModelFromNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed),
         typeParameterForFBDS);
   }
 
@@ -224,7 +228,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return getListModelFromNamedParameterNamedAndSetListModelNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end getListParameterNamed 8
@@ -305,7 +309,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<T> getModelFromNamedParameterNamedUsingStateTypeParameter()
   {
-    return getModelFromNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed));
+    return getModelFromNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed));
   }
 
   @protected
@@ -322,7 +326,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<T> getModelFromNamedParameterNamedAndSetModelNamedUsingStateTypeParameter()
   {
-    return getModelFromNamedParameterNamedAndSetModelNamed(getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed));
+    return getModelFromNamedParameterNamedAndSetModelNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed));
   }
 
   @protected
@@ -344,7 +348,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return getModelFromNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed),
         typeParameterForFBDS);
   }
 
@@ -354,7 +358,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return getModelFromNamedParameterNamedAndSetModelNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end getParameterNamed 8
@@ -462,7 +466,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Response> insertModelToNamedParameterNamedUsingStateTypeParameter()
   {
-    return insertModelToNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.insertModelToNamedParameterNamed));
+    return insertModelToNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.insertModelToNamedParameterNamed));
   }
 
   @protected
@@ -471,7 +475,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return insertModelToNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.insertModelToNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.insertModelToNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end insertParameterNamed 4
@@ -579,7 +583,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Response> insertListModelToNamedParameterNamedUsingStateTypeParameter()
   {
-    return insertListModelToNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.insertListModelToNamedParameterNamed));
+    return insertListModelToNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.insertListModelToNamedParameterNamed));
   }
 
   @protected
@@ -588,7 +592,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return insertListModelToNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.insertListModelToNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.insertListModelToNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end insertListParameterNamed 4
@@ -696,7 +700,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Response> updateModelToNamedParameterNamedUsingStateTypeParameter()
   {
-    return updateModelToNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedParameterNamed));
+    return updateModelToNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedParameterNamed));
   }
 
   @protected
@@ -705,7 +709,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return updateModelToNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end updateParameterNamed 4
@@ -813,7 +817,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Response> updateListModelToNamedParameterNamedUsingStateTypeParameter()
   {
-    return updateListModelToNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedParameterNamed));
+    return updateListModelToNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedParameterNamed));
   }
 
   @protected
@@ -822,7 +826,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return updateListModelToNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end updateListParameterNamed 4
@@ -930,7 +934,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Response> deleteModelToNamedParameterNamedUsingStateTypeParameter()
   {
-    return deleteModelToNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedParameterNamed));
+    return deleteModelToNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedParameterNamed));
   }
 
   @protected
@@ -939,7 +943,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return deleteModelToNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end deleteParameterNamed 4
@@ -1047,7 +1051,7 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   @nonVirtual
   Future<Response> deleteListModelToNamedParameterNamedUsingStateTypeParameter()
   {
-    return deleteListModelToNamedParameterNamed(getTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedParameterNamed));
+    return deleteListModelToNamedParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedParameterNamed));
   }
 
   @protected
@@ -1056,90 +1060,155 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       BaseTypeParameter typeParameterForFBDS)
   {
     return deleteListModelToNamedParameterNamedUsingTypeParameterForFBDS(
-        getTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedParameterNamed),
+        getBaseTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedParameterNamed),
         typeParameterForFBDS);
   }
   // end deleteListParameterNamed 4
   /// End DataSource **/
 
-  /// Start BaseTypeParameter **/
-  BaseTypeParameter getTypeParameter(
+  /// Start IStreamBaseTypeParameter **/
+  @protected
+  @nonVirtual
+  IStreamBaseTypeParameter getIStreamBaseTypeParameter(
       EnumBaseTypeParameterVM operation)
   {
-    if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation];
+    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation];
+  }
+  /// End IStreamBaseTypeParameter **/
+
+  /// Start BaseTypeParameter **/
+  @protected
+  @nonVirtual
+  Future<BaseTypeParameter> getFutureBaseTypeParameter(
+      EnumBaseTypeParameterVM operation)
+  async {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation].getBaseTypeParameter;
   }
 
   @protected
   @nonVirtual
-  void setTypeParameter(
-      EnumBaseTypeParameterVM operation,
-      BaseTypeParameter typeParameter)
+  Object getStreamBaseTypeParameter(
+      EnumBaseTypeParameterVM operation)
   {
-    if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = typeParameter;
+    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation].getStreamBaseTypeParameter;
   }
 
   @protected
   @nonVirtual
-  void setTypeParameterUsingClone(
+  BaseTypeParameter getBaseTypeParameter(
+      EnumBaseTypeParameterVM operation)
+  {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation].getBaseTypeParameter;
+  }
+
+  @protected
+  @nonVirtual
+  void setBaseTypeParameter(
       EnumBaseTypeParameterVM operation,
       BaseTypeParameter typeParameter)
   {
-    if(!_mapEnumBaseTypeParameterVMAndBaseTypeParameter.containsKey(operation)) {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseTypeParameterVMAndBaseTypeParameter[operation] = BaseTypeParameter(typeParameter.getParameter);
+    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
+        .setBaseTypeParameter = typeParameter;
   }
-  /// End Base/EnumTypeParameter **/
 
-  /// Start IStream **/
-  IStreamModel<T,Y> getIStreamModel(
+  @protected
+  @nonVirtual
+  void setBaseTypeParameterUsingClone(
+      EnumBaseTypeParameterVM operation,
+      BaseTypeParameter typeParameter)
+  {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
+        .setBaseTypeParameter = cloneBaseTypeParameter(typeParameter);
+  }
+
+  @protected
+  @nonVirtual
+  void notifyStreamBaseTypeParameter(
+      EnumBaseTypeParameterVM operation,)
+  {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
+        .notifyStreamBaseTypeParameter(thisClass);
+  }
+
+  @protected
+  @nonVirtual
+  void notifyStreamBaseTypeParameterUsingDelayInSeconds(
+      EnumBaseTypeParameterVM operation,)
+  {
+    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
+      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
+        .notifyStreamBaseTypeParameterUsingDelayInSeconds(thisClass);
+  }
+  /// End BaseTypeParameter **/
+
+  /// Start IStreamModelNamed **/
+  @protected
+  @nonVirtual
+  IStreamModelNamed<T,Y> getIStreamModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation];
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation];
   }
-  /// End IStream **/
+  /// End IStreamModelNamed **/
 
   /// Start ModelNamed **/
-  @protected
-  @nonVirtual
-  T getModelNamed(
-      EnumBaseModelNamedAndBaseListModelNamedVM operation)
-  {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].getModelNamed;
-  }
-
   @protected
   @nonVirtual
   Future<T> getFutureModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   async {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].getModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation].getModelNamed;
   }
 
   @protected
   @nonVirtual
-  Stream<T> getStreamModelNamed(
+  Object getStreamModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].getStreamModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation].getStreamModelNamed;
+  }
+
+  @protected
+  @nonVirtual
+  T getModelNamed(
+      EnumBaseModelNamedAndBaseListModelNamedVM operation)
+  {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation].getModelNamed;
   }
 
   @protected
@@ -1148,10 +1217,11 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       EnumBaseModelNamedAndBaseListModelNamedVM operation,
       T modelNamed)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].setModelNamed = modelNamed;
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
+        .setModelNamed = modelNamed;
   }
 
   @protected
@@ -1160,10 +1230,11 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       EnumBaseModelNamedAndBaseListModelNamedVM operation,
       T modelNamed)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].setModelNamed = cloneModelNamed(modelNamed);
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
+        .setModelNamed = cloneModelNamedForSuccess(modelNamed);
   }
 
   @protected
@@ -1171,10 +1242,10 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   void notifyStreamModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
         .notifyStreamModelNamed(thisClass);
   }
 
@@ -1183,10 +1254,10 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   void notifyStreamModelNamedUsingDelayInSeconds(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
         .notifyStreamModelNamedUsingDelayInSeconds(thisClass);
   }
   /// End ModelNamed **/
@@ -1194,35 +1265,35 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   /// Start ListModelNamed **/
   @protected
   @nonVirtual
-  Y getListModelNamed(
-      EnumBaseModelNamedAndBaseListModelNamedVM operation)
-  {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].getListModelNamed;
-  }
-
-  @protected
-  @nonVirtual
   Future<Y> getFutureListModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   async {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].getListModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation].getListModelNamed;
   }
 
   @protected
   @nonVirtual
-  Stream<Y> getStreamListModelNamed(
+  Object getStreamListModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation].getStreamListModelNamed;
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation].getStreamListModelNamed;
+  }
+
+  @protected
+  @nonVirtual
+  Y getListModelNamed(
+      EnumBaseModelNamedAndBaseListModelNamedVM operation)
+  {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
+    }
+    return _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation].getListModelNamed;
   }
 
   @protected
@@ -1231,10 +1302,10 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       EnumBaseModelNamedAndBaseListModelNamedVM operation,
       Y listModelNamed)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
         .setListModelNamed = listModelNamed;
   }
 
@@ -1244,11 +1315,11 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
       EnumBaseModelNamedAndBaseListModelNamedVM operation,
       Y listModelNamed)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation]
-        .setListModelNamed = cloneListModelNamed(listModelNamed);
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
+        .setListModelNamed = cloneListModelNamedForSuccess(listModelNamed);
   }
 
   @protected
@@ -1256,10 +1327,10 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   void notifyStreamListModelNamed(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
         .notifyStreamListModelNamed(thisClass);
   }
 
@@ -1268,10 +1339,10 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
   void notifyStreamListModelNamedUsingDelayInSeconds(
       EnumBaseModelNamedAndBaseListModelNamedVM operation)
   {
-    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[operation]
+    _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[operation]
         .notifyStreamListModelNamedUsingDelayInSeconds(thisClass);
   }
   /// End ListModelNamed **/
@@ -1341,15 +1412,15 @@ abstract class BaseViewModel<T extends BaseModelNamed,Y extends BaseListModelNam
     _listEnumBaseModelNamedAndBaseListModelNamedVM.addAll(listEnumBaseModelNamedAndBaseListModelNamedVM);
   }
 
-  void _initMapEnumBaseModelNamedAndBaseListModelNamedVMAndIStream() {
+  void _initMapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed() {
     for(EnumBaseModelNamedAndBaseListModelNamedVM enumBaseModelNamedAndBaseListModelNamedVM in _listEnumBaseModelNamedAndBaseListModelNamedVM) {
-      _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModel[enumBaseModelNamedAndBaseListModelNamedVM] = initIStreamModel();
+      _mapEnumBaseModelNamedAndBaseListModelNamedVMAndIStreamModelNamed[enumBaseModelNamedAndBaseListModelNamedVM] = initIStreamModelForSuccess();
     }
   }
 
-  void _initMapEnumBaseTypeParameterVMAndBaseTypeParameter() {
+  void _initMapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter() {
     for(EnumBaseTypeParameterVM enumBaseTypeParameterVM in _listEnumBaseTypeParameterVM) {
-      _mapEnumBaseTypeParameterVMAndBaseTypeParameter[enumBaseTypeParameterVM] = BaseTypeParameter(null);
+      _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[enumBaseTypeParameterVM] = initIStreamBaseTypeParameter();
     }
   }
 }

@@ -19,22 +19,30 @@ import 'package:library_architecture_mvvm_modify/utility/base_model_named_databa
 import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_enum_no_ds.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/base_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_view_model/enum_named_vm/enum_base_model_named_and_base_list_model_named_vm.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_parameter.dart';
 
-abstract class EnumNoDSViewModel<T extends Enum>
-    extends BaseViewModel<EnumNoDS,ListEnumNoDS,T>
+abstract class EnumNoDSViewModel
+    extends BaseViewModel<EnumNoDS,ListEnumNoDS>
 {
   EnumNoDSViewModel(List<EnumBaseModelNamedAndBaseListModelNamedVM> listEnumBaseModelNamedAndBaseListModelNamedVM,) : super.noDataSource(listEnumBaseModelNamedAndBaseListModelNamedVM);
 
   @override
   @nonVirtual
-  EnumNoDS cloneModelNamed(
+  EnumNoDS cloneModelNamedForSuccess(
       EnumNoDS modelNamed)
   {
     return EnumNoDS(modelNamed.field);
   }
 
   @override
-  ListEnumNoDS cloneListModelNamed(ListEnumNoDS listModelNamed) {
+  @nonVirtual
+  ListEnumNoDS cloneListModelNamedForSuccess(ListEnumNoDS listModelNamed) {
     return ListEnumNoDS(listModelNamed.listModelNamed);
+  }
+
+  @override
+  @nonVirtual
+  IStreamBaseTypeParameter initIStreamBaseTypeParameter() {
+    return null;
   }
 }
