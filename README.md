@@ -42,14 +42,15 @@ Coming soon
 ## Documentation
 
 ### Architecture Components
-- #### DataSource
-  - ##### Service
-- #### BackgroundModel
+- #### ModelQNamedServiceDataSource
+  - ##### NamedService
+    - ###### NamedSingleton
+- #### ModelQNamedServiceBackgroundModel
   - ##### FBDS
-- #### ViewModel
+- #### ModelQNamedServiceViewModel
   - ##### FBDS
-- #### ListOfViewModelForViewOrWidgetForView
-- #### ViewOrWidgetForView
+- #### NamedViewOrNamedWidgetForNamedViewListViewModel
+- #### NamedViewOrNamedWidgetForNamedView
   - ##### ManageForDistributingStreamsBetweenViews
 
 ### Utility
