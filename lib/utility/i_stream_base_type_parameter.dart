@@ -24,5 +24,5 @@ abstract class IStreamBaseTypeParameter
   BaseTypeParameter get getBaseTypeParameter;
   set setBaseTypeParameter(BaseTypeParameter baseTypeParameter);
   void notifyStreamBaseTypeParameter(Object thisClass);
-  void notifyStreamBaseTypeParameterUsingDelayInSeconds(Object thisClass);
+  void notifyStreamDelayInSecondsBaseTypeParameter(Object thisClass);
 }

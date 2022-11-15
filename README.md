@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-<img src="/assets/library_architecture_mvvm_modify_1_0_9.png"/>
+<img src="/assets/library_architecture_mvvm_modify_1_1_0.png"/>
 
 ## Examples
 

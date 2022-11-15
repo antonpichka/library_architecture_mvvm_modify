@@ -15,10 +15,10 @@
  */
 
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_list_model_named.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/base_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_model_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 /*
   initialize only in view classes
  */
@@ -27,19 +27,19 @@ class ManagerForDistributingStreamsBetweenViews
 {
   static final ManagerForDistributingStreamsBetweenViews ssc = ManagerForDistributingStreamsBetweenViews._();
 
-  Map<Type,Map<Type,Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>>> _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedAndIStreamModelNamed = {};
-  Map<Type,Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>> _mapTypeViewAndMapEnumModelNamedAndIStreamModelNamed = {};
+  Map<Type,Map<Type,Map<Enum,IStreamModel<BaseModel,BaseListModel>>>> _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndIStreamModel = {};
+  Map<Type,Map<Enum,IStreamModel<BaseModel,BaseListModel>>> _mapTypeViewAndMapEnumModelAndIStreamModel = {};
 
   ManagerForDistributingStreamsBetweenViews._();
   /*
      call to main.dart or to main_view.dart to method initState();
    */
   void initMapForWidgetAndView(
-      {Map<Type,Map<Type,Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>>> mapModelForWidget,
-      Map<Type,Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>> mapModelForView})
+      {Map<Type,Map<Type,Map<Enum,IStreamModel<BaseModel,BaseListModel>>>> mapModelNamedForWidget,
+      Map<Type,Map<Enum,IStreamModel<BaseModel,BaseListModel>>> mapModelNamedForView})
   {
-    _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedAndIStreamModelNamed = mapModelForWidget ?? {};
-    _mapTypeViewAndMapEnumModelNamedAndIStreamModelNamed = mapModelForView ?? {};
+    _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndIStreamModel = mapModelNamedForWidget ?? {};
+    _mapTypeViewAndMapEnumModelAndIStreamModel = mapModelNamedForView ?? {};
   }
   /*
      call to main_view.dart to method dispose();
@@ -50,47 +50,47 @@ class ManagerForDistributingStreamsBetweenViews
     _disposeForView();
   }
 
-  T getIStreamModelNamedForWidget<T extends IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>(
+  T getIStreamModelForWidget<T extends IStreamModel<BaseModel,BaseListModel>>(
       Type typeView,
       Type typeWidget,
-      Enum enumModelNamed)
+      Enum enumModel)
   {
-    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedAndIStreamModelNamed.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapTypeWidgetAndMapEnumModelAndIStreamModel.containsKey(typeView)) {
       return throw LocalException(this,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedAndIStreamModelNamed[typeView][typeWidget][enumModelNamed];
+    return _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndIStreamModel[typeView][typeWidget][enumModel];
   }
 
-  T getIStreamModelNamedForView<T extends IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>(
+  T getIStreamModelForView<T extends IStreamModel<BaseModel,BaseListModel>>(
       Type typeView,
-      Enum enumModelNamed)
+      Enum enumModel)
   {
-    if(!_mapTypeViewAndMapEnumModelNamedAndIStreamModelNamed.containsKey(typeView)) {
+    if(!_mapTypeViewAndMapEnumModelAndIStreamModel.containsKey(typeView)) {
       return throw LocalException(this,EnumGuiltyForLocalException.developer,"$typeView not found");
     }
-    return _mapTypeViewAndMapEnumModelNamedAndIStreamModelNamed[typeView][enumModelNamed];
+    return _mapTypeViewAndMapEnumModelAndIStreamModel[typeView][enumModel];
   }
 
   void _disposeForWidget() {
-    Iterator<Map<Type,Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>>> iteratorMapTypeWidgetAndMapEnumModelAndIStreamModelNamed = _mapTypeViewAndMapTypeWidgetAndMapEnumModelNamedAndIStreamModelNamed.values.iterator;
-    while(iteratorMapTypeWidgetAndMapEnumModelAndIStreamModelNamed.moveNext()) {
-      Iterator<Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>> iteratorMapEnumModelAndIStreamModelNamed =  iteratorMapTypeWidgetAndMapEnumModelAndIStreamModelNamed.current.values.iterator;
-      while(iteratorMapEnumModelAndIStreamModelNamed.moveNext()) {
-        Iterator<IStreamModelNamed<BaseModelNamed,BaseListModelNamed>> iteratorIStreamModelNamed  = iteratorMapEnumModelAndIStreamModelNamed.current.values.iterator;
-        while(iteratorIStreamModelNamed.moveNext()) {
-          IStreamModelNamed<BaseModelNamed,BaseListModelNamed> iStreamModelNamed = iteratorIStreamModelNamed.current;
-          iStreamModelNamed.dispose();
+    Iterator<Map<Type,Map<Enum,IStreamModel<BaseModel,BaseListModel>>>> iteratorMapTypeWidgetAndMapEnumModelAndIStreamModel = _mapTypeViewAndMapTypeWidgetAndMapEnumModelAndIStreamModel.values.iterator;
+    while(iteratorMapTypeWidgetAndMapEnumModelAndIStreamModel.moveNext()) {
+      Iterator<Map<Enum,IStreamModel<BaseModel,BaseListModel>>> iteratorMapEnumModelAndIStreamModel =  iteratorMapTypeWidgetAndMapEnumModelAndIStreamModel.current.values.iterator;
+      while(iteratorMapEnumModelAndIStreamModel.moveNext()) {
+        Iterator<IStreamModel<BaseModel,BaseListModel>> iteratorIStreamModel  = iteratorMapEnumModelAndIStreamModel.current.values.iterator;
+        while(iteratorIStreamModel.moveNext()) {
+          IStreamModel<BaseModel,BaseListModel> iStreamModel = iteratorIStreamModel.current;
+          iStreamModel.dispose();
         }
       }
     }
   }
 
   void _disposeForView() {
-    Iterator<Map<Enum,IStreamModelNamed<BaseModelNamed,BaseListModelNamed>>> iteratorMapEnumModelAndIStreamModelNamed = _mapTypeViewAndMapEnumModelNamedAndIStreamModelNamed.values.iterator;
-    while(iteratorMapEnumModelAndIStreamModelNamed.moveNext()) {
-      Iterator<IStreamModelNamed<BaseModelNamed,BaseListModelNamed>> iteratorIStreamModelNamed  = iteratorMapEnumModelAndIStreamModelNamed.current.values.iterator;
-      while(iteratorIStreamModelNamed.moveNext()) {
-        IStreamModelNamed<BaseModelNamed,BaseListModelNamed> iStreamModel = iteratorIStreamModelNamed.current;
+    Iterator<Map<Enum,IStreamModel<BaseModel,BaseListModel>>> iteratorMapEnumModelAndIStreamModel = _mapTypeViewAndMapEnumModelAndIStreamModel.values.iterator;
+    while(iteratorMapEnumModelAndIStreamModel.moveNext()) {
+      Iterator<IStreamModel<BaseModel,BaseListModel>> iteratorIStreamModel  = iteratorMapEnumModelAndIStreamModel.current.values.iterator;
+      while(iteratorIStreamModel.moveNext()) {
+        IStreamModel<BaseModel,BaseListModel> iStreamModel = iteratorIStreamModel.current;
         iStreamModel.dispose();
       }
     }

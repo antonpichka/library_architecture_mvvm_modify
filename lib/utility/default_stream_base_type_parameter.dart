@@ -25,6 +25,7 @@ class DefaultStreamBaseTypeParameter
   final StreamController<BaseTypeParameter> _streamControllerForBaseTypeParameter;
   final int _delayInSeconds;
   BaseTypeParameter _baseTypeParameter;
+  StreamSubscription<BaseTypeParameter> _streamSubscriptionForBaseTypeParameter;
 
   DefaultStreamBaseTypeParameter(
       [this._delayInSeconds = 30]) :
@@ -33,6 +34,9 @@ class DefaultStreamBaseTypeParameter
 
   @override
   void dispose() {
+    if(_streamSubscriptionForBaseTypeParameter != null) {
+      _streamSubscriptionForBaseTypeParameter.cancel();
+    }
     if(!_streamControllerForBaseTypeParameter.isClosed) {
       _streamControllerForBaseTypeParameter.close();
     }
@@ -67,7 +71,7 @@ class DefaultStreamBaseTypeParameter
   }
 
   @override
-  Future<void> notifyStreamBaseTypeParameterUsingDelayInSeconds(
+  Future<void> notifyStreamDelayInSecondsBaseTypeParameter(
       Object thisClass)
   async {
     if(_streamControllerForBaseTypeParameter.isClosed) {
@@ -87,5 +91,29 @@ class DefaultStreamBaseTypeParameter
         throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
       }
     }
+  }
+
+  void listensStreamBaseTypeParameter(
+      Function(BaseTypeParameter event) callback)
+  {
+    _streamSubscriptionForBaseTypeParameter = _streamControllerForBaseTypeParameter
+        .stream
+        .listen((event) {
+          callback(event);
+        });
+  }
+
+  void resumeStreamSubscriptionForBaseTypeParameter() {
+    if(!_streamSubscriptionForBaseTypeParameter.isPaused) {
+      return;
+    }
+    _streamSubscriptionForBaseTypeParameter.resume();
+  }
+
+  void pauseStreamSubscriptionForBaseTypeParameter() {
+    if(_streamSubscriptionForBaseTypeParameter.isPaused) {
+      return;
+    }
+    _streamSubscriptionForBaseTypeParameter.pause();
   }
 }

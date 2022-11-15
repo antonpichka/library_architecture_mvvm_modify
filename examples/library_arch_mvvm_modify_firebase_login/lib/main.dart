@@ -1,16 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelNamedBackgroundModel/UserFirebaseAuthAndTempCacheBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedView/MainView.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthService.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/TempCacheService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/userQFirebaseAuthAndTempCacheServiceBackgroundModel/UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedView/MainView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  final userFirebaseAuthAndTempCacheBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache = UserFirebaseAuthAndTempCacheBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthService.getFirebaseAuth,TempCacheService.getTempCache);
-  await userFirebaseAuthAndTempCacheBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.getCustomStreamUserFirebaseAuthAndTempCache.first;
+  final userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache = UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService());
+  await userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.getCustomStreamUser.first;
 
   runApp(App());
 }
@@ -23,8 +22,7 @@ class App
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'LibraryArchMVVMModifyFirebaseLogin',
-        theme: ThemeData(
-            primaryColor: Colors.blue),
+        theme: ThemeData(primaryColor: Colors.blue),
         initialRoute: "/",
         routes: {
           "/" : (context) => MainView()

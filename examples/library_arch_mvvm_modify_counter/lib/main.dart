@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/MainView.dart';
-import 'package:library_arch_mvvm_modify_counter/namedView/namedWidgetForMainView/IntNoDSTextWidgetForMainView.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/int_no_ds.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model_named_database/list_int_no_ds.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream_model_named.dart';
+import 'package:library_arch_mvvm_modify_counter/namedViewOrNamedWidgetForNamedView/MainView.dart';
+import 'package:library_arch_mvvm_modify_counter/namedViewOrNamedWidgetForNamedView/IntTextWidgetForMainView.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model/list_int.dart';
+import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/manager_for_distributing_streams_between_views.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   ManagerForDistributingStreamsBetweenViews.ssc.initMapForWidgetAndView(
-      mapModelForWidget: {
+      mapModelNamedForWidget: {
         MainView : {
-          IntNoDSTextWidgetForMainView : {
-            EnumIntNoDSTextWidgetForMainView.IntNoDS : DefaultStreamModelNamed<IntNoDS,ListIntNoDS>(IntNoDS.getIntNoDS,ListIntNoDS([]))
+          IntTextWidgetForMainView : {
+            EnumIntTextWidgetForMainView.int : DefaultStreamModel<Int,ListInt>(Int.success(0),ListInt.success([]))
           }
         }
       });

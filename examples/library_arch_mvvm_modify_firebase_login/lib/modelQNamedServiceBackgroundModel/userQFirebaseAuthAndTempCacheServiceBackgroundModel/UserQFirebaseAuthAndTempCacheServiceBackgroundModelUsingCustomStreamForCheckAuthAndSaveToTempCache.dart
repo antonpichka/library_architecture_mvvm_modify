@@ -1,0 +1,19 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/UserQNamedServiceBackgroundModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/userQFirebaseAuthAndTempCacheServiceDataSource/UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
+
+class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache
+    extends UserQNamedServiceBackgroundModel
+{
+  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService firebaseAuthAndTempCacheService) : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(firebaseAuthAndTempCacheService));
+
+  @override
+  Object thisClass() {
+    return this;
+  }
+
+  Stream<User> get getCustomStreamUser {
+    return getDataSource<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>().getCustomStreamUser;
+  }
+}

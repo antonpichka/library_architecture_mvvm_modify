@@ -12,4 +12,8 @@ class TempCache {
     if (value is T) return value;
     return null;
   }
+
+  void delete(String key) {
+    _mapStringAndObject.remove(key);
+  }
 }

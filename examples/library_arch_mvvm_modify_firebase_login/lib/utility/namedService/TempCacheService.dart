@@ -1,13 +1,14 @@
-import 'package:library_arch_mvvm_modify_firebase_login/utility/TempCache.dart';
+
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/TempCacheSingleton.dart';
 
 class TempCacheService {
-  static TempCache _tempCache;
+  TempCacheSingleton _tempCacheSingleton;
 
-  static TempCache get getTempCache {
-    if(_tempCache != null) {
-      return _tempCache;
+  TempCacheSingleton get getTempCacheSingleton {
+    if(_tempCacheSingleton != null) {
+      return _tempCacheSingleton;
     }
-    _tempCache = TempCache();
-    return _tempCache;
+    _tempCacheSingleton = TempCacheSingleton();
+    return _tempCacheSingleton;
   }
 }

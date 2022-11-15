@@ -1,13 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/FirebaseAuthSingleton.dart';
 
 class FirebaseAuthService {
-  static FirebaseAuth _firebaseAuth;
+  FirebaseAuthSingleton _firebaseAuthSingleton;
 
-  static FirebaseAuth get getFirebaseAuth {
-    if(_firebaseAuth != null) {
-      return _firebaseAuth;
+  FirebaseAuthSingleton get getFirebaseAuthSingleton {
+    if(_firebaseAuthSingleton != null) {
+      return _firebaseAuthSingleton;
     }
-    _firebaseAuth = FirebaseAuth.instance;
-    return _firebaseAuth;
+    _firebaseAuthSingleton = FirebaseAuthSingleton();
+    return _firebaseAuthSingleton;
   }
 }
