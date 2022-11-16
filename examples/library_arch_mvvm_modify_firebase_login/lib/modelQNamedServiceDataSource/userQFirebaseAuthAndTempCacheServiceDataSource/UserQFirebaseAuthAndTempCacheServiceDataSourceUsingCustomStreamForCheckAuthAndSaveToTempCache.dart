@@ -15,8 +15,8 @@ class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAut
         .map((firebase_auth.User firebaseUser)
     {
       User user = firebaseUser == null
-          ? User.getUser
-          : User.fromFirebaseUser(firebaseUser);
+          ? User.getUserForSuccessWhereDataEqualsNull
+          : User.fromFirebaseUserForSuccess(firebaseUser);
       _firebaseAuthAndTempCacheService
           .getTempCacheSingleton
           .getTempCache

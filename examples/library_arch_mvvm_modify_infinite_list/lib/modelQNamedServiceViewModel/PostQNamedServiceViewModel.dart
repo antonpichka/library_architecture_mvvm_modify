@@ -13,7 +13,7 @@ abstract class PostQNamedServiceViewModel
 
   @override
   IStreamModel<Post,ListPost> initIStreamModelForSuccess() {
-    return DefaultStreamModel<Post,ListPost>(Post.getPost,ListPost.success([]));
+    return DefaultStreamModel<Post,ListPost>(Post.getPostForSuccess,ListPost.success([]));
   }
 
   @override

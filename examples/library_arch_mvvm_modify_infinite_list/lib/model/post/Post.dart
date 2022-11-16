@@ -11,7 +11,7 @@ class Post
   Post.success(this.id,this.title,this.body) : super.success(id.toString());
   Post.exception(BaseException exception) : super.exception(exception);
 
-  factory Post.fromMap(
+  factory Post.fromMapForSuccess(
       Map<String,dynamic> map)
   {
     return Post.success(
@@ -20,7 +20,7 @@ class Post
         map[constParameterBody]);
   }
 
-  static Post get getPost => Post.success(0,"", "");
+  static Post get getPostForSuccess => Post.success(0,"", "");
   static const constPostsUrl = "/posts";
   static const constParameterId = "id";
   static const constParameterTitle = "title";

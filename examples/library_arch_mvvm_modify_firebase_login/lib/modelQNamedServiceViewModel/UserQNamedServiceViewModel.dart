@@ -21,8 +21,8 @@ abstract class UserQNamedServiceViewModel
   }
 
   @override
-  ListUser cloneListModelForSuccess(ListUser listModelNamed) {
-    return ListUser.success(listModelNamed.listModel);
+  ListUser cloneListModelForSuccess(ListUser listModel) {
+    return ListUser.success(listModel.listModel);
   }
 
   @override
@@ -32,6 +32,6 @@ abstract class UserQNamedServiceViewModel
 
   @override
   IStreamModel<User, ListUser> initIStreamModelForSuccess() {
-    return DefaultStreamModel(User.getUser, ListUser.success([]));
+    return DefaultStreamModel(User.getUserForSuccess, ListUser.success([]));
   }
 }

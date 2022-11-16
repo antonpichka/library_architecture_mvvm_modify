@@ -17,7 +17,7 @@ abstract class UserQNamedServiceBackgroundModel
   }
 
   @override
-  ListUser cloneListModelForSuccess(ListUser listModelNamed) {
-    return ListUser.success(listModelNamed.listModel);
+  ListUser cloneListModelForSuccess(ListUser listModel) {
+    return ListUser.success(listModel.listModel);
   }
 }

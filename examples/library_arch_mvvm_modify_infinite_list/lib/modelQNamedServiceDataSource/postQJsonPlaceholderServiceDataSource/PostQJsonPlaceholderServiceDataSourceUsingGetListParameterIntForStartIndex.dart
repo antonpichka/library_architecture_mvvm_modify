@@ -31,7 +31,7 @@ class PostQJsonPlaceholderServiceDataSourceUsingGetListParameterIntForStartIndex
       final body = json.decode(response.body) as List;
       List<Post> listPost = body.map((dynamic json) {
         final map = json as Map<String,dynamic>;
-        return Post.fromMap(map);
+        return Post.fromMapForSuccess(map);
       }).toList();
       return ListPost.success(listPost);
     } on NetworkException catch(e) {

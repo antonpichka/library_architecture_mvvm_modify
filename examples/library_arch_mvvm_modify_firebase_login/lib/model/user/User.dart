@@ -2,6 +2,11 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
+enum EnumStatusUserForAuth {
+  authenticated,
+  unauthenticated
+}
+
 class User
     extends BaseModel
 {
@@ -11,8 +16,7 @@ class User
 
   User.success(String uniqueId,this.email,this.name,this.photo) : super.success(uniqueId);
   User.exception(BaseException exception) : super.exception(exception);
-
-  factory User.fromFirebaseUser(
+  factory User.fromFirebaseUserForSuccess(
       firebase_auth.User firebaseUser)
   {
     return User.success(
@@ -22,8 +26,17 @@ class User
         firebaseUser.photoURL);
   }
 
-  static User get getUser => User.success("","","","");
+  static User get getUserForSuccess => User.success("","","","");
+  static User get getUserForSuccessWhereDataEqualsNull => User.success("null","null","null","null");
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
+
+
+  EnumStatusUserForAuth get getEnumStatusUserForAuth {
+    if(isEqualsNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
+      return EnumStatusUserForAuth.unauthenticated;
+    }
+    return EnumStatusUserForAuth.authenticated;
+  }
 
   bool isEmptyParameterUniqueId() {
     return uniqueId.isEmpty;
@@ -31,5 +44,20 @@ class User
 
   bool isNotEmptyParameterUniqueId() {
     return uniqueId.isNotEmpty;
+  }
+
+  bool isNotNullParameterPhoto() {
+    return photo != null;
+  }
+
+  bool isNullParameterPhoto() {
+    return photo == null;
+  }
+
+  bool isEqualsNullParametersUniqueIdAndEmailAndNameAndPhoto() {
+    return uniqueId == "null" &&
+        email.isEmpty == "null" &&
+        name.isEmpty == "null" &&
+        photo.isEmpty == "null";
   }
 }

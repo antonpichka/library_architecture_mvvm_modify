@@ -89,7 +89,7 @@ class ListPost
   bool insertListPostToList(
       List<Post> listPost)
   {
-    return super.insertListModelToList(this,listPost);
+    return insertListModelToList(this,listPost);
   }
 
   bool isFromIndexMoreOrEqualParameterLengthByListPost(

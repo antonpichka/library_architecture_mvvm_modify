@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedView/HomeView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedView/LoginView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedViewListViewModel/MainViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_or_named_widget_for_named_view/base_named_view_or_named_widget_for_named_view.dart';
 
@@ -18,6 +20,9 @@ class _MainViewState
   @override
   void initState() {
     super.initState();
+    lo.listensCustomStreamUserAndInGeneralZeroTask((User user) {
+      lo.setUserUsingGetNPAndInGeneralZeroTask(user);
+    });
   }
 
   @override
@@ -27,13 +32,23 @@ class _MainViewState
 
   @override
   Widget build(BuildContext context) {
+    lo.getUserFromTempCacheServiceNPAndSetUserAndInGeneralOneTask();
     return StreamBuilder<User>(
+        stream: lo.getStreamUserUsingGetNP,
         builder: (BuildContext buildContext, AsyncSnapshot<User> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
-            return Center(child: CircularProgressIndicator());
+            return Scaffold(body: Center(child: CircularProgressIndicator()));
           }
-
+          User user = asyncSnapshot.data;
+          switch(user.getEnumStatusUserForAuth) {
+            case EnumStatusUserForAuth.authenticated:
+              return HomeView(user);
+            case EnumStatusUserForAuth.unauthenticated:
+              return LoginView();
+            default:
+              return Container();
+          }
         });
   }
 }
