@@ -48,14 +48,6 @@ class ExceptionControllerForModel {
   }
 
   @nonVirtual
-  set setParameterEnumWhatIsTheException(
-      EnumWhatIsTheException enumWhatIsTheException)
-  {
-    this.enumWhatIsTheException = enumWhatIsTheException;
-    _exception = null;
-  }
-
-  @nonVirtual
   bool isNotNullParameterException() {
     if(_exception == null) {
       return false;

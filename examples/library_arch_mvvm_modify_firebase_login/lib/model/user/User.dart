@@ -18,6 +18,7 @@ class User
 
   User.success(String uniqueId,this.email,this.name,this.photo) : super.success(uniqueId);
   User.exception(BaseException exception) : super.exception(exception);
+
   factory User.fromFirebaseUserForSuccess(
       firebase_auth.User firebaseUser)
   {

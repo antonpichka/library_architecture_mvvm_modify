@@ -22,8 +22,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 import 'package:library_architecture_mvvm_modify/utility/exception_controller_for_model.dart';
 
 class BaseListModel<T extends BaseModel> {
-  final ExceptionControllerForModel exceptionControllerForModel;
   List<T> listModel;
+  ExceptionControllerForModel exceptionControllerForModel;
   BaseIterator<T> _iterator;
   Enum _enumNamedForIteratorSelection;
   Map<Enum,BaseIterator<T>> _mapEnumNamedForIteratorAndIterator;
@@ -63,6 +63,13 @@ class BaseListModel<T extends BaseModel> {
       List<T> listModel)
   {
     this.listModel = listModel;
+  }
+
+  @nonVirtual
+  set setParameterExceptionControllerForModel(
+      ExceptionControllerForModel exceptionControllerForModel)
+  {
+    this.exceptionControllerForModel = exceptionControllerForModel;
   }
 
   @protected

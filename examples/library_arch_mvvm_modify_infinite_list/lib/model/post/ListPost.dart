@@ -53,24 +53,22 @@ class ListPost
     this.hasReachedMax = hasReachedMax;
   }
 
-  void insertListPostToListAndSetFromListPostParametersHasReachedMaxAndEnumWhatIsTheException(
+  void insertListPostToListAndSetFromListPostParametersHasReachedMaxAndExceptionControllerForModel(
       ListPost listPost)
   {
-    exceptionControllerForModel
-        .setParameterEnumWhatIsTheException = listPost.exceptionControllerForModel.enumWhatIsTheException;
-    hasReachedMax = listPost.hasReachedMax;
+    setParameterExceptionControllerForModel = listPost.exceptionControllerForModel;
+    setParameterHasReachedMax = listPost.hasReachedMax;
     if(hasNotReachedMax()) {
       insertListPostToList(listPost.listModel);
       return;
     }
   }
 
-  void setFromListPostParametersExceptionAndHasReachedMaxAndEnumWhatIsTheException(
+  void setFromListPostParametersExceptionAndHasReachedMaxAndExceptionControllerForModel(
       ListPost listPost)
   {
-    exceptionControllerForModel
-        .setParameterEnumWhatIsTheException = listPost.exceptionControllerForModel.enumWhatIsTheException;
-    hasReachedMax = listPost.hasReachedMax;
+    setParameterExceptionControllerForModel = listPost.exceptionControllerForModel;
+    setParameterHasReachedMax = listPost.hasReachedMax;
   }
 
   bool insertListPostToList(

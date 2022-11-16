@@ -19,8 +19,8 @@ import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller_for_model.dart';
 
 class BaseModel {
-  final ExceptionControllerForModel exceptionControllerForModel;
   String uniqueId;
+  ExceptionControllerForModel exceptionControllerForModel;
 
   BaseModel.success(this.uniqueId)
       : exceptionControllerForModel = ExceptionControllerForModel.success();
@@ -32,5 +32,12 @@ class BaseModel {
       String uniqueId)
   {
     this.uniqueId = uniqueId;
+  }
+
+  @nonVirtual
+  set setParameterExceptionControllerForModel(
+      ExceptionControllerForModel exceptionControllerForModel)
+  {
+    this.exceptionControllerForModel = exceptionControllerForModel;
   }
 }
