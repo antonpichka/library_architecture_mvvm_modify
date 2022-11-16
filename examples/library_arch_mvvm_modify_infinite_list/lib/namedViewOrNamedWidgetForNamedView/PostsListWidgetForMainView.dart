@@ -43,8 +43,8 @@ class _PostsListWidgetForMainViewState
             return Center(child: CircularProgressIndicator());
           }
           ListPost listPost = asyncSnapshot.data;
-          switch(listPost.getEnumStatusListPost) {
-            case EnumStatusListPost.success:
+          switch(listPost.getEnumStatusListPostForPostsListWidgetForMainView) {
+            case EnumStatusListPostForPostsListWidgetForMainView.success:
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   if(listPost.isFromIndexMoreOrEqualParameterLengthByListPost(index)) {
@@ -69,11 +69,11 @@ class _PostsListWidgetForMainViewState
                 },
                 itemCount: listPost.getParameterLengthByListPost,
                 controller: _scrollController);
-            case EnumStatusListPost.isEmptyListPostJsonPlaceholder:
+            case EnumStatusListPostForPostsListWidgetForMainView.isEmptyListPostJsonPlaceholder:
               return Center(child: Text('no posts'));
-            case EnumStatusListPost.noInternetItLocalException:
+            case EnumStatusListPostForPostsListWidgetForMainView.noInternetItLocalException:
               return Center(child: Text('no Internet. Connect to the Internet'));
-            case EnumStatusListPost.serverNotWorkItNetworkException:
+            case EnumStatusListPostForPostsListWidgetForMainView.serverNotWorkItNetworkException:
               return Center(child: Text('failed to fetch posts'));
             default:
               return Container();

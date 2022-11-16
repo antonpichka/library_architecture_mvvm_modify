@@ -262,7 +262,13 @@ class NetworkException
 
   @override
   @nonVirtual
-  String exceptionInString() {
+  String getMessageForView() {
+    return descriptionStatusCode;
+  }
+
+  @override
+  @nonVirtual
+  String exceptionInStringForDebugPrint() {
     return "StatusCode: $statusCode | "
         "NameStatusCode: $nameStatusCode | "
         "DescriptionStatusCode: $descriptionStatusCode";

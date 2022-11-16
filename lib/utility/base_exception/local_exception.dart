@@ -43,7 +43,13 @@ class LocalException
 
   @override
   @nonVirtual
-  String exceptionInString() {
+  String getMessageForView() {
+    return message;
+  }
+
+  @override
+  @nonVirtual
+  String exceptionInStringForDebugPrint() {
     return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
         "Message: $message";
   }

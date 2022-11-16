@@ -25,16 +25,11 @@ abstract class BaseException
       Object thisClass)
   {
     debugPrintError("===start_to_trace_exception===\n");
-    debugPrintError("NameClassException: $typeClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInString()}\n");
+    debugPrintError("NameClassException: $typeClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInStringForDebugPrint()}\n");
     debugPrintError("===end_to_trace_exception===\n");
   }
 
+  String getMessageForView();
   @protected
-  String exceptionInString();
-  
-  @override
-  @nonVirtual
-  String toString() {
-    return exceptionInString();
-  }
+  String exceptionInStringForDebugPrint();
 }

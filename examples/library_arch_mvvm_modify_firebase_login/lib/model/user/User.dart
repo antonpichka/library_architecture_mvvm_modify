@@ -1,10 +1,12 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_exception.dart';
 
-enum EnumStatusUserForAuth {
+enum EnumStatusUserForMainView {
   authenticated,
-  unauthenticated
+  unauthenticated,
+  localException
 }
 
 class User
@@ -30,12 +32,14 @@ class User
   static User get getUserForSuccessWhereDataEqualsNull => User.success("null","null","null","null");
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
 
-
-  EnumStatusUserForAuth get getEnumStatusUserForAuth {
-    if(isEqualsNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
-      return EnumStatusUserForAuth.unauthenticated;
+  EnumStatusUserForMainView get getEnumStatusUserForMainView {
+    if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+      return EnumStatusUserForMainView.localException;
     }
-    return EnumStatusUserForAuth.authenticated;
+    if(isEqualsNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
+      return EnumStatusUserForMainView.unauthenticated;
+    }
+    return EnumStatusUserForMainView.authenticated;
   }
 
   bool isEmptyParameterUniqueId() {

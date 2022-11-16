@@ -49,7 +49,10 @@ class PostsListWidgetForMainViewListViewModel
     _boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         .isField = false;
-    if(listPost.isExceptionNotNull()) {
+    if(listPost
+        .exceptionControllerForModel
+        .isNotNullParameterException())
+    {
       _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
           .getListPostUsingGetListParameterIntForStartIndex
           .setFromListPostParametersExceptionAndHasReachedMaxAndEnumWhatIsTheException(listPost);

@@ -19,16 +19,19 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/exception_controller_for_model.dart';
 
 class BaseListModel<T extends BaseModel> {
+  final ExceptionControllerForModel exceptionControllerForModel;
   List<T> listModel;
-  BaseException exception;
   BaseIterator<T> _iterator;
   Enum _enumNamedForIteratorSelection;
   Map<Enum,BaseIterator<T>> _mapEnumNamedForIteratorAndIterator;
 
-  BaseListModel.success(this.listModel,[this._mapEnumNamedForIteratorAndIterator]);
-  BaseListModel.exception(this.exception);
+  BaseListModel.success(this.listModel,[this._mapEnumNamedForIteratorAndIterator])
+      : exceptionControllerForModel = ExceptionControllerForModel.success();
+  BaseListModel.exception(BaseException exception)
+      : exceptionControllerForModel = ExceptionControllerForModel.exception(exception);
 
   @protected
   @nonVirtual
@@ -62,16 +65,9 @@ class BaseListModel<T extends BaseModel> {
     this.listModel = listModel;
   }
 
-  @nonVirtual
-  set setParameterException(
-      BaseException exception)
-  {
-    this.exception = exception;
-  }
-
   @protected
   @nonVirtual
-  set setEnumNamedForIteratorSelection(
+  set setParameterEnumNamedForIteratorSelection(
       Enum enumNamedForIteratorSelection)
   {
     _enumNamedForIteratorSelection = enumNamedForIteratorSelection;
@@ -82,14 +78,6 @@ class BaseListModel<T extends BaseModel> {
   {
     _iterator = iterator;
     _iterator.setParameterListModel = listModel;
-  }
-
-  @nonVirtual
-  bool isExceptionNotNull() {
-    if(exception == null) {
-      return false;
-    }
-    return true;
   }
 
   @protected

@@ -158,7 +158,13 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
 
   @override
   @nonVirtual
-  String exceptionInString() {
+  String getMessageForView() {
+    return message;
+  }
+
+  @override
+  @nonVirtual
+  String exceptionInStringForDebugPrint() {
     return "Code: $code | "
         "Message: $message";
   }

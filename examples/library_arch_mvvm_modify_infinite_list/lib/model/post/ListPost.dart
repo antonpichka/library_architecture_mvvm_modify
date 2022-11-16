@@ -1,10 +1,9 @@
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/EnumWhatIsTheException.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_exception.dart';
 
-enum EnumStatusListPost {
+enum EnumStatusListPostForPostsListWidgetForMainView {
   success,
   isEmptyListPostJsonPlaceholder,
   noInternetItLocalException,
@@ -15,10 +14,8 @@ class ListPost
     extends BaseListModel<Post>
 {
   bool hasReachedMax;
-  EnumWhatIsTheException enumWhatIsTheException;
 
   ListPost.success(List<Post> listModel) : super.success(listModel) {
-    enumWhatIsTheException = EnumWhatIsTheException.noException;
     if(listModel.isEmpty) {
       hasReachedMax = true;
       return;
@@ -28,24 +25,19 @@ class ListPost
 
   ListPost.exception(BaseException exception) : super.exception(exception) {
     hasReachedMax = false;
-    if(exception is LocalException) {
-      enumWhatIsTheException = EnumWhatIsTheException.LocalException;
-      return;
-    }
-    enumWhatIsTheException = EnumWhatIsTheException.NetworkException;
   }
 
-  EnumStatusListPost get getEnumStatusListPost {
-    if(enumWhatIsTheException == EnumWhatIsTheException.LocalException) {
-      return EnumStatusListPost.noInternetItLocalException;
+  EnumStatusListPostForPostsListWidgetForMainView get getEnumStatusListPostForPostsListWidgetForMainView {
+    if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+      return EnumStatusListPostForPostsListWidgetForMainView.noInternetItLocalException;
     }
-    if(enumWhatIsTheException == EnumWhatIsTheException.NetworkException) {
-      return EnumStatusListPost.serverNotWorkItNetworkException;
+    if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+      return EnumStatusListPostForPostsListWidgetForMainView.serverNotWorkItNetworkException;
     }
     if(listModel.isEmpty) {
-      return EnumStatusListPost.isEmptyListPostJsonPlaceholder;
+      return EnumStatusListPostForPostsListWidgetForMainView.isEmptyListPostJsonPlaceholder;
     }
-    return EnumStatusListPost.success;
+    return EnumStatusListPostForPostsListWidgetForMainView.success;
   }
 
   int get getParameterLengthByListPost {
@@ -61,17 +53,12 @@ class ListPost
     this.hasReachedMax = hasReachedMax;
   }
 
-  set setParameterEnumWhatIsTheException(
-      EnumWhatIsTheException enumWhatIsTheException)
-  {
-    this.enumWhatIsTheException = enumWhatIsTheException;
-  }
-
   void insertListPostToListAndSetFromListPostParametersHasReachedMaxAndEnumWhatIsTheException(
       ListPost listPost)
   {
+    exceptionControllerForModel
+        .setParameterEnumWhatIsTheException = listPost.exceptionControllerForModel.enumWhatIsTheException;
     hasReachedMax = listPost.hasReachedMax;
-    enumWhatIsTheException = listPost.enumWhatIsTheException;
     if(hasNotReachedMax()) {
       insertListPostToList(listPost.listModel);
       return;
@@ -81,9 +68,9 @@ class ListPost
   void setFromListPostParametersExceptionAndHasReachedMaxAndEnumWhatIsTheException(
       ListPost listPost)
   {
-    exception = listPost.exception;
+    exceptionControllerForModel
+        .setParameterEnumWhatIsTheException = listPost.exceptionControllerForModel.enumWhatIsTheException;
     hasReachedMax = listPost.hasReachedMax;
-    enumWhatIsTheException = listPost.enumWhatIsTheException;
   }
 
   bool insertListPostToList(
@@ -100,10 +87,5 @@ class ListPost
 
   bool hasNotReachedMax() {
     return !hasReachedMax;
-  }
-
-  @override
-  String toString() {
-    return "${listModel.toString()} : $hasReachedMax : ${enumWhatIsTheException.name}";
   }
 }
