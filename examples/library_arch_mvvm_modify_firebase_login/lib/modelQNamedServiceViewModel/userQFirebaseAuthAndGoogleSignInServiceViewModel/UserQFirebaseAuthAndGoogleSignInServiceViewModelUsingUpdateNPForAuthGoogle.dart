@@ -14,6 +14,6 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
   }
 
   Future<Response> updateUserToFirebaseAuthAndGoogleSignInServiceNP() {
-    return super.updateModelToNamedServiceNP();
+    return updateModelToNamedServiceNP();
   }
 }

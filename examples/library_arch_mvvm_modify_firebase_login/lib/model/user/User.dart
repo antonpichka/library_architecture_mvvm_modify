@@ -37,7 +37,7 @@ class User
     if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumStatusUserForMainView.localException;
     }
-    if(isEqualsNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
+    if(isEqualsStringNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
       return EnumStatusUserForMainView.unauthenticated;
     }
     return EnumStatusUserForMainView.authenticated;
@@ -51,18 +51,18 @@ class User
     return uniqueId.isNotEmpty;
   }
 
-  bool isNotNullParameterPhoto() {
+  bool isEqualsNotNullParameterPhoto() {
     return photo != null;
   }
 
-  bool isNullParameterPhoto() {
+  bool isEqualsNullParameterPhoto() {
     return photo == null;
   }
 
-  bool isEqualsNullParametersUniqueIdAndEmailAndNameAndPhoto() {
+  bool isEqualsStringNullParametersUniqueIdAndEmailAndNameAndPhoto() {
     return uniqueId == "null" &&
-        email.isEmpty == "null" &&
-        name.isEmpty == "null" &&
-        photo.isEmpty == "null";
+        email == "null" &&
+        name == "null" &&
+        photo == "null";
   }
 }

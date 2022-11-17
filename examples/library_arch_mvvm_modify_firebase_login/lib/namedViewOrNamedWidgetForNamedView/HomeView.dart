@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedViewListViewModel/HomeViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_or_named_widget_for_named_view/base_named_view_or_named_widget_for_named_view.dart';
 
 class HomeView
@@ -19,16 +20,26 @@ class _HomeViewState
   _HomeViewState() : super(HomeViewListViewModel());
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Home mvvm modify'),
         actions: <Widget>[
           IconButton(
             key: const Key('homePage_logout_iconButton'),
             icon: const Icon(Icons.exit_to_app),
-            onPressed: () => context.read<AppBloc>().add(AppLogoutRequested()),
+            onPressed: () => lo.deleteUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralZeroTask(),
           )
         ],
       ),
@@ -39,10 +50,10 @@ class _HomeViewState
           children: <Widget>[
             CircleAvatar(
               radius: 48.0,
-              backgroundImage: widget.user.isNotNullParameterPhoto()
+              backgroundImage: widget.user.isEqualsNotNullParameterPhoto()
                   ? NetworkImage(widget.user.photo)
                   : null,
-              child: widget.user.isNullParameterPhoto()
+              child: widget.user.isEqualsNullParameterPhoto()
                   ? const Icon(Icons.person_outline, size: 48.0)
                   : null,
             ),
