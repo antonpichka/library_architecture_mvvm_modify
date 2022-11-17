@@ -55,14 +55,14 @@ class PostsListWidgetForMainViewListViewModel
     {
       _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
           .getListPostUsingGetListParameterIntForStartIndex
-          .setFromListPostParametersExceptionAndHasReachedMaxAndExceptionControllerForModel(listPost);
+          .setFromListPostParametersExceptionControllerForModelAndHasReachedMax(listPost);
       _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
           .notifyStreamListPostUsingGetListParameterIntForStartIndex();
       return;
     }
     _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
         .getListPostUsingGetListParameterIntForStartIndex
-        .insertListPostToListAndSetFromListPostParametersHasReachedMaxAndExceptionControllerForModel(listPost);
+        .insertListPostToListAndSetFromListPostParametersExceptionControllerForModelAndHasReachedMax(listPost);
     _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
         .notifyStreamListPostUsingGetListParameterIntForStartIndex();
     return;

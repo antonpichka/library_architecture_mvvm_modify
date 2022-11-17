@@ -53,7 +53,7 @@ class ListPost
     this.hasReachedMax = hasReachedMax;
   }
 
-  void insertListPostToListAndSetFromListPostParametersHasReachedMaxAndExceptionControllerForModel(
+  void insertListPostToListAndSetFromListPostParametersExceptionControllerForModelAndHasReachedMax(
       ListPost listPost)
   {
     setParameterExceptionControllerForModel = listPost.exceptionControllerForModel;
@@ -64,7 +64,7 @@ class ListPost
     }
   }
 
-  void setFromListPostParametersExceptionAndHasReachedMaxAndExceptionControllerForModel(
+  void setFromListPostParametersExceptionControllerForModelAndHasReachedMax(
       ListPost listPost)
   {
     setParameterExceptionControllerForModel = listPost.exceptionControllerForModel;
