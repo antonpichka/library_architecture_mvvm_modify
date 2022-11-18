@@ -1,0 +1,12 @@
+import 'package:library_arch_mvvm_modify_counter/modelQNamedServiceViewModel/intQNoServiceViewModel/IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
+
+class IntQNoServiceListViewModelForIntTextWidget {
+  final IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement;
+
+  IntQNoServiceListViewModelForIntTextWidget(this._intQNoServiceViewModelUsingGetNPForIncrementAndDecrement);
+
+  Stream<Int> get getStreamIntUsingGetNPForIncrementAndDecrement {
+    return _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement.getStreamIntUsingGetNPForIncrementAndDecrement;
+  }
+}

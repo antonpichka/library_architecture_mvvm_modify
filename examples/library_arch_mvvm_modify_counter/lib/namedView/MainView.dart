@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/MainViewListViewModel.dart';
+import 'package:library_arch_mvvm_modify_counter/utility/namedWidget/DecrementFABWidget.dart';
+import 'package:library_arch_mvvm_modify_counter/utility/namedWidget/IncrementFABWidget.dart';
+import 'package:library_arch_mvvm_modify_counter/utility/namedWidget/IntTextWidget.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
 
 class MainView
     extends StatefulWidget
@@ -36,16 +38,7 @@ class _MainViewState
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have pushed the button this many times:',),
-            StreamBuilder<Int>(
-                initialData: Int.success(0),
-                stream: lo.getStreamIntUsingGetNPForIncrementAndDecrement,
-                builder: (BuildContext buildContext, AsyncSnapshot<Int> asyncSnapshot) {
-                  Int int = asyncSnapshot.data;
-                  return Text(
-                    "${int.field}",
-                    style: Theme.of(context).textTheme.headline4,
-                  );
-                }),
+            IntTextWidget(lo.intQNoServiceListViewModelForIntTextWidget),
           ],
         ),
       ),
@@ -53,15 +46,9 @@ class _MainViewState
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () => lo.incrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(),
-          ),
-          const SizedBox(height: 8),
-          FloatingActionButton(
-            child: const Icon(Icons.remove),
-            onPressed: () => lo.decrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask(),
-          ),
+          IncrementFABWidget(lo.intQNoServiceListViewModelForIncrementFABWidget),
+          SizedBox(height: 8,),
+          DecrementFABWidget(lo.intQNoServiceListViewModelForDecrementFABWidget),
         ],
       ),
     );

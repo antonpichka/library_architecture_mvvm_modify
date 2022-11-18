@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/HomeViewListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedWidget/CircleAvatarWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedWidget/IconButtonExitToAppWidget.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class HomeView
@@ -36,11 +38,7 @@ class _HomeViewState
       appBar: AppBar(
         title: const Text('Home mvvm modify'),
         actions: <Widget>[
-          IconButton(
-            key: const Key('homePage_logout_iconButton'),
-            icon: const Icon(Icons.exit_to_app),
-            onPressed: () => lo.deleteUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralZeroTask(),
-          )
+          IconButtonExitToAppWidget(lo.userQFirebaseAuthAndGoogleSignInServiceListViewModelForIconButtonExitToAppWidget),
         ],
       ),
       body: Align(
@@ -48,15 +46,7 @@ class _HomeViewState
         child: Column(
           mainAxisSize: MainAxisSize.min  ,
           children: <Widget>[
-            CircleAvatar(
-              radius: 48.0,
-              backgroundImage: widget.user.isEqualsNotNullParameterPhoto()
-                  ? NetworkImage(widget.user.photo)
-                  : null,
-              child: widget.user.isEqualsNullParameterPhoto()
-                  ? const Icon(Icons.person_outline, size: 48.0)
-                  : null,
-            ),
+            CircleAvatarWidget(widget.user),
             const SizedBox(height: 4),
             Text(widget.user.email, style: textTheme.headline6),
             const SizedBox(height: 4),
