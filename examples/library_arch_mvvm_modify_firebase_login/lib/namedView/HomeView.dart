@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedViewListViewModel/HomeViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view_or_named_widget_for_named_view/base_named_view_or_named_widget_for_named_view.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/HomeViewListViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class HomeView
     extends StatefulWidget
@@ -15,7 +15,7 @@ class HomeView
 }
 
 class _HomeViewState
-    extends BaseNamedViewOrNamedWidgetForNamedView<HomeView,HomeViewListViewModel>
+    extends BaseNamedView<HomeView,HomeViewListViewModel>
 {
   _HomeViewState() : super(HomeViewListViewModel());
 

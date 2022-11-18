@@ -7,7 +7,7 @@ enum EnumStatusListPostForPostsListWidgetForMainView {
   success,
   isEmptyListPostJsonPlaceholder,
   noInternetItLocalException,
-  serverNotWorkItNetworkException
+  serverNotWorkItNetworkException,
 }
 
 class ListPost

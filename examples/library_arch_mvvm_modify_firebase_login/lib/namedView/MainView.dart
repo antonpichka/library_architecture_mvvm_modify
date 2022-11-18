@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedView/HomeView.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedView/LoginView.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedViewListViewModel/MainViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view_or_named_widget_for_named_view/base_named_view_or_named_widget_for_named_view.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/HomeView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/LoginView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/MainViewListViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class MainView
     extends StatefulWidget
@@ -13,7 +13,7 @@ class MainView
 }
 
 class _MainViewState
-    extends BaseNamedViewOrNamedWidgetForNamedView<MainView,MainViewListViewModel>
+    extends BaseNamedView<MainView,MainViewListViewModel>
 {
   _MainViewState() : super(MainViewListViewModel());
 
@@ -47,9 +47,11 @@ class _MainViewState
             case EnumStatusUserForMainView.unauthenticated:
               return LoginView();
             case EnumStatusUserForMainView.localException:
-              return Scaffold(body: Center(child: Text(user
-                  .exceptionController
-                  .getParameterMessageForViewByException)));
+              return Scaffold(
+                  body: Center(
+                      child: Text(user
+                          .exceptionController
+                          .getParameterMessageForViewByException)));
             default:
               return Container();
           }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedViewListViewModel/LoginViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view_or_named_widget_for_named_view/base_named_view_or_named_widget_for_named_view.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoginViewListViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class LoginView
     extends StatefulWidget
@@ -10,7 +10,7 @@ class LoginView
 }
 
 class _LoginViewState
-    extends BaseNamedViewOrNamedWidgetForNamedView<LoginView,LoginViewListViewModel>
+    extends BaseNamedView<LoginView,LoginViewListViewModel>
 {
   _LoginViewState() : super(LoginViewListViewModel());
 
@@ -37,7 +37,7 @@ class _LoginViewState
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 16),
-              //  _EmailInput(),
+              //  EmailInputWidgetForLoginView(),
                 SizedBox(height: 8),
               //  _PasswordInput(),
                 SizedBox(height: 8),

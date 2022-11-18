@@ -24,7 +24,7 @@ class PostQJsonPlaceholderServiceDataSourceUsingGetListParameterIntForStartIndex
           .getHttpClientSingleton
           .getHttpClient
           .get(Uri.https(constUrlJsonPlaceholderTypicodeCom, Post.constPostsUrl, <String, String>{'_start': '${int.getParameter}', '_limit': '20'}))
-          .timeout(Duration(seconds: 5));;
+          .timeout(Duration(seconds: 5));
       if(response.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,response.statusCode);
       }

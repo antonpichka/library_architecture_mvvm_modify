@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/userQFirebaseAuthAndTempCacheServiceBackgroundModel/UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewOrNamedWidgetForNamedView/MainView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/MainView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
 
 Future<void> main() async {

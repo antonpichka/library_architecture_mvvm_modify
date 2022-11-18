@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/namedViewOrNamedWidgetForNamedView/MainView.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/namedView/MainView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
