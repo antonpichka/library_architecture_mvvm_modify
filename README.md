@@ -49,9 +49,8 @@ Coming soon
   - ##### FBDS
 - #### ModelQNamedServiceViewModel
   - ##### FBDS
-- #### NamedViewOrNamedWidgetForNamedViewListViewModel
-- #### NamedViewOrNamedWidgetForNamedView
-  - ##### ManageForDistributingStreamsBetweenViews
+- #### NamedViewListViewModel
+- #### NamedView
 
 ### Utility
 
