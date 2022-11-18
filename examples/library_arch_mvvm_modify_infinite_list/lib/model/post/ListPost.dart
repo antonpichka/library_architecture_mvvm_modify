@@ -28,23 +28,23 @@ class ListPost
   }
 
   EnumStatusListPostForPostsListWidgetForMainView get getEnumStatusListPostForPostsListWidgetForMainView {
-    if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumStatusListPostForPostsListWidgetForMainView.noInternetItLocalException;
     }
-    if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
       return EnumStatusListPostForPostsListWidgetForMainView.serverNotWorkItNetworkException;
     }
-    if(listModel.isEmpty) {
+    if(list.isEmpty) {
       return EnumStatusListPostForPostsListWidgetForMainView.isEmptyListPostJsonPlaceholder;
     }
     return EnumStatusListPostForPostsListWidgetForMainView.success;
   }
 
-  int get getParameterLengthByListPost {
+  int get getParameterLengthByList {
     if(hasReachedMax) {
-      return listModel.length;
+      return list.length;
     }
-    return listModel.length + 1;
+    return list.length + 1;
   }
 
   set setParameterHasReachedMax(
@@ -53,34 +53,28 @@ class ListPost
     this.hasReachedMax = hasReachedMax;
   }
 
-  void insertListPostToListAndSetFromListPostParametersExceptionControllerForModelAndHasReachedMax(
+  void insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionControllerForModel = listPost.exceptionControllerForModel;
+    setParameterExceptionController = listPost.exceptionController;
     setParameterHasReachedMax = listPost.hasReachedMax;
     if(hasNotReachedMax()) {
-      insertListPostToList(listPost.listModel);
+      insertListToList(listPost.list);
       return;
     }
   }
 
-  void setFromListPostParametersExceptionControllerForModelAndHasReachedMax(
+  void setFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionControllerForModel = listPost.exceptionControllerForModel;
+    setParameterExceptionController = listPost.exceptionController;
     setParameterHasReachedMax = listPost.hasReachedMax;
   }
 
-  bool insertListPostToList(
-      List<Post> listPost)
-  {
-    return insertListModelToList(this,listPost);
-  }
-
-  bool isFromIndexMoreOrEqualParameterLengthByListPost(
+  bool isFromIndexMoreOrEqualParameterLengthByList(
       int index)
   {
-    return index >= listModel.length;
+    return index >= list.length;
   }
 
   bool hasNotReachedMax() {

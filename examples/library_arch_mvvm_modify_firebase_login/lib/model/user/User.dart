@@ -34,7 +34,7 @@ class User
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
 
   EnumStatusUserForMainView get getEnumStatusUserForMainView {
-    if(exceptionControllerForModel.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumStatusUserForMainView.localException;
     }
     if(isEqualsStringNullParametersUniqueIdAndEmailAndNameAndPhoto()) {

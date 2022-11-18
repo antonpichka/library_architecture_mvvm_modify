@@ -39,7 +39,7 @@ abstract class BoolQNoServiceViewModel
   ListBool cloneListModelForSuccess(
       ListBool listModel)
   {
-    return ListBool.success(listModel.listModel);
+    return ListBool.success(listModel.list);
   }
 
   @override

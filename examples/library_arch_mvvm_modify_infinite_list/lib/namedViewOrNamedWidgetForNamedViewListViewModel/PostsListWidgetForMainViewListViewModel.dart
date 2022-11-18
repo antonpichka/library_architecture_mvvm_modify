@@ -8,8 +8,10 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int
 class PostsListWidgetForMainViewListViewModel
     extends BaseNamedViewOrNamedWidgetForNamedViewListViewModel
 {
-  final _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex = PostQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex(JsonPlaceholderService());
-  final _boolQNoServiceViewModelUsingGetNPForAntiSpam = BoolQNoServiceViewModelUsingGetNPForAntiSpam();
+  final _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex =
+  PostQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex(JsonPlaceholderService());
+  final _boolQNoServiceViewModelUsingGetNPForAntiSpam =
+  BoolQNoServiceViewModelUsingGetNPForAntiSpam();
 
   @override
   void dispose() {
@@ -39,30 +41,26 @@ class PostsListWidgetForMainViewListViewModel
     _boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         .isField = true;
-    IntTypeParameter intTypeParameter = IntTypeParameter(_postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
-        .getListPostUsingGetListParameterIntForStartIndex
-        .listModel
-        .length);
     // 1
     ListPost listPost = await _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
-        .getListPostFromJsonPlaceholderServiceParameterInt(intTypeParameter);
+        .getListPostFromJsonPlaceholderServiceParameterInt(IntTypeParameter(_postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex.getListPostUsingGetListParameterIntForStartIndex.list.length));
     _boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         .isField = false;
     if(listPost
-        .exceptionControllerForModel
+        .exceptionController
         .isNotNullParameterException())
     {
       _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
           .getListPostUsingGetListParameterIntForStartIndex
-          .setFromListPostParametersExceptionControllerForModelAndHasReachedMax(listPost);
+          .setFromListPostParametersExceptionControllerAndHasReachedMax(listPost);
       _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
           .notifyStreamListPostUsingGetListParameterIntForStartIndex();
       return;
     }
     _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
         .getListPostUsingGetListParameterIntForStartIndex
-        .insertListPostToListAndSetFromListPostParametersExceptionControllerForModelAndHasReachedMax(listPost);
+        .insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(listPost);
     _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex
         .notifyStreamListPostUsingGetListParameterIntForStartIndex();
     return;

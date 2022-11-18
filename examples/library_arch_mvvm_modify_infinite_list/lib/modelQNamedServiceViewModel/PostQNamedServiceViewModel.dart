@@ -35,6 +35,6 @@ abstract class PostQNamedServiceViewModel
   ListPost cloneListModelForSuccess(
       ListPost listModel)
   {
-    return ListPost.success(listModel.listModel);
+    return ListPost.success(listModel.list);
   }
 }

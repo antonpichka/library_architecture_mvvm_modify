@@ -39,7 +39,7 @@ abstract class DoubleQNoServiceViewModel
   ListDouble cloneListModelForSuccess(
       ListDouble listModel)
   {
-    return ListDouble.success(listModel.listModel);
+    return ListDouble.success(listModel.list);
   }
 
   @override

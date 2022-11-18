@@ -39,7 +39,7 @@ abstract class StringsQNoServiceViewModel
   ListStrings cloneListModelForSuccess(
       ListStrings listModel)
   {
-    return ListStrings.success(listModel.listModel);
+    return ListStrings.success(listModel.list);
   }
 
   @override

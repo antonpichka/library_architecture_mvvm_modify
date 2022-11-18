@@ -39,7 +39,7 @@ abstract class IntQNoServiceViewModel
   ListInt cloneListModelForSuccess(
       ListInt listModel)
   {
-    return ListInt.success(listModel.listModel);
+    return ListInt.success(listModel.list);
   }
 
   @override

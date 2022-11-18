@@ -20,22 +20,22 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 abstract class BaseIterator<T extends BaseModel>
     implements Iterator<T>
 {
-  List<T> listModel;
+  List<T> list;
 
   @nonVirtual
-  List<T> get getSortedListModel {
-    List<T> listModel = List.empty(growable: true);
+  List<T> get getSortedList {
+    List<T> list = List.empty(growable: true);
     while(moveNext()) {
-      T itemModel = current;
-      listModel.add(itemModel);
+      T item = current;
+      list.add(item);
     }
-    return listModel;
+    return list;
   }
 
   @nonVirtual
-  set setParameterListModel(
-      List<T> listModel)
+  set setParameterList(
+      List<T> list)
   {
-    this.listModel = listModel;
+    this.list = list;
   }
 }

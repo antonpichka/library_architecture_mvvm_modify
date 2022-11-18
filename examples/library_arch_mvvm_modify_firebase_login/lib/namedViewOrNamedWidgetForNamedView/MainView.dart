@@ -48,7 +48,7 @@ class _MainViewState
               return LoginView();
             case EnumStatusUserForMainView.localException:
               return Scaffold(body: Center(child: Text(user
-                  .exceptionControllerForModel
+                  .exceptionController
                   .getParameterMessageForViewByException)));
             default:
               return Container();

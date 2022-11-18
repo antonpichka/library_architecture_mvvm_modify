@@ -16,16 +16,16 @@
 
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/utility/exception_controller_for_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
 class BaseModel {
   String uniqueId;
-  ExceptionControllerForModel exceptionControllerForModel;
+  ExceptionController exceptionController;
 
   BaseModel.success(this.uniqueId)
-      : exceptionControllerForModel = ExceptionControllerForModel.success();
+      : exceptionController = ExceptionController.success();
   BaseModel.exception(BaseException exception)
-      : exceptionControllerForModel = ExceptionControllerForModel.exception(exception);
+      : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual
   set setParameterUniqueId(
@@ -35,9 +35,9 @@ class BaseModel {
   }
 
   @nonVirtual
-  set setParameterExceptionControllerForModel(
-      ExceptionControllerForModel exceptionControllerForModel)
+  set setParameterExceptionController(
+      ExceptionController exceptionController)
   {
-    this.exceptionControllerForModel = exceptionControllerForModel;
+    this.exceptionController = exceptionController;
   }
 }

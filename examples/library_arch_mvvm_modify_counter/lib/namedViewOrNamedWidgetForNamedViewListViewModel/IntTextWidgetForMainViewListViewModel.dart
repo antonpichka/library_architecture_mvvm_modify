@@ -5,7 +5,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
 class IntTextWidgetForMainViewListViewModel
     extends BaseNamedViewOrNamedWidgetForNamedViewListViewModel
 {
-  final _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement = IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement();
+  final _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement =
+  IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement();
 
   @override
   void dispose() {

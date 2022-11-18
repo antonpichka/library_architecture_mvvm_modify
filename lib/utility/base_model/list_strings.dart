@@ -21,6 +21,6 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/strings.dart
 class ListStrings
     extends BaseListModel<Strings>
 {
-  ListStrings.success(List<Strings> listStrings) : super.success(listStrings);
+  ListStrings.success(List<Strings> list) : super.success(list);
   ListStrings.exception(BaseException exception) : super.exception(exception);
 }

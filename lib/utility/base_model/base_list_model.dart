@@ -19,158 +19,108 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/exception_controller_for_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
 class BaseListModel<T extends BaseModel> {
-  List<T> listModel;
-  ExceptionControllerForModel exceptionControllerForModel;
-  BaseIterator<T> _iterator;
-  Enum _enumNamedForIteratorSelection;
+  List<T> list;
+  ExceptionController exceptionController;
   Map<Enum,BaseIterator<T>> _mapEnumNamedForIteratorAndIterator;
+  Enum _enumNamedForIterator;
 
-  BaseListModel.success(this.listModel,[this._mapEnumNamedForIteratorAndIterator])
-      : exceptionControllerForModel = ExceptionControllerForModel.success();
+  BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this._enumNamedForIterator])
+      : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
-      : exceptionControllerForModel = ExceptionControllerForModel.exception(exception);
+      : exceptionController = ExceptionController.exception(exception);
+
+  @nonVirtual
+  set setParameterList(
+      List<T> list)
+  {
+    this.list = list;
+  }
+
+  @nonVirtual
+  set setParameterExceptionController(
+      ExceptionController exceptionController)
+  {
+    this.exceptionController = exceptionController;
+  }
 
   @protected
   @nonVirtual
-  List<T> runIteratorForListModel(
+  set setParameterEnumNamedForIterator(
+      Enum enumNamedForIterator)
+  {
+    _enumNamedForIterator = enumNamedForIterator;
+  }
+
+  @nonVirtual
+  void startIteratorForList(
       Object thisClass)
   {
     if(_mapEnumNamedForIteratorAndIterator.isEmpty) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"MapEnumNamedForIteratorAndIterator isEmpty");
     }
-    int iteration = 0;
-    Enum firstItemEnumByMap = _mapEnumNamedForIteratorAndIterator.keys.first;
+    BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator.values.first;
+    if(_mapEnumNamedForIteratorAndIterator.length == 1) {
+      iterator.setParameterList = list;
+      setParameterList = iterator.getSortedList;
+      return;
+    }
     for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator.keys) {
-      if(_enumNamedForIteratorSelection == itemEnumNamedForIterator) {
-        _setParameterIterator = _mapEnumNamedForIteratorAndIterator[itemEnumNamedForIterator];
-        break;
+      if(_enumNamedForIterator != itemEnumNamedForIterator) {
+        continue;
       }
-      if(iteration >= (_mapEnumNamedForIteratorAndIterator.length-1)) {
-        _setParameterIterator = _mapEnumNamedForIteratorAndIterator[firstItemEnumByMap];
-        break;
-      }
-      iteration++;
+      iterator = _mapEnumNamedForIteratorAndIterator[itemEnumNamedForIterator];
+      break;
     }
-    setParameterListModel = _iterator.getSortedListModel;
-    return listModel;
+    iterator.setParameterList = list;
+    setParameterList = iterator.getSortedList;
   }
 
   @nonVirtual
-  set setParameterListModel(
-      List<T> listModel)
-  {
-    this.listModel = listModel;
-  }
-
-  @nonVirtual
-  set setParameterExceptionControllerForModel(
-      ExceptionControllerForModel exceptionControllerForModel)
-  {
-    this.exceptionControllerForModel = exceptionControllerForModel;
-  }
-
-  @protected
-  @nonVirtual
-  set setParameterEnumNamedForIteratorSelection(
-      Enum enumNamedForIteratorSelection)
-  {
-    _enumNamedForIteratorSelection = enumNamedForIteratorSelection;
-  }
-
-  set _setParameterIterator(
-      BaseIterator<T> iterator)
-  {
-    _iterator = iterator;
-    _iterator.setParameterListModel = listModel;
-  }
-
-  @protected
-  @nonVirtual
-  bool insertModelToList(
-      Object thisClass,
+  void insertToList(
       T model)
   {
-    listModel.add(model);
-    return true;
+    list.add(model);
   }
 
-  @protected
   @nonVirtual
-  bool updateModelToList(
-      Object thisClass,
+  void updateToList(
       T model)
   {
-    listModel[listModel.indexWhere((item) => item.uniqueId == model.uniqueId)] = model;
-    return true;
+    list[list.indexWhere((item) => item.uniqueId == model.uniqueId)] = model;
   }
 
-  @protected
   @nonVirtual
-  bool deleteModelToList(
-      Object thisClass,
+  void deleteToList(
       T model)
   {
-    listModel.removeWhere((item) => item.uniqueId == model.uniqueId);
-    return true;
+    list.removeWhere((item) => item.uniqueId == model.uniqueId);
   }
 
-  @protected
   @nonVirtual
-  bool insertListModelToList(
-      Object thisClass,
-      List<T> listModelForInsert)
+  void insertListToList(
+      List<T> listForInsert)
   {
-    if(listModelForInsert.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModelNamed isEmpty");
-    }
-    listModel.addAll(listModelForInsert);
-    return true;
+    list.addAll(listForInsert);
   }
 
-  @protected
   @nonVirtual
-  bool updateListModelToList(
-      Object thisClass,
-      List<T> listModelForUpdate)
+  void updateListToList(
+      List<T> listForUpdate)
   {
-    if(listModelForUpdate.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModelNamed isEmpty");
+    for(int i = 0; i < listForUpdate.length; i++) {
+      list[list.indexWhere((element) => element.uniqueId == listForUpdate[i].uniqueId)] = listForUpdate[i];
     }
-    for(int i = 0; i < listModelForUpdate.length; i++) {
-      listModel[listModel.indexWhere((element) => element.uniqueId == listModelForUpdate[i].uniqueId)] = listModelForUpdate[i];
-    }
-    return true;
   }
 
-  @protected
   @nonVirtual
-  bool deleteListModelToList(
-      Object thisClass,
-      List<T> listModelForIterativeOverElements)
+  void deleteListToList(
+      List<T> listForDelete)
   {
-    if(listModelForIterativeOverElements.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"ListModelNamed isEmpty");
+    for(int i = 0; i < listForDelete.length; i++) {
+      list.removeWhere((element) => element.uniqueId == listForDelete[i].uniqueId);
     }
-    List<T> listModelForDelete = List.empty(growable: true);
-    for(int i = 0; i < listModel.length; i++) {
-      for(int j = 0; j < listModelForIterativeOverElements.length; j++) {
-        if(listModel[i].uniqueId != listModelForIterativeOverElements[j].uniqueId) {
-          continue;
-        }
-        listModelForDelete.add(listModel[i]);
-      }
-    }
-    for(int i = 0; i < listModel.length; i++) {
-      for(int j = 0; j < listModelForDelete.length; j++) {
-        if(listModel[i].uniqueId != listModelForDelete[j].uniqueId) {
-          continue;
-        }
-        listModel.removeAt(i);
-      }
-    }
-    return true;
   }
 }

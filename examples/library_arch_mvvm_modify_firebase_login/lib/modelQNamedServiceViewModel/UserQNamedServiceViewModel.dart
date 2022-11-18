@@ -22,7 +22,7 @@ abstract class UserQNamedServiceViewModel
 
   @override
   ListUser cloneListModelForSuccess(ListUser listModel) {
-    return ListUser.success(listModel.listModel);
+    return ListUser.success(listModel.list);
   }
 
   @override

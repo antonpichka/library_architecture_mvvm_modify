@@ -14,7 +14,8 @@ class PostsListWidgetForMainView
 class _PostsListWidgetForMainViewState
     extends BaseNamedViewOrNamedWidgetForNamedView<PostsListWidgetForMainView,PostsListWidgetForMainViewListViewModel>
 {
-  final _scrollController = ScrollController();
+  final _scrollController =
+  ScrollController();
 
   _PostsListWidgetForMainViewState() : super(PostsListWidgetForMainViewListViewModel());
 
@@ -47,7 +48,7 @@ class _PostsListWidgetForMainViewState
             case EnumStatusListPostForPostsListWidgetForMainView.success:
               return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  if(listPost.isFromIndexMoreOrEqualParameterLengthByListPost(index)) {
+                  if(listPost.isFromIndexMoreOrEqualParameterLengthByList(index)) {
                     return Center(
                       child: SizedBox(
                         height: 24,
@@ -56,7 +57,7 @@ class _PostsListWidgetForMainViewState
                     );
                   }
                   TextTheme textTheme = Theme.of(context).textTheme;
-                  Post itemPost = listPost.listModel[index];
+                  Post itemPost = listPost.list[index];
                   return Material(
                     child: ListTile(
                       leading: Text('${itemPost.uniqueId}', style: textTheme.caption),
@@ -67,7 +68,7 @@ class _PostsListWidgetForMainViewState
                     ),
                   );
                 },
-                itemCount: listPost.getParameterLengthByListPost,
+                itemCount: listPost.getParameterLengthByList,
                 controller: _scrollController);
             case EnumStatusListPostForPostsListWidgetForMainView.isEmptyListPostJsonPlaceholder:
               return Center(child: Text('no posts'));

@@ -1341,7 +1341,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
         .notifyStreamDelayInSecondsListModel(thisClass);
   }
-  /// End ListModelNamed **/
+  /// End ListModel **/
 
   void _initListEnumBaseModelAndBaseListModelAndListEnumBaseTypeParameterVM() {
     if(_isNotExistsDataSource) {

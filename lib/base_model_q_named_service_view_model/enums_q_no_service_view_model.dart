@@ -39,7 +39,7 @@ abstract class EnumsQNoServiceViewModel
   ListEnums cloneListModelForSuccess(
       ListEnums listModel)
   {
-    return ListEnums.success(listModel.listModel);
+    return ListEnums.success(listModel.list);
   }
 
   @override

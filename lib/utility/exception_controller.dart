@@ -20,14 +20,14 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/network_
 import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_exception.dart';
 import 'package:flutter/foundation.dart';
 
-class ExceptionControllerForModel {
+class ExceptionController {
   EnumWhatIsTheException enumWhatIsTheException;
   BaseException _exception;
 
-  ExceptionControllerForModel.success()
+  ExceptionController.success()
       : enumWhatIsTheException = EnumWhatIsTheException.noException;
 
-  ExceptionControllerForModel.exception(
+  ExceptionController.exception(
       BaseException exception)
   {
     _exception = exception;
