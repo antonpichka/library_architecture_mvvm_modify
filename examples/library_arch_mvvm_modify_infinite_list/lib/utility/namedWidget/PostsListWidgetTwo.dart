@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/modelQNamedServiceListViewModelForNamedWidget/PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/namedWidget/PostsListWidget.dart';
+
+class PostsListWidgetTwo
+    extends StatelessWidget
+{
+  final PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo _postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo;
+
+  PostsListWidgetTwo(this._postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo);
+
+  @override
+  Widget build(BuildContext context) {
+    _postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.getListPostFromJsonPlaceholderServiceParameterIntAndSetListPostAndInGeneralOneTask();
+    return PostsListWidget(_postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.getPostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget);
+  }
+}

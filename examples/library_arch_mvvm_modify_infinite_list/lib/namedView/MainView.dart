@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/MainViewListViewModel.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/namedWidget/PostsListWidget.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/namedWidget/PostsListWidgetTwo.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class MainView
@@ -27,11 +27,10 @@ class _MainViewState
 
   @override
   Widget build(BuildContext context) {
-    lo.getListPostFromJsonPlaceholderServiceParameterIntAndSetListPostAndInGeneralOneTask();
     return Scaffold(
         appBar: AppBar(
           title: Text("LibraryArchMVVMModifyInfiniteList"),
         ),
-        body: PostsListWidget(lo.postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget));
+        body: PostsListWidgetTwo(lo.postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo));
   }
 }

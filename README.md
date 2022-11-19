@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-<img src="/assets/library_architecture_mvvm_modify_1_1_9.png"/>
+<img src="/assets/library_architecture_mvvm_modify_1_2_1.png"/>
 
 ## Examples
 
@@ -50,7 +50,9 @@ Coming soon
 - #### ModelQNamedServiceViewModel
   - ##### FBDS
 - #### NamedViewListViewModel
+  - ##### (List)ModelQNamedServiceListViewModelForNamedWidget
 - #### NamedView
+  - ##### NamedWidget
 
 ### Utility
 

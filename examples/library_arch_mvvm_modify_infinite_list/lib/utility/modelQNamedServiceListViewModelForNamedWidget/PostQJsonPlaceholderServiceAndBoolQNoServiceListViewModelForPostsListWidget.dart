@@ -11,6 +11,10 @@ class PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidge
       this._postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex,
       this._boolQNoServiceViewModelUsingGetNPForAntiSpam);
 
+  PostQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex get getPostQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex {
+    return _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex;
+  }
+
   Stream<ListPost> get getStreamListPostUsingGetListParameterIntForStartIndex {
     return _postQJsonPlaceholderServiceViewModelUsingGetListParameterIntForStartIndex.getStreamListPostUsingGetListParameterIntForStartIndex;
   }

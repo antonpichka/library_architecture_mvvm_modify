@@ -1,32 +1,34 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthService.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationLogin.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationLoginTypeParameter.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Login.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Registration.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationLoginAndUpdateParameterRegistrationLogin
+class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin
     implements
-        InsertModelToNamedServiceParameterNamedDataSource<RegistrationLoginTypeParameter>,
-        UpdateModelToNamedServiceParameterNamedDataSource<RegistrationLoginTypeParameter>
+        InsertModelToNamedServiceParameterNamedDataSource<RegistrationTypeParameter>,
+        UpdateModelToNamedServiceParameterNamedDataSource<LoginTypeParameter>
 {
   final FirebaseAuthService _firebaseAuthService;
 
-  UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationLoginAndUpdateParameterRegistrationLogin(this._firebaseAuthService);
+  UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin(this._firebaseAuthService);
 
   @override
   Future<Response> insertModelToNamedServiceParameterNamed(
-      RegistrationLoginTypeParameter parameter)
+      RegistrationTypeParameter parameter)
   async {
-    RegistrationLogin registrationLogin = parameter.getParameter;
+    Registration registration = parameter.getParameter;
     try {
       await _firebaseAuthService
           .getFirebaseAuthSingleton
           .getFirebaseAuth
-          .createUserWithEmailAndPassword(email: registrationLogin.email, password: registrationLogin.password);
+          .createUserWithEmailAndPassword(email: registration.email, password: registration.password);
       return Response.success(true);
     } on FirebaseAuthException catch (e) {
       return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
@@ -37,14 +39,14 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationLoginAnd
 
   @override
   Future<Response> updateModelToNamedServiceParameterNamed(
-      RegistrationLoginTypeParameter parameter)
+      LoginTypeParameter parameter)
   async {
-    RegistrationLogin registrationLogin = parameter.getParameter;
+    Login login = parameter.getParameter;
     try {
       await _firebaseAuthService
           .getFirebaseAuthSingleton
           .getFirebaseAuth
-          .signInWithEmailAndPassword(email: registrationLogin.email, password: registrationLogin.password);
+          .signInWithEmailAndPassword(email: login.email.value, password: login.password.value);
       return Response.success(true);
     } on FirebaseAuthException catch (e) {
       return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
