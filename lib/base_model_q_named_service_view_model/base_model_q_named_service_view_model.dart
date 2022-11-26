@@ -48,31 +48,29 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     extends BaseModelQNamedServiceBackgroundModel<T,Y>
     implements IDispose
 {
-  /* Init List Objects For Model And BaseTypeParameter */
+  /* Lists For IStreamModel And IStreamBaseTypeParameter */
   final List<EnumBaseModelAndBaseListModelVM> _listEnumBaseModelAndBaseListModelVM = List.empty(growable: true);
   final List<EnumBaseTypeParameterVM> _listEnumBaseTypeParameterVM = List.empty(growable: true);
 
-  /* Maps For Model And StreamModel And BaseTypeParameter */
+  /* Maps For IStreamModel And IStreamBaseTypeParameter */
   final Map<EnumBaseModelAndBaseListModelVM,IStreamModel<T,Y>> _mapEnumBaseModelAndBaseListModelVMAndIStreamModel = {};
   final Map<EnumBaseTypeParameterVM,IStreamBaseTypeParameter> _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter = {};
 
   /* Init DataSource */
   final bool _isExistsDataSource;
 
-  // Where parameter initObjectSCModel. SCModel parameter IStreams init DefaultStreamController();
-  BaseModelQNamedServiceViewModel.thereIsDataSource(Object modelQNamedServiceDataSource)
-      : _isExistsDataSource = true, super.thereIsDataSource(modelQNamedServiceDataSource)
+  BaseModelQNamedServiceViewModel.thereIsDataSource(Object dataSource)
+      : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
   {
-    _initListEnumBaseModelAndBaseListModelAndListEnumBaseTypeParameterVM();
+    _initThereIsDataSourceListEnumBaseModelAndBaseListModelVMAndListEnumBaseTypeParameterVM();
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
     _initMapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter();
   }
 
-  // Where parameter initObjectSCModel. SCModel parameter IStreams init DefaultStreamController();
-  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM)
+  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list)
       : _isExistsDataSource = false, super.thereIsDataSource(null)
   {
-    _initNoDataSourceListEnumBaseModelAndBaseListModelVM(listEnumBaseModelAndBaseListModelVM);
+    _initNoDataSourceListEnumBaseModelAndBaseListModelVM(list);
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
   }
 
@@ -88,9 +86,17 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     {
       iStreamModel.dispose();
     });
+    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.forEach((
+        EnumBaseTypeParameterVM enumBaseTypeParameterVM,
+        IStreamBaseTypeParameter iStreamBaseTypeParameter)
+    {
+      iStreamBaseTypeParameter.dispose();
+    });
   }
 
+  // Default class: return DefaultStreamModel(Object.success(""),ListObject.success([]));
   IStreamModel<T,Y> initIStreamModelForSuccess();
+  // Default class: return DefaultStreamBaseTypeParameter();
   IStreamBaseTypeParameter initIStreamBaseTypeParameter();
 
   /// Start DataSource **/
@@ -1343,7 +1349,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   /// End ListModel **/
 
-  void _initListEnumBaseModelAndBaseListModelAndListEnumBaseTypeParameterVM() {
+  void _initThereIsDataSourceListEnumBaseModelAndBaseListModelVMAndListEnumBaseTypeParameterVM() {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }

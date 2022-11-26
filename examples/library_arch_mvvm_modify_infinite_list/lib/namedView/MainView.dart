@@ -31,6 +31,6 @@ class _MainViewState
         appBar: AppBar(
           title: Text("LibraryArchMVVMModifyInfiniteList"),
         ),
-        body: PostsListWidgetTwo(lo.postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo));
+        body: PostsListWidgetTwo(lo.postQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo));
   }
 }

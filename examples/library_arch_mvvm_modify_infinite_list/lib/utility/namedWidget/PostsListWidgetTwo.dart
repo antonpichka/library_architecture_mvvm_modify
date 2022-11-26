@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/modelQNamedServiceListViewModelForNamedWidget/PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/modelQNamedServiceListViewModelForNamedWidget/PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/utility/namedWidget/PostsListWidget.dart';
 
 class PostsListWidgetTwo
     extends StatelessWidget
 {
-  final PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo _postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo;
+  final PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo _lo;
 
-  PostsListWidgetTwo(this._postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo);
+  PostsListWidgetTwo(this._lo);
 
   @override
   Widget build(BuildContext context) {
-    _postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.getListPostFromJsonPlaceholderServiceParameterIntAndSetListPostAndInGeneralOneTask();
-    return PostsListWidget(_postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo.getPostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget);
+    _lo.getListPostFromJsonPlaceholderServiceParameterIntAndSetListPostAndInGeneralOneTask();
+    return PostsListWidget(_lo.getPostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget);
   }
 }

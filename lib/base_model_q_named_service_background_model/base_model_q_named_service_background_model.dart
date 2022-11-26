@@ -111,10 +111,13 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   ///
   ///   Example Using:
   ///
-  ///   User cloneModel(User model) {
-  ///     return User(model.uniqueId,model.name);
+  ///   User cloneModelForSuccess(User model) {
+  ///     return User.success(model.uniqueId,model.name);
   ///   }
   ///
+  ///   ListUser cloneModelForSuccess(ListUser model) {
+  ///     return ListUser.success(model.list);
+  ///   }
   @protected
   T cloneModelForSuccess(
       T model);
@@ -138,8 +141,6 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   ///   Object thisClass() {
   ///     return this;
   ///   }
-  ///
-  ///
   @protected
   Object thisClass();
   /// End ThisClass **/
@@ -809,7 +810,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _getListModelFromNamedServiceNPFBDS
         .getListModelFromNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       BaseListModel<T> listModel = BaseListModel<T>.exception(response.getException());
       return listModel;
     }
@@ -834,7 +835,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _getListModelFromNamedServiceParameterNamedFBDS
         .getListModelFromNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       BaseListModel<T> listModel = BaseListModel<T>.exception(response.getException());
       return listModel;
     }
@@ -856,7 +857,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _getModelFromNamedServiceNPFBDS
         .getModelFromNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       BaseModel model = BaseModel.exception(response.getException());
       return model;
     }
@@ -882,7 +883,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _getModelFromNamedServiceParameterNamedFBDS
         .getModelFromNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       BaseModel model = BaseModel.exception(response.getException());
       return model;
     }
@@ -901,7 +902,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _insertModelToNamedServiceTIPFBDS
         .insertModelToNamedServiceTIP(modelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceTIPDataSource
@@ -918,7 +919,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _insertModelToNamedServiceNPFBDS
         .insertModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceNPDataSource
@@ -937,7 +938,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _insertModelToNamedServiceParameterNamedFBDS
         .insertModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceParameterNamedDataSource
@@ -956,7 +957,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _insertListModelToNamedServiceTIPFBDS
         .insertListModelToNamedServiceTIP(listModelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceTIPDataSource
@@ -973,7 +974,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _insertListModelToNamedServiceNPFBDS
         .insertListModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceNPDataSource
@@ -992,7 +993,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _insertListModelToNamedServiceParameterNamedFBDS
         .insertListModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceParameterNamedDataSource
@@ -1011,7 +1012,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _updateModelToNamedServiceTIPFBDS
         .updateModelToNamedServiceTIP(modelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceTIPDataSource
@@ -1028,7 +1029,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _updateModelToNamedServiceNPFBDS
         .updateModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceNPDataSource
@@ -1047,7 +1048,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _updateModelToNamedServiceParameterNamedFBDS
         .updateModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceParameterNamedDataSource
@@ -1066,7 +1067,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _updateListModelToNamedServiceTIPFBDS
         .updateListModelToNamedServiceTIP(listModelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceTIPDataSource
@@ -1083,7 +1084,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _updateListModelToNamedServiceNPFBDS
         .updateListModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceNPDataSource
@@ -1102,7 +1103,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _updateListModelToNamedServiceParameterNamedFBDS
         .updateListModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceParameterNamedDataSource
@@ -1121,7 +1122,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _deleteModelToNamedServiceTIPFBDS
         .deleteModelToNamedServiceTIP(modelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceTIPDataSource
@@ -1138,7 +1139,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _deleteModelToNamedServiceNPFBDS
         .deleteModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceNPDataSource
@@ -1157,7 +1158,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _deleteModelToNamedServiceParameterNamedFBDS
         .deleteModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceParameterNamedDataSource
@@ -1176,7 +1177,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _deleteListModelToNamedServiceTIPFBDS
         .deleteListModelToNamedServiceTIP(listModelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteListModelToNamedServiceTIPDataSource
@@ -1193,7 +1194,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _deleteListModelToNamedServiceNPFBDS
         .deleteListModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return deleteListModelToNamedServiceNPDataSource
@@ -1212,7 +1213,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Response response = _deleteListModelToNamedServiceParameterNamedFBDS
         .deleteListModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
-    if(response.isExceptionNotNull()) {
+    if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteListModelToNamedServiceParameterNamedDataSource

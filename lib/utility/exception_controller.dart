@@ -21,34 +21,30 @@ import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_except
 import 'package:flutter/foundation.dart';
 
 class ExceptionController {
-  EnumWhatIsTheException enumWhatIsTheException;
-  BaseException _exception;
+  final EnumWhatIsTheException enumWhatIsTheException;
+  final BaseException _exception;
 
   ExceptionController.success()
-      : enumWhatIsTheException = EnumWhatIsTheException.noException;
+      : enumWhatIsTheException = EnumWhatIsTheException.noException,
+        _exception = null;
 
-  ExceptionController.exception(
-      BaseException exception)
-  {
-    _exception = exception;
-    if(_exception is LocalException) {
-      enumWhatIsTheException = EnumWhatIsTheException.localException;
-      return;
-    }
-    if(_exception is NetworkException) {
-      enumWhatIsTheException = EnumWhatIsTheException.networkException;
-      return;
-    }
-    enumWhatIsTheException = EnumWhatIsTheException.otherException;
-  }
+  ExceptionController.exception(this._exception)
+      : enumWhatIsTheException = _exception is LocalException
+      ? EnumWhatIsTheException.localException : _exception is NetworkException
+      ? EnumWhatIsTheException.networkException : EnumWhatIsTheException.otherException;
 
   @nonVirtual
-  String get getParameterMessageForViewByException {
+  String getMessageForViewByException(
+      Object thisClass)
+  {
+    if(_exception == null) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"_exception equals null");
+    }
     return _exception.getMessageForView();
   }
 
   @nonVirtual
-  bool isNotNullParameterException() {
+  bool isExceptionNotEqualsNull() {
     if(_exception == null) {
       return false;
     }

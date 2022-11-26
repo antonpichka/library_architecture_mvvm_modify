@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/utility.dart';
 
 abstract class BaseException
     implements Exception
 {
   BaseException(
-      Type typeClassException,
-      Object thisClass)
+      Object thisClass,
+      Type exceptionClass)
   {
-    debugPrintError("===start_to_trace_exception===\n");
-    debugPrintError("NameClassException: $typeClassException\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInStringForDebugPrint()}\n");
-    debugPrintError("===end_to_trace_exception===\n");
+    debugPrintException("===start_to_trace_exception===\n");
+    debugPrintException("NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInStringForDebugPrintException()}\n");
+    debugPrintException("===end_to_trace_exception===\n");
   }
 
   String getMessageForView();
-  @protected
-  String exceptionInStringForDebugPrint();
+  String exceptionInStringForDebugPrintException();
 }

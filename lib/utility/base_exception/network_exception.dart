@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 
 class NetworkException
@@ -28,7 +27,7 @@ class NetworkException
       Object thisClass,
       this.statusCode,
       this.nameStatusCode,
-      this.descriptionStatusCode) : super(NetworkException,thisClass);
+      this.descriptionStatusCode) : super(thisClass,NetworkException);
 
   factory NetworkException.fromStatusCode(
       Object thisClass,
@@ -261,14 +260,12 @@ class NetworkException
   }
 
   @override
-  @nonVirtual
   String getMessageForView() {
-    return descriptionStatusCode;
+    return "$statusCode";
   }
 
   @override
-  @nonVirtual
-  String exceptionInStringForDebugPrint() {
+  String exceptionInStringForDebugPrintException() {
     return "StatusCode: $statusCode | "
         "NameStatusCode: $nameStatusCode | "
         "DescriptionStatusCode: $descriptionStatusCode";

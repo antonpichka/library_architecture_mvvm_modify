@@ -63,7 +63,7 @@ class BaseListModel<T extends BaseModel> {
     }
     BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator.values.first;
     if(_mapEnumNamedForIteratorAndIterator.length == 1) {
-      iterator.setParameterList = list;
+      iterator.setList = list;
       setParameterList = iterator.getSortedList;
       return;
     }
@@ -74,7 +74,7 @@ class BaseListModel<T extends BaseModel> {
       iterator = _mapEnumNamedForIteratorAndIterator[itemEnumNamedForIterator];
       break;
     }
-    iterator.setParameterList = list;
+    iterator.setList = list;
     setParameterList = iterator.getSortedList;
   }
 
@@ -89,14 +89,14 @@ class BaseListModel<T extends BaseModel> {
   void updateToList(
       T model)
   {
-    list[list.indexWhere((item) => item.uniqueId == model.uniqueId)] = model;
+    list[list.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
   void deleteToList(
       T model)
   {
-    list.removeWhere((item) => item.uniqueId == model.uniqueId);
+    list.removeWhere((T item) => item.uniqueId == model.uniqueId);
   }
 
   @nonVirtual
@@ -110,8 +110,8 @@ class BaseListModel<T extends BaseModel> {
   void updateListToList(
       List<T> listForUpdate)
   {
-    for(int i = 0; i < listForUpdate.length; i++) {
-      list[list.indexWhere((element) => element.uniqueId == listForUpdate[i].uniqueId)] = listForUpdate[i];
+    for(T itemForUpdate in listForUpdate) {
+      list[list.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
     }
   }
 
@@ -119,8 +119,8 @@ class BaseListModel<T extends BaseModel> {
   void deleteListToList(
       List<T> listForDelete)
   {
-    for(int i = 0; i < listForDelete.length; i++) {
-      list.removeWhere((element) => element.uniqueId == listForDelete[i].uniqueId);
+    for(T itemForDelete in listForDelete) {
+      list.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
     }
   }
 }

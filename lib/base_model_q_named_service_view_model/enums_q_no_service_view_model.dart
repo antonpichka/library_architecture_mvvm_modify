@@ -24,7 +24,7 @@ import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_para
 abstract class EnumsQNoServiceViewModel
     extends BaseModelQNamedServiceViewModel<Enums,ListEnums>
 {
-  EnumsQNoServiceViewModel(List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM,) : super.noDataSource(listEnumBaseModelAndBaseListModelVM);
+  EnumsQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,) : super.noDataSource(list);
 
   @override
   @nonVirtual

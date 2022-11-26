@@ -12,5 +12,6 @@ class IntQNoServiceListViewModelForIncrementFABWidget {
         .field++;
     _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
         .notifyStreamIntUsingGetNPForIncrementAndDecrement();
+    return;
   }
 }

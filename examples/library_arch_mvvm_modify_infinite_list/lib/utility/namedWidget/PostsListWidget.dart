@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/modelQNamedServiceListViewModelForNamedWidget/PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/modelQNamedServiceListViewModelForNamedWidget/PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget.dart';
 
 class PostsListWidget
     extends StatefulWidget
 {
-  final PostQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget;
+  final PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget lo;
 
-  PostsListWidget(this.postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget);
+  PostsListWidget(this.lo);
 
   @override
   State<PostsListWidget> createState() => _PostsListWidget();
@@ -39,16 +39,16 @@ class _PostsListWidget
   Widget build(BuildContext context) {
     return StreamBuilder<ListPost>(
         stream: widget
-            .postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget
-            .getStreamListPostUsingGetListParameterIntForStartIndex,
+            .lo
+            .getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
         builder: (BuildContext buildContext, AsyncSnapshot<ListPost> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           }
           ListPost listPost = asyncSnapshot.data;
-          switch(listPost.getEnumStatusListPostForPostsListWidget) {
-            case EnumStatusListPostForPostsListWidget.success:
+          switch(listPost.getEnumListPostForPostsListWidget) {
+            case EnumListPostForPostsListWidget.success:
               return ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
                     if(listPost.isFromIndexMoreOrEqualParameterLengthByList(index)) {
@@ -73,11 +73,11 @@ class _PostsListWidget
                   },
                   itemCount: listPost.getParameterLengthByList,
                   controller: _scrollController);
-            case EnumStatusListPostForPostsListWidget.isEmptyListPostJsonPlaceholder:
+            case EnumListPostForPostsListWidget.isEmptyList:
               return Center(child: Text('no posts'));
-            case EnumStatusListPostForPostsListWidget.noInternetItLocalException:
+            case EnumListPostForPostsListWidget.noInternetItLocalException:
               return Center(child: Text('no Internet. Connect to the Internet'));
-            case EnumStatusListPostForPostsListWidget.serverNotWorkItNetworkException:
+            case EnumListPostForPostsListWidget.serverNotWorkItNetworkException:
               return Center(child: Text('failed to fetch posts'));
             default:
               return Container();
@@ -88,8 +88,8 @@ class _PostsListWidget
   void _onScroll() {
     if (_isBottom)
       widget
-          .postQJsonPlaceholderServiceAndBoolQNoServiceListViewModelForPostsListWidget
-          .getListPostFromJsonPlaceholderServiceParameterIntAndInGeneralOneTask();
+          .lo
+          .getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
   }
 
   bool get _isBottom {

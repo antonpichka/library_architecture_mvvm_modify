@@ -22,10 +22,6 @@ void debugPrint(String text) {
   }
 }
 
-void debugPrintError(String text) {
+void debugPrintException(String text) {
   debugPrint('\x1B[31m$text\x1B[0m');
-}
-
-void debugPrintInfo(String text) {
-  debugPrint('\x1B[34m$text\x1B[0m');
 }

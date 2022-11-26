@@ -10,5 +10,6 @@ class UserQFirebaseAuthAndGoogleSignInServiceListViewModelForIconButtonExitToApp
     // 1
     await _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
         .deleteUserToFirebaseAuthAndGoogleSignInServiceNP();
+    return;
   }
 }

@@ -3,9 +3,9 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_exception.dart';
 
-enum EnumStatusListPostForPostsListWidget {
+enum EnumListPostForPostsListWidget {
   success,
-  isEmptyListPostJsonPlaceholder,
+  isEmptyList,
   noInternetItLocalException,
   serverNotWorkItNetworkException,
 }
@@ -27,17 +27,17 @@ class ListPost
     hasReachedMax = false;
   }
 
-  EnumStatusListPostForPostsListWidget get getEnumStatusListPostForPostsListWidget {
+  EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
     if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
-      return EnumStatusListPostForPostsListWidget.noInternetItLocalException;
+      return EnumListPostForPostsListWidget.noInternetItLocalException;
     }
     if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
-      return EnumStatusListPostForPostsListWidget.serverNotWorkItNetworkException;
+      return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
     if(list.isEmpty) {
-      return EnumStatusListPostForPostsListWidget.isEmptyListPostJsonPlaceholder;
+      return EnumListPostForPostsListWidget.isEmptyList;
     }
-    return EnumStatusListPostForPostsListWidget.success;
+    return EnumListPostForPostsListWidget.success;
   }
 
   int get getParameterLengthByList {

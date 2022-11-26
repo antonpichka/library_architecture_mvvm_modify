@@ -12,7 +12,7 @@ class CircleAvatarWidget
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 48.0,
-      backgroundImage: _user.isEqualsNotNullParameterPhoto()
+      backgroundImage: _user.isNotEqualsNullParameterPhoto()
           ? NetworkImage(_user.photo)
           : null,
       child: _user.isEqualsNullParameterPhoto()

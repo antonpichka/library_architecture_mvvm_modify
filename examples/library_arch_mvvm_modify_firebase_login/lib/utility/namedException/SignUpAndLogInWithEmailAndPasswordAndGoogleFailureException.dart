@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 
 class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
@@ -10,7 +9,7 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
   SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
       Object thisClass,
       this.code,
-      this.message) : super(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException,thisClass);
+      this.message) : super(thisClass,SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException);
 
   factory SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(
       Object thisClass,
@@ -157,14 +156,12 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
   }
 
   @override
-  @nonVirtual
   String getMessageForView() {
     return message;
   }
 
   @override
-  @nonVirtual
-  String exceptionInStringForDebugPrint() {
+  String exceptionInStringForDebugPrintException() {
     return "Code: $code | "
         "Message: $message";
   }

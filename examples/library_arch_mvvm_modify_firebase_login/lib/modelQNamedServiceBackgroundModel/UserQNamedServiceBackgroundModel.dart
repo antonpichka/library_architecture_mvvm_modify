@@ -8,7 +8,9 @@ abstract class UserQNamedServiceBackgroundModel
   UserQNamedServiceBackgroundModel.thereIsDataSource(Object dataSource) : super.thereIsDataSource(dataSource);
 
   @override
-  User cloneModelForSuccess(User model) {
+  User cloneModelForSuccess(
+      User model)
+  {
     return User.success(
         model.uniqueId,
         model.email,
@@ -17,7 +19,9 @@ abstract class UserQNamedServiceBackgroundModel
   }
 
   @override
-  ListUser cloneListModelForSuccess(ListUser listModel) {
+  ListUser cloneListModelForSuccess(
+      ListUser listModel)
+  {
     return ListUser.success(listModel.list);
   }
 }

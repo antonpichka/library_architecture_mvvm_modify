@@ -24,16 +24,18 @@ class Response {
   Response.success(this._data) : _exception = null;
   Response.exception(this._exception) : _data = null;
 
+  @nonVirtual
   T getData<T extends Object>() {
     return _data;
   }
 
+  @nonVirtual
   Y getException<Y extends BaseException>() {
     return _exception;
   }
 
   @nonVirtual
-  bool isExceptionNotNull() {
+  bool isExceptionNotEqualsNull() {
     if(_exception == null) {
       return false;
     }

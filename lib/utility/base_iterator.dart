@@ -33,7 +33,7 @@ abstract class BaseIterator<T extends BaseModel>
   }
 
   @nonVirtual
-  set setParameterList(
+  set setList(
       List<T> list)
   {
     this.list = list;

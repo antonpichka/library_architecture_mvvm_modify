@@ -36,20 +36,20 @@ class _HomeViewState
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home mvvm modify'),
+        title: Text('Home mvvm modify'),
         actions: <Widget>[
           IconButtonExitToAppWidget(lo.userQFirebaseAuthAndGoogleSignInServiceListViewModelForIconButtonExitToAppWidget),
         ],
       ),
       body: Align(
-        alignment: const Alignment(0, -1 / 3),
+        alignment: Alignment(0, -1 / 3),
         child: Column(
           mainAxisSize: MainAxisSize.min  ,
           children: <Widget>[
             CircleAvatarWidget(widget.user),
-            const SizedBox(height: 4),
+            SizedBox(height: 4),
             Text(widget.user.email, style: textTheme.headline6),
-            const SizedBox(height: 4),
+            SizedBox(height: 4),
             Text(widget.user.name, style: textTheme.headline5),
           ],
         ),

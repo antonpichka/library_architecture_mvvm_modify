@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 abstract class BoolQNoServiceViewModelImpl
     extends BoolQNoServiceViewModel
 {
-  BoolQNoServiceViewModelImpl(List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM) : super(listEnumBaseModelAndBaseListModelVM);
+  BoolQNoServiceViewModelImpl(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   IStreamModel<Bool,ListBool> initIStreamModelForSuccess() {

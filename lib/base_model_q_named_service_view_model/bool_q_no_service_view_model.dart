@@ -24,7 +24,7 @@ import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_para
 abstract class BoolQNoServiceViewModel
     extends BaseModelQNamedServiceViewModel<Bool,ListBool>
 {
-  BoolQNoServiceViewModel(List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM) : super.noDataSource(listEnumBaseModelAndBaseListModelVM);
+  BoolQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   @nonVirtual

@@ -26,7 +26,7 @@ class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut
       ]);
       return Response.success(true);
     } catch (_) {
-      return Response.exception(LocalException(this,EnumGuiltyForLocalException.deviceOrDeveloper,_.toString()));
+      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 

@@ -41,17 +41,17 @@ class _MainViewState
             return Scaffold(body: Center(child: CircularProgressIndicator()));
           }
           User user = asyncSnapshot.data;
-          switch(user.getEnumStatusUserForMainView) {
-            case EnumStatusUserForMainView.authenticated:
+          switch(user.getEnumUserForMainView) {
+            case EnumUserForMainView.authenticated:
               return HomeView(user);
-            case EnumStatusUserForMainView.unauthenticated:
+            case EnumUserForMainView.unauthenticated:
               return LoginView();
-            case EnumStatusUserForMainView.localException:
+            case EnumUserForMainView.localException:
               return Scaffold(
                   body: Center(
                       child: Text(user
                           .exceptionController
-                          .getParameterMessageForViewByException)));
+                          .getMessageForViewByException(this))));
             default:
               return Container();
           }

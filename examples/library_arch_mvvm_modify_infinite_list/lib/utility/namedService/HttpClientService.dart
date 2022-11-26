@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_infinite_list/utility/namedSingleton/HttpClientSingleton.dart';
 
-class JsonPlaceholderService {
+class HttpClientService {
   HttpClientSingleton _httpClientSingleton;
 
   HttpClientSingleton get getHttpClientSingleton {

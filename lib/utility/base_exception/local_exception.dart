@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 
 // Who is in fault?
 enum EnumGuiltyForLocalException {
   developer,
   device,
-  user,
-  deviceOrDeveloper,
+  user
 }
 
 class LocalException
@@ -35,21 +33,21 @@ class LocalException
       Object thisClass,
       this.enumGuiltyForLocalException,
       this.message)
-      : super(LocalException,thisClass);
+      : super(thisClass,LocalException);
 
-  LocalException.whereTheUserIsGuilty(thisClass,this.message) :
-        enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
-        super(LocalException,thisClass);
+  LocalException.whereTheUserIsGuilty(
+      Object thisClass,
+      this.message)
+      : enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
+        super(thisClass,LocalException);
 
   @override
-  @nonVirtual
   String getMessageForView() {
     return message;
   }
 
   @override
-  @nonVirtual
-  String exceptionInStringForDebugPrint() {
+  String exceptionInStringForDebugPrintException() {
     return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
         "Message: $message";
   }

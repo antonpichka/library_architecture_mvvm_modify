@@ -1,26 +1,26 @@
 import 'dart:convert';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/namedService/JsonPlaceholderService.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/utility/namedService/HttpClientService.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/utility/utility.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 
-class PostQJsonPlaceholderServiceDataSourceUsingGetListParameterIntForStartIndex
+class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder
     implements GetListModelFromNamedServiceParameterNamedDataSource<ListPost,IntTypeParameter>
 {
-  final JsonPlaceholderService _jsonPlaceholderService;
+  final HttpClientService _httpClientService;
 
-  PostQJsonPlaceholderServiceDataSourceUsingGetListParameterIntForStartIndex(this._jsonPlaceholderService);
+  PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(this._httpClientService);
 
   @override
   Future<ListPost> getListModelFromNamedServiceParameterNamed(
       IntTypeParameter int)
   async {
     try {
-      final response = await _jsonPlaceholderService
+      final response = await _httpClientService
           .getHttpClientSingleton
           .getHttpClient
           .get(Uri.https(constUrlJsonPlaceholderTypicodeCom, Post.constPostsUrl, <String, String>{'_start': '${int.getParameter}', '_limit': '20'}))

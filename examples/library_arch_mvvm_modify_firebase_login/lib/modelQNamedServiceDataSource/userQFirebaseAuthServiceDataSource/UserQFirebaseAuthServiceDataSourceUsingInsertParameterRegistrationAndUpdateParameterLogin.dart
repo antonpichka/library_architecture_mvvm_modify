@@ -46,7 +46,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
       await _firebaseAuthService
           .getFirebaseAuthSingleton
           .getFirebaseAuth
-          .signInWithEmailAndPassword(email: login.email.value, password: login.password.value);
+          .signInWithEmailAndPassword(email: login.email, password: login.password);
       return Response.success(true);
     } on FirebaseAuthException catch (e) {
       return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
