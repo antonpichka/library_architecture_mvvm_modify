@@ -125,14 +125,6 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   Y cloneListModelForSuccess(
       Y listModel);
-
-  @protected
-  @nonVirtual
-  BaseTypeParameter cloneBaseTypeParameter(
-      BaseTypeParameter baseTypeParameter)
-  {
-    return BaseTypeParameter(baseTypeParameter.getParameter);
-  }
   /// End Clone **/
 
   /// Start ThisClass **/
@@ -829,17 +821,16 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_getListModelFromNamedServiceParameterNamedFBDS == null) {
-      return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameterForClone);
+      return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameter);
     }
     Response response = _getListModelFromNamedServiceParameterNamedFBDS
-        .getListModelFromNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .getListModelFromNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       BaseListModel<T> listModel = BaseListModel<T>.exception(response.getException());
       return listModel;
     }
-    return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameterForClone);
+    return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameter);
   }
 
   Future<T> _baseGetModelFromNamedServiceNP(
@@ -877,17 +868,16 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_getModelFromNamedServiceParameterNamedFBDS == null) {
-      return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameterForClone);
+      return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameter);
     }
     Response response = _getModelFromNamedServiceParameterNamedFBDS
-        .getModelFromNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .getModelFromNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       BaseModel model = BaseModel.exception(response.getException());
       return model;
     }
-    return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameterForClone);
+    return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameter);
   }
 
   Future<Response> _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS(
@@ -931,18 +921,17 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_insertModelToNamedServiceParameterNamedFBDS == null) {
       return await insertModelToNamedServiceParameterNamedDataSource
-          .insertModelToNamedServiceParameterNamed(typeParameterForClone);
+          .insertModelToNamedServiceParameterNamed(typeParameter);
     }
     Response response = _insertModelToNamedServiceParameterNamedFBDS
-        .insertModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .insertModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceParameterNamedDataSource
-        .insertModelToNamedServiceParameterNamed(typeParameterForClone);
+        .insertModelToNamedServiceParameterNamed(typeParameter);
   }
 
   Future<Response> _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
@@ -986,18 +975,17 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_insertListModelToNamedServiceParameterNamedFBDS == null) {
       return await insertListModelToNamedServiceParameterNamedDataSource
-          .insertListModelToNamedServiceParameterNamed(typeParameterForClone);
+          .insertListModelToNamedServiceParameterNamed(typeParameter);
     }
     Response response = _insertListModelToNamedServiceParameterNamedFBDS
-        .insertListModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .insertListModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceParameterNamedDataSource
-        .insertListModelToNamedServiceParameterNamed(typeParameterForClone);
+        .insertListModelToNamedServiceParameterNamed(typeParameter);
   }
 
   Future<Response> _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS(
@@ -1041,18 +1029,17 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_updateModelToNamedServiceParameterNamedFBDS == null) {
       return await updateModelToNamedServiceParameterNamedDataSource
-          .updateModelToNamedServiceParameterNamed(typeParameterForClone);
+          .updateModelToNamedServiceParameterNamed(typeParameter);
     }
     Response response = _updateModelToNamedServiceParameterNamedFBDS
-        .updateModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .updateModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceParameterNamedDataSource
-        .updateModelToNamedServiceParameterNamed(typeParameterForClone);
+        .updateModelToNamedServiceParameterNamed(typeParameter);
   }
 
   Future<Response> _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
@@ -1096,18 +1083,17 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_updateListModelToNamedServiceParameterNamedFBDS == null) {
       return await updateListModelToNamedServiceParameterNamedDataSource
-          .updateListModelToNamedServiceParameterNamed(typeParameterForClone);
+          .updateListModelToNamedServiceParameterNamed(typeParameter);
     }
     Response response = _updateListModelToNamedServiceParameterNamedFBDS
-        .updateListModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .updateListModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceParameterNamedDataSource
-        .updateListModelToNamedServiceParameterNamed(typeParameterForClone);
+        .updateListModelToNamedServiceParameterNamed(typeParameter);
   }
 
   Future<Response> _baseDeleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
@@ -1151,18 +1137,17 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_deleteModelToNamedServiceParameterNamedFBDS == null) {
       return await deleteModelToNamedServiceParameterNamedDataSource
-          .deleteModelToNamedServiceParameterNamed(typeParameterForClone);
+          .deleteModelToNamedServiceParameterNamed(typeParameter);
     }
     Response response = _deleteModelToNamedServiceParameterNamedFBDS
-        .deleteModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .deleteModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceParameterNamedDataSource
-        .deleteModelToNamedServiceParameterNamed(typeParameterForClone);
+        .deleteModelToNamedServiceParameterNamed(typeParameter);
   }
 
   Future<Response> _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
@@ -1206,17 +1191,16 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       BaseTypeParameter typeParameter,
       BaseTypeParameter typeParameterForFBDS)
   async {
-    BaseTypeParameter typeParameterForClone = cloneBaseTypeParameter(typeParameter);
     if(_deleteListModelToNamedServiceParameterNamedFBDS == null) {
       return await deleteListModelToNamedServiceParameterNamedDataSource
-          .deleteListModelToNamedServiceParameterNamed(typeParameterForClone);
+          .deleteListModelToNamedServiceParameterNamed(typeParameter);
     }
     Response response = _deleteListModelToNamedServiceParameterNamedFBDS
-        .deleteListModelToNamedServiceParameterNamed(typeParameterForClone,typeParameterForFBDS);
+        .deleteListModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
     if(response.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteListModelToNamedServiceParameterNamedDataSource
-        .deleteListModelToNamedServiceParameterNamed(typeParameterForClone);
+        .deleteListModelToNamedServiceParameterNamed(typeParameter);
   }
 }

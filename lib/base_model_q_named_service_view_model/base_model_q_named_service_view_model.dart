@@ -1130,19 +1130,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
 
   @protected
   @nonVirtual
-  void setCloneBaseTypeParameter(
-      EnumBaseTypeParameterVM operation,
-      BaseTypeParameter typeParameter)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
-        .setBaseTypeParameter = cloneBaseTypeParameter(typeParameter);
-  }
-
-  @protected
-  @nonVirtual
   void notifyStreamBaseTypeParameter(
       EnumBaseTypeParameterVM operation,)
   {
