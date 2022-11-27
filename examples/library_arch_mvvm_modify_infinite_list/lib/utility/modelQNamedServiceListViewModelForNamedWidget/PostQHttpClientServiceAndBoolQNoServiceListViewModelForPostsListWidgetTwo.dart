@@ -15,7 +15,7 @@ class PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidgetTwo 
     // 1
     await _postQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget
         .getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromJsonPlaceholderServiceParameterIntAndSetListPost(IntTypeParameter(0));
+        .getListPostFromHttpClientServiceParameterIntAndSetListPost(IntTypeParameter(0));
     _postQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget
         .getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder();

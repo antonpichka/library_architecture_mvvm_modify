@@ -39,7 +39,7 @@ class PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget {
         .isField = true;
     // 1
     ListPost listPost = await _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromJsonPlaceholderServiceParameterInt(IntTypeParameter(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder.list.length));
+        .getListPostFromHttpClientServiceParameterInt(IntTypeParameter(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder.list.length));
     _boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         .isField = false;

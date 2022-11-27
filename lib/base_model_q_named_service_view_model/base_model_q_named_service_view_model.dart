@@ -17,30 +17,22 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_background_model/base_model_q_named_service_background_model.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_model_to_named_service_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_model_from_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_list_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_list_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_list_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_list_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_named_vm/enum_base_model_and_base_list_model_vm.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_named_vm/enum_base_type_parameter_vm.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
@@ -48,13 +40,9 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     extends BaseModelQNamedServiceBackgroundModel<T,Y>
     implements IDispose
 {
-  /* Lists For IStreamModel And IStreamBaseTypeParameter */
+  /* List and Map For IStreamModel */
   final List<EnumBaseModelAndBaseListModelVM> _listEnumBaseModelAndBaseListModelVM = List.empty(growable: true);
-  final List<EnumBaseTypeParameterVM> _listEnumBaseTypeParameterVM = List.empty(growable: true);
-
-  /* Maps For IStreamModel And IStreamBaseTypeParameter */
   final Map<EnumBaseModelAndBaseListModelVM,IStreamModel<T,Y>> _mapEnumBaseModelAndBaseListModelVMAndIStreamModel = {};
-  final Map<EnumBaseTypeParameterVM,IStreamBaseTypeParameter> _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter = {};
 
   /* Init DataSource */
   final bool _isExistsDataSource;
@@ -62,9 +50,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   BaseModelQNamedServiceViewModel.thereIsDataSource(Object dataSource)
       : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
   {
-    _initThereIsDataSourceListEnumBaseModelAndBaseListModelVMAndListEnumBaseTypeParameterVM();
+    _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
-    _initMapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter();
   }
 
   BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list)
@@ -86,18 +73,10 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     {
       iStreamModel.dispose();
     });
-    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.forEach((
-        EnumBaseTypeParameterVM enumBaseTypeParameterVM,
-        IStreamBaseTypeParameter iStreamBaseTypeParameter)
-    {
-      iStreamBaseTypeParameter.dispose();
-    });
   }
 
   // Default class: return DefaultStreamModel(Object.success(""),ListObject.success([]));
   IStreamModel<T,Y> initIStreamModelForSuccess();
-  // Default class: return DefaultStreamBaseTypeParameter();
-  IStreamBaseTypeParameter initIStreamBaseTypeParameter();
 
   /// Start DataSource **/
   ///
@@ -147,7 +126,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end getListNP 4
 
-  // start getListParameterNamed 8
+  // start getListParameterNamed 4
   @override
   @protected
   @nonVirtual
@@ -177,13 +156,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
 
   @protected
   @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return getListModelFromNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
   Future<Y> getListModelFromNamedServiceParameterNamedAndSetListModel(
       BaseTypeParameter typeParameter)
   async {
@@ -191,13 +163,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed]
         .setListModel = listModel;
     return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed].getListModel;
-  }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedAndSetListModelUsingStateTypeParameter()
-  {
-    return getListModelFromNamedServiceParameterNamedAndSetListModel(getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedServiceParameterNamed));
   }
 
   @protected
@@ -213,27 +178,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         .setListModel = listModel;
     return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed].getListModel;
   }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedAndSetListModelUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return getListModelFromNamedServiceParameterNamedAndSetListModelUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.getListModelFromNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end getListParameterNamed 8
+  // end getListParameterNamed 4
 
   // start getNP 4
   @override
@@ -279,7 +224,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end getNP 4
 
-  // start getParameterNamed 8
+  // start getParameterNamed 4
   @override
   @protected
   @nonVirtual
@@ -309,26 +254,12 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
 
   @protected
   @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return getModelFromNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
   Future<T> getModelFromNamedServiceParameterNamedAndSetModel(
       BaseTypeParameter typeParameter)
   async {
     T model = await getModelFromNamedServiceParameterNamed(typeParameter);
     setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
     return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
-  }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedAndSetModelUsingStateTypeParameter()
-  {
-    return getModelFromNamedServiceParameterNamedAndSetModel(getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedServiceParameterNamed));
   }
 
   @protected
@@ -343,27 +274,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
     return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
   }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedAndSetModelUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return getModelFromNamedServiceParameterNamedAndSetModelUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.getModelFromNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end getParameterNamed 8
+  // end getParameterNamed 4
 
   // start insertTIP 4
   @override
@@ -436,7 +347,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end insertNP 2
 
-  // start insertParameterNamed 4
+  // start insertParameterNamed 2
   @override
   @protected
   @nonVirtual
@@ -463,24 +374,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameter,
         typeParameterForFBDS);
   }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return insertModelToNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.insertModelToNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.insertModelToNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end insertParameterNamed 4
+  // end insertParameterNamed 2
 
   // start insertListTIP 4
   @override
@@ -553,7 +447,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end insertListNP 2
 
-  // start insertListParameterNamed 4
+  // start insertListParameterNamed 2
   @override
   @protected
   @nonVirtual
@@ -580,24 +474,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameter,
         typeParameterForFBDS);
   }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return insertListModelToNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.insertListModelToNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.insertListModelToNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end insertListParameterNamed 4
+  // end insertListParameterNamed 2
 
   // start updateTIP 4
   @override
@@ -670,7 +547,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end updateNP 2
 
-  // start updateParameterNamed 4
+  // start updateParameterNamed 2
   @override
   @protected
   @nonVirtual
@@ -697,24 +574,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameter,
         typeParameterForFBDS);
   }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return updateModelToNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.updateModelToNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end updateParameterNamed 4
+  // end updateParameterNamed 2
 
   // start updateListTIP 4
   @override
@@ -787,7 +647,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end updateListNP 2
 
-  // start updateListParameterNamed 4
+  // start updateListParameterNamed 2
   @override
   @protected
   @nonVirtual
@@ -814,24 +674,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameter,
         typeParameterForFBDS);
   }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return updateListModelToNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.updateListModelToNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end updateListParameterNamed 4
+  // end updateListParameterNamed 2
 
   // start deleteTIP 4
   @override
@@ -904,7 +747,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end deleteNP 2
 
-  // start deleteParameterNamed 4
+  // start deleteParameterNamed 2
   @override
   @protected
   @nonVirtual
@@ -931,24 +774,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameter,
         typeParameterForFBDS);
   }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return deleteModelToNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.deleteModelToNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end deleteParameterNamed 4
+  // end deleteParameterNamed 2
 
   // start deleteListTIP 4
   @override
@@ -1021,7 +847,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end deleteListNP 2
 
-  // start deleteListParameterNamed 4
+  // start deleteListParameterNamed 2
   @override
   @protected
   @nonVirtual
@@ -1048,110 +874,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameter,
         typeParameterForFBDS);
   }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceParameterNamedUsingStateTypeParameter()
-  {
-    return deleteListModelToNamedServiceParameterNamed(getBaseTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedServiceParameterNamed));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceParameterNamedUsingStateTypeParameterAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        getBaseTypeParameter(EnumBaseTypeParameterVM.deleteListModelToNamedServiceParameterNamed),
-        typeParameterForFBDS);
-  }
-  // end deleteListParameterNamed 4
+  // end deleteListParameterNamed 2
   /// End DataSource **/
-
-  /// Start IStreamBaseTypeParameter **/
-  @protected
-  @nonVirtual
-  U getIStreamBaseTypeParameter<U extends IStreamBaseTypeParameter>(
-      EnumBaseTypeParameterVM operation)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation];
-  }
-  /// End IStreamBaseTypeParameter **/
-
-  /// Start BaseTypeParameter **/
-  @protected
-  @nonVirtual
-  Future<BaseTypeParameter> getFutureBaseTypeParameter(
-      EnumBaseTypeParameterVM operation)
-  async {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation].getBaseTypeParameter;
-  }
-
-  @protected
-  @nonVirtual
-  Object getStreamBaseTypeParameter(
-      EnumBaseTypeParameterVM operation)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation].getStreamBaseTypeParameter;
-  }
-
-  @protected
-  @nonVirtual
-  BaseTypeParameter getBaseTypeParameter(
-      EnumBaseTypeParameterVM operation)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    return _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation].getBaseTypeParameter;
-  }
-
-  @protected
-  @nonVirtual
-  void setBaseTypeParameter(
-      EnumBaseTypeParameterVM operation,
-      BaseTypeParameter typeParameter)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
-        .setBaseTypeParameter = typeParameter;
-  }
-
-  @protected
-  @nonVirtual
-  void notifyStreamBaseTypeParameter(
-      EnumBaseTypeParameterVM operation,)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
-        .notifyStreamBaseTypeParameter(thisClass);
-  }
-
-  @protected
-  @nonVirtual
-  void notifyStreamDelayInSecondsBaseTypeParameter(
-      EnumBaseTypeParameterVM operation,)
-  {
-    if(!_mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[operation]
-        .notifyStreamDelayInSecondsBaseTypeParameter(thisClass);
-  }
-  /// End BaseTypeParameter **/
 
   /// Start IStreamModel **/
   @protected
@@ -1217,13 +941,13 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   void setCloneModel(
       EnumBaseModelAndBaseListModelVM operation,
-      T modelNamed)
+      T model)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .setModel = cloneModelForSuccess(modelNamed);
+        .setModel = cloneModelForSuccess(model);
   }
 
   @protected
@@ -1336,7 +1060,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   /// End ListModel **/
 
-  void _initThereIsDataSourceListEnumBaseModelAndBaseListModelVMAndListEnumBaseTypeParameterVM() {
+  void _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM() {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
@@ -1366,29 +1090,9 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     if(modelQNamedServiceDataSource is GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.getModelFromNamedServiceParameterNamed);
     }
     if(modelQNamedServiceDataSource is GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.getListModelFromNamedServiceParameterNamed);
-    }
-    if(modelQNamedServiceDataSource is InsertModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>) {
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.insertModelToNamedServiceParameterNamed);
-    }
-    if(modelQNamedServiceDataSource is UpdateModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>) {
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.updateModelToNamedServiceParameterNamed);
-    }
-    if(modelQNamedServiceDataSource is DeleteModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>) {
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.deleteModelToNamedServiceParameterNamed);
-    }
-    if(modelQNamedServiceDataSource is InsertListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>) {
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.insertListModelToNamedServiceParameterNamed);
-    }
-    if(modelQNamedServiceDataSource is UpdateListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>) {
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.updateListModelToNamedServiceParameterNamed);
-    }
-    if(modelQNamedServiceDataSource is DeleteListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>) {
-      _listEnumBaseTypeParameterVM.add(EnumBaseTypeParameterVM.deleteListModelToNamedServiceParameterNamed);
     }
   }
 
@@ -1404,12 +1108,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel() {
     for(EnumBaseModelAndBaseListModelVM enumBaseModelAndBaseListModelVM in _listEnumBaseModelAndBaseListModelVM) {
       _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[enumBaseModelAndBaseListModelVM] = initIStreamModelForSuccess();
-    }
-  }
-
-  void _initMapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter() {
-    for(EnumBaseTypeParameterVM enumBaseTypeParameterVM in _listEnumBaseTypeParameterVM) {
-      _mapEnumBaseTypeParameterVMAndIStreamBaseTypeParameter[enumBaseTypeParameterVM] = initIStreamBaseTypeParameter();
     }
   }
 }
