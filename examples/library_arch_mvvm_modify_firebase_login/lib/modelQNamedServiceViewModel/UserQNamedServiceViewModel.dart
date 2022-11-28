@@ -30,7 +30,13 @@ abstract class UserQNamedServiceViewModel<DataSource extends Object>
   }
 
   @override
-  IStreamModel<User, ListUser> initIStreamModelForSuccess() {
+  IStreamModel<User,ListUser>? initIStreamModelForSuccess() {
     return DefaultStreamModel<User, ListUser>(User.getUserForSuccess, ListUser.success([]));
+  }
+
+  DefaultStreamModel<User, ListUser>? getDefaultStreamModel(
+      EnumBaseModelAndBaseListModelVM operation)
+  {
+    return getIStreamModel(operation) as DefaultStreamModel<User, ListUser>?;
   }
 }
