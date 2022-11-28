@@ -17,8 +17,8 @@
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class GetModelFromNamedServiceParameterNamedDataSource<T extends BaseModel,U extends BaseTypeParameter>
+abstract class GetModelFromNamedServiceParameterNamedDataSource<T extends BaseModel,Y extends BaseTypeParameter>
 {
-  Future<T> getModelFromNamedServiceParameterNamed(
-      U parameter);
+  Future<T?> getModelFromNamedServiceParameterNamed(
+      Y? parameter);
 }

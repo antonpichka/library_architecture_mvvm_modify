@@ -15,10 +15,10 @@
  */
 
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class DeleteListModelToNamedServiceTIPDataSource<T extends BaseListModel>
+abstract class DeleteListModelToNamedServiceTIPDataSource<T extends BaseTypeParameter,Y extends BaseListModel>
 {
-  Future<Response> deleteListModelToNamedServiceTIP(
-      T listModel);
+  Future<T?> deleteListModelToNamedServiceTIP(
+      Y? listModel);
 }

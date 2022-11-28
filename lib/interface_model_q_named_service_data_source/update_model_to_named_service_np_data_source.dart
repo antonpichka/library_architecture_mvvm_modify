@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class UpdateModelToNamedServiceNPDataSource
+abstract class UpdateModelToNamedServiceNPDataSource<T extends BaseTypeParameter>
 {
-  Future<Response> updateModelToNamedServiceNP();
+  Future<T?> updateModelToNamedServiceNP();
 }

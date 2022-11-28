@@ -1,10 +1,10 @@
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/userQFirebaseAuthAndGoogleSignInServiceDataSource/UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/UserQNamedServiceViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndGoogleSignInService.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
-    extends UserQNamedServiceViewModel
+    extends UserQNamedServiceViewModel<UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut>
 {
   UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut(FirebaseAuthAndGoogleSignInService firebaseAuthAndGoogleSignInService) : super.thereIsDataSource(UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut(firebaseAuthAndGoogleSignInService));
 
@@ -13,7 +13,7 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
     return this;
   }
 
-  Future<Response> deleteUserToFirebaseAuthAndGoogleSignInServiceNP() {
-    return deleteModelToNamedServiceNP();
+  Future<BoolTypeParameter?> deleteUserToFirebaseAuthAndGoogleSignInServiceNP() {
+    return deleteModelToNamedServiceNP<BoolTypeParameter>();
   }
 }

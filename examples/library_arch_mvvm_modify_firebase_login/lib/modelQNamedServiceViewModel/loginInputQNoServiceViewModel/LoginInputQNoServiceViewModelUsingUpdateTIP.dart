@@ -12,11 +12,11 @@ class LoginInputQNoServiceViewModelUsingUpdateTIP
     return this;
   }
 
-  Stream<LoginInput> get getStreamLoginInputUsingUpdateTIP {
+  Stream<LoginInput>? get getStreamLoginInputUsingUpdateTIP {
     return getStreamModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP);
   }
 
-  LoginInput get getLoginInputUsingUpdateTIP {
+  LoginInput? get getLoginInputUsingUpdateTIP {
     return getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP);
   }
 

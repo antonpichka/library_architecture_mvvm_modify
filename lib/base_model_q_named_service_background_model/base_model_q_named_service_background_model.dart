@@ -63,47 +63,41 @@ import 'package:library_architecture_mvvm_modify/utility/base_function_before_da
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>>
+abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
 {
   /* Init DataSource */
   @protected
-  final Object modelQNamedServiceDataSource;
+  final DataSource? modelQNamedServiceDataSource;
 
   /* FBDS (Function Before Data Source) */
-  InsertModelToNamedServiceTIPFBDS<T,BaseTypeParameter> _insertModelToNamedServiceTIPFBDS;
-  InsertListModelToNamedServiceTIPFBDS<Y,BaseTypeParameter> _insertListModelToNamedServiceTIPFBDS;
-  UpdateModelToNamedServiceTIPFBDS<T,BaseTypeParameter> _updateModelToNamedServiceTIPFBDS;
-  UpdateListModelToNamedServiceTIPFBDS<Y,BaseTypeParameter> _updateListModelToNamedServiceTIPFBDS;
-  DeleteModelToNamedServiceTIPFBDS<T,BaseTypeParameter> _deleteModelToNamedServiceTIPFBDS;
-  DeleteListModelToNamedServiceTIPFBDS<Y,BaseTypeParameter> _deleteListModelToNamedServiceTIPFBDS;
+  late final InsertModelToNamedServiceTIPFBDS? _insertModelToNamedServiceTIPFBDS;
+  late final InsertListModelToNamedServiceTIPFBDS? _insertListModelToNamedServiceTIPFBDS;
+  late final UpdateModelToNamedServiceTIPFBDS? _updateModelToNamedServiceTIPFBDS;
+  late final UpdateListModelToNamedServiceTIPFBDS? _updateListModelToNamedServiceTIPFBDS;
+  late final DeleteModelToNamedServiceTIPFBDS? _deleteModelToNamedServiceTIPFBDS;
+  late final DeleteListModelToNamedServiceTIPFBDS? _deleteListModelToNamedServiceTIPFBDS;
 
-  GetListModelFromNamedServiceNPFBDS<BaseTypeParameter> _getListModelFromNamedServiceNPFBDS;
-  GetModelFromNamedServiceNPFBDS<BaseTypeParameter> _getModelFromNamedServiceNPFBDS;
-  InsertModelToNamedServiceNPFBDS<BaseTypeParameter> _insertModelToNamedServiceNPFBDS;
-  InsertListModelToNamedServiceNPFBDS<BaseTypeParameter> _insertListModelToNamedServiceNPFBDS;
-  UpdateModelToNamedServiceNPFBDS<BaseTypeParameter> _updateModelToNamedServiceNPFBDS;
-  UpdateListModelToNamedServiceNPFBDS<BaseTypeParameter> _updateListModelToNamedServiceNPFBDS;
-  DeleteModelToNamedServiceNPFBDS<BaseTypeParameter> _deleteModelToNamedServiceNPFBDS;
-  DeleteListModelToNamedServiceNPFBDS<BaseTypeParameter> _deleteListModelToNamedServiceNPFBDS;
+  late final GetListModelFromNamedServiceNPFBDS? _getListModelFromNamedServiceNPFBDS;
+  late final GetModelFromNamedServiceNPFBDS? _getModelFromNamedServiceNPFBDS;
+  late final InsertModelToNamedServiceNPFBDS? _insertModelToNamedServiceNPFBDS;
+  late final InsertListModelToNamedServiceNPFBDS? _insertListModelToNamedServiceNPFBDS;
+  late final UpdateModelToNamedServiceNPFBDS? _updateModelToNamedServiceNPFBDS;
+  late final UpdateListModelToNamedServiceNPFBDS? _updateListModelToNamedServiceNPFBDS;
+  late final DeleteModelToNamedServiceNPFBDS? _deleteModelToNamedServiceNPFBDS;
+  late final DeleteListModelToNamedServiceNPFBDS? _deleteListModelToNamedServiceNPFBDS;
 
-  GetListModelFromNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _getListModelFromNamedServiceParameterNamedFBDS;
-  GetModelFromNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _getModelFromNamedServiceParameterNamedFBDS;
-  InsertModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _insertModelToNamedServiceParameterNamedFBDS;
-  InsertListModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _insertListModelToNamedServiceParameterNamedFBDS;
-  UpdateModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _updateModelToNamedServiceParameterNamedFBDS;
-  UpdateListModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _updateListModelToNamedServiceParameterNamedFBDS;
-  DeleteModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _deleteModelToNamedServiceParameterNamedFBDS;
-  DeleteListModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> _deleteListModelToNamedServiceParameterNamedFBDS;
+  late final GetListModelFromNamedServiceParameterNamedFBDS? _getListModelFromNamedServiceParameterNamedFBDS;
+  late final GetModelFromNamedServiceParameterNamedFBDS? _getModelFromNamedServiceParameterNamedFBDS;
+  late final InsertModelToNamedServiceParameterNamedFBDS? _insertModelToNamedServiceParameterNamedFBDS;
+  late final InsertListModelToNamedServiceParameterNamedFBDS? _insertListModelToNamedServiceParameterNamedFBDS;
+  late final UpdateModelToNamedServiceParameterNamedFBDS? _updateModelToNamedServiceParameterNamedFBDS;
+  late final UpdateListModelToNamedServiceParameterNamedFBDS? _updateListModelToNamedServiceParameterNamedFBDS;
+  late final DeleteModelToNamedServiceParameterNamedFBDS? _deleteModelToNamedServiceParameterNamedFBDS;
+  late final DeleteListModelToNamedServiceParameterNamedFBDS? _deleteListModelToNamedServiceParameterNamedFBDS;
 
   BaseModelQNamedServiceBackgroundModel.thereIsDataSource(this.modelQNamedServiceDataSource);
 
-  @protected
-  @nonVirtual
-  DataSource getDataSource<DataSource extends Object>() {
-    return modelQNamedServiceDataSource;
-  }
   /// Start Clone **/
   ///   Be sure to implement these methods as shown in the example below. The result of all date source methods depends on the implementation of that method.
   ///   Briefly, what this method does: Does not leave a reference to the object that will be sent to the data source and you can do whatever you want with
@@ -119,12 +113,12 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   ///     return ListUser.success(model.list);
   ///   }
   @protected
-  T cloneModelForSuccess(
-      T model);
+  T? cloneModelForSuccess(
+      T? model);
 
   @protected
-  Y cloneListModelForSuccess(
-      Y listModel);
+  Y? cloneListModelForSuccess(
+      Y? listModel);
   /// End Clone **/
 
   /// Start ThisClass **/
@@ -141,17 +135,17 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   ///
   // start getListNP 2
   @protected
-  Future<Y> getListModelFromNamedServiceNP()
+  Future<Y?> getListModelFromNamedServiceNP()
   {
     return _baseGetListModelFromNamedServiceNP(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>);
   }
 
   @protected
-  Future<Y> getListModelFromNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Y?> getListModelFromNamedServiceNPUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseGetListModelFromNamedServiceNPUsingTypeParameterForFBDS(
+    return _baseGetListModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
         typeParameterForFBDS);
   }
@@ -159,21 +153,21 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start getListParameterNamed 2
   @protected
-  Future<Y> getListModelFromNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Y?> getListModelFromNamedServiceParameterNamed<X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseGetListModelFromNamedServiceParameterNamed(
-        modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter>,
+    return _baseGetListModelFromNamedServiceParameterNamed<X>(
+        modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         typeParameter);
   }
 
   @protected
-  Future<Y> getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Y?> getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseGetListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter>,
+    return _baseGetListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -181,16 +175,16 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start getNP 2
   @protected
-  Future<T> getModelFromNamedServiceNP()
+  Future<T?> getModelFromNamedServiceNP()
   {
     return _baseGetModelFromNamedServiceNP(modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>);
   }
 
   @protected
-  Future<T> getModelFromNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<T?> getModelFromNamedServiceNPUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseGetModelFromNamedServiceNPUsingTypeParameterForFBDS(
+    return _baseGetModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
         typeParameterForFBDS);
   }
@@ -198,21 +192,21 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start getParameterNamed 2
   @protected
-  Future<T> getModelFromNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<T?> getModelFromNamedServiceParameterNamed<X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseGetModelFromNamedServiceParameterNamed(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter>,
+    return _baseGetModelFromNamedServiceParameterNamed<X>(
+        modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         typeParameter);
   }
 
   @protected
-  Future<T> getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<T?> getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseGetModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter>,
+    return _baseGetModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -220,22 +214,22 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start insertTIP 2
   @protected
-  Future<Response> insertModelToNamedServiceTIP(
-      T model)
+  Future<Z?> insertModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      T? model)
   {
-    return _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceTIPDataSource<T>,
+    return _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,BaseTypeParameter>(
+        modelQNamedServiceDataSource as InsertModelToNamedServiceTIPDataSource<Z,T>,
         model,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> insertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      T? model,
+      C? typeParameterForFBDS)
   {
-    return _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceTIPDataSource<T>,
+    return _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        modelQNamedServiceDataSource as InsertModelToNamedServiceTIPDataSource<Z,T>,
         model,
         typeParameterForFBDS);
   }
@@ -243,41 +237,41 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start insertNP 2
   @protected
-  Future<Response> insertModelToNamedServiceNP()
+  Future<X?> insertModelToNamedServiceNP<X extends BaseTypeParameter>()
   {
-    return _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource,
-        BaseTypeParameter(null));
+    return _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
+        null);
   }
 
   @protected
-  Future<Response> insertModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> insertModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource,
+    return _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end insertNP 2
 
   // start insertParameterNamed 2
   @protected
-  Future<Response> insertModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Z?> insertModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -285,22 +279,22 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start insertListTIP 2
   @protected
-  Future<Response> insertListModelToNamedServiceTIP(
-      Y listModel)
+  Future<Z?> insertListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      Y? listModel)
   {
-    return _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceTIPDataSource<Y>,
+    return _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,BaseTypeParameter>(
+        modelQNamedServiceDataSource as InsertListModelToNamedServiceTIPDataSource<Z,Y>,
         listModel,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> insertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      Y? listModel,
+      C? typeParameterForFBDS)
   {
-    return _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceTIPDataSource<Y>,
+    return _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        modelQNamedServiceDataSource as InsertListModelToNamedServiceTIPDataSource<Z,Y>,
         listModel,
         typeParameterForFBDS);
   }
@@ -308,41 +302,41 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start insertListNP 2
   @protected
-  Future<Response> insertListModelToNamedServiceNP()
+  Future<X?> insertListModelToNamedServiceNP<X extends BaseTypeParameter>()
   {
-    return _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource,
-        BaseTypeParameter(null));
+    return _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
+        null);
   }
 
   @protected
-  Future<Response> insertListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> insertListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource,
+    return _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end insertListNP 2
 
   // start insertListParameterNamed 2
   @protected
-  Future<Response> insertListModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Z?> insertListModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -350,22 +344,22 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start updateTIP 2
   @protected
-  Future<Response> updateModelToNamedServiceTIP(
-      T model)
+  Future<Z?> updateModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      T? model)
   {
-    return _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceTIPDataSource<T>,
+    return _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,BaseTypeParameter>(
+        modelQNamedServiceDataSource as UpdateModelToNamedServiceTIPDataSource<Z,T>,
         model,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> updateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      T? model,
+      C? typeParameterForFBDS)
   {
-    return _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceTIPDataSource<T>,
+    return _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        modelQNamedServiceDataSource as UpdateModelToNamedServiceTIPDataSource<Z,T>,
         model,
         typeParameterForFBDS);
   }
@@ -373,41 +367,41 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start updateNP 2
   @protected
-  Future<Response> updateModelToNamedServiceNP()
+  Future<X?> updateModelToNamedServiceNP<X extends BaseTypeParameter>()
   {
-    return _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource,
-        BaseTypeParameter(null));
+    return _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
+        null);
   }
 
   @protected
-  Future<Response> updateModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> updateModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource,
+    return _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end updateNP 2
 
   // start updateParameterNamed 2
   @protected
-  Future<Response> updateModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Z?> updateModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -415,22 +409,22 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start updateListTIP 2
   @protected
-  Future<Response> updateListModelToNamedServiceTIP(
-      Y listModel)
+  Future<Z?> updateListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      Y? listModel)
   {
-    return _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceTIPDataSource<Y>,
+    return _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,BaseTypeParameter>(
+        modelQNamedServiceDataSource as UpdateListModelToNamedServiceTIPDataSource<Z,Y>,
         listModel,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> updateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      Y? listModel,
+      C? typeParameterForFBDS)
   {
-    return _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceTIPDataSource<Y>,
+    return _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        modelQNamedServiceDataSource as UpdateListModelToNamedServiceTIPDataSource<Z,Y>,
         listModel,
         typeParameterForFBDS);
   }
@@ -438,41 +432,41 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start updateListNP 2
   @protected
-  Future<Response> updateListModelToNamedServiceNP()
+  Future<X?> updateListModelToNamedServiceNP<X extends BaseTypeParameter>()
   {
-    return _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource,
-        BaseTypeParameter(null));
+    return _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
+        null);
   }
 
   @protected
-  Future<Response> updateListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> updateListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource,
+    return _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end updateListNP 2
 
   // start updateListParameterNamed 2
   @protected
-  Future<Response> updateListModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Z?> updateListModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -480,22 +474,22 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start deleteTIP 2
   @protected
-  Future<Response> deleteModelToNamedServiceTIP(
-      T model)
+  Future<Z?> deleteModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      T? model)
   {
-    return _baseDeleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceTIPDataSource<T>,
+    return _baseDeleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,BaseTypeParameter>(
+        modelQNamedServiceDataSource as DeleteModelToNamedServiceTIPDataSource<Z,T>,
         model,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> deleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      T? model,
+      C? typeParameterForFBDS)
   {
     return _baseDeleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceTIPDataSource<T>,
+        modelQNamedServiceDataSource as DeleteModelToNamedServiceTIPDataSource<Z,T>,
         model,
         typeParameterForFBDS);
   }
@@ -503,41 +497,41 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start deleteNP 2
   @protected
-  Future<Response> deleteModelToNamedServiceNP()
+  Future<X?> deleteModelToNamedServiceNP<X extends BaseTypeParameter>()
   {
-    return _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource,
-        BaseTypeParameter(null));
+    return _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
+        null);
   }
 
   @protected
-  Future<Response> deleteModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> deleteModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource,
+    return _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end deleteNP 2
 
   // start deleteParameterNamed 2
   @protected
-  Future<Response> deleteModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Z?> deleteModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -545,22 +539,22 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start deleteListTIP 2
   @protected
-  Future<Response> deleteListModelToNamedServiceTIP(
-      Y listModel)
+  Future<Z?> deleteListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      Y? listModel)
   {
-    return _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceTIPDataSource<Y>,
+    return _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,BaseTypeParameter>(
+        modelQNamedServiceDataSource as DeleteListModelToNamedServiceTIPDataSource<Z,Y>,
         listModel,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      Y? listModel,
+      C? typeParameterForFBDS)
   {
-    return _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceTIPDataSource<Y>,
+    return _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        modelQNamedServiceDataSource as DeleteListModelToNamedServiceTIPDataSource<Z,Y>,
         listModel,
         typeParameterForFBDS);
   }
@@ -568,41 +562,41 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
 
   // start deleteListNP 2
   @protected
-  Future<Response> deleteListModelToNamedServiceNP()
+  Future<X?> deleteListModelToNamedServiceNP<X extends BaseTypeParameter>()
   {
-    return _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource,
-        BaseTypeParameter(null));
+    return _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
+        null);
   }
 
   @protected
-  Future<Response> deleteListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> deleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
   {
-    return _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource,
+    return _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
+        modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end deleteListNP 2
 
   // start deleteListParameterNamed 2
   @protected
-  Future<Response> deleteListModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
+  Future<Z?> deleteListModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
   {
-    return _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
+        modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
-        BaseTypeParameter(null));
+        null);
   }
 
   @protected
-  Future<Response> deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
   {
-    return _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter>,
+    return _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -613,7 +607,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setInsertModelToNamedServiceTIPFBDS(
-      InsertModelToNamedServiceTIPFBDS<T,BaseTypeParameter> insertModelToNamedServiceTIPFBDS)
+      InsertModelToNamedServiceTIPFBDS insertModelToNamedServiceTIPFBDS)
   {
     _insertModelToNamedServiceTIPFBDS = insertModelToNamedServiceTIPFBDS;
   }
@@ -621,7 +615,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setUpdateModelToNamedServiceTIPFBDS(
-      UpdateModelToNamedServiceTIPFBDS<T,BaseTypeParameter> updateModelToNamedServiceTIPFBDS)
+      UpdateModelToNamedServiceTIPFBDS updateModelToNamedServiceTIPFBDS)
   {
     _updateModelToNamedServiceTIPFBDS = updateModelToNamedServiceTIPFBDS;
   }
@@ -629,7 +623,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setDeleteModelToNamedServiceTIPFBDS(
-      DeleteModelToNamedServiceTIPFBDS<T,BaseTypeParameter> deleteModelToNamedServiceTIPFBDS)
+      DeleteModelToNamedServiceTIPFBDS deleteModelToNamedServiceTIPFBDS)
   {
     _deleteModelToNamedServiceTIPFBDS = deleteModelToNamedServiceTIPFBDS;
   }
@@ -637,7 +631,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setInsertListModelToNamedServiceTIPFBDS(
-      InsertListModelToNamedServiceTIPFBDS<Y,BaseTypeParameter> insertListModelToNamedServiceTIPFBDS)
+      InsertListModelToNamedServiceTIPFBDS insertListModelToNamedServiceTIPFBDS)
   {
     _insertListModelToNamedServiceTIPFBDS = insertListModelToNamedServiceTIPFBDS;
   }
@@ -645,7 +639,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setUpdateListModelToNamedServiceTIPFBDS(
-      UpdateListModelToNamedServiceTIPFBDS<Y,BaseTypeParameter> updateListModelToNamedServiceTIPFBDS)
+      UpdateListModelToNamedServiceTIPFBDS updateListModelToNamedServiceTIPFBDS)
   {
     _updateListModelToNamedServiceTIPFBDS = updateListModelToNamedServiceTIPFBDS;
   }
@@ -653,7 +647,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setDeleteListModelToNamedServiceTIPFBDS(
-      DeleteListModelToNamedServiceTIPFBDS<Y,BaseTypeParameter> deleteListModelToNamedServiceTIPFBDS)
+      DeleteListModelToNamedServiceTIPFBDS deleteListModelToNamedServiceTIPFBDS)
   {
     _deleteListModelToNamedServiceTIPFBDS = deleteListModelToNamedServiceTIPFBDS;
   }
@@ -661,7 +655,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setGetListModelFromNamedServiceNPFBDS(
-      GetListModelFromNamedServiceNPFBDS<BaseTypeParameter> getListModelFromNamedServiceNPFBDS)
+      GetListModelFromNamedServiceNPFBDS getListModelFromNamedServiceNPFBDS)
   {
     _getListModelFromNamedServiceNPFBDS = getListModelFromNamedServiceNPFBDS;
   }
@@ -669,7 +663,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setGetModelFromNamedServiceNPFBDS(
-      GetModelFromNamedServiceNPFBDS<BaseTypeParameter> getModelFromNamedServiceNPFBDS)
+      GetModelFromNamedServiceNPFBDS getModelFromNamedServiceNPFBDS)
   {
     _getModelFromNamedServiceNPFBDS = getModelFromNamedServiceNPFBDS;
   }
@@ -677,7 +671,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setInsertModelToNamedServiceNPFBDS(
-      InsertModelToNamedServiceNPFBDS<BaseTypeParameter> insertModelToNamedServiceNPFBDS)
+      InsertModelToNamedServiceNPFBDS insertModelToNamedServiceNPFBDS)
   {
     _insertModelToNamedServiceNPFBDS = insertModelToNamedServiceNPFBDS;
   }
@@ -685,7 +679,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setUpdateModelToNamedServiceNPFBDS(
-      UpdateModelToNamedServiceNPFBDS<BaseTypeParameter> updateModelToNamedServiceNPFBDS)
+      UpdateModelToNamedServiceNPFBDS updateModelToNamedServiceNPFBDS)
   {
     _updateModelToNamedServiceNPFBDS = updateModelToNamedServiceNPFBDS;
   }
@@ -693,7 +687,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setDeleteModelToNamedServiceNPFBDS(
-      DeleteModelToNamedServiceNPFBDS<BaseTypeParameter> deleteModelToNamedServiceNPFBDS)
+      DeleteModelToNamedServiceNPFBDS deleteModelToNamedServiceNPFBDS)
   {
     _deleteModelToNamedServiceNPFBDS = deleteModelToNamedServiceNPFBDS;
   }
@@ -701,7 +695,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setInsertListModelToNamedServiceNPFBDS(
-      InsertListModelToNamedServiceNPFBDS<BaseTypeParameter> insertListModelToNamedServiceNPFBDS)
+      InsertListModelToNamedServiceNPFBDS insertListModelToNamedServiceNPFBDS)
   {
     _insertListModelToNamedServiceNPFBDS = insertListModelToNamedServiceNPFBDS;
   }
@@ -709,7 +703,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setUpdateListModelToNamedServiceNPFBDS(
-      UpdateListModelToNamedServiceNPFBDS<BaseTypeParameter> updateListModelToNamedServiceNPFBDS)
+      UpdateListModelToNamedServiceNPFBDS updateListModelToNamedServiceNPFBDS)
   {
     _updateListModelToNamedServiceNPFBDS = updateListModelToNamedServiceNPFBDS;
   }
@@ -717,7 +711,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setDeleteListModelToNamedServiceNPFBDS(
-      DeleteListModelToNamedServiceNPFBDS<BaseTypeParameter> deleteListModelToNamedServiceNPFBDS)
+      DeleteListModelToNamedServiceNPFBDS deleteListModelToNamedServiceNPFBDS)
   {
     _deleteListModelToNamedServiceNPFBDS = deleteListModelToNamedServiceNPFBDS;
   }
@@ -725,7 +719,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setGetListModelFromNamedServiceParameterNamedFBDS(
-      GetListModelFromNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> getListModelFromNamedServiceParameterNamedFBDS)
+      GetListModelFromNamedServiceParameterNamedFBDS getListModelFromNamedServiceParameterNamedFBDS)
   {
     _getListModelFromNamedServiceParameterNamedFBDS = getListModelFromNamedServiceParameterNamedFBDS;
   }
@@ -733,7 +727,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setGetModelFromNamedServiceParameterNamedFBDS(
-      GetModelFromNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> getModelFromNamedServiceParameterNamedFBDS)
+      GetModelFromNamedServiceParameterNamedFBDS getModelFromNamedServiceParameterNamedFBDS)
   {
     _getModelFromNamedServiceParameterNamedFBDS = getModelFromNamedServiceParameterNamedFBDS;
   }
@@ -741,7 +735,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setInsertModelToNamedServiceParameterNamedFBDS(
-      InsertModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> insertModelToNamedServiceParameterNamedFBDS)
+      InsertModelToNamedServiceParameterNamedFBDS insertModelToNamedServiceParameterNamedFBDS)
   {
     _insertModelToNamedServiceParameterNamedFBDS = insertModelToNamedServiceParameterNamedFBDS;
   }
@@ -749,7 +743,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setUpdateModelToNamedServiceParameterNamedFBDS(
-      UpdateModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> updateModelToNamedServiceParameterNamedFBDS)
+      UpdateModelToNamedServiceParameterNamedFBDS updateModelToNamedServiceParameterNamedFBDS)
   {
     _updateModelToNamedServiceParameterNamedFBDS = updateModelToNamedServiceParameterNamedFBDS;
   }
@@ -757,7 +751,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setDeleteModelToNamedServiceParameterNamedFBDS(
-      DeleteModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> deleteModelToNamedServiceParameterNamedFBDS)
+      DeleteModelToNamedServiceParameterNamedFBDS deleteModelToNamedServiceParameterNamedFBDS)
   {
     _deleteModelToNamedServiceParameterNamedFBDS = deleteModelToNamedServiceParameterNamedFBDS;
   }
@@ -765,7 +759,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setInsertListModelToNamedServiceParameterNamedFBDS(
-      InsertListModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> insertListModelToNamedServiceParameterNamedFBDS)
+      InsertListModelToNamedServiceParameterNamedFBDS insertListModelToNamedServiceParameterNamedFBDS)
   {
     _insertListModelToNamedServiceParameterNamedFBDS = insertListModelToNamedServiceParameterNamedFBDS;
   }
@@ -773,7 +767,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setUpdateListModelToNamedServiceParameterNamedFBDS(
-      UpdateListModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> updateListModelToNamedServiceParameterNamedFBDS)
+      UpdateListModelToNamedServiceParameterNamedFBDS updateListModelToNamedServiceParameterNamedFBDS)
   {
     _updateListModelToNamedServiceParameterNamedFBDS = updateListModelToNamedServiceParameterNamedFBDS;
   }
@@ -781,423 +775,418 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   @protected
   @nonVirtual
   set setDeleteListModelToNamedServiceParameterNamedFBDS(
-      DeleteListModelToNamedServiceParameterNamedFBDS<BaseTypeParameter,BaseTypeParameter> deleteListModelToNamedServiceParameterNamedFBDS)
+      DeleteListModelToNamedServiceParameterNamedFBDS deleteListModelToNamedServiceParameterNamedFBDS)
   {
     _deleteListModelToNamedServiceParameterNamedFBDS = deleteListModelToNamedServiceParameterNamedFBDS;
   }
   /// End Setters FBDS **/
 
-  Future<Y> _baseGetListModelFromNamedServiceNP(
+  Future<Y?> _baseGetListModelFromNamedServiceNP(
       GetListModelFromNamedServiceNPDataSource<Y> getListModelFromNamedServiceNPDataSource)
   {
     return getListModelFromNamedServiceNPDataSource.getListModelFromNamedServiceNP();
   }
 
-  Future<Y> _baseGetListModelFromNamedServiceNPUsingTypeParameterForFBDS(
+  Future<Y?> _baseGetListModelFromNamedServiceNPUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
       GetListModelFromNamedServiceNPDataSource<Y> getListModelFromNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+      C? typeParameterForFBDS)
   async {
     if(_getListModelFromNamedServiceNPFBDS == null) {
       return await _baseGetListModelFromNamedServiceNP(getListModelFromNamedServiceNPDataSource);
     }
-    Response response = _getListModelFromNamedServiceNPFBDS
-        .getListModelFromNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
-      BaseListModel<T> listModel = BaseListModel<T>.exception(response.getException());
-      return listModel;
+    Y? response = _getListModelFromNamedServiceNPFBDS!
+        .getListModelFromNamedServiceNP<Y,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
+      return response;
     }
     return await _baseGetListModelFromNamedServiceNP(getListModelFromNamedServiceNPDataSource);
   }
 
-  Future<Y> _baseGetListModelFromNamedServiceParameterNamed(
-      GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter> getListModelFromNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter)
+  Future<Y?> _baseGetListModelFromNamedServiceParameterNamed<X extends BaseTypeParameter>(
+      GetListModelFromNamedServiceParameterNamedDataSource<Y,X> getListModelFromNamedServiceParameterNamedDataSource,
+      X? typeParameter)
   {
     return getListModelFromNamedServiceParameterNamedDataSource.getListModelFromNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<Y> _baseGetListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter> getListModelFromNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Y?> _baseGetListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      GetListModelFromNamedServiceParameterNamedDataSource<Y,X> getListModelFromNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_getListModelFromNamedServiceParameterNamedFBDS == null) {
       return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameter);
     }
-    Response response = _getListModelFromNamedServiceParameterNamedFBDS
-        .getListModelFromNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
-      BaseListModel<T> listModel = BaseListModel<T>.exception(response.getException());
-      return listModel;
+    Y? response = _getListModelFromNamedServiceParameterNamedFBDS!
+        .getListModelFromNamedServiceParameterNamed<Y,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
+      return response;
     }
     return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameter);
   }
 
-  Future<T> _baseGetModelFromNamedServiceNP(
+  Future<T?> _baseGetModelFromNamedServiceNP(
       GetModelFromNamedServiceNPDataSource<T> getModelFromNamedServiceNPDataSource)
   {
     return getModelFromNamedServiceNPDataSource.getModelFromNamedServiceNP();
   }
 
-  Future<T> _baseGetModelFromNamedServiceNPUsingTypeParameterForFBDS(
+  Future<T?> _baseGetModelFromNamedServiceNPUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
       GetModelFromNamedServiceNPDataSource<T> getModelFromNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+      C? typeParameterForFBDS)
   async {
     if(_getModelFromNamedServiceNPFBDS == null) {
       return await _baseGetModelFromNamedServiceNP(getModelFromNamedServiceNPDataSource);
     }
-    Response response = _getModelFromNamedServiceNPFBDS
-        .getModelFromNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
-      BaseModel model = BaseModel.exception(response.getException());
-      return model;
+    T? response = _getModelFromNamedServiceNPFBDS!
+        .getModelFromNamedServiceNP<T,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
+      return response;
     }
     return await _baseGetModelFromNamedServiceNP(getModelFromNamedServiceNPDataSource);
   }
 
-  Future<T> _baseGetModelFromNamedServiceParameterNamed(
-      GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter> getModelFromNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter)
+  Future<T?> _baseGetModelFromNamedServiceParameterNamed<X extends BaseTypeParameter>(
+      GetModelFromNamedServiceParameterNamedDataSource<T,X> getModelFromNamedServiceParameterNamedDataSource,
+      X? typeParameter)
   {
-    return getModelFromNamedServiceParameterNamedDataSource
-        .getModelFromNamedServiceParameterNamed(typeParameter);
+    return getModelFromNamedServiceParameterNamedDataSource.getModelFromNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<T> _baseGetModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter> getModelFromNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<T?> _baseGetModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      GetModelFromNamedServiceParameterNamedDataSource<T,X> getModelFromNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_getModelFromNamedServiceParameterNamedFBDS == null) {
       return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameter);
     }
-    Response response = _getModelFromNamedServiceParameterNamedFBDS
-        .getModelFromNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
-      BaseModel model = BaseModel.exception(response.getException());
-      return model;
+    T? response = _getModelFromNamedServiceParameterNamedFBDS!
+        .getModelFromNamedServiceParameterNamed<T,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
+      return response;
     }
     return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameter);
   }
 
-  Future<Response> _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      InsertModelToNamedServiceTIPDataSource<T> insertModelToNamedServiceTIPDataSource,
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseInsertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      InsertModelToNamedServiceTIPDataSource<Z,T> insertModelToNamedServiceTIPDataSource,
+      T? model,
+      C? typeParameterForFBDS)
   async {
-    T modelForClone = cloneModelForSuccess(model);
+    T? modelForClone = cloneModelForSuccess(model);
     if(_insertModelToNamedServiceTIPFBDS == null) {
       return await insertModelToNamedServiceTIPDataSource
           .insertModelToNamedServiceTIP(modelForClone);
     }
-    Response response = _insertModelToNamedServiceTIPFBDS
-        .insertModelToNamedServiceTIP(modelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _insertModelToNamedServiceTIPFBDS!
+        .insertModelToNamedServiceTIP<Z,T,C>(modelForClone,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceTIPDataSource
         .insertModelToNamedServiceTIP(modelForClone);
   }
 
-  Future<Response> _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS(
-      InsertModelToNamedServiceNPDataSource insertModelToNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      InsertModelToNamedServiceNPDataSource<X> insertModelToNamedServiceNPDataSource,
+      C? typeParameterForFBDS)
   async {
     if(_insertModelToNamedServiceNPFBDS == null) {
       return await insertModelToNamedServiceNPDataSource
           .insertModelToNamedServiceNP();
     }
-    Response response = _insertModelToNamedServiceNPFBDS
-        .insertModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    X? response = _insertModelToNamedServiceNPFBDS!
+        .insertModelToNamedServiceNP<X,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceNPDataSource
         .insertModelToNamedServiceNP();
   }
 
-  Future<Response> _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      InsertModelToNamedServiceParameterNamedDataSource<BaseTypeParameter> insertModelToNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      InsertModelToNamedServiceParameterNamedDataSource<Z,X> insertModelToNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_insertModelToNamedServiceParameterNamedFBDS == null) {
       return await insertModelToNamedServiceParameterNamedDataSource
           .insertModelToNamedServiceParameterNamed(typeParameter);
     }
-    Response response = _insertModelToNamedServiceParameterNamedFBDS
-        .insertModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _insertModelToNamedServiceParameterNamedFBDS!
+        .insertModelToNamedServiceParameterNamed<Z,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertModelToNamedServiceParameterNamedDataSource
         .insertModelToNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<Response> _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      InsertListModelToNamedServiceTIPDataSource<Y> insertListModelToNamedServiceTIPDataSource,
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseInsertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      InsertListModelToNamedServiceTIPDataSource<Z,Y> insertListModelToNamedServiceTIPDataSource,
+      Y? listModel,
+      C? typeParameterForFBDS)
   async {
-    Y listModelForClone = cloneListModelForSuccess(listModel);
+    Y? listModelForClone = cloneListModelForSuccess(listModel);
     if(_insertListModelToNamedServiceTIPFBDS == null) {
       return await insertListModelToNamedServiceTIPDataSource
           .insertListModelToNamedServiceTIP(listModelForClone);
     }
-    Response response = _insertListModelToNamedServiceTIPFBDS
-        .insertListModelToNamedServiceTIP(listModelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _insertListModelToNamedServiceTIPFBDS!
+        .insertListModelToNamedServiceTIP<Z,Y,C>(listModelForClone,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceTIPDataSource
         .insertListModelToNamedServiceTIP(listModelForClone);
   }
 
-  Future<Response> _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      InsertListModelToNamedServiceNPDataSource insertListModelToNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      InsertListModelToNamedServiceNPDataSource<X> insertListModelToNamedServiceNPDataSource,
+      C? typeParameterForFBDS)
   async {
     if(_insertListModelToNamedServiceNPFBDS == null) {
       return await insertListModelToNamedServiceNPDataSource
           .insertListModelToNamedServiceNP();
     }
-    Response response = _insertListModelToNamedServiceNPFBDS
-        .insertListModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    X? response = _insertListModelToNamedServiceNPFBDS!
+        .insertListModelToNamedServiceNP<X,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceNPDataSource
         .insertListModelToNamedServiceNP();
   }
 
-  Future<Response> _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      InsertListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter> insertListModelToNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      InsertListModelToNamedServiceParameterNamedDataSource<Z,X> insertListModelToNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_insertListModelToNamedServiceParameterNamedFBDS == null) {
       return await insertListModelToNamedServiceParameterNamedDataSource
           .insertListModelToNamedServiceParameterNamed(typeParameter);
     }
-    Response response = _insertListModelToNamedServiceParameterNamedFBDS
-        .insertListModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _insertListModelToNamedServiceParameterNamedFBDS!
+        .insertListModelToNamedServiceParameterNamed<Z,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await insertListModelToNamedServiceParameterNamedDataSource
         .insertListModelToNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<Response> _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      UpdateModelToNamedServiceTIPDataSource<T> updateModelToNamedServiceTIPDataSource,
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseUpdateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      UpdateModelToNamedServiceTIPDataSource<Z,T> updateModelToNamedServiceTIPDataSource,
+      T? model,
+      C? typeParameterForFBDS)
   async {
-    T modelForClone = cloneModelForSuccess(model);
+    T? modelForClone = cloneModelForSuccess(model);
     if(_updateModelToNamedServiceTIPFBDS == null) {
       return await updateModelToNamedServiceTIPDataSource
           .updateModelToNamedServiceTIP(modelForClone);
     }
-    Response response = _updateModelToNamedServiceTIPFBDS
-        .updateModelToNamedServiceTIP(modelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _updateModelToNamedServiceTIPFBDS!
+        .updateModelToNamedServiceTIP<Z,T,C>(modelForClone,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceTIPDataSource
         .updateModelToNamedServiceTIP(modelForClone);
   }
 
-  Future<Response> _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS(
-      UpdateModelToNamedServiceNPDataSource updateModelToNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      UpdateModelToNamedServiceNPDataSource<X> updateModelToNamedServiceNPDataSource,
+      C? typeParameterForFBDS)
   async {
     if(_updateModelToNamedServiceNPFBDS == null) {
       return await updateModelToNamedServiceNPDataSource
           .updateModelToNamedServiceNP();
     }
-    Response response = _updateModelToNamedServiceNPFBDS
-        .updateModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    X? response = _updateModelToNamedServiceNPFBDS!
+        .updateModelToNamedServiceNP<X,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceNPDataSource
         .updateModelToNamedServiceNP();
   }
 
-  Future<Response> _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      UpdateModelToNamedServiceParameterNamedDataSource<BaseTypeParameter> updateModelToNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      UpdateModelToNamedServiceParameterNamedDataSource<Z,X> updateModelToNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_updateModelToNamedServiceParameterNamedFBDS == null) {
       return await updateModelToNamedServiceParameterNamedDataSource
           .updateModelToNamedServiceParameterNamed(typeParameter);
     }
-    Response response = _updateModelToNamedServiceParameterNamedFBDS
-        .updateModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _updateModelToNamedServiceParameterNamedFBDS!
+        .updateModelToNamedServiceParameterNamed<Z,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateModelToNamedServiceParameterNamedDataSource
         .updateModelToNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<Response> _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      UpdateListModelToNamedServiceTIPDataSource<Y> updateListModelToNamedServiceTIPDataSource,
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseUpdateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      UpdateListModelToNamedServiceTIPDataSource<Z,Y> updateListModelToNamedServiceTIPDataSource,
+      Y? listModel,
+      C? typeParameterForFBDS)
   async {
-    Y listModelForClone = cloneListModelForSuccess(listModel);
+    Y? listModelForClone = cloneListModelForSuccess(listModel);
     if(_updateListModelToNamedServiceTIPFBDS == null) {
       return await updateListModelToNamedServiceTIPDataSource
           .updateListModelToNamedServiceTIP(listModelForClone);
     }
-    Response response = _updateListModelToNamedServiceTIPFBDS
-        .updateListModelToNamedServiceTIP(listModelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _updateListModelToNamedServiceTIPFBDS!
+        .updateListModelToNamedServiceTIP<Z,Y,C>(listModelForClone,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceTIPDataSource
         .updateListModelToNamedServiceTIP(listModelForClone);
   }
 
-  Future<Response> _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      UpdateListModelToNamedServiceNPDataSource updateListModelToNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      UpdateListModelToNamedServiceNPDataSource<X> updateListModelToNamedServiceNPDataSource,
+      C? typeParameterForFBDS)
   async {
     if(_updateListModelToNamedServiceNPFBDS == null) {
       return await updateListModelToNamedServiceNPDataSource
           .updateListModelToNamedServiceNP();
     }
-    Response response = _updateListModelToNamedServiceNPFBDS
-        .updateListModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    X? response = _updateListModelToNamedServiceNPFBDS!
+        .updateListModelToNamedServiceNP<X,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceNPDataSource
         .updateListModelToNamedServiceNP();
   }
 
-  Future<Response> _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      UpdateListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter> updateListModelToNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      UpdateListModelToNamedServiceParameterNamedDataSource<Z,X> updateListModelToNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_updateListModelToNamedServiceParameterNamedFBDS == null) {
       return await updateListModelToNamedServiceParameterNamedDataSource
           .updateListModelToNamedServiceParameterNamed(typeParameter);
     }
-    Response response = _updateListModelToNamedServiceParameterNamedFBDS
-        .updateListModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _updateListModelToNamedServiceParameterNamedFBDS!
+        .updateListModelToNamedServiceParameterNamed<Z,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await updateListModelToNamedServiceParameterNamedDataSource
         .updateListModelToNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<Response> _baseDeleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      DeleteModelToNamedServiceTIPDataSource<T> deleteModelToNamedServiceTIPDataSource,
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseDeleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      DeleteModelToNamedServiceTIPDataSource<Z,T> deleteModelToNamedServiceTIPDataSource,
+      T? model,
+      C? typeParameterForFBDS)
   async {
-    T modelForClone = cloneModelForSuccess(model);
+    T? modelForClone = cloneModelForSuccess(model);
     if(_deleteModelToNamedServiceTIPFBDS == null) {
       return await deleteModelToNamedServiceTIPDataSource
           .deleteModelToNamedServiceTIP(modelForClone);
     }
-    Response response = _deleteModelToNamedServiceTIPFBDS
-        .deleteModelToNamedServiceTIP(modelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _deleteModelToNamedServiceTIPFBDS!
+        .deleteModelToNamedServiceTIP<Z,T,C>(modelForClone,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceTIPDataSource
         .deleteModelToNamedServiceTIP(modelForClone);
   }
 
-  Future<Response> _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS(
-      DeleteModelToNamedServiceNPDataSource deleteModelToNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      DeleteModelToNamedServiceNPDataSource<X> deleteModelToNamedServiceNPDataSource,
+      C? typeParameterForFBDS)
   async {
     if(_deleteModelToNamedServiceNPFBDS == null) {
       return await deleteModelToNamedServiceNPDataSource
           .deleteModelToNamedServiceNP();
     }
-    Response response = _deleteModelToNamedServiceNPFBDS
-        .deleteModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    X? response = _deleteModelToNamedServiceNPFBDS!
+        .deleteModelToNamedServiceNP<X,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceNPDataSource
         .deleteModelToNamedServiceNP();
   }
 
-  Future<Response> _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      DeleteModelToNamedServiceParameterNamedDataSource<BaseTypeParameter> deleteModelToNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      DeleteModelToNamedServiceParameterNamedDataSource<Z,X> deleteModelToNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_deleteModelToNamedServiceParameterNamedFBDS == null) {
       return await deleteModelToNamedServiceParameterNamedDataSource
           .deleteModelToNamedServiceParameterNamed(typeParameter);
     }
-    Response response = _deleteModelToNamedServiceParameterNamedFBDS
-        .deleteModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _deleteModelToNamedServiceParameterNamedFBDS!
+        .deleteModelToNamedServiceParameterNamed<Z,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteModelToNamedServiceParameterNamedDataSource
         .deleteModelToNamedServiceParameterNamed(typeParameter);
   }
 
-  Future<Response> _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      DeleteListModelToNamedServiceTIPDataSource<Y> deleteListModelToNamedServiceTIPDataSource,
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseDeleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      DeleteListModelToNamedServiceTIPDataSource<Z,Y> deleteListModelToNamedServiceTIPDataSource,
+      Y? listModel,
+      C? typeParameterForFBDS)
   async {
-    Y listModelForClone = cloneListModelForSuccess(listModel);
+    Y? listModelForClone = cloneListModelForSuccess(listModel);
     if(_deleteListModelToNamedServiceTIPFBDS == null) {
       return await deleteListModelToNamedServiceTIPDataSource
           .deleteListModelToNamedServiceTIP(listModelForClone);
     }
-    Response response = _deleteListModelToNamedServiceTIPFBDS
-        .deleteListModelToNamedServiceTIP(listModelForClone,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _deleteListModelToNamedServiceTIPFBDS!
+        .deleteListModelToNamedServiceTIP<Z,Y,C>(listModelForClone,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteListModelToNamedServiceTIPDataSource
         .deleteListModelToNamedServiceTIP(listModelForClone);
   }
 
-  Future<Response> _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      DeleteListModelToNamedServiceNPDataSource deleteListModelToNamedServiceNPDataSource,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<X?> _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      DeleteListModelToNamedServiceNPDataSource<X> deleteListModelToNamedServiceNPDataSource,
+      C? typeParameterForFBDS)
   async {
     if(_deleteListModelToNamedServiceNPFBDS == null) {
       return await deleteListModelToNamedServiceNPDataSource
           .deleteListModelToNamedServiceNP();
     }
-    Response response = _deleteListModelToNamedServiceNPFBDS
-        .deleteListModelToNamedServiceNP(typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    X? response = _deleteListModelToNamedServiceNPFBDS!
+        .deleteListModelToNamedServiceNP<X,C>(typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return deleteListModelToNamedServiceNPDataSource
         .deleteListModelToNamedServiceNP();
   }
 
-  Future<Response> _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      DeleteListModelToNamedServiceParameterNamedDataSource<BaseTypeParameter> deleteListModelToNamedServiceParameterNamedDataSource,
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
+  Future<Z?> _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      DeleteListModelToNamedServiceParameterNamedDataSource<Z,X> deleteListModelToNamedServiceParameterNamedDataSource,
+      X? typeParameter,
+      C? typeParameterForFBDS)
   async {
     if(_deleteListModelToNamedServiceParameterNamedFBDS == null) {
       return await deleteListModelToNamedServiceParameterNamedDataSource
           .deleteListModelToNamedServiceParameterNamed(typeParameter);
     }
-    Response response = _deleteListModelToNamedServiceParameterNamedFBDS
-        .deleteListModelToNamedServiceParameterNamed(typeParameter,typeParameterForFBDS);
-    if(response.isExceptionNotEqualsNull()) {
+    Z? response = _deleteListModelToNamedServiceParameterNamedFBDS!
+        .deleteListModelToNamedServiceParameterNamed<Z,X,C>(typeParameter,typeParameterForFBDS);
+    if(response!.exceptionController!.isExceptionNotEqualsNull()) {
       return response;
     }
     return await deleteListModelToNamedServiceParameterNamedDataSource

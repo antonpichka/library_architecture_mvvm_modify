@@ -21,6 +21,6 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/enums.dart';
 class ListEnums
     extends BaseListModel<Enums>
 {
-  ListEnums.success(List<Enums> list) : super.success(list);
-  ListEnums.exception(BaseException exception) : super.exception(exception);
+  ListEnums.success(List<Enums>? list) : super.success(list);
+  ListEnums.exception(BaseException? exception) : super.exception(exception);
 }

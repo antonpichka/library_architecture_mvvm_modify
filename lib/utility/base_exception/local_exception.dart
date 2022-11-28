@@ -42,12 +42,12 @@ class LocalException
         super(thisClass,LocalException);
 
   @override
-  String getMessageForView() {
+  String get getMessageForView {
     return message;
   }
 
   @override
-  String exceptionInStringForDebugPrintException() {
+  String get exceptionInStringForDebugPrintException {
     return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
         "Message: $message";
   }

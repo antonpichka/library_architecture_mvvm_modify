@@ -11,17 +11,17 @@ class Email
   const Email.pure() : super.pure('');
 
   /// {@macro email}
-  const Email.dirty([value = '']) : super.dirty(value);
+  const Email.dirty(super.value) : super.dirty();
 
   static final RegExp _emailRegExp = RegExp(
     r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
   );
 
   @override
-  EmailValidationError validator(
+  EmailValidationError? validator(
       String value)
   {
-    return _emailRegExp.hasMatch(value ?? '')
+    return _emailRegExp.hasMatch(value)
         ? null
         : EmailValidationError.invalid;
   }

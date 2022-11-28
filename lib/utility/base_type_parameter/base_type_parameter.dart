@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-class BaseTypeParameter<T> {
-  final T _parameter;
+import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
-  BaseTypeParameter(this._parameter);
+abstract class BaseTypeParameter<T extends Object>
+{
+  final T? parameter;
+  final ExceptionController? exceptionController;
 
-  T get getParameter {
-    return _parameter;
-  }
+  BaseTypeParameter.success(this.parameter)
+      : exceptionController = ExceptionController.success();
+  BaseTypeParameter.exception(BaseException? exception)
+      : exceptionController = ExceptionController.exception(exception),
+        parameter = null;
 }

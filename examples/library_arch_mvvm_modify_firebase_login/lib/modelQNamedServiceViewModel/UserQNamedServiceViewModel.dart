@@ -5,28 +5,28 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 
-abstract class UserQNamedServiceViewModel
-    extends BaseModelQNamedServiceViewModel<User,ListUser>
+abstract class UserQNamedServiceViewModel<DataSource extends Object>
+    extends BaseModelQNamedServiceViewModel<User,ListUser,DataSource>
 {
-  UserQNamedServiceViewModel.thereIsDataSource(Object dataSource) : super.thereIsDataSource(dataSource);
+  UserQNamedServiceViewModel.thereIsDataSource(DataSource dataSource) : super.thereIsDataSource(dataSource);
   UserQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
-  User cloneModelForSuccess(
-      User model)
+  User? cloneModelForSuccess(
+      User? model)
   {
     return User.success(
-        model.uniqueId,
-        model.email,
-        model.name,
-        model.photo);
+        model?.uniqueId,
+        model?.email,
+        model?.name,
+        model?.photo);
   }
 
   @override
-  ListUser cloneListModelForSuccess(
-      ListUser listModel)
+  ListUser? cloneListModelForSuccess(
+      ListUser? listModel)
   {
-    return ListUser.success(listModel.list);
+    return ListUser.success(listModel?.list);
   }
 
   @override

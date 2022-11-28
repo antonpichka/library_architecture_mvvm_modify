@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 
-abstract class PostQNamedServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Post,ListPost>
+abstract class PostQNamedServiceViewModel<DataSource extends Object>
+    extends BaseModelQNamedServiceViewModel<Post,ListPost,DataSource>
 {
-  PostQNamedServiceViewModel.thereIsDataSource(Object dataSource) : super.thereIsDataSource(dataSource);
+  PostQNamedServiceViewModel.thereIsDataSource(DataSource dataSource) : super.thereIsDataSource(dataSource);
   PostQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
@@ -17,19 +17,19 @@ abstract class PostQNamedServiceViewModel
   }
 
   @override
-  Post cloneModelForSuccess(
-      Post model)
+  Post? cloneModelForSuccess(
+      Post? model)
   {
     return Post.success(
-        model.id,
-        model.title,
-        model.body);
+        model?.id,
+        model?.title,
+        model?.body);
   }
 
   @override
-  ListPost cloneListModelForSuccess(
-      ListPost listModel)
+  ListPost? cloneListModelForSuccess(
+      ListPost? listModel)
   {
-    return ListPost.success(listModel.list);
+    return ListPost.success(listModel?.list);
   }
 }

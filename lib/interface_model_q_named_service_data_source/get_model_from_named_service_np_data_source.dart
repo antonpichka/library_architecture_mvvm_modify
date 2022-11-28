@@ -18,5 +18,5 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 
 abstract class GetModelFromNamedServiceNPDataSource<T extends BaseModel>
 {
-  Future<T> getModelFromNamedServiceNP();
+  Future<T?> getModelFromNamedServiceNP();
 }

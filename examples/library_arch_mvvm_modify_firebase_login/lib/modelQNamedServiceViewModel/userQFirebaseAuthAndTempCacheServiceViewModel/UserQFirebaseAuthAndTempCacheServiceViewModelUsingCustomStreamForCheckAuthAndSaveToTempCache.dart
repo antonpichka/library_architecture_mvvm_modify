@@ -5,15 +5,15 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
 
 class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache
-    extends UserQNamedServiceViewModel
+    extends UserQNamedServiceViewModel<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>
 {
-  StreamSubscription<User> _customStreamSubscriptionUser;
+  StreamSubscription<User>? _customStreamSubscriptionUser;
   UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService firebaseAuthAndTempCacheService) : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(firebaseAuthAndTempCacheService));
 
   @override
   void dispose() {
     if(_customStreamSubscriptionUser != null) {
-      _customStreamSubscriptionUser.cancel();
+      _customStreamSubscriptionUser?.cancel();
     }
     super.dispose();
   }
@@ -26,9 +26,9 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
   void listensCustomStreamUser(
       Function(User user) callback)
   {
-    _customStreamSubscriptionUser = getDataSource<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>()
-        .getCustomStreamUser
-        .listen((event) {
+    _customStreamSubscriptionUser = modelQNamedServiceDataSource
+        ?.getCustomStreamUser
+        ?.listen((event) {
           callback(event);
         });
   }

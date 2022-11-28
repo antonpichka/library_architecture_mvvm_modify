@@ -21,6 +21,6 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/double.dart'
 class ListDouble
     extends BaseListModel<Double>
 {
-  ListDouble.success(List<Double> list) : super.success(list);
-  ListDouble.exception(BaseException exception) : super.exception(exception);
+  ListDouble.success(List<Double>? list) : super.success(list);
+  ListDouble.exception(BaseException? exception) : super.exception(exception);
 }

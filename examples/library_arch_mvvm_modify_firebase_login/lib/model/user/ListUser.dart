@@ -5,6 +5,6 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_mo
 class ListUser
     extends BaseListModel<User>
 {
-  ListUser.success(List<User> listModel) : super.success(listModel);
-  ListUser.exception(BaseException exception) : super.exception(exception);
+  ListUser.success(List<User>? listModel) : super.success(listModel);
+  ListUser.exception(BaseException? exception) : super.exception(exception);
 }

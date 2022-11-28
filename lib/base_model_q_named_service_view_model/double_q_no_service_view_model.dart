@@ -21,23 +21,23 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/double.dart'
 import 'package:library_architecture_mvvm_modify/utility/base_model/list_double.dart';
 
 abstract class DoubleQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Double,ListDouble>
+    extends BaseModelQNamedServiceViewModel<Double,ListDouble,Object>
 {
   DoubleQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   @nonVirtual
-  Double cloneModelForSuccess(
-      Double model)
+  Double? cloneModelForSuccess(
+      Double? model)
   {
-    return Double.success(model.field);
+    return Double.success(model!.field);
   }
 
   @override
   @nonVirtual
-  ListDouble cloneListModelForSuccess(
-      ListDouble listModel)
+  ListDouble? cloneListModelForSuccess(
+      ListDouble? listModel)
   {
-    return ListDouble.success(listModel.list);
+    return ListDouble.success(listModel?.list);
   }
 }

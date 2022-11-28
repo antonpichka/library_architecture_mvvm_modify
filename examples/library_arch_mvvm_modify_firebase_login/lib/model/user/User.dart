@@ -12,12 +12,12 @@ enum EnumUserForMainView {
 class User
     extends BaseModel
 {
-  String email;
-  String name;
-  String photo;
+  String? email;
+  String? name;
+  String? photo;
 
-  User.success(String uniqueId,this.email,this.name,this.photo) : super.success(uniqueId);
-  User.exception(BaseException exception) : super.exception(exception);
+  User.success(String? uniqueId,this.email,this.name,this.photo) : super.success(uniqueId);
+  User.exception(BaseException? exception) : super.exception(exception);
 
   factory User.fromFirebaseUserForSuccess(
       firebase_auth.User firebaseUser)
@@ -34,7 +34,7 @@ class User
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
 
   EnumUserForMainView get getEnumUserForMainView {
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController?.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumUserForMainView.localException;
     }
     if(isEqualsStringNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
@@ -44,11 +44,11 @@ class User
   }
 
   bool isEmptyParameterUniqueId() {
-    return uniqueId.isEmpty;
+    return uniqueId!.isEmpty;
   }
 
   bool isNotEmptyParameterUniqueId() {
-    return uniqueId.isNotEmpty;
+    return uniqueId!.isNotEmpty;
   }
 
   bool isNotEqualsNullParameterPhoto() {

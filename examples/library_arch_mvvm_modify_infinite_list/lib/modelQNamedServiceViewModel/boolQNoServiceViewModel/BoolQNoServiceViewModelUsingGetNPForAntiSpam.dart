@@ -12,7 +12,7 @@ class BoolQNoServiceViewModelUsingGetNPForAntiSpam
     return this;
   }
 
-  Bool get getBoolUsingGetNPForAntiSpam {
+  Bool? get getBoolUsingGetNPForAntiSpam {
     return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
   }
 }

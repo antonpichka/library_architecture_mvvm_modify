@@ -15,9 +15,9 @@ class IntTextWidget
         initialData: Int.success(0),
         stream: intQNoServiceListViewModelForIntTextWidget.getStreamIntUsingGetNPForIncrementAndDecrement,
         builder: (BuildContext buildContext, AsyncSnapshot<Int> asyncSnapshot) {
-          Int int = asyncSnapshot.data;
+          Int? int = asyncSnapshot.data;
           return Text(
-            "${int.field}",
+            "${int?.field}",
             style: Theme.of(context).textTheme.headline4,
           );
         });

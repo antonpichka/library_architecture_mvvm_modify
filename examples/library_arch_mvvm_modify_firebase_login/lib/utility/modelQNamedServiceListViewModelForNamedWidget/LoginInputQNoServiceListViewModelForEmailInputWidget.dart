@@ -6,7 +6,7 @@ class LoginInputQNoServiceListViewModelForEmailInputWidget {
 
   LoginInputQNoServiceListViewModelForEmailInputWidget(this._loginInputQNoServiceViewModelUsingUpdateTIP);
 
-  Stream<LoginInput> get getStreamLoginInputUsingUpdateTIP {
+  Stream<LoginInput>? get getStreamLoginInputUsingUpdateTIP {
     return _loginInputQNoServiceViewModelUsingUpdateTIP.getStreamLoginInputUsingUpdateTIP;
   }
 
@@ -15,14 +15,14 @@ class LoginInputQNoServiceListViewModelForEmailInputWidget {
   {
     if(_loginInputQNoServiceViewModelUsingUpdateTIP
         .getLoginInputUsingUpdateTIP
-        .email
-        .value == str)
+        ?.email
+        ?.value == str)
     {
       return;
     }
     _loginInputQNoServiceViewModelUsingUpdateTIP
         .getLoginInputUsingUpdateTIP
-        .setDirtyConstructorFromStrParameterEmail = str;
+        ?.setDirtyConstructorFromStrParameterEmail = str;
     _loginInputQNoServiceViewModelUsingUpdateTIP
         .notifyStreamLoginInputUsingUpdateTIP();
     return;

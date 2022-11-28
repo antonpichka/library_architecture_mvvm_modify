@@ -4,12 +4,12 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 class Post
     extends BaseModel
 {
-  int id;
-  String title;
-  String body;
+  int? id;
+  String? title;
+  String? body;
 
   Post.success(this.id,this.title,this.body) : super.success(id.toString());
-  Post.exception(BaseException exception) : super.exception(exception);
+  Post.exception(BaseException? exception) : super.exception(exception);
 
   factory Post.fromMapForSuccess(
       Map<String,dynamic> map)

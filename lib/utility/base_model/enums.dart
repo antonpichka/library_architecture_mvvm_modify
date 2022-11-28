@@ -17,11 +17,15 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
+enum EnumsDefault {
+  zero
+}
+
 class Enums
     extends BaseModel
 {
   Enum field;
 
   Enums.success(this.field) : super.success(field.toString());
-  Enums.exception(BaseException exception) : super.exception(exception);
+  Enums.exception(BaseException? exception) : field = EnumsDefault.zero, super.exception(exception);
 }

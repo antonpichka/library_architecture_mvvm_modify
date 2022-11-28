@@ -5,27 +5,27 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 
-abstract class LoginInputQNamedServiceViewModel
-    extends BaseModelQNamedServiceViewModel<LoginInput,ListLoginInput>
+abstract class LoginInputQNamedServiceViewModel<DataSource extends Object>
+    extends BaseModelQNamedServiceViewModel<LoginInput,ListLoginInput,DataSource>
 {
-  LoginInputQNamedServiceViewModel.thereIsDataSource(Object dataSource) : super.thereIsDataSource(dataSource);
+  LoginInputQNamedServiceViewModel.thereIsDataSource(DataSource dataSource) : super.thereIsDataSource(dataSource);
   LoginInputQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
-  LoginInput cloneModelForSuccess(
-      LoginInput model)
+  LoginInput? cloneModelForSuccess(
+      LoginInput? model)
   {
     return LoginInput.success(
-        model.email,
-        model.password,
-        model.status);
+        model?.email,
+        model?.password,
+        model?.status);
   }
 
   @override
-  ListLoginInput cloneListModelForSuccess(
-      ListLoginInput listModel)
+  ListLoginInput? cloneListModelForSuccess(
+      ListLoginInput? listModel)
   {
-    return ListLoginInput.success(listModel.list);
+    return ListLoginInput.success(listModel?.list);
   }
 
   @override

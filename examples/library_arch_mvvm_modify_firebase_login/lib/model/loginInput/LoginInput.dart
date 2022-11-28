@@ -7,12 +7,12 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 class LoginInput
     extends BaseModel
 {
-  Email email;
-  Password password;
-  FormzStatus status;
+  Email? email;
+  Password? password;
+  FormzStatus? status;
 
-  LoginInput.success(this.email,this.password,this.status) : super.success(email.value);
-  LoginInput.exception(BaseException exception) : super.exception(exception);
+  LoginInput.success(this.email,this.password,this.status) : super.success(email?.value);
+  LoginInput.exception(BaseException? exception) : super.exception(exception);
 
   static LoginInput get getLoginInputForSuccess => LoginInput.success(Email.pure(),Password.pure(),FormzStatus.pure);
 
@@ -29,6 +29,6 @@ class LoginInput
   }
 
   bool isInvalidParameterEmail() {
-    return email.invalid;
+    return email!.invalid;
   }
 }

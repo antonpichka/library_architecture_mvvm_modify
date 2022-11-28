@@ -5,5 +5,5 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 class LoginTypeParameter
     extends BaseTypeParameter<Login>
 {
-  LoginTypeParameter(Login parameter) : super(parameter);
+  LoginTypeParameter(Login? parameter) : super.success(parameter);
 }

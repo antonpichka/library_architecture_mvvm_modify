@@ -5,6 +5,6 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_mo
 class ListLoginInput
     extends BaseListModel<LoginInput>
 {
-  ListLoginInput.success(List<LoginInput> list) : super.success(list);
-  ListLoginInput.exception(BaseException exception) : super.exception(exception);
+  ListLoginInput.success(List<LoginInput>? list) : super.success(list);
+  ListLoginInput.exception(BaseException? exception) : super.exception(exception);
 }

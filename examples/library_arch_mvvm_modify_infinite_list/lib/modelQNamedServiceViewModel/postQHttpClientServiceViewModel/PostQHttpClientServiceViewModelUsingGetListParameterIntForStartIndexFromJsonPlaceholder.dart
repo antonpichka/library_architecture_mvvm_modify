@@ -15,24 +15,24 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
     return this;
   }
 
-  Stream<ListPost> get getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
+  Stream<ListPost>? get getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
     return getStreamListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
   }
 
-  ListPost get getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
+  ListPost? get getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
     return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
   }
 
-  Future<ListPost> getListPostFromHttpClientServiceParameterInt(
+  Future<ListPost?> getListPostFromHttpClientServiceParameterInt(
       IntTypeParameter intTypeParameter)
   {
-    return getListModelFromNamedServiceParameterNamed(intTypeParameter);
+    return getListModelFromNamedServiceParameterNamed<IntTypeParameter>(intTypeParameter);
   }
 
-  Future<ListPost> getListPostFromHttpClientServiceParameterIntAndSetListPost(
+  Future<ListPost?> getListPostFromHttpClientServiceParameterIntAndSetListPost(
       IntTypeParameter intTypeParameter)
   {
-    return getListModelFromNamedServiceParameterNamedAndSetListModel(intTypeParameter);
+    return getListModelFromNamedServiceParameterNamedAndSetListModel<IntTypeParameter>(intTypeParameter);
   }
 
   void notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder() {

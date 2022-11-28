@@ -20,7 +20,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 abstract class BaseIterator<T extends BaseModel>
     implements Iterator<T>
 {
-  List<T> list;
+  List<T>? list;
 
   @nonVirtual
   List<T> get getSortedList {

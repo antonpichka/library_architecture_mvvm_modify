@@ -21,23 +21,23 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/list_strings
 import 'package:library_architecture_mvvm_modify/utility/base_model/strings.dart';
 
 abstract class StringsQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Strings,ListStrings>
+    extends BaseModelQNamedServiceViewModel<Strings,ListStrings,Object>
 {
   StringsQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   @nonVirtual
-  Strings cloneModelForSuccess(
-      Strings model)
+  Strings? cloneModelForSuccess(
+      Strings? model)
   {
-    return Strings.success(model.field);
+    return Strings.success(model!.field);
   }
 
   @override
   @nonVirtual
-  ListStrings cloneListModelForSuccess(
-      ListStrings listModel)
+  ListStrings? cloneListModelForSuccess(
+      ListStrings? listModel)
   {
-    return ListStrings.success(listModel.list);
+    return ListStrings.success(listModel?.list);
   }
 }

@@ -6,7 +6,7 @@ homepage: https://github.com/JacobOdd/library_architecture_mvvm_modify
 documentation: https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/README.md#documentation
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   ansicolor: ^2.0.1

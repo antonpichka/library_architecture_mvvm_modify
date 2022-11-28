@@ -12,11 +12,11 @@ class IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement
     return this;
   }
 
-  Stream<Int> get getStreamIntUsingGetNPForIncrementAndDecrement {
+  Stream<Int>? get getStreamIntUsingGetNPForIncrementAndDecrement {
     return getStreamModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
   }
 
-  Int get getIntUsingGetNPForIncrementAndDecrement {
+  Int? get getIntUsingGetNPForIncrementAndDecrement {
     return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
   }
 

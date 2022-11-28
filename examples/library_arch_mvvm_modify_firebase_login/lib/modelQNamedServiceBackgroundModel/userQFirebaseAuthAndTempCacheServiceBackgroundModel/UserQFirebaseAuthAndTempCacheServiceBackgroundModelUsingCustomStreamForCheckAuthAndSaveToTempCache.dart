@@ -4,7 +4,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSo
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
 
 class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache
-    extends UserQNamedServiceBackgroundModel
+    extends UserQNamedServiceBackgroundModel<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>
 {
   UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService firebaseAuthAndTempCacheService) : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(firebaseAuthAndTempCacheService));
 
@@ -13,7 +13,7 @@ class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForChe
     return this;
   }
 
-  Stream<User> get getCustomStreamUser {
-    return getDataSource<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>().getCustomStreamUser;
+  Stream<User>? get getCustomStreamUser {
+    return modelQNamedServiceDataSource?.getCustomStreamUser;
   }
 }

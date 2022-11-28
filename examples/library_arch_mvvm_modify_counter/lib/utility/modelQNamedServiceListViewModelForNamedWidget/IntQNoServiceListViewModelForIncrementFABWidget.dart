@@ -8,10 +8,10 @@ class IntQNoServiceListViewModelForIncrementFABWidget {
   void incrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask()
   {
     _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
-        .getIntUsingGetNPForIncrementAndDecrement
-        .field++;
-    _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
-        .notifyStreamIntUsingGetNPForIncrementAndDecrement();
-    return;
+       .getIntUsingGetNPForIncrementAndDecrement
+        ?.field++;
+   _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
+       .notifyStreamIntUsingGetNPForIncrementAndDecrement();
+   return;
   }
 }

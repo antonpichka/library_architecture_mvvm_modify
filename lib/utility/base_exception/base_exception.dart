@@ -24,10 +24,10 @@ abstract class BaseException
       Type exceptionClass)
   {
     debugPrintException("===start_to_trace_exception===\n");
-    debugPrintException("NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: ${exceptionInStringForDebugPrintException()}\n");
+    debugPrintException("NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: $exceptionInStringForDebugPrintException\n");
     debugPrintException("===end_to_trace_exception===\n");
   }
 
-  String getMessageForView();
-  String exceptionInStringForDebugPrintException();
+  String get getMessageForView;
+  String get exceptionInStringForDebugPrintException;
 }

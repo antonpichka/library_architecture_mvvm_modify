@@ -34,20 +34,19 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.d
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>>
-    extends BaseModelQNamedServiceBackgroundModel<T,Y>
+abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
+    extends BaseModelQNamedServiceBackgroundModel<T,Y,DataSource>
     implements IDispose
 {
   /* List and Map For IStreamModel */
   final List<EnumBaseModelAndBaseListModelVM> _listEnumBaseModelAndBaseListModelVM = List.empty(growable: true);
-  final Map<EnumBaseModelAndBaseListModelVM,IStreamModel<T,Y>> _mapEnumBaseModelAndBaseListModelVMAndIStreamModel = {};
+  final Map<EnumBaseModelAndBaseListModelVM,IStreamModel<T,Y>?> _mapEnumBaseModelAndBaseListModelVMAndIStreamModel = {};
 
   /* Init DataSource */
   final bool _isExistsDataSource;
 
-  BaseModelQNamedServiceViewModel.thereIsDataSource(Object dataSource)
+  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource)
       : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
@@ -69,818 +68,19 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void dispose() {
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel.forEach((
         EnumBaseModelAndBaseListModelVM enumBaseModelAndBaseListModelVM,
-        IStreamModel<T,Y> iStreamModel)
+        IStreamModel<T,Y>? iStreamModel)
     {
-      iStreamModel.dispose();
+      iStreamModel?.dispose();
     });
   }
 
   // Default class: return DefaultStreamModel(Object.success(""),ListObject.success([]));
-  IStreamModel<T,Y> initIStreamModelForSuccess();
-
-  /// Start DataSource **/
-  ///
-  // start getListNP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,'Constructor call thereIsDataSource...: $_isExistsDataSource');
-    }
-    return super.getListModelFromNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getListModelFromNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceNPAndSetListModel()
-  async {
-    Y listModelNamed = await getListModelFromNamedServiceNP();
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP]
-        .setListModel = listModelNamed;
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP].getListModel;
-  }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceNPAndSetListModelUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  async {
-    Y listModelNamed = await getListModelFromNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP]
-        .setListModel = listModelNamed;
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP].getListModel;
-  }
-  // end getListNP 4
-
-  // start getListParameterNamed 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getListModelFromNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedAndSetListModel(
-      BaseTypeParameter typeParameter)
-  async {
-    Y listModel = await getListModelFromNamedServiceParameterNamed(typeParameter);
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed]
-        .setListModel = listModel;
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed].getListModel;
-  }
-
-  @protected
-  @nonVirtual
-  Future<Y> getListModelFromNamedServiceParameterNamedAndSetListModelUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  async {
-    Y listModel = await getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed]
-        .setListModel = listModel;
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed].getListModel;
-  }
-  // end getListParameterNamed 4
-
-  // start getNP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getModelFromNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getModelFromNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceNPAndSetModel()
-  async {
-    T model = await getModelFromNamedServiceNP();
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
-  }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceNPAndSetModelUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  async {
-    T model = await getModelFromNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
-  }
-  // end getNP 4
-
-  // start getParameterNamed 4
-  @override
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getModelFromNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedAndSetModel(
-      BaseTypeParameter typeParameter)
-  async {
-    T model = await getModelFromNamedServiceParameterNamed(typeParameter);
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
-  }
-
-  @protected
-  @nonVirtual
-  Future<T> getModelFromNamedServiceParameterNamedAndSetModelUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  async {
-    T model = await getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
-  }
-  // end getParameterNamed 4
-
-  // start insertTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceTIP(
-      T model)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceTIP(model);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        model,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceTIPUsingStateModel()
-  {
-    return insertModelToNamedServiceTIP(getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return insertModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end insertTIP 4
-
-  // start insertNP 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-  // end insertNP 2
-
-  // start insertParameterNamed 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-  // end insertParameterNamed 2
-
-  // start insertListTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceTIP(
-      Y listModel)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceTIP(listModel);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        listModel,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceTIPUsingStateListModel()
-  {
-    return insertListModelToNamedServiceTIP(getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return insertListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end insertListTIP 4
-
-  // start insertListNP 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-  // end insertListNP 2
-
-  // start insertListParameterNamed 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-  // end insertListParameterNamed 2
-
-  // start updateTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceTIP(
-      T model)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceTIP(model);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        model,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceTIPUsingStateModel()
-  {
-    return updateModelToNamedServiceTIP(getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return updateModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end updateTIP 4
-
-  // start updateNP 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-  // end updateNP 2
-
-  // start updateParameterNamed 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-  // end updateParameterNamed 2
-
-  // start updateListTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceTIP(
-      Y listModel)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceTIP(listModel);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        listModel,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceTIPUsingStateListModel()
-  {
-    return updateListModelToNamedServiceTIP(getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return updateListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end updateListTIP 4
-
-  // start updateListNP 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-  // end updateListNP 2
-
-  // start updateListParameterNamed 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-  // end updateListParameterNamed 2
-
-  // start deleteTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceTIP(
-      T model)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceTIP(model);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      T model,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        model,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceTIPUsingStateModel()
-  {
-    return deleteModelToNamedServiceTIP(getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return deleteModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end deleteTIP 4
-
-  // start deleteNP 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-  // end deleteNP 2
-
-  // start deleteParameterNamed 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-  // end deleteParameterNamed 2
-
-  // start deleteListTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceTIP(
-      Y listModel)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceTIP(listModel);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-      Y listModel,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        listModel,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceTIPUsingStateListModel()
-  {
-    return deleteListModelToNamedServiceTIP(getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    return deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS(
-        getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end deleteListTIP 4
-
-  // start deleteListNP 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceNP()
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceNP();
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceNPUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceNPUsingTypeParameterForFBDS(typeParameterForFBDS);
-  }
-  // end deleteListNP 2
-
-  // start deleteListParameterNamed 2
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceParameterNamed(
-      BaseTypeParameter typeParameter)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceParameterNamed(typeParameter);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Response> deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-      BaseTypeParameter typeParameter,
-      BaseTypeParameter typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS(
-        typeParameter,
-        typeParameterForFBDS);
-  }
-  // end deleteListParameterNamed 2
-  /// End DataSource **/
+  IStreamModel<T,Y>? initIStreamModelForSuccess();
 
   /// Start IStreamModel **/
   @protected
   @nonVirtual
-  U getIStreamModel<U extends IStreamModel<T,Y>>(
+  IStreamModel<T,Y>? getIStreamModel(
       EnumBaseModelAndBaseListModelVM operation)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
@@ -893,61 +93,61 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   /// Start Model **/
   @protected
   @nonVirtual
-  Future<T> getFutureModel(
+  Future<T?> getFutureModel(
       EnumBaseModelAndBaseListModelVM operation)
   async {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation].getModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getModel;
   }
 
   @protected
   @nonVirtual
-  Object getStreamModel(
+  Stream<T>? getStreamModel(
       EnumBaseModelAndBaseListModelVM operation)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation].getStreamModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getStreamModel;
   }
 
   @protected
   @nonVirtual
-  T getModel(
+  T? getModel(
       EnumBaseModelAndBaseListModelVM operation)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation].getModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getModel;
   }
 
   @protected
   @nonVirtual
   void setModel(
       EnumBaseModelAndBaseListModelVM operation,
-      T model)
+      T? model)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .setModel = model;
+        ?.setModel = model;
   }
 
   @protected
   @nonVirtual
   void setCloneModel(
       EnumBaseModelAndBaseListModelVM operation,
-      T model)
+      T? model)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .setModel = cloneModelForSuccess(model);
+        ?.setModel = cloneModelForSuccess(model);
   }
 
   @protected
@@ -959,7 +159,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .notifyStreamModel(thisClass);
+        ?.notifyStreamModel(thisClass);
   }
 
   @protected
@@ -971,68 +171,68 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .notifyStreamDelayInSecondsModel(thisClass);
+        ?.notifyStreamDelayInSecondsModel(thisClass);
   }
   /// End Model **/
-  
+
   /// Start ListModel **/
   @protected
   @nonVirtual
-  Future<Y> getFutureListModel(
+  Future<Y?> getFutureListModel(
       EnumBaseModelAndBaseListModelVM operation)
   async {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation].getListModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getListModel;
   }
 
   @protected
   @nonVirtual
-  Object getStreamListModel(
+  Stream<Y>? getStreamListModel(
       EnumBaseModelAndBaseListModelVM operation)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation].getStreamListModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getStreamListModel;
   }
 
   @protected
   @nonVirtual
-  Y getListModel(
+  Y? getListModel(
       EnumBaseModelAndBaseListModelVM operation)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation].getListModel;
+    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getListModel;
   }
 
   @protected
   @nonVirtual
   void setListModel(
       EnumBaseModelAndBaseListModelVM operation,
-      Y listModel)
+      Y? listModel)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .setListModel = listModel;
+        ?.setListModel = listModel;
   }
 
   @protected
   @nonVirtual
   void setCloneListModel(
       EnumBaseModelAndBaseListModelVM operation,
-      Y listModel)
+      Y? listModel)
   {
     if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .setListModel = cloneListModelForSuccess(listModel);
+        ?.setListModel = cloneListModelForSuccess(listModel);
   }
 
   @protected
@@ -1044,7 +244,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .notifyStreamListModel(thisClass);
+        ?.notifyStreamListModel(thisClass);
   }
 
   @protected
@@ -1056,30 +256,825 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        .notifyStreamDelayInSecondsListModel(thisClass);
+        ?.notifyStreamDelayInSecondsListModel(thisClass);
   }
   /// End ListModel **/
+
+  /// Start DataSource **/
+  ///
+  // start getListNP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceNP()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,'Constructor call thereIsDataSource...: $_isExistsDataSource');
+    }
+    return super.getListModelFromNamedServiceNP();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceNPUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getListModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceNPAndSetListModel()
+  async {
+    Y? listModel = await getListModelFromNamedServiceNP();
+    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP,listModel);
+    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceNPAndSetListModelUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
+      C typeParameterForFBDS)
+  async {
+    Y? listModel = await getListModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(typeParameterForFBDS);
+    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP,listModel);
+    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP);
+  }
+  // end getListNP 4
+
+  // start getListParameterNamed 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceParameterNamed<X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getListModelFromNamedServiceParameterNamed<X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceParameterNamedAndSetListModel<X extends BaseTypeParameter>(
+      X typeParameter)
+  async {
+    Y? listModel  = await getListModelFromNamedServiceParameterNamed<X>(typeParameter);
+    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed,listModel);
+    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Y?> getListModelFromNamedServiceParameterNamedAndSetListModelUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X typeParameter,
+      C typeParameterForFBDS)
+  async {
+    Y? listModel = await getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed,listModel);
+    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
+  }
+  // end getListParameterNamed 4
+
+  // start getNP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceNP()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getModelFromNamedServiceNP();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceNPUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceNPAndSetModel()
+  async {
+    T? model = await getModelFromNamedServiceNP();
+    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,model);
+    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+  }
+
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceNPAndSetModelUsingTypeParameterForFBDS<C extends BaseTypeParameter>(
+      C typeParameterForFBDS)
+  async {
+    T? model = await getModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(typeParameterForFBDS);
+    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,model);
+    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+  }
+  // end getNP 4
+
+  // start getParameterNamed 4
+  @override
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceParameterNamed<X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getModelFromNamedServiceParameterNamed<X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceParameterNamedAndSetModel<X extends BaseTypeParameter>(
+      X typeParameter)
+  async {
+    T? model = await getModelFromNamedServiceParameterNamed<X>(typeParameter);
+    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
+    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
+  }
+
+  @protected
+  @nonVirtual
+  Future<T?> getModelFromNamedServiceParameterNamedAndSetModelUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X typeParameter,
+      C typeParameterForFBDS)
+  async {
+    T? model = await getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
+    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
+  }
+  // end getParameterNamed 4
+
+  // start insertTIP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      T? model)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertModelToNamedServiceTIP<Z>(model);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      T? model,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        model,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> insertModelToNamedServiceTIPUsingStateModel<Z extends BaseTypeParameter>()
+  {
+    return insertModelToNamedServiceTIP<Z>(getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> insertModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    return insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP),
+        typeParameterForFBDS);
+  }
+  // end insertTIP 4
+
+  // start insertNP 2
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> insertModelToNamedServiceNP<X extends BaseTypeParameter>()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertModelToNamedServiceNP<X>();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> insertModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(typeParameterForFBDS);
+  }
+  // end insertNP 2
+
+  // start insertParameterNamed 2
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertModelToNamedServiceParameterNamed<Z,X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end insertParameterNamed 2
+
+  // start insertListTIP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      Y? listModel)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertListModelToNamedServiceTIP<Z>(listModel);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      Y? listModel,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        listModel,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> insertListModelToNamedServiceTIPUsingStateListModel<Z extends BaseTypeParameter>()
+  {
+    return insertListModelToNamedServiceTIP<Z>(getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> insertListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    return insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP),
+        typeParameterForFBDS);
+  }
+  // end insertListTIP 4
+
+  // start insertListNP 2
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> insertListModelToNamedServiceNP<X extends BaseTypeParameter>()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertListModelToNamedServiceNP<X>();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> insertListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(typeParameterForFBDS);
+  }
+  // end insertListNP 2
+
+  // start insertListParameterNamed 2
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertListModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertListModelToNamedServiceParameterNamed<Z,X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.insertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end insertListParameterNamed 2
+
+  // start updateTIP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      T? model)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateModelToNamedServiceTIP<Z>(model);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      T? model,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        model,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> updateModelToNamedServiceTIPUsingStateModel<Z extends BaseTypeParameter>()
+  {
+    return updateModelToNamedServiceTIP<Z>(getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> updateModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    return updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP),
+        typeParameterForFBDS);
+  }
+  // end updateTIP 4
+
+  // start updateNP 2
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> updateModelToNamedServiceNP<X extends BaseTypeParameter>()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateModelToNamedServiceNP<X>();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> updateModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(typeParameterForFBDS);
+  }
+  // end updateNP 2
+
+  // start updateParameterNamed 2
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateModelToNamedServiceParameterNamed<Z,X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end updateParameterNamed 2
+
+  // start updateListTIP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      Y? listModel)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateListModelToNamedServiceTIP<Z>(listModel);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      Y? listModel,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        listModel,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> updateListModelToNamedServiceTIPUsingStateListModel<Z extends BaseTypeParameter>()
+  {
+    return updateListModelToNamedServiceTIP<Z>(getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> updateListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    return updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP),
+        typeParameterForFBDS);
+  }
+  // end updateListTIP 4
+
+  // start updateListNP 2
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> updateListModelToNamedServiceNP<X extends BaseTypeParameter>()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateListModelToNamedServiceNP<X>();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> updateListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(typeParameterForFBDS);
+  }
+  // end updateListNP 2
+
+  // start updateListParameterNamed 2
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateListModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateListModelToNamedServiceParameterNamed<Z,X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.updateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end updateListParameterNamed 2
+
+  // start deleteTIP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      T? model)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteModelToNamedServiceTIP<Z>(model);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      T? model,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        model,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> deleteModelToNamedServiceTIPUsingStateModel<Z extends BaseTypeParameter>()
+  {
+    return deleteModelToNamedServiceTIP<Z>(getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> deleteModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    return deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP),
+        typeParameterForFBDS);
+  }
+  // end deleteTIP 4
+
+  // start deleteNP 2
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> deleteModelToNamedServiceNP<X extends BaseTypeParameter>()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteModelToNamedServiceNP<X>();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> deleteModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(typeParameterForFBDS);
+  }
+  // end deleteNP 2
+
+  // start deleteParameterNamed 2
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteModelToNamedServiceParameterNamed<Z,X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end deleteParameterNamed 2
+
+  // start deleteListTIP 4
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
+      Y? listModel)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteListModelToNamedServiceTIP<Z>(listModel);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      Y? listModel,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        listModel,
+        typeParameterForFBDS);
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> deleteListModelToNamedServiceTIPUsingStateListModel<Z extends BaseTypeParameter>()
+  {
+    return deleteListModelToNamedServiceTIP<Z>(getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP));
+  }
+
+  @protected
+  @nonVirtual
+  Future<Z?> deleteListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    return deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
+        getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP),
+        typeParameterForFBDS);
+  }
+  // end deleteListTIP 4
+
+  // start deleteListNP 2
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> deleteListModelToNamedServiceNP<X extends BaseTypeParameter>()
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteListModelToNamedServiceNP<X>();
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<X?> deleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(typeParameterForFBDS);
+  }
+  // end deleteListNP 2
+
+  // start deleteListParameterNamed 2
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteListModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter>(
+      X? typeParameter)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteListModelToNamedServiceParameterNamed<Z,X>(typeParameter);
+  }
+
+  @override
+  @protected
+  @nonVirtual
+  Future<Z?> deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS)
+  {
+    if(_isNotExistsDataSource) {
+      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
+    }
+    return super.deleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
+        typeParameter,
+        typeParameterForFBDS);
+  }
+  // end deleteListParameterNamed 2
+  /// End DataSource **/
 
   void _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM() {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    if(modelQNamedServiceDataSource is InsertModelToNamedServiceTIPDataSource<T>) {
+    if(modelQNamedServiceDataSource is InsertModelToNamedServiceTIPDataSource<BaseTypeParameter,T>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP);
     }
-    if(modelQNamedServiceDataSource is UpdateModelToNamedServiceTIPDataSource<T>) {
+    if(modelQNamedServiceDataSource is UpdateModelToNamedServiceTIPDataSource<BaseTypeParameter,T>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP);
     }
-    if(modelQNamedServiceDataSource is DeleteModelToNamedServiceTIPDataSource<T>) {
+    if(modelQNamedServiceDataSource is DeleteModelToNamedServiceTIPDataSource<BaseTypeParameter,T>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP);
     }
-    if(modelQNamedServiceDataSource is InsertListModelToNamedServiceTIPDataSource<Y>) {
+    if(modelQNamedServiceDataSource is InsertListModelToNamedServiceTIPDataSource<BaseTypeParameter,Y>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP);
     }
-    if(modelQNamedServiceDataSource is UpdateListModelToNamedServiceTIPDataSource<Y>) {
+    if(modelQNamedServiceDataSource is UpdateListModelToNamedServiceTIPDataSource<BaseTypeParameter,Y>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP);
     }
-    if(modelQNamedServiceDataSource is DeleteListModelToNamedServiceTIPDataSource<Y>) {
+    if(modelQNamedServiceDataSource is DeleteListModelToNamedServiceTIPDataSource<BaseTypeParameter,Y>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP);
     }
     if(modelQNamedServiceDataSource is GetModelFromNamedServiceNPDataSource<T>) {

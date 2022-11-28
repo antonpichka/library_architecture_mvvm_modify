@@ -16,7 +16,7 @@ class EmailInputWidget
         stream: _lo.getStreamLoginInputUsingUpdateTIP,
         builder: (BuildContext buildContext, AsyncSnapshot<LoginInput> asyncSnapshot)
         {
-          LoginInput loginInput = asyncSnapshot.data;
+          LoginInput? loginInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => _lo
                 .setDirtyConstructorFromStrParameterEmailByLoginInputUsingUpdateTIPAndInGeneralZeroTask(str),
@@ -24,7 +24,7 @@ class EmailInputWidget
             decoration: InputDecoration(
               labelText: 'email',
               helperText: '',
-              errorText: loginInput.isInvalidParameterEmail() ? 'invalid email' : null,
+              errorText: loginInput!.isInvalidParameterEmail() ? 'invalid email' : null,
             ),
           );
         });

@@ -1,57 +1,53 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthService.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Login.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Registration.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin
     implements
-        InsertModelToNamedServiceParameterNamedDataSource<RegistrationTypeParameter>,
-        UpdateModelToNamedServiceParameterNamedDataSource<LoginTypeParameter>
+        InsertModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,RegistrationTypeParameter>,
+        UpdateModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,LoginTypeParameter>
 {
   final FirebaseAuthService _firebaseAuthService;
 
   UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin(this._firebaseAuthService);
 
   @override
-  Future<Response> insertModelToNamedServiceParameterNamed(
-      RegistrationTypeParameter parameter)
+  Future<BoolTypeParameter> insertModelToNamedServiceParameterNamed(
+      RegistrationTypeParameter? registration)
   async {
-    Registration registration = parameter.getParameter;
     try {
       await _firebaseAuthService
           .getFirebaseAuthSingleton
-          .getFirebaseAuth
-          .createUserWithEmailAndPassword(email: registration.email, password: registration.password);
-      return Response.success(true);
+          ?.getFirebaseAuth
+          ?.createUserWithEmailAndPassword(email: registration!.parameter!.email ?? "", password: registration.parameter!.password ?? "");
+      return BoolTypeParameter.success(true);
     } on FirebaseAuthException catch (e) {
-      return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
+      return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
     } catch (_) {
-      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 
   @override
-  Future<Response> updateModelToNamedServiceParameterNamed(
-      LoginTypeParameter parameter)
+  Future<BoolTypeParameter> updateModelToNamedServiceParameterNamed(
+      LoginTypeParameter? login)
   async {
-    Login login = parameter.getParameter;
     try {
       await _firebaseAuthService
           .getFirebaseAuthSingleton
-          .getFirebaseAuth
-          .signInWithEmailAndPassword(email: login.email, password: login.password);
-      return Response.success(true);
+          ?.getFirebaseAuth
+          ?.signInWithEmailAndPassword(email: login!.parameter!.email ?? "", password: login.parameter!.password ?? "");
+      return BoolTypeParameter.success(true);
     } on FirebaseAuthException catch (e) {
-      return Response.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
+      return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
     } catch (_) {
-      return Response.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 }

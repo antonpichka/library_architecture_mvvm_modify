@@ -6,7 +6,7 @@ class IntQNoServiceListViewModelForIntTextWidget {
 
   IntQNoServiceListViewModelForIntTextWidget(this._intQNoServiceViewModelUsingGetNPForIncrementAndDecrement);
 
-  Stream<Int> get getStreamIntUsingGetNPForIncrementAndDecrement {
+  Stream<Int>? get getStreamIntUsingGetNPForIncrementAndDecrement {
     return _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement.getStreamIntUsingGetNPForIncrementAndDecrement;
   }
 }

@@ -156,12 +156,12 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
   }
 
   @override
-  String getMessageForView() {
+  String get getMessageForView {
     return message;
   }
 
   @override
-  String exceptionInStringForDebugPrintException() {
+  String get exceptionInStringForDebugPrintException {
     return "Code: $code | "
         "Message: $message";
   }

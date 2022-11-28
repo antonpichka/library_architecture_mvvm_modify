@@ -260,12 +260,12 @@ class NetworkException
   }
 
   @override
-  String getMessageForView() {
+  String get getMessageForView {
     return "$statusCode";
   }
 
   @override
-  String exceptionInStringForDebugPrintException() {
+  String get exceptionInStringForDebugPrintException {
     return "StatusCode: $statusCode | "
         "NameStatusCode: $nameStatusCode | "
         "DescriptionStatusCode: $descriptionStatusCode";

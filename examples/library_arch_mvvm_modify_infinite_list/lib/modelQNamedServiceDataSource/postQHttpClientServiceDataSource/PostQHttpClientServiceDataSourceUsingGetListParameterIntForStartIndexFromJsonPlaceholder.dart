@@ -17,18 +17,18 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
 
   @override
   Future<ListPost> getListModelFromNamedServiceParameterNamed(
-      IntTypeParameter int)
+      IntTypeParameter? int)
   async {
     try {
       final response = await _httpClientService
           .getHttpClientSingleton
-          .getHttpClient
-          .get(Uri.https(constUrlJsonPlaceholderTypicodeCom, Post.constPostsUrl, <String, String>{'_start': '${int.getParameter}', '_limit': '20'}))
+          ?.getHttpClient
+          ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, Post.constPostsUrl, <String, String>{'_start': '${int?.parameter}', '_limit': '20'}))
           .timeout(Duration(seconds: 5));
-      if(response.statusCode != 200) {
-        throw NetworkException.fromStatusCode(this,response.statusCode);
+      if(response?.statusCode != 200) {
+        throw NetworkException.fromStatusCode(this,response!.statusCode);
       }
-      final body = json.decode(response.body) as List;
+      final body = json.decode(response!.body) as List;
       List<Post> listPost = body.map((dynamic json) {
         final map = json as Map<String,dynamic>;
         return Post.fromMapForSuccess(map);

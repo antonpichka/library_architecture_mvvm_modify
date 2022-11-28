@@ -23,5 +23,5 @@ class Int
   int field;
 
   Int.success(this.field) : super.success(field.toString());
-  Int.exception(BaseException exception) : super.exception(exception);
+  Int.exception(BaseException? exception) : field = 0, super.exception(exception) ;
 }

@@ -21,23 +21,23 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/enums.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/list_enums.dart';
 
 abstract class EnumsQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Enums,ListEnums>
+    extends BaseModelQNamedServiceViewModel<Enums,ListEnums,Object>
 {
   EnumsQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,) : super.noDataSource(list);
 
   @override
   @nonVirtual
-  Enums cloneModelForSuccess(
-      Enums model)
+  Enums? cloneModelForSuccess(
+      Enums? model)
   {
-    return Enums.success(model.field);
+    return Enums.success(model!.field);
   }
 
   @override
   @nonVirtual
-  ListEnums cloneListModelForSuccess(
-      ListEnums listModel)
+  ListEnums? cloneListModelForSuccess(
+      ListEnums? listModel)
   {
-    return ListEnums.success(listModel.list);
+    return ListEnums.success(listModel?.list);
   }
 }

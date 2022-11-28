@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
+import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-abstract class GetListModelFromNamedServiceParameterNamedFBDS<T extends BaseTypeParameter,Y extends BaseTypeParameter>
+abstract class GetListModelFromNamedServiceParameterNamedFBDS
 {
   GetListModelFromNamedServiceParameterNamedFBDS();
 
-  Response getListModelFromNamedServiceParameterNamed(
-      T typeParameter,
-      Y typeParameterForFBDS);
+  Z? getListModelFromNamedServiceParameterNamed<Z extends BaseListModel,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+      X? typeParameter,
+      C? typeParameterForFBDS);
 }

@@ -13,38 +13,38 @@ enum EnumListPostForPostsListWidget {
 class ListPost
     extends BaseListModel<Post>
 {
-  bool hasReachedMax;
+  bool? hasReachedMax;
 
-  ListPost.success(List<Post> listModel) : super.success(listModel) {
-    if(listModel.isEmpty) {
+  ListPost.success(List<Post>? list) : super.success(list) {
+    if(list!.isEmpty) {
       hasReachedMax = true;
       return;
     }
     hasReachedMax = false;
   }
 
-  ListPost.exception(BaseException exception) : super.exception(exception) {
+  ListPost.exception(BaseException? exception) : super.exception(exception) {
     hasReachedMax = false;
   }
 
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController?.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
     }
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+    if(exceptionController?.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
       return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
-    if(list.isEmpty) {
+    if(list!.isEmpty) {
       return EnumListPostForPostsListWidget.isEmptyList;
     }
     return EnumListPostForPostsListWidget.success;
   }
 
   int get getParameterLengthByList {
-    if(hasReachedMax) {
-      return list.length;
+    if(hasReachedMax!) {
+      return list!.length;
     }
-    return list.length + 1;
+    return list!.length + 1;
   }
 
   set setParameterHasReachedMax(
@@ -56,10 +56,10 @@ class ListPost
   void insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionController = listPost.exceptionController;
-    setParameterHasReachedMax = listPost.hasReachedMax;
+    setParameterExceptionController = listPost.exceptionController!;
+    setParameterHasReachedMax = listPost.hasReachedMax!;
     if(hasNotReachedMax()) {
-      insertListToList(listPost.list);
+      insertListToList(listPost.list!);
       return;
     }
   }
@@ -67,17 +67,17 @@ class ListPost
   void setFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionController = listPost.exceptionController;
-    setParameterHasReachedMax = listPost.hasReachedMax;
+    setParameterExceptionController = listPost.exceptionController!;
+    setParameterHasReachedMax = listPost.hasReachedMax!;
   }
 
   bool isFromIndexMoreOrEqualParameterLengthByList(
       int index)
   {
-    return index >= list.length;
+    return index >= list!.length;
   }
 
   bool hasNotReachedMax() {
-    return !hasReachedMax;
+    return !hasReachedMax!;
   }
 }

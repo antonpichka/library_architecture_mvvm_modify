@@ -21,8 +21,8 @@ import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_except
 import 'package:flutter/foundation.dart';
 
 class ExceptionController {
-  final EnumWhatIsTheException enumWhatIsTheException;
-  final BaseException _exception;
+  final EnumWhatIsTheException? enumWhatIsTheException;
+  final BaseException? _exception;
 
   ExceptionController.success()
       : enumWhatIsTheException = EnumWhatIsTheException.noException,
@@ -34,13 +34,8 @@ class ExceptionController {
       ? EnumWhatIsTheException.networkException : EnumWhatIsTheException.otherException;
 
   @nonVirtual
-  String getMessageForViewByException(
-      Object thisClass)
-  {
-    if(_exception == null) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"_exception equals null");
-    }
-    return _exception.getMessageForView();
+  String? get getMessageForViewByException {
+    return _exception?.getMessageForView;
   }
 
   @nonVirtual

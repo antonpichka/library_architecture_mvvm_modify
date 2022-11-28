@@ -16,13 +16,12 @@
 
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-abstract class InsertListModelToNamedServiceTIPFBDS<T extends BaseListModel,Y extends BaseTypeParameter>
+abstract class InsertListModelToNamedServiceTIPFBDS
 {
   InsertListModelToNamedServiceTIPFBDS();
 
-  Response insertListModelToNamedServiceTIP(
-      T listModel,
-      Y typeParameterForFBDS);
+  Z? insertListModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseListModel,C extends BaseTypeParameter>(
+      X? listModel,
+      C? typeParameterForFBDS);
 }

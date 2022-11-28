@@ -23,13 +23,13 @@ import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     implements IStreamModel<T,Y>
 {
-  final StreamController<T> _streamControllerForModel;
-  final StreamController<Y> _streamControllerForListModel;
-  final int _delayInSeconds;
-  T _model;
-  Y _listModel;
-  StreamSubscription<T> _streamSubscriptionForModel;
-  StreamSubscription<Y> _streamSubscriptionForListModel;
+  final StreamController<T>? _streamControllerForModel;
+  final StreamController<Y>? _streamControllerForListModel;
+  final int? _delayInSeconds;
+  T? _model;
+  Y? _listModel;
+  StreamSubscription<T>? _streamSubscriptionForModel;
+  StreamSubscription<Y>? _streamSubscriptionForListModel;
 
   DefaultStreamModel(
       this._model,
@@ -41,42 +41,38 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
 
   @override
   void dispose() {
-    if(_streamSubscriptionForModel != null) {
-      _streamSubscriptionForModel.cancel();
+    _streamSubscriptionForModel?.cancel();
+    _streamSubscriptionForListModel?.cancel();
+    if(!_streamControllerForModel!.isClosed) {
+      _streamControllerForModel?.close();
     }
-    if(_streamSubscriptionForListModel != null) {
-      _streamSubscriptionForListModel.cancel();
-    }
-    if(!_streamControllerForModel.isClosed) {
-      _streamControllerForModel.close();
-    }
-    if(!_streamControllerForListModel.isClosed) {
-      _streamControllerForListModel.close();
+    if(!_streamControllerForListModel!.isClosed) {
+      _streamControllerForListModel?.close();
     }
   }
 
   @override
-  Stream<T> get getStreamModel => _streamControllerForModel.stream;
+  Stream<T>? get getStreamModel => _streamControllerForModel!.stream;
 
   @override
-  Stream<Y> get getStreamListModel => _streamControllerForListModel.stream;
+  Stream<Y>? get getStreamListModel => _streamControllerForListModel!.stream;
 
   @override
-  T get getModel => _model;
+  T? get getModel => _model;
 
   @override
-  Y get getListModel => _listModel;
+  Y? get getListModel => _listModel;
 
   @override
   set setModel(
-      T model)
+      T? model)
   {
     _model = model;
   }
 
   @override
   set setListModel(
-      Y listModel)
+      Y? listModel)
   {
     _listModel = listModel;
   }
@@ -85,50 +81,50 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   void notifyStreamModel(
       Object thisClass)
   {
-    if(!_streamControllerForModel.hasListener) {
+    if(!_streamControllerForModel!.hasListener) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
     }
-    if(_streamControllerForModel.isClosed) {
+    if(_streamControllerForModel!.isClosed) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
     }
     _streamControllerForModel
-        .sink
-        .add(_model);
+        ?.sink
+        .add(_model!);
   }
 
   @override
   void notifyStreamListModel(
       Object thisClass)
   {
-    if(!_streamControllerForListModel.hasListener) {
+    if(!_streamControllerForListModel!.hasListener) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
     }
-    if(_streamControllerForListModel.isClosed) {
+    if(_streamControllerForListModel!.isClosed) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
     }
     _streamControllerForListModel
-        .sink
-        .add(_listModel);
+        ?.sink
+        .add(_listModel!);
   }
 
   @override
   Future<void> notifyStreamDelayInSecondsModel(
       Object thisClass)
   async {
-    if(_streamControllerForModel.isClosed) {
+    if(_streamControllerForModel!.isClosed) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
     }
     int iteration = 0;
-    while(iteration < _delayInSeconds) {
-      if(_streamControllerForModel.hasListener) {
+    while(iteration < _delayInSeconds!) {
+      if(_streamControllerForModel!.hasListener) {
         _streamControllerForModel
-            .sink
-            .add(_model);
+            ?.sink
+            .add(_model!);
         break;
       }
       await Future.delayed(const Duration(seconds: 1));
       iteration++;
-      if(iteration >= _delayInSeconds) {
+      if(iteration >= _delayInSeconds!) {
         throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
       }
     }
@@ -138,19 +134,19 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   Future<void> notifyStreamDelayInSecondsListModel(
       Object thisClass)
   async {
-    if(_streamControllerForListModel.isClosed) {
+    if(_streamControllerForListModel!.isClosed) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
     }
     int iteration = 0;
-    while(iteration < _delayInSeconds) {
-      if(_streamControllerForListModel.hasListener) {
+    while(iteration < _delayInSeconds!) {
+      if(_streamControllerForListModel!.hasListener) {
         _streamControllerForListModel
-            .sink
-            .add(_listModel);
+            ?.sink
+            .add(_listModel!);
         break;
       }
       await Future.delayed(const Duration(seconds: 1));
-      if(iteration >= _delayInSeconds) {
+      if(iteration >= _delayInSeconds!) {
         throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
       }
       iteration++;
@@ -161,7 +157,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
       Function(T event) callback)
   {
     _streamSubscriptionForModel = _streamControllerForModel
-        .stream
+        !.stream
         .listen((event) {
           callback(event);
         });
@@ -171,37 +167,37 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
       Function(Y event) callback)
   {
     _streamSubscriptionForListModel = _streamControllerForListModel
-        .stream
+        !.stream
         .listen((event) {
           callback(event);
         });
   }
 
   void resumeStreamSubscriptionForModel() {
-    if(!_streamSubscriptionForModel.isPaused) {
+    if(!_streamSubscriptionForModel!.isPaused) {
       return;
     }
-    _streamSubscriptionForModel.resume();
+    _streamSubscriptionForModel?.resume();
   }
 
   void resumeStreamSubscriptionForListModel() {
-    if(!_streamSubscriptionForListModel.isPaused) {
+    if(!_streamSubscriptionForListModel!.isPaused) {
       return;
     }
-    _streamSubscriptionForListModel.resume();
+    _streamSubscriptionForListModel?.resume();
   }
 
   void pauseStreamSubscriptionForModel() {
-    if(_streamSubscriptionForModel.isPaused) {
+    if(_streamSubscriptionForModel!.isPaused) {
       return;
     }
-    _streamSubscriptionForModel.pause();
+    _streamSubscriptionForModel?.pause();
   }
 
   void pauseStreamSubscriptionForListModel() {
-    if(_streamSubscriptionForListModel.isPaused) {
+    if(_streamSubscriptionForListModel!.isPaused) {
       return;
     }
-    _streamSubscriptionForListModel.pause();
+    _streamSubscriptionForListModel?.pause();
   }
 }

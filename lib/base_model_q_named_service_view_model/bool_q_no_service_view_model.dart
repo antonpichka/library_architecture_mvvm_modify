@@ -21,23 +21,23 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/list_bool.dart';
 
 abstract class BoolQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Bool,ListBool>
+    extends BaseModelQNamedServiceViewModel<Bool,ListBool,Object>
 {
   BoolQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   @nonVirtual
-  Bool cloneModelForSuccess(
-      Bool model)
+  Bool? cloneModelForSuccess(
+      Bool? model)
   {
-    return Bool.success(model.isField);
+    return Bool.success(model!.isField);
   }
 
   @override
   @nonVirtual
-  ListBool cloneListModelForSuccess(
-      ListBool listModel)
+  ListBool? cloneListModelForSuccess(
+      ListBool? listModel)
   {
-    return ListBool.success(listModel.list);
+    return ListBool.success(listModel?.list);
   }
 }

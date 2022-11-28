@@ -21,15 +21,15 @@ import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
-class BaseListModel<T extends BaseModel> {
-  List<T> list;
-  ExceptionController exceptionController;
-  Map<Enum,BaseIterator<T>> _mapEnumNamedForIteratorAndIterator;
-  Enum _enumNamedForIterator;
+abstract class BaseListModel<T extends BaseModel> {
+  List<T>? list;
+  ExceptionController? exceptionController;
+  Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
+  Enum? _enumNamedForIterator;
 
   BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this._enumNamedForIterator])
       : exceptionController = ExceptionController.success();
-  BaseListModel.exception(BaseException exception)
+  BaseListModel.exception(BaseException? exception)
       : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual
@@ -58,23 +58,23 @@ class BaseListModel<T extends BaseModel> {
   void startIteratorForList(
       Object thisClass)
   {
-    if(_mapEnumNamedForIteratorAndIterator.isEmpty) {
+    if(_mapEnumNamedForIteratorAndIterator!.isEmpty) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"MapEnumNamedForIteratorAndIterator isEmpty");
     }
-    BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator.values.first;
-    if(_mapEnumNamedForIteratorAndIterator.length == 1) {
-      iterator.setList = list;
+    BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
+    if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
+      iterator.setList = list!;
       setParameterList = iterator.getSortedList;
       return;
     }
-    for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator.keys) {
+    for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator!.keys) {
       if(_enumNamedForIterator != itemEnumNamedForIterator) {
         continue;
       }
-      iterator = _mapEnumNamedForIteratorAndIterator[itemEnumNamedForIterator];
+      iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
-    iterator.setList = list;
+    iterator.setList = list!;
     setParameterList = iterator.getSortedList;
   }
 
@@ -82,28 +82,28 @@ class BaseListModel<T extends BaseModel> {
   void insertToList(
       T model)
   {
-    list.add(model);
+    list?.add(model);
   }
 
   @nonVirtual
   void updateToList(
       T model)
   {
-    list[list.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
+    list?[list!.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
   void deleteToList(
       T model)
   {
-    list.removeWhere((T item) => item.uniqueId == model.uniqueId);
+    list?.removeWhere((T item) => item.uniqueId == model.uniqueId);
   }
 
   @nonVirtual
   void insertListToList(
       List<T> listForInsert)
   {
-    list.addAll(listForInsert);
+    list?.addAll(listForInsert);
   }
 
   @nonVirtual
@@ -111,7 +111,7 @@ class BaseListModel<T extends BaseModel> {
       List<T> listForUpdate)
   {
     for(T itemForUpdate in listForUpdate) {
-      list[list.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
+      list?[list!.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
     }
   }
 
@@ -120,7 +120,7 @@ class BaseListModel<T extends BaseModel> {
       List<T> listForDelete)
   {
     for(T itemForDelete in listForDelete) {
-      list.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
+      list?.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
     }
   }
 }

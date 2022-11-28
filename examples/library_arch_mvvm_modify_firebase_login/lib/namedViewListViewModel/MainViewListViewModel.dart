@@ -20,7 +20,7 @@ class MainViewListViewModel
     _userQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP.dispose();
   }
 
-  Stream<User> get getStreamUserUsingGetNP {
+  Stream<User>? get getStreamUserUsingGetNP {
     return _userQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP.getStreamUserUsingGetNP;
   }
 

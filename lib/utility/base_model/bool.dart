@@ -24,7 +24,7 @@ class Bool
   bool isField;
 
   Bool.success(this.isField) : super.success(isField.toString());
-  Bool.exception(BaseException exception) : super.exception(exception);
+  Bool.exception(BaseException? exception) : isField = false,super.exception(exception);
 
   @nonVirtual
   bool isNotFieldParameterIsField() {

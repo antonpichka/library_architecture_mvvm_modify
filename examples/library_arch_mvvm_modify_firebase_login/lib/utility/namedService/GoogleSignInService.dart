@@ -1,9 +1,9 @@
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/GoogleSignInSingleton.dart';
 
 class GoogleSignInService {
-  GoogleSignInSingleton _googleSignInSingleton;
+  GoogleSignInSingleton? _googleSignInSingleton;
 
-  GoogleSignInSingleton get getGoogleSignInSingleton {
+  GoogleSignInSingleton? get getGoogleSignInSingleton {
     if(_googleSignInSingleton != null) {
       return _googleSignInSingleton;
     }

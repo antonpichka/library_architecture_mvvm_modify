@@ -15,10 +15,9 @@
  */
 
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
-import 'package:library_architecture_mvvm_modify/utility/response.dart';
 
-abstract class UpdateListModelToNamedServiceParameterNamedDataSource<U extends BaseTypeParameter>
+abstract class UpdateListModelToNamedServiceParameterNamedDataSource<T extends BaseTypeParameter,Y extends BaseTypeParameter>
 {
-  Future<Response> updateListModelToNamedServiceParameterNamed(
-      U parameter);
+  Future<T?> updateListModelToNamedServiceParameterNamed(
+      Y? parameter);
 }

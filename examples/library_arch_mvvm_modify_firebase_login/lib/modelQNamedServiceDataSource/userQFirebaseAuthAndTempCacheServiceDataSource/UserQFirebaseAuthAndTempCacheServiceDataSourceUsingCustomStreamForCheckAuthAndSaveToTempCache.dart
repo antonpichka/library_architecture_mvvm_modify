@@ -7,20 +7,20 @@ class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAut
 
   UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(this._firebaseAuthAndTempCacheService);
 
-  Stream<User> get getCustomStreamUser {
+  Stream<User>? get getCustomStreamUser {
     return _firebaseAuthAndTempCacheService
         .getFirebaseAuthSingleton
-        .getFirebaseAuth
-        .authStateChanges()
-        .map((firebase_auth.User firebaseUser)
+        ?.getFirebaseAuth
+        ?.authStateChanges()
+        .map((firebase_auth.User? firebaseUser)
     {
       User user = firebaseUser == null
           ? User.getUserForSuccessWhereParametersEqualsStringNull
           : User.fromFirebaseUserForSuccess(firebaseUser);
       _firebaseAuthAndTempCacheService
           .getTempCacheSingleton
-          .getTempCache
-          .write<User>(User.constUserQTempCacheService,user);
+          ?.getTempCache
+          ?.write<User>(User.constUserQTempCacheService,user);
       return user;
     });
   }

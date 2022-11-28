@@ -21,23 +21,23 @@ import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/list_int.dart';
 
 abstract class IntQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Int,ListInt>
+    extends BaseModelQNamedServiceViewModel<Int,ListInt,Object>
 {
   IntQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   @nonVirtual
-  Int cloneModelForSuccess(
-      Int model)
+  Int? cloneModelForSuccess(
+      Int? model)
   {
-    return Int.success(model.field);
+    return Int.success(model!.field);
   }
 
   @override
   @nonVirtual
-  ListInt cloneListModelForSuccess(
-      ListInt listModel)
+  ListInt? cloneListModelForSuccess(
+      ListInt? listModel)
   {
-    return ListInt.success(listModel.list);
+    return ListInt.success(listModel?.list);
   }
 }

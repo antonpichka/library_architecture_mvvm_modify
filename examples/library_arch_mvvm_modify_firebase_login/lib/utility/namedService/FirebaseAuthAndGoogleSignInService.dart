@@ -2,10 +2,10 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/F
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/GoogleSignInSingleton.dart';
 
 class FirebaseAuthAndGoogleSignInService {
-  FirebaseAuthSingleton _firebaseAuthSingleton;
-  GoogleSignInSingleton _googleSignInSingleton;
+  FirebaseAuthSingleton? _firebaseAuthSingleton;
+  GoogleSignInSingleton? _googleSignInSingleton;
 
-  FirebaseAuthSingleton get getFirebaseAuthSingleton {
+  FirebaseAuthSingleton? get getFirebaseAuthSingleton {
     if(_firebaseAuthSingleton != null) {
       return _firebaseAuthSingleton;
     }
@@ -13,7 +13,7 @@ class FirebaseAuthAndGoogleSignInService {
     return _firebaseAuthSingleton;
   }
 
-  GoogleSignInSingleton get getGoogleSignInSingleton {
+  GoogleSignInSingleton? get getGoogleSignInSingleton {
     if(_googleSignInSingleton != null) {
       return _googleSignInSingleton;
     }

@@ -9,7 +9,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   final userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache = UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService());
-  await userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.getCustomStreamUser.first;
+  await userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.getCustomStreamUser?.first;
 
   runApp(App());
 }

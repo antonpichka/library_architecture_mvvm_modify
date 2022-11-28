@@ -46,12 +46,12 @@ class _PostsListWidget
           if(asyncSnapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           }
-          ListPost listPost = asyncSnapshot.data;
-          switch(listPost.getEnumListPostForPostsListWidget) {
+          ListPost? listPost = asyncSnapshot.data;
+          switch(listPost?.getEnumListPostForPostsListWidget) {
             case EnumListPostForPostsListWidget.success:
               return ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
-                    if(listPost.isFromIndexMoreOrEqualParameterLengthByList(index)) {
+                    if(listPost!.isFromIndexMoreOrEqualParameterLengthByList(index)) {
                       return Center(
                         child: SizedBox(
                           height: 24,
@@ -60,18 +60,18 @@ class _PostsListWidget
                       );
                     }
                     TextTheme textTheme = Theme.of(context).textTheme;
-                    Post itemPost = listPost.list[index];
+                    Post? itemPost = listPost.list?[index];
                     return Material(
                       child: ListTile(
-                        leading: Text('${itemPost.uniqueId}', style: textTheme.caption),
-                        title: Text(itemPost.title),
+                        leading: Text('${itemPost?.uniqueId}', style: textTheme.caption),
+                        title: Text(itemPost?.title ?? ""),
                         isThreeLine: true,
-                        subtitle: Text(itemPost.body),
+                        subtitle: Text(itemPost?.body ?? ""),
                         dense: true,
                       ),
                     );
                   },
-                  itemCount: listPost.getParameterLengthByList,
+                  itemCount: listPost?.getParameterLengthByList,
                   controller: _scrollController);
             case EnumListPostForPostsListWidget.isEmptyList:
               return Center(child: Text('no posts'));

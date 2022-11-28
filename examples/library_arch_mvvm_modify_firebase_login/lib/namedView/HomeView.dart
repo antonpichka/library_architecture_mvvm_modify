@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view
 class HomeView
     extends StatefulWidget
 {
-  final User user;
+  final User? user;
 
   HomeView(this.user);
 
@@ -48,9 +48,9 @@ class _HomeViewState
           children: <Widget>[
             CircleAvatarWidget(widget.user),
             SizedBox(height: 4),
-            Text(widget.user.email, style: textTheme.headline6),
+            Text(widget.user?.email ?? "null", style: textTheme.headline6),
             SizedBox(height: 4),
-            Text(widget.user.name, style: textTheme.headline5),
+            Text(widget.user?.name ?? "null", style: textTheme.headline5),
           ],
         ),
       ),
