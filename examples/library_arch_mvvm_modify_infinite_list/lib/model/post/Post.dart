@@ -1,4 +1,3 @@
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
 class Post
@@ -9,7 +8,7 @@ class Post
   String? body;
 
   Post.success(this.id,this.title,this.body) : super.success(id.toString());
-  Post.exception(BaseException exception) : super.exception(exception);
+  Post.exception(super.exception) : super.exception();
 
   factory Post.fromMapForSuccess(
       Map<String,dynamic> map)

@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
 enum EnumsDefault {
@@ -27,5 +26,7 @@ class Enums
   Enum field;
 
   Enums.success(this.field) : super.success(field.toString());
-  Enums.exception(BaseException exception) : field = EnumsDefault.zero, super.exception(exception);
+  Enums.exception(super.exception) : field = EnumsDefault.zero,super.exception();
+  Enums.successForFBDS() : field = EnumsDefault.zero,super.successForFBDS();
+  Enums.exceptionForFBDS(super.exception) : field = EnumsDefault.zero,super.exceptionForFBDS();
 }

@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
 class IntTypeParameter
     extends BaseTypeParameter<int>
 {
   IntTypeParameter.success(int? parameter) : super.success(parameter);
-  IntTypeParameter.exception(BaseException exception) : super.exception(exception);
+  IntTypeParameter.exception(super.exception) : super.exception();
+  IntTypeParameter.successForFBDS() : super.successForFBDS();
+  IntTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

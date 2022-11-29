@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/enums.dart';
 
@@ -22,5 +21,7 @@ class ListEnums
     extends BaseListModel<Enums>
 {
   ListEnums.success(List<Enums>? list) : super.success(list);
-  ListEnums.exception(BaseException exception) : super.exception(exception);
+  ListEnums.exception(super.exception) : super.exception();
+  ListEnums.successForFBDS() : super.successForFBDS();
+  ListEnums.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

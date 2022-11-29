@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/strings.dart';
 
@@ -22,5 +21,7 @@ class ListStrings
     extends BaseListModel<Strings>
 {
   ListStrings.success(List<Strings>? list) : super.success(list);
-  ListStrings.exception(BaseException exception) : super.exception(exception);
+  ListStrings.exception(super.exception) : super.exception();
+  ListStrings.successForFBDS() : super.successForFBDS();
+  ListStrings.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

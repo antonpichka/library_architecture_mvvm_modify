@@ -1,5 +1,4 @@
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_exception.dart';
 
@@ -23,7 +22,7 @@ class ListPost
     hasReachedMax = false;
   }
 
-  ListPost.exception(BaseException exception) : super.exception(exception) {
+  ListPost.exception(super.exception) : super.exception() {
     hasReachedMax = false;
   }
 

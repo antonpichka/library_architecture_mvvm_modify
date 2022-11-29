@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
 class BoolTypeParameter
     extends BaseTypeParameter<bool>
 {
   BoolTypeParameter.success(bool? parameter) : super.success(parameter);
-  BoolTypeParameter.exception(BaseException exception) : super.exception(exception);
+  BoolTypeParameter.exception(super.exception) : super.exception();
+  BoolTypeParameter.successForFBDS() : super.successForFBDS();
+  BoolTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

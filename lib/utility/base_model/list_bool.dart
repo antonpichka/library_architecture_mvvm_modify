@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/bool.dart';
 
@@ -22,5 +21,7 @@ class ListBool
     extends BaseListModel<Bool>
 {
   ListBool.success(List<Bool>? list) : super.success(list);
-  ListBool.exception(BaseException exception)  : super.exception(exception);
+  ListBool.exception(super.exception) : super.exception();
+  ListBool.successForFBDS() : super.successForFBDS();
+  ListBool.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

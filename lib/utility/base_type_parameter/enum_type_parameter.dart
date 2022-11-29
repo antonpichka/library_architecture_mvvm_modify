@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
 class EnumTypeParameter
     extends BaseTypeParameter<Enum>
 {
   EnumTypeParameter.success(Enum? parameter) : super.success(parameter);
-  EnumTypeParameter.exception(BaseException exception) : super.exception(exception);
+  EnumTypeParameter.exception(super.exception) : super.exception();
+  EnumTypeParameter.successForFBDS() : super.successForFBDS();
+  EnumTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

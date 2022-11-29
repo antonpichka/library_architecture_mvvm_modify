@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/double.dart';
 
@@ -22,5 +21,7 @@ class ListDouble
     extends BaseListModel<Double>
 {
   ListDouble.success(List<Double>? list) : super.success(list);
-  ListDouble.exception(BaseException exception) : super.exception(exception);
+  ListDouble.exception(super.exception) : super.exception();
+  ListDouble.successForFBDS() : super.successForFBDS();
+  ListDouble.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

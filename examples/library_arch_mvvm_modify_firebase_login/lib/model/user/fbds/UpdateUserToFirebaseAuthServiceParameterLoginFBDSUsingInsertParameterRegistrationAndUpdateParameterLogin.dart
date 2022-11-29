@@ -14,8 +14,8 @@ class UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegis
   {
     LoginTypeParameter? loginTypeParameter = typeParameter as LoginTypeParameter;
     if(loginTypeParameter.parameter!.email!.isEmpty) {
-      return BoolTypeParameter.exception(LocalException.whereTheUserIsGuilty(this, "isEmpty")) as Z;
+      return BoolTypeParameter.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, "isEmpty")) as Z;
     }
-    return BoolTypeParameter.success(true) as Z;
+    return BoolTypeParameter.successForFBDS() as Z;
   }
 }

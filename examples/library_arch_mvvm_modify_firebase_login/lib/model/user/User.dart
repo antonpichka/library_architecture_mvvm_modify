@@ -1,6 +1,5 @@
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/enum_what_is_the_exception.dart';
 
 enum EnumUserForMainView {
@@ -16,8 +15,8 @@ class User
   String? name;
   String? photo;
 
-  User.success(String? uniqueId,this.email,this.name,this.photo) : super.success(uniqueId);
-  User.exception(BaseException exception) : super.exception(exception);
+  User.success(super.uniqueId,this.email,this.name,this.photo) : super.success();
+  User.exception(super.exception) : super.exception();
 
   factory User.fromFirebaseUserForSuccess(
       firebase_auth.User firebaseUser)

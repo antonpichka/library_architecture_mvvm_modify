@@ -15,7 +15,6 @@
  */
 
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
 class Bool
@@ -24,7 +23,9 @@ class Bool
   bool isField;
 
   Bool.success(this.isField) : super.success(isField.toString());
-  Bool.exception(BaseException exception) : isField = false,super.exception(exception);
+  Bool.exception(super.exception) : isField = false,super.exception();
+  Bool.successForFBDS() : isField = false,super.successForFBDS();
+  Bool.exceptionForFBDS(super.exception) : isField = false,super.exceptionForFBDS();
 
   @nonVirtual
   bool isNotFieldParameterIsField() {

@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
 class Strings
@@ -23,5 +22,7 @@ class Strings
   String field;
 
   Strings.success(this.field) : super.success(field.toString());
-  Strings.exception(BaseException exception) : field = "",super.exception(exception);
+  Strings.exception(super.exception) : field = "",super.exception();
+  Strings.successForFBDS() : field = "",super.successForFBDS();
+  Strings.exceptionForFBDS(super.exception) : field = "",super.exceptionForFBDS();
 }

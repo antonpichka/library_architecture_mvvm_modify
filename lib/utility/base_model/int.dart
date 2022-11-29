@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
 class Int
@@ -23,5 +22,7 @@ class Int
   int field;
 
   Int.success(this.field) : super.success(field.toString());
-  Int.exception(BaseException exception) : field = 0, super.exception(exception) ;
+  Int.exception(super.exception) : field = 0,super.exception();
+  Int.successForFBDS() : field = 0,super.successForFBDS();
+  Int.exceptionForFBDS(super.exception) : field = 0,super.exceptionForFBDS();
 }

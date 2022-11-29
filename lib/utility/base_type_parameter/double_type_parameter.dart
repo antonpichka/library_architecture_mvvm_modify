@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
 class DoubleTypeParameter
     extends BaseTypeParameter<double>
 {
   DoubleTypeParameter.success(double? parameter) : super.success(parameter);
-  DoubleTypeParameter.exception(BaseException exception) : super.exception(exception);
+  DoubleTypeParameter.exception(super.exception) : super.exception();
+  DoubleTypeParameter.successForFBDS() : super.successForFBDS();
+  DoubleTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

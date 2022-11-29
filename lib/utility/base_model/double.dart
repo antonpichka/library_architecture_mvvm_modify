@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
 
 class Double
@@ -24,5 +22,7 @@ class Double
   double field;
 
   Double.success(this.field) : super.success(field.toString());
-  Double.exception(BaseException exception) : field = 0.0, super.exception(exception);
+  Double.exception(super.exception) : field = 0.0,super.exception();
+  Double.successForFBDS() : field = 0.0,super.successForFBDS();
+  Double.exceptionForFBDS(super.exception) : field = 0.0,super.exceptionForFBDS();
 }
