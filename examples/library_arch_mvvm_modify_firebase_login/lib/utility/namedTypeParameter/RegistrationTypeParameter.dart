@@ -5,5 +5,5 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 class RegistrationTypeParameter
     extends BaseTypeParameter<Registration>
 {
-  RegistrationTypeParameter(Registration? parameter) : super.success(parameter);
+  RegistrationTypeParameter.success(Registration? parameter) : super.success(parameter);
 }
