@@ -12,7 +12,7 @@ class LoginInput
   FormzStatus? status;
 
   LoginInput.success(this.email,this.password,this.status) : super.success(email?.value);
-  LoginInput.exception(BaseException? exception) : super.exception(exception);
+  LoginInput.exception(BaseException exception) : super.exception(exception);
 
   static LoginInput get getLoginInputForSuccess => LoginInput.success(Email.pure(),Password.pure(),FormzStatus.pure);
 

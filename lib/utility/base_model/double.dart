@@ -24,5 +24,5 @@ class Double
   double field;
 
   Double.success(this.field) : super.success(field.toString());
-  Double.exception(BaseException? exception) : field = 0.0, super.exception(exception);
+  Double.exception(BaseException exception) : field = 0.0, super.exception(exception);
 }

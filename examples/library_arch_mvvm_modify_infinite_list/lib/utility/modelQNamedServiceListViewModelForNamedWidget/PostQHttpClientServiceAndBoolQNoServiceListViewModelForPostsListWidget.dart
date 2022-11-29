@@ -45,7 +45,7 @@ class PostQHttpClientServiceAndBoolQNoServiceListViewModelForPostsListWidget {
         ?.isField = false;
     if(listPost
         !.exceptionController
-        !.isExceptionNotEqualsNull())
+        .isExceptionNotEqualsNull())
     {
       _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
           .getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder

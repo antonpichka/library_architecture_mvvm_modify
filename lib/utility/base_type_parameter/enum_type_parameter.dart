@@ -21,5 +21,5 @@ class EnumTypeParameter
     extends BaseTypeParameter<Enum>
 {
   EnumTypeParameter.success(Enum? parameter) : super.success(parameter);
-  EnumTypeParameter.exception(BaseException? exception) : super.exception(exception);
+  EnumTypeParameter.exception(BaseException exception) : super.exception(exception);
 }

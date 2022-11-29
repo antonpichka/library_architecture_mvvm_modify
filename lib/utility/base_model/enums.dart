@@ -27,5 +27,5 @@ class Enums
   Enum field;
 
   Enums.success(this.field) : super.success(field.toString());
-  Enums.exception(BaseException? exception) : field = EnumsDefault.zero, super.exception(exception);
+  Enums.exception(BaseException exception) : field = EnumsDefault.zero, super.exception(exception);
 }

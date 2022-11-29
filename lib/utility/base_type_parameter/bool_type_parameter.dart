@@ -21,5 +21,5 @@ class BoolTypeParameter
     extends BaseTypeParameter<bool>
 {
   BoolTypeParameter.success(bool? parameter) : super.success(parameter);
-  BoolTypeParameter.exception(BaseException? exception) : super.exception(exception);
+  BoolTypeParameter.exception(BaseException exception) : super.exception(exception);
 }

@@ -23,5 +23,5 @@ class Strings
   String field;
 
   Strings.success(this.field) : super.success(field.toString());
-  Strings.exception(BaseException? exception) : field = "",super.exception(exception);
+  Strings.exception(BaseException exception) : field = "",super.exception(exception);
 }

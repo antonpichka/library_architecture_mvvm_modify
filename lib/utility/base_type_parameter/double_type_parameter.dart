@@ -21,5 +21,5 @@ class DoubleTypeParameter
     extends BaseTypeParameter<double>
 {
   DoubleTypeParameter.success(double? parameter) : super.success(parameter);
-  DoubleTypeParameter.exception(BaseException? exception) : super.exception(exception);
+  DoubleTypeParameter.exception(BaseException exception) : super.exception(exception);
 }

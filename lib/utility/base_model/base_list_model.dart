@@ -23,13 +23,17 @@ import 'package:library_architecture_mvvm_modify/utility/exception_controller.da
 
 abstract class BaseListModel<T extends BaseModel> {
   List<T>? list;
-  ExceptionController? exceptionController;
+  ExceptionController exceptionController;
   Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
   Enum? _enumNamedForIterator;
 
   BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this._enumNamedForIterator])
       : exceptionController = ExceptionController.success();
-  BaseListModel.exception(BaseException? exception)
+  BaseListModel.exception(BaseException exception)
+      : exceptionController = ExceptionController.exception(exception);
+  BaseListModel.successForFBDS()
+      : exceptionController = ExceptionController.success();
+  BaseListModel.exceptionForFBDS(LocalException exception)
       : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual

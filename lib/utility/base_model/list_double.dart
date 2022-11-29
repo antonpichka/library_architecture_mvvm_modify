@@ -22,5 +22,5 @@ class ListDouble
     extends BaseListModel<Double>
 {
   ListDouble.success(List<Double>? list) : super.success(list);
-  ListDouble.exception(BaseException? exception) : super.exception(exception);
+  ListDouble.exception(BaseException exception) : super.exception(exception);
 }

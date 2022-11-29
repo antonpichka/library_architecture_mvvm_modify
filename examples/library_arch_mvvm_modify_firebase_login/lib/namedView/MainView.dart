@@ -51,7 +51,7 @@ class _MainViewState
                   body: Center(
                       child: Text(user
                           ?.exceptionController
-                          ?.getMessageForViewByException ?? "null")));
+                          .getMessageForViewByException ?? "null")));
             default:
               return Container();
           }

@@ -20,11 +20,11 @@ import 'package:library_architecture_mvvm_modify/utility/exception_controller.da
 abstract class BaseTypeParameter<T extends Object>
 {
   final T? parameter;
-  final ExceptionController? exceptionController;
+  final ExceptionController exceptionController;
 
   BaseTypeParameter.success(this.parameter)
       : exceptionController = ExceptionController.success();
-  BaseTypeParameter.exception(BaseException? exception)
+  BaseTypeParameter.exception(BaseException exception)
       : exceptionController = ExceptionController.exception(exception),
         parameter = null;
 }

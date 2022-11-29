@@ -22,5 +22,5 @@ class ListStrings
     extends BaseListModel<Strings>
 {
   ListStrings.success(List<Strings>? list) : super.success(list);
-  ListStrings.exception(BaseException? exception) : super.exception(exception);
+  ListStrings.exception(BaseException exception) : super.exception(exception);
 }

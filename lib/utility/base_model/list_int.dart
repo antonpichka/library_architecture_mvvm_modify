@@ -22,5 +22,5 @@ class ListInt
     extends BaseListModel<Int>
 {
   ListInt.success(List<Int>? list) : super.success(list);
-  ListInt.exception(BaseException? exception) : super.exception(exception);
+  ListInt.exception(BaseException exception) : super.exception(exception);
 }

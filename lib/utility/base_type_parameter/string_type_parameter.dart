@@ -21,5 +21,5 @@ class StringTypeParameter
     extends BaseTypeParameter<String>
 {
   StringTypeParameter.success(String? parameter) : super.success(parameter);
-  StringTypeParameter.exception(BaseException? exception) : super.exception(exception);
+  StringTypeParameter.exception(BaseException exception) : super.exception(exception);
 }

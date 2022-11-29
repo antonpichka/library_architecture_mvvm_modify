@@ -21,5 +21,5 @@ class IntTypeParameter
     extends BaseTypeParameter<int>
 {
   IntTypeParameter.success(int? parameter) : super.success(parameter);
-  IntTypeParameter.exception(BaseException? exception) : super.exception(exception);
+  IntTypeParameter.exception(BaseException exception) : super.exception(exception);
 }

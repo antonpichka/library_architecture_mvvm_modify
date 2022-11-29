@@ -6,5 +6,5 @@ class ListUser
     extends BaseListModel<User>
 {
   ListUser.success(List<User>? listModel) : super.success(listModel);
-  ListUser.exception(BaseException? exception) : super.exception(exception);
+  ListUser.exception(BaseException exception) : super.exception(exception);
 }

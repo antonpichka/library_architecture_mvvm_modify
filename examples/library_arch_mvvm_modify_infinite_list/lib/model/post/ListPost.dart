@@ -23,15 +23,15 @@ class ListPost
     hasReachedMax = false;
   }
 
-  ListPost.exception(BaseException? exception) : super.exception(exception) {
+  ListPost.exception(BaseException exception) : super.exception(exception) {
     hasReachedMax = false;
   }
 
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
-    if(exceptionController?.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
     }
-    if(exceptionController?.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
       return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
     if(list!.isEmpty) {
@@ -56,7 +56,7 @@ class ListPost
   void insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionController = listPost.exceptionController!;
+    setParameterExceptionController = listPost.exceptionController;
     setParameterHasReachedMax = listPost.hasReachedMax!;
     if(hasNotReachedMax()) {
       insertListToList(listPost.list!);
@@ -67,7 +67,7 @@ class ListPost
   void setFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionController = listPost.exceptionController!;
+    setParameterExceptionController = listPost.exceptionController;
     setParameterHasReachedMax = listPost.hasReachedMax!;
   }
 

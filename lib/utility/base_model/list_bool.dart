@@ -22,5 +22,5 @@ class ListBool
     extends BaseListModel<Bool>
 {
   ListBool.success(List<Bool>? list) : super.success(list);
-  ListBool.exception(BaseException? exception)  : super.exception(exception);
+  ListBool.exception(BaseException exception)  : super.exception(exception);
 }

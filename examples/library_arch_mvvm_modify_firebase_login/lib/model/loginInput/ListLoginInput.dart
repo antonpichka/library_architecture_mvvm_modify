@@ -6,5 +6,5 @@ class ListLoginInput
     extends BaseListModel<LoginInput>
 {
   ListLoginInput.success(List<LoginInput>? list) : super.success(list);
-  ListLoginInput.exception(BaseException? exception) : super.exception(exception);
+  ListLoginInput.exception(BaseException exception) : super.exception(exception);
 }

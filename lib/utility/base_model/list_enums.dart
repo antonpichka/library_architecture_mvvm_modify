@@ -22,5 +22,5 @@ class ListEnums
     extends BaseListModel<Enums>
 {
   ListEnums.success(List<Enums>? list) : super.success(list);
-  ListEnums.exception(BaseException? exception) : super.exception(exception);
+  ListEnums.exception(BaseException exception) : super.exception(exception);
 }

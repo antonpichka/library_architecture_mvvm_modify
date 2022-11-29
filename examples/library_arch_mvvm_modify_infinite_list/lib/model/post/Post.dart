@@ -9,7 +9,7 @@ class Post
   String? body;
 
   Post.success(this.id,this.title,this.body) : super.success(id.toString());
-  Post.exception(BaseException? exception) : super.exception(exception);
+  Post.exception(BaseException exception) : super.exception(exception);
 
   factory Post.fromMapForSuccess(
       Map<String,dynamic> map)
