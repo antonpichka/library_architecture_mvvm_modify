@@ -31,11 +31,4 @@ abstract class BaseIterator<T extends BaseModel>
     }
     return list;
   }
-
-  @nonVirtual
-  set setList(
-      List<T> list)
-  {
-    this.list = list;
-  }
 }

@@ -46,17 +46,11 @@ class ListPost
     return list!.length + 1;
   }
 
-  set setParameterHasReachedMax(
-      bool hasReachedMax)
-  {
-    this.hasReachedMax = hasReachedMax;
-  }
-
   void insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionController = listPost.exceptionController;
-    setParameterHasReachedMax = listPost.hasReachedMax!;
+    exceptionController = listPost.exceptionController;
+    hasReachedMax = listPost.hasReachedMax!;
     if(hasNotReachedMax()) {
       insertListToList(listPost.list!);
       return;
@@ -66,8 +60,8 @@ class ListPost
   void setFromListPostParametersExceptionControllerAndHasReachedMax(
       ListPost listPost)
   {
-    setParameterExceptionController = listPost.exceptionController;
-    setParameterHasReachedMax = listPost.hasReachedMax!;
+    exceptionController  = listPost.exceptionController;
+    hasReachedMax = listPost.hasReachedMax!;
   }
 
   bool isFromIndexMoreOrEqualParameterLengthByList(

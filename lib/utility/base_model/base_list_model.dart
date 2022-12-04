@@ -24,10 +24,10 @@ import 'package:library_architecture_mvvm_modify/utility/exception_controller.da
 abstract class BaseListModel<T extends BaseModel> {
   List<T>? list;
   ExceptionController exceptionController;
+  Enum? enumNamedForIterator;
   Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
-  Enum? _enumNamedForIterator;
 
-  BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this._enumNamedForIterator])
+  BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this.enumNamedForIterator])
       : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
       : exceptionController = ExceptionController.exception(exception);
@@ -35,28 +35,6 @@ abstract class BaseListModel<T extends BaseModel> {
       : exceptionController = ExceptionController.success();
   BaseListModel.exceptionForFBDS(LocalException exception)
       : exceptionController = ExceptionController.exception(exception);
-
-  @nonVirtual
-  set setParameterList(
-      List<T> list)
-  {
-    this.list = list;
-  }
-
-  @nonVirtual
-  set setParameterExceptionController(
-      ExceptionController exceptionController)
-  {
-    this.exceptionController = exceptionController;
-  }
-
-  @protected
-  @nonVirtual
-  set setParameterEnumNamedForIterator(
-      Enum enumNamedForIterator)
-  {
-    _enumNamedForIterator = enumNamedForIterator;
-  }
 
   @nonVirtual
   void startIteratorForList(
@@ -67,19 +45,19 @@ abstract class BaseListModel<T extends BaseModel> {
     }
     BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
     if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
-      iterator.setList = list!;
-      setParameterList = iterator.getSortedList;
+      iterator.list = list!;
+      list = iterator.getSortedList;
       return;
     }
     for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator!.keys) {
-      if(_enumNamedForIterator != itemEnumNamedForIterator) {
+      if(enumNamedForIterator != itemEnumNamedForIterator) {
         continue;
       }
       iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
-    iterator.setList = list!;
-    setParameterList = iterator.getSortedList;
+    iterator.list = list!;
+    list = iterator.getSortedList;
   }
 
   @nonVirtual

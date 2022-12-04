@@ -60,10 +60,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
   }
 
-  bool get _isNotExistsDataSource {
-    return !_isExistsDataSource;
-  }
-
   @override
   void dispose() {
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel.forEach((
@@ -1054,6 +1050,10 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end deleteListParameterNamed 2
   /// End DataSource **/
+
+  bool get _isNotExistsDataSource {
+    return !_isExistsDataSource;
+  }
 
   void _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM() {
     if(_isNotExistsDataSource) {
