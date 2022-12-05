@@ -2,8 +2,8 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/F
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/TempCacheSingleton.dart';
 
 class FirebaseAuthAndTempCacheService {
-  FirebaseAuthSingleton? _firebaseAuthSingleton;
-  TempCacheSingleton? _tempCacheSingleton;
+  late final FirebaseAuthSingleton? _firebaseAuthSingleton;
+  late final TempCacheSingleton? _tempCacheSingleton;
 
   FirebaseAuthSingleton? get getFirebaseAuthSingleton {
     if(_firebaseAuthSingleton != null) {

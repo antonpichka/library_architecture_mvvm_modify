@@ -1,8 +1,6 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndTempCacheServiceViewModel/UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQTempCacheServiceViewModel/UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/TempCacheService.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class MainViewListViewModel
@@ -10,9 +8,9 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
-  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService());
+  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache();
   final _userQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP =
-  UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP(TempCacheService());
+  UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP();
 
   @override
   void dispose() {

@@ -6,9 +6,9 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 
 class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-    extends PostQNamedServiceViewModel
+    extends PostQNamedServiceViewModel<PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder>
 {
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder(HttpClientService httpClientService) : super.thereIsDataSource(PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(httpClientService));
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder() : super.thereIsDataSource(PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(HttpClientService()));
 
   @override
   Object thisClass() {

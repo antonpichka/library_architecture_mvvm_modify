@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/boo
 class UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP
     extends UserQNamedServiceViewModel<UserQTempCacheServiceDataSourceUsingUpdateTIPAndGetNPAndDeleteNP>
 {
-  UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP(TempCacheService tempCacheService) : super.thereIsDataSource(UserQTempCacheServiceDataSourceUsingUpdateTIPAndGetNPAndDeleteNP(tempCacheService));
+  UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP() : super.thereIsDataSource(UserQTempCacheServiceDataSourceUsingUpdateTIPAndGetNPAndDeleteNP(TempCacheService()));
 
   @override
   Object thisClass() {

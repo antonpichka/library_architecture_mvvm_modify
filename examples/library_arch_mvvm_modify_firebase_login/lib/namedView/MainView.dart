@@ -50,8 +50,8 @@ class _MainViewState
               return Scaffold(
                   body: Center(
                       child: Text(user
-                          ?.exceptionController
-                          .getMessageForViewByException ?? "null")));
+                          !.exceptionController
+                          .getMessageForViewByException)));
             default:
               return Container();
           }
