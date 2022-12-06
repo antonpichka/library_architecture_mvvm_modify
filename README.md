@@ -12,16 +12,54 @@ Pub: Coming Soon
 <img src="/assets/library_architecture_mvvm_modify_1_3_6.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
-This modification of MVVM was created to simplify development, namely, a system was created that the developer can monitor and make a minimum of errors, errors from DataSource files are also displayed in the console, and try catch can only be used in DataSource.
-By the name of the files, you can understand the number of methods and the meaning of their execution. All calculations and checks of an object before sending it to the DataSource are performed in FBDS (Function Before Data Source)
-The DataSource and ViewModel are bound to a specific model and if we assume you need to bind the models and get them as 1 object with the DataSource then create that object and use aggregation to put those objects into 1. There is also a Service which collects libraries which take data from the network or database, and each library is implemented according to the Singleton pattern
-Models, in addition to receiving their data, can also return an error, this simplifies the display of data and errors in the view, therefore, it requires writing less code in the ListViewModel
-Also, a new ListViewModel component has been added to MVVM, and you can create objects that control indicators (For example: EnumViewModel, BoolViewModel), also if you receive data from one model with a DataSource, and you need to load certain data into another model, then ListViewModel is required for this.
-ListViewModel and View are related and can be used one to one.
+This modification of MVVM was created to simplify development, namely, a system was created that a developer can monitor and make a minimum of errors. Errors that occur from DataSource files are displayed in the console, and try catch can only be used in DataSource (because only in DataSource libraries that access the network or database can produce unexpected errors, and in other components, even if there are similar libraries, for example audio player, should be solved in a simple way, since try catch spam makes the developer think many times in the code and their spam will affect the readability of the code.Also, all code is written through reverse if and in the body of the if construct, return is written, and the developer can read up to a certain if which it needs, not the whole method.
+Also, nested ifs are not written, which will also make the code more readable)
+Example:
+```c
+// 1) (Readable)
+if(listUser.length <= 0) {
+  // code
+  return;
+}
+if(!isBool) {
+  // code
+  return;
+}
+// code
+return;
+// 2) (Not readable)
+if(list.length > 0) {
+  // code
+} else {
+  // code
+}
+return;
+// 3) (Even more unreadable)
+if(list.length > 0) {
+   if(isBool) {
+    // code
+  }
+  // code
+} else {
+  // code
+}
+return;
+```
+By the name of the files, you can understand the number of methods and the meaning of their execution. All calculations and checks of the object before sending it to the DataSource are performed in FBDS (Function Before Data Source) DataSource and ViewModel are tied to a specific model and if you need to link models and get them as one object, then create an object and use aggregation (to place these objects into one).
+
+There is also a service that collects local-network libraries (whose purpose is to retrieve data from the network or database) and each library is implemented according to the Singleton pattern.
+
+The model, in addition to receiving data, can also return an error, this makes it easier to display errors in the view, so it requires writing less code in the ListViewModel.
+
+Also, a new component ListViewModel has been added to MVVM, and you can create objects that control indicators (For example: EnumViewModel, BoolViewModel), also if you receive data from one model with a DataSource, and you need to load certain data into another model, then a ListViewModel is required for this.
+
+ListViewModel and View are related and can only be used one-to-one.
+
 The DataSource and ViewModel are related, but can be reused in any other ListViewModel if needed.
+
 For each Widget (if there is a function that accesses the DataSource, or it needs to be updated using a thread), a ListViewModel is also created, which is subordinate to the main ListViewModel, and the main ListViewModel is subordinate to the View
 
-RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation then you create new files so you don't affect working (old) code and therefore you don't create new problems. Also, the speed of development of your project remains as high as it was from the very beginning of the project.
+RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation, you create new files so as not to affect working (old) code and therefore not create new problems. Also, the speed of development of your project remains as high as it was from the very beginning of the project.
 
 ## Examples
 
