@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_counter/utility/modelQNamedServiceListViewModelForNamedWidget/IntQNoServiceListViewModelForIncrementFABWidget.dart';
+import 'package:library_arch_mvvm_modify_counter/utility/modelQNamedServiceListViewModelForNamedWidget/IntQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIncrementFABWidget.dart';
 
 class IncrementFABWidget
     extends StatelessWidget
 {
-  final IntQNoServiceListViewModelForIncrementFABWidget intQNoServiceListViewModelForIncrementFABWidget;
+  final IntQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIncrementFABWidget _lo;
 
-  IncrementFABWidget(this.intQNoServiceListViewModelForIncrementFABWidget);
+  IncrementFABWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       child: Icon(Icons.add),
-      onPressed: () => intQNoServiceListViewModelForIncrementFABWidget
+      onPressed: () => _lo
           .incrementFieldByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask());
   }
 }

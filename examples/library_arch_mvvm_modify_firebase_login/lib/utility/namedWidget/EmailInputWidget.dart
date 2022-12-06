@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/loginInput/LoginInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/modelQNamedServiceListViewModelForNamedWidget/LoginInputQNoServiceListViewModelForEmailInputWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/modelQNamedServiceListViewModelForNamedWidget/LoginInputQNoServiceUsingUpdateTIPListViewModelForEmailInputWidget.dart';
 
 class EmailInputWidget
     extends StatelessWidget
 {
-  final LoginInputQNoServiceListViewModelForEmailInputWidget _lo;
+  final LoginInputQNoServiceUsingUpdateTIPListViewModelForEmailInputWidget _lo;
 
   EmailInputWidget(this._lo);
 

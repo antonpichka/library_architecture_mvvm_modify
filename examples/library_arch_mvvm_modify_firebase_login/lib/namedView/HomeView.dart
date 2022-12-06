@@ -38,7 +38,7 @@ class _HomeViewState
       appBar: AppBar(
         title: Text('Home mvvm modify'),
         actions: <Widget>[
-          IconButtonExitToAppWidget(lo.userQFirebaseAuthAndGoogleSignInServiceListViewModelForIconButtonExitToAppWidget),
+          IconButtonExitToAppWidget(lo.userQFirebaseAuthAndGoogleSignInServiceUsingDeleteNPForSignOutListViewModelForIconButtonExitToAppWidget),
         ],
       ),
       body: Align(

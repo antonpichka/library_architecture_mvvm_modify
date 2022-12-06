@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/modelQNamedServiceListViewModelForNamedWidget/UserQFirebaseAuthAndGoogleSignInServiceListViewModelForIconButtonExitToAppWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/modelQNamedServiceListViewModelForNamedWidget/UserQFirebaseAuthAndGoogleSignInServiceUsingDeleteNPForSignOutListViewModelForIconButtonExitToAppWidget.dart';
 
 class IconButtonExitToAppWidget
     extends StatelessWidget
 {
-  final UserQFirebaseAuthAndGoogleSignInServiceListViewModelForIconButtonExitToAppWidget _lo;
+  final UserQFirebaseAuthAndGoogleSignInServiceUsingDeleteNPForSignOutListViewModelForIconButtonExitToAppWidget _lo;
 
   IconButtonExitToAppWidget(this._lo);
 

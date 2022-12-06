@@ -38,7 +38,7 @@ class _MainViewState
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have pushed the button this many times:',),
-            IntTextWidget(lo.intQNoServiceListViewModelForIntTextWidget),
+            IntTextWidget(lo.intQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIntTextWidget),
           ],
         ),
       ),
@@ -46,9 +46,9 @@ class _MainViewState
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          IncrementFABWidget(lo.intQNoServiceListViewModelForIncrementFABWidget),
+          IncrementFABWidget(lo.intQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIncrementFABWidget),
           SizedBox(height: 8,),
-          DecrementFABWidget(lo.intQNoServiceListViewModelForDecrementFABWidget),
+          DecrementFABWidget(lo.intQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForDecrementFABWidget),
         ],
       ),
     );
