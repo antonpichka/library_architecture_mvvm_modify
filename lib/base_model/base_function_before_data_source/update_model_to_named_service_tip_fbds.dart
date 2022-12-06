@@ -14,19 +14,14 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-enum EnumsDefault {
-  zero
-}
-
-class Enums
-    extends BaseModel
+abstract class UpdateModelToNamedServiceTIPFBDS
 {
-  Enum field;
+  UpdateModelToNamedServiceTIPFBDS();
 
-  Enums.success(this.field) : super.success(field.toString());
-  Enums.exception(super.exception) : field = EnumsDefault.zero,super.exception();
-  Enums.successForFBDS() : field = EnumsDefault.zero,super.successForFBDS();
-  Enums.exceptionForFBDS(super.exception) : field = EnumsDefault.zero,super.exceptionForFBDS();
+  Z? updateModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseModel,C extends BaseTypeParameter>(
+      X? model,
+      C? typeParameterForFBDS);
 }

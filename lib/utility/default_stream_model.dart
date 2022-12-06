@@ -16,8 +16,8 @@
 
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
 
 class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>

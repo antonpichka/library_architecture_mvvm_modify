@@ -7,7 +7,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/Fir
 class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache
     extends UserQNamedServiceViewModel<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>
 {
-  late final StreamSubscription<User>? _customStreamSubscriptionUser;
+  StreamSubscription<User>? _customStreamSubscriptionUser;
 
   UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache() : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService()));
 

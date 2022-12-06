@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
 
-class ListInt
-    extends BaseListModel<Int>
+class ListEnums
+    extends BaseListModel<Enums>
 {
-  ListInt.success(List<Int>? list) : super.success(list);
-  ListInt.exception(super.exception) : super.exception();
-  ListInt.successForFBDS() : super.successForFBDS();
-  ListInt.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
+  ListEnums.success(super.list) : super.success();
+  ListEnums.exception(super.exception) : super.exception();
+  ListEnums.successForFBDS() : super.successForFBDS();
+  ListEnums.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

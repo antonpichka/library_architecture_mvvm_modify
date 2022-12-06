@@ -17,13 +17,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/list_strings.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/strings.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
+import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
 
 abstract class StringsQNoServiceViewModel
     extends BaseModelQNamedServiceViewModel<Strings,ListStrings,Object>
 {
-  StringsQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
+  StringsQNoServiceViewModel(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
   @nonVirtual

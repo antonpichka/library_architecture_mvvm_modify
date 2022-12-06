@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class InsertListModelToNamedServiceTIPFBDS
+class Int
+    extends BaseModel
 {
-  InsertListModelToNamedServiceTIPFBDS();
+  int field;
 
-  Z? insertListModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseListModel,C extends BaseTypeParameter>(
-      X? listModel,
-      C? typeParameterForFBDS);
+  Int.success(this.field) : super.success(field.toString());
+  Int.exception(super.exception) : field = 0,super.exception();
+  Int.successForFBDS() : field = 0,super.successForFBDS();
+  Int.exceptionForFBDS(super.exception) : field = 0,super.exceptionForFBDS();
 }

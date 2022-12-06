@@ -18,7 +18,7 @@ import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
 abstract class BaseListModel<T extends BaseModel> {

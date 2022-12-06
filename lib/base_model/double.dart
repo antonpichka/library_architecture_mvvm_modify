@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class GetModelFromNamedServiceNPFBDS
+class Double
+    extends BaseModel
 {
-  GetModelFromNamedServiceNPFBDS();
+  double field;
 
-  X? getModelFromNamedServiceNP<X extends BaseModel,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS);
+  Double.success(this.field) : super.success(field.toString());
+  Double.exception(super.exception) : field = 0.0,super.exception();
+  Double.successForFBDS() : field = 0.0,super.successForFBDS();
+  Double.exceptionForFBDS(super.exception) : field = 0.0,super.exceptionForFBDS();
 }

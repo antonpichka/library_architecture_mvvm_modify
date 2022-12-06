@@ -14,14 +14,21 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+import 'package:flutter/foundation.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class GetListModelFromNamedServiceParameterNamedFBDS
+class Bool
+    extends BaseModel
 {
-  GetListModelFromNamedServiceParameterNamedFBDS();
+  bool isField;
 
-  Z? getListModelFromNamedServiceParameterNamed<Z extends BaseListModel,X extends BaseTypeParameter,C extends BaseTypeParameter>(
-      X? typeParameter,
-      C? typeParameterForFBDS);
+  Bool.success(this.isField) : super.success(isField.toString());
+  Bool.exception(super.exception) : isField = false,super.exception();
+  Bool.successForFBDS() : isField = false,super.successForFBDS();
+  Bool.exceptionForFBDS(super.exception) : isField = false,super.exceptionForFBDS();
+
+  @nonVirtual
+  bool isNotFieldParameterIsField() {
+    return !isField;
+  }
 }

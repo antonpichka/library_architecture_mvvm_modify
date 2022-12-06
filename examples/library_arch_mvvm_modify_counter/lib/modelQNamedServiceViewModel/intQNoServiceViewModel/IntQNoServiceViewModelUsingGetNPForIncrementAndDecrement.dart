@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_counter/modelQNamedServiceViewModel/intQNoServiceViewModel/IntQNoServiceViewModelImpl.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 
 class IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement
     extends IntQNoServiceViewModelImpl

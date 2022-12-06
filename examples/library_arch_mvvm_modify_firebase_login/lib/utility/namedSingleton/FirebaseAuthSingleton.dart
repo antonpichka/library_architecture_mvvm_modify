@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthSingleton {
-  static late final FirebaseAuth? _firebaseAuth;
+  static FirebaseAuth? _firebaseAuth;
 
   FirebaseAuth? get getFirebaseAuth {
     if(_firebaseAuth != null) {

@@ -1,7 +1,7 @@
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInSingleton {
-  static late final GoogleSignIn? _googleSignIn;
+  static GoogleSignIn? _googleSignIn;
 
   GoogleSignIn? get getGoogleSignIn {
     if(_googleSignIn != null) {

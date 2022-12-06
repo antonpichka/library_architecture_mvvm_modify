@@ -17,13 +17,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/enums.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/list_enums.dart';
+import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_enums.dart';
 
 abstract class EnumsQNoServiceViewModel
     extends BaseModelQNamedServiceViewModel<Enums,ListEnums,Object>
 {
-  EnumsQNoServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,) : super.noDataSource(list);
+  EnumsQNoServiceViewModel(List<EnumBaseModelAndBaseListModelVM> list,) : super.noDataSource(list);
 
   @override
   @nonVirtual

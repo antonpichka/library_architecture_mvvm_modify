@@ -1,7 +1,7 @@
 import 'package:formz/formz.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 class LoginInput
     extends BaseModel

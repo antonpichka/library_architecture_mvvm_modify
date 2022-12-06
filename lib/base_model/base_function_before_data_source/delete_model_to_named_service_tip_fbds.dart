@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
-enum EnumWhatIsTheException {
-  noException,
-  localException,
-  networkException,
-  otherException
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+
+abstract class DeleteModelToNamedServiceTIPFBDS
+{
+  DeleteModelToNamedServiceTIPFBDS();
+
+  Z? deleteModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseModel,C extends BaseTypeParameter>(
+      X? model,
+      C? typeParameterForFBDS);
 }

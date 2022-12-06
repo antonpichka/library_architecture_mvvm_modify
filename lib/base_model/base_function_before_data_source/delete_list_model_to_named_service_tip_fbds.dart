@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class UpdateListModelToNamedServiceTIPFBDS
+abstract class DeleteListModelToNamedServiceTIPFBDS
 {
-  UpdateListModelToNamedServiceTIPFBDS();
+  DeleteListModelToNamedServiceTIPFBDS();
 
-  Z? updateListModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseListModel,C extends BaseTypeParameter>(
+  Z? deleteListModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseListModel,C extends BaseTypeParameter>(
       X? listModel,
       C? typeParameterForFBDS);
 }

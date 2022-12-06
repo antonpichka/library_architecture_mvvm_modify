@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/double.dart';
 
-class Int
-    extends BaseModel
+class ListDouble
+    extends BaseListModel<Double>
 {
-  int field;
-
-  Int.success(this.field) : super.success(field.toString());
-  Int.exception(super.exception) : field = 0,super.exception();
-  Int.successForFBDS() : field = 0,super.successForFBDS();
-  Int.exceptionForFBDS(super.exception) : field = 0,super.exceptionForFBDS();
+  ListDouble.success(super.list) : super.success();
+  ListDouble.exception(super.exception) : super.exception();
+  ListDouble.successForFBDS() : super.successForFBDS();
+  ListDouble.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

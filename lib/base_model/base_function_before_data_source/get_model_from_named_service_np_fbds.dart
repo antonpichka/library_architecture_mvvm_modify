@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class InsertModelToNamedServiceTIPFBDS
+abstract class GetModelFromNamedServiceNPFBDS
 {
-  InsertModelToNamedServiceTIPFBDS();
+  GetModelFromNamedServiceNPFBDS();
 
-  Z? insertModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseModel,C extends BaseTypeParameter>(
-      X? model,
+  X? getModelFromNamedServiceNP<X extends BaseModel,C extends BaseTypeParameter>(
       C? typeParameterForFBDS);
 }

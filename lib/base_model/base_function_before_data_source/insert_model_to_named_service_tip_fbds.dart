@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-class Strings
-    extends BaseModel
+abstract class InsertModelToNamedServiceTIPFBDS
 {
-  String field;
+  InsertModelToNamedServiceTIPFBDS();
 
-  Strings.success(this.field) : super.success(field.toString());
-  Strings.exception(super.exception) : field = "",super.exception();
-  Strings.successForFBDS() : field = "",super.successForFBDS();
-  Strings.exceptionForFBDS(super.exception) : field = "",super.exceptionForFBDS();
+  Z? insertModelToNamedServiceTIP<Z extends BaseTypeParameter,X extends BaseModel,C extends BaseTypeParameter>(
+      X? model,
+      C? typeParameterForFBDS);
 }

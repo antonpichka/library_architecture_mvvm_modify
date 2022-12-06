@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class Bool
+class Strings
     extends BaseModel
 {
-  bool isField;
+  String field;
 
-  Bool.success(this.isField) : super.success(isField.toString());
-  Bool.exception(super.exception) : isField = false,super.exception();
-  Bool.successForFBDS() : isField = false,super.successForFBDS();
-  Bool.exceptionForFBDS(super.exception) : isField = false,super.exceptionForFBDS();
-
-  @nonVirtual
-  bool isNotFieldParameterIsField() {
-    return !isField;
-  }
+  Strings.success(this.field) : super.success(field.toString());
+  Strings.exception(super.exception) : field = "",super.exception();
+  Strings.successForFBDS() : field = "",super.successForFBDS();
+  Strings.exceptionForFBDS(super.exception) : field = "",super.exceptionForFBDS();
 }
