@@ -1,5 +1,5 @@
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/FirebaseAuthSingleton.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/TempCacheSingleton.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/namedSingleton/FirebaseAuthSingleton.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/namedSingleton/TempCacheSingleton.dart';
 
 class FirebaseAuthAndTempCacheService {
   FirebaseAuthSingleton? _firebaseAuthSingleton;

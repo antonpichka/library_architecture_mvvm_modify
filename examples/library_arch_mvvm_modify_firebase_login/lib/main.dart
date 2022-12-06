@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/userQFirebaseAuthAndTempCacheServiceBackgroundModel/UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/FirebaseAuthAndTempCacheService.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/MainView.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedService/FirebaseAuthAndTempCacheService.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

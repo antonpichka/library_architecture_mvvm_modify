@@ -1,4 +1,4 @@
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedSingleton/FirebaseAuthSingleton.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/namedSingleton/FirebaseAuthSingleton.dart';
 
 class FirebaseAuthService {
   FirebaseAuthSingleton? _firebaseAuthSingleton;

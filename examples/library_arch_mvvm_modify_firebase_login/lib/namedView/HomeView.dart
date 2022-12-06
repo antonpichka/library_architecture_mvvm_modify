@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/CircleAvatarWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/IconButtonExitToAppWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/HomeViewListViewModel.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedWidget/CircleAvatarWidget.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedWidget/IconButtonExitToAppWidget.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class HomeView
@@ -38,7 +38,7 @@ class _HomeViewState
       appBar: AppBar(
         title: Text('Home mvvm modify'),
         actions: <Widget>[
-          IconButtonExitToAppWidget(lo.userQFirebaseAuthAndGoogleSignInServiceUsingDeleteNPForSignOutListViewModelForIconButtonExitToAppWidget),
+          IconButtonExitToAppWidget(lo.iconButtonExitToAppWidgetListViewModel),
         ],
       ),
       body: Align(

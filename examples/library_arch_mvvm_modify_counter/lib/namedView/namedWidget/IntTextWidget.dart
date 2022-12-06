@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_counter/utility/modelQNamedServiceListViewModelForNamedWidget/IntQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIntTextWidget.dart';
+import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IntTextWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 
 class IntTextWidget
     extends StatelessWidget
 {
-  final IntQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIntTextWidget _lo;
+  final IntTextWidgetListViewModel _lo;
 
   IntTextWidget(this._lo);
 

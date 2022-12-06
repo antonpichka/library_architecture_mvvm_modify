@@ -1,4 +1,4 @@
-import 'package:library_arch_mvvm_modify_infinite_list/utility/namedSingleton/HttpClientSingleton.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceDataSource/namedService/namedSingleton/HttpClientSingleton.dart';
 
 class HttpClientService {
   HttpClientSingleton? _httpClientSingleton;

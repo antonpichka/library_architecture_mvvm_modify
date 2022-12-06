@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_counter/utility/modelQNamedServiceListViewModelForNamedWidget/IntQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIncrementFABWidget.dart';
+import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IncrementFABWidgetListViewModel.dart';
 
 class IncrementFABWidget
     extends StatelessWidget
 {
-  final IntQNoServiceUsingGetNPForIncrementAndDecrementListViewModelForIncrementFABWidget _lo;
+  final IncrementFABWidgetListViewModel _lo;
 
   IncrementFABWidget(this._lo);
 

@@ -1,10 +1,10 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/loginInput/LoginInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/loginInputQNoServiceViewModel/LoginInputQNoServiceViewModelUsingUpdateTIP.dart';
 
-class LoginInputQNoServiceUsingUpdateTIPListViewModelForEmailInputWidget {
+class EmailInputWidgetListViewModel {
   final LoginInputQNoServiceViewModelUsingUpdateTIP _loginInputQNoServiceViewModelUsingUpdateTIP;
 
-  LoginInputQNoServiceUsingUpdateTIPListViewModelForEmailInputWidget(this._loginInputQNoServiceViewModelUsingUpdateTIP);
+  EmailInputWidgetListViewModel(this._loginInputQNoServiceViewModelUsingUpdateTIP);
 
   Stream<LoginInput>? get getStreamLoginInputUsingUpdateTIP {
     return _loginInputQNoServiceViewModelUsingUpdateTIP.getStreamLoginInputUsingUpdateTIP;

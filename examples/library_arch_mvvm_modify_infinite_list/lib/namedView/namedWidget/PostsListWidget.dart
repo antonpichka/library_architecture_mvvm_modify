@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/modelQNamedServiceListViewModelForNamedWidget/PostQHttpClientServiceUsingGetListParameterIntForStartIndexFromJsonPlaceholderAndBoolQNoServiceUsingGetNPForAntiSpamListViewModelForPostsListWidget.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListWidgetListViewModel.dart';
 
 class PostsListWidget
     extends StatefulWidget
 {
-  final PostQHttpClientServiceUsingGetListParameterIntForStartIndexFromJsonPlaceholderAndBoolQNoServiceUsingGetNPForAntiSpamListViewModelForPostsListWidget lo;
+  final PostsListWidgetListViewModel lo;
 
   PostsListWidget(this.lo);
 

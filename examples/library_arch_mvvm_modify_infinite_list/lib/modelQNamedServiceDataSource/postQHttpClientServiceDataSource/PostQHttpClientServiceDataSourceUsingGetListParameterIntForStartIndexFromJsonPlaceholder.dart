@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/namedService/HttpClientService.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceDataSource/namedService/HttpClientService.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/utility/utility.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
