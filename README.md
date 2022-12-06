@@ -64,6 +64,7 @@ RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedS
 ## Examples
 
 Examples taken from the <a href="https://github.com/felangel/bloc#examples">BLoC library</a>
+
 Examples redesigned for MVVM modification
 
 <div style="text-align: center">
