@@ -2,8 +2,8 @@ import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart'
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
-import 'package:library_architecture_mvvm_modify/utility/default_stream_model.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 abstract class PostQNamedServiceViewModel<DataSource extends Object>
     extends BaseModelQNamedServiceViewModel<Post,ListPost,DataSource>

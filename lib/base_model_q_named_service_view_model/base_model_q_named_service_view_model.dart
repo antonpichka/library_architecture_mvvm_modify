@@ -33,7 +33,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
-import 'package:library_architecture_mvvm_modify/utility/i_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
     extends BaseModelQNamedServiceBackgroundModel<T,Y,DataSource>

@@ -5,7 +5,7 @@ Coming soon
 
 ## Diagram
 
-<img src="/assets/library_architecture_mvvm_modify_1_3_5.png"/>
+<img src="/assets/library_architecture_mvvm_modify_1_3_6.png"/>
 
 ## Examples
 
@@ -57,7 +57,11 @@ Coming soon
 ### Utility
 - #### NamedTypeParameter
 - #### NamedException
-- #### Other Files
+- #### NamedIterator
+- #### NamedStreamModel
+- #### These files are not created by the programmer in his project (I will describe for clarification)
+  - ##### IDispose 
+  - ##### ExceptionController
 
 ## License
 ```xml
