@@ -12,10 +12,9 @@ Pub: Coming Soon
 <img src="/assets/library_architecture_mvvm_modify_1_3_6.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
-This modification of MVVM was created to simplify development, namely, a system was created that a developer can monitor and make a minimum of errors. Errors that occur from ModelQNamedServiceDataSource files are displayed in the console, and try catch can only be used in ModelQNamedServiceDataSource (because only in ModelQNamedServiceDataSource libraries that access the network or database can produce unexpected errors, and in other components, even if there are similar libraries, for example audio player, without try-catch way, since try catch spam makes the developer think many times in the code and their spam will affect the readability of the code.Also, all code is written through reverse if and in the body of the if construct, return is written, and the developer can read up to a certain if which it needs, not the whole method.
-Also, nested ifs are not written, which will also make the code more readable)
+This modification of MVVM was created to simplify development, namely, a system was created that a developer can monitor and make a minimum of errors. Errors that occur from ModelQNamedServiceDataSource files are displayed in the console, and try catch can only be used in ModelQNamedServiceDataSource (because only libraries that access the network or database can produce unexpected errors, and in other components, even if there are similar libraries, for example audio player, without try-catch way, since try catch spam makes the developer think many times in the code and their spam will affect the readability of the code.Also, all code is written through reverse if and in the body of the if construct, return is written, and the developer can read up to a certain if which it needs, not the whole method.Also, nested ifs are not written, which will also make the code more readable)
 
-An example of writing code throughout the project (especially for the component NamedViewListViewModel, NamedWidgetListViewModel:
+An example of writing code throughout the project (especially for the component NamedViewListViewModel, NamedWidgetListViewModel):
 ```c
 // 1) Success (Readable code)
 void methodOne(List list, bool isTrue) {
@@ -38,22 +37,26 @@ void methodTwo(List list, bool isTrue) {
    // code
   }
   // code
-  } else {
-   // code
-  }
+ } else {
   // code
-  return;
+ }
+ // code
+ return;
 }
 ```
 If your logic is too complex and you can only write nested ifs, then use private methods as an alternative to nested ifs
 
-By the name of the files, you can understand the number of methods and the meaning of their execution. All calculations and checks of the object before sending it to the DataSource are performed in FBDS (Function Before Data Source) ModelQNamedServiceDataSource and ModelQNamedServiceViewModel are tied to a specific model and if you need to link models and get them as one object, then create an object and use aggregation (to place these objects into one).
+By the name of the files, you can understand the number of methods and the meaning of their execution (This only applies to these components ModelQNamedServiceViewModel,ModelQNamedServiceDataSource). 
+
+All calculations and checks of the object before sending it to the DataSource are performed in FBDS (Function Before Data Source).
+
+ModelQNamedServiceDataSource and ModelQNamedServiceViewModel are tied to a specific model and if you need to link models and get them as one object, then create an object and use aggregation (to place these objects into one).
 
 There is also a service that collects local-network libraries (whose purpose is to retrieve data from the network or database) and each library is implemented according to the Singleton pattern.
 
 The model, in addition to receiving data, can also return an error, this makes it easier to display errors in the view, so it requires writing less code in the NamedViewListViewModel or NamedWidgetListViewModel.
 
-Also, a new component NamedViewListViewModel and NamedWidgetListViewModel has been added to MVVM, and you can create objects that control indicators (For example: EnumViewModel, BoolViewModel), also if you receive data from one model with a ModelQNamedServiceDataSource, and you need to load certain data into another model, then a NamedViewListViewModel or NamedWidgetListViewModel is required for this.
+Also, a new component NamedViewListViewModel and NamedWidgetListViewModel has been added to MVVM, and you can create objects that control indicators (For example: EnumViewModelUsingGetNPForLoading, BoolViewModelUsingGetNPForLoading), also if you receive data from one model with a ModelQNamedServiceDataSource, and you need to load certain data into another model, then a NamedViewListViewModel or NamedWidgetListViewModel is required for this.
 
 NamedViewListViewModel and NamedView (or NamedWidgetListViewModel and NamedWidget) are related and can only be used one-to-one.
 
