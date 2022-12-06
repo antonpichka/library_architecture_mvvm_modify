@@ -18,33 +18,35 @@ Also, nested ifs are not written, which will also make the code more readable)
 An example of writing code throughout the project (especially for the component NamedViewListViewModel, NamedWidgetListViewModel:
 ```c
 // 1) Success (Readable code)
-void methodOne() {
-  if(listUser.length <= 0) {
-   // code
-   return;
-  }
-  if(!isBool) {
-   // code
-   return;
-  }
+void methodOne(List list, bool isTrue) {
+ if(list.length <= 0) {
   // code
   return;
+ }
+ if(!isTrue) {
+  // code
+  return;
+ }
+ // code
+ return;
 }
 // 2) Failure (Unreadable code)
-void methodTwo() {
-  if(list.length > 0) {
-    // code
-    if(isBool) {
-     // code
-    }
-    // code
+void methodTwo(List list, bool isTrue) {
+ if(list.length > 0) {
+  // code
+  if(isTrue) {
+   // code
+  }
+  // code
   } else {
-    // code
+   // code
   }
   // code
   return;
 }
 ```
+If your logic is too complex and you can only write nested ifs, then use private methods as an alternative to nested ifs
+
 By the name of the files, you can understand the number of methods and the meaning of their execution. All calculations and checks of the object before sending it to the DataSource are performed in FBDS (Function Before Data Source) ModelQNamedServiceDataSource and ModelQNamedServiceViewModel are tied to a specific model and if you need to link models and get them as one object, then create an object and use aggregation (to place these objects into one).
 
 There is also a service that collects local-network libraries (whose purpose is to retrieve data from the network or database) and each library is implemented according to the Singleton pattern.
@@ -60,6 +62,8 @@ The ModelQNamedServiceDataSource and ModelQNamedServiceViewModel, are related, b
 RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation, you create new files so as not to affect working (old) code and therefore not create new problems (This also applies to the NamedViewListViewModel and NamedView component, BUT in these components you can replace lines 2 and 1 if you needed a different NamedWidgetListViewModel and NamedWidget). Also, the speed of development of your project remains as high as it was from the very beginning of the project.
 
 ## Examples
+
+Examples taken from the <a href="https://github.com/felangel/bloc#examples">BLoC library</a>
 
 <div style="text-align: center">
     <table>
