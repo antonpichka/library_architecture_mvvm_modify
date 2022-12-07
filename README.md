@@ -62,7 +62,7 @@ NamedViewListViewModel and NamedView (or NamedWidgetListViewModel and NamedWidge
 
 The ModelQNamedServiceDataSource and ModelQNamedServiceViewModel, are related, but can be reused in any other NamedViewListViewModel and NamedWidgetListViewModel if needed.
 
-RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation, you create new files so as not to affect working (old) code and therefore not create new problems (This also applies to the NamedViewListViewModel and NamedView component, BUT in these components you can replace lines 2 and 1 if you needed a different NamedWidgetListViewModel and NamedWidget). Also, the speed of development of your project remains as high as it was from the very beginning of the project.
+RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation, you create new files so as not to affect working (old) code and therefore not create new problems (This also applies to the NamedViewListViewModel and NamedView component, BUT in these components you can replace lines 2 and 1 if you needed a different NamedWidgetListViewModel and NamedWidget)
 
 ## Examples
 
