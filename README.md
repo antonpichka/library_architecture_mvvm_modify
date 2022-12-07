@@ -124,7 +124,7 @@ Examples redesigned for MVVM modify
   - ##### ExceptionController
 
 ## License
-```xml
+```
 Designed and developed by 2022 JacobOdd (Anton Pichka)
 
 Licensed under the Apache License, Version 2.0 (the "License");
