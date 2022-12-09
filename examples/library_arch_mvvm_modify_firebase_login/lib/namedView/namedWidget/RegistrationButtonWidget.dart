@@ -14,7 +14,8 @@ class RegistrationButtonWidget
     final theme = Theme.of(context);
     return TextButton(
       key: const Key('loginForm_createAccount_flatButton'),
-      onPressed: () => _lo.checkIsLoadingAndInGeneralZeroTask(() => Navigator.of(context).pushNamed("/$constRegistrationView")),
+      onPressed: () => _lo
+          .checkIsLoadingAndInGeneralZeroTask(() => Navigator.of(context).pushNamed("/$constRegistrationView")),
       child: Text(
         'CREATE ACCOUNT',
         style: TextStyle(color: theme.primaryColor),

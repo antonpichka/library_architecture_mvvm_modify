@@ -13,9 +13,7 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
 
   @override
   void dispose() {
-    if(_customStreamSubscriptionUser != null) {
-      _customStreamSubscriptionUser?.cancel();
-    }
+    _customStreamSubscriptionUser?.cancel();
     super.dispose();
   }
 

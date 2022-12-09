@@ -26,7 +26,8 @@ class GoogleButtonWidget
         backgroundColor: theme.colorScheme.secondary,
       ),
       icon: const Icon(FontAwesomeIcons.google, color: Colors.white),
-      onPressed: () => _lo.updateUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message))
+      onPressed: () => _lo
+          .updateUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message))
     );
   }
   
