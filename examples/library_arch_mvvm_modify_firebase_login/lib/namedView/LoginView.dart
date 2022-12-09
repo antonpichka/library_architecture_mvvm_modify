@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/EmailInputWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/GoogleButtonWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/LoginButtonWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/PasswordInputWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/RegistrationButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoginViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
@@ -37,15 +42,15 @@ class _LoginViewState
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(height: 16),
-              //  EmailInputWidgetForLoginView(),
+                EmailInputWidget(lo.emailInputWidgetListViewModel),
                 SizedBox(height: 8),
-              //  _PasswordInput(),
+                PasswordInputWidget(lo.passwordInputWidgetListViewModel),
                 SizedBox(height: 8),
-              //  _LoginButton(),
+                LoginButtonWidget(lo.loginButtonWidgetListViewModel),
                 SizedBox(height: 8),
-              //  _GoogleLoginButton(),
+                GoogleButtonWidget(lo.googleButtonWidgetListViewModel),
                 SizedBox(height: 4),
-              //  _SignUpButton(),
+                RegistrationButtonWidget(lo.registrationButtonWidgetListViewModel),
               ],
             ),
           ),

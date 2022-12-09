@@ -1,4 +1,5 @@
 import 'package:formz/formz.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
 enum PasswordValidationError {
   invalid
@@ -13,14 +14,11 @@ class Password
   /// {@macro password}
   const Password.dirty(super.value) : super.dirty();
 
-  static final _passwordRegExp =
-  RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
-
   @override
   PasswordValidationError? validator(
       String value)
   {
-    return _passwordRegExp.hasMatch(value)
+    return passwordRegExp.hasMatch(value)
         ? null
         : PasswordValidationError.invalid;
   }

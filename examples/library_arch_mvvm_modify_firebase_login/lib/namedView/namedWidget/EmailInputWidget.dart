@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/loginInput/LoginInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/EmailInputWidgetListViewModel.dart';
 
 class EmailInputWidget
@@ -11,20 +11,20 @@ class EmailInputWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<LoginInput>(
-        initialData: LoginInput.getLoginInputForSuccess,
-        stream: _lo.getStreamLoginInputUsingUpdateTIP,
-        builder: (BuildContext buildContext, AsyncSnapshot<LoginInput> asyncSnapshot)
+    return StreamBuilder<EmailInput>(
+        initialData: EmailInput.getEmailInputForSuccess,
+        stream: _lo.getStreamEmailInputUsingUpdateTIP,
+        builder: (BuildContext buildContext, AsyncSnapshot<EmailInput> asyncSnapshot)
         {
-          LoginInput? loginInput = asyncSnapshot.data;
+          EmailInput? emailInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => _lo
-                .setDirtyConstructorFromStrParameterEmailByLoginInputUsingUpdateTIPAndInGeneralZeroTask(str),
+                .setDirtyConstructorFromStrParameterEmailByEmailInputUsingUpdateTIPAndInGeneralZeroTask(str),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: 'email',
               helperText: '',
-              errorText: loginInput!.isInvalidParameterEmail() ? 'invalid email' : null,
+              errorText: emailInput!.isInvalidParameterEmail() ? 'invalid email' : null,
             ),
           );
         });

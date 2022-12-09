@@ -26,7 +26,7 @@ class PostsListWidgetListViewModel {
     await Future.delayed(Duration(seconds: 1));
     if(_boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
-        ?.isField ?? false)
+        !.isField)
     {
       return;
     }

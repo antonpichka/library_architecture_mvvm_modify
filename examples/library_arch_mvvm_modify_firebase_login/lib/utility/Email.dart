@@ -1,4 +1,5 @@
 import 'package:formz/formz.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
 enum EmailValidationError {
   invalid
@@ -13,15 +14,11 @@ class Email
   /// {@macro email}
   const Email.dirty(super.value) : super.dirty();
 
-  static final RegExp _emailRegExp = RegExp(
-    r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
-  );
-
   @override
   EmailValidationError? validator(
       String value)
   {
-    return _emailRegExp.hasMatch(value)
+    return emailRegExp.hasMatch(value)
         ? null
         : EmailValidationError.invalid;
   }

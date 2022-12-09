@@ -1,30 +1,30 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/loginInput/LoginInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/loginInputQNoServiceViewModel/LoginInputQNoServiceViewModelUsingUpdateTIP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingUpdateTIP.dart';
 
 class EmailInputWidgetListViewModel {
-  final LoginInputQNoServiceViewModelUsingUpdateTIP _loginInputQNoServiceViewModelUsingUpdateTIP;
+  final EmailInputQNoServiceViewModelUsingUpdateTIP _emailInputQNoServiceViewModelUsingUpdateTIP;
 
-  EmailInputWidgetListViewModel(this._loginInputQNoServiceViewModelUsingUpdateTIP);
+  EmailInputWidgetListViewModel(this._emailInputQNoServiceViewModelUsingUpdateTIP);
 
-  Stream<LoginInput>? get getStreamLoginInputUsingUpdateTIP {
-    return _loginInputQNoServiceViewModelUsingUpdateTIP.getStreamLoginInputUsingUpdateTIP;
+  Stream<EmailInput>? get getStreamEmailInputUsingUpdateTIP {
+    return _emailInputQNoServiceViewModelUsingUpdateTIP.getStreamEmailInputUsingUpdateTIP;
   }
 
-  void setDirtyConstructorFromStrParameterEmailByLoginInputUsingUpdateTIPAndInGeneralZeroTask(
+  void setDirtyConstructorFromStrParameterEmailByEmailInputUsingUpdateTIPAndInGeneralZeroTask(
       String str)
   {
-    if(_loginInputQNoServiceViewModelUsingUpdateTIP
-        .getLoginInputUsingUpdateTIP
+    if(_emailInputQNoServiceViewModelUsingUpdateTIP
+        .getEmailInputUsingUpdateTIP
         ?.email
         ?.value == str)
     {
       return;
     }
-    _loginInputQNoServiceViewModelUsingUpdateTIP
-        .getLoginInputUsingUpdateTIP
+    _emailInputQNoServiceViewModelUsingUpdateTIP
+        .getEmailInputUsingUpdateTIP
         ?.setDirtyConstructorFromStrParameterEmail = str;
-    _loginInputQNoServiceViewModelUsingUpdateTIP
-        .notifyStreamLoginInputUsingUpdateTIP();
+    _emailInputQNoServiceViewModelUsingUpdateTIP
+        .notifyStreamEmailInputUsingUpdateTIP();
     return;
   }
 }
