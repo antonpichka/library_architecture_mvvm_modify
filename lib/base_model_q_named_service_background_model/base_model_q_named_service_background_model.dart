@@ -16,6 +16,8 @@
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_list_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_tip_data_source.dart';
@@ -64,11 +66,17 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
+abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel,DataSource extends Object>
 {
   /* Init DataSource */
   @protected
   final DataSource? modelQNamedServiceDataSource;
+
+  /* Init Clone */
+  @protected
+  final ICloneModelForSuccess<T> iCloneModelForSuccess;
+  @protected
+  final ICloneListModelForSuccess<Y> iCloneListModelForSuccess;
 
   /* FBDS (Function Before Data Source) */
   InsertModelToNamedServiceTIPFBDS? _insertModelToNamedServiceTIPFBDS;
@@ -96,32 +104,12 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   DeleteModelToNamedServiceParameterNamedFBDS? _deleteModelToNamedServiceParameterNamedFBDS;
   DeleteListModelToNamedServiceParameterNamedFBDS? _deleteListModelToNamedServiceParameterNamedFBDS;
 
-  BaseModelQNamedServiceBackgroundModel.thereIsDataSource(this.modelQNamedServiceDataSource);
+  BaseModelQNamedServiceBackgroundModel.thereIsDataSource(
+      this.modelQNamedServiceDataSource,
+      this.iCloneModelForSuccess,
+      this.iCloneListModelForSuccess);
 
-  /// Start Clone **/
-  ///   Be sure to implement these methods as shown in the example below. The result of all date source methods depends on the implementation of that method.
-  ///   Briefly, what this method does: Does not leave a reference to the object that will be sent to the data source and you can do whatever you want with
-  ///   it without fear that it will change in the view model. Basically, this method appeared when FBDS (Function Before Data Source) appeared
-  ///
-  ///   Example Using:
-  ///
-  ///   User cloneModelForSuccess(User model) {
-  ///     return User.success(model.uniqueId,model.name);
-  ///   }
-  ///
-  ///   ListUser cloneModelForSuccess(ListUser model) {
-  ///     return ListUser.success(model.list);
-  ///   }
-  @protected
-  T? cloneModelForSuccess(
-      T? model);
-
-  @protected
-  Y? cloneListModelForSuccess(
-      Y? listModel);
-  /// End Clone **/
-
-  /// Start ThisClass **/
+  ///   Start ThisClass **/
   ///   Example Using:
   ///
   ///   Object thisClass() {
@@ -129,7 +117,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   ///   }
   @protected
   Object thisClass();
-  /// End ThisClass **/
+  ///   End ThisClass **/
 
   /// Start DataSource **/
   ///
@@ -796,7 +784,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Y? response = _getListModelFromNamedServiceNPFBDS!
         .getListModelFromNamedServiceNP<Y,C>(typeParameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.getParameterExceptionController.isExceptionNotEqualsNull()) {
       return response;
     }
     return await _baseGetListModelFromNamedServiceNP(getListModelFromNamedServiceNPDataSource);
@@ -819,7 +807,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     Y? response = _getListModelFromNamedServiceParameterNamedFBDS!
         .getListModelFromNamedServiceParameterNamed<Y,X,C>(typeParameter,typeParameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.getParameterExceptionController.isExceptionNotEqualsNull()) {
       return response;
     }
     return await _baseGetListModelFromNamedServiceParameterNamed(getListModelFromNamedServiceParameterNamedDataSource,typeParameter);
@@ -840,7 +828,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     T? response = _getModelFromNamedServiceNPFBDS!
         .getModelFromNamedServiceNP<T,C>(typeParameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.getParameterExceptionController.isExceptionNotEqualsNull()) {
       return response;
     }
     return await _baseGetModelFromNamedServiceNP(getModelFromNamedServiceNPDataSource);
@@ -863,7 +851,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
     }
     T? response = _getModelFromNamedServiceParameterNamedFBDS!
         .getModelFromNamedServiceParameterNamed<T,X,C>(typeParameter,typeParameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.getParameterExceptionController.isExceptionNotEqualsNull()) {
       return response;
     }
     return await _baseGetModelFromNamedServiceParameterNamed(getModelFromNamedServiceParameterNamedDataSource,typeParameter);
@@ -874,7 +862,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       T? model,
       C? typeParameterForFBDS)
   async {
-    T? modelForClone = cloneModelForSuccess(model);
+    T? modelForClone = iCloneModelForSuccess.cloneModelForSuccess(model);
     if(_insertModelToNamedServiceTIPFBDS == null) {
       return await insertModelToNamedServiceTIPDataSource
           .insertModelToNamedServiceTIP(modelForClone);
@@ -928,7 +916,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       Y? listModel,
       C? typeParameterForFBDS)
   async {
-    Y? listModelForClone = cloneListModelForSuccess(listModel);
+    Y? listModelForClone = iCloneListModelForSuccess.cloneListModelForSuccess(listModel);
     if(_insertListModelToNamedServiceTIPFBDS == null) {
       return await insertListModelToNamedServiceTIPDataSource
           .insertListModelToNamedServiceTIP(listModelForClone);
@@ -982,7 +970,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       T? model,
       C? typeParameterForFBDS)
   async {
-    T? modelForClone = cloneModelForSuccess(model);
+    T? modelForClone = iCloneModelForSuccess.cloneModelForSuccess(model);
     if(_updateModelToNamedServiceTIPFBDS == null) {
       return await updateModelToNamedServiceTIPDataSource
           .updateModelToNamedServiceTIP(modelForClone);
@@ -1036,7 +1024,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       Y? listModel,
       C? typeParameterForFBDS)
   async {
-    Y? listModelForClone = cloneListModelForSuccess(listModel);
+    Y? listModelForClone = iCloneListModelForSuccess.cloneListModelForSuccess(listModel);
     if(_updateListModelToNamedServiceTIPFBDS == null) {
       return await updateListModelToNamedServiceTIPDataSource
           .updateListModelToNamedServiceTIP(listModelForClone);
@@ -1090,7 +1078,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       T? model,
       C? typeParameterForFBDS)
   async {
-    T? modelForClone = cloneModelForSuccess(model);
+    T? modelForClone = iCloneModelForSuccess.cloneModelForSuccess(model);
     if(_deleteModelToNamedServiceTIPFBDS == null) {
       return await deleteModelToNamedServiceTIPDataSource
           .deleteModelToNamedServiceTIP(modelForClone);
@@ -1144,7 +1132,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
       Y? listModel,
       C? typeParameterForFBDS)
   async {
-    Y? listModelForClone = cloneListModelForSuccess(listModel);
+    Y? listModelForClone = iCloneListModelForSuccess.cloneListModelForSuccess(listModel);
     if(_deleteListModelToNamedServiceTIPFBDS == null) {
       return await deleteListModelToNamedServiceTIPDataSource
           .deleteListModelToNamedServiceTIP(listModelForClone);

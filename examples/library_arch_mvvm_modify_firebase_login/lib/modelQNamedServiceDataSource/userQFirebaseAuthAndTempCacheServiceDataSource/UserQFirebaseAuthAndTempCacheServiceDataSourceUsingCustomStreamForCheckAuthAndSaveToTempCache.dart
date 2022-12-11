@@ -2,19 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/FirebaseAuthAndTempCacheService.dart';
 
-class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache {
-  final FirebaseAuthAndTempCacheService _firebaseAuthAndTempCacheService;
+class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User> {
+  final _firebaseAuthAndTempCacheService = FirebaseAuthAndTempCacheService();
 
-  UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(this._firebaseAuthAndTempCacheService);
+  UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache();
 
-  Stream<User>? get getCustomStreamUser {
+  Stream<T>? get getCustomStreamUser {
     return _firebaseAuthAndTempCacheService
         .getFirebaseAuthSingleton
         ?.getFirebaseAuth
         ?.authStateChanges()
         .map((firebase_auth.User? firebaseUser)
     {
-      User user = firebaseUser == null
+      T user = firebaseUser == null
           ? User.getUserForSuccessWhereParametersEqualsStringNull
           : User.fromFirebaseUserForSuccess(firebaseUser);
       _firebaseAuthAndTempCacheService

@@ -12,7 +12,7 @@ abstract class PasswordInputQNamedServiceViewModel<DataSource extends Object>
   PasswordInputQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
-  PasswordInput? cloneModelForSuccess(
+  PasswordInput? iCloneModelForSuccess(
       PasswordInput? model)
   {
     return PasswordInput.success(
@@ -20,7 +20,7 @@ abstract class PasswordInputQNamedServiceViewModel<DataSource extends Object>
   }
 
   @override
-  ListPasswordInput? cloneListModelForSuccess(
+  ListPasswordInput? iCloneListModelForSuccess(
       ListPasswordInput? listModel)
   {
     return ListPasswordInput.success(listModel?.list);

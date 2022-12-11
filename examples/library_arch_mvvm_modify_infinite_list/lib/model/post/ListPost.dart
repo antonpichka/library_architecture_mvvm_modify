@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
@@ -12,65 +13,69 @@ enum EnumListPostForPostsListWidget {
 class ListPost
     extends BaseListModel<Post>
 {
-  bool? hasReachedMax;
+  bool? _hasReachedMax;
 
   ListPost.success(super.list) : super.success() {
-    if(list!.isEmpty) {
-      hasReachedMax = true;
+    if(getParameterList!.isEmpty) {
+      _hasReachedMax = true;
       return;
     }
-    hasReachedMax = false;
+    _hasReachedMax = false;
   }
 
   ListPost.exception(super.exception) : super.exception() {
-    hasReachedMax = false;
+    _hasReachedMax = false;
   }
 
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
     }
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+    if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
       return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
-    if(list!.isEmpty) {
+    if(getParameterList!.isEmpty) {
       return EnumListPostForPostsListWidget.isEmptyList;
     }
     return EnumListPostForPostsListWidget.success;
   }
 
-  int get getParameterLengthByList {
-    if(hasReachedMax!) {
-      return list!.length;
+  @nonVirtual
+  bool get getParameterHasReachedMax => _hasReachedMax!;
+
+  bool get getOneParametersNamedForPostsListWidget => _hasReachedMax!;
+
+  int get getTwoParametersNamedForPostsListWidget {
+    if(_hasReachedMax!) {
+      return getParameterList!.length;
     }
-    return list!.length + 1;
+    return getParameterList!.length + 1;
   }
 
-  void insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(
+  @nonVirtual
+  set setParameterHasReachedMax(bool hasReachedMax) => _hasReachedMax = hasReachedMax;
+
+  void setOneParametersNamedForPostsListWidget(
       ListPost listPost)
   {
-    exceptionController = listPost.exceptionController;
-    hasReachedMax = listPost.hasReachedMax!;
-    if(hasNotReachedMax()) {
-      insertListToList(listPost.list!);
+    setParameterExceptionController = listPost.getParameterExceptionController;
+    _hasReachedMax = listPost.getParameterHasReachedMax;
+    if(!_hasReachedMax!) {
+      insertListToList(listPost.getParameterList!);
       return;
     }
   }
 
-  void setFromListPostParametersExceptionControllerAndHasReachedMax(
+  void setTwoParametersNamedForPostsListWidget(
       ListPost listPost)
   {
-    exceptionController  = listPost.exceptionController;
-    hasReachedMax = listPost.hasReachedMax!;
+    setParameterExceptionController = listPost.getParameterExceptionController;
+    _hasReachedMax = listPost.getParameterHasReachedMax;
   }
 
-  bool isFromIndexMoreOrEqualParameterLengthByList(
+  bool isOneParametersNamedForPostsListWidget(
       int index)
   {
-    return index >= list!.length;
-  }
-
-  bool hasNotReachedMax() {
-    return !hasReachedMax!;
+    return index >= getParameterList!.length;
   }
 }

@@ -18,7 +18,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 
-abstract class IStreamModel<T extends BaseModel, Y extends BaseListModel<T>>
+abstract class IStreamModel<T extends BaseModel,Y extends BaseListModel>
     implements IDispose
 {
   Stream<T>? get getStreamModel;

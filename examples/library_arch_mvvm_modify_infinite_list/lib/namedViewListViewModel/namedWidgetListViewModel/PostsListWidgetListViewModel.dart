@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForAntiSpam.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/postQHttpClientServiceViewModel/PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dart';
+import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 
-class PostsListWidgetListViewModel {
-  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
-  final BoolQNoServiceViewModelUsingGetNPForAntiSpam _boolQNoServiceViewModelUsingGetNPForAntiSpam;
+class PostsListWidgetListViewModel<Q extends Post,W extends ListPost,E extends Bool,R extends ListBool> {
+  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Q,W> _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
+  final BoolQNoServiceViewModelUsingGetNPForAntiSpam<E,R> _boolQNoServiceViewModelUsingGetNPForAntiSpam;
 
   PostsListWidgetListViewModel(
       this._postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
       this._boolQNoServiceViewModelUsingGetNPForAntiSpam);
 
   @protected
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder get getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Q,W> get getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
     return _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
   }
 
-  Stream<ListPost>? get getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
+  Stream<W>? get getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
     return _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
   }
 
@@ -26,39 +29,39 @@ class PostsListWidgetListViewModel {
     await Future.delayed(Duration(seconds: 1));
     if(_boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
-        !.isField)
+        !.getParameterIsField)
     {
       return;
     }
     if(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        ?.hasReachedMax ?? false)
+        !.getOneParametersNamedForPostsListWidget)
     {
       return;
     }
     _boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
-        ?.isField = true;
+        ?.setParameterIsField = true;
     // 1
     ListPost? listPost = await _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterInt(IntTypeParameter.success(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder?.list?.length));
+        .getListPostFromHttpClientServiceParameterInt(IntTypeParameter.success(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder?.getParameterList?.length));
     _boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
-        ?.isField = false;
+        ?.setParameterIsField = false;
     if(listPost
-        !.exceptionController
+        !.getParameterExceptionController
         .isExceptionNotEqualsNull())
     {
       _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
           .getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-          ?.setFromListPostParametersExceptionControllerAndHasReachedMax(listPost);
+          ?.setTwoParametersNamedForPostsListWidget(listPost);
       _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
           .notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
       return;
     }
     _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        ?.insertListToListAndSetFromListPostParametersExceptionControllerAndHasReachedMax(listPost);
+        ?.setOneParametersNamedForPostsListWidget(listPost);
     _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
     return;

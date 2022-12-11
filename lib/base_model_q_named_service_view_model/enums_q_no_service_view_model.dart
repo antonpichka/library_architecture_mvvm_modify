@@ -14,30 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_enums.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 
-abstract class EnumsQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Enums,ListEnums,Object>
+abstract class EnumsQNoServiceViewModel<T extends Enums,Y extends ListEnums>
+    extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
-  EnumsQNoServiceViewModel(List<EnumBaseModelAndBaseListModelVM> list,) : super.noDataSource(list);
-
-  @override
-  @nonVirtual
-  Enums? cloneModelForSuccess(
-      Enums? model)
-  {
-    return Enums.success(model!.field);
-  }
-
-  @override
-  @nonVirtual
-  ListEnums? cloneListModelForSuccess(
-      ListEnums? listModel)
-  {
-    return ListEnums.success(listModel?.list);
-  }
+  // Default class: CloneEnumsForSuccess(),CloneListEnumsForSuccess(),CloneStreamEnumsForSuccess()
+  EnumsQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneListModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

@@ -16,6 +16,9 @@
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_list_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_background_model/base_model_q_named_service_background_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_tip_data_source.dart';
@@ -35,7 +38,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
+abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel,DataSource extends Object>
     extends BaseModelQNamedServiceBackgroundModel<T,Y,DataSource>
     implements IDispose
 {
@@ -46,15 +49,18 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   /* Init DataSource */
   final bool _isExistsDataSource;
 
-  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource)
-      : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
+  /* Init Clone */
+  final ICloneStreamModelForSuccess<T,Y> _iCloneStreamModelForSuccess;
+
+  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,ICloneModelForSuccess<T> iCloneModelForSuccess,ICloneListModelForSuccess<Y> iCloneListModelForSuccess, this._iCloneStreamModelForSuccess)
+      : _isExistsDataSource = true, super.thereIsDataSource(dataSource,iCloneModelForSuccess,iCloneListModelForSuccess)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
   }
 
-  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list)
-      : _isExistsDataSource = false, super.thereIsDataSource(null)
+  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,ICloneModelForSuccess<T> iCloneModelForSuccess,ICloneListModelForSuccess<Y> iCloneListModelForSuccess, this._iCloneStreamModelForSuccess)
+      : _isExistsDataSource = false, super.thereIsDataSource(null,iCloneModelForSuccess,iCloneListModelForSuccess)
   {
     _initNoDataSourceListEnumBaseModelAndBaseListModelVM(list);
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
@@ -69,9 +75,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       iStreamModel?.dispose();
     });
   }
-
-  // Default class: return DefaultStreamModel(Object.success(""),ListObject.success([]));
-  IStreamModel<T,Y>? initIStreamModelForSuccess();
 
   /// Start IStreamModel **/
   @protected
@@ -143,7 +146,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        ?.setModel = cloneModelForSuccess(model);
+        ?.setModel = iCloneModelForSuccess.cloneModelForSuccess(model);
   }
 
   @protected
@@ -228,7 +231,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        ?.setListModel = cloneListModelForSuccess(listModel);
+        ?.setListModel = iCloneListModelForSuccess.cloneListModelForSuccess(listModel);
   }
 
   @protected
@@ -1102,7 +1105,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
 
   void _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel() {
     for(EnumBaseModelAndBaseListModelVM enumBaseModelAndBaseListModelVM in _listEnumBaseModelAndBaseListModelVM) {
-      _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[enumBaseModelAndBaseListModelVM] = initIStreamModelForSuccess();
+      _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[enumBaseModelAndBaseListModelVM] = _iCloneStreamModelForSuccess.cloneStreamModelForSuccess();
     }
   }
 }

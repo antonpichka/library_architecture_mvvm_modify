@@ -1,27 +1,31 @@
-import 'package:library_arch_mvvm_modify_counter/modelQNamedServiceViewModel/intQNoServiceViewModel/IntQNoServiceViewModelImpl.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_list_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/int_q_no_service_view_model.dart';
 
-class IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement
-    extends IntQNoServiceViewModelImpl
+class IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement<T extends Int,Y extends ListInt>
+    extends IntQNoServiceViewModel<T,Y>
 {
-  IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement() : super([EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP]);
+  IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement(ICloneModelForSuccess<T> iCloneModelForSuccess,ICloneListModelForSuccess<Y> iCloneListModelForSuccess,ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super([EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP],iCloneModelForSuccess,iCloneListModelForSuccess,iCloneStreamModelForSuccess);
 
   @override
   Object thisClass() {
     return this;
   }
 
-  Stream<Int>? get getStreamIntUsingGetNPForIncrementAndDecrement {
+  Stream<T>? get getStreamIntUsingGetNPForIncrementAndDecrement {
     return getStreamModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
   }
 
-  Int? get getIntUsingGetNPForIncrementAndDecrement {
+  T? get getIntUsingGetNPForIncrementAndDecrement {
     return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
   }
 
   void setIntUsingGetNPForIncrementAndDecrement(
-      Int int)
+      T? int)
   {
     setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,int);
   }

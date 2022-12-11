@@ -22,19 +22,40 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
 abstract class BaseListModel<T extends BaseModel> {
-  List<T>? list;
-  ExceptionController exceptionController;
-  Enum? enumNamedForIterator;
-  Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
+  final Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
+  List<T>? _list;
+  ExceptionController _exceptionController;
+  Enum? _enumNamedForIterator;
 
-  BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this.enumNamedForIterator])
-      : exceptionController = ExceptionController.success();
+  BaseListModel.success(this._list,[this._mapEnumNamedForIteratorAndIterator,this._enumNamedForIterator])
+      : _exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
-      : exceptionController = ExceptionController.exception(exception);
+      : _exceptionController = ExceptionController.exception(exception),
+        _mapEnumNamedForIteratorAndIterator = null;
   BaseListModel.successForFBDS()
-      : exceptionController = ExceptionController.success();
+      : _exceptionController = ExceptionController.success(),
+        _mapEnumNamedForIteratorAndIterator = null;
   BaseListModel.exceptionForFBDS(LocalException exception)
-      : exceptionController = ExceptionController.exception(exception);
+      : _exceptionController = ExceptionController.exception(exception),
+        _mapEnumNamedForIteratorAndIterator = null;
+
+  @nonVirtual
+  List<T>? get getParameterList => _list;
+
+  @nonVirtual
+  ExceptionController get getParameterExceptionController => _exceptionController;
+
+  @nonVirtual
+  Enum? get getParameterEnumNamedForIterator => _enumNamedForIterator;
+
+  @nonVirtual
+  set setParameterList(List<T>? list) => _list = list;
+
+  @nonVirtual
+  set setParameterExceptionController(ExceptionController exceptionController) => _exceptionController = exceptionController;
+
+  @nonVirtual
+  set setParameterEnumNamedForIterator(Enum? enumNamedForIterator) => _enumNamedForIterator = enumNamedForIterator;
 
   @nonVirtual
   void startIteratorForList(
@@ -45,47 +66,47 @@ abstract class BaseListModel<T extends BaseModel> {
     }
     BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
     if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
-      iterator.list = list!;
-      list = iterator.getSortedList;
+      iterator.list = _list!;
+      _list = iterator.getSortedList;
       return;
     }
     for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator!.keys) {
-      if(enumNamedForIterator != itemEnumNamedForIterator) {
+      if(_enumNamedForIterator != itemEnumNamedForIterator) {
         continue;
       }
       iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
-    iterator.list = list!;
-    list = iterator.getSortedList;
+    iterator.list = _list!;
+    _list = iterator.getSortedList;
   }
 
   @nonVirtual
   void insertToList(
       T model)
   {
-    list?.add(model);
+    _list?.add(model);
   }
 
   @nonVirtual
   void updateToList(
       T model)
   {
-    list?[list!.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
+    _list?[_list!.indexWhere((T item) => item.getParameterUniqueId == model.getParameterUniqueId)] = model;
   }
 
   @nonVirtual
   void deleteToList(
       T model)
   {
-    list?.removeWhere((T item) => item.uniqueId == model.uniqueId);
+    _list?.removeWhere((T item) => item.getParameterUniqueId == model.getParameterUniqueId);
   }
 
   @nonVirtual
   void insertListToList(
       List<T> listForInsert)
   {
-    list?.addAll(listForInsert);
+    _list?.addAll(listForInsert);
   }
 
   @nonVirtual
@@ -93,7 +114,7 @@ abstract class BaseListModel<T extends BaseModel> {
       List<T> listForUpdate)
   {
     for(T itemForUpdate in listForUpdate) {
-      list?[list!.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
+      _list?[_list!.indexWhere((T item) => item.getParameterUniqueId == itemForUpdate.getParameterUniqueId)] = itemForUpdate;
     }
   }
 
@@ -102,7 +123,7 @@ abstract class BaseListModel<T extends BaseModel> {
       List<T> listForDelete)
   {
     for(T itemForDelete in listForDelete) {
-      list?.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
+      _list?.removeWhere((T item) => item.getParameterUniqueId == itemForDelete.getParameterUniqueId);
     }
   }
 }

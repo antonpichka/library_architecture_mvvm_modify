@@ -24,7 +24,7 @@ class EmailInputWidget
             decoration: InputDecoration(
               labelText: 'email',
               helperText: '',
-              errorText: emailInput!.isInvalidParameterEmail() ? 'invalid email' : null,
+              errorText: emailInput!.isOneParametersNamed() ? 'invalid email' : null,
             ),
           );
         });

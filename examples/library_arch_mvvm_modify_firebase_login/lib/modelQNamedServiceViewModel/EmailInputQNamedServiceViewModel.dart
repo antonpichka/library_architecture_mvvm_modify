@@ -12,7 +12,7 @@ abstract class EmailInputQNamedServiceViewModel<DataSource extends Object>
   EmailInputQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
-  EmailInput? cloneModelForSuccess(
+  EmailInput? iCloneModelForSuccess(
       EmailInput? model)
   {
     return EmailInput.success(
@@ -20,7 +20,7 @@ abstract class EmailInputQNamedServiceViewModel<DataSource extends Object>
   }
 
   @override
-  ListEmailInput? cloneListModelForSuccess(
+  ListEmailInput? iCloneListModelForSuccess(
       ListEmailInput? listModel)
   {
     return ListEmailInput.success(listModel?.list);

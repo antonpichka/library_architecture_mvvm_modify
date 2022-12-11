@@ -20,8 +20,8 @@ import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 class ListBool
     extends BaseListModel<Bool>
 {
-  ListBool.success(super.list) : super.success();
-  ListBool.exception(super.exception) : super.exception();
+  ListBool.success(super._list) : super.success();
+  ListBool.exception(super._exception) : super.exception();
   ListBool.successForFBDS() : super.successForFBDS();
-  ListBool.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
+  ListBool.exceptionForFBDS(super._exception) : super.exceptionForFBDS();
 }

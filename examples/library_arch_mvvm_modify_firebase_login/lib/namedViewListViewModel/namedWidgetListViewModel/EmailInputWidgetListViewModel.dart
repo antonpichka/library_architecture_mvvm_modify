@@ -22,7 +22,7 @@ class EmailInputWidgetListViewModel {
     }
     _emailInputQNoServiceViewModelUsingUpdateTIP
         .getEmailInputUsingUpdateTIP
-        ?.setDirtyConstructorFromStrParameterEmail = str;
+        ?.setOneParametersNamed = str;
     _emailInputQNoServiceViewModelUsingUpdateTIP
         .notifyStreamEmailInputUsingUpdateTIP();
     return;

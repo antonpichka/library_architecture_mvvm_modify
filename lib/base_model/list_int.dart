@@ -20,8 +20,8 @@ import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 class ListInt
     extends BaseListModel<Int>
 {
-  ListInt.success(super.list) : super.success();
-  ListInt.exception(super.exception) : super.exception();
+  ListInt.success(super._list) : super.success();
+  ListInt.exception(super._exception) : super.exception();
   ListInt.successForFBDS() : super.successForFBDS();
-  ListInt.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
+  ListInt.exceptionForFBDS(super._exception) : super.exceptionForFBDS();
 }

@@ -20,8 +20,8 @@ import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
 class ListEnums
     extends BaseListModel<Enums>
 {
-  ListEnums.success(super.list) : super.success();
-  ListEnums.exception(super.exception) : super.exception();
+  ListEnums.success(super._list) : super.success();
+  ListEnums.exception(super._exception) : super.exception();
   ListEnums.successForFBDS() : super.successForFBDS();
-  ListEnums.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
+  ListEnums.exceptionForFBDS(super._exception) : super.exceptionForFBDS();
 }

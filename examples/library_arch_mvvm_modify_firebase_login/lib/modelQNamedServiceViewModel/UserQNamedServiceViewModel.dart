@@ -12,18 +12,18 @@ abstract class UserQNamedServiceViewModel<DataSource extends Object>
   UserQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
 
   @override
-  User? cloneModelForSuccess(
+  User? iCloneModelForSuccess(
       User? model)
   {
     return User.success(
-        model?.uniqueId,
+        model?.getParameterUniqueId,
         model?.email,
         model?.name,
         model?.photo);
   }
 
   @override
-  ListUser? cloneListModelForSuccess(
+  ListUser? iCloneListModelForSuccess(
       ListUser? listModel)
   {
     return ListUser.success(listModel?.list);

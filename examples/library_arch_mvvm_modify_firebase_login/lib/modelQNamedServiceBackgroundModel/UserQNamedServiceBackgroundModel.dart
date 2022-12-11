@@ -8,18 +8,18 @@ abstract class UserQNamedServiceBackgroundModel<DataSource extends Object>
   UserQNamedServiceBackgroundModel.thereIsDataSource(DataSource dataSource) : super.thereIsDataSource(dataSource);
 
   @override
-  User? cloneModelForSuccess(
+  User? iCloneModelForSuccess(
       User? model)
   {
     return User.success(
-        model?.uniqueId,
+        model?.getParameterUniqueId,
         model?.email,
         model?.name,
         model?.photo);
   }
 
   @override
-  ListUser? cloneListModelForSuccess(
+  ListUser? iCloneListModelForSuccess(
       ListUser? listModel)
   {
     return ListUser.success(listModel?.list);

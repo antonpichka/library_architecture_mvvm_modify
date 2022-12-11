@@ -15,6 +15,7 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:flutter/foundation.dart';
 
 enum EnumsDefault {
   zero
@@ -23,10 +24,18 @@ enum EnumsDefault {
 class Enums
     extends BaseModel
 {
-  Enum field;
+  Enum _field;
 
-  Enums.success(this.field) : super.success(field.toString());
-  Enums.exception(super.exception) : field = EnumsDefault.zero,super.exception();
-  Enums.successForFBDS() : field = EnumsDefault.zero,super.successForFBDS();
-  Enums.exceptionForFBDS(super.exception) : field = EnumsDefault.zero,super.exceptionForFBDS();
+  Enums.success(this._field) : super.success(_field.toString());
+  Enums.exception(super.exception) : _field = EnumsDefault.zero,super.exception();
+  Enums.successForFBDS() : _field = EnumsDefault.zero,super.successForFBDS();
+  Enums.exceptionForFBDS(super.exception) : _field = EnumsDefault.zero,super.exceptionForFBDS();
+
+  @nonVirtual
+  Enum get getParameterField => _field;
+
+  String get getOneParametersNamed => _field.toString();
+
+  @nonVirtual
+  set setParameterField(Enum field) => _field = field;
 }

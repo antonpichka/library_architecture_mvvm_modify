@@ -3,6 +3,8 @@ import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/MainView
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/DecrementFABWidget.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/IncrementFABWidget.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/IntTextWidget.dart';
+import 'package:library_architecture_mvvm_modify/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class MainView
@@ -38,7 +40,7 @@ class _MainViewState
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have pushed the button this many times:',),
-            IntTextWidget(lo.intTextWidgetListViewModel),
+            IntTextWidget<Int,ListInt>(lo.intTextWidgetListViewModel),
           ],
         ),
       ),
@@ -46,9 +48,9 @@ class _MainViewState
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          IncrementFABWidget(lo.incrementFABWidgetListViewModel),
+          IncrementFABWidget<Int,ListInt>(lo.incrementFABWidgetListViewModel),
           SizedBox(height: 8,),
-          DecrementFABWidget(lo.decrementFABWidgetListViewModel),
+          DecrementFABWidget<Int,ListInt>(lo.decrementFABWidgetListViewModel),
         ],
       ),
     );

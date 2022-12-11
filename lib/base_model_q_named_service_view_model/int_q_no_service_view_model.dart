@@ -14,30 +14,13 @@
  * limitations under the License.
  */
 
-import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 
-abstract class IntQNoServiceViewModel
-    extends BaseModelQNamedServiceViewModel<Int,ListInt,Object>
+abstract class IntQNoServiceViewModel<T extends Int,Y extends ListInt>
+    extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
-  IntQNoServiceViewModel(List<EnumBaseModelAndBaseListModelVM> list) : super.noDataSource(list);
-
-  @override
-  @nonVirtual
-  Int? cloneModelForSuccess(
-      Int? model)
-  {
-    return Int.success(model!.field);
-  }
-
-  @override
-  @nonVirtual
-  ListInt? cloneListModelForSuccess(
-      ListInt? listModel)
-  {
-    return ListInt.success(listModel?.list);
-  }
+  // Default class: CloneIntForSuccess(),CloneListIntForSuccess(),CloneStreamIntForSuccess()
+  IntQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneListModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

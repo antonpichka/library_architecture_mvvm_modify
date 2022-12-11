@@ -10,13 +10,13 @@ class EmailInput
 
   static EmailInput get getEmailInputForSuccess => EmailInput.success(Email.pure());
 
-  set setDirtyConstructorFromStrParameterEmail(
+  set setOneParametersNamed(
       String str)
   {
     email = Email.dirty(str);
   }
 
-  bool isInvalidParameterEmail() {
+  bool isOneParametersNamed() {
     return email!.invalid;
   }
 }

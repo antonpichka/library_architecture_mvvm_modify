@@ -36,30 +36,22 @@ class User
     if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumUserForMainView.localException;
     }
-    if(isEqualsStringNullParametersUniqueIdAndEmailAndNameAndPhoto()) {
+    if(isThreeParametersNamedForMainView()) {
       return EnumUserForMainView.unauthenticated;
     }
     return EnumUserForMainView.authenticated;
   }
 
-  bool isEmptyParameterUniqueId() {
-    return uniqueId!.isEmpty;
-  }
-
-  bool isNotEmptyParameterUniqueId() {
-    return uniqueId!.isNotEmpty;
-  }
-
-  bool isNotEqualsNullParameterPhoto() {
+  bool isOneParametersNamedForCircleAvatarWidget() {
     return photo != null;
   }
 
-  bool isEqualsNullParameterPhoto() {
+  bool isTwoParametersNamedForCircleAvatarWidget() {
     return photo == null;
   }
 
-  bool isEqualsStringNullParametersUniqueIdAndEmailAndNameAndPhoto() {
-    return uniqueId == "null" &&
+  bool isThreeParametersNamedForMainView() {
+    return getParameterUniqueId == "null" &&
         email == "null" &&
         name == "null" &&
         photo == "null";

@@ -1,6 +1,20 @@
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/clonePostForSuccess/CloneListPostForSuccess.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/clonePostForSuccess/ClonePostForSuccess.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/cloneStreamPostForSuccess/CloneStreamPostForSuccess.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostForArrayListPostTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostForNetworkExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostForLocalExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/PostForMap.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForAntiSpam.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/postQHttpClientServiceViewModel/PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListExtWidgetListViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_list_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class MainViewListViewModel
@@ -8,16 +22,14 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Post,ListPost>(PostForMap(),ListPostForArrayListPostTIP(),ListPostForNetworkExceptionTIP(),ListPostForLocalExceptionTIP(),ClonePostForSuccess(),CloneListPostForSuccess(),CloneStreamPostForSuccess());
   final _boolQNoServiceViewModelUsingGetNPForAntiSpam =
-  BoolQNoServiceViewModelUsingGetNPForAntiSpam();
+  BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool>(CloneBoolForSuccess(),CloneListBoolForSuccess(),CloneStreamBoolForSuccess());
 
   // NamedWidgetListViewModel
-  // late final PostsListWidgetListViewModel postsListWidgetListViewModel;
-  late final PostsListExtWidgetListViewModel postsListExtWidgetListViewModel;
+  late final PostsListExtWidgetListViewModel<Post,ListPost,Bool,ListBool> postsListExtWidgetListViewModel;
 
   MainViewListViewModel() {
-    // postsListWidgetListViewModel = PostsListWidgetListViewModel(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);
     postsListExtWidgetListViewModel = PostsListExtWidgetListViewModel(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);
   }
 
@@ -26,14 +38,4 @@ class MainViewListViewModel
     _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dispose();
     _boolQNoServiceViewModelUsingGetNPForAntiSpam.dispose();
   }
-
- /* Future<void> getListPostFromHttpClientServiceParameterIntAndSetListPostAndInGeneralOneTask()
-  async {
-    // 1
-    await _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterIntAndSetListPost(IntTypeParameter(0));
-    _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
-    return;
-  }*/
 }
