@@ -16,9 +16,8 @@
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_list_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_background_model/base_model_q_named_service_background_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_tip_data_source.dart';
@@ -52,15 +51,15 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   /* Init Clone */
   final ICloneStreamModelForSuccess<T,Y> _iCloneStreamModelForSuccess;
 
-  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,ICloneModelForSuccess<T> iCloneModelForSuccess,ICloneListModelForSuccess<Y> iCloneListModelForSuccess, this._iCloneStreamModelForSuccess)
-      : _isExistsDataSource = true, super.thereIsDataSource(dataSource,iCloneModelForSuccess,iCloneListModelForSuccess)
+  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,ICloneModelForSuccess<T,Y> iCloneModelForSuccess, this._iCloneStreamModelForSuccess)
+      : _isExistsDataSource = true, super.thereIsDataSource(dataSource,iCloneModelForSuccess)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
   }
 
-  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,ICloneModelForSuccess<T> iCloneModelForSuccess,ICloneListModelForSuccess<Y> iCloneListModelForSuccess, this._iCloneStreamModelForSuccess)
-      : _isExistsDataSource = false, super.thereIsDataSource(null,iCloneModelForSuccess,iCloneListModelForSuccess)
+  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,ICloneModelForSuccess<T,Y> iCloneModelForSuccess, this._iCloneStreamModelForSuccess)
+      : _isExistsDataSource = false, super.thereIsDataSource(null,iCloneModelForSuccess)
   {
     _initNoDataSourceListEnumBaseModelAndBaseListModelVM(list);
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
@@ -231,7 +230,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        ?.setListModel = iCloneListModelForSuccess.cloneListModelForSuccess(listModel);
+        ?.setListModel = iCloneModelForSuccess.cloneListModelForSuccess(listModel);
   }
 
   @protected

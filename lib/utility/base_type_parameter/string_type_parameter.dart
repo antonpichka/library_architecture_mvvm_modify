@@ -19,7 +19,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 class StringTypeParameter
     extends BaseTypeParameter<String>
 {
-  StringTypeParameter.success(String? parameter) : super.success(parameter);
+  StringTypeParameter.success(super.parameter) : super.success();
   StringTypeParameter.exception(super.exception) : super.exception();
   StringTypeParameter.successForFBDS() : super.successForFBDS();
   StringTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();

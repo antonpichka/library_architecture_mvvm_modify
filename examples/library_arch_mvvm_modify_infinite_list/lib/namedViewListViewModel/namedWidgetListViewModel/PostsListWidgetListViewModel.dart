@@ -7,20 +7,20 @@ import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 
-class PostsListWidgetListViewModel<Q extends Post,W extends ListPost,E extends Bool,R extends ListBool> {
-  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Q,W> _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
-  final BoolQNoServiceViewModelUsingGetNPForAntiSpam<E,R> _boolQNoServiceViewModelUsingGetNPForAntiSpam;
+class PostsListWidgetListViewModel {
+  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Post,ListPost> _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
+  final BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool> _boolQNoServiceViewModelUsingGetNPForAntiSpam;
 
   PostsListWidgetListViewModel(
       this._postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
       this._boolQNoServiceViewModelUsingGetNPForAntiSpam);
 
   @protected
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Q,W> get getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Post,ListPost> get getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
     return _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
   }
 
-  Stream<W>? get getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
+  Stream<ListPost>? get getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder {
     return _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
   }
 

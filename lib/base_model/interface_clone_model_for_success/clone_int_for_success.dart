@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 
 class CloneIntForSuccess
-    implements ICloneModelForSuccess<Int>
+    implements ICloneModelForSuccess<Int,ListInt>
 {
   @override
-  Int? cloneModelForSuccess(
-      Int? model)
-  {
+  Int? cloneModelForSuccess(Int? model) {
     return Int.success(model!.getParameterField);
+  }
+
+  @override
+  ListInt? cloneListModelForSuccess(ListInt? listModel) {
+    return ListInt.success(listModel!.getParameterList);
   }
 }

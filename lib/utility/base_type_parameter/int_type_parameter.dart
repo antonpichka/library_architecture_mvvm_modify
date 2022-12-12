@@ -19,7 +19,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 class IntTypeParameter
     extends BaseTypeParameter<int>
 {
-  IntTypeParameter.success(int? parameter) : super.success(parameter);
+  IntTypeParameter.success(super.parameter) : super.success();
   IntTypeParameter.exception(super.exception) : super.exception();
   IntTypeParameter.successForFBDS() : super.successForFBDS();
   IntTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();

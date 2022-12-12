@@ -19,12 +19,12 @@ class PasswordInputWidget
           PasswordInput? passwordInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => _lo
-                .setDirtyConstructorFromStrParameterPasswordByPasswordInputUsingUpdateTIPAndInGeneralZeroTask(str),
+                .setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingUpdateTIPAndInGeneralZeroTask(str),
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'password',
               helperText: '',
-              errorText: passwordInput!.isInvalidParameterPassword() ? 'invalid password' : null,
+              errorText: passwordInput!.isOneParametersNamedForPasswordInputWidget() ? 'invalid password' : null,
             ),
           );
         });

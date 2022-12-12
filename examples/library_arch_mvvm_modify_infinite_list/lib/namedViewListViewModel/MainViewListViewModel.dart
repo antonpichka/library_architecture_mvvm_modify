@@ -1,19 +1,17 @@
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/clonePostForSuccess/CloneListPostForSuccess.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/clonePostForSuccess/ClonePostForSuccess.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/cloneStreamPostForSuccess/CloneStreamPostForSuccess.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostForArrayListPostTIP.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostForNetworkExceptionTIP.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostForLocalExceptionTIP.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/PostForMap.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPostExt.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/PostExt.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/clonePostForSuccess/ClonePostExtForSuccess.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/clonePostForSuccess/CloneStreamPostExtForSuccess.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostExtForArrayListPostExtTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostExtForLocalExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostExtForNetworkExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/PostExtForMap.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForAntiSpam.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/postQHttpClientServiceViewModel/PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListExtWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_bool_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_list_bool_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_stream_bool_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
@@ -22,12 +20,12 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Post,ListPost>(PostForMap(),ListPostForArrayListPostTIP(),ListPostForNetworkExceptionTIP(),ListPostForLocalExceptionTIP(),ClonePostForSuccess(),CloneListPostForSuccess(),CloneStreamPostForSuccess());
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<PostExt,ListPostExt>(PostExtForMap(),ListPostExtForArrayListPostExtTIP(),ListPostExtForNetworkExceptionTIP(),ListPostExtForLocalExceptionTIP(),ClonePostExtForSuccess(),CloneStreamPostExtForSuccess());
   final _boolQNoServiceViewModelUsingGetNPForAntiSpam =
-  BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool>(CloneBoolForSuccess(),CloneListBoolForSuccess(),CloneStreamBoolForSuccess());
+  BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool>(CloneBoolForSuccess(),CloneStreamBoolForSuccess());
 
   // NamedWidgetListViewModel
-  late final PostsListExtWidgetListViewModel<Post,ListPost,Bool,ListBool> postsListExtWidgetListViewModel;
+  late final PostsListExtWidgetListViewModel postsListExtWidgetListViewModel;
 
   MainViewListViewModel() {
     postsListExtWidgetListViewModel = PostsListExtWidgetListViewModel(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);

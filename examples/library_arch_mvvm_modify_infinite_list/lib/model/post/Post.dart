@@ -19,16 +19,11 @@ class Post
 
   @nonVirtual
   int get getParameterId => _id!;
-
   @nonVirtual
   String get getParameterTitle => _title!;
-
   @nonVirtual
   String get getParameterBody => _body!;
-
   String get getOneParametersNamedForPostsListWidget => getParameterUniqueId!;
-
   String get getTwoParametersNamedForPostsListWidget => _title!;
-
   String get getThreeParametersNamedForPostsListWidget => _body!;
 }

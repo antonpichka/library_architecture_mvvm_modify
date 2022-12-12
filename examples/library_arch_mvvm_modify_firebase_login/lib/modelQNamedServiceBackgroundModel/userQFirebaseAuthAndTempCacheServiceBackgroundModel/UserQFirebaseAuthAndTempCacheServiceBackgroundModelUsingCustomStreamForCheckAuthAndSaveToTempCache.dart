@@ -1,19 +1,23 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/UserQNamedServiceBackgroundModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/userQFirebaseAuthAndTempCacheServiceDataSource/UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/FirebaseAuthAndTempCacheService.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_np.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache
-    extends UserQNamedServiceBackgroundModel<UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache>
+class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser>
+    extends UserQNamedServiceBackgroundModel<T,Y,UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T,Y>>
 {
-  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache() : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(FirebaseAuthAndTempCacheService()));
+  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(ICloneModelForSuccess<T,Y> iCloneModelForSuccess,IModelForNamedNP<T> userForSuccessWhereParametersEqualsStringNullNP,IModelForNamedTIP<T,firebase_auth.User> userForFirebaseUserTIP) : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(userForSuccessWhereParametersEqualsStringNullNP,userForFirebaseUserTIP),iCloneModelForSuccess);
 
   @override
   Object thisClass() {
     return this;
   }
 
-  Stream<User>? get getCustomStreamUser {
+  Stream<T>? get getCustomStreamUser {
     return modelQNamedServiceDataSource?.getCustomStreamUser;
   }
 }

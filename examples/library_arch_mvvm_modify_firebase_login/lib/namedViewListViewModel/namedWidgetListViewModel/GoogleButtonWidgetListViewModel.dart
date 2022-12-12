@@ -1,10 +1,14 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndGoogleSignInServiceViewModel/UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle.dart';
+import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class GoogleButtonWidgetListViewModel {
-  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle;
-  final BoolQNoServiceViewModelUsingGetNPForLoading _boolQNoServiceViewModelUsingGetNPForLoading;
+  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser> _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle;
+  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool> _boolQNoServiceViewModelUsingGetNPForLoading;
 
   GoogleButtonWidgetListViewModel(this._userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle, this._boolQNoServiceViewModelUsingGetNPForLoading);
 
@@ -13,13 +17,13 @@ class GoogleButtonWidgetListViewModel {
   async {
     if(_boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
-        !.isField)
+        !.getParameterIsField)
     {
       return;
     }
     _boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
-        ?.isField = true;
+        ?.setParameterIsField = true;
     _boolQNoServiceViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     // 1
@@ -27,7 +31,7 @@ class GoogleButtonWidgetListViewModel {
         .updateUserToFirebaseAuthAndGoogleSignInServiceNP();
     _boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
-        ?.isField = false;
+        ?.setParameterIsField = false;
     _boolQNoServiceViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     if(boolTypeParameter!

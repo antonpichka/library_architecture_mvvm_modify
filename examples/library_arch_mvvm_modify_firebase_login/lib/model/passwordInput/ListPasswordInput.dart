@@ -4,5 +4,5 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 class ListPasswordInput
     extends BaseListModel<PasswordInput>
 {
-  ListPasswordInput.success(super.list) : super.success();
+  ListPasswordInput.success(super._list) : super.success();
 }

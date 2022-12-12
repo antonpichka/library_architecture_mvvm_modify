@@ -22,5 +22,5 @@ abstract class EnumsQNoServiceViewModel<T extends Enums,Y extends ListEnums>
     extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
   // Default class: CloneEnumsForSuccess(),CloneListEnumsForSuccess(),CloneStreamEnumsForSuccess()
-  EnumsQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneListModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  EnumsQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

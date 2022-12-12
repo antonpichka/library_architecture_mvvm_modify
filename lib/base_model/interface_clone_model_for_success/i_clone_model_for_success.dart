@@ -14,14 +14,21 @@
  * limitations under the License.
  */
 
+import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-abstract class ICloneModelForSuccess<T extends BaseModel> {
+abstract class ICloneModelForSuccess<T extends BaseModel,Y extends BaseListModel> {
   ///   Example Using:
   ///
   ///   User cloneModelForSuccess(User model) {
   ///     return User.success(model.uniqueId,model.name);
   ///   }
-  T? cloneModelForSuccess(
-      T? model);
+  T? cloneModelForSuccess(T? model);
+
+  ///   Example Using:
+  ///
+  ///   ListUser cloneModelForSuccess(ListUser model) {
+  ///     return ListUser.success(model.list);
+  ///   }
+  Y? cloneListModelForSuccess(Y? listModel);
 }

@@ -1,8 +1,9 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingUpdateTIP.dart';
 
 class PasswordInputWidgetListViewModel {
-  final PasswordInputQNoServiceViewModelUsingUpdateTIP _passwordInputQNoServiceViewModelUsingUpdateTIP;
+  final PasswordInputQNoServiceViewModelUsingUpdateTIP<PasswordInput,ListPasswordInput> _passwordInputQNoServiceViewModelUsingUpdateTIP;
 
   PasswordInputWidgetListViewModel(this._passwordInputQNoServiceViewModelUsingUpdateTIP);
 
@@ -10,19 +11,18 @@ class PasswordInputWidgetListViewModel {
     return _passwordInputQNoServiceViewModelUsingUpdateTIP.getStreamPasswordInputUsingUpdateTIP;
   }
 
-  void setDirtyConstructorFromStrParameterPasswordByPasswordInputUsingUpdateTIPAndInGeneralZeroTask(
+  void setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingUpdateTIPAndInGeneralZeroTask(
       String str)
   {
     if(_passwordInputQNoServiceViewModelUsingUpdateTIP
         .getPasswordInputUsingUpdateTIP
-        ?.password
-        ?.value == str)
+        ?.getOneParametersNamedForPasswordInputWidget == str)
     {
       return;
     }
     _passwordInputQNoServiceViewModelUsingUpdateTIP
         .getPasswordInputUsingUpdateTIP
-        ?.setDirtyConstructorFromStrParameterPassword = str;
+        ?.setOneParametersNamedForPasswordInputWidget = str;
     _passwordInputQNoServiceViewModelUsingUpdateTIP
         .notifyStreamPasswordInputUsingUpdateTIP();
     return;

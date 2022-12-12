@@ -19,7 +19,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 class EnumTypeParameter
     extends BaseTypeParameter<Enum>
 {
-  EnumTypeParameter.success(Enum? parameter) : super.success(parameter);
+  EnumTypeParameter.success(super.parameter) : super.success();
   EnumTypeParameter.exception(super.exception) : super.exception();
   EnumTypeParameter.successForFBDS() : super.successForFBDS();
   EnumTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();

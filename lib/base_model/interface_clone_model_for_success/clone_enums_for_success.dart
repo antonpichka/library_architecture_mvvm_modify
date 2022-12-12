@@ -16,14 +16,18 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_enums.dart';
 
 class CloneEnumsForSuccess
-    implements ICloneModelForSuccess<Enums>
+    implements ICloneModelForSuccess<Enums,ListEnums>
 {
   @override
-  Enums? cloneModelForSuccess(
-      Enums? model)
-  {
+  Enums? cloneModelForSuccess(Enums? model) {
     return Enums.success(model!.getParameterField);
+  }
+
+  @override
+  ListEnums? cloneListModelForSuccess(ListEnums? listModel) {
+    return ListEnums.success(listModel?.getParameterList);
   }
 }

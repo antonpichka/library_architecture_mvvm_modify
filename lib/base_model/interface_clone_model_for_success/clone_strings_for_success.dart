@@ -15,15 +15,19 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
 import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
 
 class CloneStringsForSuccess
-    implements ICloneModelForSuccess<Strings>
+    implements ICloneModelForSuccess<Strings,ListStrings>
 {
   @override
-  Strings? cloneModelForSuccess(
-      Strings? model)
-  {
+  Strings? cloneModelForSuccess(Strings? model) {
     return Strings.success(model!.getParameterField);
+  }
+
+  @override
+  ListStrings? cloneListModelForSuccess(ListStrings? listModel) {
+    return ListStrings.success(listModel?.getParameterList);
   }
 }

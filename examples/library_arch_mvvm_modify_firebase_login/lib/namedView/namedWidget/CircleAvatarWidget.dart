@@ -13,7 +13,7 @@ class CircleAvatarWidget<T extends User>
     return CircleAvatar(
       radius: 48.0,
       backgroundImage: _user!.isOneParametersNamedForCircleAvatarWidget()
-          ? NetworkImage(_user!.photo ?? "")
+          ? NetworkImage(_user!.getOneParametersNamedForCircleAvatarWidget)
           : null,
       child: _user!.isTwoParametersNamedForCircleAvatarWidget()
           ? const Icon(Icons.person_outline, size: 48.0)

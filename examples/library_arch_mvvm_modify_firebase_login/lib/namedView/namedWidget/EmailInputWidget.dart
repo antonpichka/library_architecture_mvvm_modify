@@ -19,12 +19,12 @@ class EmailInputWidget
           EmailInput? emailInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => _lo
-                .setDirtyConstructorFromStrParameterEmailByEmailInputUsingUpdateTIPAndInGeneralZeroTask(str),
+                .setOneParametersNamedForEmailInputWidgetByEmailInputUsingUpdateTIPAndInGeneralZeroTask(str),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: 'email',
               helperText: '',
-              errorText: emailInput!.isOneParametersNamed() ? 'invalid email' : null,
+              errorText: emailInput!.isOneParametersNamedForEmailInputWidget() ? 'invalid email' : null,
             ),
           );
         });

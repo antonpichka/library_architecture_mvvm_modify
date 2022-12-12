@@ -1,8 +1,9 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingUpdateTIP.dart';
 
 class EmailInputWidgetListViewModel {
-  final EmailInputQNoServiceViewModelUsingUpdateTIP _emailInputQNoServiceViewModelUsingUpdateTIP;
+  final EmailInputQNoServiceViewModelUsingUpdateTIP<EmailInput,ListEmailInput> _emailInputQNoServiceViewModelUsingUpdateTIP;
 
   EmailInputWidgetListViewModel(this._emailInputQNoServiceViewModelUsingUpdateTIP);
 
@@ -10,19 +11,18 @@ class EmailInputWidgetListViewModel {
     return _emailInputQNoServiceViewModelUsingUpdateTIP.getStreamEmailInputUsingUpdateTIP;
   }
 
-  void setDirtyConstructorFromStrParameterEmailByEmailInputUsingUpdateTIPAndInGeneralZeroTask(
+  void setOneParametersNamedForEmailInputWidgetByEmailInputUsingUpdateTIPAndInGeneralZeroTask(
       String str)
   {
     if(_emailInputQNoServiceViewModelUsingUpdateTIP
         .getEmailInputUsingUpdateTIP
-        ?.email
-        ?.value == str)
+        ?.getOneParametersNamedForEmailInputWidget == str)
     {
       return;
     }
     _emailInputQNoServiceViewModelUsingUpdateTIP
         .getEmailInputUsingUpdateTIP
-        ?.setOneParametersNamed = str;
+        ?.setOneParametersNamedForEmailInputWidget = str;
     _emailInputQNoServiceViewModelUsingUpdateTIP
         .notifyStreamEmailInputUsingUpdateTIP();
     return;

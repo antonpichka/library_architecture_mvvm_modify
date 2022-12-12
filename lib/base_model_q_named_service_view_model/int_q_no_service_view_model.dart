@@ -22,5 +22,5 @@ abstract class IntQNoServiceViewModel<T extends Int,Y extends ListInt>
     extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
   // Default class: CloneIntForSuccess(),CloneListIntForSuccess(),CloneStreamIntForSuccess()
-  IntQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneListModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  IntQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

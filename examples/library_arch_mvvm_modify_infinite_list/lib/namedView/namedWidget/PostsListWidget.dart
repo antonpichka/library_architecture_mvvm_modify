@@ -2,25 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListWidgetListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 
-class PostsListWidget<Q extends Post,W extends ListPost,E extends Bool,R extends ListBool>
+class PostsListWidget
     extends StatefulWidget
 {
-  final PostsListWidgetListViewModel<Q,W,E,R> _lo;
+  final PostsListWidgetListViewModel _lo;
 
   PostsListWidget(this._lo);
 
   @override
-  State<PostsListWidget> createState() => _PostsListWidget<Q,W,E,R>(_lo);
+  State<PostsListWidget> createState() => _PostsListWidget(_lo);
 }
 
-class _PostsListWidget<Q extends Post,W extends ListPost,E extends Bool,R extends ListBool>
+class _PostsListWidget
     extends State<PostsListWidget>
     with WidgetsBindingObserver
 {
-  final PostsListWidgetListViewModel<Q,W,E,R> _lo;
+  final PostsListWidgetListViewModel _lo;
 
   _PostsListWidget(this._lo);
 
@@ -43,14 +41,14 @@ class _PostsListWidget<Q extends Post,W extends ListPost,E extends Bool,R extend
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<W>(
+    return StreamBuilder<ListPost>(
         stream: _lo.getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
-        builder: (BuildContext buildContext, AsyncSnapshot<W> asyncSnapshot)
+        builder: (BuildContext buildContext, AsyncSnapshot<ListPost> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           }
-          W? listPost = asyncSnapshot.data;
+          ListPost? listPost = asyncSnapshot.data;
           switch(listPost?.getEnumListPostForPostsListWidget) {
             case EnumListPostForPostsListWidget.success:
               return ListView.builder(
@@ -64,10 +62,10 @@ class _PostsListWidget<Q extends Post,W extends ListPost,E extends Bool,R extend
                       );
                     }
                     TextTheme textTheme = Theme.of(context).textTheme;
-                    Q? itemPost = listPost.getParameterList![index] as Q?;
+                    Post? itemPost = listPost.getParameterList![index];
                     return Material(
                       child: ListTile(
-                        leading: Text('${itemPost!.getOneParametersNamedForPostsListWidget}', style: textTheme.caption),
+                        leading: Text('${itemPost.getOneParametersNamedForPostsListWidget}', style: textTheme.caption),
                         title: Text(itemPost.getTwoParametersNamedForPostsListWidget),
                         isThreeLine: true,
                         subtitle: Text(itemPost.getThreeParametersNamedForPostsListWidget),

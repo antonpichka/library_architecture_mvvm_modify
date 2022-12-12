@@ -1,20 +1,25 @@
 import 'package:formz/formz.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingUpdateTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingUpdateTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Login.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class LoginButtonWidgetListViewModel {
-  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
-  final EmailInputQNoServiceViewModelUsingUpdateTIP _emailInputQNoServiceViewModelUsingUpdateTIP;
-  final PasswordInputQNoServiceViewModelUsingUpdateTIP _passwordInputQNoServiceViewModelUsingUpdateTIP;
-  final BoolQNoServiceViewModelUsingGetNPForLoading _boolQNoServiceViewModelUsingGetNPForLoading;
+  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser> _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
+  final EmailInputQNoServiceViewModelUsingUpdateTIP<EmailInput,ListEmailInput> _emailInputQNoServiceViewModelUsingUpdateTIP;
+  final PasswordInputQNoServiceViewModelUsingUpdateTIP<PasswordInput,ListPasswordInput> _passwordInputQNoServiceViewModelUsingUpdateTIP;
+  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool> _boolQNoServiceViewModelUsingGetNPForLoading;
 
   LoginButtonWidgetListViewModel(
       this._userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
@@ -29,28 +34,28 @@ class LoginButtonWidgetListViewModel {
   Future<void> updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask(
       Function(String message) callbackForException)
   async {
-    if(!Formz.validate([_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingUpdateTIP!.email ?? Email.pure(), _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingUpdateTIP!.password ?? Password.pure()])
+    if(!Formz.validate([_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingUpdateTIP!.getOneParametersNamedForLoginButtonWidget, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingUpdateTIP!.getOneParametersNamedForLoginButtonWidget])
         .isValidated)
     {
       return;
     }
     if(_boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
-        !.isField)
+        !.getParameterIsField)
     {
       return;
     }
     _boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
-        ?.isField = true;
+        ?.setParameterIsField = true;
     _boolQNoServiceViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     // 1
     BoolTypeParameter? boolTypeParameter = await _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .updateUserToFirebaseAuthServiceParameterLogin(LoginTypeParameter.success(Login(_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingUpdateTIP?.email?.value, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingUpdateTIP?.password?.value)));
+        .updateUserToFirebaseAuthServiceParameterLogin(LoginTypeParameter.success(Login(_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingUpdateTIP!.getTwoParametersNamedForLoginButtonWidget, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingUpdateTIP!.getTwoParametersNamedForLoginButtonWidget)));
     _boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
-        ?.isField = false;
+        ?.setParameterIsField = false;
     _boolQNoServiceViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     if(boolTypeParameter

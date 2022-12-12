@@ -1,4 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/FirebaseAuthService.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
@@ -8,14 +10,14 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
-class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin
+class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin<T extends User,Y extends ListUser>
     implements
         InsertModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,RegistrationTypeParameter>,
         UpdateModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,LoginTypeParameter>
 {
-  final FirebaseAuthService _firebaseAuthService;
+  final _firebaseAuthService = FirebaseAuthService();
 
-  UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin(this._firebaseAuthService);
+  UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin();
 
   @override
   Future<BoolTypeParameter> insertModelToNamedServiceParameterNamed(
@@ -27,7 +29,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
           ?.getFirebaseAuth
           ?.createUserWithEmailAndPassword(email: registration!.parameter!.email ?? "", password: registration.parameter!.password ?? "");
       return BoolTypeParameter.success(true);
-    } on FirebaseAuthException catch (e) {
+    } on firebase_auth.FirebaseAuthException catch (e) {
       return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
     } catch (_) {
       return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
@@ -44,7 +46,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
           ?.getFirebaseAuth
           ?.signInWithEmailAndPassword(email: login!.parameter!.email ?? "", password: login.parameter!.password ?? "");
       return BoolTypeParameter.success(true);
-    } on FirebaseAuthException catch (e) {
+    } on firebase_auth.FirebaseAuthException catch (e) {
       return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
     } catch (_) {
       return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));

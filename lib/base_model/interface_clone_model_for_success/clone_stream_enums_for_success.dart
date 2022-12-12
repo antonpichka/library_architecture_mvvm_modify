@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_enums.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-abstract class ICloneStreamModelForSuccess<T extends BaseModel,Y extends BaseListModel>
+class CloneStreamEnumsForSuccess
+    implements ICloneStreamModelForSuccess<Enums,ListEnums>
 {
-  // Default class: return DefaultStreamModel<User,ListUser>(User.success(""),ListUser.success([]));
-  IStreamModel<T,Y>? cloneStreamModelForSuccess();
+  @override
+  IStreamModel<Enums,ListEnums>? cloneStreamModelForSuccess() {
+    return DefaultStreamModel<Enums,ListEnums>(Enums.success(EnumsDefault.zero), ListEnums.success([]));
+  }
 }

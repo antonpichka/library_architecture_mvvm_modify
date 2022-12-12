@@ -22,5 +22,5 @@ abstract class BoolQNoServiceViewModel<T extends Bool,Y extends ListBool>
     extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
   // Default class: CloneBoolForSuccess(),CloneListBoolForSuccess(),CloneStreamBoolForSuccess()
-  BoolQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneListModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  BoolQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

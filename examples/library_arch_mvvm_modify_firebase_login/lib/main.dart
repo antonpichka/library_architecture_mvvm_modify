@@ -1,5 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneUserForSuccess/CloneUserForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForFirebaseUserTIP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForSuccessWhereParametersEqualsStringNullNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/userQFirebaseAuthAndTempCacheServiceBackgroundModel/UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/MainView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/RegistrationView.dart';
@@ -10,7 +15,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   final userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
-  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache();
+  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser>(CloneUserForSuccess(),UserForSuccessWhereParametersEqualsStringNullNP(),UserForFirebaseUserTIP());
   await userQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache
       .getCustomStreamUser
       ?.first;

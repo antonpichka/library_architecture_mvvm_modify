@@ -1,3 +1,15 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/cloneEmailInputForSuccess/CloneEmailInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/cloneEmailInputForSuccess/CloneStreamEmailInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/clonePasswordInputForSuccess/ClonePasswordInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/clonePasswordInputForSuccess/CloneStreamPasswordInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneUserForSuccess/CloneStreamUserForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneUserForSuccess/CloneUserForSuccess.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingUpdateTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingUpdateTIP.dart';
@@ -8,6 +20,10 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/LoginButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/RegistrationButtonWidgetListViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/clone_stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class LoginViewListViewModel
@@ -15,15 +31,15 @@ class LoginViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _emailInputQNoServiceViewModelUsingUpdateTIP =
-  EmailInputQNoServiceViewModelUsingUpdateTIP();
+  EmailInputQNoServiceViewModelUsingUpdateTIP<EmailInput,ListEmailInput>(CloneEmailInputForSuccess(),CloneStreamEmailInputForSuccess());
   final _passwordInputQNoServiceViewModelUsingUpdateTIP =
-  PasswordInputQNoServiceViewModelUsingUpdateTIP();
+  PasswordInputQNoServiceViewModelUsingUpdateTIP<PasswordInput,ListPasswordInput>(ClonePasswordInputForSuccess(),CloneStreamPasswordInputForSuccess());
   final _boolQNoServiceViewModelUsingGetNPForLoading =
-  BoolQNoServiceViewModelUsingGetNPForLoading();
+  BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool>(CloneBoolForSuccess(),CloneStreamBoolForSuccess());
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
-  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin();
+  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser>(CloneUserForSuccess(),CloneStreamUserForSuccess());
   final _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle =
-  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle();
+  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser>(CloneUserForSuccess(),CloneStreamUserForSuccess());
 
   // NamedWidgetListViewModel
   late final EmailInputWidgetListViewModel emailInputWidgetListViewModel;

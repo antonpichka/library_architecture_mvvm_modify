@@ -1,4 +1,10 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneUserForSuccess/CloneStreamUserForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneUserForSuccess/CloneUserForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForFirebaseUserTIP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForLocalExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForSuccessWhereParametersEqualsStringNullNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndTempCacheServiceViewModel/UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQTempCacheServiceViewModel/UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
@@ -8,9 +14,9 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
-  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache();
+  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser>(CloneUserForSuccess(),CloneStreamUserForSuccess(),UserForSuccessWhereParametersEqualsStringNullNP(),UserForFirebaseUserTIP());
   final _userQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP =
-  UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP();
+  UserQTempCacheServiceViewModelUsingUpdateTIPAndGetNPAndDeleteNP<User,ListUser>(CloneUserForSuccess(),CloneStreamUserForSuccess(),UserForLocalExceptionTIP());
 
   @override
   void dispose() {

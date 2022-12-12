@@ -16,14 +16,18 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 
 class CloneBoolForSuccess
-    implements ICloneModelForSuccess<Bool>
+    implements ICloneModelForSuccess<Bool,ListBool>
 {
   @override
-  Bool? cloneModelForSuccess(
-      Bool? model)
-  {
+  Bool? cloneModelForSuccess(Bool? model) {
     return Bool.success(model!.getParameterIsField);
+  }
+
+  @override
+  ListBool? cloneListModelForSuccess(ListBool? listModel) {
+    return ListBool.success(listModel?.getParameterList);
   }
 }

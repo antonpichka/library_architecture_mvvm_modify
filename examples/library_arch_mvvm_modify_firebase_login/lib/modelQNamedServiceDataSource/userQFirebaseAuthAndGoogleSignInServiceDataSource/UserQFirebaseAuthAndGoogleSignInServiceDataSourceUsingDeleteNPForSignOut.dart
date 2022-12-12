@@ -1,14 +1,16 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/FirebaseAuthAndGoogleSignInService.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
-class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut
+class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut<T extends User,Y extends ListUser>
     implements DeleteModelToNamedServiceNPDataSource<BoolTypeParameter>
 {
-  final FirebaseAuthAndGoogleSignInService _firebaseAuthAndGoogleSignInService;
+  final _firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
 
-  UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut(this._firebaseAuthAndGoogleSignInService);
+  UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut();
 
   @override
   Future<BoolTypeParameter> deleteModelToNamedServiceNP()

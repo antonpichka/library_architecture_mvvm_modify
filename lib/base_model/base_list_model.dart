@@ -66,8 +66,8 @@ abstract class BaseListModel<T extends BaseModel> {
     }
     BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
     if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
-      iterator.list = _list!;
-      _list = iterator.getSortedList;
+      iterator.setParameterList = _list!;
+      _list = iterator.getSortedListByParameterList;
       return;
     }
     for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator!.keys) {
@@ -77,8 +77,8 @@ abstract class BaseListModel<T extends BaseModel> {
       iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
-    iterator.list = _list!;
-    _list = iterator.getSortedList;
+    iterator.setParameterList = _list!;
+    _list = iterator.getSortedListByParameterList;
   }
 
   @nonVirtual

@@ -18,7 +18,7 @@ class LoginButtonWidget
         builder: (BuildContext buildContext, AsyncSnapshot<Bool> asyncSnapshot)
         {
           Bool? bool = asyncSnapshot.data;
-          return bool!.isField
+          return bool!.getParameterIsField
               ? CircularProgressIndicator()
               : ElevatedButton(
             key: Key('loginForm_continue_raisedButton'),
@@ -28,7 +28,7 @@ class LoginButtonWidget
               ),
               backgroundColor: Color(0xFFFFD600),
             ),
-            onPressed: bool.isField
+            onPressed: bool.getParameterIsField
                 ? null
                 : () => _lo.updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
             child: Text('LOGIN'),

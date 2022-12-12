@@ -27,6 +27,9 @@ class ListPost
     _hasReachedMax = false;
   }
 
+  @nonVirtual
+  bool get getParameterHasReachedMax => _hasReachedMax!;
+
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
     if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
@@ -39,9 +42,6 @@ class ListPost
     }
     return EnumListPostForPostsListWidget.success;
   }
-
-  @nonVirtual
-  bool get getParameterHasReachedMax => _hasReachedMax!;
 
   bool get getOneParametersNamedForPostsListWidget => _hasReachedMax!;
 

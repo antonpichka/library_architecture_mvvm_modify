@@ -16,14 +16,18 @@
 
 import 'package:library_architecture_mvvm_modify/base_model/double.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_double.dart';
 
 class CloneDoubleForSuccess
-    implements ICloneModelForSuccess<Double>
+    implements ICloneModelForSuccess<Double,ListDouble>
 {
   @override
-  Double? cloneModelForSuccess(
-      Double? model)
-  {
+  Double? cloneModelForSuccess(Double? model) {
     return Double.success(model!.getParameterField);
+  }
+
+  @override
+  ListDouble? cloneListModelForSuccess(ListDouble? listModel) {
+    return ListDouble.success(listModel?.getParameterList);
   }
 }

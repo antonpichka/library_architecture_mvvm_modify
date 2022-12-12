@@ -19,7 +19,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 class DoubleTypeParameter
     extends BaseTypeParameter<double>
 {
-  DoubleTypeParameter.success(double? parameter) : super.success(parameter);
+  DoubleTypeParameter.success(super.parameter) : super.success();
   DoubleTypeParameter.exception(super.exception) : super.exception();
   DoubleTypeParameter.successForFBDS() : super.successForFBDS();
   DoubleTypeParameter.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
