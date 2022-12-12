@@ -5,6 +5,6 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 abstract class EmailInputQNamedServiceViewModel<T extends EmailInput,Y extends ListEmailInput,DataSource extends Object>
     extends BaseModelQNamedServiceViewModel<T,Y,DataSource>
 {
-  EmailInputQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();
-  EmailInputQNamedServiceViewModel.noDataSource(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  EmailInputQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();
+  EmailInputQNamedServiceViewModel.noDataSource(super.list,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

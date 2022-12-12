@@ -1,8 +1,8 @@
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
 class Login {
-  final String email;
-  final String password;
+  String email;
+  String password;
 
   Login(this.email,this.password);
 

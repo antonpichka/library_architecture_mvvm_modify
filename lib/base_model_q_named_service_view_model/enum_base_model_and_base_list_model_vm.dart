@@ -15,15 +15,8 @@
  */
 
 enum EnumBaseModelAndBaseListModelVM {
-  insertModelToNamedServiceTIP,
-  updateModelToNamedServiceTIP,
-  deleteModelToNamedServiceTIP,
   getModelFromNamedServiceParameterNamed,
   getModelFromNamedServiceNP,
-
-  insertListModelToNamedServiceTIP,
-  updateListModelToNamedServiceTIP,
-  deleteListModelToNamedServiceTIP,
   getListModelFromNamedServiceParameterNamed,
   getListModelFromNamedServiceNP,
 }

@@ -5,5 +5,5 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_back
 abstract class UserQNamedServiceBackgroundModel<T extends User,Y extends ListUser,DataSource extends Object>
     extends BaseModelQNamedServiceBackgroundModel<T,Y,DataSource>
 {
-  UserQNamedServiceBackgroundModel.thereIsDataSource(super.dataSource,super.iCloneModelForSuccess) : super.thereIsDataSource();
+  UserQNamedServiceBackgroundModel.thereIsDataSource(super.dataSource) : super.thereIsDataSource();
 }

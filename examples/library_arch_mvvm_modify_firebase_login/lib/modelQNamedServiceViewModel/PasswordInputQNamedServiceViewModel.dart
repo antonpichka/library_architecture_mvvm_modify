@@ -5,6 +5,6 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 abstract class PasswordInputQNamedServiceViewModel<T extends PasswordInput,Y extends ListPasswordInput,DataSource extends Object>
     extends BaseModelQNamedServiceViewModel<T,Y,DataSource>
 {
-  PasswordInputQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();
-  PasswordInputQNamedServiceViewModel.noDataSource(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  PasswordInputQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();
+  PasswordInputQNamedServiceViewModel.noDataSource(super.list,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

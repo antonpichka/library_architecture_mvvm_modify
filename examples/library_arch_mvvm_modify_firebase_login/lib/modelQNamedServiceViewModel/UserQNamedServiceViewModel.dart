@@ -7,8 +7,8 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 abstract class UserQNamedServiceViewModel<T extends User,Y extends ListUser,DataSource extends Object>
     extends BaseModelQNamedServiceViewModel<T,Y,DataSource>
 {
-  UserQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();
-  UserQNamedServiceViewModel.noDataSource(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  UserQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();
+  UserQNamedServiceViewModel.noDataSource(super.list,super.iCloneStreamModelForSuccess) : super.noDataSource();
 
   DefaultStreamModel<T,Y>? getDefaultStreamUser(
       EnumBaseModelAndBaseListModelVM operation)

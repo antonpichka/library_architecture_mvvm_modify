@@ -22,5 +22,5 @@ abstract class DoubleQNoServiceViewModel<T extends Double,Y extends ListDouble>
     extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
   // Default class: CloneDoubleForSuccess(),CloneListDoubleForSuccess(),CloneStreamDoubleForSuccess()
-  DoubleQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  DoubleQNoServiceViewModel(super.list,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }

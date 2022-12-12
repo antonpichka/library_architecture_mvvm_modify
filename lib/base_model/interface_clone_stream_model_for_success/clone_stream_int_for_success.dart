@@ -15,19 +15,16 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-class CloneIntForSuccess
-    implements ICloneModelForSuccess<Int,ListInt>
+class CloneStreamIntForSuccess
+    implements ICloneStreamModelForSuccess<Int,ListInt>
 {
   @override
-  Int? cloneModelForSuccess(Int? model) {
-    return Int.success(model!.getParameterField);
-  }
-
-  @override
-  ListInt? cloneListModelForSuccess(ListInt? listModel) {
-    return ListInt.success(listModel!.getParameterList);
+  IStreamModel<Int, ListInt>? cloneStreamModelForSuccess() {
+    return DefaultStreamModel<Int,ListInt>(Int.success(0), ListInt.success([]));
   }
 }

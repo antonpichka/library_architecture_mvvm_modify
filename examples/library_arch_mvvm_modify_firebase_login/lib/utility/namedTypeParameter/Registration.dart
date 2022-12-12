@@ -1,6 +1,6 @@
 class Registration {
-  final String email;
-  final String password;
+  String email;
+  String password;
 
   Registration(this.email,this.password);
 }

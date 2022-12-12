@@ -15,19 +15,16 @@
  */
 
 import 'package:library_architecture_mvvm_modify/base_model/enums.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_enums.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-class CloneEnumsForSuccess
-    implements ICloneModelForSuccess<Enums,ListEnums>
+class CloneStreamEnumsForSuccess
+    implements ICloneStreamModelForSuccess<Enums,ListEnums>
 {
   @override
-  Enums? cloneModelForSuccess(Enums? model) {
-    return Enums.success(model!.getParameterField);
-  }
-
-  @override
-  ListEnums? cloneListModelForSuccess(ListEnums? listModel) {
-    return ListEnums.success(listModel?.getParameterList);
+  IStreamModel<Enums,ListEnums>? cloneStreamModelForSuccess() {
+    return DefaultStreamModel<Enums,ListEnums>(Enums.success(EnumsDefault.zero), ListEnums.success([]));
   }
 }

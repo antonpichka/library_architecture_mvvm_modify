@@ -16,20 +16,13 @@
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_model_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_model_for_success/i_clone_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_background_model/base_model_q_named_service_background_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_list_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/delete_model_to_named_service_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_model_from_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_list_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_list_model_to_named_service_tip_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_tip_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
@@ -51,15 +44,15 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   /* Init Clone */
   final ICloneStreamModelForSuccess<T,Y> _iCloneStreamModelForSuccess;
 
-  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,ICloneModelForSuccess<T,Y> iCloneModelForSuccess, this._iCloneStreamModelForSuccess)
-      : _isExistsDataSource = true, super.thereIsDataSource(dataSource,iCloneModelForSuccess)
+  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,this._iCloneStreamModelForSuccess)
+      : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
   }
 
-  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,ICloneModelForSuccess<T,Y> iCloneModelForSuccess, this._iCloneStreamModelForSuccess)
-      : _isExistsDataSource = false, super.thereIsDataSource(null,iCloneModelForSuccess)
+  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,this._iCloneStreamModelForSuccess)
+      : _isExistsDataSource = false, super.thereIsDataSource(null)
   {
     _initNoDataSourceListEnumBaseModelAndBaseListModelVM(list);
     _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
@@ -137,19 +130,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
 
   @protected
   @nonVirtual
-  void setCloneModel(
-      EnumBaseModelAndBaseListModelVM operation,
-      T? model)
-  {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        ?.setModel = iCloneModelForSuccess.cloneModelForSuccess(model);
-  }
-
-  @protected
-  @nonVirtual
   void notifyStreamModel(
       EnumBaseModelAndBaseListModelVM operation)
   {
@@ -218,19 +198,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
         ?.setListModel = listModel;
-  }
-
-  @protected
-  @nonVirtual
-  void setCloneListModel(
-      EnumBaseModelAndBaseListModelVM operation,
-      Y? listModel)
-  {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
-    }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
-        ?.setListModel = iCloneModelForSuccess.cloneListModelForSuccess(listModel);
   }
 
   @protected
@@ -452,52 +419,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end getParameterNamed 4
 
-  // start insertTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> insertModelToNamedServiceTIP<Z extends BaseTypeParameter>(
-      T? model)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceTIP<Z>(model);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      T? model,
-      C? typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        model,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> insertModelToNamedServiceTIPUsingStateModel<Z extends BaseTypeParameter>()
-  {
-    return insertModelToNamedServiceTIP<Z>(getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> insertModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS)
-  {
-    return insertModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        getModel(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end insertTIP 4
-
   // start insertNP 2
   @override
   @protected
@@ -551,52 +472,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameterForFBDS);
   }
   // end insertParameterNamed 2
-
-  // start insertListTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> insertListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
-      Y? listModel)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceTIP<Z>(listModel);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      Y? listModel,
-      C? typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        listModel,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> insertListModelToNamedServiceTIPUsingStateListModel<Z extends BaseTypeParameter>()
-  {
-    return insertListModelToNamedServiceTIP<Z>(getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> insertListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS)
-  {
-    return insertListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        getListModel(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end insertListTIP 4
 
   // start insertListNP 2
   @override
@@ -652,52 +527,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end insertListParameterNamed 2
 
-  // start updateTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> updateModelToNamedServiceTIP<Z extends BaseTypeParameter>(
-      T? model)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceTIP<Z>(model);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      T? model,
-      C? typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        model,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> updateModelToNamedServiceTIPUsingStateModel<Z extends BaseTypeParameter>()
-  {
-    return updateModelToNamedServiceTIP<Z>(getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> updateModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS)
-  {
-    return updateModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        getModel(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end updateTIP 4
-
   // start updateNP 2
   @override
   @protected
@@ -751,52 +580,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameterForFBDS);
   }
   // end updateParameterNamed 2
-
-  // start updateListTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> updateListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
-      Y? listModel)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceTIP<Z>(listModel);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      Y? listModel,
-      C? typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        listModel,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> updateListModelToNamedServiceTIPUsingStateListModel<Z extends BaseTypeParameter>()
-  {
-    return updateListModelToNamedServiceTIP<Z>(getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> updateListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS)
-  {
-    return updateListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        getListModel(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end updateListTIP 4
 
   // start updateListNP 2
   @override
@@ -852,52 +635,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   }
   // end updateListParameterNamed 2
 
-  // start deleteTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> deleteModelToNamedServiceTIP<Z extends BaseTypeParameter>(
-      T? model)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceTIP<Z>(model);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      T? model,
-      C? typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        model,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> deleteModelToNamedServiceTIPUsingStateModel<Z extends BaseTypeParameter>()
-  {
-    return deleteModelToNamedServiceTIP<Z>(getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> deleteModelToNamedServiceTIPUsingStateModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS)
-  {
-    return deleteModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        getModel(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end deleteTIP 4
-
   // start deleteNP 2
   @override
   @protected
@@ -951,52 +688,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
         typeParameterForFBDS);
   }
   // end deleteParameterNamed 2
-
-  // start deleteListTIP 4
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> deleteListModelToNamedServiceTIP<Z extends BaseTypeParameter>(
-      Y? listModel)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceTIP<Z>(listModel);
-  }
-
-  @override
-  @protected
-  @nonVirtual
-  Future<Z?> deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      Y? listModel,
-      C? typeParameterForFBDS)
-  {
-    if(_isNotExistsDataSource) {
-      return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    return super.deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        listModel,
-        typeParameterForFBDS);
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> deleteListModelToNamedServiceTIPUsingStateListModel<Z extends BaseTypeParameter>()
-  {
-    return deleteListModelToNamedServiceTIP<Z>(getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP));
-  }
-
-  @protected
-  @nonVirtual
-  Future<Z?> deleteListModelToNamedServiceTIPUsingStateListModelAndTypeParameterForFBDS<Z extends BaseTypeParameter,C extends BaseTypeParameter>(
-      C? typeParameterForFBDS)
-  {
-    return deleteListModelToNamedServiceTIPUsingTypeParameterForFBDS<Z,C>(
-        getListModel(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP),
-        typeParameterForFBDS);
-  }
-  // end deleteListTIP 4
 
   // start deleteListNP 2
   @override
@@ -1060,24 +751,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM() {
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
-    }
-    if(modelQNamedServiceDataSource is InsertModelToNamedServiceTIPDataSource<BaseTypeParameter,T>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.insertModelToNamedServiceTIP);
-    }
-    if(modelQNamedServiceDataSource is UpdateModelToNamedServiceTIPDataSource<BaseTypeParameter,T>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.updateModelToNamedServiceTIP);
-    }
-    if(modelQNamedServiceDataSource is DeleteModelToNamedServiceTIPDataSource<BaseTypeParameter,T>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.deleteModelToNamedServiceTIP);
-    }
-    if(modelQNamedServiceDataSource is InsertListModelToNamedServiceTIPDataSource<BaseTypeParameter,Y>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.insertListModelToNamedServiceTIP);
-    }
-    if(modelQNamedServiceDataSource is UpdateListModelToNamedServiceTIPDataSource<BaseTypeParameter,Y>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.updateListModelToNamedServiceTIP);
-    }
-    if(modelQNamedServiceDataSource is DeleteListModelToNamedServiceTIPDataSource<BaseTypeParameter,Y>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.deleteListModelToNamedServiceTIP);
     }
     if(modelQNamedServiceDataSource is GetModelFromNamedServiceNPDataSource<T>) {
       _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);

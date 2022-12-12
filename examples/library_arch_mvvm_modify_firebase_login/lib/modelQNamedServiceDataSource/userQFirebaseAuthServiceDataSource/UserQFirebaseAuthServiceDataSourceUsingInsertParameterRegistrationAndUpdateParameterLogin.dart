@@ -27,7 +27,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
       await _firebaseAuthService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
-          ?.createUserWithEmailAndPassword(email: registration!.parameter!.email ?? "", password: registration.parameter!.password ?? "");
+          ?.createUserWithEmailAndPassword(email: registration!.parameter!.email, password: registration.parameter!.password);
       return BoolTypeParameter.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
       return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
@@ -44,7 +44,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
       await _firebaseAuthService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
-          ?.signInWithEmailAndPassword(email: login!.parameter!.email ?? "", password: login.parameter!.password ?? "");
+          ?.signInWithEmailAndPassword(email: login!.parameter!.email, password: login.parameter!.password);
       return BoolTypeParameter.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
       return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));

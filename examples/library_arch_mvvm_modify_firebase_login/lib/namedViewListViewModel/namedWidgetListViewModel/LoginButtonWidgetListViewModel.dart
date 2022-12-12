@@ -6,8 +6,8 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/Pass
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingUpdateTIP.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingUpdateTIP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Login.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
@@ -17,8 +17,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/boo
 
 class LoginButtonWidgetListViewModel {
   final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser> _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
-  final EmailInputQNoServiceViewModelUsingUpdateTIP<EmailInput,ListEmailInput> _emailInputQNoServiceViewModelUsingUpdateTIP;
-  final PasswordInputQNoServiceViewModelUsingUpdateTIP<PasswordInput,ListPasswordInput> _passwordInputQNoServiceViewModelUsingUpdateTIP;
+  final EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput> _emailInputQNoServiceViewModelUsingUpdateTIP;
+  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput> _passwordInputQNoServiceViewModelUsingUpdateTIP;
   final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool> _boolQNoServiceViewModelUsingGetNPForLoading;
 
   LoginButtonWidgetListViewModel(
@@ -34,7 +34,7 @@ class LoginButtonWidgetListViewModel {
   Future<void> updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask(
       Function(String message) callbackForException)
   async {
-    if(!Formz.validate([_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingUpdateTIP!.getOneParametersNamedForLoginButtonWidget, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingUpdateTIP!.getOneParametersNamedForLoginButtonWidget])
+    if(!Formz.validate([_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingGetNP!.getOneParametersNamedForLoginButtonWidget, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingGetNP!.getOneParametersNamedForLoginButtonWidget])
         .isValidated)
     {
       return;
@@ -52,7 +52,7 @@ class LoginButtonWidgetListViewModel {
         .notifyStreamBoolUsingGetNPForLoading();
     // 1
     BoolTypeParameter? boolTypeParameter = await _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .updateUserToFirebaseAuthServiceParameterLogin(LoginTypeParameter.success(Login(_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingUpdateTIP!.getTwoParametersNamedForLoginButtonWidget, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingUpdateTIP!.getTwoParametersNamedForLoginButtonWidget)));
+        .updateUserToFirebaseAuthServiceParameterLogin(LoginTypeParameter.success(Login(_emailInputQNoServiceViewModelUsingUpdateTIP.getEmailInputUsingGetNP!.getTwoParametersNamedForLoginButtonWidget, _passwordInputQNoServiceViewModelUsingUpdateTIP.getPasswordInputUsingGetNP!.getTwoParametersNamedForLoginButtonWidget)));
     _boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         ?.setParameterIsField = false;

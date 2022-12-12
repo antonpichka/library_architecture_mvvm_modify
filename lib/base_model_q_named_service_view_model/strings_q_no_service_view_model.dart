@@ -22,5 +22,5 @@ abstract class StringsQNoServiceViewModel<T extends Strings,Y extends ListString
     extends BaseModelQNamedServiceViewModel<T,Y,Object>
 {
   // Default class: CloneStringsForSuccess(),CloneListStringsForSuccess(),CloneStreamStringsForSuccess()
-  StringsQNoServiceViewModel(super.list,super.iCloneModelForSuccess,super.iCloneStreamModelForSuccess) : super.noDataSource();
+  StringsQNoServiceViewModel(super.list,super.iCloneStreamModelForSuccess) : super.noDataSource();
 }
