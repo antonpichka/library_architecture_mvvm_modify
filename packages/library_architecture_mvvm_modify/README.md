@@ -62,6 +62,40 @@ The ModelQNamedServiceDataSource and ModelQNamedServiceViewModel, are related, b
 
 RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation, you create new files so as not to affect working (old) code and therefore not create new problems (This also applies to the NamedViewListViewModel and NamedView component, BUT in these components you can replace lines 2 and 1 if you needed a different NamedWidgetListViewModel and NamedWidget)
 
+## Examples
+
+Examples taken for processing from library <a href="https://github.com/felangel/bloc#examples">BLoC</a>.
+
+<div style="text-align: center">
+    <table>
+        <tr>
+            <td style="text-align: center">
+                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/counter.gif" width="200"/>
+            </td>            
+            <td style="text-align: center">
+                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/infinite_list.gif" width="200"/>
+            </td>
+            <td style="text-align: center">
+                Coming Soon
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+               Coming Soon
+            </td>
+            <td style="text-align: center">
+               Coming Soon
+            </td>
+            <td style="text-align: center">
+               Coming Soon
+            </td>
+        </tr>
+    </table>
+</div>
+
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
+
 ## Documentation
 
 ### Architecture Components
