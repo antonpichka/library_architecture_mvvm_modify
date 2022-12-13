@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/assets/logo_library_architecture_mvvm_modify.png" alt="Logo Library Architecture MVVM Modify"/>
+<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/logo_library_architecture_mvvm_modify.png" alt="Logo Library Architecture MVVM Modify"/>
 </p>
 
 --- 
@@ -9,7 +9,7 @@ Pub: Coming Soon
 ## Overview
 
 <p align="center"> 
-<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
+<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
 This modification of MVVM was created to simplify development, namely, a system was created that a developer can monitor and make a minimum of errors. Errors that occur from ModelQNamedServiceDataSource files are displayed in the console, and try catch can only be used in ModelQNamedServiceDataSource (because only libraries that access the network or database can produce unexpected errors, and in other components, even if there are similar libraries, for example audio player, without try-catch way, since try catch spam makes the developer think many times in the code and their spam will affect the readability of the code.Also, all code is written through reverse if and in the body of the if construct, return is written, and the developer can read up to a certain if which it needs, not the whole method.Also, nested ifs are not written, which will also make the code more readable)
@@ -72,10 +72,10 @@ Examples taken for processing from library <a href="https://github.com/felangel/
     <table>
         <tr>
             <td style="text-align: center">
-                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/assets/counter.gif" width="200"/>
+                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/counter.gif" width="200"/>
             </td>            
             <td style="text-align: center">
-                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/assets/infinite_list.gif" width="200"/>
+                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/infinite_list.gif" width="200"/>
             </td>
             <td style="text-align: center">
                 Coming Soon
@@ -95,8 +95,8 @@ Examples taken for processing from library <a href="https://github.com/felangel/
     </table>
 </div>
 
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/examples/library_arch_mvvm_modify_counter">Counter</a>
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
 
 ## Documentation
 
