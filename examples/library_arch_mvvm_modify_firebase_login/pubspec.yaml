@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   library_architecture_mvvm_modify:
-    path: ../../
+    path: ../../packages/library_architecture_mvvm_modify
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
@@ -29,7 +29,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - resources/icons/
-    - resources/sound/
-    - resources/langs/

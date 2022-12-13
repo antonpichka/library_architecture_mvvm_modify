@@ -25,9 +25,11 @@
 .dart_tool/
 .packages
 .pub-cache/
-.flutter-plugins
-.flutter-plugins-dependencies
+packages/library_architecture_mvvm_modify/.flutter-plugins
+packages/library_architecture_mvvm_modify/.flutter-plugins-dependencies
+packages/library_architecture_mvvm_modify/pubspec.lock
 .pub/
+.metadata
 build/
 
 # Android related

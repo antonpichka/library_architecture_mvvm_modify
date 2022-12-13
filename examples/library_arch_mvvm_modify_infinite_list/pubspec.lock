@@ -197,7 +197,7 @@ packages:
   library_architecture_mvvm_modify:
     dependency: "direct main"
     description:
-      path: "../.."
+      path: "../../packages/library_architecture_mvvm_modify"
       relative: true
     source: path
     version: "0.0.1"
