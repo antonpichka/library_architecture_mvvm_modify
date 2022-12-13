@@ -7,7 +7,7 @@ class PasswordInputWidget
 {
   final PasswordInputWidgetListViewModel _lo;
 
-  PasswordInputWidget(this._lo);
+  const PasswordInputWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

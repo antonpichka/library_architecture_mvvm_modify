@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int
 class PostsListExtWidgetListViewModel
     extends PostsListWidgetListViewModel
 {
-  PostsListExtWidgetListViewModel(super._postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, super._boolQNoServiceViewModelUsingGetNPForAntiSpam) : super();
+  PostsListExtWidgetListViewModel(super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, super.boolQNoServiceViewModelUsingGetNPForAntiSpam) : super();
 
   Future<void> getListPostFromHttpClientServiceParameterIntAndSetListPostAndInGeneralOneTask()
   async {

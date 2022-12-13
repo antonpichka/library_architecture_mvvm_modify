@@ -4,5 +4,5 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 class ListEmailInput<T extends EmailInput>
     extends BaseListModel<T>
 {
-  ListEmailInput.success(super._list) : super.success();
+  ListEmailInput.success(super.list) : super.success();
 }

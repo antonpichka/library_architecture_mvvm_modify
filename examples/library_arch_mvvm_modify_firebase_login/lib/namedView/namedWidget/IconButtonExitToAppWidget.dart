@@ -6,13 +6,13 @@ class IconButtonExitToAppWidget
 {
   final IconButtonExitToAppWidgetListViewModel _lo;
 
-  IconButtonExitToAppWidget(this._lo);
+  const IconButtonExitToAppWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      key: Key('homePage_logout_iconButton'),
-      icon: Icon(Icons.exit_to_app),
+      key: const Key('homePage_logout_iconButton'),
+      icon: const Icon(Icons.exit_to_app),
       onPressed: () => _lo
           .deleteUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask(),
     );

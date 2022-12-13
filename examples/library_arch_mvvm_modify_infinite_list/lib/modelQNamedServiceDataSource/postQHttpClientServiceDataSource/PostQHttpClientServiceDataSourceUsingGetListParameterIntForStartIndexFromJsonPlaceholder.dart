@@ -31,7 +31,7 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
           .getHttpClientSingleton
           ?.getHttpClient
           ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, Post.constPostsUrl, <String, String>{'_start': '${int?.parameter}', '_limit': '20'}))
-          .timeout(Duration(seconds: 5));
+          .timeout(const Duration(seconds: 5));
       if(response?.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,response!.statusCode);
       }

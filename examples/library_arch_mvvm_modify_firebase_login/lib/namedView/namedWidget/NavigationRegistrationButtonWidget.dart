@@ -7,7 +7,7 @@ class NavigationRegistrationButtonWidget
 {
   final NavigationRegistrationButtonWidgetListViewModel _lo;
 
-  NavigationRegistrationButtonWidget(this._lo);
+  const NavigationRegistrationButtonWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

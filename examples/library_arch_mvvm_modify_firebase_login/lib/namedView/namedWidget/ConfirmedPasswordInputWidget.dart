@@ -7,7 +7,7 @@ class ConfirmedPasswordInputWidget
 {
   final ConfirmedPasswordInputWidgetListViewModel _lo;
 
-  ConfirmedPasswordInputWidget(this._lo);
+  const ConfirmedPasswordInputWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

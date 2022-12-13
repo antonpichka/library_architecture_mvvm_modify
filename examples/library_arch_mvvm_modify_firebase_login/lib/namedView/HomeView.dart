@@ -10,7 +10,7 @@ class HomeView
 {
   final User? user;
 
-  HomeView(this.user);
+  const HomeView(this.user);
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -36,20 +36,20 @@ class _HomeViewState
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home mvvm modify'),
+        title: const Text('Home mvvm modify'),
         actions: <Widget>[
           IconButtonExitToAppWidget(lo.iconButtonExitToAppWidgetListViewModel),
         ],
       ),
       body: Align(
-        alignment: Alignment(0, -1 / 3),
+        alignment: const Alignment(0, -1 / 3),
         child: Column(
           mainAxisSize: MainAxisSize.min  ,
           children: <Widget>[
             CircleAvatarWidget(widget.user),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(widget.user!.getOneParametersNamedForHomeView, style: textTheme.headline6),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(widget.user!.getTwoParametersNamedForHomeView, style: textTheme.headline5),
           ],
         ),

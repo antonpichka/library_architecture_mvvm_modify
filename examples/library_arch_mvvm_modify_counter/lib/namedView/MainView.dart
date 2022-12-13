@@ -31,13 +31,13 @@ class _MainViewState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("LibraryArchMVVMModifyCounter"),
+        title: const Text("LibraryArchMVVMModifyCounter"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('You have pushed the button this many times:',),
+            const Text('You have pushed the button this many times:',),
             IntTextWidget(lo.intTextWidgetListViewModel),
           ],
         ),
@@ -47,7 +47,7 @@ class _MainViewState
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           IncrementFABWidget(lo.incrementFABWidgetListViewModel),
-          SizedBox(height: 8,),
+          const SizedBox(height: 8,),
           DecrementFABWidget(lo.decrementFABWidgetListViewModel),
         ],
       ),

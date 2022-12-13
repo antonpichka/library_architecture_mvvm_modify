@@ -13,7 +13,7 @@ class IntTextWidgetListViewModel {
 
   Future<void> notifyStreamIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask()
   async {
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 100));
     _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
         .notifyStreamIntUsingGetNPForIncrementAndDecrement();
   }

@@ -10,7 +10,7 @@ class PasswordInputExt
 
   PasswordInputExt.success(super.password,this._confirmedPassword) : super.success();
 
-  static PasswordInputExt get getPasswordInputExtForSuccess => PasswordInputExt.success(Password.pure(),ConfirmedPassword.pure());
+  static PasswordInputExt get getPasswordInputExtForSuccess => PasswordInputExt.success(const Password.pure(),const ConfirmedPassword.pure());
 
   @protected
   @nonVirtual

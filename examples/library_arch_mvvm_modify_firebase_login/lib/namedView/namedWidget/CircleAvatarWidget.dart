@@ -6,7 +6,7 @@ class CircleAvatarWidget<T extends User>
 {
   final T? _user;
 
-  CircleAvatarWidget(this._user);
+  const CircleAvatarWidget(this._user);
 
   @override
   Widget build(BuildContext context) {

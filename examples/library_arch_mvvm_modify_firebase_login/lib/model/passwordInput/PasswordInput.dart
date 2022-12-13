@@ -9,7 +9,7 @@ class PasswordInput
 
   PasswordInput.success(this._password) : super.success(_password?.value);
 
-  static PasswordInput get getPasswordInputForSuccess => PasswordInput.success(Password.pure());
+  static PasswordInput get getPasswordInputForSuccess => PasswordInput.success(const Password.pure());
 
   @protected
   @nonVirtual

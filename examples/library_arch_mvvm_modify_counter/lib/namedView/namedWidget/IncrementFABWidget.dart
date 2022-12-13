@@ -6,12 +6,12 @@ class IncrementFABWidget
 {
   final IncrementFABWidgetListViewModel _lo;
 
-  IncrementFABWidget(this._lo);
+  const IncrementFABWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () => _lo
             .setOneParametersNamedByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask());
   }

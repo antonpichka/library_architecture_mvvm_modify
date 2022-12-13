@@ -38,7 +38,7 @@ class _MainViewState
         builder: (BuildContext buildContext, AsyncSnapshot<User> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
-            return Scaffold(body: Center(child: CircularProgressIndicator()));
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
           }
           User? user = asyncSnapshot.data;
           switch(user?.getEnumUserForMainView) {

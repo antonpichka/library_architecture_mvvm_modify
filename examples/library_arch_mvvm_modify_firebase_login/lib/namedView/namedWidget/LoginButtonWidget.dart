@@ -8,7 +8,7 @@ class LoginButtonWidget
 {
   final LoginButtonWidgetListViewModel _lo;
 
-  LoginButtonWidget(this._lo);
+  const LoginButtonWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +19,19 @@ class LoginButtonWidget
         {
           Bool? bool = asyncSnapshot.data;
           return bool!.getParameterIsField
-              ? CircularProgressIndicator()
+              ? const CircularProgressIndicator()
               : ElevatedButton(
-                  key: Key('loginForm_continue_raisedButton'),
+                  key: const Key('loginForm_continue_raisedButton'),
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    backgroundColor: Color(0xFFFFD600),
+                    backgroundColor: const Color(0xFFFFD600),
                   ),
                   onPressed: bool.getParameterIsField
                       ? null
                       : () => _lo.updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
-                  child: Text('LOGIN'),
+                  child: const Text('LOGIN'),
                 );
         });
   }

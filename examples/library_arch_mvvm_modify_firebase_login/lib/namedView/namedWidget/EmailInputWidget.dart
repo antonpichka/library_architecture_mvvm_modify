@@ -7,7 +7,7 @@ class EmailInputWidget
 {
   final EmailInputWidgetListViewModel _lo;
 
-  EmailInputWidget(this._lo);
+  const EmailInputWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

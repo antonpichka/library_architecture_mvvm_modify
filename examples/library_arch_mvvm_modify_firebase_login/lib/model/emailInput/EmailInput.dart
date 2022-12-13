@@ -9,7 +9,7 @@ class EmailInput
 
   EmailInput.success(this._email) : super.success(_email?.value);
 
-  static EmailInput get getEmailInputForSuccess => EmailInput.success(Email.pure());
+  static EmailInput get getEmailInputForSuccess => EmailInput.success(const Email.pure());
 
   @protected
   @nonVirtual

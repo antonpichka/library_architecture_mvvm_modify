@@ -26,7 +26,7 @@ class PostsListWidgetListViewModel {
 
   Future<void> getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask()
   async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     if(_boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         !.getParameterIsField)

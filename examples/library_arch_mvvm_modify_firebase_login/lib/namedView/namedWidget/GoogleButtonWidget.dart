@@ -8,7 +8,7 @@ class GoogleButtonWidget
 {
   final GoogleButtonWidgetListViewModel _lo;
 
-  GoogleButtonWidget(this._lo);
+  const GoogleButtonWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

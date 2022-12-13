@@ -31,20 +31,20 @@ class _RegistrationViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Registration mvvm modify')),
+      appBar: AppBar(title: const Text('Registration mvvm modify')),
       body: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Align(
-          alignment: Alignment(0, -1 / 3),
+          alignment: const Alignment(0, -1 / 3),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               EmailInputWidget(lo.emailInputWidgetListViewModel),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               PasswordInputWidget(lo.passwordInputWidgetListViewModel),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               ConfirmedPasswordInputWidget(lo.confirmedPasswordInputWidgetListViewModel),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               SignUpButtonWidget(lo.signUpButtonWidgetListViewModel),
             ],
           ),

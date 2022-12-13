@@ -22,9 +22,7 @@ class IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement<T extends Int,Y e
     return getModel(EnumForIStreamModelVM.getNP);
   }
 
-  void setIntUsingGetNPForIncrementAndDecrement(
-      T? int)
-  {
+  void setIntUsingGetNPForIncrementAndDecrement(T? int) {
     setModel(EnumForIStreamModelVM.getNP,int);
   }
 

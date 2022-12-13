@@ -8,7 +8,7 @@ class PostsListWidget
 {
   final PostsListWidgetListViewModel lo;
 
-  PostsListWidget(this.lo);
+  const PostsListWidget(this.lo);
 
   @override
   State<PostsListWidget> createState() => _PostsListWidget();
@@ -42,7 +42,7 @@ class _PostsListWidget
         builder: (BuildContext buildContext, AsyncSnapshot<ListPost<Post>> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           ListPost<Post>? listPost = asyncSnapshot.data;
           switch(listPost?.getEnumListPostForPostsListWidget) {
@@ -50,7 +50,7 @@ class _PostsListWidget
               return ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
                     if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
-                      return Center(
+                      return const Center(
                         child: SizedBox(
                           height: 24,
                           width: 24,
@@ -61,7 +61,7 @@ class _PostsListWidget
                     Post? itemPost = listPost.getParameterList![index];
                     return Material(
                       child: ListTile(
-                        leading: Text('${itemPost.getOneParametersNamedForPostsListWidget}', style: textTheme.caption),
+                        leading: Text(itemPost.getOneParametersNamedForPostsListWidget, style: textTheme.caption),
                         title: Text(itemPost.getTwoParametersNamedForPostsListWidget),
                         isThreeLine: true,
                         subtitle: Text(itemPost.getThreeParametersNamedForPostsListWidget),
@@ -72,11 +72,11 @@ class _PostsListWidget
                   itemCount: listPost?.getTwoParametersNamedForPostsListWidget,
                   controller: _scrollController);
             case EnumListPostForPostsListWidget.isEmptyList:
-              return Center(child: Text('no posts'));
+              return const Center(child: Text('no posts'));
             case EnumListPostForPostsListWidget.noInternetItLocalException:
-              return Center(child: Text('no Internet. Connect to the Internet'));
+              return const Center(child: Text('no Internet. Connect to the Internet'));
             case EnumListPostForPostsListWidget.serverNotWorkItNetworkException:
-              return Center(child: Text('failed to fetch posts'));
+              return const Center(child: Text('failed to fetch posts'));
             default:
               return Container();
           }
@@ -84,8 +84,9 @@ class _PostsListWidget
   }
 
   void _onScroll() {
-    if (_isBottom)
+    if (_isBottom) {
       widget.lo.getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
+    }
   }
 
   bool get _isBottom {

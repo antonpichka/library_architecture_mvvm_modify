@@ -7,7 +7,7 @@ class PostsListExtWidget
 {
   final PostsListExtWidgetListViewModel _lo;
 
-  PostsListExtWidget(this._lo);
+  const PostsListExtWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

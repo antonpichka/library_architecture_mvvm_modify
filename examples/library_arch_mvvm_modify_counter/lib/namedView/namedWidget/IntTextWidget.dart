@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IntTextWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 
 class IntTextWidget
     extends StatelessWidget
 {
   final IntTextWidgetListViewModel _lo;
 
-  IntTextWidget(this._lo);
+  const IntTextWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

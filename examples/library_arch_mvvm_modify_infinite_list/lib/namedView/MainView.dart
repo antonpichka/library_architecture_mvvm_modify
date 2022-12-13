@@ -29,7 +29,7 @@ class _MainViewState
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("LibraryArchMVVMModifyInfiniteList"),
+          title: const Text("LibraryArchMVVMModifyInfiniteList"),
         ),
         body: PostsListExtWidget(lo.postsListExtWidgetListViewModel));
   }

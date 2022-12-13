@@ -8,7 +8,7 @@ class SignUpButtonWidget
 {
   final SignUpButtonWidgetListViewModel _lo;
 
-  SignUpButtonWidget(this._lo);
+  const SignUpButtonWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class SignUpButtonWidget
         {
           Bool? bool = asyncSnapshot.data;
           return bool!.getParameterIsField
-              ? CircularProgressIndicator()
+              ? const CircularProgressIndicator()
               : ElevatedButton(
-                  key: Key('loginForm_continue_raisedButton'),
+                  key: const Key('loginForm_continue_raisedButton'),
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -33,7 +33,7 @@ class SignUpButtonWidget
                       : () => _lo.insertUserToFirebaseAuthServiceParameterRegistrationAndInGeneralOneTask(
                           (String message) => defaultScaffoldMessenger(context, message),
                           () => Navigator.of(context).pop()),
-                  child: Text('SIGN UP'),
+                  child: const Text('SIGN UP'),
                 );
         });
   }

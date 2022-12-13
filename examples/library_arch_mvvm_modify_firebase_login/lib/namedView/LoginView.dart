@@ -32,24 +32,24 @@ class _LoginViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login mvvm modify')),
+      appBar: AppBar(title: const Text('Login mvvm modify')),
       body: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Align(
-          alignment: Alignment(0, -1 / 3),
+          alignment: const Alignment(0, -1 / 3),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 EmailInputWidget(lo.emailInputWidgetListViewModel),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 PasswordInputWidget(lo.passwordInputWidgetListViewModel),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 LoginButtonWidget(lo.loginButtonWidgetListViewModel),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 GoogleButtonWidget(lo.googleButtonWidgetListViewModel),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 NavigationRegistrationButtonWidget(lo.navigationRegistrationButtonWidgetListViewModel),
               ],
             ),

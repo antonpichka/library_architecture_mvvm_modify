@@ -6,12 +6,12 @@ class DecrementFABWidget
 {
   final DecrementFABWidgetListViewModel _lo;
 
-  DecrementFABWidget(this._lo);
+  const DecrementFABWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-        child: Icon(Icons.remove),
+        child: const Icon(Icons.remove),
         onPressed: () => _lo
             .setTwoParametersNamedByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask());
   }
