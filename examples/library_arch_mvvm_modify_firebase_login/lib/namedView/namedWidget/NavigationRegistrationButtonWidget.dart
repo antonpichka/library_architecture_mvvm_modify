@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/RegistrationButtonWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/NavigationRegistrationButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
-class RegistrationButtonWidget
+class NavigationRegistrationButtonWidget
     extends StatelessWidget
 {
-  final RegistrationButtonWidgetListViewModel _lo;
+  final NavigationRegistrationButtonWidgetListViewModel _lo;
 
-  RegistrationButtonWidget(this._lo);
+  NavigationRegistrationButtonWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {

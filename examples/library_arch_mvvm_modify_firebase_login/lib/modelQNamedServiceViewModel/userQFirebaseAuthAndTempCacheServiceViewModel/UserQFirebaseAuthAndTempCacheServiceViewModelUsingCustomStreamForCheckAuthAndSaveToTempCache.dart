@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stre
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_np.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 
-class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser>
+class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser<T>>
     extends UserQNamedServiceViewModel<T,Y,UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T,Y>>
 {
   StreamSubscription<User>? _customStreamSubscriptionUser;

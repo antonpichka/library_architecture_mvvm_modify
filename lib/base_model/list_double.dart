@@ -17,11 +17,11 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/double.dart';
 
-class ListDouble
-    extends BaseListModel<Double>
+class ListDouble<T extends Double>
+    extends BaseListModel<T>
 {
-  ListDouble.success(super._list) : super.success();
-  ListDouble.exception(super._exception) : super.exception();
+  ListDouble.success(super.list) : super.success();
+  ListDouble.exception(super.exception) : super.exception();
   ListDouble.successForFBDS() : super.successForFBDS();
-  ListDouble.exceptionForFBDS(super._exception) : super.exceptionForFBDS();
+  ListDouble.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

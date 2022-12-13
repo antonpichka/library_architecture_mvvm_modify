@@ -13,9 +13,9 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
-  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser>(CloneStreamUserForSuccess(),UserForSuccessWhereParametersEqualsStringNullNP(),UserForFirebaseUserTIP());
+  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser<User>>(CloneStreamUserForSuccess(),UserForSuccessWhereParametersEqualsStringNullNP(),UserForFirebaseUserTIP());
   final _userQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP =
-  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<User,ListUser>(CloneStreamUserForSuccess(),UserForLocalExceptionTIP());
+  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<User,ListUser<User>>(CloneStreamUserForSuccess(),UserForLocalExceptionTIP());
 
   @override
   void dispose() {

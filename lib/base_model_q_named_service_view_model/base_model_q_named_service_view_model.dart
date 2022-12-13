@@ -18,7 +18,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_background_model/base_model_q_named_service_background_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_for_i_stream_model_vm.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
@@ -30,13 +30,13 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel,DataSource extends Object>
+abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
     extends BaseModelQNamedServiceBackgroundModel<T,Y,DataSource>
     implements IDispose
 {
   /* List and Map For IStreamModel */
-  final List<EnumBaseModelAndBaseListModelVM> _listEnumBaseModelAndBaseListModelVM = List.empty(growable: true);
-  final Map<EnumBaseModelAndBaseListModelVM,IStreamModel<T,Y>?> _mapEnumBaseModelAndBaseListModelVMAndIStreamModel = {};
+  final List<EnumForIStreamModelVM> _listEnumForIStreamModelVMVM = List.empty(growable: true);
+  final Map<EnumForIStreamModelVM,IStreamModel<T,Y>?> _mapEnumForIStreamModelVMVMAndIStreamModel = {};
 
   /* Init DataSource */
   final bool _isExistsDataSource;
@@ -48,20 +48,20 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
-    _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
+    _initMapEnumForIStreamModelVMAndIStreamModel();
   }
 
-  BaseModelQNamedServiceViewModel.noDataSource(List<EnumBaseModelAndBaseListModelVM> list,this._iCloneStreamModelForSuccess)
+  BaseModelQNamedServiceViewModel.noDataSource(List<EnumForIStreamModelVM> list,this._iCloneStreamModelForSuccess)
       : _isExistsDataSource = false, super.thereIsDataSource(null)
   {
-    _initNoDataSourceListEnumBaseModelAndBaseListModelVM(list);
-    _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel();
+    _initNoDataSourceListEnumForIStreamModelVM(list);
+    _initMapEnumForIStreamModelVMAndIStreamModel();
   }
 
   @override
   void dispose() {
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel.forEach((
-        EnumBaseModelAndBaseListModelVM enumBaseModelAndBaseListModelVM,
+    _mapEnumForIStreamModelVMVMAndIStreamModel.forEach((
+        EnumForIStreamModelVM enumBaseModelAndBaseListModelVM,
         IStreamModel<T,Y>? iStreamModel)
     {
       iStreamModel?.dispose();
@@ -72,12 +72,12 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @protected
   @nonVirtual
   IStreamModel<T,Y>? getIStreamModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation];
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation];
   }
   /// End IStreamModel **/
 
@@ -85,70 +85,70 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @protected
   @nonVirtual
   Future<T?> getFutureModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   async {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getModel;
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation]?.getModel;
   }
 
   @protected
   @nonVirtual
   Stream<T>? getStreamModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getStreamModel;
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation]?.getStreamModel;
   }
 
   @protected
   @nonVirtual
   T? getModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getModel;
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation]?.getModel;
   }
 
   @protected
   @nonVirtual
   void setModel(
-      EnumBaseModelAndBaseListModelVM operation,
+      EnumForIStreamModelVM operation,
       T? model)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
+    _mapEnumForIStreamModelVMVMAndIStreamModel[operation]
         ?.setModel = model;
   }
 
   @protected
   @nonVirtual
   void notifyStreamModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
+    _mapEnumForIStreamModelVMVMAndIStreamModel[operation]
         ?.notifyStreamModel(thisClass);
   }
 
   @protected
   @nonVirtual
   void notifyStreamDelayInSecondsModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
+    _mapEnumForIStreamModelVMVMAndIStreamModel[operation]
         ?.notifyStreamDelayInSecondsModel(thisClass);
   }
   /// End Model **/
@@ -157,70 +157,70 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @protected
   @nonVirtual
   Future<Y?> getFutureListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   async {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getListModel;
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation]?.getListModel;
   }
 
   @protected
   @nonVirtual
   Stream<Y>? getStreamListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getStreamListModel;
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation]?.getStreamListModel;
   }
 
   @protected
   @nonVirtual
   Y? getListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    return _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]?.getListModel;
+    return _mapEnumForIStreamModelVMVMAndIStreamModel[operation]?.getListModel;
   }
 
   @protected
   @nonVirtual
   void setListModel(
-      EnumBaseModelAndBaseListModelVM operation,
+      EnumForIStreamModelVM operation,
       Y? listModel)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
+    _mapEnumForIStreamModelVMVMAndIStreamModel[operation]
         ?.setListModel = listModel;
   }
 
   @protected
   @nonVirtual
   void notifyStreamListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
+    _mapEnumForIStreamModelVMVMAndIStreamModel[operation]
         ?.notifyStreamListModel(thisClass);
   }
 
   @protected
   @nonVirtual
   void notifyStreamDelayInSecondsListModel(
-      EnumBaseModelAndBaseListModelVM operation)
+      EnumForIStreamModelVM operation)
   {
-    if(!_mapEnumBaseModelAndBaseListModelVMAndIStreamModel.containsKey(operation)) {
+    if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
-    _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[operation]
+    _mapEnumForIStreamModelVMVMAndIStreamModel[operation]
         ?.notifyStreamDelayInSecondsListModel(thisClass);
   }
   /// End ListModel **/
@@ -256,8 +256,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Y?> getListModelFromNamedServiceNPAndSetListModel()
   async {
     Y? listModel = await getListModelFromNamedServiceNP();
-    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP,listModel);
-    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP);
+    setListModel(EnumForIStreamModelVM.getListNP,listModel);
+    return getListModel(EnumForIStreamModelVM.getListNP);
   }
 
   @protected
@@ -266,8 +266,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       C typeParameterForFBDS)
   async {
     Y? listModel = await getListModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(typeParameterForFBDS);
-    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP,listModel);
-    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP);
+    setListModel(EnumForIStreamModelVM.getListNP,listModel);
+    return getListModel(EnumForIStreamModelVM.getListNP);
   }
   // end getListNP 4
 
@@ -305,8 +305,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X typeParameter)
   async {
     Y? listModel  = await getListModelFromNamedServiceParameterNamed<X>(typeParameter);
-    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed,listModel);
-    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
+    setListModel(EnumForIStreamModelVM.getListParameterNamed,listModel);
+    return getListModel(EnumForIStreamModelVM.getListParameterNamed);
   }
 
   @protected
@@ -318,8 +318,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     Y? listModel = await getListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
         typeParameter,
         typeParameterForFBDS);
-    setListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed,listModel);
-    return getListModel(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
+    setListModel(EnumForIStreamModelVM.getListParameterNamed,listModel);
+    return getListModel(EnumForIStreamModelVM.getListParameterNamed);
   }
   // end getListParameterNamed 4
 
@@ -352,8 +352,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<T?> getModelFromNamedServiceNPAndSetModel()
   async {
     T? model = await getModelFromNamedServiceNP();
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+    setModel(EnumForIStreamModelVM.getNP,model);
+    return getModel(EnumForIStreamModelVM.getNP);
   }
 
   @protected
@@ -362,8 +362,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       C typeParameterForFBDS)
   async {
     T? model = await getModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(typeParameterForFBDS);
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+    setModel(EnumForIStreamModelVM.getNP,model);
+    return getModel(EnumForIStreamModelVM.getNP);
   }
   // end getNP 4
 
@@ -401,8 +401,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X typeParameter)
   async {
     T? model = await getModelFromNamedServiceParameterNamed<X>(typeParameter);
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
+    setModel(EnumForIStreamModelVM.getParameterNamed,model);
+    return getModel(EnumForIStreamModelVM.getParameterNamed);
   }
 
   @protected
@@ -414,8 +414,8 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     T? model = await getModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
         typeParameter,
         typeParameterForFBDS);
-    setModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed,model);
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
+    setModel(EnumForIStreamModelVM.getParameterNamed,model);
+    return getModel(EnumForIStreamModelVM.getParameterNamed);
   }
   // end getParameterNamed 4
 
@@ -753,31 +753,31 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
     if(modelQNamedServiceDataSource is GetModelFromNamedServiceNPDataSource<T>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+      _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getNP);
     }
     if(modelQNamedServiceDataSource is GetListModelFromNamedServiceNPDataSource<Y>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceNP);
+      _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getListNP);
     }
     if(modelQNamedServiceDataSource is GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceParameterNamed);
+      _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getParameterNamed);
     }
     if(modelQNamedServiceDataSource is GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter>) {
-      _listEnumBaseModelAndBaseListModelVM.add(EnumBaseModelAndBaseListModelVM.getListModelFromNamedServiceParameterNamed);
+      _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getListParameterNamed);
     }
   }
 
-  void _initNoDataSourceListEnumBaseModelAndBaseListModelVM(
-      List<EnumBaseModelAndBaseListModelVM> listEnumBaseModelAndBaseListModelVM)
+  void _initNoDataSourceListEnumForIStreamModelVM(
+      List<EnumForIStreamModelVM> listEnumForIStreamModelVMVM)
   {
     if(_isExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call noDataSource: $_isNotExistsDataSource");
     }
-    _listEnumBaseModelAndBaseListModelVM.addAll(listEnumBaseModelAndBaseListModelVM);
+    _listEnumForIStreamModelVMVM.addAll(listEnumForIStreamModelVMVM);
   }
 
-  void _initMapEnumBaseModelAndBaseListModelVMAndIStreamModel() {
-    for(EnumBaseModelAndBaseListModelVM enumBaseModelAndBaseListModelVM in _listEnumBaseModelAndBaseListModelVM) {
-      _mapEnumBaseModelAndBaseListModelVMAndIStreamModel[enumBaseModelAndBaseListModelVM] = _iCloneStreamModelForSuccess.cloneStreamModelForSuccess();
+  void _initMapEnumForIStreamModelVMAndIStreamModel() {
+    for(EnumForIStreamModelVM enumForIStreamModelVM in _listEnumForIStreamModelVMVM) {
+      _mapEnumForIStreamModelVMVMAndIStreamModel[enumForIStreamModelVM] = _iCloneStreamModelForSuccess.cloneStreamModelForSuccess();
     }
   }
 }

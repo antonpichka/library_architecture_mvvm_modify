@@ -10,8 +10,8 @@ enum EnumListPostForPostsListWidget {
   serverNotWorkItNetworkException,
 }
 
-class ListPost
-    extends BaseListModel<Post>
+class ListPost<T extends Post>
+    extends BaseListModel<T>
 {
   bool? _hasReachedMax;
 
@@ -27,6 +27,7 @@ class ListPost
     _hasReachedMax = false;
   }
 
+  @protected
   @nonVirtual
   bool get getParameterHasReachedMax => _hasReachedMax!;
 
@@ -52,11 +53,12 @@ class ListPost
     return getParameterList!.length + 1;
   }
 
+  @protected
   @nonVirtual
   set setParameterHasReachedMax(bool hasReachedMax) => _hasReachedMax = hasReachedMax;
 
   void setOneParametersNamedForPostsListWidget(
-      ListPost listPost)
+      ListPost<T> listPost)
   {
     setParameterExceptionController = listPost.getParameterExceptionController;
     _hasReachedMax = listPost.getParameterHasReachedMax;
@@ -67,7 +69,7 @@ class ListPost
   }
 
   void setTwoParametersNamedForPostsListWidget(
-      ListPost listPost)
+      ListPost<T> listPost)
   {
     setParameterExceptionController = listPost.getParameterExceptionController;
     _hasReachedMax = listPost.getParameterHasReachedMax;

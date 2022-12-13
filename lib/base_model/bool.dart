@@ -29,8 +29,7 @@ class Bool
 
   @nonVirtual
   bool get getParameterIsField => _isField;
-
-  String get getOneParametersNamed => _isField.toString();
+  String get getOneParametersNamedForNamedWidgetOrView => _isField.toString();
 
   @nonVirtual
   set setParameterIsField(bool isField) => _isField = isField;

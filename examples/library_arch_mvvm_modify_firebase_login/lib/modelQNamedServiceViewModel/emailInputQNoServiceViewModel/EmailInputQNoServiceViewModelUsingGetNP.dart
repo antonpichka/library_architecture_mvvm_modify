@@ -2,12 +2,12 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailIn
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/EmailInputQNamedServiceViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_base_model_and_base_list_model_vm.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_for_i_stream_model_vm.dart';
 
-class EmailInputQNoServiceViewModelUsingGetNP<T extends EmailInput,Y extends ListEmailInput>
+class EmailInputQNoServiceViewModelUsingGetNP<T extends EmailInput,Y extends ListEmailInput<T>>
     extends EmailInputQNamedServiceViewModel<T,Y,Object>
 {
-  EmailInputQNoServiceViewModelUsingGetNP(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super.noDataSource([EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP],iCloneStreamModelForSuccess);
+  EmailInputQNoServiceViewModelUsingGetNP(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super.noDataSource([EnumForIStreamModelVM.getNP],iCloneStreamModelForSuccess);
 
   @override
   Object thisClass() {
@@ -15,14 +15,14 @@ class EmailInputQNoServiceViewModelUsingGetNP<T extends EmailInput,Y extends Lis
   }
 
   Stream<T>? get getStreamEmailInputUsingGetNP {
-    return getStreamModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+    return getStreamModel(EnumForIStreamModelVM.getNP);
   }
 
   T? get getEmailInputUsingGetNP {
-    return getModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+    return getModel(EnumForIStreamModelVM.getNP);
   }
 
   void notifyStreamEmailInputUsingGetNP() {
-    notifyStreamModel(EnumBaseModelAndBaseListModelVM.getModelFromNamedServiceNP);
+    notifyStreamModel(EnumForIStreamModelVM.getNP);
   }
 }

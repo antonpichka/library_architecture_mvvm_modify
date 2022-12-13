@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/LoginButtonWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/SignUpButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 
-class LoginButtonWidget
+class SignUpButtonWidget
     extends StatelessWidget
 {
-  final LoginButtonWidgetListViewModel _lo;
+  final SignUpButtonWidgetListViewModel _lo;
 
-  LoginButtonWidget(this._lo);
+  SignUpButtonWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,14 @@ class LoginButtonWidget
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    backgroundColor: Color(0xFFFFD600),
+                    backgroundColor: Colors.orangeAccent,
                   ),
                   onPressed: bool.getParameterIsField
                       ? null
-                      : () => _lo.updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
-                  child: Text('LOGIN'),
+                      : () => _lo.insertUserToFirebaseAuthServiceParameterRegistrationAndInGeneralOneTask(
+                          (String message) => defaultScaffoldMessenger(context, message),
+                          () => Navigator.of(context).pop()),
+                  child: Text('SIGN UP'),
                 );
         });
   }

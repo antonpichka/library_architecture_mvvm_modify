@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-enum EnumBaseModelAndBaseListModelVM {
-  getModelFromNamedServiceParameterNamed,
-  getModelFromNamedServiceNP,
-  getListModelFromNamedServiceParameterNamed,
-  getListModelFromNamedServiceNP,
+enum EnumForIStreamModelVM {
+  getParameterNamed,
+  getNP,
+  getListParameterNamed,
+  getListNP,
 }

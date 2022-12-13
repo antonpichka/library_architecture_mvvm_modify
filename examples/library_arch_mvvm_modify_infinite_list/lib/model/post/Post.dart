@@ -17,13 +17,26 @@ class Post
   static const constParameterTitle = "title";
   static const constParameterBody = "body";
 
+  @protected
   @nonVirtual
   int get getParameterId => _id!;
+  @protected
   @nonVirtual
   String get getParameterTitle => _title!;
+  @protected
   @nonVirtual
   String get getParameterBody => _body!;
   String get getOneParametersNamedForPostsListWidget => getParameterUniqueId!;
   String get getTwoParametersNamedForPostsListWidget => _title!;
   String get getThreeParametersNamedForPostsListWidget => _body!;
+
+  @protected
+  @nonVirtual
+  set setParameterId(int id) => _id = id;
+  @protected
+  @nonVirtual
+  set setParameterTitle(String title) => _title = title;
+  @protected
+  @nonVirtual
+  set setParameterBody(String body) => _body = body;
 }

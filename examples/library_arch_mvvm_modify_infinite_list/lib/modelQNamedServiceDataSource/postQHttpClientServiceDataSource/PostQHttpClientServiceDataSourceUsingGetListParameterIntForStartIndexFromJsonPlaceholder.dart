@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 
-class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost>
+class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost<T>>
     implements GetListModelFromNamedServiceParameterNamedDataSource<Y,IntTypeParameter>
 {
   final _httpClientService = HttpClientService();

@@ -7,7 +7,7 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
-class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogle<T extends User,Y extends ListUser>
+class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogle<T extends User,Y extends ListUser<T>>
     implements UpdateModelToNamedServiceNPDataSource<BoolTypeParameter>
 {
   final _firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();

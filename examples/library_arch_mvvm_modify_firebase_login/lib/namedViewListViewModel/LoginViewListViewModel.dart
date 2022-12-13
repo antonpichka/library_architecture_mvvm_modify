@@ -16,7 +16,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/GoogleButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/LoginButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/RegistrationButtonWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/NavigationRegistrationButtonWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
@@ -26,42 +26,42 @@ class LoginViewListViewModel
     extends BaseNamedViewListViewModel
 {
   // ModelQNamedServiceViewModel
-  final _emailInputQNoServiceViewModelUsingUpdateTIP =
-  EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput>(CloneStreamEmailInputForSuccess());
-  final _passwordInputQNoServiceViewModelUsingUpdateTIP =
-  PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput>(CloneStreamPasswordInputForSuccess());
+  final _emailInputQNoServiceViewModelUsingGetNP =
+  EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>>(CloneStreamEmailInputForSuccess());
+  final _passwordInputQNoServiceViewModelUsingGetNP =
+  PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput<PasswordInput>>(CloneStreamPasswordInputForSuccess());
   final _boolQNoServiceViewModelUsingGetNPForLoading =
-  BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool>(CloneStreamBoolForSuccess());
+  BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
-  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser>(CloneStreamUserForSuccess());
+  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>>(CloneStreamUserForSuccess());
   final _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle =
-  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser>(CloneStreamUserForSuccess());
+  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser<User>>(CloneStreamUserForSuccess());
 
   // NamedWidgetListViewModel
   late final EmailInputWidgetListViewModel emailInputWidgetListViewModel;
   late final PasswordInputWidgetListViewModel passwordInputWidgetListViewModel;
   late final LoginButtonWidgetListViewModel loginButtonWidgetListViewModel;
   late final GoogleButtonWidgetListViewModel googleButtonWidgetListViewModel;
-  late final RegistrationButtonWidgetListViewModel registrationButtonWidgetListViewModel;
+  late final NavigationRegistrationButtonWidgetListViewModel navigationRegistrationButtonWidgetListViewModel;
 
   LoginViewListViewModel() {
-    emailInputWidgetListViewModel = EmailInputWidgetListViewModel(_emailInputQNoServiceViewModelUsingUpdateTIP);
-    passwordInputWidgetListViewModel = PasswordInputWidgetListViewModel(_passwordInputQNoServiceViewModelUsingUpdateTIP);
+    emailInputWidgetListViewModel = EmailInputWidgetListViewModel(_emailInputQNoServiceViewModelUsingGetNP);
+    passwordInputWidgetListViewModel = PasswordInputWidgetListViewModel(_passwordInputQNoServiceViewModelUsingGetNP);
     loginButtonWidgetListViewModel = LoginButtonWidgetListViewModel(
         _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
-        _emailInputQNoServiceViewModelUsingUpdateTIP,
-        _passwordInputQNoServiceViewModelUsingUpdateTIP,
+        _emailInputQNoServiceViewModelUsingGetNP,
+        _passwordInputQNoServiceViewModelUsingGetNP,
         _boolQNoServiceViewModelUsingGetNPForLoading);
     googleButtonWidgetListViewModel = GoogleButtonWidgetListViewModel(
         _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle,
         _boolQNoServiceViewModelUsingGetNPForLoading);
-    registrationButtonWidgetListViewModel = RegistrationButtonWidgetListViewModel(_boolQNoServiceViewModelUsingGetNPForLoading);
+    navigationRegistrationButtonWidgetListViewModel = NavigationRegistrationButtonWidgetListViewModel(_boolQNoServiceViewModelUsingGetNPForLoading);
   }
 
   @override
   void dispose() {
-    _emailInputQNoServiceViewModelUsingUpdateTIP.dispose();
-    _passwordInputQNoServiceViewModelUsingUpdateTIP.dispose();
+    _emailInputQNoServiceViewModelUsingGetNP.dispose();
+    _passwordInputQNoServiceViewModelUsingGetNP.dispose();
     _boolQNoServiceViewModelUsingGetNPForLoading.dispose();
     _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dispose();
     _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle.dispose();

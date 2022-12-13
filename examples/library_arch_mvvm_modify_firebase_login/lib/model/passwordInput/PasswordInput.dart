@@ -11,14 +11,16 @@ class PasswordInput
 
   static PasswordInput get getPasswordInputForSuccess => PasswordInput.success(Password.pure());
 
+  @protected
   @nonVirtual
   Password get getParameterPassword => _password!;
   String get getOneParametersNamedForPasswordInputWidget => _password!.value;
   Password get getOneParametersNamedForLoginButtonWidget => _password!;
   String get getTwoParametersNamedForLoginButtonWidget => _password!.value;
 
+  @protected
   @nonVirtual
-  set setParameterPassword(Password? password) => _password = password;
+  set setParameterPassword(Password password) => _password = password;
   set setOneParametersNamedForPasswordInputWidget(String str) => _password = Password.dirty(str);
 
   bool isOneParametersNamedForPasswordInputWidget() {

@@ -34,13 +34,11 @@ abstract class BaseModel {
 
   @nonVirtual
   String? get getParameterUniqueId => _uniqueId;
-
   @nonVirtual
   ExceptionController get getParameterExceptionController => _exceptionController;
 
   @nonVirtual
   set setParameterUniqueId(String? uniqueId) => _uniqueId = uniqueId;
-
   @nonVirtual
   set setParameterExceptionController(ExceptionController exceptionController) => _exceptionController = exceptionController;
 }

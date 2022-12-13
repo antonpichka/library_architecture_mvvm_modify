@@ -20,7 +20,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel>
+class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     implements IStreamModel<T,Y>
 {
   final StreamController<T>? _streamControllerForModel;

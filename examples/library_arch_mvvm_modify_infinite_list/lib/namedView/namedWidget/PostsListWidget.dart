@@ -6,22 +6,18 @@ import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/na
 class PostsListWidget
     extends StatefulWidget
 {
-  final PostsListWidgetListViewModel _lo;
+  final PostsListWidgetListViewModel lo;
 
-  PostsListWidget(this._lo);
+  PostsListWidget(this.lo);
 
   @override
-  State<PostsListWidget> createState() => _PostsListWidget(_lo);
+  State<PostsListWidget> createState() => _PostsListWidget();
 }
 
 class _PostsListWidget
     extends State<PostsListWidget>
     with WidgetsBindingObserver
 {
-  final PostsListWidgetListViewModel _lo;
-
-  _PostsListWidget(this._lo);
-
   final _scrollController =
   ScrollController();
 
@@ -41,14 +37,14 @@ class _PostsListWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<ListPost>(
-        stream: _lo.getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
-        builder: (BuildContext buildContext, AsyncSnapshot<ListPost> asyncSnapshot)
+    return StreamBuilder<ListPost<Post>>(
+        stream: widget.lo.getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
+        builder: (BuildContext buildContext, AsyncSnapshot<ListPost<Post>> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return Center(child: CircularProgressIndicator());
           }
-          ListPost? listPost = asyncSnapshot.data;
+          ListPost<Post>? listPost = asyncSnapshot.data;
           switch(listPost?.getEnumListPostForPostsListWidget) {
             case EnumListPostForPostsListWidget.success:
               return ListView.builder(
@@ -89,7 +85,7 @@ class _PostsListWidget
 
   void _onScroll() {
     if (_isBottom)
-      _lo.getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
+      widget.lo.getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
   }
 
   bool get _isBottom {

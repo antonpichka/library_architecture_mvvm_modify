@@ -19,7 +19,7 @@ class EmailInputWidget
           EmailInput? emailInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => _lo
-                .setOneParametersNamedForEmailInputWidgetByEmailInputUsingUpdateTIPAndInGeneralZeroTask(str),
+                .setOneParametersNamedForEmailInputWidgetByEmailInputUsingGetNPAndInGeneralZeroTask(str),
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: 'email',

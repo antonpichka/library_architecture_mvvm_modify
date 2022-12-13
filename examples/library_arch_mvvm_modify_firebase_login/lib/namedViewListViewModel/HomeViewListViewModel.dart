@@ -10,7 +10,7 @@ class HomeViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut =
-  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<User,ListUser>(CloneStreamUserForSuccess());
+  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<User,ListUser<User>>(CloneStreamUserForSuccess());
 
   // NamedWidgetListViewModel
   late final IconButtonExitToAppWidgetListViewModel iconButtonExitToAppWidgetListViewModel;

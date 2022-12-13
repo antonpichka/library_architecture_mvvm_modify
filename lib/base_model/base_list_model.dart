@@ -41,20 +41,14 @@ abstract class BaseListModel<T extends BaseModel> {
 
   @nonVirtual
   List<T>? get getParameterList => _list;
-
   @nonVirtual
   ExceptionController get getParameterExceptionController => _exceptionController;
-
-  @nonVirtual
   Enum? get getParameterEnumNamedForIterator => _enumNamedForIterator;
 
   @nonVirtual
   set setParameterList(List<T>? list) => _list = list;
-
   @nonVirtual
   set setParameterExceptionController(ExceptionController exceptionController) => _exceptionController = exceptionController;
-
-  @nonVirtual
   set setParameterEnumNamedForIterator(Enum? enumNamedForIterator) => _enumNamedForIterator = enumNamedForIterator;
 
   @nonVirtual

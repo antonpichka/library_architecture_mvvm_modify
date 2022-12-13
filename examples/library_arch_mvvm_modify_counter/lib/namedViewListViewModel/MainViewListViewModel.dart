@@ -12,12 +12,12 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _intQNoServiceViewModelUsingGetNPForIncrementAndDecrement =
-  IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement<Int,ListInt>(CloneStreamIntForSuccess());
+  IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement<Int,ListInt<Int>>(CloneStreamIntForSuccess());
 
   // NamedWidgetListViewModel
-  late final IntTextWidgetListViewModel<Int,ListInt> intTextWidgetListViewModel;
-  late final IncrementFABWidgetListViewModel<Int,ListInt> incrementFABWidgetListViewModel;
-  late final DecrementFABWidgetListViewModel<Int,ListInt> decrementFABWidgetListViewModel;
+  late final IntTextWidgetListViewModel intTextWidgetListViewModel;
+  late final IncrementFABWidgetListViewModel incrementFABWidgetListViewModel;
+  late final DecrementFABWidgetListViewModel decrementFABWidgetListViewModel;
 
   MainViewListViewModel()  {
     intTextWidgetListViewModel = IntTextWidgetListViewModel(_intQNoServiceViewModelUsingGetNPForIncrementAndDecrement);

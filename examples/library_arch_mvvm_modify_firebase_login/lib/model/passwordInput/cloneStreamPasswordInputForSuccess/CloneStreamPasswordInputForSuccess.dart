@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class CloneStreamPasswordInputForSuccess
-    implements ICloneStreamModelForSuccess<PasswordInput,ListPasswordInput>
+    implements ICloneStreamModelForSuccess<PasswordInput,ListPasswordInput<PasswordInput>>
 {
   @override
-  IStreamModel<PasswordInput,ListPasswordInput>? cloneStreamModelForSuccess() {
-    return DefaultStreamModel<PasswordInput,ListPasswordInput>(PasswordInput.getPasswordInputForSuccess, ListPasswordInput.success([]));
+  IStreamModel<PasswordInput,ListPasswordInput<PasswordInput>>? cloneStreamModelForSuccess() {
+    return DefaultStreamModel<PasswordInput,ListPasswordInput<PasswordInput>>(PasswordInput.getPasswordInputForSuccess, ListPasswordInput.success([]));
   }
 }

@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/Em
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/GoogleButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/LoginButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/PasswordInputWidget.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/RegistrationButtonWidget.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/NavigationRegistrationButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoginViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
@@ -50,7 +50,7 @@ class _LoginViewState
                 SizedBox(height: 8),
                 GoogleButtonWidget(lo.googleButtonWidgetListViewModel),
                 SizedBox(height: 4),
-                RegistrationButtonWidget(lo.registrationButtonWidgetListViewModel),
+                NavigationRegistrationButtonWidget(lo.navigationRegistrationButtonWidgetListViewModel),
               ],
             ),
           ),

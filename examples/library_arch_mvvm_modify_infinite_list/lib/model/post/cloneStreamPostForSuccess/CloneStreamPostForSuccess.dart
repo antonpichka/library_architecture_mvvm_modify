@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class CloneStreamPostForSuccess
-    implements ICloneStreamModelForSuccess<Post,ListPost>
+    implements ICloneStreamModelForSuccess<Post,ListPost<Post>>
 {
   @override
-  IStreamModel<Post, ListPost>? cloneStreamModelForSuccess() {
-    return DefaultStreamModel<Post,ListPost>(Post.getPostForSuccess,ListPost.success([]));
+  IStreamModel<Post, ListPost<Post>>? cloneStreamModelForSuccess() {
+    return DefaultStreamModel<Post,ListPost<Post>>(Post.getPostForSuccess,ListPost.success([]));
   }
 }

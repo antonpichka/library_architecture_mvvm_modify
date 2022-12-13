@@ -17,11 +17,11 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
 
-class ListStrings
-    extends BaseListModel<Strings>
+class ListStrings<T extends Strings>
+    extends BaseListModel<T>
 {
-  ListStrings.success(super._list) : super.success();
-  ListStrings.exception(super._exception) : super.exception();
+  ListStrings.success(super.list) : super.success();
+  ListStrings.exception(super.exception) : super.exception();
   ListStrings.successForFBDS() : super.successForFBDS();
-  ListStrings.exceptionForFBDS(super._exception) : super.exceptionForFBDS();
+  ListStrings.exceptionForFBDS(super.exception) : super.exceptionForFBDS();
 }

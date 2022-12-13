@@ -3,27 +3,27 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/Pass
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
 
 class PasswordInputWidgetListViewModel {
-  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput> _passwordInputQNoServiceViewModelUsingUpdateTIP;
+  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput<PasswordInput>> _passwordInputQNoServiceViewModelUsingGetNP;
 
-  PasswordInputWidgetListViewModel(this._passwordInputQNoServiceViewModelUsingUpdateTIP);
+  PasswordInputWidgetListViewModel(this._passwordInputQNoServiceViewModelUsingGetNP);
 
   Stream<PasswordInput>? get getStreamPasswordInputUsingUpdateTIP {
-    return _passwordInputQNoServiceViewModelUsingUpdateTIP.getStreamPasswordInputUsingGetNP;
+    return _passwordInputQNoServiceViewModelUsingGetNP.getStreamPasswordInputUsingGetNP;
   }
 
-  void setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingUpdateTIPAndInGeneralZeroTask(
+  void setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingGetNPAndInGeneralZeroTask(
       String str)
   {
-    if(_passwordInputQNoServiceViewModelUsingUpdateTIP
+    if(_passwordInputQNoServiceViewModelUsingGetNP
         .getPasswordInputUsingGetNP
         ?.getOneParametersNamedForPasswordInputWidget == str)
     {
       return;
     }
-    _passwordInputQNoServiceViewModelUsingUpdateTIP
+    _passwordInputQNoServiceViewModelUsingGetNP
         .getPasswordInputUsingGetNP
         ?.setOneParametersNamedForPasswordInputWidget = str;
-    _passwordInputQNoServiceViewModelUsingUpdateTIP
+    _passwordInputQNoServiceViewModelUsingGetNP
         .notifyStreamPasswordInputUsingGetNP();
     return;
   }

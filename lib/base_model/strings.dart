@@ -23,14 +23,13 @@ class Strings
   String _field;
 
   Strings.success(this._field) : super.success(_field.toString());
-  Strings.exception(super._exception) : _field = "",super.exception();
+  Strings.exception(super.exception) : _field = "",super.exception();
   Strings.successForFBDS() : _field = "",super.successForFBDS();
-  Strings.exceptionForFBDS(super._exception) : _field = "",super.exceptionForFBDS();
+  Strings.exceptionForFBDS(super.exception) : _field = "",super.exceptionForFBDS();
 
   @nonVirtual
   String get getParameterField => _field;
-
-  String get getOneParametersNamed => _field.toString();
+  String get getOneParametersNamedForNamedWidgetOrView => _field.toString();
 
   @nonVirtual
   set setParameterField(String field) => _field = field;

@@ -29,13 +29,10 @@ class Int
 
   @nonVirtual
   int get getParameterField => _field;
-
-  String get getOneParametersNamed => _field.toString();
+  String get getOneParametersNamedForNamedWidgetOrView => _field.toString();
 
   @nonVirtual
   set setParameterField(int field) => _field = field;
-
-  void setOneParametersNamed() =>  _field = (_field + 1);
-
-  void setTwoParametersNamed() =>  _field = (_field - 1);
+  void setOneParametersNamedForNamedWidgetOrView() =>  _field = (_field + 1);
+  void setTwoParametersNamedForNamedWidgetOrView() =>  _field = (_field - 1);
 }

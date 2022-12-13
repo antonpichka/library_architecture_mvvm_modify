@@ -17,21 +17,21 @@ class MainViewListViewModel
     extends BaseNamedViewListViewModel
 {
   // ModelQNamedServiceViewModel
-  final _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<PostExt,ListPostExt>(CloneStreamPostExtForSuccess(),PostExtForMap(),ListPostExtForArrayListPostExtTIP(),ListPostExtForNetworkExceptionTIP(),ListPostExtForLocalExceptionTIP());
+  final _postExtQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<PostExt,ListPostExt<PostExt>>(CloneStreamPostExtForSuccess(),PostExtForMap(),ListPostExtForArrayListPostExtTIP(),ListPostExtForNetworkExceptionTIP(),ListPostExtForLocalExceptionTIP());
   final _boolQNoServiceViewModelUsingGetNPForAntiSpam =
-  BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool>(CloneStreamBoolForSuccess());
+  BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
 
   // NamedWidgetListViewModel
   late final PostsListExtWidgetListViewModel postsListExtWidgetListViewModel;
 
   MainViewListViewModel() {
-    postsListExtWidgetListViewModel = PostsListExtWidgetListViewModel(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);
+    postsListExtWidgetListViewModel = PostsListExtWidgetListViewModel(_postExtQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);
   }
 
   @override
   void dispose() {
-    _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dispose();
+    _postExtQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dispose();
     _boolQNoServiceViewModelUsingGetNPForAntiSpam.dispose();
   }
 }

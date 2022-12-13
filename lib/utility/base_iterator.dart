@@ -29,7 +29,8 @@ abstract class BaseIterator<T extends BaseModel>
       T item = current;
       list.add(item);
     }
-    return list;
+    _list = list;
+    return _list!;
   }
 
   @protected

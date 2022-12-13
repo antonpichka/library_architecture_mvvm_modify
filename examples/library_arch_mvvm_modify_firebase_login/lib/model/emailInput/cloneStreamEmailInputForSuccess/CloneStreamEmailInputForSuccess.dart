@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class CloneStreamEmailInputForSuccess
-    implements ICloneStreamModelForSuccess<EmailInput,ListEmailInput>
+    implements ICloneStreamModelForSuccess<EmailInput,ListEmailInput<EmailInput>>
 {
   @override
-  IStreamModel<EmailInput, ListEmailInput>? cloneStreamModelForSuccess() {
-    return DefaultStreamModel<EmailInput,ListEmailInput>(EmailInput.getEmailInputForSuccess, ListEmailInput.success([]));
+  IStreamModel<EmailInput,ListEmailInput<EmailInput>>? cloneStreamModelForSuccess() {
+    return DefaultStreamModel<EmailInput,ListEmailInput<EmailInput>>(EmailInput.getEmailInputForSuccess, ListEmailInput.success([]));
   }
 }

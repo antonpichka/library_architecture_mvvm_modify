@@ -15,17 +15,20 @@ class User
   String? _name;
   String? _photo;
 
-  User.success(super._uniqueId,this._email,this._name,this._photo) : super.success();
+  User.success(super.uniqueId,this._email,this._name,this._photo) : super.success();
   User.exception(super.exception) : super.exception();
 
   static User get getUserForSuccess => User.success("","","","");
   static User get getUserForSuccessWhereParametersEqualsStringNull => User.success("null","null","null","null");
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
 
+  @protected
   @nonVirtual
   String get getParameterEmail => _email!;
+  @protected
   @nonVirtual
   String get getParameterName => _name!;
+  @protected
   @nonVirtual
   String get getParameterPhoto => _photo!;
 
@@ -42,6 +45,16 @@ class User
   String get getOneParametersNamedForHomeView => _email!;
   String get getTwoParametersNamedForHomeView => _name!;
   String get getOneParametersNamedForCircleAvatarWidget => _photo!;
+
+  @protected
+  @nonVirtual
+  set setParameterEmail(String email) => _email = email;
+  @protected
+  @nonVirtual
+  set setParameterName(String name) => _name = name;
+  @protected
+  @nonVirtual
+  set setParameterPhoto(String photo) => _photo = photo;
 
   bool isOneParametersNamedForCircleAvatarWidget() {
     return _photo != null;

@@ -33,8 +33,7 @@ class Enums
 
   @nonVirtual
   Enum get getParameterField => _field;
-
-  String get getOneParametersNamed => _field.toString();
+  String get getOneParametersNamedForNamedWidgetOrView => _field.toString();
 
   @nonVirtual
   set setParameterField(Enum field) => _field = field;

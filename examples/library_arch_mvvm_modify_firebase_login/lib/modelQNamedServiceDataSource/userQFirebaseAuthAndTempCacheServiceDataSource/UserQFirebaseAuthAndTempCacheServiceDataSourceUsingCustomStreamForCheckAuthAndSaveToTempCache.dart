@@ -5,7 +5,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSo
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_np.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 
-class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser> {
+class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser<T>> {
   final _firebaseAuthAndTempCacheService = FirebaseAuthAndTempCacheService();
   final IModelForNamedNP<T> _userForSuccessWhereParametersEqualsStringNullNP;
   final IModelForNamedTIP<T,firebase_auth.User> _userForFirebaseUserTIP;

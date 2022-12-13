@@ -10,7 +10,7 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
-class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin<T extends User,Y extends ListUser>
+class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin<T extends User,Y extends ListUser<T>>
     implements
         InsertModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,RegistrationTypeParameter>,
         UpdateModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,LoginTypeParameter>

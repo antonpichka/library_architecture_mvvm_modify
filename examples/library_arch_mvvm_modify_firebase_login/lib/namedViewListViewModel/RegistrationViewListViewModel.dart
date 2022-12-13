@@ -1,10 +1,60 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/cloneStreamEmailInputForSuccess/CloneStreamEmailInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputExt.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputExt.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/cloneStreamPasswordInputForSuccess/CloneStreamPasswordInputExtForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneStreamUserForSuccess/CloneStreamUserForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/ConfirmedPasswordInputWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/EmailInputWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/SignUpButtonWidgetListViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class RegistrationViewListViewModel
     extends BaseNamedViewListViewModel
 {
+  // ModelQNamedServiceViewModel
+  final _emailInputQNoServiceViewModelUsingGetNP =
+  EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>>(CloneStreamEmailInputForSuccess());
+  final _passwordInputExtQNoServiceViewModelUsingGetNP =
+  PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputExt,ListPasswordInputExt<PasswordInputExt>>(CloneStreamPasswordInputExtForSuccess());
+  final _boolQNoServiceViewModelUsingGetNPForLoading =
+  BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
+  final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
+  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>>(CloneStreamUserForSuccess());
+
+  // NamedWidgetListViewModel
+  late final EmailInputWidgetListViewModel emailInputWidgetListViewModel;
+  late final PasswordInputWidgetListViewModel passwordInputWidgetListViewModel;
+  late final ConfirmedPasswordInputWidgetListViewModel confirmedPasswordInputWidgetListViewModel;
+  late final SignUpButtonWidgetListViewModel signUpButtonWidgetListViewModel;
+
+  RegistrationViewListViewModel() {
+    emailInputWidgetListViewModel = EmailInputWidgetListViewModel(_emailInputQNoServiceViewModelUsingGetNP);
+    passwordInputWidgetListViewModel = PasswordInputWidgetListViewModel(_passwordInputExtQNoServiceViewModelUsingGetNP);
+    confirmedPasswordInputWidgetListViewModel = ConfirmedPasswordInputWidgetListViewModel(_passwordInputExtQNoServiceViewModelUsingGetNP);
+    signUpButtonWidgetListViewModel = SignUpButtonWidgetListViewModel(
+        _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
+        _emailInputQNoServiceViewModelUsingGetNP,
+        _passwordInputExtQNoServiceViewModelUsingGetNP,
+        _boolQNoServiceViewModelUsingGetNPForLoading);
+  }
+
   @override
   void dispose() {
-    // TODO: implement dispose
+    _emailInputQNoServiceViewModelUsingGetNP.dispose();
+    _passwordInputExtQNoServiceViewModelUsingGetNP.dispose();
+    _boolQNoServiceViewModelUsingGetNPForLoading.dispose();
+    _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dispose();
   }
 }

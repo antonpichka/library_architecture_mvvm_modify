@@ -2,10 +2,10 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 
-class RegistrationButtonWidgetListViewModel {
-  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool> _boolQNoServiceViewModelUsingGetNPForLoading;
+class NavigationRegistrationButtonWidgetListViewModel {
+  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>> _boolQNoServiceViewModelUsingGetNPForLoading;
 
-  RegistrationButtonWidgetListViewModel(this._boolQNoServiceViewModelUsingGetNPForLoading);
+  NavigationRegistrationButtonWidgetListViewModel(this._boolQNoServiceViewModelUsingGetNPForLoading);
 
   void checkIsLoadingAndInGeneralZeroTask(
       Function() callbackForNavigationIfLoadingFalse)

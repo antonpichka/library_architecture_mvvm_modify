@@ -52,7 +52,7 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel,DataSource extends Object>
+abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
 {
   /* Init DataSource */
   @protected

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IncrementFABWidgetListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_model/int.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 
-class IncrementFABWidget<Q extends Int,W extends ListInt>
+class IncrementFABWidget
     extends StatelessWidget
 {
-  final IncrementFABWidgetListViewModel<Q,W> _lo;
+  final IncrementFABWidgetListViewModel _lo;
 
   IncrementFABWidget(this._lo);
 

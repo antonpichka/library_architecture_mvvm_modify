@@ -5,7 +5,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
-class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<T extends User,Y extends ListUser>
+class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<T extends User,Y extends ListUser<T>>
     extends UserQNamedServiceViewModel<T,Y,UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogle<T,Y>>
 {
   UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super.thereIsDataSource(UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogle(),iCloneStreamModelForSuccess);

@@ -3,25 +3,25 @@ import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWid
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 
-class IntTextWidget<Q extends Int,W extends ListInt>
+class IntTextWidget
     extends StatelessWidget
 {
-  final IntTextWidgetListViewModel<Q,W> _lo;
+  final IntTextWidgetListViewModel _lo;
 
   IntTextWidget(this._lo);
 
   @override
   Widget build(BuildContext context) {
     _lo.notifyStreamIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask();
-    return StreamBuilder<Q>(
+    return StreamBuilder<Int>(
         stream: _lo.getStreamIntUsingGetNPForIncrementAndDecrement,
-        builder: (BuildContext buildContext, AsyncSnapshot<Q> asyncSnapshot) {
+        builder: (BuildContext buildContext, AsyncSnapshot<Int> asyncSnapshot) {
           if(asyncSnapshot.data == null) {
             return Container();
           }
-          Q? int = asyncSnapshot.data;
+          Int? int = asyncSnapshot.data;
           return Text(
-            "${int?.getOneParametersNamed}",
+            "${int?.getOneParametersNamedForNamedWidgetOrView}",
             style: Theme.of(context).textTheme.headline4,
           );
         });

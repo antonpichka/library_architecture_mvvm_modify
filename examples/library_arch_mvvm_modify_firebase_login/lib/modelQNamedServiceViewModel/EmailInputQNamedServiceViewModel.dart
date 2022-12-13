@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailIn
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 
-abstract class EmailInputQNamedServiceViewModel<T extends EmailInput,Y extends ListEmailInput,DataSource extends Object>
+abstract class EmailInputQNamedServiceViewModel<T extends EmailInput,Y extends ListEmailInput<T>,DataSource extends Object>
     extends BaseModelQNamedServiceViewModel<T,Y,DataSource>
 {
   EmailInputQNamedServiceViewModel.thereIsDataSource(super.dataSource,super.iCloneStreamModelForSuccess) : super.thereIsDataSource();

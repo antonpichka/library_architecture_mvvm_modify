@@ -11,12 +11,16 @@ class EmailInput
 
   static EmailInput get getEmailInputForSuccess => EmailInput.success(Email.pure());
 
+  @protected
   @nonVirtual
   Email get getParameterEmail => _email!;
   String get getOneParametersNamedForEmailInputWidget => _email!.value;
   Email get getOneParametersNamedForLoginButtonWidget => _email!;
   String get getTwoParametersNamedForLoginButtonWidget => _email!.value;
+  Email get getOneParametersNamedForSignUpButtonWidget => _email!;
+  String get getTwoParametersNamedForSignUpButtonWidget => _email!.value;
 
+  @protected
   @nonVirtual
   set setParameterEmail(Email? email) => _email = email;
   set setOneParametersNamedForEmailInputWidget(String str) => _email = Email.dirty(str);

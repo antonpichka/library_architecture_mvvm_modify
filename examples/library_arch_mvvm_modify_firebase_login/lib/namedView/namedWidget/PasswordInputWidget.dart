@@ -19,7 +19,7 @@ class PasswordInputWidget
           PasswordInput? passwordInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => _lo
-                .setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingUpdateTIPAndInGeneralZeroTask(str),
+                .setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingGetNPAndInGeneralZeroTask(str),
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'password',
