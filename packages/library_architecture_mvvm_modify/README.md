@@ -76,7 +76,7 @@ Examples taken for processing from library <a href="https://github.com/felangel/
                 <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/infinite_list.gif" width="200"/>
             </td>
             <td style="text-align: center">
-                Coming Soon
+                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/firebase_login.gif" width="200"/>
             </td>
         </tr>
         <tr>
@@ -95,6 +95,7 @@ Examples taken for processing from library <a href="https://github.com/felangel/
 
 - <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>
 - <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>
 
 ## Documentation
 
