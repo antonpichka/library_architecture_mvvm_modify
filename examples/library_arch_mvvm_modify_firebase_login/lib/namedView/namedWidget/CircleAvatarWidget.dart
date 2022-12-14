@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 
-class CircleAvatarWidget<T extends User>
+class CircleAvatarWidget
     extends StatelessWidget
 {
-  final T? _user;
+  final User? _user;
 
   const CircleAvatarWidget(this._user);
 
@@ -13,7 +13,7 @@ class CircleAvatarWidget<T extends User>
     return CircleAvatar(
       radius: 48.0,
       backgroundImage: _user!.isOneParametersNamedForCircleAvatarWidget()
-          ? NetworkImage(_user!.getOneParametersNamedForCircleAvatarWidget)
+          ? NetworkImage(_user?.getOneParametersNamedForCircleAvatarWidget ?? "")
           : null,
       child: _user!.isTwoParametersNamedForCircleAvatarWidget()
           ? const Icon(Icons.person_outline, size: 48.0)

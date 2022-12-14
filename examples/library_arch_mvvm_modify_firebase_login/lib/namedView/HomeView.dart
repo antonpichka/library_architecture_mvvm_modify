@@ -48,9 +48,9 @@ class _HomeViewState
           children: <Widget>[
             CircleAvatarWidget(widget.user),
             const SizedBox(height: 4),
-            Text(widget.user!.getOneParametersNamedForHomeView, style: textTheme.headline6),
+            Text(widget.user?.getOneParametersNamedForHomeView ?? "", style: textTheme.headline6),
             const SizedBox(height: 4),
-            Text(widget.user!.getTwoParametersNamedForHomeView, style: textTheme.headline5),
+            Text(widget.user?.getTwoParametersNamedForHomeView ?? "", style: textTheme.headline5),
           ],
         ),
       ),

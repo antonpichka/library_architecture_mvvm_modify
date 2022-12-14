@@ -14,11 +14,11 @@ class PasswordInputExt
 
   @protected
   @nonVirtual
-  ConfirmedPassword get getParameterConfirmedPassword => _confirmedPassword!;
-  String get getOneParametersNamedForConfirmedPasswordInputWidget => _confirmedPassword!.value;
-  Password get getOneParametersNamedForSignUpButtonWidget => getParameterPassword;
-  ConfirmedPassword get getTwoParametersNamedForSignUpButtonWidget => _confirmedPassword!;
-  String get getThreeParametersNamedForSignUpButtonWidget => getParameterPassword.value;
+  ConfirmedPassword? get getParameterConfirmedPassword => _confirmedPassword;
+  String? get getOneParametersNamedForConfirmedPasswordInputWidget => _confirmedPassword?.value;
+  Password? get getOneParametersNamedForSignUpButtonWidget => getParameterPassword;
+  ConfirmedPassword? get getTwoParametersNamedForSignUpButtonWidget => _confirmedPassword;
+  String? get getThreeParametersNamedForSignUpButtonWidget => getParameterPassword?.value;
 
   @protected
   @nonVirtual
@@ -29,13 +29,13 @@ class PasswordInputExt
     super.setOneParametersNamedForPasswordInputWidget = str;
     final valueByConfirmedPassword = _confirmedPassword!.value;
     _confirmedPassword = ConfirmedPassword.dirty(
-        password: getParameterPassword.value,
+        password: getParameterPassword!.value,
         value: valueByConfirmedPassword);
   }
 
   set setOneParametersNamedForConfirmedPasswordInputWidget(String str) {
     _confirmedPassword = ConfirmedPassword.dirty(
-      password: getParameterPassword.value,
+      password: getParameterPassword!.value,
       value: str,
     );
   }

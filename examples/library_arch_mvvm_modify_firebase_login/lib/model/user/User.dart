@@ -42,9 +42,9 @@ class User
     return EnumUserForMainView.authenticated;
   }
 
-  String get getOneParametersNamedForHomeView => _email!;
-  String get getTwoParametersNamedForHomeView => _name!;
-  String get getOneParametersNamedForCircleAvatarWidget => _photo!;
+  String? get getOneParametersNamedForHomeView => _email;
+  String? get getTwoParametersNamedForHomeView => _name;
+  String? get getOneParametersNamedForCircleAvatarWidget => _photo;
 
   @protected
   @nonVirtual

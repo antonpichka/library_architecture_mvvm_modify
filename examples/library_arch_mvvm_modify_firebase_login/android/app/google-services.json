@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "481188309606",
+    "project_id": "lammfirebaselogin",
+    "storage_bucket": "lammfirebaselogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481188309606:android:76e6aee657ddddb1c69ba7",
+        "android_client_info": {
+          "package_name": "com.jacobodd.library_arch_mvvm_modify_firebase_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481188309606-lkoglq7emjvju1o186to4ckn589eoia0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jacobodd.library_arch_mvvm_modify_firebase_login",
+            "certificate_hash": "728c63947454b182768f77a44fad8d648205b1a9"
+          }
+        },
+        {
+          "client_id": "481188309606-u5sl3q0b73qvk5rk4b6g10c1mbt0d400.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS0APQs4p3R1IF4sLt2gDO-V1pDJc4SCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481188309606-u5sl3q0b73qvk5rk4b6g10c1mbt0d400.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

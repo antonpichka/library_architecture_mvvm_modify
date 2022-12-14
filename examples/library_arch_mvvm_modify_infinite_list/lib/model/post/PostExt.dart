@@ -9,7 +9,7 @@ class PostExt
   static PostExt get getPostExtForSuccess => PostExt.success(0,"", "");
 
   @override
-  String get getOneParametersNamedForPostsListWidget => "${getParameterId * 10}";
+  String? get getOneParametersNamedForPostsListWidget => "${(getParameterId ?? 0) * 10}";
   @override
-  String get getTwoParametersNamedForPostsListWidget => "$getParameterTitle POST EXT HELLO";
+  String? get getTwoParametersNamedForPostsListWidget => "$getParameterTitle POST EXT HELLO";
 }

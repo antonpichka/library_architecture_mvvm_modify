@@ -15,9 +15,12 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   formz: ^0.4.0
   google_fonts: ^3.0.1
-  firebase_auth: ^3.6.2
-  firebase_core: ^1.20.0
+  firebase_auth: ^4.0.2
+  firebase_core: ^2.1.0
   google_sign_in: ^5.4.0
+  # Unfortunately, a breaking change was introduced in 4.5.2.
+  # https://github.com/firebase/flutterfire/issues/9806
+  firebase_core_platform_interface: 4.5.1
 
 dev_dependencies:
   integration_test:

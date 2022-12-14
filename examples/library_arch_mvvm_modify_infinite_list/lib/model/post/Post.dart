@@ -19,16 +19,16 @@ class Post
 
   @protected
   @nonVirtual
-  int get getParameterId => _id!;
+  int? get getParameterId => _id;
   @protected
   @nonVirtual
-  String get getParameterTitle => _title!;
+  String? get getParameterTitle => _title;
   @protected
   @nonVirtual
-  String get getParameterBody => _body!;
-  String get getOneParametersNamedForPostsListWidget => getParameterUniqueId!;
-  String get getTwoParametersNamedForPostsListWidget => _title!;
-  String get getThreeParametersNamedForPostsListWidget => _body!;
+  String? get getParameterBody => _body;
+  String? get getOneParametersNamedForPostsListWidget => getParameterUniqueId;
+  String? get getTwoParametersNamedForPostsListWidget => _title;
+  String? get getThreeParametersNamedForPostsListWidget => _body;
 
   @protected
   @nonVirtual

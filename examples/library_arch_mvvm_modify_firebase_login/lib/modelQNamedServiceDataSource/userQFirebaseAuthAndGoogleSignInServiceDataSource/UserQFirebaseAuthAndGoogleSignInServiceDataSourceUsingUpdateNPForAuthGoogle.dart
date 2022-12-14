@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
@@ -18,15 +19,25 @@ class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogl
   Future<BoolTypeParameter> updateModelToNamedServiceNP()
   async {
     try {
-      final googleUser = await _firebaseAuthAndGoogleSignInService
-          .getGoogleSignInSingleton
-          ?.getGoogleSignIn
-          ?.signIn();
-      final googleAuth = await googleUser?.authentication;
-      final credential = firebase_auth.GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+      late final firebase_auth.AuthCredential credential;
+      if (kIsWeb) {
+        final googleProvider = firebase_auth.GoogleAuthProvider();
+        final userCredential = await _firebaseAuthAndGoogleSignInService
+            .getFirebaseAuthSingleton
+            ?.getFirebaseAuth
+            ?.signInWithPopup(googleProvider,);
+        credential = userCredential!.credential!;
+      } else {
+        final googleUser = await _firebaseAuthAndGoogleSignInService
+            .getGoogleSignInSingleton
+            ?.getGoogleSignIn
+            ?.signIn();
+        final googleAuth = await googleUser?.authentication;
+        credential = firebase_auth.GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+      }
       await _firebaseAuthAndGoogleSignInService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth

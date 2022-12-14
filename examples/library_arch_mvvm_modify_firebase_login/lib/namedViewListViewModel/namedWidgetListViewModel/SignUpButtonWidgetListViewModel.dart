@@ -9,6 +9,9 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/ConfirmedPassword.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Registration.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
@@ -35,7 +38,7 @@ class SignUpButtonWidgetListViewModel {
       Function(String message) callbackForException,
       Function() callbackForSuccess)
   async {
-    if(!Formz.validate([_emailInputQNoServiceViewModelUsingGetNP.getEmailInputUsingGetNP!.getOneParametersNamedForSignUpButtonWidget, _passwordInputExtQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP!.getOneParametersNamedForSignUpButtonWidget, _passwordInputExtQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP!.getTwoParametersNamedForSignUpButtonWidget])
+    if(!Formz.validate([_emailInputQNoServiceViewModelUsingGetNP.getEmailInputUsingGetNP?.getOneParametersNamedForSignUpButtonWidget ?? const Email.pure(), _passwordInputExtQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP?.getOneParametersNamedForSignUpButtonWidget ?? const Password.pure(), _passwordInputExtQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP?.getTwoParametersNamedForSignUpButtonWidget ?? const ConfirmedPassword.pure()])
         .isValidated)
     {
       return;
@@ -53,7 +56,7 @@ class SignUpButtonWidgetListViewModel {
         .notifyStreamBoolUsingGetNPForLoading();
     // 1
     BoolTypeParameter? boolTypeParameter = await _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .insertUserToFirebaseAuthServiceParameterRegistration(RegistrationTypeParameter.success(Registration(_emailInputQNoServiceViewModelUsingGetNP.getEmailInputUsingGetNP!.getTwoParametersNamedForSignUpButtonWidget, _passwordInputExtQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP!.getThreeParametersNamedForSignUpButtonWidget)));
+        .insertUserToFirebaseAuthServiceParameterRegistration(RegistrationTypeParameter.success(Registration(_emailInputQNoServiceViewModelUsingGetNP.getEmailInputUsingGetNP?.getTwoParametersNamedForSignUpButtonWidget ?? "", _passwordInputExtQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP!.getThreeParametersNamedForSignUpButtonWidget ?? "")));
     _boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         ?.setParameterIsField = false;

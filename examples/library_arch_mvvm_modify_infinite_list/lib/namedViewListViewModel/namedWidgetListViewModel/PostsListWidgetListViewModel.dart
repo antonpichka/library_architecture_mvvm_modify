@@ -35,7 +35,7 @@ class PostsListWidgetListViewModel {
     }
     if(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .getListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        !.getOneParametersNamedForPostsListWidget)
+        ?.getOneParametersNamedForPostsListWidget ?? true)
     {
       return;
     }

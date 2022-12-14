@@ -61,10 +61,10 @@ class _PostsListWidget
                     Post? itemPost = listPost.getParameterList![index];
                     return Material(
                       child: ListTile(
-                        leading: Text(itemPost.getOneParametersNamedForPostsListWidget, style: textTheme.caption),
-                        title: Text(itemPost.getTwoParametersNamedForPostsListWidget),
+                        leading: Text(itemPost.getOneParametersNamedForPostsListWidget ?? "", style: textTheme.caption),
+                        title: Text(itemPost.getTwoParametersNamedForPostsListWidget ?? ""),
                         isThreeLine: true,
-                        subtitle: Text(itemPost.getThreeParametersNamedForPostsListWidget),
+                        subtitle: Text(itemPost.getThreeParametersNamedForPostsListWidget ?? ""),
                         dense: true,
                       ),
                     );

@@ -13,10 +13,10 @@ class PasswordInput
 
   @protected
   @nonVirtual
-  Password get getParameterPassword => _password!;
-  String get getOneParametersNamedForPasswordInputWidget => _password!.value;
-  Password get getOneParametersNamedForLoginButtonWidget => _password!;
-  String get getTwoParametersNamedForLoginButtonWidget => _password!.value;
+  Password? get getParameterPassword => _password;
+  String? get getOneParametersNamedForPasswordInputWidget => _password?.value;
+  Password? get getOneParametersNamedForLoginButtonWidget => _password;
+  String? get getTwoParametersNamedForLoginButtonWidget => _password?.value;
 
   @protected
   @nonVirtual
