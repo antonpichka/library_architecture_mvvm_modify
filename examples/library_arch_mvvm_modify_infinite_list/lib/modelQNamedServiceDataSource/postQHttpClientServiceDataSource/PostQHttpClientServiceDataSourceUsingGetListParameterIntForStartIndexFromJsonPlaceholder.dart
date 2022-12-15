@@ -18,9 +18,9 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
   final IModelForNamedTIP<T,Map<String,dynamic>> _iModelForMapTIP;
   final IListModelForNamedTIP<Y,List<T>> _iListPostForArrayListPostTIP;
   final IListModelForNamedTIP<Y,NetworkException> _iListPostForNetworkExceptionTIP;
-  final IListModelForNamedTIP<Y,LocalException> _iListPostForStringGoalLocalExceptionTIP;
+  final IListModelForNamedTIP<Y,LocalException> _iListPostForLocalExceptionTIP;
 
-  PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(this._iModelForMapTIP, this._iListPostForArrayListPostTIP, this._iListPostForNetworkExceptionTIP, this._iListPostForStringGoalLocalExceptionTIP);
+  PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(this._iModelForMapTIP, this._iListPostForArrayListPostTIP, this._iListPostForNetworkExceptionTIP, this._iListPostForLocalExceptionTIP);
 
   @override
   Future<Y> getListModelFromNamedServiceParameterNamed(
@@ -44,7 +44,7 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
     } on NetworkException catch(e) {
       return _iListPostForNetworkExceptionTIP.getListModelForNamedTIP(e);
     } catch(e) {
-      return _iListPostForStringGoalLocalExceptionTIP.getListModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return _iListPostForLocalExceptionTIP.getListModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 }

@@ -1,5 +1,5 @@
 name: library_architecture_mvvm_modify
-description: 'MVVM Modify' for Flutter but you can also port to another language and to for specific library
+description: MVVM Modify for Flutter but you can also port to another language and to for specific library
 version: 0.0.1
 issue_tracker: https://github.com/JacobOdd/library_architecture_mvvm_modify/issues
 homepage: https://github.com/JacobOdd/library_architecture_mvvm_modify
@@ -12,10 +12,7 @@ dependencies:
   ansicolor: ^2.0.1
 
 dev_dependencies:
-  integration_test:
-    sdk: flutter
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
   flutter_lints: ^2.0.0
 
