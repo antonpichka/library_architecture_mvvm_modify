@@ -26,6 +26,9 @@ class SearchResult
   @protected
   @nonVirtual
   GithubUser? get getParameterGithubUser => _githubUser;
+  String? get getOneParametersNamedForSearchBodyWidget => _githubUser?.getOneParametersNamedForSearchBodyWidget;
+  String? get getTwoParametersNamedForSearchBodyWidget => _fullName;
+  String? get getThreeParametersNamedForSearchBodyWidget => _htmlUrl;
 
   @protected
   @nonVirtual

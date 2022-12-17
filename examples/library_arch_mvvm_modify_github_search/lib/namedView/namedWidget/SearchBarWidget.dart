@@ -38,18 +38,25 @@ class _SearchBarWidgetState
             .searchBarWidgetListViewModel
             .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask(text);
       },
-      decoration: InputDecoration(
-        prefixIcon: const Icon(Icons.search),
-        suffixIcon: GestureDetector(
-          onTap: _onClearTapped,
-          child: const Icon(Icons.clear),
-        ),
-        border: InputBorder.none,
-        hintText: 'Enter a search term',
-      ),
+      decoration: buildDecorationForTextField()
     );
   }
-  void _onClearTapped() {
+
+  @protected
+  InputDecoration buildDecorationForTextField() {
+    return InputDecoration(
+      prefixIcon: const Icon(Icons.search),
+      suffixIcon: GestureDetector(
+        onTap: onClearTappedForDecorationForTextField,
+        child: const Icon(Icons.clear),
+      ),
+      border: InputBorder.none,
+      hintText: 'Enter a search term',
+    );
+  }
+
+  @protected
+  void onClearTappedForDecorationForTextField() {
     _textController.text = '';
     widget
         .searchBarWidgetListViewModel

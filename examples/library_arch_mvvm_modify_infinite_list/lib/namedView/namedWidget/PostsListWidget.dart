@@ -24,13 +24,13 @@ class _PostsListWidget
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_onScroll);
+    _scrollController.addListener(onScroll);
   }
 
   @override
   void dispose() {
     _scrollController
-      ..removeListener(_onScroll)
+      ..removeListener(onScroll)
       ..dispose();
     super.dispose();
   }
@@ -83,13 +83,15 @@ class _PostsListWidget
         });
   }
 
-  void _onScroll() {
-    if (_isBottom) {
+  @protected
+  void onScroll() {
+    if (isBottom) {
       widget.lo.getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
     }
   }
 
-  bool get _isBottom {
+  @protected
+  bool get isBottom {
     if (!_scrollController.hasClients) return false;
     final maxScroll = _scrollController.position.maxScrollExtent;
     final currentScroll = _scrollController.offset;

@@ -25,7 +25,8 @@ class SearchBarWidgetListViewModel {
 
   SearchBarWidgetListViewModel(this._searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub, this._boolQNoServiceViewModelUsingGetNPForAntiSpam, this._stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch, this._searchResultInLoadingQNoServiceViewModelUsingGetListNP, this._customTimerQNoServiceViewModelUsingGetNP);
 
-  Future<void> getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask(String search) async {
+  Future<void> getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask(String search)
+  async {
     _stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch
         .getStringsUsingGetNPForSaveLettersSearch
         ?.setParameterField = search;
@@ -37,9 +38,12 @@ class SearchBarWidgetListViewModel {
       _customTimerQNoServiceViewModelUsingGetNP
           .getCustomTimerUsingGetNP
           ?.oneParametersNamedForSearchBarWidget();
+      _boolQNoServiceViewModelUsingGetNPForAntiSpam
+          .getBoolUsingGetNPForAntiSpam
+          ?.setParameterIsField = false;
       _searchResultInLoadingQNoServiceViewModelUsingGetListNP
           .getListSearchResultInLoadingUsingGetListNP
-          ?.setThreeParametersNamedForSearchBarWidget = List.empty();
+          ?.setThreeParametersNamedForSearchBarWidget();
       _searchResultInLoadingQNoServiceViewModelUsingGetListNP
           .notifyStreamListSearchResultInLoadingUsingGetListNP();
       return;
@@ -55,7 +59,7 @@ class SearchBarWidgetListViewModel {
         ?.setParameterIsField = true;
     _searchResultInLoadingQNoServiceViewModelUsingGetListNP
         .getListSearchResultInLoadingUsingGetListNP
-        ?.setOneParametersNamedForSearchBarWidget = true;
+        ?.setOneParametersNamedForSearchBarWidget();
     _searchResultInLoadingQNoServiceViewModelUsingGetListNP
         .notifyStreamListSearchResultInLoadingUsingGetListNP();
     _customTimerQNoServiceViewModelUsingGetNP
@@ -70,7 +74,7 @@ class SearchBarWidgetListViewModel {
               .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResult(StringTypeParameter.success(_stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch.getStringsUsingGetNPForSaveLettersSearch!.getParameterField));
           _searchResultInLoadingQNoServiceViewModelUsingGetListNP
               .getListSearchResultInLoadingUsingGetListNP
-              ?.setTwoParametersNamedForSearchBarWidget(false, _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub.getListSearchResultUsingGetListParameterStringForSearchFromApiGithub!);
+              ?.setTwoParametersNamedForSearchBarWidget = _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub.getListSearchResultUsingGetListParameterStringForSearchFromApiGithub!;
           _searchResultInLoadingQNoServiceViewModelUsingGetListNP
               .notifyStreamListSearchResultInLoadingUsingGetListNP();
         };

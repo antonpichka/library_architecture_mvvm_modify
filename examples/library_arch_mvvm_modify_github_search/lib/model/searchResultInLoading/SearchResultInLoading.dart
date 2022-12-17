@@ -14,6 +14,9 @@ class SearchResultInLoading
   @protected
   @nonVirtual
   SearchResult? get getParameterSearchResult => _searchResult;
+  String? get getOneParametersNamedForSearchBodyWidget => _searchResult?.getOneParametersNamedForSearchBodyWidget;
+  String? get getTwoParametersNamedForSearchBodyWidget => _searchResult?.getTwoParametersNamedForSearchBodyWidget;
+  String? get getThreeParametersNamedForSearchBodyWidget => _searchResult?.getThreeParametersNamedForSearchBodyWidget;
 
   @protected
   @nonVirtual

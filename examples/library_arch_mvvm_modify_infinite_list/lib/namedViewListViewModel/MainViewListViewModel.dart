@@ -1,13 +1,13 @@
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPostExt.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/PostExt.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/cloneStreamPostForSuccess/CloneStreamPostExtForSuccess.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostExtForArrayListPostExtTIP.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostExtForLocalExceptionTIP.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostExtForNetworkExceptionTIP.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/PostExtForMap.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPostFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/PostFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/cloneStreamPostForSuccess/CloneStreamPostFirstBranchOneForSuccess.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostFirstBranchOneForArrayListPostFirstBranchOneTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostFirstBranchOneForLocalExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/ListPostFirstBranchOneForNetworkExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/model/post/postForNamed/PostFirstBranchOneForMap.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForAntiSpam.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/postQHttpClientServiceViewModel/PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListExtWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListFirstBranchOneWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
@@ -17,21 +17,21 @@ class MainViewListViewModel
     extends BaseNamedViewListViewModel
 {
   // ModelQNamedServiceViewModel
-  final _postExtQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
-  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<PostExt,ListPostExt<PostExt>>(CloneStreamPostExtForSuccess(),PostExtForMap(),ListPostExtForArrayListPostExtTIP(),ListPostExtForNetworkExceptionTIP(),ListPostExtForLocalExceptionTIP());
+  final _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
+  PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<PostFirstBranchOne,ListPostFirstBranchOne<PostFirstBranchOne>>(CloneStreamPostFirstBranchOneForSuccess(),PostFirstBranchOneForMap(),ListPostFirstBranchOneForArrayListPostFirstBranchOneTIP(),ListPostFirstBranchOneForNetworkExceptionTIP(),ListPostFirstBranchOneForLocalExceptionTIP());
   final _boolQNoServiceViewModelUsingGetNPForAntiSpam =
   BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
 
   // NamedWidgetListViewModel
-  late final PostsListExtWidgetListViewModel postsListExtWidgetListViewModel;
+  late final PostsListFirstBranchOneWidgetListViewModel postsListFirstBranchOneWidgetListViewModel;
 
   MainViewListViewModel() {
-    postsListExtWidgetListViewModel = PostsListExtWidgetListViewModel(_postExtQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);
+    postsListFirstBranchOneWidgetListViewModel = PostsListFirstBranchOneWidgetListViewModel(_postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, _boolQNoServiceViewModelUsingGetNPForAntiSpam);
   }
 
   @override
   void dispose() {
-    _postExtQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dispose();
+    _postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dispose();
     _boolQNoServiceViewModelUsingGetNPForAntiSpam.dispose();
   }
 }

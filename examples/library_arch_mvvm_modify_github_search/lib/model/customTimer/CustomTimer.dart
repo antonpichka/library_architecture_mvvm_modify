@@ -19,7 +19,7 @@ class CustomTimer
   @nonVirtual
   set setParameterTimer(Timer timer) => _timer = timer;
   set setOneParametersNamedForSearchBarWidget(dynamic Function() callback) {
-    _timer = Timer(const Duration(milliseconds: 300),() {
+    _timer = Timer(const Duration(milliseconds: 1000),() {
       callback();
     });
   }

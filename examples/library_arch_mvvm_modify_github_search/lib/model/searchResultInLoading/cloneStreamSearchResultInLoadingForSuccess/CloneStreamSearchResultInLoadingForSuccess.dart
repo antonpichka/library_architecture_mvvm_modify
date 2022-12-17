@@ -9,7 +9,7 @@ class CloneStreamSearchResultInLoadingForSuccess
 {
   @override
   IStreamModel<SearchResultInLoading, ListSearchResultInLoading<SearchResultInLoading>>? cloneStreamModelForSuccess() {
-    return DefaultStreamModel<SearchResultInLoading,ListSearchResultInLoading>(SearchResultInLoading.getSearchResultInLoadingForSuccess,ListSearchResultInLoading.success([],false));
+    return DefaultStreamModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>(SearchResultInLoading.getSearchResultInLoadingForSuccess,ListSearchResultInLoading.getListSearchResultInLoadingForSuccess);
   }
 
 }

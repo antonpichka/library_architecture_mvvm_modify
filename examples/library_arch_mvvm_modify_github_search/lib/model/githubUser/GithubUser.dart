@@ -20,6 +20,7 @@ class GithubUser
   @protected
   @nonVirtual
   String? get getParameterAvatarUrl => _avatarUrl;
+  String? get getOneParametersNamedForSearchBodyWidget => _avatarUrl;
 
   @protected
   @nonVirtual

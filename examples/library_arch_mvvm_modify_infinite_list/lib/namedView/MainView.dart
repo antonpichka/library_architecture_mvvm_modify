@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/namedView/namedWidget/PostsListExtWidget.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/namedView/namedWidget/PostsListFirstBranchOneWidget.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/MainViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
@@ -31,6 +31,6 @@ class _MainViewState
         appBar: AppBar(
           title: const Text("LibraryArchMVVMModifyInfiniteList"),
         ),
-        body: PostsListExtWidget(lo.postsListExtWidgetListViewModel));
+        body: PostsListFirstBranchOneWidget(lo.postsListFirstBranchOneWidgetListViewModel));
   }
 }
