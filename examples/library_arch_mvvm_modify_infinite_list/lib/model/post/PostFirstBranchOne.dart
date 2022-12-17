@@ -9,7 +9,7 @@ class PostFirstBranchOne
   static PostFirstBranchOne get getPostFirstBranchOneForSuccess => PostFirstBranchOne.success(0,"", "");
 
   @override
-  String? get getOneParametersNamedForPostsListWidget => "${(getParameterId ?? 0) * 10}";
+  String? get getOneParametersNamedForPostsListWidget => "${(id ?? 0) * 10}";
   @override
-  String? get getTwoParametersNamedForPostsListWidget => "$getParameterTitle POST EXT HELLO";
+  String? get getTwoParametersNamedForPostsListWidget => "$title POST EXT HELLO";
 }

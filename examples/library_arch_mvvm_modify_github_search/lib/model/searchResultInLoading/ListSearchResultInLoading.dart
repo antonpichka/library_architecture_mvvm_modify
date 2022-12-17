@@ -16,18 +16,20 @@ enum EnumListSearchResultInLoadingForSearchBodyWidget {
 class ListSearchResultInLoading<T extends SearchResultInLoading>
     extends BaseListModel<T>
 {
-  bool? _isLoading;
-  bool? _isEmptyValueFromTextInput;
+  @protected
+  bool? isLoading;
+  @protected
+  bool? isEmptyValueFromTextInput;
 
-  ListSearchResultInLoading.success(super.list,this._isLoading,this._isEmptyValueFromTextInput) : super.success();
+  ListSearchResultInLoading.success(super.list,this.isLoading,this.isEmptyValueFromTextInput) : super.success();
 
   static ListSearchResultInLoading<SearchResultInLoading> get getListSearchResultInLoadingForSuccess => ListSearchResultInLoading<SearchResultInLoading>.success([],false,true);
 
   EnumListSearchResultInLoadingForSearchBodyWidget get getEnumListSearchResultInLoadingForSearchBodyWidget {
-    if(_isEmptyValueFromTextInput!) {
+    if(isEmptyValueFromTextInput!) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isEmptyValueFromTextInput;
     }
-    if(_isLoading!) {
+    if(isLoading!) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isLoading;
     }
     if(getParameterExceptionController.isExceptionNotEqualsNull()) {
@@ -39,24 +41,11 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
     return EnumListSearchResultInLoadingForSearchBodyWidget.success;
   }
 
-  @protected
-  @nonVirtual
-  bool? get getParameterIsLoading => _isLoading;
-  @protected
-  @nonVirtual
-  bool? get getParameterIsEmptyValueFromTextInput => _isEmptyValueFromTextInput;
   String? get getOneParametersNamedForSearchBodyWidget => ConcretiveMessageForView.getMessageForSearchBodyWidget(getParameterExceptionController.getMessageForViewByException);
 
-  @protected
-  @nonVirtual
-  set setParameterIsLoading(bool isLoading) => _isLoading = isLoading;
-  @protected
-  @nonVirtual
-  set setParameterIsEmptyValueFromTextInput(bool isEmptyValueFromTextInput) => _isEmptyValueFromTextInput = isEmptyValueFromTextInput;
-
   void setOneParametersNamedForSearchBarWidget() {
-    _isLoading = true;
-    _isEmptyValueFromTextInput = false;
+    isLoading = true;
+    isEmptyValueFromTextInput = false;
   }
 
   set setTwoParametersNamedForSearchBarWidget(ListSearchResult<SearchResult> listSearchResult) {
@@ -64,15 +53,14 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
     listSearchResult.getParameterList?.forEach((SearchResult searchResult) {
       listSearchResultInLoading.add(SearchResultInLoading.success(searchResult));
     });
-    _isLoading = false;
-    _isEmptyValueFromTextInput = false;
-    setParameterList = listSearchResultInLoading as List<T>;
-    setParameterExceptionController = listSearchResult.getParameterExceptionController;
+    isLoading = false;
+    isEmptyValueFromTextInput = false;
+    list = listSearchResultInLoading as List<T>;
+    exceptionController = listSearchResult.getParameterExceptionController;
   }
 
   void setThreeParametersNamedForSearchBarWidget() {
-    _isLoading = false;
-    _isEmptyValueFromTextInput = true;
-    setParameterList = List<T>.empty();
+    isLoading = false;
+    isEmptyValueFromTextInput = true;
   }
 }

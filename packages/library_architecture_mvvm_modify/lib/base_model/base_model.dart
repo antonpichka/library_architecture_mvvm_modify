@@ -4,25 +4,27 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
 abstract class BaseModel {
-  String? _uniqueId;
-  ExceptionController _exceptionController;
+  @protected
+  String? uniqueId;
+  @protected
+  ExceptionController exceptionController;
 
-  BaseModel.success(this._uniqueId)
-      : _exceptionController = ExceptionController.success();
+  BaseModel.success(this.uniqueId)
+      : exceptionController = ExceptionController.success();
   BaseModel.exception(BaseException exception)
-      : _exceptionController = ExceptionController.exception(exception);
+      : exceptionController = ExceptionController.exception(exception);
   BaseModel.successForFBDS()
-      : _exceptionController = ExceptionController.success();
+      : exceptionController = ExceptionController.success();
   BaseModel.exceptionForFBDS(LocalException exception)
-      : _exceptionController = ExceptionController.exception(exception);
+      : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual
-  String? get getParameterUniqueId => _uniqueId;
+  String? get getParameterUniqueId => uniqueId;
   @nonVirtual
-  ExceptionController get getParameterExceptionController => _exceptionController;
+  ExceptionController get getParameterExceptionController => exceptionController;
 
   @nonVirtual
-  set setParameterUniqueId(String? uniqueId) => _uniqueId = uniqueId;
+  set setParameterUniqueId(String? uniqueId) => this.uniqueId = uniqueId;
   @nonVirtual
-  set setParameterExceptionController(ExceptionController exceptionController) => _exceptionController = exceptionController;
+  set setParameterExceptionController(ExceptionController exceptionController) => this.exceptionController = exceptionController;
 }

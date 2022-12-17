@@ -5,27 +5,22 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 class EmailInput
     extends BaseModel
 {
-  Email? _email;
+  @protected
+  Email? email;
 
-  EmailInput.success(this._email) : super.success(_email?.value);
+  EmailInput.success(this.email) : super.success(email?.value);
 
   static EmailInput get getEmailInputForSuccess => EmailInput.success(const Email.pure());
 
-  @protected
-  @nonVirtual
-  Email? get getParameterEmail => _email;
-  String? get getOneParametersNamedForEmailInputWidget => _email?.value;
-  Email? get getOneParametersNamedForLoginButtonWidget => _email;
-  String? get getTwoParametersNamedForLoginButtonWidget => _email?.value;
-  Email? get getOneParametersNamedForSignUpButtonWidget => _email;
-  String? get getTwoParametersNamedForSignUpButtonWidget => _email?.value;
+  String? get getOneParametersNamedForEmailInputWidget => email?.value;
+  Email? get getOneParametersNamedForLoginButtonWidget => email;
+  String? get getTwoParametersNamedForLoginButtonWidget => email?.value;
+  Email? get getOneParametersNamedForSignUpButtonWidget => email;
+  String? get getTwoParametersNamedForSignUpButtonWidget => email?.value;
 
-  @protected
-  @nonVirtual
-  set setParameterEmail(Email email) => _email = email;
-  set setOneParametersNamedForEmailInputWidget(String str) => _email = Email.dirty(str);
+  set setOneParametersNamedForEmailInputWidget(String str) => email = Email.dirty(str);
 
   bool isOneParametersNamedForEmailInputWidget() {
-    return _email!.invalid;
+    return email!.invalid;
   }
 }

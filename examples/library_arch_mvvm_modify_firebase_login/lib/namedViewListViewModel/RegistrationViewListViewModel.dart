@@ -1,9 +1,9 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/cloneStreamEmailInputForSuccess/CloneStreamEmailInputForSuccess.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputExt.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputExt.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/cloneStreamPasswordInputForSuccess/CloneStreamPasswordInputExtForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/cloneStreamPasswordInputForSuccess/CloneStreamPasswordInputFirstBranchOneForSuccess.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneStreamUserForSuccess/CloneStreamUserForSuccess.dart';
@@ -27,7 +27,7 @@ class RegistrationViewListViewModel
   final _emailInputQNoServiceViewModelUsingGetNP =
   EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>>(CloneStreamEmailInputForSuccess());
   final _passwordInputExtQNoServiceViewModelUsingGetNP =
-  PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputExt,ListPasswordInputExt<PasswordInputExt>>(CloneStreamPasswordInputExtForSuccess());
+  PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>(CloneStreamPasswordInputFirstBranchOneForSuccess());
   final _boolQNoServiceViewModelUsingGetNPForLoading =
   BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =

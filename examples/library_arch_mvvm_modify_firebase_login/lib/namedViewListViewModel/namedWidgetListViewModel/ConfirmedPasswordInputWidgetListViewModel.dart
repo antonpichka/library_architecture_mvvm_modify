@@ -1,13 +1,13 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputExt.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputExt.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
 
 class ConfirmedPasswordInputWidgetListViewModel {
-  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputExt,ListPasswordInputExt<PasswordInputExt>> _passwordInputExtQNoServiceViewModelUsingGetNP;
+  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>> _passwordInputExtQNoServiceViewModelUsingGetNP;
 
   ConfirmedPasswordInputWidgetListViewModel(this._passwordInputExtQNoServiceViewModelUsingGetNP);
 
-  Stream<PasswordInputExt>? get getStreamPasswordInputExtUsingUpdateTIP {
+  Stream<PasswordInputFirstBranchOne>? get getStreamPasswordInputExtUsingUpdateTIP {
     return _passwordInputExtQNoServiceViewModelUsingGetNP.getStreamPasswordInputUsingGetNP;
   }
 

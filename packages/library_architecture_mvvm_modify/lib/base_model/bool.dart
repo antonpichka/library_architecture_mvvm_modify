@@ -4,17 +4,18 @@ import 'package:flutter/foundation.dart';
 class Bool
     extends BaseModel
 {
-  bool _isField;
+  @protected
+  bool isField;
 
-  Bool.success(this._isField) : super.success(_isField.toString());
-  Bool.exception(super.exception) : _isField = false,super.exception();
-  Bool.successForFBDS() : _isField = false,super.successForFBDS();
-  Bool.exceptionForFBDS(super.exception) : _isField = false,super.exceptionForFBDS();
-
-  @nonVirtual
-  bool get getParameterIsField => _isField;
-  String get getOneParametersNamedForNamedWidgetOrView => _isField.toString();
+  Bool.success(this.isField) : super.success(isField.toString());
+  Bool.exception(super.exception) : isField = false,super.exception();
+  Bool.successForFBDS() : isField = false,super.successForFBDS();
+  Bool.exceptionForFBDS(super.exception) : isField = false,super.exceptionForFBDS();
 
   @nonVirtual
-  set setParameterIsField(bool isField) => _isField = isField;
+  bool get getParameterIsField => isField;
+  String get getOneParametersNamedForNamedWidgetOrView => isField.toString();
+
+  @nonVirtual
+  set setParameterIsField(bool isField) => this.isField = isField;
 }

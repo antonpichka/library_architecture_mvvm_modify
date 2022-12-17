@@ -8,17 +8,18 @@ enum EnumsDefault {
 class Enums
     extends BaseModel
 {
-  Enum _field;
+  @protected
+  Enum field;
 
-  Enums.success(this._field) : super.success(_field.toString());
-  Enums.exception(super.exception) : _field = EnumsDefault.zero,super.exception();
-  Enums.successForFBDS() : _field = EnumsDefault.zero,super.successForFBDS();
-  Enums.exceptionForFBDS(super.exception) : _field = EnumsDefault.zero,super.exceptionForFBDS();
-
-  @nonVirtual
-  Enum get getParameterField => _field;
-  String get getOneParametersNamedForNamedWidgetOrView => _field.toString();
+  Enums.success(this.field) : super.success(field.toString());
+  Enums.exception(super.exception) : field = EnumsDefault.zero,super.exception();
+  Enums.successForFBDS() : field = EnumsDefault.zero,super.successForFBDS();
+  Enums.exceptionForFBDS(super.exception) : field = EnumsDefault.zero,super.exceptionForFBDS();
 
   @nonVirtual
-  set setParameterField(Enum field) => _field = field;
+  Enum get getParameterField => field;
+  String get getOneParametersNamedForNamedWidgetOrView => field.toString();
+
+  @nonVirtual
+  set setParameterField(Enum field) => this.field = field;
 }

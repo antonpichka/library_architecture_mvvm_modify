@@ -1,8 +1,8 @@
 import 'package:formz/formz.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputExt.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputExt.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
@@ -21,7 +21,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/boo
 class SignUpButtonWidgetListViewModel {
   final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>> _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
   final EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>> _emailInputQNoServiceViewModelUsingGetNP;
-  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputExt,ListPasswordInputExt<PasswordInputExt>> _passwordInputExtQNoServiceViewModelUsingGetNP;
+  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>> _passwordInputExtQNoServiceViewModelUsingGetNP;
   final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>> _boolQNoServiceViewModelUsingGetNPForLoading;
 
   SignUpButtonWidgetListViewModel(

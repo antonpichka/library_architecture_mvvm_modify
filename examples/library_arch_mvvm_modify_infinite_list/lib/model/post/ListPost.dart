@@ -13,19 +13,20 @@ enum EnumListPostForPostsListWidget {
 class ListPost<T extends Post>
     extends BaseListModel<T>
 {
-  bool? _hasReachedMax;
+  @protected
+  bool? hasReachedMax;
 
   ListPost.success(super.list) : super.success() {
     if(getParameterList!.isEmpty) {
-      _hasReachedMax = true;
+      hasReachedMax = true;
       return;
     }
-    _hasReachedMax = false;
+    hasReachedMax = false;
   }
 
-  ListPost.exception(super.exception) : super.exception() {
-    _hasReachedMax = false;
-  }
+  ListPost.exception(super.exception)
+      : hasReachedMax = false,
+        super.exception();
 
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
     if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
@@ -40,27 +41,22 @@ class ListPost<T extends Post>
     return EnumListPostForPostsListWidget.success;
   }
 
-  @protected
-  @nonVirtual
-  bool? get getParameterHasReachedMax => _hasReachedMax;
-  bool? get getOneParametersNamedForPostsListWidget => _hasReachedMax;
+  bool? get getOneParametersNamedForPostsListWidget => hasReachedMax;
   int? get getTwoParametersNamedForPostsListWidget {
-    if(_hasReachedMax!) {
+    if(hasReachedMax!) {
       return getParameterList!.length;
     }
     return getParameterList!.length + 1;
   }
-
-  @protected
-  @nonVirtual
-  set setParameterHasReachedMax(bool hasReachedMax) => _hasReachedMax = hasReachedMax;
+  bool? get getThreeParametersNamedForPostsListWidget => hasReachedMax;
+  bool? get getFourParametersNamedForPostsListWidget => hasReachedMax;
 
   void setOneParametersNamedForPostsListWidget(
       ListPost<T> listPost)
   {
-    setParameterExceptionController = listPost.getParameterExceptionController;
-    _hasReachedMax = listPost.getParameterHasReachedMax;
-    if(!_hasReachedMax!) {
+    exceptionController = listPost.getParameterExceptionController;
+    hasReachedMax = listPost.getThreeParametersNamedForPostsListWidget;
+    if(!hasReachedMax!) {
       insertListToList(listPost.getParameterList!);
       return;
     }
@@ -70,7 +66,7 @@ class ListPost<T extends Post>
       ListPost<T> listPost)
   {
     setParameterExceptionController = listPost.getParameterExceptionController;
-    _hasReachedMax = listPost.getParameterHasReachedMax;
+    hasReachedMax = listPost.getFourParametersNamedForPostsListWidget;
   }
 
   bool isOneParametersNamedForPostsListWidget(

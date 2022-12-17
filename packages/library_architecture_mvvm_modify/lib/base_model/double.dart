@@ -4,19 +4,20 @@ import 'package:flutter/foundation.dart';
 class Double
     extends BaseModel
 {
-  double _field;
+  @protected
+  double field;
 
-  Double.success(this._field) : super.success(_field.toString());
-  Double.exception(super.exception) : _field = 0.0,super.exception();
-  Double.successForFBDS() : _field = 0.0,super.successForFBDS();
-  Double.exceptionForFBDS(super.exception) : _field = 0.0,super.exceptionForFBDS();
-
-  @nonVirtual
-  double get getParameterField => _field;
-  String get getOneParametersNamedForNamedWidgetOrView => _field.toString();
+  Double.success(this.field) : super.success(field.toString());
+  Double.exception(super.exception) : field = 0.0,super.exception();
+  Double.successForFBDS() : field = 0.0,super.successForFBDS();
+  Double.exceptionForFBDS(super.exception) : field = 0.0,super.exceptionForFBDS();
 
   @nonVirtual
-  set setParameterField(double field) => _field = field;
-  void setOneParametersNamedForNamedWidgetOrView() =>  _field = (_field + 1);
-  void setTwoParametersNamedForNamedWidgetOrView() =>  _field = (_field - 1);
+  double get getParameterField => field;
+  String get getOneParametersNamedForNamedWidgetOrView => field.toString();
+
+  @nonVirtual
+  set setParameterField(double field) => this.field = field;
+  void setOneParametersNamedForNamedWidgetOrView() =>  field = (field + 1);
+  void setTwoParametersNamedForNamedWidgetOrView() =>  field = (field - 1);
 }

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceDataSource/namedService/HttpClientService.dart';
@@ -30,7 +29,7 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
       final response = await _httpClientService
           .getHttpClientSingleton
           ?.getHttpClient
-          ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, Post.constPostsUrl, <String, String>{'_start': '${int?.parameter}', '_limit': '20'}))
+          ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '${int?.parameter}', '_limit': '20'}))
           .timeout(const Duration(seconds: 5));
       if(response?.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,response!.statusCode);

@@ -5,11 +5,14 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 class SearchResult
     extends BaseModel
 {
-  String? _fullName;
-  String? _htmlUrl;
-  GithubUser? _githubUser;
+  @protected
+  String? fullName;
+  @protected
+  String? htmlUrl;
+  @protected
+  GithubUser? githubUser;
 
-  SearchResult.success(this._fullName,this._htmlUrl,this._githubUser) : super.success(_githubUser?.getParameterUniqueId);
+  SearchResult.success(this.fullName,this.htmlUrl,this.githubUser) : super.success(githubUser?.getParameterUniqueId);
   SearchResult.exception(super.exception) : super.exception();
 
   static SearchResult get getSearchResultForSuccess => SearchResult.success("","",GithubUser.getGithubUserForSuccess);
@@ -17,26 +20,7 @@ class SearchResult
   static const constParameterHtmlUrl = "html_url";
   static const constParameterGithubUser = "owner";
 
-  @protected
-  @nonVirtual
-  String? get getParameterFullName => _fullName;
-  @protected
-  @nonVirtual
-  String? get getParameterHtmlUrl => _htmlUrl;
-  @protected
-  @nonVirtual
-  GithubUser? get getParameterGithubUser => _githubUser;
-  String? get getOneParametersNamedForSearchBodyWidget => _githubUser?.getOneParametersNamedForSearchBodyWidget;
-  String? get getTwoParametersNamedForSearchBodyWidget => _fullName;
-  String? get getThreeParametersNamedForSearchBodyWidget => _htmlUrl;
-
-  @protected
-  @nonVirtual
-  set setParameterFullName(String fullName) => _fullName = fullName;
-  @protected
-  @nonVirtual
-  set setParameterHtmlUrl(String htmlUrl) => _htmlUrl = htmlUrl;
-  @protected
-  @nonVirtual
-  set setParameterGithubUser(GithubUser githubUser) => _githubUser = githubUser;
+  String? get getOneParametersNamedForSearchBodyWidget => githubUser?.getOneParametersNamedForSearchBodyWidget;
+  String? get getTwoParametersNamedForSearchBodyWidget => fullName;
+  String? get getThreeParametersNamedForSearchBodyWidget => htmlUrl;
 }

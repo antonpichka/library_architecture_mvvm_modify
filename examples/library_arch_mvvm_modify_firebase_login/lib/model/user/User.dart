@@ -11,26 +11,19 @@ enum EnumUserForMainView {
 class User
     extends BaseModel
 {
-  String? _email;
-  String? _name;
-  String? _photo;
+  @protected
+  String? email;
+  @protected
+  String? name;
+  @protected
+  String? photo;
 
-  User.success(super.uniqueId,this._email,this._name,this._photo) : super.success();
+  User.success(super.uniqueId,this.email,this.name,this.photo) : super.success();
   User.exception(super.exception) : super.exception();
 
   static User get getUserForSuccess => User.success("","","","");
   static User get getUserForSuccessWhereParametersEqualsStringNull => User.success("null","null","null","null");
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
-
-  @protected
-  @nonVirtual
-  String get getParameterEmail => _email!;
-  @protected
-  @nonVirtual
-  String get getParameterName => _name!;
-  @protected
-  @nonVirtual
-  String get getParameterPhoto => _photo!;
 
   EnumUserForMainView get getEnumUserForMainView {
     if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
@@ -42,32 +35,22 @@ class User
     return EnumUserForMainView.authenticated;
   }
 
-  String? get getOneParametersNamedForHomeView => _email;
-  String? get getTwoParametersNamedForHomeView => _name;
-  String? get getOneParametersNamedForCircleAvatarWidget => _photo;
-
-  @protected
-  @nonVirtual
-  set setParameterEmail(String email) => _email = email;
-  @protected
-  @nonVirtual
-  set setParameterName(String name) => _name = name;
-  @protected
-  @nonVirtual
-  set setParameterPhoto(String photo) => _photo = photo;
+  String? get getOneParametersNamedForHomeView => email;
+  String? get getTwoParametersNamedForHomeView => name;
+  String? get getOneParametersNamedForCircleAvatarWidget => photo;
 
   bool isOneParametersNamedForCircleAvatarWidget() {
-    return _photo != null;
+    return photo != null;
   }
 
   bool isTwoParametersNamedForCircleAvatarWidget() {
-    return _photo == null;
+    return photo == null;
   }
 
   bool isThreeParametersNamedForMainView() {
-    return getParameterUniqueId == "null" &&
-        _email == "null" &&
-        _name == "null" &&
-        _photo == "null";
+    return uniqueId == "null" &&
+        email == "null" &&
+        name == "null" &&
+        photo == "null";
   }
 }

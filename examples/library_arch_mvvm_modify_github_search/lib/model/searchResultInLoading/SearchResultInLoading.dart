@@ -5,20 +5,14 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 class SearchResultInLoading
     extends BaseModel
 {
-  SearchResult? _searchResult;
+  @protected
+  SearchResult? searchResult;
 
-  SearchResultInLoading.success(this._searchResult) : super.success(_searchResult?.getParameterUniqueId);
+  SearchResultInLoading.success(this.searchResult) : super.success(searchResult?.getParameterUniqueId);
 
   static SearchResultInLoading get getSearchResultInLoadingForSuccess => SearchResultInLoading.success(SearchResult.getSearchResultForSuccess);
 
-  @protected
-  @nonVirtual
-  SearchResult? get getParameterSearchResult => _searchResult;
-  String? get getOneParametersNamedForSearchBodyWidget => _searchResult?.getOneParametersNamedForSearchBodyWidget;
-  String? get getTwoParametersNamedForSearchBodyWidget => _searchResult?.getTwoParametersNamedForSearchBodyWidget;
-  String? get getThreeParametersNamedForSearchBodyWidget => _searchResult?.getThreeParametersNamedForSearchBodyWidget;
-
-  @protected
-  @nonVirtual
-  set setParameterSearchResult(SearchResult? searchResult) => _searchResult = searchResult;
+  String? get getOneParametersNamedForSearchBodyWidget => searchResult?.getOneParametersNamedForSearchBodyWidget;
+  String? get getTwoParametersNamedForSearchBodyWidget => searchResult?.getTwoParametersNamedForSearchBodyWidget;
+  String? get getThreeParametersNamedForSearchBodyWidget => searchResult?.getThreeParametersNamedForSearchBodyWidget;
 }
