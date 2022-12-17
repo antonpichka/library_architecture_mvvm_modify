@@ -1,10 +1,10 @@
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 
-class PostsListExtWidgetListViewModel
+class PostsListFirstBranchOneWidgetListViewModel
     extends PostsListWidgetListViewModel
 {
-  PostsListExtWidgetListViewModel(super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, super.boolQNoServiceViewModelUsingGetNPForAntiSpam) : super();
+  PostsListFirstBranchOneWidgetListViewModel(super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, super.boolQNoServiceViewModelUsingGetNPForAntiSpam) : super();
 
   Future<void> getListPostFromHttpClientServiceParameterIntAndSetListPostAndInGeneralOneTask()
   async {

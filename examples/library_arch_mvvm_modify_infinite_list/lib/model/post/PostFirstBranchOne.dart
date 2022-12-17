@@ -1,12 +1,12 @@
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 
-class PostExt
+class PostFirstBranchOne
     extends Post
 {
-  PostExt.success(super.id, super.title, super.body) : super.success();
-  PostExt.exception(super.exception) : super.exception();
+  PostFirstBranchOne.success(super.id, super.title, super.body) : super.success();
+  PostFirstBranchOne.exception(super.exception) : super.exception();
 
-  static PostExt get getPostExtForSuccess => PostExt.success(0,"", "");
+  static PostFirstBranchOne get getPostFirstBranchOneForSuccess => PostFirstBranchOne.success(0,"", "");
 
   @override
   String? get getOneParametersNamedForPostsListWidget => "${(getParameterId ?? 0) * 10}";
