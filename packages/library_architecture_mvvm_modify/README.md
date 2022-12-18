@@ -6,6 +6,8 @@
 
 ## Overview
 
+The library is implemented according to the principles of SOLID, and is an example of a clean architecture
+
 <p align="center"> 
 <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
