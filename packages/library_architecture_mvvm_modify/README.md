@@ -12,57 +12,25 @@ The library is implemented according to the principles of SOLID, and is an examp
 <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
-This modification of MVVM was created to simplify development, namely, a system was created that a developer can monitor and make a minimum of errors. Errors that occur from ModelQNamedServiceDataSource files are displayed in the console, and try catch can only be used in ModelQNamedServiceDataSource (because only libraries that access the network or database can produce unexpected errors, and in other components, even if there are similar libraries, for example audio player, without try-catch way, since try catch spam makes the developer think many times in the code and their spam will affect the readability of the code.Also, all code is written through reverse if and in the body of the if construct, return is written, and the developer can read up to a certain if which it needs, not the whole method.Also, nested ifs are not written, which will also make the code more readable)
+Architectural weaknesses:
+1) The named methods in the model are abstract and therefore it will be difficult for the programmer to read the source code in NamedView/NamedViewListViewModel and NamedWidget/NamedWidgetListViewModel and Model
+2) Long start of the project (Yes, you will need to create the necessary files, as well as abstract each component so that you do not refactor these files in the future)
 
-An example of writing code throughout the project (especially for the component NamedViewListViewModel, NamedWidgetListViewModel):
-```c
-// 1) Success (Readable code)
-void methodOne(List list, bool isTrue) {
- if(list.length <= 0) {
-  // code
-  return;
- }
- if(!isTrue) {
-  // code
-  return;
- }
- // code
- return;
-}
-// 2) Failure (Unreadable code)
-void methodTwo(List list, bool isTrue) {
- if(list.length > 0) {
-  // code
-  if(isTrue) {
-   // code
-  }
-  // code
- } else {
-  // code
- }
- // code
- return;
-}
-```
-If your logic is too complex and you can only write nested ifs, then use private methods as an alternative to nested ifs
+Architecture Benefits:
+1) Reuse of all components of the architecture (Exception: NamedView, NamedViewListViewModel) and minimal code copying:
+- If you need a widget that has already been written, but with some changes. You can inherit this widget and override methods that change the widget itself (For example: buildTextStyle,buildIcon)
+- Or change the logic for this widget, which is located in the NamedWidgetListViewModel, you also inherit along with the NamedWidget, since the binding is 1k1.
+- And if you want to change the logic in the model itself, then all the methods used from the model are abstract, and you only need to inherit this model, and you get the result you need. (Also, for the inherited model, you do not need to create a DataSource and ViewModel, since generics and abstract classes allow you to reuse, and if you have added new fields and you need to get from the data source, then these abstract classes solve the problem ((List/Model)ForNamed( TIP/NP))
+2) By the name of the DataSource, ViewModel file, you can understand which libraries and methods are used and what kind of logic is there, as well as what data we receive and what data we send
+(For example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle, you can understand from the name
+1. Get User
+2. We use the FirebaseAuth, GoogleSignIn libraries
+3. The Update method is used without a parameter (No Parameter)
+4. For authorization in Google)
+3) In the Future, the project will be easy for you to expand and less prone to errors than in standard architectures, where you need to refactor files and create new problems that could have been avoided, as well as rewrite tests for these edited files
+4) Components and models are written 1 time (Exception: unless there was a bug initially, or your code did not match the task before the release), after the release, if the task has changed, then create new files, or if the task is similar, use inheritance (NamedWidget,NamedWidgetListViewModel,Model), and most importantly, unit tests and ui tests for components are written 1 time (And if you rewrite tests or old code, then it turns out that your work was devalued, or the work of the person who wrote this code)
 
-By the name of the files, you can understand the number of methods and the meaning of their execution (This only applies to these components ModelQNamedServiceViewModel,ModelQNamedServiceDataSource). 
-
-All calculations and checks of the object before sending it to the DataSource are performed in FBDS (Function Before Data Source).
-
-ModelQNamedServiceDataSource and ModelQNamedServiceViewModel are tied to a specific model and if you need to link models and get them as one object, then create an object and use aggregation (to place these objects into one).
-
-There is also a service that collects local-network libraries (whose purpose is to retrieve data from the network or database) and each library is implemented according to the Singleton pattern.
-
-The model, in addition to receiving data, can also return an error, this makes it easier to display errors in the view, so it requires writing less code in the NamedViewListViewModel or NamedWidgetListViewModel.
-
-Also, a new component NamedViewListViewModel and NamedWidgetListViewModel has been added to MVVM, and you can create objects that control indicators (For example: EnumViewModelUsingGetNPForLoading, BoolViewModelUsingGetNPForLoading), also if you receive data from one model with a ModelQNamedServiceDataSource, and you need to load certain data into another model, then a NamedViewListViewModel or NamedWidgetListViewModel is required for this.
-
-NamedViewListViewModel and NamedView (or NamedWidgetListViewModel and NamedWidget) are related and can only be used one-to-one.
-
-The ModelQNamedServiceDataSource and ModelQNamedServiceViewModel, are related, but can be reused in any other NamedViewListViewModel and NamedWidgetListViewModel if needed.
-
-RESULT: You can reuse NamedWidget with NamedWidgetListViewModel and ModelQNamedServiceDataSource with ModelQNamedServiceViewModel, and if you need a new implementation, you create new files so as not to affect working (old) code and therefore not create new problems (This also applies to the NamedViewListViewModel and NamedView component, BUT in these components you can replace lines 2 and 1 if you needed a different NamedWidgetListViewModel and NamedWidget)
+Initially, the idea of creating this architecture was to minimize code refactoring. I confess that I hate refactoring code, it's terrible and painful, and I would give up programming if I could not create my own library, but this is the profession where it is possible. And it became much easier for me to create applications, since there is much less code refactoring
 
 ## Examples
 
