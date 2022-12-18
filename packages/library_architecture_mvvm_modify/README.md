@@ -23,7 +23,7 @@ Architecture Benefits:
 - And if you want to change the logic in the model itself, then all the methods used from the model are abstract, and you only need to inherit this model, and you get the result you need. (Also, for the inherited model, you do not need to create a DataSource and ViewModel, since generics and abstract classes allow you to reuse, and if you have added new fields and you need to get from the data source, then these abstract classes solve the problem ((List/Model)ForNamed( TIP/NP))
 2) By the name of the DataSource, ViewModel file, you can understand which libraries and methods are used and what kind of logic is there, as well as what data we receive and what data we send. 
 
-Example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle
+  Example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle
 - Get User 
 - We use the FirebaseAuth, GoogleSignIn libraries
 - The Update method is used without a parameter (No Parameter)
