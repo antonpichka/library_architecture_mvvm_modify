@@ -67,16 +67,18 @@ class SearchBodyWidget
     return Expanded(child: buildOneForSuccess(list!.getParameterList));
   }
 
+  @protected
   Widget buildOneForSuccess(List<SearchResultInLoading>? list) {
     return ListView.builder(
       itemCount: list!.length,
       itemBuilder: (BuildContext context, int index) {
-        return buildTwoForSuccess(list[index]);
+        return buildOneForOneForSuccess(list[index]);
       },
     );
   }
 
-  Widget buildTwoForSuccess(SearchResultInLoading? item) {
+  @protected
+  Widget buildOneForOneForSuccess(SearchResultInLoading? item) {
     return ListTile(
       leading: CircleAvatar(
         child: Image.network(item?.getOneParametersNamedForSearchBodyWidget ?? ""),
