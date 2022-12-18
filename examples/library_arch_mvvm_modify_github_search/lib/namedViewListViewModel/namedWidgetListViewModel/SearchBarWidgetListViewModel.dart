@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/customTimer/CustomTimer.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/customTimer/ListCustomTimer.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/ListSearchResult.dart';
@@ -17,65 +18,70 @@ import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
 
 class SearchBarWidgetListViewModel {
-  final SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub<SearchResult,ListSearchResult<SearchResult>> _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub;
-  final BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool<Bool>> _boolQNoServiceViewModelUsingGetNPForAntiSpam;
-  final StringsQNoServiceViewModelUsingGetNPForSaveLettersSearch<Strings,ListStrings<Strings>> _stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch;
-  final SearchResultInLoadingQNoServiceViewModelUsingGetListNP<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>> _searchResultInLoadingQNoServiceViewModelUsingGetListNP;
-  final CustomTimerQNoServiceViewModelUsingGetNP<CustomTimer,ListCustomTimer<CustomTimer>> _customTimerQNoServiceViewModelUsingGetNP;
+  @protected
+  final SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub<SearchResult,ListSearchResult<SearchResult>> searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub;
+  @protected
+  final BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool<Bool>> boolQNoServiceViewModelUsingGetNPForAntiSpam;
+  @protected
+  final StringsQNoServiceViewModelUsingGetNPForSaveLettersSearch<Strings,ListStrings<Strings>> stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch;
+  @protected
+  final SearchResultInLoadingQNoServiceViewModelUsingGetListNP<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>> searchResultInLoadingQNoServiceViewModelUsingGetListNP;
+  @protected
+  final CustomTimerQNoServiceViewModelUsingGetNP<CustomTimer,ListCustomTimer<CustomTimer>> customTimerQNoServiceViewModelUsingGetNP;
 
-  SearchBarWidgetListViewModel(this._searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub, this._boolQNoServiceViewModelUsingGetNPForAntiSpam, this._stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch, this._searchResultInLoadingQNoServiceViewModelUsingGetListNP, this._customTimerQNoServiceViewModelUsingGetNP);
+  SearchBarWidgetListViewModel(this.searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub, this.boolQNoServiceViewModelUsingGetNPForAntiSpam, this.stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch, this.searchResultInLoadingQNoServiceViewModelUsingGetListNP, this.customTimerQNoServiceViewModelUsingGetNP);
 
   Future<void> getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask(String search)
   async {
-    _stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch
+    stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch
         .getStringsUsingGetNPForSaveLettersSearch
         ?.setParameterField = search;
-    if(_stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch
+    if(stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch
         .getStringsUsingGetNPForSaveLettersSearch
         !.getParameterField
         .isEmpty)
     {
-      _customTimerQNoServiceViewModelUsingGetNP
+      customTimerQNoServiceViewModelUsingGetNP
           .getCustomTimerUsingGetNP
           ?.oneParametersNamedForSearchBarWidget();
-      _boolQNoServiceViewModelUsingGetNPForAntiSpam
+      boolQNoServiceViewModelUsingGetNPForAntiSpam
           .getBoolUsingGetNPForAntiSpam
           ?.setParameterIsField = false;
-      _searchResultInLoadingQNoServiceViewModelUsingGetListNP
+      searchResultInLoadingQNoServiceViewModelUsingGetListNP
           .getListSearchResultInLoadingUsingGetListNP
           ?.setThreeParametersNamedForSearchBarWidget();
-      _searchResultInLoadingQNoServiceViewModelUsingGetListNP
+      searchResultInLoadingQNoServiceViewModelUsingGetListNP
           .notifyStreamListSearchResultInLoadingUsingGetListNP();
       return;
     }
-    if(_boolQNoServiceViewModelUsingGetNPForAntiSpam
+    if(boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         !.getParameterIsField)
     {
       return;
     }
-    _boolQNoServiceViewModelUsingGetNPForAntiSpam
+    boolQNoServiceViewModelUsingGetNPForAntiSpam
         .getBoolUsingGetNPForAntiSpam
         ?.setParameterIsField = true;
-    _searchResultInLoadingQNoServiceViewModelUsingGetListNP
+    searchResultInLoadingQNoServiceViewModelUsingGetListNP
         .getListSearchResultInLoadingUsingGetListNP
         ?.setOneParametersNamedForSearchBarWidget();
-    _searchResultInLoadingQNoServiceViewModelUsingGetListNP
+    searchResultInLoadingQNoServiceViewModelUsingGetListNP
         .notifyStreamListSearchResultInLoadingUsingGetListNP();
-    _customTimerQNoServiceViewModelUsingGetNP
+    customTimerQNoServiceViewModelUsingGetNP
         .getCustomTimerUsingGetNP
         ?.setOneParametersNamedForSearchBarWidget =
         () async {
-          _boolQNoServiceViewModelUsingGetNPForAntiSpam
+          boolQNoServiceViewModelUsingGetNPForAntiSpam
               .getBoolUsingGetNPForAntiSpam
               ?.setParameterIsField = false;
           // 1
-          await _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub
-              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResult(StringTypeParameter.success(_stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch.getStringsUsingGetNPForSaveLettersSearch!.getParameterField));
-          _searchResultInLoadingQNoServiceViewModelUsingGetListNP
+          await searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub
+              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResult(StringTypeParameter.success(stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch.getStringsUsingGetNPForSaveLettersSearch!.getParameterField));
+          searchResultInLoadingQNoServiceViewModelUsingGetListNP
               .getListSearchResultInLoadingUsingGetListNP
-              ?.setTwoParametersNamedForSearchBarWidget = _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub.getListSearchResultUsingGetListParameterStringForSearchFromApiGithub!;
-          _searchResultInLoadingQNoServiceViewModelUsingGetListNP
+              ?.setTwoParametersNamedForSearchBarWidget = searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub.getListSearchResultUsingGetListParameterStringForSearchFromApiGithub!;
+          searchResultInLoadingQNoServiceViewModelUsingGetListNP
               .notifyStreamListSearchResultInLoadingUsingGetListNP();
         };
   }
