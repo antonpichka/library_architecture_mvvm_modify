@@ -29,7 +29,7 @@ class User
     if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumUserForMainView.localException;
     }
-    if(isThreeParametersNamedForMainView()) {
+    if(isThreeParametersNamedForMainView() ?? false) {
       return EnumUserForMainView.unauthenticated;
     }
     return EnumUserForMainView.authenticated;
@@ -39,15 +39,15 @@ class User
   String? get getTwoParametersNamedForHomeView => name;
   String? get getOneParametersNamedForCircleAvatarWidget => photo;
 
-  bool isOneParametersNamedForCircleAvatarWidget() {
+  bool? isOneParametersNamedForCircleAvatarWidget() {
     return photo != null;
   }
 
-  bool isTwoParametersNamedForCircleAvatarWidget() {
+  bool? isTwoParametersNamedForCircleAvatarWidget() {
     return photo == null;
   }
 
-  bool isThreeParametersNamedForMainView() {
+  bool? isThreeParametersNamedForMainView() {
     return uniqueId == "null" &&
         email == "null" &&
         name == "null" &&

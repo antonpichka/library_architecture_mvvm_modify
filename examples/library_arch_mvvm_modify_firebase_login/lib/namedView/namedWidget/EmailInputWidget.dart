@@ -5,29 +5,39 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 class EmailInputWidget
     extends StatelessWidget
 {
-  final EmailInputWidgetListViewModel _lo;
+  @protected
+  final EmailInputWidgetListViewModel lo;
 
-  const EmailInputWidget(this._lo);
+  const EmailInputWidget(this.lo);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<EmailInput>(
-        initialData: EmailInput.getEmailInputForSuccess,
-        stream: _lo.getStreamEmailInputUsingUpdateTIP,
+        stream: lo.getStreamEmailInputUsingUpdateTIP,
         builder: (BuildContext buildContext, AsyncSnapshot<EmailInput> asyncSnapshot)
         {
           EmailInput? emailInput = asyncSnapshot.data;
-          return TextField(
-            onChanged: (String str) => _lo
-                .setOneParametersNamedForEmailInputWidgetByEmailInputUsingGetNPAndInGeneralZeroTask(str),
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: 'email',
-              helperText: '',
-              errorText: emailInput!.isOneParametersNamedForEmailInputWidget() ? 'invalid email' : null,
-            ),
-          );
+          return buildSuccess(emailInput);
         });
   }
 
+  @protected
+  Widget buildSuccess(EmailInput? emailInput) {
+    return TextField(
+      onChanged: (String str) => lo.setOneParametersNamedForEmailInputWidgetByEmailInputUsingGetNPAndInGeneralZeroTask(str),
+      keyboardType: TextInputType.emailAddress,
+      decoration: buildInputDecorationForSuccess(emailInput)
+    );
+  }
+
+  @protected
+  InputDecoration buildInputDecorationForSuccess(EmailInput? emailInput) {
+    return InputDecoration(
+      labelText: 'email',
+      helperText: '',
+      errorText: emailInput?.isOneParametersNamedForEmailInputWidget() ?? false
+          ? 'invalid email'
+          : null,
+    );
+  }
 }

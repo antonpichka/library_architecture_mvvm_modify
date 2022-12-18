@@ -18,7 +18,7 @@ class PasswordInput
 
   set setOneParametersNamedForPasswordInputWidget(String str) => password = Password.dirty(str);
 
-  bool isOneParametersNamedForPasswordInputWidget() {
-    return password!.invalid;
+  bool? isOneParametersNamedForPasswordInputWidget() {
+    return password?.invalid;
   }
 }

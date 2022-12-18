@@ -11,25 +11,26 @@ class PostsListWidget
   const PostsListWidget(this.lo);
 
   @override
-  State<PostsListWidget> createState() => _PostsListWidget();
+  State<PostsListWidget> createState() => PostsListWidgetState();
 }
 
-class _PostsListWidget
+class PostsListWidgetState
     extends State<PostsListWidget>
     with WidgetsBindingObserver
 {
-  final _scrollController =
+  @protected
+  final scrollController =
   ScrollController();
 
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(onScroll);
+    scrollController.addListener(onScroll);
   }
 
   @override
   void dispose() {
-    _scrollController
+    scrollController
       ..removeListener(onScroll)
       ..dispose();
     super.dispose();
@@ -42,45 +43,85 @@ class _PostsListWidget
         builder: (BuildContext buildContext, AsyncSnapshot<ListPost<Post>> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
-            return const Center(child: CircularProgressIndicator());
+            return buildDataNull();
           }
           ListPost<Post>? listPost = asyncSnapshot.data;
           switch(listPost?.getEnumListPostForPostsListWidget) {
             case EnumListPostForPostsListWidget.success:
-              return ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
-                      return const Center(
-                        child: SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: CircularProgressIndicator(strokeWidth: 1.5),),
-                      );
-                    }
-                    TextTheme textTheme = Theme.of(context).textTheme;
-                    Post? itemPost = listPost.getParameterList![index];
-                    return Material(
-                      child: ListTile(
-                        leading: Text(itemPost.getOneParametersNamedForPostsListWidget ?? "", style: textTheme.caption),
-                        title: Text(itemPost.getTwoParametersNamedForPostsListWidget ?? ""),
-                        isThreeLine: true,
-                        subtitle: Text(itemPost.getThreeParametersNamedForPostsListWidget ?? ""),
-                        dense: true,
-                      ),
-                    );
-                  },
-                  itemCount: listPost?.getTwoParametersNamedForPostsListWidget,
-                  controller: _scrollController);
+              return buildSuccess(listPost);
             case EnumListPostForPostsListWidget.isEmptyList:
-              return const Center(child: Text('no posts'));
+              return buildIsEmptyList(listPost);
             case EnumListPostForPostsListWidget.noInternetItLocalException:
-              return const Center(child: Text('no Internet. Connect to the Internet'));
+              return buildNoInternetItLocalException(listPost);
             case EnumListPostForPostsListWidget.serverNotWorkItNetworkException:
-              return const Center(child: Text('failed to fetch posts'));
+              return buildServerNotWorkItNetworkException(listPost);
             default:
-              return Container();
+              return buildDefault(listPost);
           }
         });
+  }
+
+  @protected
+  Widget buildSuccess(ListPost<Post>? listPost) {
+    return ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
+            return buildSuccessForLoading(listPost);
+          }
+          Post? itemPost = listPost.getParameterList![index];
+          return buildSuccessForItem(itemPost);
+        },
+        itemCount: listPost?.getTwoParametersNamedForPostsListWidget,
+        controller: scrollController);
+  }
+
+  @protected
+  Widget buildSuccessForLoading(ListPost<Post>? listPost) {
+    return const Center(
+      child: SizedBox(
+        height: 24,
+        width: 24,
+        child: CircularProgressIndicator(strokeWidth: 1.5),),
+    );
+  }
+
+  @protected
+  Widget buildSuccessForItem(Post? itemPost) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+    return Material(
+      child: ListTile(
+        leading: Text(itemPost?.getOneParametersNamedForPostsListWidget ?? "", style: textTheme.caption),
+        title: Text(itemPost?.getTwoParametersNamedForPostsListWidget ?? ""),
+        isThreeLine: true,
+        subtitle: Text(itemPost?.getThreeParametersNamedForPostsListWidget ?? ""),
+        dense: true,
+      ),
+    );
+  }
+
+  @protected
+  Widget buildDataNull() {
+    return const Center(child: CircularProgressIndicator());
+  }
+
+  @protected
+  Widget buildIsEmptyList(ListPost<Post>? listPost) {
+    return const Center(child: Text('no posts'));
+  }
+
+  @protected
+  Widget buildNoInternetItLocalException(ListPost<Post>? listPost) {
+    return const Center(child: Text('no Internet. Connect to the Internet'));
+  }
+
+  @protected
+  Widget buildServerNotWorkItNetworkException(ListPost<Post>? listPost) {
+    return const Center(child: Text('failed to fetch posts'));
+  }
+
+  @protected
+  Widget buildDefault(ListPost<Post>? listPost) {
+    return Container();
   }
 
   @protected
@@ -92,9 +133,9 @@ class _PostsListWidget
 
   @protected
   bool get isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
+    if (!scrollController.hasClients) return false;
+    final maxScroll = scrollController.position.maxScrollExtent;
+    final currentScroll = scrollController.offset;
     return currentScroll >= (maxScroll * 0.9);
   }
 }

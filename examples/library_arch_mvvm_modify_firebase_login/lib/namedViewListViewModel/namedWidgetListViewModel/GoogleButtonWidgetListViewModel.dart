@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
@@ -7,32 +8,34 @@ import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class GoogleButtonWidgetListViewModel {
-  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser<User>> _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle;
-  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>> _boolQNoServiceViewModelUsingGetNPForLoading;
+  @protected
+  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser<User>> userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle;
+  @protected
+  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>> boolQNoServiceViewModelUsingGetNPForLoading;
 
-  GoogleButtonWidgetListViewModel(this._userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle, this._boolQNoServiceViewModelUsingGetNPForLoading);
+  GoogleButtonWidgetListViewModel(this.userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle, this.boolQNoServiceViewModelUsingGetNPForLoading);
 
   Future<void> updateUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask(
       Function(String message) callbackForException)
   async {
-    if(_boolQNoServiceViewModelUsingGetNPForLoading
+    if(boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         !.getParameterIsField)
     {
       return;
     }
-    _boolQNoServiceViewModelUsingGetNPForLoading
+    boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         ?.setParameterIsField = true;
-    _boolQNoServiceViewModelUsingGetNPForLoading
+    boolQNoServiceViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     // 1
-    BoolTypeParameter? boolTypeParameter = await _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
+    BoolTypeParameter? boolTypeParameter = await userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
         .updateUserToFirebaseAuthAndGoogleSignInServiceNP();
-    _boolQNoServiceViewModelUsingGetNPForLoading
+    boolQNoServiceViewModelUsingGetNPForLoading
         .getBoolUsingGetNPForLoading
         ?.setParameterIsField = false;
-    _boolQNoServiceViewModelUsingGetNPForLoading
+    boolQNoServiceViewModelUsingGetNPForLoading
         .notifyStreamBoolUsingGetNPForLoading();
     if(boolTypeParameter!
         .exceptionController

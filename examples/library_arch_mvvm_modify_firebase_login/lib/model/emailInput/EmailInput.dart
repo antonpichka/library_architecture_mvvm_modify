@@ -20,7 +20,7 @@ class EmailInput
 
   set setOneParametersNamedForEmailInputWidget(String str) => email = Email.dirty(str);
 
-  bool isOneParametersNamedForEmailInputWidget() {
-    return email!.invalid;
+  bool? isOneParametersNamedForEmailInputWidget() {
+    return email?.invalid;
   }
 }

@@ -9,9 +9,9 @@ class PostsListFirstBranchOneWidgetListViewModel
   Future<void> getListPostFromHttpClientServiceParameterIntAndSetListPostAndInGeneralOneTask()
   async {
     // 1
-    await getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
+    await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .getListPostFromHttpClientServiceParameterIntAndSetListPost(IntTypeParameter.success(0));
-    getPostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
+    postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
         .notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
     return;
   }

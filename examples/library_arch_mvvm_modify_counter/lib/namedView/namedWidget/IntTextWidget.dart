@@ -5,24 +5,35 @@ import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 class IntTextWidget
     extends StatelessWidget
 {
-  final IntTextWidgetListViewModel _lo;
+  @protected
+  final IntTextWidgetListViewModel lo;
 
-  const IntTextWidget(this._lo);
+  const IntTextWidget(this.lo);
 
   @override
   Widget build(BuildContext context) {
-    _lo.notifyStreamIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask();
+    lo.notifyStreamIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask();
     return StreamBuilder<Int>(
-        stream: _lo.getStreamIntUsingGetNPForIncrementAndDecrement,
+        stream: lo.getStreamIntUsingGetNPForIncrementAndDecrement,
         builder: (BuildContext buildContext, AsyncSnapshot<Int> asyncSnapshot) {
           if(asyncSnapshot.data == null) {
-            return Container();
+            return buildDataNull();
           }
           Int? int = asyncSnapshot.data;
-          return Text(
-            "${int?.getOneParametersNamedForNamedWidgetOrView}",
-            style: Theme.of(context).textTheme.headline4,
-          );
+          return buildSuccess(context, int);
         });
+  }
+
+  @protected
+  Widget buildDataNull() {
+    return Container();
+  }
+
+  @protected
+  Widget buildSuccess(BuildContext context,Int? int) {
+    return Text(
+      "${int?.getOneParametersNamedForNamedWidgetOrView}",
+      style: Theme.of(context).textTheme.headline4,
+    );
   }
 }

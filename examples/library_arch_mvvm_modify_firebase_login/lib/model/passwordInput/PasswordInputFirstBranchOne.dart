@@ -34,7 +34,7 @@ class PasswordInputFirstBranchOne
     );
   }
 
-  bool isOneParametersNamedForConfirmedPasswordInputWidget() {
-    return confirmedPassword!.invalid;
+  bool? isOneParametersNamedForConfirmedPasswordInputWidget() {
+    return confirmedPassword?.invalid;
   }
 }

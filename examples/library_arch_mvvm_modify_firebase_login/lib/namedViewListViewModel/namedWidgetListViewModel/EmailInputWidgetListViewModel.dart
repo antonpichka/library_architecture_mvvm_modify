@@ -1,29 +1,31 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingGetNP.dart';
 
 class EmailInputWidgetListViewModel {
-  final EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>> _emailInputQNoServiceViewModelUsingGetNP;
+  @protected
+  final EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>> emailInputQNoServiceViewModelUsingGetNP;
 
-  EmailInputWidgetListViewModel(this._emailInputQNoServiceViewModelUsingGetNP);
+  EmailInputWidgetListViewModel(this.emailInputQNoServiceViewModelUsingGetNP);
 
   Stream<EmailInput>? get getStreamEmailInputUsingUpdateTIP {
-    return _emailInputQNoServiceViewModelUsingGetNP.getStreamEmailInputUsingGetNP;
+    return emailInputQNoServiceViewModelUsingGetNP.getStreamEmailInputUsingGetNP;
   }
 
   void setOneParametersNamedForEmailInputWidgetByEmailInputUsingGetNPAndInGeneralZeroTask(
       String str)
   {
-    if(_emailInputQNoServiceViewModelUsingGetNP
+    if(emailInputQNoServiceViewModelUsingGetNP
         .getEmailInputUsingGetNP
         ?.getOneParametersNamedForEmailInputWidget == str)
     {
       return;
     }
-    _emailInputQNoServiceViewModelUsingGetNP
+    emailInputQNoServiceViewModelUsingGetNP
         .getEmailInputUsingGetNP
         ?.setOneParametersNamedForEmailInputWidget = str;
-    _emailInputQNoServiceViewModelUsingGetNP
+    emailInputQNoServiceViewModelUsingGetNP
         .notifyStreamEmailInputUsingGetNP();
     return;
   }

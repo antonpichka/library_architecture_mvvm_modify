@@ -6,19 +6,19 @@ import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 class LoginButtonWidget
     extends StatelessWidget
 {
-  final LoginButtonWidgetListViewModel _lo;
+  @protected
+  final LoginButtonWidgetListViewModel lo;
 
-  const LoginButtonWidget(this._lo);
+  const LoginButtonWidget(this.lo);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Bool>(
-        initialData: Bool.success(false),
-        stream: _lo.getStreamBoolUsingGetNPForLoading,
+        stream: lo.getStreamBoolUsingGetNPForLoading,
         builder: (BuildContext buildContext, AsyncSnapshot<Bool> asyncSnapshot)
         {
           Bool? bool = asyncSnapshot.data;
-          return bool!.getParameterIsField
+          return bool?.getParameterIsField ?? false
               ? const CircularProgressIndicator()
               : ElevatedButton(
                   key: const Key('loginForm_continue_raisedButton'),
@@ -28,9 +28,9 @@ class LoginButtonWidget
                     ),
                     backgroundColor: const Color(0xFFFFD600),
                   ),
-                  onPressed: bool.getParameterIsField
+                  onPressed: bool?.getParameterIsField ?? false
                       ? null
-                      : () => _lo.updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
+                      : () => lo.updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
                   child: const Text('LOGIN'),
                 );
         });

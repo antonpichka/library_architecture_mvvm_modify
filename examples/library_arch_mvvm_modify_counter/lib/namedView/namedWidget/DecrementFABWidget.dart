@@ -4,15 +4,16 @@ import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWid
 class DecrementFABWidget
     extends StatelessWidget
 {
-  final DecrementFABWidgetListViewModel _lo;
+  @protected
+  final DecrementFABWidgetListViewModel lo;
 
-  const DecrementFABWidget(this._lo);
+  const DecrementFABWidget(this.lo);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
         child: const Icon(Icons.remove),
-        onPressed: () => _lo
+        onPressed: () => lo
             .setTwoParametersNamedByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask());
   }
 }

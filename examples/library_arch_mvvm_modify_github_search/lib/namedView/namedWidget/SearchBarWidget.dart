@@ -4,18 +4,19 @@ import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/na
 class SearchBarWidget
     extends StatefulWidget
 {
-  final SearchBarWidgetListViewModel searchBarWidgetListViewModel;
+  final SearchBarWidgetListViewModel lo;
 
-  const SearchBarWidget(this.searchBarWidgetListViewModel);
+  const SearchBarWidget(this.lo);
 
   @override
-  State<SearchBarWidget> createState() => _SearchBarWidgetState();
+  State<SearchBarWidget> createState() => SearchBarWidgetState();
 }
 
-class _SearchBarWidgetState
+class SearchBarWidgetState
     extends State<SearchBarWidget>
 {
-  final _textController = TextEditingController();
+  @protected
+  final textController = TextEditingController();
 
   @override
   void initState() {
@@ -24,18 +25,18 @@ class _SearchBarWidgetState
 
   @override
   void dispose() {
-    _textController.dispose();
+    textController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _textController,
+      controller: textController,
       autocorrect: false,
       onChanged: (text) {
         widget
-            .searchBarWidgetListViewModel
+            .lo
             .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask(text);
       },
       decoration: buildDecorationForTextField()
@@ -57,9 +58,9 @@ class _SearchBarWidgetState
 
   @protected
   void onClearTappedForDecorationForTextField() {
-    _textController.text = '';
+    textController.text = '';
     widget
-        .searchBarWidgetListViewModel
+        .lo
         .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask("");
   }
 }

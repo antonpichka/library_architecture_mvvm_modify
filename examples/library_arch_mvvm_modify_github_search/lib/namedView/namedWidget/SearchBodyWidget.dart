@@ -7,14 +7,15 @@ import 'package:url_launcher/url_launcher.dart';
 class SearchBodyWidget
     extends StatelessWidget
 {
-  final SearchBodyWidgetListViewModel _lo;
+  @protected
+  final SearchBodyWidgetListViewModel lo;
 
-  const SearchBodyWidget(this._lo);
+  const SearchBodyWidget(this.lo);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListSearchResultInLoading<SearchResultInLoading>>(
-      stream: _lo.getStreamListSearchResultInLoadingUsingGetListNP,
+      stream: lo.getStreamListSearchResultInLoadingUsingGetListNP,
       builder: (BuildContext context, AsyncSnapshot<ListSearchResultInLoading<SearchResultInLoading>> state) {
         if(state.data == null) {
           return buildDataNull();
