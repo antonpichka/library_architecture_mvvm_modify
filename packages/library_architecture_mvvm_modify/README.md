@@ -21,8 +21,8 @@ Architecture Benefits:
 - If you need a widget that has already been written, but with some changes. You can inherit this widget and override methods that change the widget itself (For example: buildTextStyle,buildIcon)
 - Or change the logic for this widget, which is located in the NamedWidgetListViewModel, you also inherit along with the NamedWidget, since the binding is 1k1.
 - And if you want to change the logic in the model itself, then all the methods used from the model are abstract, and you only need to inherit this model, and you get the result you need. (Also, for the inherited model, you do not need to create a DataSource and ViewModel, since generics and abstract classes allow you to reuse, and if you have added new fields and you need to get from the data source, then these abstract classes solve the problem ((List/Model)ForNamed( TIP/NP))
-2) By the name of the DataSource, ViewModel file, you can understand which libraries and methods are used and what kind of logic is there, as well as what data we receive and what data we send
-Example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle
+2) By the name of the DataSource, ViewModel file, you can understand which libraries and methods are used and what kind of logic is there, as well as what data we receive and what data we send.
+Example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle:
 - Get User 
 - We use the FirebaseAuth, GoogleSignIn libraries
 - The Update method is used without a parameter (No Parameter)
