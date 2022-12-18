@@ -22,11 +22,11 @@ Architecture Benefits:
 - Or change the logic for this widget, which is located in the NamedWidgetListViewModel, you also inherit along with the NamedWidget, since the binding is 1k1.
 - And if you want to change the logic in the model itself, then all the methods used from the model are abstract, and you only need to inherit this model, and you get the result you need. (Also, for the inherited model, you do not need to create a DataSource and ViewModel, since generics and abstract classes allow you to reuse, and if you have added new fields and you need to get from the data source, then these abstract classes solve the problem ((List/Model)ForNamed( TIP/NP))
 2) By the name of the DataSource, ViewModel file, you can understand which libraries and methods are used and what kind of logic is there, as well as what data we receive and what data we send
-(For example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle, you can understand from the name
-1. Get User
-2. We use the FirebaseAuth, GoogleSignIn libraries
-3. The Update method is used without a parameter (No Parameter)
-4. For authorization in Google)
+Example: UserQFirebaseAuthAndGoogleSignInService(ViewModel/DataSource)UsingUpdateNPForAuthGoogle
+- Get User 
+- We use the FirebaseAuth, GoogleSignIn libraries
+- The Update method is used without a parameter (No Parameter)
+- For authorization in Google)
 3) In the Future, the project will be easy for you to expand and less prone to errors than in standard architectures, where you need to refactor files and create new problems that could have been avoided, as well as rewrite tests for these edited files
 4) Components and models are written 1 time (Exception: unless there was a bug initially, or your code did not match the task before the release), after the release, if the task has changed, then create new files, or if the task is similar, use inheritance (NamedWidget,NamedWidgetListViewModel,Model), and most importantly, unit tests and ui tests for components are written 1 time (And if you rewrite tests or old code, then it turns out that your work was devalued, or the work of the person who wrote this code)
 
