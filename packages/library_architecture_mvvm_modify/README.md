@@ -12,7 +12,7 @@ The library is implemented according to the principles of SOLID, and is an examp
 <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
-Architectural weaknesses:
+Architecture Weaknesses:
 1) The named methods in the model are abstract and therefore it will be difficult for the programmer to read the source code in NamedView/NamedViewListViewModel and NamedWidget/NamedWidgetListViewModel and Model
 2) Long start of the project (Yes, you will need to create the necessary files, as well as abstract each component so that you do not refactor these files in the future)
 
