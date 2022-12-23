@@ -9,7 +9,7 @@ class HiveSingleton
 
   Future<Box<T>?> getBoxSettings<T extends Settings>()
   async {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(_boxSettings != null) {
       return _boxSettings as Box<T>?;
     }

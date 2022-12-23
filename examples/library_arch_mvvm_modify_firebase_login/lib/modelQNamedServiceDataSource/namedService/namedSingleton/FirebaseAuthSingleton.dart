@@ -7,7 +7,7 @@ class FirebaseAuthSingleton
   static FirebaseAuth? _firebaseAuth;
 
   FirebaseAuth? get getFirebaseAuth {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(_firebaseAuth != null) {
       return _firebaseAuth;
     }

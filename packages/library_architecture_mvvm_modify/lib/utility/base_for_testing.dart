@@ -10,8 +10,7 @@ class BaseForTesting {
   }
 
   @protected
-  @nonVirtual
-  void iterationForNumberOfExecutedMethodsInThisClass() {
+  void incrementForNumberOfExecutedMethodsInThisClass() {
     _numberOfExecutedMethodsInThisClass = (_numberOfExecutedMethodsInThisClass! + 1);
   }
 }

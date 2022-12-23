@@ -28,15 +28,15 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   /* Init Clone */
   final ICloneStreamModelForSuccess<T,Y> _iCloneStreamModelForSuccess;
 
-  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,this._iCloneStreamModelForSuccess)
-      : _isExistsDataSource = true, super.thereIsDataSource(dataSource)
+  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,this._iCloneStreamModelForSuccess,{Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel})
+      : _isExistsDataSource = true, super.thereIsDataSource(dataSource,theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel: theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
     _initMapEnumForIStreamModelVMAndIStreamModel();
   }
 
-  BaseModelQNamedServiceViewModel.noDataSource(List<EnumForIStreamModelVM> list,this._iCloneStreamModelForSuccess)
-      : _isExistsDataSource = false, super.thereIsDataSource(null)
+  BaseModelQNamedServiceViewModel.noDataSource(List<EnumForIStreamModelVM> list,this._iCloneStreamModelForSuccess,{Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel})
+      : _isExistsDataSource = false, super.thereIsDataSource(null,theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel: theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel)
   {
     _initNoDataSourceListEnumForIStreamModelVM(list);
     _initMapEnumForIStreamModelVMAndIStreamModel();
@@ -44,7 +44,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
 
   @override
   void dispose() {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     _mapEnumForIStreamModelVMVMAndIStreamModel.forEach((
         EnumForIStreamModelVM enumBaseModelAndBaseListModelVM,
         IStreamModel<T,Y>? iStreamModel)
@@ -59,7 +59,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   IStreamModel<T,Y>? getIStreamModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -73,7 +73,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<T?> getFutureModel(
       EnumForIStreamModelVM operation)
   async {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -85,7 +85,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Stream<T>? getStreamModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -97,7 +97,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   T? getModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -110,7 +110,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       EnumForIStreamModelVM operation,
       T? model)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -123,7 +123,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void notifyStreamModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -136,7 +136,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void notifyStreamDelayInSecondsModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -151,7 +151,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Y?> getFutureListModel(
       EnumForIStreamModelVM operation)
   async {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -163,7 +163,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Stream<Y>? getStreamListModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -175,7 +175,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Y? getListModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       return throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -188,7 +188,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       EnumForIStreamModelVM operation,
       Y? listModel)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -201,7 +201,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void notifyStreamListModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }
@@ -214,7 +214,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   void notifyStreamDelayInSecondsListModel(
       EnumForIStreamModelVM operation)
   {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(!_mapEnumForIStreamModelVMVMAndIStreamModel.containsKey(operation)) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"$operation not found");
     }

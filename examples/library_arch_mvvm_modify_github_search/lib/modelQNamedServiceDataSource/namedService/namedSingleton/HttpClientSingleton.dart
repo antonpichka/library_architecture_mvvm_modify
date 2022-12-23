@@ -7,7 +7,7 @@ class HttpClientSingleton
   static http.Client? _httpClient;
 
   http.Client? get getHttpClient {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(_httpClient != null) {
       return _httpClient;
     }

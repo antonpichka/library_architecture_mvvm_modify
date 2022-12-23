@@ -17,6 +17,7 @@ class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForChe
   }
 
   Stream<T>? get getCustomStreamUser {
+    incrementForNumberOfExecutedMethodsInThisClass();
     return modelQNamedServiceDataSource?.getCustomStreamUser;
   }
 }

@@ -7,7 +7,7 @@ class GoogleSignInSingleton
   static GoogleSignIn? _googleSignIn;
 
   GoogleSignIn? get getGoogleSignIn {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(_googleSignIn != null) {
       return _googleSignIn;
     }

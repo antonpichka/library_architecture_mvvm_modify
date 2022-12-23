@@ -7,7 +7,7 @@ class TempCacheSingleton
   static TempCache? _tempCache;
 
   TempCache? get getTempCache {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(_tempCache != null) {
       return _tempCache;
     }

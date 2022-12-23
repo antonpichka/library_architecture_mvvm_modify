@@ -27,6 +27,7 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
   }
 
   void listensCustomStreamUser(Function(User user) callback) {
+    incrementForNumberOfExecutedMethodsInThisClass();
     _customStreamSubscriptionUser = modelQNamedServiceDataSource
         ?.getCustomStreamUser
         ?.listen((event) {

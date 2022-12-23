@@ -7,7 +7,7 @@ class GithubCacheSingleton
   static GithubCache? _githubCache;
 
   GithubCache? get getGithubCache {
-    iterationForNumberOfExecutedMethodsInThisClass();
+    incrementForNumberOfExecutedMethodsInThisClass();
     if(_githubCache != null) {
       return _githubCache;
     }
