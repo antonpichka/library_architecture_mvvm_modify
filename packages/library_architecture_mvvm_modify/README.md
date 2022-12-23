@@ -76,7 +76,6 @@ Examples taken for processing from library <a href="https://github.com/felangel/
     - ###### NamedSingleton
 - #### ModelQNamedServiceBackgroundModel
   - ##### FBDS
-  - ##### CloneStreamModelForSuccess
   - ##### (List/Model)ForNamed(TIP/NP)
 - #### ModelQNamedServiceViewModel
   - ##### FBDS
