@@ -1,6 +1,7 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 part 'Weather.g.dart';
@@ -30,8 +31,6 @@ class Weather
   @JsonKey(ignore: true)
   DateTime? lastUpdated;
 
-  Weather(this.location,this.weatherCode,this.temperature)
-        : lastUpdated = DateTime.now(), super.success(location?.getParameterUniqueId);
   Weather.success(this.location,this.weatherCode,this.temperature)
       : lastUpdated = DateTime.now(), super.success(location?.getParameterUniqueId);
   Weather.exception(super.exception) : super.exception();
@@ -42,38 +41,32 @@ class Weather
   static const constParameterWeatherCode = "weathercode";
   static const constParameterTemperature = "temperature";
 
-  WeatherCondition get getOneParametersNamedForNamedWidget {
+  Color? get getOneParametersNamedForNamedViewOrWidget {
+    switch(getWeatherCondition) {
+      case WeatherCondition.clear:
+        return Colors.orangeAccent;
+      case WeatherCondition.rainy:
+        return Colors.indigoAccent;
+      case WeatherCondition.cloudy:
+        return Colors.blueGrey;
+      case WeatherCondition.snowy:
+        return Colors.lightBlueAccent;
+      case WeatherCondition.unknown:
+        return constDefaultColor;
+      default:
+        return constDefaultColor;
+    }
+  }
+
+  @protected
+  WeatherCondition get getWeatherCondition {
     switch (weatherCode?.toInt()) {
       case 0:
         return WeatherCondition.clear;
-      case 1:
-      case 2:
-      case 3:
-      case 45:
       case 48:
         return WeatherCondition.cloudy;
-      case 51:
-      case 53:
-      case 55:
-      case 56:
-      case 57:
-      case 61:
-      case 63:
-      case 65:
-      case 66:
-      case 67:
-      case 80:
-      case 81:
-      case 82:
-      case 95:
-      case 96:
       case 99:
         return WeatherCondition.rainy;
-      case 71:
-      case 73:
-      case 75:
-      case 77:
-      case 85:
       case 86:
         return WeatherCondition.snowy;
       default:

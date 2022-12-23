@@ -10,7 +10,7 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => $checkedCreate(
       'Weather',
       json,
       ($checkedConvert) {
-        final val = Weather(
+        final val = Weather.success(
           $checkedConvert(
               'location',
               (v) => v == null
@@ -23,9 +23,3 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
       fieldKeyMap: const {'weatherCode': 'weathercode'},
     );
-
-Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
-      'location': instance.location,
-      'weathercode': instance.weatherCode,
-      'temperature': instance.temperature,
-    };

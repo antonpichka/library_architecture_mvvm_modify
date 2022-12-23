@@ -17,18 +17,17 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
   final IModelForNamedTIP<T,Map<String,dynamic>> _iWeatherForMapTIP;
   final IModelForNamedTIP<T,NetworkException> _iWeatherForNetworkExceptionTIP;
   final IModelForNamedTIP<T,LocalException> _iWeatherForLocalExceptionTIP;
-
-  WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(this._iWeatherForMapTIP, this._iWeatherForNetworkExceptionTIP, this._iWeatherForLocalExceptionTIP);
-
   static const _constLocationNotFound = "locationNotFound";
   static const _constWeatherNotFound = "weatherNotFound";
+
+  WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(this._iWeatherForMapTIP, this._iWeatherForNetworkExceptionTIP, this._iWeatherForLocalExceptionTIP);
 
   @override
   Future<T?> getModelFromNamedServiceParameterNamed(StringTypeParameter? parameter)
   async {
     try {
       final locationRequest = Uri.https(
-        baseUrlGeocodingOpenMeteoApi,
+        constBaseUrlGeocodingOpenMeteoApi,
         '/v1/search',
         {'name': parameter!.parameter, 'count': '1'},
       );
@@ -49,7 +48,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
       }
       final locationFirstMapByLocationListMap = locationListMap.first as Map<String,dynamic>;
       final weatherRequest = Uri.https(
-          baseUrlOpenMeteoApi,
+          constBaseUrlOpenMeteoApi,
           'v1/forecast',
           {Location.constParameterLatitude: '${locationFirstMapByLocationListMap[Location.constParameterLatitude]}', Location.constParameterLongitude: '${locationFirstMapByLocationListMap[Location.constParameterLongitude]}', 'current_weather': 'true'}
       );

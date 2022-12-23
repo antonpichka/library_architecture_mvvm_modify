@@ -21,7 +21,6 @@ class Location
   @JsonKey(name: constParameterLongitude)
   double? longitude;
 
-  Location(this.id,this.name,this.latitude,this.longitude) : super.success(id.toString());
   Location.success(this.id,this.name,this.latitude,this.longitude) : super.success(id.toString());
   Location.exception(super.exception) : super.exception();
   factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
