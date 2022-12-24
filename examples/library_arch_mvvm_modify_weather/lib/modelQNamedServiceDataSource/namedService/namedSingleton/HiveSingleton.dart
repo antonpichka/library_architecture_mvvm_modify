@@ -5,15 +5,15 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 class HiveSingleton
     extends BaseNamedSingleton
 {
-  static Box<Settings>? _boxSettings;
+  static Box? _boxSettings;
 
-  Future<Box<T>?> getBoxSettings<T extends Settings>()
+  Future<Box?> getBoxSettings()
   async {
     incrementForNumberOfExecutedMethodsInThisClass();
     if(_boxSettings != null) {
-      return _boxSettings as Box<T>?;
+      return _boxSettings;
     }
-    _boxSettings = await Hive.openBox<T>(Settings.constSettingsQHiveService);
-    return _boxSettings as Box<T>?;
+    _boxSettings = await Hive.openBox(Settings.constSettingsQHiveService);
+    return _boxSettings;
   }
 }

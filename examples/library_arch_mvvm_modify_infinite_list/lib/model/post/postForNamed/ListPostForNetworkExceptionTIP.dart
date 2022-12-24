@@ -7,9 +7,9 @@ class ListPostForNetworkExceptionTIP
     implements IListModelForNamedTIP<ListPost<Post>,NetworkException>
 {
   @override
-  ListPost<Post> getListModelForNamedTIP(
-      NetworkException parameter)
+  ListPost<Post>? getListModelForNamedTIP(
+      NetworkException? parameter)
   {
-    return ListPost.exception(parameter);
+    return ListPost.exception(parameter!);
   }
 }

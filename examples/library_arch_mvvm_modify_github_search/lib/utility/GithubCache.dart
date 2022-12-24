@@ -1,10 +1,10 @@
 class GithubCache {
   final _cache = <String, Object?>{};
 
-  T? get<T extends Object>(String? term) {
+  Object? get(String? term) {
     final value = _cache[term];
-    if (value is T) return value;
-    return null;
+    if (value == null) return null;
+    return value;
   }
 
   void set<T extends Object>(String? term, T result) => _cache[term!] = result;

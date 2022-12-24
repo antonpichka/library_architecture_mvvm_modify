@@ -7,10 +7,10 @@ class ListPostForLocalExceptionTIP
     implements IListModelForNamedTIP<ListPost<Post>,LocalException>
 {
   @override
-  ListPost<Post> getListModelForNamedTIP(
-      LocalException parameter)
+  ListPost<Post>? getListModelForNamedTIP(
+      LocalException? parameter)
   {
-    return ListPost.exception(parameter);
+    return ListPost.exception(parameter!);
   }
 
 }

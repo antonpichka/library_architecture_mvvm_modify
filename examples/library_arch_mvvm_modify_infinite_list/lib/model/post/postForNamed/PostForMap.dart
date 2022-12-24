@@ -5,9 +5,9 @@ class PostForMap
     implements IModelForNamedTIP<Post,Map<String,dynamic>>
 {
   @override
-  Post getModelForNamedTIP(Map<String, dynamic> parameter) {
+  Post? getModelForNamedTIP(Map<String, dynamic>? parameter) {
     return Post.success(
-        parameter[Post.constParameterId],
+        parameter![Post.constParameterId],
         parameter[Post.constParameterTitle],
         parameter[Post.constParameterBody]);
   }

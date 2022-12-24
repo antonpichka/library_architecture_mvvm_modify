@@ -5,9 +5,9 @@ class GithubUserForMapTIP
     implements IModelForNamedTIP<GithubUser,Map<String,dynamic>>
 {
   @override
-  GithubUser getModelForNamedTIP(Map<String,dynamic> parameter) {
+  GithubUser? getModelForNamedTIP(Map<String,dynamic>? parameter) {
     return GithubUser.success(
-        parameter[GithubUser.constParameterLogin] as String,
+        parameter![GithubUser.constParameterLogin] as String,
         parameter[GithubUser.constParameterAvatarUrl] as String);
   }
 

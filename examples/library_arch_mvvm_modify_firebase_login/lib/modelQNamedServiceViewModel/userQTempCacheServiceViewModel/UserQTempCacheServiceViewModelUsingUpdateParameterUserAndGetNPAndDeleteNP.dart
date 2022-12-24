@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/boo
 class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<T extends User,Y extends ListUser<T>>
     extends UserQNamedServiceViewModel<T,Y,UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP<T,Y>>
 {
-  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess,IModelForNamedTIP<T,LocalException> userForLocalExceptionTIP) : super.thereIsDataSource(UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP(userForLocalExceptionTIP),iCloneStreamModelForSuccess);
+  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess,IModelForNamedTIP<T,LocalException> iUserForLocalExceptionTIP,IModelForNamedTIP<T,Object> iUserForObjectTIP) : super.thereIsDataSource(UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP(iUserForLocalExceptionTIP,iUserForObjectTIP),iCloneStreamModelForSuccess);
 
   @override
   Object thisClass() {

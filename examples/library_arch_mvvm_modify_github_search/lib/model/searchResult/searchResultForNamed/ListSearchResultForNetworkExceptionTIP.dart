@@ -7,7 +7,7 @@ class ListSearchResultForNetworkExceptionTIP
     implements IListModelForNamedTIP<ListSearchResult<SearchResult>,NetworkException>
 {
   @override
-  ListSearchResult<SearchResult> getListModelForNamedTIP(NetworkException parameter) {
-    return ListSearchResult.exception(parameter);
+  ListSearchResult<SearchResult>? getListModelForNamedTIP(NetworkException? parameter) {
+    return ListSearchResult.exception(parameter!);
   }
 }

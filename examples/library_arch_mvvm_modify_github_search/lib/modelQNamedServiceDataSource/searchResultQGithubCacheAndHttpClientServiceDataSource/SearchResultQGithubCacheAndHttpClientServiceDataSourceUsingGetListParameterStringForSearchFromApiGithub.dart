@@ -17,21 +17,21 @@ class SearchResultQGithubCacheAndHttpClientServiceDataSourceUsingGetListParamete
   final IListModelForNamedTIP<Y,Map<String,dynamic>> _iListSearchResultForMapTIP;
   final IListModelForNamedTIP<Y,NetworkException> _iListSearchResultForNetworkExceptionTIP;
   final IListModelForNamedTIP<Y,LocalException> _iListSearchResultForLocalExceptionTIP;
+  final IListModelForNamedTIP<Y,Object> _iListSearchResultForObjectTIP;
 
   SearchResultQGithubCacheAndHttpClientServiceDataSourceUsingGetListParameterStringForSearchFromApiGithub(
       this._iListSearchResultForMapTIP,
       this._iListSearchResultForNetworkExceptionTIP,
       this._iListSearchResultForLocalExceptionTIP,
+      this._iListSearchResultForObjectTIP,
       {this.baseUrl = constUrlApiGithubComSearchRepositories});
 
   @override
   Future<Y?> getListModelFromNamedServiceParameterNamed(StringTypeParameter? parameter)
   async {
     try {
-      final cachedResult = _githubCacheAndHttpClientService
-          .getGithubCacheSingleton
-          ?.getGithubCache
-          ?.get<Y>(parameter!.parameter);
+      final cachedResult = _iListSearchResultForObjectTIP
+          .getListModelForNamedTIP(_githubCacheAndHttpClientService.getGithubCacheSingleton?.getGithubCache?.get(parameter!.parameter));
       if(cachedResult != null) {
         return cachedResult;
       }
@@ -43,11 +43,12 @@ class SearchResultQGithubCacheAndHttpClientServiceDataSourceUsingGetListParamete
         throw NetworkException.fromStatusCode(this,responseHttpClient.statusCode);
       }
       final resultJsonDecode = json.decode(responseHttpClient.body) as Map<String, dynamic>;
-      final listSearchResult = _iListSearchResultForMapTIP.getListModelForNamedTIP(resultJsonDecode);
+      final listSearchResult = _iListSearchResultForMapTIP
+          .getListModelForNamedTIP(resultJsonDecode);
       _githubCacheAndHttpClientService
           .getGithubCacheSingleton
           ?.getGithubCache
-          ?.set<Y>(parameter!.parameter, listSearchResult);
+          ?.set<Y>(parameter!.parameter, listSearchResult!);
       return listSearchResult;
     } on NetworkException catch(e) {
       return _iListSearchResultForNetworkExceptionTIP.getListModelForNamedTIP(e);

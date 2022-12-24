@@ -7,9 +7,9 @@ class ListPostFirstBranchOneForNetworkExceptionTIP
     implements IListModelForNamedTIP<ListPostFirstBranchOne<PostFirstBranchOne>,NetworkException>
 {
   @override
-  ListPostFirstBranchOne<PostFirstBranchOne> getListModelForNamedTIP(
-      NetworkException parameter)
+  ListPostFirstBranchOne<PostFirstBranchOne>? getListModelForNamedTIP(
+      NetworkException? parameter)
   {
-    return ListPostFirstBranchOne.exception(parameter);
+    return ListPostFirstBranchOne.exception(parameter!);
   }
 }

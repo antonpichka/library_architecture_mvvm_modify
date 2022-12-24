@@ -7,9 +7,9 @@ class ListPostFirstBranchOneForLocalExceptionTIP
     implements IListModelForNamedTIP<ListPostFirstBranchOne<PostFirstBranchOne>,LocalException>
 {
   @override
-  ListPostFirstBranchOne<PostFirstBranchOne> getListModelForNamedTIP(
-      LocalException parameter)
+  ListPostFirstBranchOne<PostFirstBranchOne>? getListModelForNamedTIP(
+      LocalException? parameter)
   {
-    return ListPostFirstBranchOne.exception(parameter);
+    return ListPostFirstBranchOne.exception(parameter!);
   }
 }

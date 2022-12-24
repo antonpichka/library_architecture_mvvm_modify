@@ -6,8 +6,8 @@ class ListPostForArrayListPostTIP
     implements IListModelForNamedTIP<ListPost<Post>,List<Post>>
 {
   @override
-  ListPost<Post> getListModelForNamedTIP(
-      List<Post> parameter)
+  ListPost<Post>? getListModelForNamedTIP(
+      List<Post>? parameter)
   {
     return ListPost.success(parameter);
   }

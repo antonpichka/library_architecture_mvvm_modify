@@ -6,7 +6,7 @@ class WeatherForNetworkExceptionTIP
     implements IModelForNamedTIP<Weather,NetworkException>
 {
   @override
-  Weather getModelForNamedTIP(NetworkException parameter) {
-    return Weather.exception(parameter);
+  Weather? getModelForNamedTIP(NetworkException? parameter) {
+    return Weather.exception(parameter!);
   }
 }

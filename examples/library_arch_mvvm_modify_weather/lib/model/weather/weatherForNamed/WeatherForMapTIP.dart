@@ -5,8 +5,8 @@ class WeatherForMapTIP
     implements IModelForNamedTIP<Weather,Map<String,dynamic>>
 {
   @override
-  Weather getModelForNamedTIP(Map<String, dynamic> parameter) {
-    return Weather.fromJson(parameter);
+  Weather? getModelForNamedTIP(Map<String, dynamic>? parameter) {
+    return Weather.fromJson(parameter!);
   }
 
 }

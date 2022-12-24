@@ -3,6 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneStreamUserForSuccess/CloneStreamUserForSuccess.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForFirebaseUserTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForLocalExceptionTIP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForObjectTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForSuccessWhereParametersEqualsStringNullNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndTempCacheServiceViewModel/UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQTempCacheServiceViewModel/UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP.dart';
@@ -15,7 +16,7 @@ class MainViewListViewModel
   final _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
   UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser<User>>(CloneStreamUserForSuccess(),UserForSuccessWhereParametersEqualsStringNullNP(),UserForFirebaseUserTIP());
   final _userQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP =
-  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<User,ListUser<User>>(CloneStreamUserForSuccess(),UserForLocalExceptionTIP());
+  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<User,ListUser<User>>(CloneStreamUserForSuccess(),UserForLocalExceptionTIP(),UserForObjectTIP());
 
   @override
   void dispose() {

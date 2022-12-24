@@ -22,7 +22,7 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
   PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(this._iModelForMapTIP, this._iListPostForArrayListPostTIP, this._iListPostForNetworkExceptionTIP, this._iListPostForLocalExceptionTIP);
 
   @override
-  Future<Y> getListModelFromNamedServiceParameterNamed(
+  Future<Y?> getListModelFromNamedServiceParameterNamed(
       IntTypeParameter? int)
   async {
     try {
@@ -35,9 +35,9 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
         throw NetworkException.fromStatusCode(this,response!.statusCode);
       }
       final body = json.decode(response!.body) as List;
-      List<T> listPost = body.map((dynamic json) {
+      List<T>? listPost = body.map((dynamic json) {
         final map = json as Map<String,dynamic>;
-        return _iModelForMapTIP.getModelForNamedTIP(map);
+        return _iModelForMapTIP.getModelForNamedTIP(map)!;
       }).toList();
       return _iListPostForArrayListPostTIP.getListModelForNamedTIP(listPost);
     } on NetworkException catch(e) {

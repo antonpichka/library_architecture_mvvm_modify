@@ -35,6 +35,13 @@ class User
     return EnumUserForMainView.authenticated;
   }
 
+  @nonVirtual
+  String? get getParameterEmail => email;
+  @nonVirtual
+  String? get getParameterName => name;
+  @nonVirtual
+  String? get getParameterPhoto => photo;
+
   String? get getOneParametersNamedForHomeView => email;
   String? get getTwoParametersNamedForHomeView => name;
   String? get getOneParametersNamedForCircleAvatarWidget => photo;

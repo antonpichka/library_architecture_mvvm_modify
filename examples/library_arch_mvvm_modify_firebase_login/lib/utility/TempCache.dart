@@ -3,14 +3,14 @@ class TempCache {
 
   TempCache() : _mapStringAndObject = <String,Object>{};
 
-  void write<T extends Object>(String key, T? value) {
-    _mapStringAndObject[key] = value;
+  Object? read(String key) {
+    final value = _mapStringAndObject[key];
+    if (value == null) return null;
+    return value;
   }
 
-  T? read<T extends Object>(String key) {
-    final value = _mapStringAndObject[key];
-    if (value is T) return value;
-    return null;
+  void write<T extends Object>(String key, T? value) {
+    _mapStringAndObject[key] = value;
   }
 
   void delete(String key) {

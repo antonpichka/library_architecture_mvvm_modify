@@ -7,9 +7,9 @@ class ListSearchResultForMapTIP
     implements IListModelForNamedTIP<ListSearchResult<SearchResult>,Map<String,dynamic>>
 {
   @override
-  ListSearchResult<SearchResult> getListModelForNamedTIP(Map<String, dynamic> parameter) {
-    final list = (parameter[ListSearchResult.constParameterList] as List<dynamic>)
-        .map((dynamic item) => SearchResultForMapTIP().getModelForNamedTIP(item as Map<String, dynamic>))
+  ListSearchResult<SearchResult>? getListModelForNamedTIP(Map<String, dynamic>? parameter) {
+    final list = (parameter![ListSearchResult.constParameterList] as List<dynamic>)
+        .map((dynamic item) => SearchResultForMapTIP().getModelForNamedTIP(item as Map<String, dynamic>)!)
         .toList();
     return ListSearchResult.success(list);
   }

@@ -19,14 +19,14 @@ class UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAut
         ?.authStateChanges()
         .map((firebase_auth.User? firebaseUser)
     {
-      T user = firebaseUser == null
+      T? user = firebaseUser == null
           ? _userForSuccessWhereParametersEqualsStringNullNP.getModelForNamedNP()
           : _userForFirebaseUserTIP.getModelForNamedTIP(firebaseUser);
       _firebaseAuthAndTempCacheService
           .getTempCacheSingleton
           ?.getTempCache
           ?.write<T>(User.constUserQTempCacheService,user);
-      return user;
+      return user!;
     });
   }
 }

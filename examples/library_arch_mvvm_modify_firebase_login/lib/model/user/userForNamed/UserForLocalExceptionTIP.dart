@@ -6,7 +6,7 @@ class UserForLocalExceptionTIP
     implements IModelForNamedTIP<User,LocalException>
 {
   @override
-  User getModelForNamedTIP(LocalException parameter) {
-    return User.exception(parameter);
+  User? getModelForNamedTIP(LocalException? parameter) {
+    return User.exception(parameter!);
   }
 }

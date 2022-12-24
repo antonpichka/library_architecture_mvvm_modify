@@ -6,7 +6,7 @@ class WeatherForLocalExceptionTIP
     implements IModelForNamedTIP<Weather,LocalException>
 {
   @override
-  Weather getModelForNamedTIP(LocalException parameter) {
-    return Weather.exception(parameter);
+  Weather? getModelForNamedTIP(LocalException? parameter) {
+    return Weather.exception(parameter!);
   }
 }

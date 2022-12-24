@@ -6,9 +6,9 @@ class UserForFirebaseUserTIP
     implements IModelForNamedTIP<User,firebase_auth.User>
 {
   @override
-  User getModelForNamedTIP(firebase_auth.User parameter) {
+  User? getModelForNamedTIP(firebase_auth.User? parameter) {
     return User.success(
-        parameter.uid,
+        parameter!.uid,
         parameter.email,
         parameter.displayName,
         parameter.photoURL);

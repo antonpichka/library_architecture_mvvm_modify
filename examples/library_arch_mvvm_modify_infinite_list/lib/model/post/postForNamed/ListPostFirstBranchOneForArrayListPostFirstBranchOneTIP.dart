@@ -6,8 +6,8 @@ class ListPostFirstBranchOneForArrayListPostFirstBranchOneTIP
     implements IListModelForNamedTIP<ListPostFirstBranchOne<PostFirstBranchOne>,List<PostFirstBranchOne>>
 {
   @override
-  ListPostFirstBranchOne<PostFirstBranchOne> getListModelForNamedTIP(
-      List<PostFirstBranchOne> parameter)
+  ListPostFirstBranchOne<PostFirstBranchOne>? getListModelForNamedTIP(
+      List<PostFirstBranchOne>? parameter)
   {
     return ListPostFirstBranchOne.success(parameter);
   }

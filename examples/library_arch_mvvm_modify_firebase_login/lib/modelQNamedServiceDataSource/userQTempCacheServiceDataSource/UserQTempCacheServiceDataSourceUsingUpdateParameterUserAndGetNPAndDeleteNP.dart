@@ -16,9 +16,10 @@ class UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP
         DeleteModelToNamedServiceNPDataSource<BoolTypeParameter>
 {
   final _tempCacheService = TempCacheService();
-  final IModelForNamedTIP<T,LocalException> _userForLocalExceptionTIP;
+  final IModelForNamedTIP<T,LocalException> _iUserForLocalExceptionTIP;
+  final IModelForNamedTIP<T,Object> _iUserForObjectTIP;
 
-  UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP(this._userForLocalExceptionTIP);
+  UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP(this._iUserForLocalExceptionTIP, this._iUserForObjectTIP);
 
   @override
   Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamed(
@@ -39,12 +40,12 @@ class UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP
   Future<T?> getModelFromNamedServiceNP()
   async {
     try {
-      return _tempCacheService
+      return _iUserForObjectTIP.getModelForNamedTIP(_tempCacheService
           .getTempCacheSingleton
           ?.getTempCache
-          ?.read<T>(User.constUserQTempCacheService);
+          ?.read(User.constUserQTempCacheService));
     } catch (e) {
-      return _userForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return _iUserForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 

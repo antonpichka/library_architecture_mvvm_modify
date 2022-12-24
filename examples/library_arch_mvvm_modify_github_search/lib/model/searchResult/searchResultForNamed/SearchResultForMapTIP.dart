@@ -6,9 +6,9 @@ class SearchResultForMapTIP
     implements IModelForNamedTIP<SearchResult,Map<String,dynamic>>
 {
   @override
-  SearchResult getModelForNamedTIP(Map<String, dynamic> parameter) {
+  SearchResult? getModelForNamedTIP(Map<String, dynamic>? parameter) {
     return SearchResult.success(
-        parameter[SearchResult.constParameterFullName] as String,
+        parameter![SearchResult.constParameterFullName] as String,
         parameter[SearchResult.constParameterHtmlUrl] as String,
         GithubUserForMapTIP().getModelForNamedTIP(parameter[SearchResult.constParameterGithubUser] as Map<String,dynamic>));
   }

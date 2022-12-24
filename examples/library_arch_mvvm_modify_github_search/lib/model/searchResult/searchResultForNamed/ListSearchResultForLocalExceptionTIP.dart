@@ -7,7 +7,7 @@ class ListSearchResultForLocalExceptionTIP
     implements IListModelForNamedTIP<ListSearchResult<SearchResult>,LocalException>
 {
   @override
-  ListSearchResult<SearchResult> getListModelForNamedTIP(LocalException parameter) {
-    return ListSearchResult.exception(parameter);
+  ListSearchResult<SearchResult>? getListModelForNamedTIP(LocalException? parameter) {
+    return ListSearchResult.exception(parameter!);
   }
 }

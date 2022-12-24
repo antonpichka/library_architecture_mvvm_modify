@@ -6,9 +6,9 @@ class PostFirstBranchOneForMap
     implements IModelForNamedTIP<PostFirstBranchOne,Map<String,dynamic>>
 {
   @override
-  PostFirstBranchOne getModelForNamedTIP(Map<String, dynamic> parameter) {
+  PostFirstBranchOne? getModelForNamedTIP(Map<String, dynamic>? parameter) {
     return PostFirstBranchOne.success(
-        parameter[Post.constParameterId],
+        parameter![Post.constParameterId],
         parameter[Post.constParameterTitle],
         parameter[Post.constParameterBody]);
   }

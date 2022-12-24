@@ -7,7 +7,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  await Hive.openBox<Settings>(Settings.constSettingsQHiveService);
+  await Hive.openBox(Settings.constSettingsQHiveService);
 
   runApp(AppView());
 }
