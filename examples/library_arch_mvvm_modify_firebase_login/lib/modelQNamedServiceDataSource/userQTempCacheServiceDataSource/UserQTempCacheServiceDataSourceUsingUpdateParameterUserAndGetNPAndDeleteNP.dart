@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/TempCacheService.dart';
@@ -15,18 +16,23 @@ class UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP
         GetModelFromNamedServiceNPDataSource<T>,
         DeleteModelToNamedServiceNPDataSource<BoolTypeParameter>
 {
-  final _tempCacheService = TempCacheService();
-  final IModelForNamedTIP<T,LocalException> _iUserForLocalExceptionTIP;
-  final IModelForNamedTIP<T,Object> _iUserForObjectTIP;
+  @protected
+  final tempCacheService = TempCacheService();
+  @protected
+  final IModelForNamedTIP<T,LocalException> iUserForLocalExceptionTIP;
+  @protected
+  final IModelForNamedTIP<T,Object> iUserForObjectTIP;
 
-  UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP(this._iUserForLocalExceptionTIP, this._iUserForObjectTIP);
+  UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP(
+      this.iUserForLocalExceptionTIP,
+      this.iUserForObjectTIP);
 
   @override
   Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamed(
       UserTypeParameter<T>? parameter)
   async {
     try {
-      _tempCacheService
+      tempCacheService
           .getTempCacheSingleton
           ?.getTempCache
           ?.write<T>(User.constUserQTempCacheService, parameter!.parameter);
@@ -40,12 +46,12 @@ class UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP
   Future<T?> getModelFromNamedServiceNP()
   async {
     try {
-      return _iUserForObjectTIP.getModelForNamedTIP(_tempCacheService
+      return iUserForObjectTIP.getModelForNamedTIP(tempCacheService
           .getTempCacheSingleton
           ?.getTempCache
           ?.read(User.constUserQTempCacheService));
     } catch (e) {
-      return _iUserForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return iUserForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -53,7 +59,7 @@ class UserQTempCacheServiceDataSourceUsingUpdateParameterUserAndGetNPAndDeleteNP
   Future<BoolTypeParameter> deleteModelToNamedServiceNP()
   async {
     try {
-      _tempCacheService
+      tempCacheService
           .getTempCacheSingleton
           ?.getTempCache
           ?.delete(User.constUserQTempCacheService);

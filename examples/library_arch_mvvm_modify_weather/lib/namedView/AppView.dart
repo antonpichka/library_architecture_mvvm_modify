@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
+import 'package:library_arch_mvvm_modify_weather/namedView/MainView.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/AppViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
@@ -29,14 +31,13 @@ class _AppViewState
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return StreamBuilder<Settings>(
-        stream: /*lo.getStreamEmailInputUsingUpdateTIP*/,
-        builder: (BuildContext buildContext, AsyncSnapshot<Settings> asyncSnapshot)
+    return ValueListenableBuilder(
+        valueListenable: lo.getCustomValueListenableBoxSettings,
+        builder: (BuildContext buildContext, Box<dynamic> box,_)
         {
-          if(asyncSnapshot.data == null) {
-            return Container();
-          }
-          Settings? settings = asyncSnapshot.data;
+          Settings? settings = box.get(
+              Settings.constKeySettingsQHiveService,
+              defaultValue: Settings.getSettingsForSuccessWhereKeyNotFound);
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'LibraryArchMVVMModifyWeather',

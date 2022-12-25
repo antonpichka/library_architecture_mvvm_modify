@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
@@ -15,7 +16,8 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
         InsertModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,RegistrationTypeParameter>,
         UpdateModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,LoginTypeParameter>
 {
-  final _firebaseAuthService = FirebaseAuthService();
+  @protected
+  final firebaseAuthService = FirebaseAuthService();
 
   UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdateParameterLogin();
 
@@ -24,7 +26,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
       RegistrationTypeParameter? registration)
   async {
     try {
-      await _firebaseAuthService
+      await firebaseAuthService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
           ?.createUserWithEmailAndPassword(email: registration!.parameter!.email, password: registration.parameter!.password);
@@ -41,7 +43,7 @@ class UserQFirebaseAuthServiceDataSourceUsingInsertParameterRegistrationAndUpdat
       LoginTypeParameter? login)
   async {
     try {
-      await _firebaseAuthService
+      await firebaseAuthService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
           ?.signInWithEmailAndPassword(email: login!.parameter!.email, password: login.parameter!.password);

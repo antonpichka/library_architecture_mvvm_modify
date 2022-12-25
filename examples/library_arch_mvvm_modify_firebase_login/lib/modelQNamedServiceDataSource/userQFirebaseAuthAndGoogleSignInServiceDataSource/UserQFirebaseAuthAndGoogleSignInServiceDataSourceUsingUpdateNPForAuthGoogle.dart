@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, protected;
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
@@ -11,7 +11,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/boo
 class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogle<T extends User,Y extends ListUser<T>>
     implements UpdateModelToNamedServiceNPDataSource<BoolTypeParameter>
 {
-  final _firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
+  @protected
+  final firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
 
   UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogle();
 
@@ -22,13 +23,13 @@ class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogl
       late final firebase_auth.AuthCredential credential;
       if (kIsWeb) {
         final googleProvider = firebase_auth.GoogleAuthProvider();
-        final userCredential = await _firebaseAuthAndGoogleSignInService
+        final userCredential = await firebaseAuthAndGoogleSignInService
             .getFirebaseAuthSingleton
             ?.getFirebaseAuth
             ?.signInWithPopup(googleProvider,);
         credential = userCredential!.credential!;
       } else {
-        final googleUser = await _firebaseAuthAndGoogleSignInService
+        final googleUser = await firebaseAuthAndGoogleSignInService
             .getGoogleSignInSingleton
             ?.getGoogleSignIn
             ?.signIn();
@@ -38,7 +39,7 @@ class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingUpdateNPForAuthGoogl
           idToken: googleAuth?.idToken,
         );
       }
-      await _firebaseAuthAndGoogleSignInService
+      await firebaseAuthAndGoogleSignInService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
           ?.signInWithCredential(credential);

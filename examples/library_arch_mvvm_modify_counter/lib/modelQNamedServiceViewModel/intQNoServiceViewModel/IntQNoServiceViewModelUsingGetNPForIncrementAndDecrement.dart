@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
@@ -9,10 +10,9 @@ class IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement<T extends Int,Y e
 {
   IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super([EnumForIStreamModelVM.getNP],iCloneStreamModelForSuccess);
 
+  @protected
   @override
-  Object thisClass() {
-    return this;
-  }
+  Object get thisClass => this;
 
   Stream<T>? get getStreamIntUsingGetNPForIncrementAndDecrement {
     return getStreamModel(EnumForIStreamModelVM.getNP);

@@ -16,4 +16,13 @@ class HiveSingleton
     _boxSettings = await Hive.openBox(Settings.constSettingsQHiveService);
     return _boxSettings;
   }
+
+  Box? getBoxSettingsAlreadyOpen() {
+    incrementForNumberOfExecutedMethodsInThisClass();
+    if(_boxSettings != null) {
+      return _boxSettings;
+    }
+    _boxSettings = Hive.box(Settings.constSettingsQHiveService);
+    return _boxSettings;
+  }
 }

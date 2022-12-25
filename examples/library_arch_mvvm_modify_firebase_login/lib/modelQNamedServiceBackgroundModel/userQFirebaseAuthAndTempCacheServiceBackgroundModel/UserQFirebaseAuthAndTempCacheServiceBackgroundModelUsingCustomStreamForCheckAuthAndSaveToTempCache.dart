@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceBackgroundModel/UserQNamedServiceBackgroundModel.dart';
@@ -7,17 +8,26 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser<T>>
-    extends UserQNamedServiceBackgroundModel<T,Y,UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T,Y>>
+    extends UserQNamedServiceBackgroundModel<T,Y>
 {
-  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(IModelForNamedNP<T> userForSuccessWhereParametersEqualsStringNullNP,IModelForNamedTIP<T,firebase_auth.User> userForFirebaseUserTIP) : super.thereIsDataSource(UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(userForSuccessWhereParametersEqualsStringNullNP,userForFirebaseUserTIP));
+  final UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T,Y> _dataSource;
 
+  UserQFirebaseAuthAndTempCacheServiceBackgroundModelUsingCustomStreamForCheckAuthAndSaveToTempCache(
+      IModelForNamedNP<T> iUserForSuccessWhereParametersEqualsStringNullNP,
+      IModelForNamedTIP<T,firebase_auth.User> iUserForFirebaseUserTIP)
+      : _dataSource = UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache(iUserForSuccessWhereParametersEqualsStringNullNP,iUserForFirebaseUserTIP),
+        super.thereIsDataSource();
+
+  @protected
   @override
-  Object thisClass() {
-    return this;
-  }
+  Object get thisClass => this;
+
+  @protected
+  @override
+  UserQFirebaseAuthAndTempCacheServiceDataSourceUsingCustomStreamForCheckAuthAndSaveToTempCache<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
 
   Stream<T>? get getCustomStreamUser {
     incrementForNumberOfExecutedMethodsInThisClass();
-    return modelQNamedServiceDataSource?.getCustomStreamUser;
+    return getModelQNamedServiceDataSource?.getCustomStreamUser;
   }
 }

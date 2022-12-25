@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
 import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
@@ -9,10 +10,9 @@ class StringsQNoServiceViewModelUsingGetNPForSaveLettersSearch<T extends Strings
 {
   StringsQNoServiceViewModelUsingGetNPForSaveLettersSearch(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super([EnumForIStreamModelVM.getNP],iCloneStreamModelForSuccess);
 
+  @protected
   @override
-  Object thisClass() {
-    return this;
-  }
+  Object get thisClass => this;
 
   T? get getStringsUsingGetNPForSaveLettersSearch {
     return getModel(EnumForIStreamModelVM.getNP);

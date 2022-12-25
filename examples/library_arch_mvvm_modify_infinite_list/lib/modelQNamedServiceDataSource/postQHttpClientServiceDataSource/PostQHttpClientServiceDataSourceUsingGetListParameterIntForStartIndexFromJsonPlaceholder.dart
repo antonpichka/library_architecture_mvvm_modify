@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceDataSource/namedService/HttpClientService.dart';
@@ -13,23 +14,32 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int
 class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost<T>>
     implements GetListModelFromNamedServiceParameterNamedDataSource<Y,IntTypeParameter>
 {
-  final _httpClientService = HttpClientService();
-  final IModelForNamedTIP<T,Map<String,dynamic>> _iModelForMapTIP;
-  final IListModelForNamedTIP<Y,List<T>> _iListPostForArrayListPostTIP;
-  final IListModelForNamedTIP<Y,NetworkException> _iListPostForNetworkExceptionTIP;
-  final IListModelForNamedTIP<Y,LocalException> _iListPostForLocalExceptionTIP;
+  @protected
+  final httpClientService = HttpClientService();
+  @protected
+  final IModelForNamedTIP<T,Map<String,dynamic>> iModelForMapTIP;
+  @protected
+  final IListModelForNamedTIP<Y,List<T>> iListPostForArrayListPostTIP;
+  @protected
+  final IListModelForNamedTIP<Y,NetworkException> iListPostForNetworkExceptionTIP;
+  @protected
+  final IListModelForNamedTIP<Y,LocalException> iListPostForLocalExceptionTIP;
 
-  PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(this._iModelForMapTIP, this._iListPostForArrayListPostTIP, this._iListPostForNetworkExceptionTIP, this._iListPostForLocalExceptionTIP);
+  PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder(
+      this.iModelForMapTIP,
+      this.iListPostForArrayListPostTIP,
+      this.iListPostForNetworkExceptionTIP,
+      this.iListPostForLocalExceptionTIP);
 
   @override
   Future<Y?> getListModelFromNamedServiceParameterNamed(
-      IntTypeParameter? int)
+      IntTypeParameter? intTypeParameter)
   async {
     try {
-      final response = await _httpClientService
+      final response = await httpClientService
           .getHttpClientSingleton
           ?.getHttpClient
-          ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '${int?.parameter}', '_limit': '20'}))
+          ?.get(getUriForGetListModelFromNamedServiceParameterNamed(intTypeParameter))
           .timeout(const Duration(seconds: 5));
       if(response?.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,response!.statusCode);
@@ -37,13 +47,17 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
       final body = json.decode(response!.body) as List;
       List<T>? listPost = body.map((dynamic json) {
         final map = json as Map<String,dynamic>;
-        return _iModelForMapTIP.getModelForNamedTIP(map)!;
+        return iModelForMapTIP.getModelForNamedTIP(map)!;
       }).toList();
-      return _iListPostForArrayListPostTIP.getListModelForNamedTIP(listPost);
+      return iListPostForArrayListPostTIP.getListModelForNamedTIP(listPost);
     } on NetworkException catch(e) {
-      return _iListPostForNetworkExceptionTIP.getListModelForNamedTIP(e);
+      return iListPostForNetworkExceptionTIP.getListModelForNamedTIP(e);
     } catch(e) {
-      return _iListPostForLocalExceptionTIP.getListModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return iListPostForLocalExceptionTIP.getListModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
+  }
+
+  Uri getUriForGetListModelFromNamedServiceParameterNamed(IntTypeParameter? intTypeParameter) {
+    return Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '${intTypeParameter?.parameter}', '_limit': '20'});
   }
 }

@@ -37,13 +37,9 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 import 'package:library_architecture_mvvm_modify/utility/base_for_testing_namely_for_the_b_v_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
+abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y extends BaseListModel<T>>
     extends BaseForTestingNamelyForTheBVModel
 {
-  /* Init DataSource */
-  @protected
-  final DataSource? modelQNamedServiceDataSource;
-
   /* FBDS (Function Before Data Source) */
   GetListModelFromNamedServiceNPFBDS? _getListModelFromNamedServiceNPFBDS;
   GetModelFromNamedServiceNPFBDS? _getModelFromNamedServiceNPFBDS;
@@ -63,18 +59,27 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   DeleteModelToNamedServiceParameterNamedFBDS? _deleteModelToNamedServiceParameterNamedFBDS;
   DeleteListModelToNamedServiceParameterNamedFBDS? _deleteListModelToNamedServiceParameterNamedFBDS;
 
-  BaseModelQNamedServiceBackgroundModel.thereIsDataSource(this.modelQNamedServiceDataSource,
-      {Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel}) : super(theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel);
+  BaseModelQNamedServiceBackgroundModel.thereIsDataSource({Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel}) : super(theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel);
 
   ///   Start ThisClass **/
   ///   Example Using:
   ///
-  ///   Object thisClass() {
-  ///     return this;
-  ///   }
+  ///   @protected
+  ///   @override
+  ///   Object get thisClass => this;
   @protected
-  Object thisClass();
+  Object get thisClass;
   ///   End ThisClass **/
+
+  ///   Start ModelQNamedServiceDataSource **/
+  ///   Example Using:
+  ///
+  ///   @protected
+  ///   @override
+  ///   ModelQNamedServiceDataSource? get getModelQNamedServiceDataSource => _modelQNamedServiceDataSource;
+  @protected
+  Object? get getModelQNamedServiceDataSource;
+  ///   End ModelQNamedServiceDataSource **/
 
   /// Start DataSource **/
   ///
@@ -84,7 +89,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceNP(
-        modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>);
+        getModelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>);
   }
 
   @protected
@@ -93,7 +98,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(
-        modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
+        getModelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
         typeParameterForFBDS);
   }
   // end getListNP 2
@@ -105,7 +110,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceParameterNamed<X>(
-        modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
+        getModelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         typeParameter);
   }
 
@@ -116,7 +121,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
+        getModelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -127,7 +132,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   Future<T?> getModelFromNamedServiceNP()
   {
     incrementForNumberOfExecutedMethodsInThisClass();
-    return _baseGetModelFromNamedServiceNP(modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>);
+    return _baseGetModelFromNamedServiceNP(getModelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>);
   }
 
   @protected
@@ -136,7 +141,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceNPUsingTypeParameterForFBDS<C>(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
+        getModelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
         typeParameterForFBDS);
   }
   // end getNP 2
@@ -148,7 +153,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceParameterNamed<X>(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
+        getModelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         typeParameter);
   }
 
@@ -159,7 +164,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceParameterNamedUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
+        getModelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -171,7 +176,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         null);
   }
 
@@ -181,7 +186,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end insertNP 2
@@ -193,7 +198,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         null);
   }
@@ -205,7 +210,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
-        modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -217,7 +222,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         null);
   }
 
@@ -227,7 +232,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end insertListNP 2
@@ -239,7 +244,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         null);
   }
@@ -251,7 +256,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
-        modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -263,7 +268,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         null);
   }
 
@@ -273,7 +278,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end updateNP 2
@@ -285,7 +290,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         null);
   }
@@ -297,7 +302,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
-        modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -309,7 +314,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         null);
   }
 
@@ -319,7 +324,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end updateListNP 2
@@ -331,7 +336,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         null);
   }
@@ -343,7 +348,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
-        modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -355,7 +360,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         null);
   }
 
@@ -365,7 +370,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end deleteNP 2
@@ -377,7 +382,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         null);
   }
@@ -389,7 +394,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
-        modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }
@@ -401,7 +406,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         null);
   }
 
@@ -411,7 +416,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceNPUsingTypeParameterForFBDS<X,C>(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
+        getModelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         typeParameterForFBDS);
   }
   // end deleteListNP 2
@@ -423,7 +428,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,BaseTypeParameter>(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         null);
   }
@@ -435,7 +440,7 @@ abstract class BaseModelQNamedServiceBackgroundModel<T extends BaseModel,Y exten
   {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceParameterNamedUsingTypeParameterForFBDS<Z,X,C>(
-        modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
+        getModelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         typeParameter,
         typeParameterForFBDS);
   }

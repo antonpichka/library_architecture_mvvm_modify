@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
@@ -15,6 +16,9 @@ class Settings
   static Settings get getSettingsForSuccessWhereKeyNotFound => Settings.success("null");
   static const constSettingsQHiveService = "__settings_q_hive_service__";
   static const constKeySettingsQHiveService = "__key_settings_q_hive_service__";
+
+  @nonVirtual
+  String? get getParameterColor => color;
 
   Color? get getOneParametersNamedForAppView {
     if(color == "null") {

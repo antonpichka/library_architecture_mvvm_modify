@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/ListWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
@@ -13,14 +14,21 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/str
 class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T extends Weather,Y extends ListWeather<T>>
     implements GetModelFromNamedServiceParameterNamedDataSource<T,StringTypeParameter>
 {
-  final _httpClientService = HttpClientService();
-  final IModelForNamedTIP<T,Map<String,dynamic>> _iWeatherForMapTIP;
-  final IModelForNamedTIP<T,NetworkException> _iWeatherForNetworkExceptionTIP;
-  final IModelForNamedTIP<T,LocalException> _iWeatherForLocalExceptionTIP;
-  static const _constLocationNotFound = "locationNotFound";
-  static const _constWeatherNotFound = "weatherNotFound";
+  @protected
+  final httpClientService = HttpClientService();
+  @protected
+  final IModelForNamedTIP<T,Map<String,dynamic>> iWeatherForMapTIP;
+  @protected
+  final IModelForNamedTIP<T,NetworkException> iWeatherForNetworkExceptionTIP;
+  @protected
+  final IModelForNamedTIP<T,LocalException> iWeatherForLocalExceptionTIP;
+  static const constLocationNotFound = "locationNotFound";
+  static const constWeatherNotFound = "weatherNotFound";
 
-  WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(this._iWeatherForMapTIP, this._iWeatherForNetworkExceptionTIP, this._iWeatherForLocalExceptionTIP);
+  WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(
+      this.iWeatherForMapTIP,
+      this.iWeatherForNetworkExceptionTIP,
+      this.iWeatherForLocalExceptionTIP);
 
   @override
   Future<T?> getModelFromNamedServiceParameterNamed(StringTypeParameter? parameter)
@@ -31,7 +39,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
         '/v1/search',
         {'name': parameter!.parameter, 'count': '1'},
       );
-      final locationResponse = await _httpClientService
+      final locationResponse = await httpClientService
           .getHttpClientSingleton
           ?.getHttpClient
           ?.get(locationRequest);
@@ -40,11 +48,11 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
       }
       final locationJson = jsonDecode(locationResponse.body) as Map;
       if(!locationJson.containsKey('results')) {
-        throw LocalException(this,EnumGuiltyForLocalException.user,_constLocationNotFound);
+        throw LocalException(this,EnumGuiltyForLocalException.user,constLocationNotFound);
       }
       final locationListMap = locationJson['results'] as List;
       if(locationListMap.isEmpty) {
-        throw LocalException(this,EnumGuiltyForLocalException.user,_constLocationNotFound);
+        throw LocalException(this,EnumGuiltyForLocalException.user,constLocationNotFound);
       }
       final locationFirstMapByLocationListMap = locationListMap.first as Map<String,dynamic>;
       final weatherRequest = Uri.https(
@@ -52,7 +60,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
           'v1/forecast',
           {Location.constParameterLatitude: '${locationFirstMapByLocationListMap[Location.constParameterLatitude]}', Location.constParameterLongitude: '${locationFirstMapByLocationListMap[Location.constParameterLongitude]}', 'current_weather': 'true'}
       );
-      final weatherResponse = await _httpClientService
+      final weatherResponse = await httpClientService
           .getHttpClientSingleton
           ?.getHttpClient
           ?.get(weatherRequest);
@@ -61,17 +69,17 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
       }
       final weatherJson = jsonDecode(weatherResponse.body) as Map<String, dynamic>;
       if (!weatherJson.containsKey('current_weather')) {
-        throw LocalException(this,EnumGuiltyForLocalException.user,_constWeatherNotFound);
+        throw LocalException(this,EnumGuiltyForLocalException.user,constWeatherNotFound);
       }
       final weatherMap = weatherJson['current_weather'] as Map<String, dynamic>;
       weatherMap[Weather.constParameterLocation] = locationFirstMapByLocationListMap;
-      return _iWeatherForMapTIP.getModelForNamedTIP(weatherMap);
+      return iWeatherForMapTIP.getModelForNamedTIP(weatherMap);
     } on NetworkException catch(e) {
-      return _iWeatherForNetworkExceptionTIP.getModelForNamedTIP(e);
+      return iWeatherForNetworkExceptionTIP.getModelForNamedTIP(e);
     } on LocalException catch(e) {
-      return _iWeatherForLocalExceptionTIP.getModelForNamedTIP(e);
+      return iWeatherForLocalExceptionTIP.getModelForNamedTIP(e);
     } catch(e) {
-      return _iWeatherForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return iWeatherForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 }

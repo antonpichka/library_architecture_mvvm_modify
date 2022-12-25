@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/ListSearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/SearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceDataSource/namedService/GithubCacheAndHttpClientService.dart';
@@ -12,30 +13,36 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/str
 class SearchResultQGithubCacheAndHttpClientServiceDataSourceUsingGetListParameterStringForSearchFromApiGithub<T extends SearchResult,Y extends ListSearchResult<T>>
     implements GetListModelFromNamedServiceParameterNamedDataSource<Y,StringTypeParameter>
 {
+  @protected
+  final githubCacheAndHttpClientService = GithubCacheAndHttpClientService();
+  @protected
+  final IListModelForNamedTIP<Y,Map<String,dynamic>> iListSearchResultForMapTIP;
+  @protected
+  final IListModelForNamedTIP<Y,NetworkException> iListSearchResultForNetworkExceptionTIP;
+  @protected
+  final IListModelForNamedTIP<Y,LocalException> iListSearchResultForLocalExceptionTIP;
+  @protected
+  final IListModelForNamedTIP<Y,Object> iListSearchResultForObjectTIP;
+  @protected
   final String baseUrl;
-  final _githubCacheAndHttpClientService = GithubCacheAndHttpClientService();
-  final IListModelForNamedTIP<Y,Map<String,dynamic>> _iListSearchResultForMapTIP;
-  final IListModelForNamedTIP<Y,NetworkException> _iListSearchResultForNetworkExceptionTIP;
-  final IListModelForNamedTIP<Y,LocalException> _iListSearchResultForLocalExceptionTIP;
-  final IListModelForNamedTIP<Y,Object> _iListSearchResultForObjectTIP;
 
   SearchResultQGithubCacheAndHttpClientServiceDataSourceUsingGetListParameterStringForSearchFromApiGithub(
-      this._iListSearchResultForMapTIP,
-      this._iListSearchResultForNetworkExceptionTIP,
-      this._iListSearchResultForLocalExceptionTIP,
-      this._iListSearchResultForObjectTIP,
+      this.iListSearchResultForMapTIP,
+      this.iListSearchResultForNetworkExceptionTIP,
+      this.iListSearchResultForLocalExceptionTIP,
+      this.iListSearchResultForObjectTIP,
       {this.baseUrl = constUrlApiGithubComSearchRepositories});
 
   @override
   Future<Y?> getListModelFromNamedServiceParameterNamed(StringTypeParameter? parameter)
   async {
     try {
-      final cachedResult = _iListSearchResultForObjectTIP
-          .getListModelForNamedTIP(_githubCacheAndHttpClientService.getGithubCacheSingleton?.getGithubCache?.get(parameter!.parameter));
+      final cachedResult = iListSearchResultForObjectTIP
+          .getListModelForNamedTIP(githubCacheAndHttpClientService.getGithubCacheSingleton?.getGithubCache?.get(parameter!.parameter));
       if(cachedResult != null) {
         return cachedResult;
       }
-      final responseHttpClient = await _githubCacheAndHttpClientService
+      final responseHttpClient = await githubCacheAndHttpClientService
           .getHttpClientSingleton
           ?.getHttpClient
           ?.get(Uri.parse('$baseUrl${parameter!.parameter}'));
@@ -43,17 +50,17 @@ class SearchResultQGithubCacheAndHttpClientServiceDataSourceUsingGetListParamete
         throw NetworkException.fromStatusCode(this,responseHttpClient.statusCode);
       }
       final resultJsonDecode = json.decode(responseHttpClient.body) as Map<String, dynamic>;
-      final listSearchResult = _iListSearchResultForMapTIP
+      final listSearchResult = iListSearchResultForMapTIP
           .getListModelForNamedTIP(resultJsonDecode);
-      _githubCacheAndHttpClientService
+      githubCacheAndHttpClientService
           .getGithubCacheSingleton
           ?.getGithubCache
           ?.set<Y>(parameter!.parameter, listSearchResult!);
       return listSearchResult;
     } on NetworkException catch(e) {
-      return _iListSearchResultForNetworkExceptionTIP.getListModelForNamedTIP(e);
+      return iListSearchResultForNetworkExceptionTIP.getListModelForNamedTIP(e);
     } catch(e) {
-      return _iListSearchResultForLocalExceptionTIP.getListModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return iListSearchResultForLocalExceptionTIP.getListModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 }

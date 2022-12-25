@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceDataSource/namedService/FirebaseAuthAndGoogleSignInService.dart';
@@ -8,7 +9,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/boo
 class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut<T extends User,Y extends ListUser<T>>
     implements DeleteModelToNamedServiceNPDataSource<BoolTypeParameter>
 {
-  final _firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
+  @protected
+  final firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
 
   UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut();
 
@@ -16,11 +18,11 @@ class UserQFirebaseAuthAndGoogleSignInServiceDataSourceUsingDeleteNPForSignOut<T
   Future<BoolTypeParameter> deleteModelToNamedServiceNP()
   async {
     try {
-      await _firebaseAuthAndGoogleSignInService
+      await firebaseAuthAndGoogleSignInService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
           ?.signOut();
-      await _firebaseAuthAndGoogleSignInService
+      await firebaseAuthAndGoogleSignInService
           .getGoogleSignInSingleton
           ?.getGoogleSignIn
           ?.signOut();

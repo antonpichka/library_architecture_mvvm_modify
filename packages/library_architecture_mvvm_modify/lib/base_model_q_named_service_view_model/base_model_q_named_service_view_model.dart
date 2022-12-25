@@ -14,8 +14,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>,DataSource extends Object>
-    extends BaseModelQNamedServiceBackgroundModel<T,Y,DataSource>
+abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>>
+    extends BaseModelQNamedServiceBackgroundModel<T,Y>
     implements IDispose
 {
   /* List and Map For IStreamModel */
@@ -28,15 +28,15 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   /* Init Clone */
   final ICloneStreamModelForSuccess<T,Y> _iCloneStreamModelForSuccess;
 
-  BaseModelQNamedServiceViewModel.thereIsDataSource(DataSource dataSource,this._iCloneStreamModelForSuccess,{Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel})
-      : _isExistsDataSource = true, super.thereIsDataSource(dataSource,theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel: theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel)
+  BaseModelQNamedServiceViewModel.thereIsDataSource(this._iCloneStreamModelForSuccess,{Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel})
+      : _isExistsDataSource = true, super.thereIsDataSource(theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel: theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel)
   {
     _initThereIsDataSourceListEnumBaseModelAndBaseListModelVM();
     _initMapEnumForIStreamModelVMAndIStreamModel();
   }
 
   BaseModelQNamedServiceViewModel.noDataSource(List<EnumForIStreamModelVM> list,this._iCloneStreamModelForSuccess,{Object? theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel})
-      : _isExistsDataSource = false, super.thereIsDataSource(null,theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel: theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel)
+      : _isExistsDataSource = false, super.thereIsDataSource(theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel: theClassForWhichTheMethodExecutionCounterWillNotIncreaseAndThisIsTheBaseNamedViewListViewModel)
   {
     _initNoDataSourceListEnumForIStreamModelVM(list);
     _initMapEnumForIStreamModelVMAndIStreamModel();
@@ -750,16 +750,16 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     if(_isNotExistsDataSource) {
       throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"Constructor call thereIsDataSource...: $_isExistsDataSource");
     }
-    if(modelQNamedServiceDataSource is GetModelFromNamedServiceNPDataSource<T>) {
+    if(getModelQNamedServiceDataSource is GetModelFromNamedServiceNPDataSource<T>) {
       _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getNP);
     }
-    if(modelQNamedServiceDataSource is GetListModelFromNamedServiceNPDataSource<Y>) {
+    if(getModelQNamedServiceDataSource is GetListModelFromNamedServiceNPDataSource<Y>) {
       _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getListNP);
     }
-    if(modelQNamedServiceDataSource is GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter>) {
+    if(getModelQNamedServiceDataSource is GetModelFromNamedServiceParameterNamedDataSource<T,BaseTypeParameter>) {
       _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getParameterNamed);
     }
-    if(modelQNamedServiceDataSource is GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter>) {
+    if(getModelQNamedServiceDataSource is GetListModelFromNamedServiceParameterNamedDataSource<Y,BaseTypeParameter>) {
       _listEnumForIStreamModelVMVM.add(EnumForIStreamModelVM.getListParameterNamed);
     }
   }

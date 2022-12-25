@@ -1,24 +1,30 @@
+import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/ListWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHttpClientServiceDataSource/WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/WeatherQNamedServiceViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/i_clone_stream_model_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 
 class WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<T extends Weather,Y extends ListWeather<T>>
-    extends WeatherQNamedServiceViewModel<T,Y,WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T,Y>>
+    extends WeatherQNamedServiceViewModel<T,Y>
 {
+  final WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T,Y> _dataSource;
+
   WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi(
-      ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess,
+      super.iCloneStreamModelForSuccess,
       IModelForNamedTIP<T,Map<String,dynamic>> iWeatherForMapTIP,
       IModelForNamedTIP<T,NetworkException> iWeatherForNetworkExceptionTIP,
       IModelForNamedTIP<T,LocalException> iWeatherForLocalExceptionTIP)
-      : super.thereIsDataSource(WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(iWeatherForMapTIP,iWeatherForNetworkExceptionTIP,iWeatherForLocalExceptionTIP),iCloneStreamModelForSuccess);
+      :  _dataSource = WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(iWeatherForMapTIP,iWeatherForNetworkExceptionTIP,iWeatherForLocalExceptionTIP),
+        super.thereIsDataSource();
 
+  @protected
   @override
-  Object thisClass() {
-    return this;
-  }
+  Object get thisClass => this;
+
+  @protected
+  @override
+  WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
 }
