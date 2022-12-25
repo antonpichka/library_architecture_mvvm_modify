@@ -27,7 +27,7 @@ Architecture Benefits:
 - The Update method is used without a parameter (No Parameter)
 - For authorization in Google)
 3) In the Future, the project will be easy for you to expand and less prone to errors than in standard architectures, where you need to refactor files and create new problems that could have been avoided, as well as rewrite tests for these edited files
-4) Components and models are written 1 time, importantly, unit tests and ui tests for components  and models are written 1 time (Exception: unless there was a bug initially, or your code did not match the task before the release. After the release, if the task has changed, then create new files, or if the task is similar, then create new files and  use inheritance, in these files NamedWidget,NamedWidgetListViewModel,Model)
+4) Components and models are written 1 time, importantly, unit tests and ui tests for components  and models are written 1 time (Exception: unless there was a bug initially, or your code did not match the task before the release. After the release, if the task has changed, then create new files, or if the task is similar, then create new files and  use inheritance, in these files NamedWidget,NamedWidgetListViewModel,ModelQNamedServiceViewModel,ModelQNamedServiceDataSource,Model)
 
 Initially, the idea of creating this architecture was to minimize code refactoring. I confess that I hate refactoring code, it's terrible and painful, and I would give up programming if I could not create my own library, but this is the profession where it is possible. And it became much easier for me to create applications, since there is much less code refactoring
 
