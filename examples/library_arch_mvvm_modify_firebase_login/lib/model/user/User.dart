@@ -29,7 +29,7 @@ class User
     if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumUserForMainView.localException;
     }
-    if(isThreeParametersNamedForMainView() ?? false) {
+    if(isOneParametersNamedForGetEnumUserForMainView() ?? false) {
       return EnumUserForMainView.unauthenticated;
     }
     return EnumUserForMainView.authenticated;
@@ -54,7 +54,8 @@ class User
     return photo == null;
   }
 
-  bool? isThreeParametersNamedForMainView() {
+  @protected
+  bool? isOneParametersNamedForGetEnumUserForMainView() {
     return uniqueId == "null" &&
         email == "null" &&
         name == "null" &&

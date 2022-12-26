@@ -30,4 +30,9 @@ class Location
   static const constParameterName = "name";
   static const constParameterLatitude = "latitude";
   static const constParameterLongitude = "longitude";
+
+  Map<String,dynamic> toJson() => _$LocationToJson(this);
+
+  @nonVirtual
+  int? get getParameterId => id;
 }

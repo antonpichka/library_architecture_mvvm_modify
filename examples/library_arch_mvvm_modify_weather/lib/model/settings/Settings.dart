@@ -13,7 +13,7 @@ class Settings
   Settings.exception(super.exception) : super.exception();
 
   static Settings get getSettingsForSuccess => Settings.success("");
-  static Settings get getSettingsForSuccessWhereKeyNotFound => Settings.success("null");
+  static Settings get getSettingsForSuccessWhereKeyNotFound => Settings.success(null);
   static const constSettingsQHiveService = "__settings_q_hive_service__";
   static const constKeySettingsQHiveService = "__key_settings_q_hive_service__";
 
@@ -21,7 +21,7 @@ class Settings
   String? get getParameterColor => color;
 
   Color? get getOneParametersNamedForAppView {
-    if(color == "null") {
+    if(color == null) {
       return constDefaultColor;
     }
     return Color(int.parse(color!));

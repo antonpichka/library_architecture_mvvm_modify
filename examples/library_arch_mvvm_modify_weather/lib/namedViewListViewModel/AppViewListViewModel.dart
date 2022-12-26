@@ -12,6 +12,7 @@ import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model
 class AppViewListViewModel
     extends BaseNamedViewListViewModel
 {
+  // ModelQNamedServiceViewModel
   final _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP =
   SettingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP<Settings,ListSettings>(CloneStreamSettingsForSuccess(),SettingsForLocalExceptionTIP(),SettingsForObjectTIP(),SettingsForDefaultWhereKeyNotFoundNP());
 
@@ -22,18 +23,5 @@ class AppViewListViewModel
 
   ValueListenable<Box> get getCustomValueListenableBoxSettings {
     return _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP.getCustomValueListenableBoxSettings!;
-  }
-
-  Stream<Settings>? get getStreamSettingsUsingUpdateParameterSettingsAndGetNP {
-    return _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP.getStreamSettingsUsingUpdateParameterSettingsAndGetNP;
-  }
-
-  Future<void> getSettingsFromHiveServiceNPAndSetSettingsAndInGeneralOneTask()
-  async {
-    // 1
-    await _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP
-        .getSettingsFromHiveServiceNPAndSetSettings();
-    _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP
-        .notifyStreamSettingsUsingUpdateParameterSettingsAndGetNP();
   }
 }

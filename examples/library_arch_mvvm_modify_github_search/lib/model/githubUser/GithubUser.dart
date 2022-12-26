@@ -16,5 +16,8 @@ class GithubUser
   static const constParameterLogin = "login";
   static const constParameterAvatarUrl = "avatar_url";
 
-  String? get getOneParametersNamedForSearchBodyWidget => avatarUrl;
+  @nonVirtual
+  String? get getParameterLogin => login;
+  @nonVirtual
+  String? get getParameterAvatarUrl => avatarUrl;
 }

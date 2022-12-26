@@ -17,9 +17,15 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => $checkedCreate(
                   ? null
                   : Location.fromJson(v as Map<String, dynamic>)),
           $checkedConvert('weathercode', (v) => (v as num?)?.toDouble()),
-          $checkedConvert('temperature', (v) => (v as num?)?.toDouble()),
+          $checkedConvert('temperature', (v) => Temperature.fromDouble((v as num?)?.toDouble())),
         );
         return val;
       },
       fieldKeyMap: const {'weatherCode': 'weathercode'},
     );
+
+Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
+  'location': instance.location?.toJson(),
+  'weathercode': instance.weatherCode,
+  'temperature': instance.temperature?.getParameterValue,
+};

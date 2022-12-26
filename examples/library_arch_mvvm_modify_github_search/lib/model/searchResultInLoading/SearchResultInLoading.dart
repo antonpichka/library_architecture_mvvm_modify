@@ -12,7 +12,10 @@ class SearchResultInLoading
 
   static SearchResultInLoading get getSearchResultInLoadingForSuccess => SearchResultInLoading.success(SearchResult.getSearchResultForSuccess);
 
-  String? get getOneParametersNamedForSearchBodyWidget => searchResult?.getOneParametersNamedForSearchBodyWidget;
-  String? get getTwoParametersNamedForSearchBodyWidget => searchResult?.getTwoParametersNamedForSearchBodyWidget;
-  String? get getThreeParametersNamedForSearchBodyWidget => searchResult?.getThreeParametersNamedForSearchBodyWidget;
+  @nonVirtual
+  SearchResult? get getParameterSearchResult => searchResult;
+
+  String? get getOneParametersNamedForSearchBodyWidget => searchResult?.getParameterGithubUser?.getParameterAvatarUrl;
+  String? get getTwoParametersNamedForSearchBodyWidget => searchResult?.getParameterFullName;
+  String? get getThreeParametersNamedForSearchBodyWidget => searchResult?.getParameterHtmlUrl;
 }

@@ -20,7 +20,10 @@ class SearchResult
   static const constParameterHtmlUrl = "html_url";
   static const constParameterGithubUser = "owner";
 
-  String? get getOneParametersNamedForSearchBodyWidget => githubUser?.getOneParametersNamedForSearchBodyWidget;
-  String? get getTwoParametersNamedForSearchBodyWidget => fullName;
-  String? get getThreeParametersNamedForSearchBodyWidget => htmlUrl;
+  @nonVirtual
+  String? get getParameterFullName => fullName;
+  @nonVirtual
+  String? get getParameterHtmlUrl => htmlUrl;
+  @nonVirtual
+  GithubUser? get getParameterGithubUser => githubUser;
 }
