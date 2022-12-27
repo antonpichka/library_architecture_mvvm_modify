@@ -35,6 +35,19 @@ class WeatherIsLoading
     return EnumWeatherIsLoadingForMainView.success;
   }
 
+
+  void setOneParametersNamedForFloatingActionButtonSearchWidget() {
+    isLoading = true;
+  }
+
+  set setTwoParametersNamedForFloatingActionButtonSearchWidget(Weather weather) {
+    this.weather = weather;
+  }
+
+  void setThreeParametersNamedForFloatingActionButtonSearchWidget() {
+    isLoading = false;
+  }
+
   @protected
   bool? isOneParametersNamedForGetEnumWeatherIsLoadingForMainView() {
     return weather == null;

@@ -17,4 +17,16 @@ class WeatherIsLoadingQNoServiceViewModelUsingGetNP<T extends WeatherIsLoading,Y
   @protected
   @override
   Object? get getModelQNamedServiceDataSource => null;
+
+  Stream<T>? get getStreamWeatherIsLoadingUsingGetNP {
+    return getStreamModel(EnumForIStreamModelVM.getNP);
+  }
+
+  T? get getWeatherIsLoadingUsingGetNP {
+    return getModel(EnumForIStreamModelVM.getNP);
+  }
+
+  void notifyStreamWeatherIsLoadingUsingGetNP() {
+    notifyStreamModel(EnumForIStreamModelVM.getNP);
+  }
 }

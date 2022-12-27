@@ -5,17 +5,23 @@ import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/na
 import 'package:url_launcher/url_launcher.dart';
 
 class SearchBodyWidget
-    extends StatelessWidget
+    extends StatefulWidget
 {
-  @protected
   final SearchBodyWidgetListViewModel lo;
 
   const SearchBodyWidget(this.lo);
 
   @override
+  State<SearchBodyWidget> createState() => SearchBodyWidgetState();
+}
+
+class SearchBodyWidgetState
+    extends State<SearchBodyWidget>
+{
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListSearchResultInLoading<SearchResultInLoading>>(
-      stream: lo.getStreamListSearchResultInLoadingUsingGetListNP,
+      stream: widget.lo.getStreamListSearchResultInLoadingUsingGetListNP,
       builder: (BuildContext context, AsyncSnapshot<ListSearchResultInLoading<SearchResultInLoading>> state) {
         if(state.data == null) {
           return buildDataNull();

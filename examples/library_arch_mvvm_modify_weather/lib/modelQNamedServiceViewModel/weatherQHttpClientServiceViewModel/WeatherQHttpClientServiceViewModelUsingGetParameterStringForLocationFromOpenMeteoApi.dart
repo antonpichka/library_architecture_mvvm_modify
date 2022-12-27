@@ -6,6 +6,7 @@ import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/Wea
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
 
 class WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<T extends Weather,Y extends ListWeather<T>>
     extends WeatherQNamedServiceViewModel<T,Y>
@@ -27,4 +28,8 @@ class WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOp
   @protected
   @override
   WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
+
+  Future<T?> getWeatherFromHttpClientServiceParameterString(StringTypeParameter typeParameter) {
+    return getModelFromNamedServiceParameterNamed<StringTypeParameter>(typeParameter);
+  } 
 }

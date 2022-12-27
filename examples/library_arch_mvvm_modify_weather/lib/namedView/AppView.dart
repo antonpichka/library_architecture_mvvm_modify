@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/namedView/MainView.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/AppViewListViewModel.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class AppView
@@ -53,6 +54,8 @@ class _AppViewState
               initialRoute: "/",
               routes: {
                 "/" : (context) => MainView(),
+              //  "/$constSettingsView" : (context) =>
+              //  "/$constSearchView" : (context) =>
               });
         });
   }

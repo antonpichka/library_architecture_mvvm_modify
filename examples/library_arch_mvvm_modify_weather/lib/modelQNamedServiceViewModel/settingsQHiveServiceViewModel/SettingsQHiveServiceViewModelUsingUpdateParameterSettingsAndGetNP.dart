@@ -38,11 +38,11 @@ class SettingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP<T extend
     return getModelQNamedServiceDataSource?.getCustomValueListenableBoxSettings;
   }
 
-  Stream<T>? get getStreamSettingsUsingUpdateParameterSettingsAndGetNP {
+  Stream<T>? get getStreamSettingsUsingGetNP {
     return getStreamModel(EnumForIStreamModelVM.getNP);
   }
 
-  void notifyStreamSettingsUsingUpdateParameterSettingsAndGetNP() {
+  void notifyStreamSettingsUsingGetNP() {
     notifyStreamModel(EnumForIStreamModelVM.getNP);
   }
 }
