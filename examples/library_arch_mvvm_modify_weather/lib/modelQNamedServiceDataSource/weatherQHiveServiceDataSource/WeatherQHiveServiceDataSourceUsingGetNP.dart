@@ -37,5 +37,4 @@ class WeatherQHiveServiceDataSourceUsingGetNP<T extends Weather,Y extends ListWe
       return iWeatherForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
-
 }

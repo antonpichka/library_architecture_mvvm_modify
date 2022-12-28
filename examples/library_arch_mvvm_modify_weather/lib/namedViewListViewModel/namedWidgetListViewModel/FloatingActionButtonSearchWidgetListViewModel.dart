@@ -48,7 +48,7 @@ class FloatingActionButtonSearchWidgetListViewModel {
     }
     // 2
     await weatherQHiveServiceViewModelUsingUpdateParameterWeather
-        .updateWeatherToHttpClientServiceParameterWeather(WeatherTypeParameter<Weather>.success(weatherFromHttpClient));
+        .updateWeatherToHiveServiceParameterWeather(WeatherTypeParameter<Weather>.success(weatherFromHttpClient));
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setThreeParametersNamedForFloatingActionButtonSearchWidget();

@@ -16,7 +16,7 @@ class Temperature
 
   Temperature.success(this.value,this.temperatureUnits) : super.success(value?.toString());
   Temperature.exception(super.exception) : super.exception();
-  factory Temperature.fromDouble(double? value) => Temperature.success(value,TemperatureUnits.celsius);
+  factory Temperature.fromDouble(double? value) => Temperature.success(value,null);
 
   static Temperature get getTemperatureForSuccess => Temperature.success(0.0,TemperatureUnits.celsius);
 

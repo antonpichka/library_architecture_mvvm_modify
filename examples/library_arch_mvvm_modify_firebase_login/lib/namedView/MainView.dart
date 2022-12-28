@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/HomeView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/LoadingView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/LoginView.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedView/UserExceptionView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/MainViewListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
@@ -38,7 +40,7 @@ class _MainViewState
         builder: (BuildContext buildContext, AsyncSnapshot<User> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
-            return const Scaffold(body: Center(child: CircularProgressIndicator()));
+            return LoadingView();
           }
           User? user = asyncSnapshot.data;
           switch(user?.getEnumUserForMainView) {
@@ -47,11 +49,7 @@ class _MainViewState
             case EnumUserForMainView.unauthenticated:
               return LoginView();
             case EnumUserForMainView.localException:
-              return Scaffold(
-                  body: Center(
-                      child: Text(user
-                          !.getParameterExceptionController
-                          .getMessageForViewByException)));
+              return UserExceptionView(user);
             default:
               return Container();
           }

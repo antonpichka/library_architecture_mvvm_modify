@@ -17,7 +17,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
   @protected
   final httpClientService = HttpClientService();
   @protected
-  final IModelForNamedTIP<T,Map<String,dynamic>> iWeatherForMapTIP;
+  final IModelForNamedTIP<T,Map<String,dynamic>> iWeatherForMapThisNetworkTIP;
   @protected
   final IModelForNamedTIP<T,NetworkException> iWeatherForNetworkExceptionTIP;
   @protected
@@ -26,7 +26,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
   static const constWeatherNotFound = "weatherNotFound";
 
   WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(
-      this.iWeatherForMapTIP,
+      this.iWeatherForMapThisNetworkTIP,
       this.iWeatherForNetworkExceptionTIP,
       this.iWeatherForLocalExceptionTIP);
 
@@ -73,7 +73,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
       }
       final weatherMap = weatherJson['current_weather'] as Map<String, dynamic>;
       weatherMap[Weather.constParameterLocation] = locationFirstMapByLocationListMap;
-      return iWeatherForMapTIP.getModelForNamedTIP(weatherMap);
+      return iWeatherForMapThisNetworkTIP.getModelForNamedTIP(weatherMap);
     } on NetworkException catch(e) {
       return iWeatherForNetworkExceptionTIP.getModelForNamedTIP(e);
     } on LocalException catch(e) {

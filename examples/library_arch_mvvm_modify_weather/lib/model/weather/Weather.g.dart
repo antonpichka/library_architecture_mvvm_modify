@@ -10,22 +10,16 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) => $checkedCreate(
       'Weather',
       json,
       ($checkedConvert) {
-        final val = Weather.success(
+        final val = Weather.successWhereNotExistsParameterLastUpdated(
           $checkedConvert(
               'location',
               (v) => v == null
                   ? null
-                  : Location.fromJson(v as Map<String, dynamic>)),
+                  : Location.fromMapThisNetwork(v as Map<String, dynamic>)),
           $checkedConvert('weathercode', (v) => (v as num?)?.toDouble()),
-          $checkedConvert('temperature', (v) => Temperature.fromDouble((v as num?)?.toDouble())),
+          $checkedConvert('temperature', (v) => (v as num?)?.toDouble()),
         );
         return val;
       },
       fieldKeyMap: const {'weatherCode': 'weathercode'},
     );
-
-Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
-  'location': instance.location?.toJson(),
-  'weathercode': instance.weatherCode,
-  'temperature': instance.temperature?.getParameterValue,
-};

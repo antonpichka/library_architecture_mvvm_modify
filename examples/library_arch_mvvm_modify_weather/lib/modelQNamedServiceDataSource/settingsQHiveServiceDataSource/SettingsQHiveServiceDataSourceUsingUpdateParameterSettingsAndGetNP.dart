@@ -61,6 +61,7 @@ class SettingsQHiveServiceDataSourceUsingUpdateParameterSettingsAndGetNP<T exten
   ValueListenable<Box>? get getCustomValueListenableBoxSettings {
     return hiveService
         .getHiveSingleton
-        ?.getBoxSettingsAlreadyOpen()?.listenable();
+        ?.getBoxSettingsAlreadyOpen()
+        ?.listenable();
   }
 }

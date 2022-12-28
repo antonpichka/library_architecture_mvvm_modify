@@ -66,17 +66,17 @@ class PostsListWidgetState
     return ListView.builder(
         itemBuilder: (BuildContext context, int index) {
           if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
-            return buildSuccessForLoading(listPost);
+            return buildLoadingForSuccess(listPost);
           }
           Post? itemPost = listPost.getParameterList![index];
-          return buildSuccessForItem(itemPost);
+          return buildItemForSuccess(itemPost);
         },
         itemCount: listPost?.getTwoParametersNamedForPostsListWidget,
         controller: scrollController);
   }
 
   @protected
-  Widget buildSuccessForLoading(ListPost<Post>? listPost) {
+  Widget buildLoadingForSuccess(ListPost<Post>? listPost) {
     return const Center(
       child: SizedBox(
         height: 24,
@@ -86,7 +86,7 @@ class PostsListWidgetState
   }
 
   @protected
-  Widget buildSuccessForItem(Post? itemPost) {
+  Widget buildItemForSuccess(Post? itemPost) {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Material(
       child: ListTile(

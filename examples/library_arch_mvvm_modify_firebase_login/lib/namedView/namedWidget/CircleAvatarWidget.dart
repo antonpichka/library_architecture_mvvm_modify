@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/CircleAvatarWidgetListViewModel.dart';
 
 class CircleAvatarWidget
     extends StatelessWidget
 {
   @protected
+  final CircleAvatarWidgetListViewModel circleAvatarWidgetListViewModel;
+  @protected
   final User? user;
 
-  const CircleAvatarWidget(this.user);
+  const CircleAvatarWidget(this.circleAvatarWidgetListViewModel,this.user);
 
   @override
   Widget build(BuildContext context) {

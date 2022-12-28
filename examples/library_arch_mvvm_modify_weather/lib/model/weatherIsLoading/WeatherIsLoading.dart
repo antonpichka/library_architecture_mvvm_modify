@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:library_arch_mvvm_modify_weather/model/temperature/Temperature.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
@@ -15,12 +16,14 @@ class WeatherIsLoading
   @protected
   bool? isLoading;
   @protected
+  TemperatureUnits? temperatureUnits;
+  @protected
   Weather? weather;
 
-  WeatherIsLoading.success(this.isLoading,this.weather) : super.success(weather?.getParameterUniqueId);
+  WeatherIsLoading.success(this.isLoading,this.temperatureUnits,this.weather) : super.success(weather?.getParameterUniqueId);
   WeatherIsLoading.exception(super.exception) : super.exception();
 
-  static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false, null);
+  static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false,TemperatureUnits.celsius, Weather.getWeatherForSuccess);
 
   EnumWeatherIsLoadingForMainView get getEnumWeatherIsLoadingForMainView {
     if(isLoading ?? false) {

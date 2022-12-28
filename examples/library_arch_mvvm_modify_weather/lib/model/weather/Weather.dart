@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
-import 'package:library_arch_mvvm_modify_weather/model/temperature/Temperature.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
@@ -28,33 +27,31 @@ class Weather
   double? weatherCode;
   @protected
   @JsonKey(name: constParameterTemperature)
-  Temperature? temperature;
+  double? temperature;
   @protected
   @JsonKey(ignore: true)
   DateTime? lastUpdated;
 
-  Weather.success(this.location,this.weatherCode,this.temperature)
+  Weather.success(this.location,this.weatherCode,this.temperature,this.lastUpdated) : super.success(location?.getParameterUniqueId);
+  Weather.successWhereNotExistsParameterLastUpdated(this.location,this.weatherCode,this.temperature)
       : lastUpdated = DateTime.now(), super.success(location?.getParameterUniqueId);
-  Weather.successWhereExistsParameterLastUpdated(this.location,this.weatherCode,this.temperature,this.lastUpdated) : super.success(location?.getParameterUniqueId);
   Weather.exception(super.exception) : super.exception();
-  factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
+  factory Weather.fromMapThisNetwork(Map<String, dynamic> map) => _$WeatherFromJson(map);
 
-  static Weather get getWeatherForSuccess => Weather.success(Location.getLocationForSuccess,0.0,Temperature.getTemperatureForSuccess);
-  static Weather get getWeatherForSuccessWhereKeyNotFound => Weather.success(null,null,null);
+  static Weather get getWeatherForSuccess => Weather.success(Location.getLocationForSuccess,0.0,0.0,DateTime.now());
+  static Weather get getWeatherForSuccessWhereKeyNotFound => Weather.success(null,null,null,null);
   static const constWeatherQHiveService = "__weather_q_hive_service__";
   static const constKeyWeatherQHiveService = "__key_weather_q_hive_service__";
   static const constParameterLocation = "location";
   static const constParameterWeatherCode = "weathercode";
   static const constParameterTemperature = "temperature";
 
-  Map<String,dynamic> toJson() => _$WeatherToJson(this);
-
   @nonVirtual
   Location? get getParameterLocation => location;
   @nonVirtual
   double? get getParameterWeatherCode => weatherCode;
   @nonVirtual
-  Temperature? get getParameterTemperature => temperature;
+  double? get getParameterTemperature => temperature;
   @nonVirtual
   DateTime? get getParameterLastUpdated => lastUpdated;
 

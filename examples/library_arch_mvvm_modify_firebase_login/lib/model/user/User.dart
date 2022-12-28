@@ -42,8 +42,8 @@ class User
   @nonVirtual
   String? get getParameterPhoto => photo;
 
-  String? get getOneParametersNamedForHomeView => email;
-  String? get getTwoParametersNamedForHomeView => name;
+  String? get getOneParametersNamedForOneUserTextWidget => email;
+  String? get getOneParametersNamedForTwoUserTextWidget => name;
   String? get getOneParametersNamedForCircleAvatarWidget => photo;
 
   bool? isOneParametersNamedForCircleAvatarWidget() {

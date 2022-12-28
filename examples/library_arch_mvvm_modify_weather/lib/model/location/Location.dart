@@ -23,15 +23,13 @@ class Location
 
   Location.success(this.id,this.name,this.latitude,this.longitude) : super.success(id.toString());
   Location.exception(super.exception) : super.exception();
-  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
+  factory Location.fromMapThisNetwork(Map<String, dynamic> json) => _$LocationFromJson(json);
 
   static Location get getLocationForSuccess => Location.success(0,"",0.0,0.0);
   static const constParameterId = "id";
   static const constParameterName = "name";
   static const constParameterLatitude = "latitude";
   static const constParameterLongitude = "longitude";
-
-  Map<String,dynamic> toJson() => _$LocationToJson(this);
 
   @nonVirtual
   int? get getParameterId => id;

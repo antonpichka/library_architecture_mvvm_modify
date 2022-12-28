@@ -10,6 +10,8 @@ class SettingsForObjectTIP
       return null;
     }
     final settings = parameter as Settings;
-    return Settings.success(settings.getParameterColor);
+    return Settings.success(
+        settings.getParameterColor,
+        settings.getParameterTemperatureUnits);
   }
 }
