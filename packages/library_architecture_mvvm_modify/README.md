@@ -76,11 +76,10 @@ Examples taken for processing from library <a href="https://github.com/felangel/
     - ###### NamedSingleton
 - #### ModelQNamedServiceBackgroundModel
   - ##### FBDS
-  - ##### (List/Model)ForNamed(TIP/NP)
 - #### ModelQNamedServiceViewModel
+  - ##### ICloneStreamModelForSuccess
   - ##### FBDS
-  - ##### CloneStreamModelForSuccess
-  - ##### (List/Model)ForNamed(TIP/NP)
+  - ##### IStreamModel
 - #### NamedViewListViewModel
   - ##### NamedWidgetListViewModel
 - #### NamedView

@@ -6,7 +6,7 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/cloneStreamSetti
 import 'package:library_arch_mvvm_modify_weather/model/settings/settingsForNamed/SettingsForDefaultWhereKeyNotFoundNP.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/settingsForNamed/SettingsForLocalExceptionTIP.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/settingsForNamed/SettingsForObjectTIP.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/settingsQHiveServiceViewModel/SettingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/settingsQHiveServiceViewModel/SettingsQHiveServiceViewModelUsingGetNP.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class AppViewListViewModel
@@ -14,7 +14,7 @@ class AppViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP =
-  SettingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP<Settings,ListSettings>(CloneStreamSettingsForSuccess(),SettingsForLocalExceptionTIP(),SettingsForObjectTIP(),SettingsForDefaultWhereKeyNotFoundNP());
+  SettingsQHiveServiceViewModelUsingGetNP<Settings,ListSettings>(CloneStreamSettingsForSuccess(),SettingsForLocalExceptionTIP(),SettingsForObjectTIP(),SettingsForDefaultWhereKeyNotFoundNP());
 
   @override
   void dispose() {

@@ -5,10 +5,6 @@ import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/we
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHttpClientAndHiveServiceDataSource/WeatherQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHttpClientServiceDataSource/WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/WeatherQNamedServiceViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_np.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 
 class WeatherQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<T extends Weather,Y extends ListWeather<T>>
     extends WeatherQNamedServiceViewModel<T,Y>
@@ -17,14 +13,11 @@ class WeatherQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocatio
 
   WeatherQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi(
       super.iCloneStreamModelForSuccess,
-      IModelForNamedTIP<T,Map<String,dynamic>> iWeatherForMapTIP,
-      IModelForNamedTIP<T,Object> iWeatherForObjectTIP,
-      IModelForNamedTIP<T,NetworkException> iWeatherForNetworkExceptionTIP,
-      IModelForNamedTIP<T,LocalException> iWeatherForLocalExceptionTIP,
-      IModelForNamedNP<T> iWeatherForDefaultWhereKeyNotFoundNP)
+      WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T,Y> weatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi,
+      WeatherQHiveServiceDataSourceUsingGetNP<T,Y> weatherQHiveServiceDataSourceUsingGetNP)
       : _dataSource = WeatherQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(
-      WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(iWeatherForMapTIP,iWeatherForNetworkExceptionTIP,iWeatherForLocalExceptionTIP),
-      WeatherQHiveServiceDataSourceUsingGetNP(iWeatherForObjectTIP,iWeatherForLocalExceptionTIP,iWeatherForDefaultWhereKeyNotFoundNP)),
+      weatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi,
+      weatherQHiveServiceDataSourceUsingGetNP),
         super.thereIsDataSource();
 
   @protected
