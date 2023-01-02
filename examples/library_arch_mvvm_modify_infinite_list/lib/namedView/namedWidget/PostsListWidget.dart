@@ -56,7 +56,7 @@ class PostsListWidgetState
             case EnumListPostForPostsListWidget.serverNotWorkItNetworkException:
               return buildServerNotWorkItNetworkException(listPost);
             default:
-              return buildDefault(listPost);
+              return Container();
           }
         });
   }
@@ -117,11 +117,6 @@ class PostsListWidgetState
   @protected
   Widget buildServerNotWorkItNetworkException(ListPost<Post>? listPost) {
     return const Center(child: Text('failed to fetch posts'));
-  }
-
-  @protected
-  Widget buildDefault(ListPost<Post>? listPost) {
-    return Container();
   }
 
   @protected

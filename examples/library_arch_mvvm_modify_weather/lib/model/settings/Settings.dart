@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_weather/model/temperature/Temperature.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 

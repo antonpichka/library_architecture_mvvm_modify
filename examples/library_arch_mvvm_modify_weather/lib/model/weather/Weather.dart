@@ -67,13 +67,11 @@ class Weather
         return Colors.lightBlueAccent;
       case EnumWeatherCondition.unknown:
         return constDefaultColor;
-      default:
-        return constDefaultColor;
     }
   }
 
-  String? get getTwoParametersNamedForNamedViewOrWidget {
-    switch(getEnumWeatherConditionForGetTwoParametersNamedForNamedViewOrWidget) {
+  String? get getOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget {
+    switch(getEnumWeatherConditionForGetOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget) {
       case EnumWeatherCondition.clear:
         return '☀️';
       case EnumWeatherCondition.rainy:
@@ -87,13 +85,17 @@ class Weather
     }
   }
 
+  String? get getOneParametersNamedForWeatherIsLoadingWhereGetOneParametersNamedForWeatherWidget {
+    return temperature?.toStringAsPrecision(2);
+  }
+
   @protected
   EnumWeatherCondition get getEnumWeatherConditionForGetOneParametersNamedForNamedViewOrWidget {
     return _getEnumWeatherCondition;
   }
 
   @protected
-  EnumWeatherCondition get getEnumWeatherConditionForGetTwoParametersNamedForNamedViewOrWidget {
+  EnumWeatherCondition get getEnumWeatherConditionForGetOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget {
     return _getEnumWeatherCondition;
   }
 

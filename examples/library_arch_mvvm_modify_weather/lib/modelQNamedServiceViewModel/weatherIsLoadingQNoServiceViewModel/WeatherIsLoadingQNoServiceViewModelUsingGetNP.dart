@@ -8,7 +8,9 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 class WeatherIsLoadingQNoServiceViewModelUsingGetNP<T extends WeatherIsLoading,Y extends ListWeatherIsLoading<T>>
     extends WeatherIsLoadingQNamedServiceViewModel<T,Y>
 {
-  WeatherIsLoadingQNoServiceViewModelUsingGetNP(ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess) : super.noDataSource([EnumForIStreamModelVM.getNP],iCloneStreamModelForSuccess);
+  WeatherIsLoadingQNoServiceViewModelUsingGetNP(
+      ICloneStreamModelForSuccess<T,Y> iCloneStreamModelForSuccess)
+      : super.noDataSource([EnumForIStreamModelVM.getNP],iCloneStreamModelForSuccess);
 
   @protected
   @override

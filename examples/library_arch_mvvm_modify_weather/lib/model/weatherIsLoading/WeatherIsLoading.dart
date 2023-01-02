@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
-import 'package:library_arch_mvvm_modify_weather/model/temperature/Temperature.dart';
+import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 enum EnumWeatherIsLoadingForMainView {
@@ -25,19 +25,34 @@ class WeatherIsLoading
 
   static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false,TemperatureUnits.celsius, Weather.getWeatherForSuccess);
 
-  EnumWeatherIsLoadingForMainView get getEnumWeatherIsLoadingForMainView {
+  EnumWeatherIsLoadingForMainView get getEnumWeatherIsLoadingForWeatherWidget {
     if(isLoading ?? false) {
       return EnumWeatherIsLoadingForMainView.isLoading;
     }
     if(exceptionController.isExceptionNotEqualsNull()) {
       return EnumWeatherIsLoadingForMainView.exception;
     }
-    if(isOneParametersNamedForGetEnumWeatherIsLoadingForMainView() ?? false) {
+    if(isOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() ?? false) {
       return EnumWeatherIsLoadingForMainView.isEmpty;
     }
     return EnumWeatherIsLoadingForMainView.success;
   }
 
+  String? get getOneParametersNamedForWeatherWidget {
+    return '''${weather?.getOneParametersNamedForWeatherIsLoadingWhereGetOneParametersNamedForWeatherWidget}°${(isOneParametersNamedForGetOneParametersNamedForWeatherWidget() ?? true) ? 'C' : 'F'}''';
+  }
+
+  String? get getTwoParametersNamedForWeatherWidget {
+    return weather?.getOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget;
+  }
+
+  String? get getThreeParametersNamedForWeatherWidget {
+    return weather?.getParameterLocation?.getParameterName;
+  }
+
+  String? getFourParametersNamedForWeatherWidget(BuildContext context) {
+    return "Last Updated at ${TimeOfDay.fromDateTime(weather!.getParameterLastUpdated!).format(context)}";
+  }
 
   void setOneParametersNamedForFloatingActionButtonSearchWidget() {
     isLoading = true;
@@ -52,7 +67,12 @@ class WeatherIsLoading
   }
 
   @protected
-  bool? isOneParametersNamedForGetEnumWeatherIsLoadingForMainView() {
+  bool? isOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() {
     return weather == null;
+  }
+
+  @protected
+  bool? isOneParametersNamedForGetOneParametersNamedForWeatherWidget() {
+    return temperatureUnits == TemperatureUnits.celsius;
   }
 }

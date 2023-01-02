@@ -33,7 +33,9 @@ class FloatingActionButtonSearchWidgetState
   async {
     final city = await Navigator.of(context).pushNamed("/$constSearchView");
     if (!mounted) return;
-    await widget.lo.getWeatherFromHttpClientServiceParameterStringAndInGeneralTwoTasks(city as String);
+    await widget
+        .lo
+        .getWeatherFromHttpClientServiceParameterStringAndInGeneralTwoTasks(city as String);
     return;
   }
 }

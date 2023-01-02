@@ -33,4 +33,6 @@ class Location
 
   @nonVirtual
   int? get getParameterId => id;
+  @nonVirtual
+  String? get getParameterName => name;
 }

@@ -12,7 +12,7 @@ import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/wea
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherQHttpClientServiceViewModel/WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/FloatingActionButtonSearchWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSettingsWidgetListViewModel.dart';
-import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/WeatherBackgroundWidgetListViewModel.dart';
+import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/WeatherWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class MainViewListViewModel
@@ -29,7 +29,7 @@ class MainViewListViewModel
   // NamedWidgetListViewModel
   late final FloatingActionButtonSearchWidgetListViewModel floatingActionButtonSearchWidgetListViewModel;
   late final IconButtonSettingsWidgetListViewModel iconButtonSettingsWidgetListViewModel;
-  late final WeatherBackgroundWidgetListViewModel weatherBackgroundWidgetListViewModel;
+  late final WeatherWidgetListViewModel weatherWidgetListViewModel;
 
   MainViewListViewModel() {
     floatingActionButtonSearchWidgetListViewModel = FloatingActionButtonSearchWidgetListViewModel(
@@ -37,7 +37,7 @@ class MainViewListViewModel
         _weatherQHiveServiceViewModelUsingUpdateParameterWeather,
         _weatherIsLoadingQNoServiceViewModelUsingGetNP);
     iconButtonSettingsWidgetListViewModel = IconButtonSettingsWidgetListViewModel();
-    weatherBackgroundWidgetListViewModel = WeatherBackgroundWidgetListViewModel();
+    weatherWidgetListViewModel = WeatherWidgetListViewModel(_weatherIsLoadingQNoServiceViewModelUsingGetNP);
   }
 
   @override
