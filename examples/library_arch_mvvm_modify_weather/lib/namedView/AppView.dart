@@ -30,11 +30,11 @@ class _AppViewState
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return ValueListenableBuilder(
         valueListenable: lo.getCustomValueListenableBoxSettings,
         builder: (BuildContext buildContext, Box<dynamic> box,_)
         {
+          final textTheme = Theme.of(context).textTheme;
           Settings? settings = box.get(
               Settings.constKeySettingsQHiveService,
               defaultValue: Settings.getSettingsForSuccessWhereKeyNotFound);

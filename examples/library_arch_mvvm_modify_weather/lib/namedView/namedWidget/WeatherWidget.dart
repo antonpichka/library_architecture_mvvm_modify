@@ -29,6 +29,7 @@ class WeatherWidgetState
 
   @override
   Widget build(BuildContext context) {
+    widget.lo.getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettingsAndInGeneralOneTask();
     return StreamBuilder<WeatherIsLoading>(
         stream: widget.lo.getStreamWeatherIsLoadingUsingGetNP,
         builder: (BuildContext context,AsyncSnapshot<WeatherIsLoading> asyncSnapshot)
@@ -38,13 +39,13 @@ class WeatherWidgetState
           }
           WeatherIsLoading? weatherIsLoading = asyncSnapshot.data;
           switch(weatherIsLoading?.getEnumWeatherIsLoadingForWeatherWidget) {
-            case EnumWeatherIsLoadingForMainView.isLoading:
+            case EnumWeatherIsLoadingForWeatherWidget.isLoading:
               return buildIsLoading(context);
-            case EnumWeatherIsLoadingForMainView.exception:
+            case EnumWeatherIsLoadingForWeatherWidget.exception:
               return buildException(context,weatherIsLoading);
-            case EnumWeatherIsLoadingForMainView.isEmpty:
+            case EnumWeatherIsLoadingForWeatherWidget.isEmpty:
               return buildIsEmpty(context,weatherIsLoading);
-            case EnumWeatherIsLoadingForMainView.success:
+            case EnumWeatherIsLoadingForWeatherWidget.success:
               return buildSuccess(context,weatherIsLoading);
             default:
               return Container();

@@ -34,4 +34,8 @@ class WeatherAndSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherAndSett
   @protected
   @override
   WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
+
+  Future<T?> getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettings() {
+    return getModelFromNamedServiceNPAndSetModel();
+  }
 }

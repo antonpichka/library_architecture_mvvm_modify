@@ -14,6 +14,8 @@ class WeatherAndSettings
   WeatherAndSettings.success(this.weather,this.settings) : super.success("");
   WeatherAndSettings.exception(super.exception) : super.exception();
 
+  static WeatherAndSettings get getWeatherAndSettingsForSuccess => WeatherAndSettings.success(Weather.getWeatherForSuccess,Settings.getSettingsForSuccess);
+
   @nonVirtual
   Weather? get getParameterWeather => weather;
   @nonVirtual

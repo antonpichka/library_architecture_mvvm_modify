@@ -120,4 +120,11 @@ class Weather
         temperature != null &&
         lastUpdated != null;
   }
+
+  bool? isOneParametersNamedForWeatherIsLoadingWhereIsOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() {
+    return location == null &&
+        weatherCode == null &&
+        temperature == null &&
+        lastUpdated == null;
+  }
 }

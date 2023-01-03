@@ -32,16 +32,13 @@ class FloatingActionButtonSearchWidgetListViewModel {
     // 1
     final weatherFromHttpClient = await weatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi
         .getWeatherFromHttpClientServiceParameterString(StringTypeParameter.success(location));
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
-        ?.setTwoParametersNamedForFloatingActionButtonSearchWidget = weatherFromHttpClient!;
     if(weatherFromHttpClient!
         .getParameterExceptionController
         .isExceptionNotEqualsNull())
     {
       weatherIsLoadingQNoServiceViewModelUsingGetNP
           .getWeatherIsLoadingUsingGetNP
-          ?.setThreeParametersNamedForFloatingActionButtonSearchWidget();
+          ?.setTwoParametersNamedForFloatingActionButtonSearchWidget = weatherFromHttpClient;
       weatherIsLoadingQNoServiceViewModelUsingGetNP
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
@@ -51,7 +48,7 @@ class FloatingActionButtonSearchWidgetListViewModel {
         .updateWeatherToHiveServiceParameterWeather(WeatherTypeParameter<Weather>.success(weatherFromHttpClient));
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
-        ?.setThreeParametersNamedForFloatingActionButtonSearchWidget();
+        ?.setThreeParametersNamedForFloatingActionButtonSearchWidget = weatherFromHttpClient;
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .notifyStreamWeatherIsLoadingUsingGetNP();
   }

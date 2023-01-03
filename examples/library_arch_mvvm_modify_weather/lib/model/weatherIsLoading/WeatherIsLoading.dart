@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
+import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherAndSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-enum EnumWeatherIsLoadingForMainView {
+enum EnumWeatherIsLoadingForWeatherWidget {
   isLoading,
   exception,
   isEmpty,
@@ -23,19 +24,19 @@ class WeatherIsLoading
   WeatherIsLoading.success(this.isLoading,this.temperatureUnits,this.weather) : super.success(weather?.getParameterUniqueId);
   WeatherIsLoading.exception(super.exception) : super.exception();
 
-  static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false,TemperatureUnits.celsius, Weather.getWeatherForSuccess);
+  static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false,TemperatureUnits.celsius,Weather.getWeatherForSuccess);
 
-  EnumWeatherIsLoadingForMainView get getEnumWeatherIsLoadingForWeatherWidget {
+  EnumWeatherIsLoadingForWeatherWidget get getEnumWeatherIsLoadingForWeatherWidget {
     if(isLoading ?? false) {
-      return EnumWeatherIsLoadingForMainView.isLoading;
+      return EnumWeatherIsLoadingForWeatherWidget.isLoading;
     }
     if(exceptionController.isExceptionNotEqualsNull()) {
-      return EnumWeatherIsLoadingForMainView.exception;
+      return EnumWeatherIsLoadingForWeatherWidget.exception;
     }
     if(isOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() ?? false) {
-      return EnumWeatherIsLoadingForMainView.isEmpty;
+      return EnumWeatherIsLoadingForWeatherWidget.isEmpty;
     }
-    return EnumWeatherIsLoadingForMainView.success;
+    return EnumWeatherIsLoadingForWeatherWidget.success;
   }
 
   String? get getOneParametersNamedForWeatherWidget {
@@ -59,16 +60,33 @@ class WeatherIsLoading
   }
 
   set setTwoParametersNamedForFloatingActionButtonSearchWidget(Weather weather) {
-    this.weather = weather;
+    exceptionController = weather.getParameterExceptionController;
+    isLoading = false;
   }
 
-  void setThreeParametersNamedForFloatingActionButtonSearchWidget() {
+  set setThreeParametersNamedForFloatingActionButtonSearchWidget(Weather weather) {
+    this.weather = weather;
+    isLoading = false;
+  }
+
+  void setOneParametersNamedForWeatherWidget() {
+    isLoading = true;
+  }
+
+  set setTwoParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.getParameterExceptionController;
+    isLoading = false;
+  }
+
+  set setThreeParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
+    weather = weatherAndSettings.getParameterWeather;
+    temperatureUnits = weatherAndSettings.getParameterSettings?.getParameterTemperatureUnits;
     isLoading = false;
   }
 
   @protected
   bool? isOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() {
-    return weather == null;
+    return weather?.isOneParametersNamedForWeatherIsLoadingWhereIsOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget();
   }
 
   @protected
