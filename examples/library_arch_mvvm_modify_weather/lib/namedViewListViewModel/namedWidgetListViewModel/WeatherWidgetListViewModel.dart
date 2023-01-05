@@ -4,17 +4,22 @@ import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/Weathe
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/ListWeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHiveServiceViewModel/WeatherAndSettingsQHiveServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHttpClientAndHiveServiceViewModel/WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherIsLoadingQNoServiceViewModel/WeatherIsLoadingQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
 
 class WeatherWidgetListViewModel {
   @protected
   final WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>> weatherIsLoadingQNoServiceViewModelUsingGetNP;
   @protected
   final WeatherAndSettingsQHiveServiceViewModelUsingGetNP<WeatherAndSettings,ListWeatherAndSettings<WeatherAndSettings>> weatherAndSettingsQHiveServiceViewModelUsingGetNP;
+  @protected
+  final WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<WeatherAndSettings,ListWeatherAndSettings<WeatherAndSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
 
   WeatherWidgetListViewModel(
       this.weatherIsLoadingQNoServiceViewModelUsingGetNP,
-      this.weatherAndSettingsQHiveServiceViewModelUsingGetNP);
+      this.weatherAndSettingsQHiveServiceViewModelUsingGetNP,
+      this.weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi);
 
   Stream<WeatherIsLoading>? get getStreamWeatherIsLoadingUsingGetNP {
     return weatherIsLoadingQNoServiceViewModelUsingGetNP.getStreamWeatherIsLoadingUsingGetNP;
@@ -22,6 +27,12 @@ class WeatherWidgetListViewModel {
 
   Future<void> getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettingsAndInGeneralOneTask()
   async {
+    if(weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .getWeatherIsLoadingUsingGetNP
+        ?.isOneParametersNamedForWeatherWidget() ?? false)
+    {
+      return;
+    }
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setOneParametersNamedForWeatherWidget();
@@ -46,5 +57,47 @@ class WeatherWidgetListViewModel {
         ?.setThreeParametersNamedForWeatherWidget = weatherAndSettingsFromHiveService;
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .notifyStreamWeatherIsLoadingUsingGetNP();
+    return;
+  }
+
+  Future<void> getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask()
+  async {
+    if(weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .getWeatherIsLoadingUsingGetNP
+        ?.isTwoParametersNamedForWeatherWidget() ?? false)
+    {
+      return;
+    }
+    if(weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .getWeatherIsLoadingUsingGetNP
+        ?.isThreeParametersNamedForWeatherWidget() ?? false)
+    {
+      return;
+    }
+    weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .getWeatherIsLoadingUsingGetNP
+        ?.setFourParametersNamedForWeatherWidget();
+    weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .notifyStreamWeatherIsLoadingUsingGetNP();
+    // 1
+    final weatherAndSettingsFromHttpClientAndHive = await weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi
+        .getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettings(StringTypeParameter.success(weatherIsLoadingQNoServiceViewModelUsingGetNP.getWeatherIsLoadingUsingGetNP?.getFiveParametersNamedForWeatherWidget));
+    if(weatherAndSettingsFromHttpClientAndHive
+        !.getParameterExceptionController
+        .isExceptionNotEqualsNull())
+    {
+      weatherIsLoadingQNoServiceViewModelUsingGetNP
+          .getWeatherIsLoadingUsingGetNP
+          ?.setFiveParametersNamedForWeatherWidget = weatherAndSettingsFromHttpClientAndHive;
+      weatherIsLoadingQNoServiceViewModelUsingGetNP
+          .notifyStreamWeatherIsLoadingUsingGetNP();
+      return;
+    }
+    weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .getWeatherIsLoadingUsingGetNP
+        ?.setSixParametersNamedForWeatherWidget = weatherAndSettingsFromHttpClientAndHive;
+    weatherIsLoadingQNoServiceViewModelUsingGetNP
+        .notifyStreamWeatherIsLoadingUsingGetNP();
+    return;
   }
 }

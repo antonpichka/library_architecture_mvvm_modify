@@ -55,17 +55,21 @@ class WeatherIsLoading
     return "Last Updated at ${TimeOfDay.fromDateTime(weather!.getParameterLastUpdated!).format(context)}";
   }
 
+  String? get getFiveParametersNamedForWeatherWidget {
+    return weather?.getParameterLocation?.getParameterName;
+  }
+
   void setOneParametersNamedForFloatingActionButtonSearchWidget() {
     isLoading = true;
   }
 
-  set setTwoParametersNamedForFloatingActionButtonSearchWidget(Weather weather) {
-    exceptionController = weather.getParameterExceptionController;
+  set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherAndSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.getParameterExceptionController;
     isLoading = false;
   }
 
-  set setThreeParametersNamedForFloatingActionButtonSearchWidget(Weather weather) {
-    this.weather = weather;
+  set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherAndSettings weatherAndSettings) {
+    weather = weatherAndSettings.getParameterWeather;
     isLoading = false;
   }
 
@@ -82,6 +86,32 @@ class WeatherIsLoading
     weather = weatherAndSettings.getParameterWeather;
     temperatureUnits = weatherAndSettings.getParameterSettings?.getParameterTemperatureUnits;
     isLoading = false;
+  }
+
+  void setFourParametersNamedForWeatherWidget() {
+    isLoading = true;
+  }
+
+  set setFiveParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.getParameterExceptionController;
+    isLoading = false;
+  }
+
+  set setSixParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
+    weather = weatherAndSettings.getParameterWeather;
+    isLoading = false;
+  }
+
+  bool? isOneParametersNamedForWeatherWidget() {
+    return isLoading;
+  }
+
+  bool? isTwoParametersNamedForWeatherWidget() {
+    return isLoading;
+  }
+
+  bool? isThreeParametersNamedForWeatherWidget() {
+    return weather?.isOneParametersNamedForWeatherIsLoadingWhereIsThreeParametersNamedForWeatherWidget();
   }
 
   @protected

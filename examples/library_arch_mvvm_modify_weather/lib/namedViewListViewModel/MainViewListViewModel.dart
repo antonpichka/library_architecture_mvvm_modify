@@ -5,7 +5,6 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/settingsForNamed
 import 'package:library_arch_mvvm_modify_weather/model/settings/settingsForNamed/SettingsForObjectTIP.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/ListWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weather/cloneStreamWeatherForSuccess/CloneStreamWeatherForSuccess.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/weatherForNamed/WeatherForDefaultWhereKeyNotFoundNP.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/weatherForNamed/WeatherForLocalExceptionTIP.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/weatherForNamed/WeatherForMapThisNetworkTIP.dart';
@@ -19,11 +18,15 @@ import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/ListWeat
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/cloneStreamWeatherIsLoadingForSuccess/CloneStreamWeatherIsLoadingForSuccess.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/settingsQHiveServiceDataSource/SettingsQHiveServiceDataSourceUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/settingsQHiveServiceDataSource/SettingsQHiveServiceDataSourceUsingUpdateParameterSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherAndSettingsQHiveServiceDataSource/WeatherAndSettingsQHiveServiceDataSourceUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherAndSettingsQHiveServiceDataSource/WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHiveServiceDataSource/WeatherQHiveServiceDataSourceUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHiveServiceDataSource/WeatherQHiveServiceDataSourceUsingUpdateParameterWeather.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHttpClientServiceDataSource/WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHiveServiceViewModel/WeatherAndSettingsQHiveServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHttpClientAndHiveServiceViewModel/WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherIsLoadingQNoServiceViewModel/WeatherIsLoadingQNoServiceViewModelUsingGetNP.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherQHiveServiceViewModel/WeatherQHiveServiceViewModelUsingUpdateParameterWeather.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherQHttpClientServiceViewModel/WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/FloatingActionButtonSearchWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSettingsWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/WeatherWidgetListViewModel.dart';
@@ -33,12 +36,9 @@ class MainViewListViewModel
     extends BaseNamedViewListViewModel
 {
   // ModelQNamedServiceViewModel
-  final _weatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi =
-  WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<Weather,ListWeather<Weather>>(CloneStreamWeatherForSuccess(),WeatherForMapThisNetworkTIP(),WeatherForNetworkExceptionTIP(),WeatherForLocalExceptionTIP());
-  final _weatherQHiveServiceViewModelUsingUpdateParameterWeather =
-  WeatherQHiveServiceViewModelUsingUpdateParameterWeather<Weather,ListWeather<Weather>>(CloneStreamWeatherForSuccess());
   final _weatherIsLoadingQNoServiceViewModelUsingGetNP =
-  WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>>(CloneStreamWeatherIsLoadingForSuccess());
+  WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>>(
+      CloneStreamWeatherIsLoadingForSuccess());
   final _weatherAndSettingsQHiveServiceViewModelUsingGetNP =
   WeatherAndSettingsQHiveServiceViewModelUsingGetNP<WeatherAndSettings,ListWeatherAndSettings<WeatherAndSettings>>(
       CloneStreamWeatherAndSettingsForSuccess(),
@@ -51,6 +51,27 @@ class MainViewListViewModel
           SettingsForObjectTIP(),
           SettingsForDefaultWhereKeyNotFoundNP()),
       WeatherAndSettingsForDefaultNP());
+  final _weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi =
+  WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<WeatherAndSettings,ListWeatherAndSettings<WeatherAndSettings>>(
+      CloneStreamWeatherAndSettingsForSuccess(),
+      WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<Weather,ListWeather<Weather>>(
+          WeatherForMapThisNetworkTIP(),
+          WeatherForNetworkExceptionTIP(),
+          WeatherForLocalExceptionTIP()),
+      WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<WeatherAndSettings,ListWeatherAndSettings<WeatherAndSettings>>(
+          WeatherQHiveServiceDataSourceUsingGetNP<Weather,ListWeather<Weather>>(
+              WeatherForObjectTIP(),
+              WeatherForLocalExceptionTIP(),
+              WeatherForDefaultWhereKeyNotFoundNP()),
+          SettingsQHiveServiceDataSourceUsingGetNP<Settings,ListSettings<Settings>>(
+              SettingsForLocalExceptionTIP(),
+              SettingsForObjectTIP(),
+              SettingsForDefaultWhereKeyNotFoundNP()),
+          WeatherAndSettingsForDefaultNP()),
+      WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSettings<WeatherAndSettings,ListWeatherAndSettings<WeatherAndSettings>>(
+          WeatherQHiveServiceDataSourceUsingUpdateParameterWeather<Weather,ListWeather<Weather>>(),
+          SettingsQHiveServiceDataSourceUsingUpdateParameterSettings<Settings,ListSettings<Settings>>()),
+      WeatherAndSettingsForDefaultNP());
 
   // NamedWidgetListViewModel
   late final FloatingActionButtonSearchWidgetListViewModel floatingActionButtonSearchWidgetListViewModel;
@@ -59,20 +80,19 @@ class MainViewListViewModel
 
   MainViewListViewModel() {
     floatingActionButtonSearchWidgetListViewModel = FloatingActionButtonSearchWidgetListViewModel(
-        _weatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi,
-        _weatherQHiveServiceViewModelUsingUpdateParameterWeather,
-        _weatherIsLoadingQNoServiceViewModelUsingGetNP);
+        _weatherIsLoadingQNoServiceViewModelUsingGetNP,
+        _weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi);
     iconButtonSettingsWidgetListViewModel = IconButtonSettingsWidgetListViewModel();
     weatherWidgetListViewModel = WeatherWidgetListViewModel(
         _weatherIsLoadingQNoServiceViewModelUsingGetNP,
-        _weatherAndSettingsQHiveServiceViewModelUsingGetNP);
+        _weatherAndSettingsQHiveServiceViewModelUsingGetNP,
+        _weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi);
   }
 
   @override
   void dispose() {
-    _weatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dispose();
-    _weatherQHiveServiceViewModelUsingUpdateParameterWeather.dispose();
     _weatherIsLoadingQNoServiceViewModelUsingGetNP.dispose();
     _weatherAndSettingsQHiveServiceViewModelUsingGetNP.dispose();
+    _weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dispose();
   }
 }

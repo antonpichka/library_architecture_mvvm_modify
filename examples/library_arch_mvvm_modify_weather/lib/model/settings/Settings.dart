@@ -31,4 +31,13 @@ class Settings
     }
     return Color(int.parse(color!));
   }
+
+  @nonVirtual
+  set setParameterColor(String color) {
+    this.color = color;
+  }
+  @nonVirtual
+  set setParameterTemperatureUnits(TemperatureUnits temperatureUnits) {
+    this.temperatureUnits = temperatureUnits;
+  }
 }

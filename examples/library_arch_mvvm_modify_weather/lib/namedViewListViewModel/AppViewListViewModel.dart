@@ -13,15 +13,15 @@ class AppViewListViewModel
     extends BaseNamedViewListViewModel
 {
   // ModelQNamedServiceViewModel
-  final _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP =
+  final _settingsQHiveServiceViewModelUsingGetNP =
   SettingsQHiveServiceViewModelUsingGetNP<Settings,ListSettings>(CloneStreamSettingsForSuccess(),SettingsForLocalExceptionTIP(),SettingsForObjectTIP(),SettingsForDefaultWhereKeyNotFoundNP());
 
   @override
   void dispose() {
-    _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP.dispose();
+    _settingsQHiveServiceViewModelUsingGetNP.dispose();
   }
 
   ValueListenable<Box> get getCustomValueListenableBoxSettings {
-    return _settingsQHiveServiceViewModelUsingUpdateParameterSettingsAndGetNP.getCustomValueListenableBoxSettings!;
+    return _settingsQHiveServiceViewModelUsingGetNP.getCustomValueListenableBoxSettings!;
   }
 }

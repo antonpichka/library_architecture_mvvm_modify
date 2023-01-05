@@ -137,9 +137,7 @@ class WeatherWidgetState
   @protected
   Widget buildDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
     return RefreshIndicator(
-      onRefresh: () async {
-        return;
-      },
+      onRefresh: () => widget.lo.getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask(),
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         clipBehavior: Clip.none,

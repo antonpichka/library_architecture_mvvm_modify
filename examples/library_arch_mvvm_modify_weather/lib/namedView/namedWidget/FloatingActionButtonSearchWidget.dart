@@ -31,11 +31,11 @@ class FloatingActionButtonSearchWidgetState
   @protected
   Future<void> callbackOnPressed(BuildContext context)
   async {
-    final city = await Navigator.of(context).pushNamed("/$constSearchView");
+    final city = await Navigator.of(context).pushNamed("/$constSearchWeatherView");
     if (!mounted) return;
     await widget
         .lo
-        .getWeatherFromHttpClientServiceParameterStringAndInGeneralTwoTasks(city as String);
+        .getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask(city as String);
     return;
   }
 }

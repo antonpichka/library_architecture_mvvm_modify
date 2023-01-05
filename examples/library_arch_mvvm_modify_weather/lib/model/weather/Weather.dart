@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
@@ -38,7 +39,7 @@ class Weather
   Weather.exception(super.exception) : super.exception();
   factory Weather.fromMapThisNetwork(Map<String, dynamic> map) => _$WeatherFromJson(map);
 
-  static Weather get getWeatherForSuccess => Weather.success(Location.getLocationForSuccess,0.0,0.0,DateTime.now());
+  static Weather get getWeatherForSuccess => Weather.success(Location.getLocationForSuccess,0.0,0.0,DateTime(0));
   static Weather get getWeatherForSuccessWhereKeyNotFound => Weather.success(null,null,null,null);
   static const constWeatherQHiveService = "__weather_q_hive_service__";
   static const constKeyWeatherQHiveService = "__key_weather_q_hive_service__";
@@ -55,18 +56,18 @@ class Weather
   @nonVirtual
   DateTime? get getParameterLastUpdated => lastUpdated;
 
-  Color? get getOneParametersNamedForNamedViewOrWidget {
-    switch(getEnumWeatherConditionForGetOneParametersNamedForNamedViewOrWidget) {
+  String? get getOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi {
+    switch(getEnumWeatherConditionForGetOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi) {
       case EnumWeatherCondition.clear:
-        return Colors.orangeAccent;
+        return Colors.orangeAccent.value.toString();
       case EnumWeatherCondition.rainy:
-        return Colors.indigoAccent;
+        return Colors.indigoAccent.value.toString();
       case EnumWeatherCondition.cloudy:
-        return Colors.blueGrey;
+        return Colors.blueGrey.value.toString();
       case EnumWeatherCondition.snowy:
-        return Colors.lightBlueAccent;
+        return Colors.lightBlueAccent.value.toString();
       case EnumWeatherCondition.unknown:
-        return constDefaultColor;
+        return constDefaultColor.value.toString();
     }
   }
 
@@ -90,7 +91,7 @@ class Weather
   }
 
   @protected
-  EnumWeatherCondition get getEnumWeatherConditionForGetOneParametersNamedForNamedViewOrWidget {
+  EnumWeatherCondition get getEnumWeatherConditionForGetOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi {
     return _getEnumWeatherCondition;
   }
 
@@ -114,6 +115,14 @@ class Weather
     }
   }
 
+  set setOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(
+      TemperatureUnits temperatureUnits)
+  {
+    temperature = temperatureUnits == TemperatureUnits.celsius
+        ? temperature?.toCelsius()
+        : temperature?.toFahrenheit();
+  }
+
   bool? isOneParametersNamedForWeatherQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi() {
     return location != null &&
         weatherCode != null &&
@@ -122,9 +131,22 @@ class Weather
   }
 
   bool? isOneParametersNamedForWeatherIsLoadingWhereIsOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() {
+    return _isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
+  }
+
+  bool? isOneParametersNamedForWeatherIsLoadingWhereIsThreeParametersNamedForWeatherWidget() {
+    return _isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
+  }
+
+  bool _isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() {
     return location == null &&
         weatherCode == null &&
         temperature == null &&
         lastUpdated == null;
   }
+}
+
+extension on double {
+  double toFahrenheit() => (this * 9 / 5) + 32;
+  double toCelsius() => (this - 32) * 5 / 9;
 }

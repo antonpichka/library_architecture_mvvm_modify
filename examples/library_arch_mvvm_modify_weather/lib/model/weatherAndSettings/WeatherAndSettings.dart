@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class WeatherAndSettings
     extends BaseModel
@@ -21,6 +24,9 @@ class WeatherAndSettings
   @nonVirtual
   Settings? get getParameterSettings => settings;
 
+  Weather? get getOneParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingParameterWeatherAndSettings => weather;
+  Settings? get getTwoParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingParameterWeatherAndSettings => settings;
+
   set setOneParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingGetNP(Weather weather) {
     exceptionController = weather.getParameterExceptionController;
   }
@@ -35,5 +41,25 @@ class WeatherAndSettings
   {
     this.weather = weather;
     this.settings = settings;
+  }
+
+  set setOneParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(Weather weather) {
+    exceptionController = weather.getParameterExceptionController;
+  }
+
+  set setTwoParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(WeatherAndSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.getParameterExceptionController;
+  }
+
+  set setThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(Weather weather) {
+    this.weather = weather;
+    settings
+        ?.setParameterColor = this.weather?.getOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi ??  constDefaultColor.value.toString();
+    this.weather
+        ?.setOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi = settings?.getParameterTemperatureUnits ?? TemperatureUnits.celsius;
+  }
+
+  set setFourParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(BoolTypeParameter boolTypeParameter) {
+    exceptionController = boolTypeParameter.exceptionController;
   }
 }
