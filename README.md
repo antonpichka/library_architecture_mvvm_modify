@@ -7,3 +7,7 @@
 | Package                                                                                                                                              | Pub           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | [library_architecture_mvvm_modify](https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify) | [Coming Soon] |
+
+## Maintainers
+
+- [Anton Pichka](https://github.com/jacobodd)
