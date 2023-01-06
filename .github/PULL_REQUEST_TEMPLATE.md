@@ -9,7 +9,7 @@
 
 **READY | IN DEVELOPMENT | HOLD**
 
-## Did you follow the directions in this file? [CONTRIBUTING](..CONTRIBUTING.md)
+## Did you follow the directions in this file? [CONTRIBUTING](https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/CONTRIBUTING.md)
 
 YES | NO
 
