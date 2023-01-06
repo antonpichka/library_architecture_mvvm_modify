@@ -93,3 +93,7 @@ Examples taken for processing from library <a href="https://github.com/felangel/
 - #### These files are not created by the programmer in his project (I will describe for clarification)
   - ##### IDispose 
   - ##### ExceptionController
+
+## Maintainers
+
+- [Anton Pichka](https://github.com/jacobodd)
