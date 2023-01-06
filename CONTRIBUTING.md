@@ -15,5 +15,5 @@ WARNING: Yes you are adding your own version of the library and you will not be 
 
 ## License
 
-By contributing to Bloc, you agree that your contributions will be licensed
+By contributing to library_architecture_mvvm_modify (LAMM), you agree that your contributions will be licensed
 under its [MIT license](LICENSE).
