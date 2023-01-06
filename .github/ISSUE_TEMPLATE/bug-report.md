@@ -1,8 +1,10 @@
 ---
 name: Bug Report
 about: Create a report to help us improve
-title: "fix: "
+title: 'fix: '
 labels: bug
+assignees: ''
+
 ---
 
 **1) Description**:
