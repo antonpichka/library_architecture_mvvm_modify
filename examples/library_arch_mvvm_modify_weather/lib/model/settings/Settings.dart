@@ -40,4 +40,8 @@ class Settings
   set setParameterTemperatureUnits(TemperatureUnits temperatureUnits) {
     this.temperatureUnits = temperatureUnits;
   }
+
+  bool? isOneParametersNamedForListTileTemperatureUnitsWidget() {
+    return temperatureUnits == TemperatureUnits.celsius;
+  }
 }

@@ -39,22 +39,24 @@ class WeatherWidgetListViewModel {
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .notifyStreamWeatherIsLoadingUsingGetNP();
     // 1
-    final weatherAndSettingsFromHiveService = await weatherAndSettingsQHiveServiceViewModelUsingGetNP
+    final weatherAndSettingsFromHive = await weatherAndSettingsQHiveServiceViewModelUsingGetNP
         .getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettings();
-    if(weatherAndSettingsFromHiveService
+    if(weatherAndSettingsFromHive
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())
     {
       weatherIsLoadingQNoServiceViewModelUsingGetNP
           .getWeatherIsLoadingUsingGetNP
-          ?.setTwoParametersNamedForWeatherWidget = weatherAndSettingsFromHiveService;
+          ?.setTwoParametersNamedForWeatherWidget = weatherAndSettingsFromHive;
       weatherIsLoadingQNoServiceViewModelUsingGetNP
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
     }
+    weatherAndSettingsFromHive
+        .setOneParametersNamedWeatherWidget();
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
-        ?.setThreeParametersNamedForWeatherWidget = weatherAndSettingsFromHiveService;
+        ?.setThreeParametersNamedForWeatherWidget = weatherAndSettingsFromHive;
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .notifyStreamWeatherIsLoadingUsingGetNP();
     return;
@@ -93,6 +95,8 @@ class WeatherWidgetListViewModel {
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
     }
+    weatherAndSettingsFromHttpClientAndHive
+        .setOneParametersNamedWeatherWidget();
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setSixParametersNamedForWeatherWidget = weatherAndSettingsFromHttpClientAndHive;

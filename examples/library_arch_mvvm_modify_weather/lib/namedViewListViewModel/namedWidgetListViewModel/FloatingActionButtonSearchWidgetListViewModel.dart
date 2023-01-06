@@ -19,7 +19,7 @@ class FloatingActionButtonSearchWidgetListViewModel {
 
   Future<void> getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask(String? location)
   async {
-    if(location?.isEmpty ?? true) {
+    if(location?.isEmpty ?? false) {
       return;
     }
     weatherIsLoadingQNoServiceViewModelUsingGetNP
@@ -41,6 +41,8 @@ class FloatingActionButtonSearchWidgetListViewModel {
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
     }
+    weatherAndSettingsFromHttpClientAndHive
+        .setOneParametersNamedFloatingActionButtonSearchWidget();
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setThreeParametersNamedForFloatingActionButtonSearchWidget = weatherAndSettingsFromHttpClientAndHive;

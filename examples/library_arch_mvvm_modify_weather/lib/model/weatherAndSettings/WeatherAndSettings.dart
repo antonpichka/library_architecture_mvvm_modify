@@ -55,11 +55,19 @@ class WeatherAndSettings
     this.weather = weather;
     settings
         ?.setParameterColor = this.weather?.getOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi ??  constDefaultColor.value.toString();
-    this.weather
-        ?.setOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi = settings?.getParameterTemperatureUnits ?? TemperatureUnits.celsius;
   }
 
   set setFourParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(BoolTypeParameter boolTypeParameter) {
     exceptionController = boolTypeParameter.exceptionController;
+  }
+
+  void setOneParametersNamedFloatingActionButtonSearchWidget() {
+    weather
+        ?.setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedFloatingActionButtonSearchWidget = settings?.getParameterTemperatureUnits ?? TemperatureUnits.celsius;
+  }
+
+  void setOneParametersNamedWeatherWidget() {
+    weather
+        ?.setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedWeatherWidget = settings?.getParameterTemperatureUnits ?? TemperatureUnits.celsius;
   }
 }

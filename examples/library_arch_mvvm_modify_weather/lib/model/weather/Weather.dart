@@ -115,9 +115,19 @@ class Weather
     }
   }
 
-  set setOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(
+  set setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedFloatingActionButtonSearchWidget(
       TemperatureUnits temperatureUnits)
   {
+    _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
+  }
+
+  set setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedWeatherWidget(
+      TemperatureUnits temperatureUnits)
+  {
+    _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
+  }
+
+  set _setFromTemperatureUnitsParameterTemperature(TemperatureUnits temperatureUnits) {
     temperature = temperatureUnits == TemperatureUnits.celsius
         ? temperature?.toCelsius()
         : temperature?.toFahrenheit();
