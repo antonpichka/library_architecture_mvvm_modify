@@ -14,6 +14,7 @@ Before creating a pull request please (otherwise you won't be able to add your v
 WARNING: Yes you are adding your own version of the library and you will not be able to change the existing original library, and if your commits affect an existing original library or other files, then the pull request will not be accepted. If you want me to review the changes, then there is an "issue" tab (There you can suggest what needs to be added, or fix the error)
 
 ## Contributor Covenant Code of Conduct
+
 By contributing to library_architecture_mvvm_modify (LAMM), you agree that your contributions follow the rules [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
