@@ -13,7 +13,7 @@ labels: bug
 1. A clear and concise description of what you expected to happen. 
 2. Add any screenshots that explain the result you expected. 
 
-**Optional: 3) Steps To Reproduce**:
+**3) Steps To Reproduce (Optional)**:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
