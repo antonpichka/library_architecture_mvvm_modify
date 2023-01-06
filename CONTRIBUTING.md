@@ -11,7 +11,7 @@ Before creating a pull request please (otherwise you won't be able to add your v
 3. Install all dependencies (`flutter packages get` or `pub get`).
 4. There must result be a path `https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify_{anyName}`
 
-WARNING: Yes you are adding your own version of the library and you will not be able to change the existing original library, and if your commits affect an existing original library, then the pull request will not be accepted. If you want me to review the changes, then there is an "issue" tab (There you can suggest what needs to be added, or fix the error)
+WARNING: Yes you are adding your own version of the library and you will not be able to change the existing original library, and if your commits affect an existing original library and other files, then the pull request will not be accepted. If you want me to review the changes, then there is an "issue" tab (There you can suggest what needs to be added, or fix the error)
 
 ## License
 
