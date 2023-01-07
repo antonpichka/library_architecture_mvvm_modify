@@ -19,8 +19,8 @@ import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceViewMod
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBarWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBodyWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_strings_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/stream_strings_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
 import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
@@ -31,8 +31,8 @@ class MainViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub = SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub<SearchResult,ListSearchResult<SearchResult>>(CloneStreamSearchResultForSuccess(),ListSearchResultForMapTIP(),ListSearchResultForNetworkExceptionTIP(),ListSearchResultForLocalExceptionTIP(),ListSearchResultForObjectTIP());
-  final _boolQNoServiceViewModelUsingGetNPForAntiSpam = BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
-  final _stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch = StringsQNoServiceViewModelUsingGetNPForSaveLettersSearch<Strings,ListStrings<Strings>>(CloneStreamStringsForSuccess());
+  final _boolQNoServiceViewModelUsingGetNPForAntiSpam = BoolQNoServiceViewModelUsingGetNPForAntiSpam<Bool,ListBool<Bool>>(StreamBoolForSuccess());
+  final _stringsQNoServiceViewModelUsingGetNPForSaveLettersSearch = StringsQNoServiceViewModelUsingGetNPForSaveLettersSearch<Strings,ListStrings<Strings>>(StreamStringsForSuccess());
   final _searchResultInLoadingQNoServiceViewModelUsingGetListNP = SearchResultInLoadingQNoServiceViewModelUsingGetListNP<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>(CloneStreamSearchResultInLoadingForSuccess());
   final _customTimerQNoServiceViewModelUsingGetNP = CustomTimerQNoServiceViewModelUsingGetNP<CustomTimer,ListCustomTimer<CustomTimer>>(CloneStreamCustomTimerForSuccess());
 

@@ -41,8 +41,6 @@ class FloatingActionButtonSearchWidgetListViewModel {
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
     }
-    weatherAndSettingsFromHttpClientAndHive
-        .setOneParametersNamedFloatingActionButtonSearchWidget();
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setThreeParametersNamedForFloatingActionButtonSearchWidget = weatherAndSettingsFromHttpClientAndHive;

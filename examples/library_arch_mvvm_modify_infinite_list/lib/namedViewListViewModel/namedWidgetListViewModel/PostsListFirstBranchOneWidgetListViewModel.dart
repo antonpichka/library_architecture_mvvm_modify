@@ -4,15 +4,20 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int
 class PostsListFirstBranchOneWidgetListViewModel
     extends PostsListWidgetListViewModel
 {
-  PostsListFirstBranchOneWidgetListViewModel(super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder, super.boolQNoServiceViewModelUsingGetNPForAntiSpam) : super();
+  PostsListFirstBranchOneWidgetListViewModel(
+      super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
+      super.boolQNoServiceViewModelUsingGetNPForAntiSpam,
+      super.postQThereIsStateViewModelForStartIndexFromJsonPlaceholder) : super();
 
-  Future<void> getListPostFromHttpClientServiceParameterIntAndSetListPostAndInGeneralOneTask()
+  Future<void> getListPostFromHttpClientServiceParameterIntAndInGeneralOneTaskException()
   async {
     // 1
-    await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterIntAndSetListPost(IntTypeParameter.success(0));
-    postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .notifyStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
+    final listPost = await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
+        .getListPostFromHttpClientServiceParameterInt(IntTypeParameter.success(0));
+    postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+        .setListPostForStartIndexFromJsonPlaceholder = listPost!;
+    postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+        .notifyStreamListPostForStartIndexFromJsonPlaceholder();
     return;
   }
 }

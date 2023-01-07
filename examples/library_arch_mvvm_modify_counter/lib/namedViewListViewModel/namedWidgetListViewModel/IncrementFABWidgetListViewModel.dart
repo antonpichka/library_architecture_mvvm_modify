@@ -1,21 +1,21 @@
 import 'package:flutter/foundation.dart';
-import 'package:library_arch_mvvm_modify_counter/modelQNamedServiceViewModel/intQNoServiceViewModel/IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement.dart';
+import 'package:library_arch_mvvm_modify_counter/modelQThereIsStateViewModel/intQThereIsStateViewModel/IntQThereIsStateViewModelForIncrementAndDecrement.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 
 class IncrementFABWidgetListViewModel {
   @protected
-  final IntQNoServiceViewModelUsingGetNPForIncrementAndDecrement<Int,ListInt<Int>> intQNoServiceViewModelUsingGetNPForIncrementAndDecrement;
+  final IntQThereIsStateViewModelForIncrementAndDecrement<Int,ListInt<Int>> intQThereIsStateViewModelForIncrementAndDecrement;
 
-  IncrementFABWidgetListViewModel(this.intQNoServiceViewModelUsingGetNPForIncrementAndDecrement);
+  IncrementFABWidgetListViewModel(this.intQThereIsStateViewModelForIncrementAndDecrement);
 
-  void setOneParametersNamedByIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask()
+  void setOneParametersNamedForNamedWidgetOrViewByIntForIncrementAndDecrementAndInGeneralZeroTask()
   {
-    intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
-        .getIntUsingGetNPForIncrementAndDecrement
+    intQThereIsStateViewModelForIncrementAndDecrement
+        .getIntForIncrementAndDecrement
         ?.setOneParametersNamedForNamedWidgetOrView();
-    intQNoServiceViewModelUsingGetNPForIncrementAndDecrement
-        .notifyStreamIntUsingGetNPForIncrementAndDecrement();
+    intQThereIsStateViewModelForIncrementAndDecrement
+        .notifyStreamIntForIncrementAndDecrement();
     return;
   }
 }

@@ -39,7 +39,7 @@ class PostsListWidgetState
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListPost<Post>>(
-        stream: widget.lo.getStreamListPostUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
+        stream: widget.lo.getStreamListPostForStartIndexFromJsonPlaceholder,
         builder: (BuildContext buildContext, AsyncSnapshot<ListPost<Post>> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
@@ -68,7 +68,7 @@ class PostsListWidgetState
           if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
             return buildLoadingForSuccess(listPost);
           }
-          Post? itemPost = listPost.getParameterList![index];
+          Post? itemPost = listPost.list![index];
           return buildItemForSuccess(itemPost);
         },
         itemCount: listPost?.getTwoParametersNamedForPostsListWidget,

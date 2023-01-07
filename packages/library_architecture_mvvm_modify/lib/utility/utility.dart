@@ -1,9 +1,7 @@
-import 'package:flutter/foundation.dart';
 
 void debugPrint(String text) {
-  if (kDebugMode) {
-    print(text);
-  }
+  // ignore: avoid_print
+  print(text);
 }
 
 void debugPrintException(String text) {

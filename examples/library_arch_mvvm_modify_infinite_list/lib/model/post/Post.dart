@@ -1,14 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 class Post
     extends BaseModel
 {
-  @protected
   int? id;
-  @protected
   String? title;
-  @protected
   String? body;
 
   Post.success(this.id,this.title,this.body) : super.success(id.toString());
@@ -19,7 +15,7 @@ class Post
   static const constParameterTitle = "title";
   static const constParameterBody = "body";
 
-  String? get getOneParametersNamedForPostsListWidget => getParameterUniqueId;
+  String? get getOneParametersNamedForPostsListWidget => uniqueId;
   String? get getTwoParametersNamedForPostsListWidget => title;
   String? get getThreeParametersNamedForPostsListWidget => body;
 }

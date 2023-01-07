@@ -1,16 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
+import 'package:meta/meta.dart';
 
 abstract class BaseListModel<T extends BaseModel> {
-  @protected
   List<T>? list;
-  @protected
   ExceptionController exceptionController;
-  @protected
   Enum? enumNamedForIterator;
   final Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
 
@@ -27,16 +24,6 @@ abstract class BaseListModel<T extends BaseModel> {
         _mapEnumNamedForIteratorAndIterator = null;
 
   @nonVirtual
-  List<T>? get getParameterList => list;
-  @nonVirtual
-  ExceptionController get getParameterExceptionController => exceptionController;
-
-  @nonVirtual
-  set setParameterList(List<T> list) => this.list = list;
-  @nonVirtual
-  set setParameterExceptionController(ExceptionController exceptionController) => this.exceptionController = exceptionController;
-
-  @nonVirtual
   void startIteratorForList(
       Object thisClass)
   {
@@ -45,7 +32,7 @@ abstract class BaseListModel<T extends BaseModel> {
     }
     BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
     if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
-      iterator.setParameterList = list!;
+      iterator.list = list!;
       list = iterator.getSortedListByParameterList;
       return;
     }
@@ -56,7 +43,7 @@ abstract class BaseListModel<T extends BaseModel> {
       iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
-    iterator.setParameterList = list!;
+    iterator.list = list!;
     list = iterator.getSortedListByParameterList;
   }
 
@@ -71,14 +58,14 @@ abstract class BaseListModel<T extends BaseModel> {
   void updateToList(
       T model)
   {
-    list?[list!.indexWhere((T item) => item.getParameterUniqueId == model.getParameterUniqueId)] = model;
+    list?[list!.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
   void deleteToList(
       T model)
   {
-    list?.removeWhere((T item) => item.getParameterUniqueId == model.getParameterUniqueId);
+    list?.removeWhere((T item) => item.uniqueId == model.uniqueId);
   }
 
   @nonVirtual
@@ -93,7 +80,7 @@ abstract class BaseListModel<T extends BaseModel> {
       List<T> listForUpdate)
   {
     for(T itemForUpdate in listForUpdate) {
-      list?[list!.indexWhere((T item) => item.getParameterUniqueId == itemForUpdate.getParameterUniqueId)] = itemForUpdate;
+      list?[list!.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
     }
   }
 
@@ -102,7 +89,7 @@ abstract class BaseListModel<T extends BaseModel> {
       List<T> listForDelete)
   {
     for(T itemForDelete in listForDelete) {
-      list?.removeWhere((T item) => item.getParameterUniqueId == itemForDelete.getParameterUniqueId);
+      list?.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
     }
   }
 }

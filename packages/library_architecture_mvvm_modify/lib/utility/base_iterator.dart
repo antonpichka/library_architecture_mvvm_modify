@@ -1,10 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:meta/meta.dart';
 
 abstract class BaseIterator<T extends BaseModel>
     implements Iterator<T>
 {
-  @protected
   List<T>? list;
 
   @nonVirtual
@@ -17,7 +16,4 @@ abstract class BaseIterator<T extends BaseModel>
     this.list = list;
     return this.list!;
   }
-
-  @nonVirtual
-  set setParameterList(List<T> list) => this.list = list;
 }

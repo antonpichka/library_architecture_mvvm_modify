@@ -12,9 +12,9 @@ class IntTextWidget
 
   @override
   Widget build(BuildContext context) {
-    lo.notifyStreamIntUsingGetNPForIncrementAndDecrementAndInGeneralZeroTask();
+    lo.notifyStreamIntForIncrementAndDecrementAndInGeneralZeroTask();
     return StreamBuilder<Int>(
-        stream: lo.getStreamIntUsingGetNPForIncrementAndDecrement,
+        stream: lo.getStreamIntForIncrementAndDecrement,
         builder: (BuildContext buildContext, AsyncSnapshot<Int> asyncSnapshot) {
           if(asyncSnapshot.data == null) {
             return buildDataNull();

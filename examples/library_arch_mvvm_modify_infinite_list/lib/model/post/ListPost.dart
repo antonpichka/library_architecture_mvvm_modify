@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
@@ -13,11 +12,10 @@ enum EnumListPostForPostsListWidget {
 class ListPost<T extends Post>
     extends BaseListModel<T>
 {
-  @protected
   bool? hasReachedMax;
 
   ListPost.success(super.list) : super.success() {
-    if(getParameterList!.isEmpty) {
+    if(list!.isEmpty) {
       hasReachedMax = true;
       return;
     }
@@ -29,13 +27,13 @@ class ListPost<T extends Post>
         super.exception();
 
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
-    if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
     }
-    if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
       return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
-    if(getParameterList!.isEmpty) {
+    if(list!.isEmpty) {
       return EnumListPostForPostsListWidget.isEmptyList;
     }
     return EnumListPostForPostsListWidget.success;
@@ -44,9 +42,9 @@ class ListPost<T extends Post>
   bool? get getOneParametersNamedForPostsListWidget => hasReachedMax;
   int? get getTwoParametersNamedForPostsListWidget {
     if(hasReachedMax!) {
-      return getParameterList!.length;
+      return list!.length;
     }
-    return getParameterList!.length + 1;
+    return list!.length + 1;
   }
   bool? get getThreeParametersNamedForPostsListWidget => hasReachedMax;
   bool? get getFourParametersNamedForPostsListWidget => hasReachedMax;
@@ -54,10 +52,10 @@ class ListPost<T extends Post>
   void setOneParametersNamedForPostsListWidget(
       ListPost<T> listPost)
   {
-    exceptionController = listPost.getParameterExceptionController;
+    exceptionController = listPost.exceptionController;
     hasReachedMax = listPost.getThreeParametersNamedForPostsListWidget;
     if(!hasReachedMax!) {
-      insertListToList(listPost.getParameterList!);
+      insertListToList(listPost.list!);
       return;
     }
   }
@@ -65,13 +63,13 @@ class ListPost<T extends Post>
   void setTwoParametersNamedForPostsListWidget(
       ListPost<T> listPost)
   {
-    setParameterExceptionController = listPost.getParameterExceptionController;
+    exceptionController = listPost.exceptionController;
     hasReachedMax = listPost.getFourParametersNamedForPostsListWidget;
   }
 
   bool isOneParametersNamedForPostsListWidget(
       int index)
   {
-    return index >= getParameterList!.length;
+    return index >= list!.length;
   }
 }

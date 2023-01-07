@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
-import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
@@ -59,15 +58,5 @@ class WeatherAndSettings
 
   set setFourParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi(BoolTypeParameter boolTypeParameter) {
     exceptionController = boolTypeParameter.exceptionController;
-  }
-
-  void setOneParametersNamedFloatingActionButtonSearchWidget() {
-    weather
-        ?.setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedFloatingActionButtonSearchWidget = settings?.getParameterTemperatureUnits ?? TemperatureUnits.celsius;
-  }
-
-  void setOneParametersNamedWeatherWidget() {
-    weather
-        ?.setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedWeatherWidget = settings?.getParameterTemperatureUnits ?? TemperatureUnits.celsius;
   }
 }

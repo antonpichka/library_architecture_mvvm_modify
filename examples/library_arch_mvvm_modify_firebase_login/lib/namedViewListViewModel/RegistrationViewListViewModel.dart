@@ -16,7 +16,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/SignUpButtonWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/clone_stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_clone_stream_model_for_success/stream_bool_for_success.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
@@ -29,7 +29,7 @@ class RegistrationViewListViewModel
   final _passwordInputExtQNoServiceViewModelUsingGetNP =
   PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>(CloneStreamPasswordInputFirstBranchOneForSuccess());
   final _boolQNoServiceViewModelUsingGetNPForLoading =
-  BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>>(CloneStreamBoolForSuccess());
+  BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool<Bool>>(StreamBoolForSuccess());
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
   UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>>(CloneStreamUserForSuccess());
 

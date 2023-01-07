@@ -43,6 +43,6 @@ class WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStrin
   }
 
   Future<T?> getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettings(StringTypeParameter typeParameter) {
-    return getModelFromNamedServiceParameterNamed<StringTypeParameter>(typeParameter);
+    return getModelFromNamedServiceParameterNamedAndSetModel<StringTypeParameter>(typeParameter);
   }
 }

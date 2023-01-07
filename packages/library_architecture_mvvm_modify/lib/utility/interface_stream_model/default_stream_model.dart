@@ -9,7 +9,6 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
 {
   final StreamController<T>? _streamControllerForModel;
   final StreamController<Y>? _streamControllerForListModel;
-  final int? _delayInSeconds;
   T? _model;
   Y? _listModel;
   StreamSubscription<T>? _streamSubscriptionForModel;
@@ -17,9 +16,8 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
 
   DefaultStreamModel(
       this._model,
-      this._listModel,
-      [this._delayInSeconds = 30]) :
-        _streamControllerForModel =  StreamController<T>.broadcast(),
+      this._listModel)
+      : _streamControllerForModel = StreamController<T>.broadcast(),
         _streamControllerForListModel = StreamController<Y>.broadcast();
 
 
@@ -48,28 +46,22 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   Y? get getListModel => _listModel;
 
   @override
-  set setModel(
-      T? model)
-  {
+  set setModel(T? model) {
     _model = model;
   }
 
   @override
-  set setListModel(
-      Y? listModel)
-  {
+  set setListModel(Y? listModel) {
     _listModel = listModel;
   }
 
   @override
-  void notifyStreamModel(
-      Object thisClass)
-  {
+  void notifyStreamModel() {
     if(!_streamControllerForModel!.hasListener) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
+      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream has no listener");
     }
     if(_streamControllerForModel!.isClosed) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
+      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream closed");
     }
     _streamControllerForModel
         ?.sink
@@ -77,64 +69,16 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   }
 
   @override
-  void notifyStreamListModel(
-      Object thisClass)
-  {
+  void notifyStreamListModel() {
     if(!_streamControllerForListModel!.hasListener) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
+      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream has no listener");
     }
     if(_streamControllerForListModel!.isClosed) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
+      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream closed");
     }
     _streamControllerForListModel
         ?.sink
         .add(_listModel!);
-  }
-
-  @override
-  Future<void> notifyStreamDelayInSecondsModel(
-      Object thisClass)
-  async {
-    if(_streamControllerForModel!.isClosed) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
-    }
-    int iteration = 0;
-    while(iteration < _delayInSeconds!) {
-      if(_streamControllerForModel!.hasListener) {
-        _streamControllerForModel
-            ?.sink
-            .add(_model!);
-        break;
-      }
-      await Future.delayed(const Duration(seconds: 1));
-      iteration++;
-      if(iteration >= _delayInSeconds!) {
-        throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
-      }
-    }
-  }
-
-  @override
-  Future<void> notifyStreamDelayInSecondsListModel(
-      Object thisClass)
-  async {
-    if(_streamControllerForListModel!.isClosed) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream closed");
-    }
-    int iteration = 0;
-    while(iteration < _delayInSeconds!) {
-      if(_streamControllerForListModel!.hasListener) {
-        _streamControllerForListModel
-            ?.sink
-            .add(_listModel!);
-        break;
-      }
-      await Future.delayed(const Duration(seconds: 1));
-      if(iteration >= _delayInSeconds!) {
-        throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"stream has no listener");
-      }
-      iteration++;
-    }
   }
 
   void listensStreamModel(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceDataSource/namedService/HttpClientService.dart';
@@ -10,6 +9,7 @@ import 'package:library_architecture_mvvm_modify/interface_model_q_named_service
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
+import 'package:meta/meta.dart';
 
 class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost<T>>
     implements GetListModelFromNamedServiceParameterNamedDataSource<Y,IntTypeParameter>
@@ -57,6 +57,7 @@ class PostQHttpClientServiceDataSourceUsingGetListParameterIntForStartIndexFromJ
     }
   }
 
+  @protected
   Uri getUriForGetListModelFromNamedServiceParameterNamed(IntTypeParameter? intTypeParameter) {
     return Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '${intTypeParameter?.parameter}', '_limit': '20'});
   }

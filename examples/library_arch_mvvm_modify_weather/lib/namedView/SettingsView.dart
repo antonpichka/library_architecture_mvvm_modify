@@ -6,6 +6,8 @@ import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view
 class SettingsView
     extends StatefulWidget
 {
+  const SettingsView();
+
   @override
   State<SettingsView> createState() => _SettingsViewState();
 }
@@ -14,6 +16,16 @@ class _SettingsViewState
     extends BaseNamedView<SettingsView,SettingsViewListViewModel>
 {
   _SettingsViewState() : super(SettingsViewListViewModel());
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

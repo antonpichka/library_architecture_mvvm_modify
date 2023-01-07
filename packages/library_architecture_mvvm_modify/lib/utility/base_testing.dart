@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 
-class BaseForTesting {
+class BaseTesting {
   int? _numberOfExecutedMethodsInThisClass = 0;
 
   @visibleForTesting

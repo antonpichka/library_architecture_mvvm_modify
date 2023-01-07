@@ -39,7 +39,7 @@ class ListTileTemperatureUnitsWidget
   Widget buildTrailing(BuildContext buildContext, Settings? settings) {
     return Switch(
       value: settings?.isOneParametersNamedForListTileTemperatureUnitsWidget() ?? true,
-      onChanged: (_) => context.read<WeatherCubit>().toggleUnits(),
+      onChanged: (bool isSwitch) => context.read<WeatherCubit>().toggleUnits(),
     );
   }
 

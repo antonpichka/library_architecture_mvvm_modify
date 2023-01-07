@@ -3,7 +3,6 @@ import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/Decrement
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/IncrementFABWidget.dart';
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/IntTextWidget.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/MainViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class MainView
     extends StatefulWidget
@@ -13,17 +12,21 @@ class MainView
 }
 
 class _MainViewState
-    extends BaseNamedView<MainView,MainViewListViewModel>
+    extends State<MainView>
+    with WidgetsBindingObserver
 {
-  _MainViewState() : super(MainViewListViewModel());
+  final _lo = MainViewListViewModel();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    _lo.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -38,7 +41,7 @@ class _MainViewState
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:',),
-            IntTextWidget(lo.intTextWidgetListViewModel),
+            IntTextWidget(_lo.intTextWidgetListViewModel),
           ],
         ),
       ),
@@ -46,9 +49,9 @@ class _MainViewState
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          IncrementFABWidget(lo.incrementFABWidgetListViewModel),
+          IncrementFABWidget(_lo.incrementFABWidgetListViewModel),
           const SizedBox(height: 8,),
-          DecrementFABWidget(lo.decrementFABWidgetListViewModel),
+          DecrementFABWidget(_lo.decrementFABWidgetListViewModel),
         ],
       ),
     );

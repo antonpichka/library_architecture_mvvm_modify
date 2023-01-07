@@ -70,6 +70,8 @@ class WeatherIsLoading
 
   set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherAndSettings weatherAndSettings) {
     weather = weatherAndSettings.getParameterWeather;
+    weather
+        ?.setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForFloatingActionButtonSearchWidget = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 
@@ -85,6 +87,8 @@ class WeatherIsLoading
   set setThreeParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
     weather = weatherAndSettings.getParameterWeather;
     temperatureUnits = weatherAndSettings.getParameterSettings?.getParameterTemperatureUnits;
+    weather
+        ?.setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForWeatherWidget = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 
@@ -99,6 +103,8 @@ class WeatherIsLoading
 
   set setSixParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
     weather = weatherAndSettings.getParameterWeather;
+    weather
+        ?.setOneParametersNamedForWeatherIsLoadingWhereSetSixParametersNamedForWeatherWidget = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 

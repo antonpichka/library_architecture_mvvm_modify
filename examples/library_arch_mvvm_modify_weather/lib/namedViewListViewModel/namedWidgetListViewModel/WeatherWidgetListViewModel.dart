@@ -52,8 +52,6 @@ class WeatherWidgetListViewModel {
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
     }
-    weatherAndSettingsFromHive
-        .setOneParametersNamedWeatherWidget();
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setThreeParametersNamedForWeatherWidget = weatherAndSettingsFromHive;
@@ -95,8 +93,6 @@ class WeatherWidgetListViewModel {
           .notifyStreamWeatherIsLoadingUsingGetNP();
       return;
     }
-    weatherAndSettingsFromHttpClientAndHive
-        .setOneParametersNamedWeatherWidget();
     weatherIsLoadingQNoServiceViewModelUsingGetNP
         .getWeatherIsLoadingUsingGetNP
         ?.setSixParametersNamedForWeatherWidget = weatherAndSettingsFromHttpClientAndHive;

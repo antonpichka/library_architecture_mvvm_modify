@@ -1,7 +1,7 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 
 enum EnumWhatIsTheException {
   noException,

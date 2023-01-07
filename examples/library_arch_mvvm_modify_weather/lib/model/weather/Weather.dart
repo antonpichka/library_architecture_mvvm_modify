@@ -115,13 +115,19 @@ class Weather
     }
   }
 
-  set setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedFloatingActionButtonSearchWidget(
+  set setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForFloatingActionButtonSearchWidget(
       TemperatureUnits temperatureUnits)
   {
     _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
   }
 
-  set setOneParametersNamedForWeatherAndSettingsWhereSetOneParametersNamedWeatherWidget(
+  set setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForWeatherWidget(
+      TemperatureUnits temperatureUnits)
+  {
+    _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
+  }
+
+  set setOneParametersNamedForWeatherIsLoadingWhereSetSixParametersNamedForWeatherWidget(
       TemperatureUnits temperatureUnits)
   {
     _setFromTemperatureUnitsParameterTemperature = temperatureUnits;

@@ -11,8 +11,6 @@ abstract class IStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   Y? get getListModel;
   set setModel(T? model);
   set setListModel(Y? listModel);
-  void notifyStreamModel(Object thisClass);
-  void notifyStreamDelayInSecondsModel(Object thisClass);
-  void notifyStreamListModel(Object thisClass);
-  void notifyStreamDelayInSecondsListModel(Object thisClass);
+  void notifyStreamModel();
+  void notifyStreamListModel();
 }
