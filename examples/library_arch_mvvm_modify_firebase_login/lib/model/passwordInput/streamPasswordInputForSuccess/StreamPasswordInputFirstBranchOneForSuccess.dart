@@ -1,0 +1,14 @@
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/i_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
+
+class StreamPasswordInputFirstBranchOneForSuccess
+    implements IStreamModelForSuccess<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>
+{
+  @override
+  IStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>? streamModelForSuccess() {
+    return DefaultStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>(PasswordInputFirstBranchOne.getPasswordInputFirstBranchOneForSuccess, ListPasswordInputFirstBranchOne.success([]));
+  }
+}

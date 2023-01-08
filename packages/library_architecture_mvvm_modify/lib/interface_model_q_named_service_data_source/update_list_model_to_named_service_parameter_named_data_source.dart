@@ -2,5 +2,5 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 
 abstract class UpdateListModelToNamedServiceParameterNamedDataSource<T extends BaseTypeParameter,Y extends BaseTypeParameter>
 {
-  Future<T?> updateListModelToNamedServiceParameterNamed(Y? parameter);
+  Future<T?> updateListModelToNamedServiceParameterNamedDS(Y? parameter);
 }

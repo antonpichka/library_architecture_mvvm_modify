@@ -13,13 +13,13 @@ class PasswordInputWidget
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<PasswordInput>(
-        stream: lo.getStreamPasswordInputUsingUpdateTIP,
+        stream: lo.getStreamPasswordInput,
         builder: (BuildContext buildContext, AsyncSnapshot<PasswordInput> asyncSnapshot)
         {
           PasswordInput? passwordInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => lo
-                .setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingGetNPAndInGeneralZeroTask(str),
+                .setOneParametersNamedForPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(str),
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'password',

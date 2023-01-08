@@ -19,10 +19,10 @@ class WeatherQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocati
       this.weatherQHiveServiceDataSourceUsingGetNP);
 
   @override
-  Future<T?> getModelFromNamedServiceParameterNamed(StringTypeParameter? parameter)
+  Future<T?> getModelFromNamedServiceParameterNamedDS(StringTypeParameter? parameter)
   async {
     final weatherFromHiveService = await weatherQHiveServiceDataSourceUsingGetNP
-        .getModelFromNamedServiceNP();
+        .getModelFromNamedServiceNPDS();
     if(weatherFromHiveService!
         .getParameterExceptionController
         .isExceptionNotEqualsNull())
@@ -35,7 +35,7 @@ class WeatherQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocati
       return weatherFromHiveService;
     }
     final weatherFromHttpClient = await weatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi
-        .getModelFromNamedServiceParameterNamed(parameter);
+        .getModelFromNamedServiceParameterNamedDS(parameter);
     return weatherFromHttpClient;
   }
 }

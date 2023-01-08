@@ -18,7 +18,7 @@ class WeatherQHiveServiceDataSourceUsingUpdateParameterWeather<T extends Weather
   WeatherQHiveServiceDataSourceUsingUpdateParameterWeather();
 
   @override
-  Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamed(WeatherTypeParameter<T>? parameter)
+  Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamedDS(WeatherTypeParameter<T>? parameter)
   async {
     try {
       final Box? boxWeather = await hiveService

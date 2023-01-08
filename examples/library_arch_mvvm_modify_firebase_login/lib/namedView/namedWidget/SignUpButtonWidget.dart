@@ -18,7 +18,7 @@ class SignUpButtonWidget
         builder: (BuildContext buildContext, AsyncSnapshot<Bool> asyncSnapshot)
         {
           Bool? bool = asyncSnapshot.data;
-          return bool?.getParameterIsField ?? false
+          return bool?.isField ?? false
               ? const CircularProgressIndicator()
               : ElevatedButton(
                   key: const Key('loginForm_continue_raisedButton'),
@@ -28,7 +28,7 @@ class SignUpButtonWidget
                     ),
                     backgroundColor: Colors.orangeAccent,
                   ),
-                  onPressed: bool?.getParameterIsField ?? false
+                  onPressed: bool?.isField ?? false
                       ? null
                       : () => lo.insertUserToFirebaseAuthServiceParameterRegistrationAndInGeneralOneTask(
                           (String message) => defaultScaffoldMessenger(context, message),

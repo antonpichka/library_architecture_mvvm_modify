@@ -27,11 +27,11 @@ class WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSett
       this.settingsQHiveServiceDataSourceUsingUpdateParameterSettings);
 
   @override
-  Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamed(
+  Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamedDS(
       WeatherAndSettingsTypeParameter<T>? parameter)
   async {
     final result = await weatherQHiveServiceDataSourceUsingUpdateParameterWeather
-        .updateModelToNamedServiceParameterNamed(WeatherTypeParameter<Weather>.success(parameter!.parameter!.getOneParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingParameterWeatherAndSettings));
+        .updateModelToNamedServiceParameterNamedDS(WeatherTypeParameter<Weather>.success(parameter!.parameter!.getOneParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingParameterWeatherAndSettings));
     if(result
         !.exceptionController
         .isExceptionNotEqualsNull())
@@ -39,7 +39,7 @@ class WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSett
       return result;
     }
     final resultTwo = await settingsQHiveServiceDataSourceUsingUpdateParameterSettings
-        .updateModelToNamedServiceParameterNamed(SettingsTypeParameter<Settings>.success(parameter.parameter!.getTwoParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingParameterWeatherAndSettings));
+        .updateModelToNamedServiceParameterNamedDS(SettingsTypeParameter<Settings>.success(parameter.parameter!.getTwoParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingParameterWeatherAndSettings));
     if(resultTwo
         !.exceptionController
         .isExceptionNotEqualsNull())

@@ -1,11 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 class EmailInput
     extends BaseModel
 {
-  @protected
   Email? email;
 
   EmailInput.success(this.email) : super.success(email?.value);

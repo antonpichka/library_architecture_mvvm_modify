@@ -37,7 +37,7 @@ class SearchBarWidgetState
       onChanged: (text) {
         widget
             .lo
-            .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask(text);
+            .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndInGeneralOneTask(text);
       },
       decoration: buildDecorationForTextField()
     );
@@ -61,6 +61,6 @@ class SearchBarWidgetState
     textController.text = '';
     widget
         .lo
-        .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndSetListSearchResultAndInGeneralOneTask("");
+        .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndInGeneralOneTask("");
   }
 }

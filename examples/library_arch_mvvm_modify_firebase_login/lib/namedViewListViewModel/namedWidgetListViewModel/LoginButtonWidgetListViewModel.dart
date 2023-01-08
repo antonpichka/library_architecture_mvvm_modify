@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:formz/formz.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
@@ -6,69 +5,74 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/List
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/boolQNoServiceViewModel/BoolQNoServiceViewModelUsingGetNPForLoading.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingGetNP.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForLoading.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Login.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
+import 'package:meta/meta.dart';
 
 class LoginButtonWidgetListViewModel {
   @protected
   final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>> userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
   @protected
-  final EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>> emailInputQNoServiceViewModelUsingGetNP;
+  final EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>> emailInputQThereIsStateViewModel;
   @protected
-  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput<PasswordInput>> passwordInputQNoServiceViewModelUsingGetNP;
+  final PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>> passwordInputQThereIsStateViewModel;
   @protected
-  final BoolQNoServiceViewModelUsingGetNPForLoading<Bool,ListBool> boolQNoServiceViewModelUsingGetNPForLoading;
+  final BoolQThereIsStateViewModelForLoading<Bool,ListBool> boolQThereIsStateViewModelForLoading;
 
   LoginButtonWidgetListViewModel(
       this.userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
-      this.emailInputQNoServiceViewModelUsingGetNP,
-      this.passwordInputQNoServiceViewModelUsingGetNP,
-      this.boolQNoServiceViewModelUsingGetNPForLoading);
+      this.emailInputQThereIsStateViewModel,
+      this.passwordInputQThereIsStateViewModel,
+      this.boolQThereIsStateViewModelForLoading);
 
-  Stream<Bool>? get getStreamBoolUsingGetNPForLoading {
-    return boolQNoServiceViewModelUsingGetNPForLoading.getStreamBoolUsingGetNPForLoading;
+  Stream<Bool>? get getStreamBoolForLoading {
+    return boolQThereIsStateViewModelForLoading.getStreamBoolForLoading;
   }
 
-  Future<void> updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask(
+  Future<void> updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask(
       Function(String message) callbackForException)
   async {
-    if(!Formz.validate([emailInputQNoServiceViewModelUsingGetNP.getEmailInputUsingGetNP?.getOneParametersNamedForLoginButtonWidget ?? const Email.pure(), passwordInputQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP?.getOneParametersNamedForLoginButtonWidget ?? const Password.pure()])
+    if(!Formz.validate([emailInputQThereIsStateViewModel
+        .getEmailInput
+        ?.getOneParametersNamedForLoginButtonWidget ?? const Email.pure(),
+      passwordInputQThereIsStateViewModel
+          .getPasswordInput
+          ?.getOneParametersNamedForLoginButtonWidget ?? const Password.pure()])
         .isValidated)
     {
       return;
     }
-    if(boolQNoServiceViewModelUsingGetNPForLoading
-        .getBoolUsingGetNPForLoading
-        !.getParameterIsField)
+    if(boolQThereIsStateViewModelForLoading
+        .getBoolForLoading
+        !.isField)
     {
       return;
     }
-    boolQNoServiceViewModelUsingGetNPForLoading
-        .getBoolUsingGetNPForLoading
-        ?.setParameterIsField = true;
-    boolQNoServiceViewModelUsingGetNPForLoading
-        .notifyStreamBoolUsingGetNPForLoading();
+    boolQThereIsStateViewModelForLoading
+        .getBoolForLoading
+        ?.isField = true;
+    boolQThereIsStateViewModelForLoading
+        .notifyStreamBoolForLoading();
     // 1
-    BoolTypeParameter? boolTypeParameter = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .updateUserToFirebaseAuthServiceParameterLogin(LoginTypeParameter.success(Login(emailInputQNoServiceViewModelUsingGetNP.getEmailInputUsingGetNP?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQNoServiceViewModelUsingGetNP.getPasswordInputUsingGetNP?.getTwoParametersNamedForLoginButtonWidget ?? "")));
+    final boolTypeParameter = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+        .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(LoginTypeParameter.success(Login(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput?.getTwoParametersNamedForLoginButtonWidget ?? "")));
     if(boolTypeParameter
         !.exceptionController
         .isExceptionNotEqualsNull())
     {
-      boolQNoServiceViewModelUsingGetNPForLoading
-          .getBoolUsingGetNPForLoading
-          ?.setParameterIsField = false;
-      boolQNoServiceViewModelUsingGetNPForLoading
-          .notifyStreamBoolUsingGetNPForLoading();
+      boolQThereIsStateViewModelForLoading
+          .getBoolForLoading
+          ?.isField = false;
+      boolQThereIsStateViewModelForLoading
+          .notifyStreamBoolForLoading();
       callbackForException(boolTypeParameter
           .exceptionController
           .getMessageForViewByException);

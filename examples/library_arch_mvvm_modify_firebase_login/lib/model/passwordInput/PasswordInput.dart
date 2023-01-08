@@ -1,11 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 class PasswordInput
     extends BaseModel
 {
-  @protected
   Password? password;
 
   PasswordInput.success(this.password) : super.success(password?.value);

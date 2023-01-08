@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/ConfirmedPassword.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
@@ -6,7 +5,6 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 class PasswordInputFirstBranchOne
     extends PasswordInput
 {
-  @protected
   ConfirmedPassword? confirmedPassword;
 
   PasswordInputFirstBranchOne.success(super.password,this.confirmedPassword) : super.success();

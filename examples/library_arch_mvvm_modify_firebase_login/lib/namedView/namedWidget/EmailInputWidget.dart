@@ -13,7 +13,7 @@ class EmailInputWidget
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<EmailInput>(
-        stream: lo.getStreamEmailInputUsingUpdateTIP,
+        stream: lo.getStreamEmailInput,
         builder: (BuildContext buildContext, AsyncSnapshot<EmailInput> asyncSnapshot)
         {
           EmailInput? emailInput = asyncSnapshot.data;
@@ -24,7 +24,7 @@ class EmailInputWidget
   @protected
   Widget buildSuccess(EmailInput? emailInput) {
     return TextField(
-      onChanged: (String str) => lo.setOneParametersNamedForEmailInputWidgetByEmailInputUsingGetNPAndInGeneralZeroTask(str),
+      onChanged: (String str) => lo.setOneParametersNamedForEmailInputWidgetByEmailInputAndInGeneralZeroTask(str),
       keyboardType: TextInputType.emailAddress,
       decoration: buildInputDecorationForSuccess(emailInput)
     );

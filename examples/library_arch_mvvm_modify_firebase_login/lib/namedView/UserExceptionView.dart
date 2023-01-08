@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/UserExceptionTextWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/UserExceptionViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class UserExceptionView
     extends StatefulWidget
@@ -16,17 +15,21 @@ class UserExceptionView
 }
 
 class _UserExceptionViewState
-    extends BaseNamedView<UserExceptionView,UserExceptionViewListViewModel>
+    extends State<UserExceptionView>
+    with WidgetsBindingObserver
 {
-  _UserExceptionViewState() : super(UserExceptionViewListViewModel());
+  final _lo = UserExceptionViewListViewModel();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    _lo.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -34,7 +37,7 @@ class _UserExceptionViewState
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: UserExceptionTextWidget(lo.userExceptionTextWidgetListViewModel,widget.user)
+            child: UserExceptionTextWidget(_lo.userExceptionTextWidgetListViewModel,widget.user)
         )
     );
   }

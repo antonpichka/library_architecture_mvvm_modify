@@ -26,7 +26,7 @@ class WeatherQHiveServiceDataSourceUsingGetNP<T extends Weather,Y extends ListWe
       this.iWeatherForDefaultWhereKeyNotFoundNP);
 
   @override
-  Future<T?> getModelFromNamedServiceNP()
+  Future<T?> getModelFromNamedServiceNPDS()
   async {
     try {
       final Box? boxWeather = await hiveService

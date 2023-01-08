@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoadingViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class LoadingView
     extends StatefulWidget
@@ -10,17 +9,21 @@ class LoadingView
 }
 
 class _LoadingViewState
-    extends BaseNamedView<LoadingView,LoadingViewListViewModel >
+    extends State<LoadingView>
+    with WidgetsBindingObserver
 {
-  _LoadingViewState() : super(LoadingViewListViewModel());
+  final _lo = LoadingViewListViewModel();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    _lo.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

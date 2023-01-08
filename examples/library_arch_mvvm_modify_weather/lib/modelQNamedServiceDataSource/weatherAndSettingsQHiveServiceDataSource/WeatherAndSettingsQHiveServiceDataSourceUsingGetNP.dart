@@ -27,10 +27,10 @@ class WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<T extends WeatherAndSet
       this.iWeatherAndSettingsForDefaultNP);
 
   @override
-  Future<T?> getModelFromNamedServiceNP()
+  Future<T?> getModelFromNamedServiceNPDS()
   async {
     final weatherAndSettings = iWeatherAndSettingsForDefaultNP.getModelForNamedNP();
-    final weather = await weatherQHiveServiceDataSourceUsingGetNP.getModelFromNamedServiceNP();
+    final weather = await weatherQHiveServiceDataSourceUsingGetNP.getModelFromNamedServiceNPDS();
     if(weather
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())
@@ -39,7 +39,7 @@ class WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<T extends WeatherAndSet
           ?.setOneParametersNamedForWeatherAndSettingsQHiveServiceDataSourceUsingGetNP = weather;
       return weatherAndSettings;
     }
-    final settings = await settingsQHiveServiceDataSourceUsingGetNP.getModelFromNamedServiceNP();
+    final settings = await settingsQHiveServiceDataSourceUsingGetNP.getModelFromNamedServiceNPDS();
     if(settings
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())

@@ -30,6 +30,6 @@ class WeatherQHttpClientServiceViewModelUsingGetParameterStringForLocationFromOp
   WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
 
   Future<T?> getWeatherFromHttpClientServiceParameterString(StringTypeParameter typeParameter) {
-    return getModelFromNamedServiceParameterNamed<StringTypeParameter>(typeParameter);
+    return getModelFromNamedServiceParameterNamedDS<StringTypeParameter>(typeParameter);
   } 
 }

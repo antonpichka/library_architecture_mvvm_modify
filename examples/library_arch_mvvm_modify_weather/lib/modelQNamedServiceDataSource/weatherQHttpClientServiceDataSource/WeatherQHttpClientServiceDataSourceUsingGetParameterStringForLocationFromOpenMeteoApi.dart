@@ -31,7 +31,7 @@ class WeatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromO
       this.iWeatherForLocalExceptionTIP);
 
   @override
-  Future<T?> getModelFromNamedServiceParameterNamed(StringTypeParameter? parameter)
+  Future<T?> getModelFromNamedServiceParameterNamedDS(StringTypeParameter? parameter)
   async {
     try {
       final locationRequest = Uri.https(

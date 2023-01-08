@@ -1,10 +1,10 @@
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
 
-abstract class InsertModelToNamedServiceParameterNamedFBDS
+abstract class InsertModelToNamedServiceParameterNamedFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>
 {
   InsertModelToNamedServiceParameterNamedFBDS();
 
-  Z? insertModelToNamedServiceParameterNamed<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>(
+  Z? insertModelToNamedServiceParameterNamed(
       X? typeParameter,
       C? typeParameterForFBDS);
 }

@@ -30,12 +30,12 @@ class WeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStri
       this.iWeatherAndSettingsForDefaultNP);
 
   @override
-  Future<T?> getModelFromNamedServiceParameterNamed(
+  Future<T?> getModelFromNamedServiceParameterNamedDS(
       StringTypeParameter? parameter)
   async {
     T? weatherAndSettingsForDefaultNP = iWeatherAndSettingsForDefaultNP.getModelForNamedNP();
     final weatherFromHttpClient = await weatherQHttpClientServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi
-        .getModelFromNamedServiceParameterNamed(parameter);
+        .getModelFromNamedServiceParameterNamedDS(parameter);
     if(weatherFromHttpClient
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())
@@ -45,7 +45,7 @@ class WeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStri
       return weatherAndSettingsForDefaultNP;
     }
     final weatherAndSettingsFromHive = await weatherAndSettingsQHiveServiceDataSourceUsingGetNP
-        .getModelFromNamedServiceNP();
+        .getModelFromNamedServiceNPDS();
     if(weatherAndSettingsFromHive
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())
@@ -58,7 +58,7 @@ class WeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStri
     weatherAndSettingsForDefaultNP
         .setThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi = weatherFromHttpClient;
     final result = await weatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSettings
-        .updateModelToNamedServiceParameterNamed(WeatherAndSettingsTypeParameter<T>.success(weatherAndSettingsForDefaultNP));
+        .updateModelToNamedServiceParameterNamedDS(WeatherAndSettingsTypeParameter<T>.success(weatherAndSettingsForDefaultNP));
     if(result
         !.exceptionController
         .isExceptionNotEqualsNull())

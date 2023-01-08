@@ -18,7 +18,7 @@ class SettingsQHiveServiceDataSourceUsingUpdateParameterSettings<T extends Setti
   SettingsQHiveServiceDataSourceUsingUpdateParameterSettings();
 
   @override
-  Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamed(
+  Future<BoolTypeParameter?> updateModelToNamedServiceParameterNamedDS(
       SettingsTypeParameter<T>? parameter)
   async {
     try {

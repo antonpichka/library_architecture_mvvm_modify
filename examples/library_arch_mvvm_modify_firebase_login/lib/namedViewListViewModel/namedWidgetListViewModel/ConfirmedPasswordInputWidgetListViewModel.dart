@@ -1,32 +1,32 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
+import 'package:meta/meta.dart';
 
 class ConfirmedPasswordInputWidgetListViewModel {
   @protected
-  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>> passwordInputQNoServiceViewModelUsingGetNP;
+  final PasswordInputQThereIsStateViewModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>> passwordInputQThereIsStateViewModel;
 
-  ConfirmedPasswordInputWidgetListViewModel(this.passwordInputQNoServiceViewModelUsingGetNP);
+  ConfirmedPasswordInputWidgetListViewModel(this.passwordInputQThereIsStateViewModel);
 
-  Stream<PasswordInputFirstBranchOne>? get getStreamPasswordInputUsingGetNP {
-    return passwordInputQNoServiceViewModelUsingGetNP.getStreamPasswordInputUsingGetNP;
+  Stream<PasswordInputFirstBranchOne>? get getStreamPasswordInput {
+    return passwordInputQThereIsStateViewModel.getStreamPasswordInput;
   }
 
-  void setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputUsingGetNPAndInGeneralZeroTask(
+  void setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
       String str)
   {
-    if(passwordInputQNoServiceViewModelUsingGetNP
-        .getPasswordInputUsingGetNP
+    if(passwordInputQThereIsStateViewModel
+        .getPasswordInput
         ?.getOneParametersNamedForConfirmedPasswordInputWidget == str)
     {
       return;
     }
-    passwordInputQNoServiceViewModelUsingGetNP
-        .getPasswordInputUsingGetNP
+    passwordInputQThereIsStateViewModel
+        .getPasswordInput
         ?.setOneParametersNamedForConfirmedPasswordInputWidget = str;
-    passwordInputQNoServiceViewModelUsingGetNP
-        .notifyStreamPasswordInputUsingGetNP();
+    passwordInputQThereIsStateViewModel
+        .notifyStreamPasswordInput();
     return;
   }
 }

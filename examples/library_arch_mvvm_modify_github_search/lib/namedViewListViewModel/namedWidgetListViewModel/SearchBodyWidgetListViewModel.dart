@@ -1,15 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/ListSearchResultInLoading.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/SearchResultInLoading.dart';
-import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceViewModel/searchResultInLoadingQNoServiceViewModel/SearchResultInLoadingQNoServiceViewModelUsingGetListNP.dart';
+import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/searchResultInLoadingQThereIsStateViewModel/SearchResultInLoadingQThereIsStateViewModel.dart';
+import 'package:meta/meta.dart';
 
 class SearchBodyWidgetListViewModel {
   @protected
-  final SearchResultInLoadingQNoServiceViewModelUsingGetListNP<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>> searchResultInLoadingQNoServiceViewModelUsingGetListNP;
+  final SearchResultInLoadingQThereIsStateViewModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>> searchResultInLoadingQThereIsStateViewModel;
 
-  SearchBodyWidgetListViewModel(this.searchResultInLoadingQNoServiceViewModelUsingGetListNP);
+  SearchBodyWidgetListViewModel(this.searchResultInLoadingQThereIsStateViewModel);
 
-  Stream<ListSearchResultInLoading<SearchResultInLoading>>? get getStreamListSearchResultInLoadingUsingGetListNP {
-    return searchResultInLoadingQNoServiceViewModelUsingGetListNP.getStreamListSearchResultInLoadingUsingGetListNP;
+  Stream<ListSearchResultInLoading<SearchResultInLoading>>? get getStreamListSearchResultInLoading {
+    return searchResultInLoadingQThereIsStateViewModel.getStreamListSearchResultInLoading;
   }
 }

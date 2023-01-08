@@ -1,32 +1,32 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/passwordInputQNoServiceViewModel/PasswordInputQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
+import 'package:meta/meta.dart';
 
 class PasswordInputWidgetListViewModel {
   @protected
-  final PasswordInputQNoServiceViewModelUsingGetNP<PasswordInput,ListPasswordInput<PasswordInput>> passwordInputQNoServiceViewModelUsingGetNP;
+  final PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>> passwordInputQThereIsStateViewModel;
 
-  PasswordInputWidgetListViewModel(this.passwordInputQNoServiceViewModelUsingGetNP);
+  PasswordInputWidgetListViewModel(this.passwordInputQThereIsStateViewModel);
 
-  Stream<PasswordInput>? get getStreamPasswordInputUsingUpdateTIP {
-    return passwordInputQNoServiceViewModelUsingGetNP.getStreamPasswordInputUsingGetNP;
+  Stream<PasswordInput>? get getStreamPasswordInput {
+    return passwordInputQThereIsStateViewModel.getStreamPasswordInput;
   }
 
-  void setOneParametersNamedForPasswordInputWidgetByPasswordInputUsingGetNPAndInGeneralZeroTask(
+  void setOneParametersNamedForPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
       String str)
   {
-    if(passwordInputQNoServiceViewModelUsingGetNP
-        .getPasswordInputUsingGetNP
+    if(passwordInputQThereIsStateViewModel
+        .getPasswordInput
         ?.getOneParametersNamedForPasswordInputWidget == str)
     {
       return;
     }
-    passwordInputQNoServiceViewModelUsingGetNP
-        .getPasswordInputUsingGetNP
+    passwordInputQThereIsStateViewModel
+        .getPasswordInput
         ?.setOneParametersNamedForPasswordInputWidget = str;
-    passwordInputQNoServiceViewModelUsingGetNP
-        .notifyStreamPasswordInputUsingGetNP();
+    passwordInputQThereIsStateViewModel
+        .notifyStreamPasswordInput();
     return;
   }
 }

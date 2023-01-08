@@ -1,6 +1,5 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/cloneStreamUserForSuccess/CloneStreamUserForSuccess.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndGoogleSignInServiceViewModel/UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/CircleAvatarWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/IconButtonExitToAppWidgetListViewModel.dart';
@@ -13,7 +12,7 @@ class HomeViewListViewModel
 {
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut =
-  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<User,ListUser<User>>(CloneStreamUserForSuccess());
+  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<User,ListUser<User>>();
 
   // NamedWidgetListViewModel
   late final IconButtonExitToAppWidgetListViewModel iconButtonExitToAppWidgetListViewModel;
@@ -30,7 +29,5 @@ class HomeViewListViewModel
   }
 
   @override
-  void dispose() {
-    _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut.dispose();
-  }
+  void dispose() {}
 }

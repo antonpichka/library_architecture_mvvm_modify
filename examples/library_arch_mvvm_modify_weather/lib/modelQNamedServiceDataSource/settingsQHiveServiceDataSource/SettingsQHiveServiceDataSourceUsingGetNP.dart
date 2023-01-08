@@ -27,7 +27,7 @@ class SettingsQHiveServiceDataSourceUsingGetNP<T extends Settings,Y extends List
       this.iSettingsForDefaultWhereKeyNotFoundNP);
 
   @override
-  Future<T?> getModelFromNamedServiceNP()
+  Future<T?> getModelFromNamedServiceNPDS()
   async {
     try {
       final Box? boxSettings = await hiveService

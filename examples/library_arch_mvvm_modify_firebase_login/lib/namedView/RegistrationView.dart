@@ -4,7 +4,6 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/Em
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/PasswordInputWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/SignUpButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/RegistrationViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class RegistrationView
     extends StatefulWidget
@@ -14,17 +13,21 @@ class RegistrationView
 }
 
 class _RegistrationViewState
-    extends BaseNamedView<RegistrationView,RegistrationViewListViewModel>
+    extends State<RegistrationView>
+    with WidgetsBindingObserver
 {
-  _RegistrationViewState() : super(RegistrationViewListViewModel());
+  final _lo = RegistrationViewListViewModel();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    _lo.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -39,13 +42,13 @@ class _RegistrationViewState
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              EmailInputWidget(lo.emailInputWidgetListViewModel),
+              EmailInputWidget(_lo.emailInputWidgetListViewModel),
               const SizedBox(height: 8),
-              PasswordInputWidget(lo.passwordInputWidgetListViewModel),
+              PasswordInputWidget(_lo.passwordInputWidgetListViewModel),
               const SizedBox(height: 8),
-              ConfirmedPasswordInputWidget(lo.confirmedPasswordInputWidgetListViewModel),
+              ConfirmedPasswordInputWidget(_lo.confirmedPasswordInputWidgetListViewModel),
               const SizedBox(height: 8),
-              SignUpButtonWidget(lo.signUpButtonWidgetListViewModel),
+              SignUpButtonWidget(_lo.signUpButtonWidgetListViewModel),
             ],
           ),
         ),

@@ -11,9 +11,9 @@ class UserForObjectTIP
     }
     final user = parameter as User;
     return User.success(
-        user.getParameterUniqueId,
-        user.getParameterEmail,
-        user.getParameterName,
-        user.getParameterPhoto);
+        user.uniqueId,
+        user.email,
+        user.name,
+        user.photo);
   }
 }

@@ -35,6 +35,6 @@ class WeatherAndSettingsQHiveServiceViewModelUsingUpdateParameterWeatherAndSetti
   WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSettings<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
 
   Future<BoolTypeParameter?> updateWeatherAndSettingsToHiveServiceParameterWeatherAndSettings(WeatherAndSettingsTypeParameter<T> typeParameter) {
-    return updateModelToNamedServiceParameterNamed<BoolTypeParameter,WeatherAndSettingsTypeParameter<T>>(typeParameter);
+    return updateModelToNamedServiceParameterNamedDS<BoolTypeParameter,WeatherAndSettingsTypeParameter<T>>(typeParameter);
   }
 }

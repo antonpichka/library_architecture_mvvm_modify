@@ -14,11 +14,11 @@ class LoginButtonWidget
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Bool>(
-        stream: lo.getStreamBoolUsingGetNPForLoading,
+        stream: lo.getStreamBoolForLoading,
         builder: (BuildContext buildContext, AsyncSnapshot<Bool> asyncSnapshot)
         {
           Bool? bool = asyncSnapshot.data;
-          return bool?.getParameterIsField ?? false
+          return bool?.isField ?? false
               ? const CircularProgressIndicator()
               : ElevatedButton(
                   key: const Key('loginForm_continue_raisedButton'),
@@ -28,9 +28,9 @@ class LoginButtonWidget
                     ),
                     backgroundColor: const Color(0xFFFFD600),
                   ),
-                  onPressed: bool?.getParameterIsField ?? false
+                  onPressed: bool?.isField ?? false
                       ? null
-                      : () => lo.updateUserToFirebaseAuthServiceParameterLoginAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
+                      : () => lo.updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
                   child: const Text('LOGIN'),
                 );
         });

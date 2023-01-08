@@ -5,7 +5,6 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/Lo
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/PasswordInputWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/NavigationRegistrationButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoginViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class LoginView
     extends StatefulWidget
@@ -15,17 +14,21 @@ class LoginView
 }
 
 class _LoginViewState
-    extends BaseNamedView<LoginView,LoginViewListViewModel>
+    extends State<LoginView>
+    with WidgetsBindingObserver
 {
-  _LoginViewState() : super(LoginViewListViewModel());
+  final _lo = LoginViewListViewModel();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    _lo.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -42,15 +45,15 @@ class _LoginViewState
               mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 16),
-                EmailInputWidget(lo.emailInputWidgetListViewModel),
+                EmailInputWidget(_lo.emailInputWidgetListViewModel),
                 const SizedBox(height: 8),
-                PasswordInputWidget(lo.passwordInputWidgetListViewModel),
+                PasswordInputWidget(_lo.passwordInputWidgetListViewModel),
                 const SizedBox(height: 8),
-                LoginButtonWidget(lo.loginButtonWidgetListViewModel),
+                LoginButtonWidget(_lo.loginButtonWidgetListViewModel),
                 const SizedBox(height: 8),
-                GoogleButtonWidget(lo.googleButtonWidgetListViewModel),
+                GoogleButtonWidget(_lo.googleButtonWidgetListViewModel),
                 const SizedBox(height: 4),
-                NavigationRegistrationButtonWidget(lo.navigationRegistrationButtonWidgetListViewModel),
+                NavigationRegistrationButtonWidget(_lo.navigationRegistrationButtonWidgetListViewModel),
               ],
             ),
           ),

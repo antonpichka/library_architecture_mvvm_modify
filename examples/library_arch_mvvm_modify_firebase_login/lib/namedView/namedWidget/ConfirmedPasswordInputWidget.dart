@@ -13,7 +13,7 @@ class ConfirmedPasswordInputWidget
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<PasswordInputFirstBranchOne>(
-        stream: lo.getStreamPasswordInputUsingGetNP,
+        stream: lo.getStreamPasswordInput,
         builder: (BuildContext buildContext, AsyncSnapshot<PasswordInputFirstBranchOne> asyncSnapshot)
         {
           PasswordInputFirstBranchOne? passwordInput = asyncSnapshot.data;
@@ -24,7 +24,7 @@ class ConfirmedPasswordInputWidget
   @protected
   Widget buildSuccess(PasswordInputFirstBranchOne? passwordInput) {
     return TextField(
-      onChanged: (String str) => lo.setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputUsingGetNPAndInGeneralZeroTask(str),
+      onChanged: (String str) => lo.setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(str),
       obscureText: true,
       decoration: buildInputDecorationForSuccess(passwordInput)
     );

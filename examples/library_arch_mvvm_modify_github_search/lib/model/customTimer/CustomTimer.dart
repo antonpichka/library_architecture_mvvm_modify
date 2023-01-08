@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 class CustomTimer
     extends BaseModel
 {
-  @protected
   Timer? timer;
 
   CustomTimer.success(this.timer) : super.success("");

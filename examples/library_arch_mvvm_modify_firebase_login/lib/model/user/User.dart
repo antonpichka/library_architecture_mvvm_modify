@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
+import 'package:meta/meta.dart';
 
 enum EnumUserForMainView {
   authenticated,
@@ -11,11 +11,8 @@ enum EnumUserForMainView {
 class User
     extends BaseModel
 {
-  @protected
   String? email;
-  @protected
   String? name;
-  @protected
   String? photo;
 
   User.success(super.uniqueId,this.email,this.name,this.photo) : super.success();
@@ -26,7 +23,7 @@ class User
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
 
   EnumUserForMainView get getEnumUserForMainView {
-    if(getParameterExceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumUserForMainView.localException;
     }
     if(isOneParametersNamedForGetEnumUserForMainView() ?? false) {
@@ -34,14 +31,6 @@ class User
     }
     return EnumUserForMainView.authenticated;
   }
-
-  @nonVirtual
-  String? get getParameterEmail => email;
-  @nonVirtual
-  String? get getParameterName => name;
-  @nonVirtual
-  String? get getParameterPhoto => photo;
-
   String? get getOneParametersNamedForOneUserTextWidget => email;
   String? get getOneParametersNamedForTwoUserTextWidget => name;
   String? get getOneParametersNamedForCircleAvatarWidget => photo;

@@ -2,5 +2,5 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 
 abstract class DeleteListModelToNamedServiceParameterNamedDataSource<T extends BaseTypeParameter,Y extends BaseTypeParameter>
 {
-  Future<T?> deleteListModelToNamedServiceParameterNamed(Y? parameter);
+  Future<T?> deleteListModelToNamedServiceParameterNamedDS(Y? parameter);
 }

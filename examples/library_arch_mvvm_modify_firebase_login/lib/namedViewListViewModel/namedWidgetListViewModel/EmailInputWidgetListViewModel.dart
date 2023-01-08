@@ -1,32 +1,32 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/emailInputQNoServiceViewModel/EmailInputQNoServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
+import 'package:meta/meta.dart';
 
 class EmailInputWidgetListViewModel {
   @protected
-  final EmailInputQNoServiceViewModelUsingGetNP<EmailInput,ListEmailInput<EmailInput>> emailInputQNoServiceViewModelUsingGetNP;
+  final EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>> emailInputQThereIsStateViewModel;
 
-  EmailInputWidgetListViewModel(this.emailInputQNoServiceViewModelUsingGetNP);
+  EmailInputWidgetListViewModel(this.emailInputQThereIsStateViewModel);
 
-  Stream<EmailInput>? get getStreamEmailInputUsingUpdateTIP {
-    return emailInputQNoServiceViewModelUsingGetNP.getStreamEmailInputUsingGetNP;
+  Stream<EmailInput>? get getStreamEmailInput {
+    return emailInputQThereIsStateViewModel.getStreamEmailInput;
   }
 
-  void setOneParametersNamedForEmailInputWidgetByEmailInputUsingGetNPAndInGeneralZeroTask(
+  void setOneParametersNamedForEmailInputWidgetByEmailInputAndInGeneralZeroTask(
       String str)
   {
-    if(emailInputQNoServiceViewModelUsingGetNP
-        .getEmailInputUsingGetNP
+    if(emailInputQThereIsStateViewModel
+        .getEmailInput
         ?.getOneParametersNamedForEmailInputWidget == str)
     {
       return;
     }
-    emailInputQNoServiceViewModelUsingGetNP
-        .getEmailInputUsingGetNP
+    emailInputQThereIsStateViewModel
+        .getEmailInput
         ?.setOneParametersNamedForEmailInputWidget = str;
-    emailInputQNoServiceViewModelUsingGetNP
-        .notifyStreamEmailInputUsingGetNP();
+    emailInputQThereIsStateViewModel
+        .notifyStreamEmailInput();
     return;
   }
 }

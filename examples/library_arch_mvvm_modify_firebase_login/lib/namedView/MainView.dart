@@ -5,7 +5,6 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/LoadingView.da
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/LoginView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/UserExceptionView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/MainViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class MainView
     extends StatefulWidget
@@ -15,28 +14,32 @@ class MainView
 }
 
 class _MainViewState
-    extends BaseNamedView<MainView,MainViewListViewModel>
+    extends State<MainView>
+    with WidgetsBindingObserver
 {
-  _MainViewState() : super(MainViewListViewModel());
+  final _lo = MainViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    lo.listensCustomStreamUserAndInGeneralZeroTask((User user) {
-      lo.setUserUsingGetNPAndInGeneralZeroTask(user);
+    WidgetsBinding.instance.addObserver(this);
+    _lo.listensCustomStreamUserAndInGeneralZeroTask((User user) {
+      _lo.setUserAndInGeneralZeroTask(user);
     });
   }
 
   @override
   void dispose() {
+    _lo.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    lo.getUserFromTempCacheServiceNPAndSetUserAndInGeneralOneTask();
+    _lo.getUserFromTempCacheServiceNPAndInGeneralOneTask();
     return StreamBuilder<User>(
-        stream: lo.getStreamUserUsingGetNP,
+        stream: _lo.getStreamUser,
         builder: (BuildContext buildContext, AsyncSnapshot<User> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {

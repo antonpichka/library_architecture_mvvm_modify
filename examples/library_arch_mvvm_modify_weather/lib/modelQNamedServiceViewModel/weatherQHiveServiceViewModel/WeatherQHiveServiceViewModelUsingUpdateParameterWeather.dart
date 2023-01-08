@@ -24,6 +24,6 @@ class WeatherQHiveServiceViewModelUsingUpdateParameterWeather<T extends Weather,
   WeatherQHiveServiceDataSourceUsingUpdateParameterWeather<T,Y>? get getModelQNamedServiceDataSource => _dataSource;
 
   Future<BoolTypeParameter?> updateWeatherToHiveServiceParameterWeather(WeatherTypeParameter<T> typeParameter) {
-    return updateModelToNamedServiceParameterNamed<BoolTypeParameter,WeatherTypeParameter<T>>(typeParameter);
+    return updateModelToNamedServiceParameterNamedDS<BoolTypeParameter,WeatherTypeParameter<T>>(typeParameter);
   }
 }

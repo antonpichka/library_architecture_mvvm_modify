@@ -5,23 +5,19 @@ import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bas
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
 class UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin
-    extends UpdateModelToNamedServiceParameterNamedFBDS
+    extends UpdateModelToNamedServiceParameterNamedFBDS<BoolTypeParameter,LoginTypeParameter,BaseTypeParameter>
 {
   static const constIsNotHasMatchParameterEmail = "isNotHasMatchParameterEmail";
   static const constIsNotHasMatchParameterPassword = "isNotHasMatchParameterPassword";
 
   @override
-  Z? updateModelToNamedServiceParameterNamed<Z extends BaseTypeParameter<Object>, X extends BaseTypeParameter<Object>, C extends BaseTypeParameter<Object>>(
-      X? typeParameter,
-      C? typeParameterForFBDS)
-  {
-    LoginTypeParameter? loginTypeParameter = typeParameter as LoginTypeParameter;
-    if(loginTypeParameter.parameter!.isNotHasMatchParameterEmail()) {
-      return BoolTypeParameter.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, constIsNotHasMatchParameterEmail)) as Z;
+  BoolTypeParameter? updateModelToNamedServiceParameterNamed(LoginTypeParameter? typeParameter, BaseTypeParameter<Object>? typeParameterForFBDS) {
+    if(typeParameter!.parameter!.isNotHasMatchParameterEmail()) {
+      return BoolTypeParameter.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, constIsNotHasMatchParameterEmail));
     }
-    if(loginTypeParameter.parameter!.isNotHasMatchParameterPassword()) {
-      return BoolTypeParameter.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, constIsNotHasMatchParameterPassword)) as Z;
+    if(typeParameter.parameter!.isNotHasMatchParameterPassword()) {
+      return BoolTypeParameter.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, constIsNotHasMatchParameterPassword));
     }
-    return BoolTypeParameter.successForFBDS() as Z;
+    return BoolTypeParameter.successForFBDS();
   }
 }

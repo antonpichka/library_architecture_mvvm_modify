@@ -21,7 +21,7 @@ class SearchBodyWidgetState
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListSearchResultInLoading<SearchResultInLoading>>(
-      stream: widget.lo.getStreamListSearchResultInLoadingUsingGetListNP,
+      stream: widget.lo.getStreamListSearchResultInLoading,
       builder: (BuildContext context, AsyncSnapshot<ListSearchResultInLoading<SearchResultInLoading>> state) {
         if(state.data == null) {
           return buildDataNull();
@@ -70,21 +70,21 @@ class SearchBodyWidgetState
 
   @protected
   Widget buildSuccess(ListSearchResultInLoading<SearchResultInLoading>? list) {
-    return Expanded(child: buildOneForSuccess(list!.getParameterList));
+    return Expanded(child: buildListViewForSuccess(list!.list));
   }
 
   @protected
-  Widget buildOneForSuccess(List<SearchResultInLoading>? list) {
+  Widget buildListViewForSuccess(List<SearchResultInLoading>? list) {
     return ListView.builder(
       itemCount: list!.length,
       itemBuilder: (BuildContext context, int index) {
-        return buildOneForOneForSuccess(list[index]);
+        return buildItemForListViewForSuccess(list[index]);
       },
     );
   }
 
   @protected
-  Widget buildOneForOneForSuccess(SearchResultInLoading? item) {
+  Widget buildItemForListViewForSuccess(SearchResultInLoading? item) {
     return ListTile(
       leading: CircleAvatar(
         child: Image.network(item?.getOneParametersNamedForSearchBodyWidget ?? ""),

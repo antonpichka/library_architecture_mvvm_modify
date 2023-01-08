@@ -1,0 +1,15 @@
+import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/ListSearchResultInLoading.dart';
+import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/SearchResultInLoading.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/i_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
+
+class StreamSearchResultInLoadingForSuccess
+    implements IStreamModelForSuccess<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>
+{
+  @override
+  IStreamModel<SearchResultInLoading, ListSearchResultInLoading<SearchResultInLoading>>? streamModelForSuccess() {
+    return DefaultStreamModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>(SearchResultInLoading.getSearchResultInLoadingForSuccess,ListSearchResultInLoading.getListSearchResultInLoadingForSuccess);
+  }
+
+}

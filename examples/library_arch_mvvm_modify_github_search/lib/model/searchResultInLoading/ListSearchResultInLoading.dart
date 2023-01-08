@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/ListSearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/SearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/SearchResultInLoading.dart';
@@ -16,9 +15,7 @@ enum EnumListSearchResultInLoadingForSearchBodyWidget {
 class ListSearchResultInLoading<T extends SearchResultInLoading>
     extends BaseListModel<T>
 {
-  @protected
   bool? isLoading;
-  @protected
   bool? isEmptyValueFromTextInput;
 
   ListSearchResultInLoading.success(super.list,this.isLoading,this.isEmptyValueFromTextInput) : super.success();
@@ -32,16 +29,17 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
     if(isLoading!) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isLoading;
     }
-    if(getParameterExceptionController.isExceptionNotEqualsNull()) {
+    if(exceptionController.isExceptionNotEqualsNull()) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.error;
     }
-    if(getParameterList!.isEmpty) {
+    if(list!.isEmpty) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isEmptyList;
     }
     return EnumListSearchResultInLoadingForSearchBodyWidget.success;
   }
 
-  String? get getOneParametersNamedForSearchBodyWidget => ConcretiveMessageForView.getMessageForSearchBodyWidget(getParameterExceptionController.getMessageForViewByException);
+  String? get getOneParametersNamedForSearchBodyWidget => ConcretiveMessageForView
+      .getMessageForSearchBodyWidget(exceptionController.getMessageForViewByException);
 
   void setOneParametersNamedForSearchBarWidget() {
     isLoading = true;
@@ -50,13 +48,13 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
 
   set setTwoParametersNamedForSearchBarWidget(ListSearchResult<SearchResult> listSearchResult) {
     List<SearchResultInLoading> listSearchResultInLoading = List.empty(growable: true);
-    listSearchResult.getParameterList?.forEach((SearchResult searchResult) {
+    listSearchResult.list?.forEach((SearchResult searchResult) {
       listSearchResultInLoading.add(SearchResultInLoading.success(searchResult));
     });
     isLoading = false;
     isEmptyValueFromTextInput = false;
     list = listSearchResultInLoading as List<T>;
-    exceptionController = listSearchResult.getParameterExceptionController;
+    exceptionController = listSearchResult.exceptionController;
   }
 
   void setThreeParametersNamedForSearchBarWidget() {
