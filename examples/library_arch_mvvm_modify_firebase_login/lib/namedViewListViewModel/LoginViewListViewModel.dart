@@ -1,9 +1,9 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/streamEmailInputForSuccess/StreamEmailInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/initializedStreamEmailInput/InitializedStreamEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/streamPasswordInputForSuccess/StreamPasswordInputForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/initializedStreamPasswordInput/InitializedStreamPasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndGoogleSignInServiceViewModel/UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle.dart';
@@ -17,7 +17,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/NavigationRegistrationButtonWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/stream_bool_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_initialized_stream_model/initialized_stream_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
@@ -26,11 +26,14 @@ class LoginViewListViewModel
 {
   // ModelQThereIsStateViewModel
   final _emailInputQThereIsStateViewModel =
-  EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>>(StreamEmailInputForSuccess());
+  EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>>(
+      InitializedStreamEmailInput());
   final _passwordInputQThereIsStateViewModel =
-  PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>>(StreamPasswordInputForSuccess());
+  PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>>(
+      InitializedStreamPasswordInput());
   final _boolQThereIsStateViewModelForLoading =
-  BoolQThereIsStateViewModelForLoading<Bool,ListBool<Bool>>(StreamBoolForSuccess());
+  BoolQThereIsStateViewModelForLoading<Bool,ListBool<Bool>>(
+      InitializedStreamBool());
 
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =

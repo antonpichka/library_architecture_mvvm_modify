@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/streamUserForSuccess/StreamUserForSuccess.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/model/user/initializedStreamUser/InitializedStreamUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForFirebaseUserTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForLocalExceptionTIP.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/userForNamed/UserForObjectTIP.dart';
@@ -16,9 +16,11 @@ class MainViewListViewModel
 {
   // ModelQThereIsStateViewModel
   final _userQThereIsStateViewModel =
-  UserQThereIsStateViewModel<User,ListUser<User>>(StreamUserForSuccess());
+  UserQThereIsStateViewModel<User,ListUser<User>>(
+      InitializedStreamUser());
   final _userQThereIsStateViewModelForCheckAuthAndSaveToTempCache =
-  UserQThereIsStateViewModelForCheckAuthAndSaveToTempCache<User,ListUser<User>>(StreamUserForSuccess());
+  UserQThereIsStateViewModelForCheckAuthAndSaveToTempCache<User,ListUser<User>>(
+      InitializedStreamUser());
 
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =

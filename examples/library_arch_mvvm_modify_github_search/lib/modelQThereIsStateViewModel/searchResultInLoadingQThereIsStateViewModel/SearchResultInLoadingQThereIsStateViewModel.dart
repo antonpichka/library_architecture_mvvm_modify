@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 class SearchResultInLoadingQThereIsStateViewModel<T extends SearchResultInLoading,Y extends ListSearchResultInLoading<T>>
     extends BaseModelQThereIsStateViewModel<T,Y>
 {
-  SearchResultInLoadingQThereIsStateViewModel(super.iStreamModelForSuccess);
+  SearchResultInLoadingQThereIsStateViewModel(super.iInitializedStreamModel);
 
 
   Stream<Y>? get getStreamListSearchResultInLoading {

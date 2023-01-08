@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 class PasswordInputQThereIsStateViewModel<T extends PasswordInput,Y extends ListPasswordInput<T>>
     extends BaseModelQThereIsStateViewModel<T,Y>
 {
-  PasswordInputQThereIsStateViewModel(super.iStreamModelForSuccess);
+  PasswordInputQThereIsStateViewModel(super.iInitializedStreamModel);
 
   Stream<T>? get getStreamPasswordInput {
     return getStreamModel;

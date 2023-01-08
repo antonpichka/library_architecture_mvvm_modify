@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_github_search/model/customTimer/CustomTimer.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/customTimer/ListCustomTimer.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/customTimer/streamCustomTimerForSuccess/StreamCustomTimerForSuccess.dart';
+import 'package:library_arch_mvvm_modify_github_search/model/customTimer/initializedStreamCustomTimer/InitializedStreamCustomTimer.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/ListSearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/SearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/searchResultForNamed/ListSearchResultForLocalExceptionTIP.dart';
@@ -9,7 +9,7 @@ import 'package:library_arch_mvvm_modify_github_search/model/searchResult/search
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/searchResultForNamed/ListSearchResultForObjectTIP.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/ListSearchResultInLoading.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/SearchResultInLoading.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/streamSearchResultInLoadingForSuccess/StreamSearchResultInLoadingForSuccess.dart';
+import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/initializedStreamSearchResultInLoading/InitializedStreamSearchResultInLoading.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceViewModel/searchResultQGithubCacheAndHttpClientServiceViewModel/SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForAntiSpam.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/customTimerQThereIsStateViewModel/CustomTimerQThereIsStateViewModel.dart';
@@ -18,8 +18,8 @@ import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewMod
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBarWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBodyWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/stream_bool_for_success.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/stream_strings_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_initialized_stream_model/initialized_stream_bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_initialized_stream_model/initialized_stream_strings.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
 import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
@@ -30,13 +30,13 @@ class MainViewListViewModel
 {
   // ModelQThereIsStateViewModel
   final _boolQThereIsStateViewModelForAntiSpam =
-  BoolQThereIsStateViewModelForAntiSpam<Bool,ListBool<Bool>>(StreamBoolForSuccess());
+  BoolQThereIsStateViewModelForAntiSpam<Bool,ListBool<Bool>>(InitializedStreamBool());
   final _stringsQThereIsStateViewModelForSaveLettersSearch =
-  StringsQThereIsStateViewModelForSaveLettersSearch<Strings,ListStrings<Strings>>(StreamStringsForSuccess());
+  StringsQThereIsStateViewModelForSaveLettersSearch<Strings,ListStrings<Strings>>(InitializedStreamStrings());
   final _searchResultInLoadingQThereIsStateViewModel =
-  SearchResultInLoadingQThereIsStateViewModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>(StreamSearchResultInLoadingForSuccess());
+  SearchResultInLoadingQThereIsStateViewModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>(InitializedStreamSearchResultInLoading());
   final _customTimerQThereIsStateViewModel =
-  CustomTimerQThereIsStateViewModel<CustomTimer,ListCustomTimer<CustomTimer>>(StreamCustomTimerForSuccess());
+  CustomTimerQThereIsStateViewModel<CustomTimer,ListCustomTimer<CustomTimer>>(InitializedStreamCustomTimer());
 
   // ModelQNamedServiceViewModel
   final _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub =

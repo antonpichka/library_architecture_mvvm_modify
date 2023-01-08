@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 class EmailInputQThereIsStateViewModel<T extends EmailInput,Y extends ListEmailInput<T>>
     extends BaseModelQThereIsStateViewModel<T,Y>
 {
-  EmailInputQThereIsStateViewModel(super.iStreamModelForSuccess);
+  EmailInputQThereIsStateViewModel(super.iInitializedStreamModel);
 
   Stream<T>? get getStreamEmailInput {
     return getStreamModel;

@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 class CustomTimerQThereIsStateViewModel<T extends CustomTimer,Y extends ListCustomTimer<T>>
     extends BaseModelQThereIsStateViewModel<T,Y>
 {
-  CustomTimerQThereIsStateViewModel(super.iStreamModelForSuccess);
+  CustomTimerQThereIsStateViewModel(super.iInitializedStreamModel);
 
   T? get getCustomTimer {
     return getModel;

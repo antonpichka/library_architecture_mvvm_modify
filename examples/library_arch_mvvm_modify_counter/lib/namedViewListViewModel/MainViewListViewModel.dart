@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWid
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IncrementFABWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IntTextWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/stream_int_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_initialized_stream_model/initialized_stream_int.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
@@ -12,7 +12,7 @@ class MainViewListViewModel
 {
   // ModelQThereIsStateViewModel
   final _intQThereIsStateViewModelForIncrementAndDecrement =
-  IntQThereIsStateViewModelForIncrementAndDecrement<Int,ListInt<Int>>(StreamIntForSuccess());
+  IntQThereIsStateViewModelForIncrementAndDecrement<Int,ListInt<Int>>(InitializedStreamInt());
 
   // NamedWidgetListViewModel
   late final IntTextWidgetListViewModel intTextWidgetListViewModel;

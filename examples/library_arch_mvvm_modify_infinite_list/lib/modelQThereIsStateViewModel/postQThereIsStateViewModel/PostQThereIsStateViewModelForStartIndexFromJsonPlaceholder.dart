@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 class PostQThereIsStateViewModelForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost<T>>
     extends BaseModelQThereIsStateViewModel<T,Y>
 {
-  PostQThereIsStateViewModelForStartIndexFromJsonPlaceholder(super.iStreamModelForSuccess);
+  PostQThereIsStateViewModelForStartIndexFromJsonPlaceholder(super.iInitializedStreamModel);
 
   Stream<Y>? get getStreamListPostForStartIndexFromJsonPlaceholder {
     return getStreamListModel;

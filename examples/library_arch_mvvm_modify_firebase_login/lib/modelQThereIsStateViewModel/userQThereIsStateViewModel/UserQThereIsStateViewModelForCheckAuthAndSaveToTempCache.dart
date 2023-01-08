@@ -10,7 +10,7 @@ class UserQThereIsStateViewModelForCheckAuthAndSaveToTempCache<T extends User,Y 
   @protected
   StreamSubscription<T>? customStreamSubscriptionUser;
 
-  UserQThereIsStateViewModelForCheckAuthAndSaveToTempCache(super.iStreamModelForSuccess);
+  UserQThereIsStateViewModelForCheckAuthAndSaveToTempCache(super.iInitializedStreamModel);
 
   @override
   void dispose() {

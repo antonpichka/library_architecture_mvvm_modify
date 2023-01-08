@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_stream_model_for_success/i_stream_model_for_success.dart';
+import 'package:library_architecture_mvvm_modify/base_model/interface_initialized_stream_model/i_initialized_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_testing.dart';
 import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
@@ -14,9 +14,9 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   final IStreamModel<T,Y>? _iStreamModel;
 
   BaseModelQThereIsStateViewModel(
-      IStreamModelForSuccess<T,Y> iStreamModelForSuccess,
+      IInitializedStreamModel<T,Y> iInitializedStreamModel,
       {Object? theClassForBaseNamedViewListViewModel})
-      : _iStreamModel = iStreamModelForSuccess.streamModelForSuccess();
+      : _iStreamModel = iInitializedStreamModel.initializedStreamModel();
 
   @override
   void dispose() {
