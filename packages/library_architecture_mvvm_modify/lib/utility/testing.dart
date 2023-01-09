@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-class BaseTesting {
+class Testing {
   int? _numberOfExecutedMethodsInThisClass = 0;
 
   @visibleForTesting
