@@ -65,13 +65,14 @@ Examples taken for processing from library <a href="https://github.com/felangel/
   - ##### NamedWidget
 
 ### Utility
-- #### NamedTypeParameter
 - #### NamedException
 - #### NamedIterator
 - #### NamedStreamModel
 - #### These files are not created by the programmer in his project (I will describe for clarification)
   - ##### IDispose 
   - ##### ExceptionController
+  - ##### Result
+  - ##### Testing
 
 ## Maintainers
 
