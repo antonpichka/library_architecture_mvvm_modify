@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
@@ -20,22 +19,18 @@ enum EnumWeatherCondition {
 class Weather
     extends BaseModel
 {
-  @protected
   @JsonKey(name: constParameterLocation)
   Location? location;
-  @protected
   @JsonKey(name: constParameterWeatherCode)
   double? weatherCode;
-  @protected
   @JsonKey(name: constParameterTemperature)
   double? temperature;
-  @protected
   @JsonKey(ignore: true)
   DateTime? lastUpdated;
 
-  Weather.success(this.location,this.weatherCode,this.temperature,this.lastUpdated) : super.success(location?.getParameterUniqueId);
+  Weather.success(this.location,this.weatherCode,this.temperature,this.lastUpdated) : super.success(location?.uniqueId);
   Weather.successWhereNotExistsParameterLastUpdated(this.location,this.weatherCode,this.temperature)
-      : lastUpdated = DateTime.now(), super.success(location?.getParameterUniqueId);
+      : lastUpdated = DateTime.now(), super.success(location?.uniqueId);
   Weather.exception(super.exception) : super.exception();
   factory Weather.fromMapThisNetwork(Map<String, dynamic> map) => _$WeatherFromJson(map);
 
@@ -46,15 +41,6 @@ class Weather
   static const constParameterLocation = "location";
   static const constParameterWeatherCode = "weathercode";
   static const constParameterTemperature = "temperature";
-
-  @nonVirtual
-  Location? get getParameterLocation => location;
-  @nonVirtual
-  double? get getParameterWeatherCode => weatherCode;
-  @nonVirtual
-  double? get getParameterTemperature => temperature;
-  @nonVirtual
-  DateTime? get getParameterLastUpdated => lastUpdated;
 
   String? get getOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi {
     switch(getEnumWeatherConditionForGetOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi) {

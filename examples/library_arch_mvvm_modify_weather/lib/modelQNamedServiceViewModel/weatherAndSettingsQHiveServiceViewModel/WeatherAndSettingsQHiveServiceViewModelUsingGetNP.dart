@@ -3,8 +3,8 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/ListSettings.dar
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/ListWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherAndSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherAndSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/settingsQHiveServiceDataSource/SettingsQHiveServiceDataSourceUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherAndSettingsQHiveServiceDataSource/WeatherAndSettingsQHiveServiceDataSourceUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHiveServiceDataSource/WeatherQHiveServiceDataSourceUsingGetNP.dart';
@@ -12,7 +12,7 @@ import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/Wea
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_np.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/enum_for_i_stream_model_vm.dart';
 
-class WeatherAndSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherAndSettings,Y extends ListWeatherAndSettings<T>>
+class WeatherAndSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherSettings,Y extends ListWeatherSettings<T>>
     extends WeatherAndSettingsQNamedServiceViewModel<T,Y>
 {
   final WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<T,Y> _dataSource;

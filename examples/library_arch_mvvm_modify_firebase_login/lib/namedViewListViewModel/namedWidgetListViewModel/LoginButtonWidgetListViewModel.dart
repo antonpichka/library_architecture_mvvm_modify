@@ -11,8 +11,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewMo
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Login.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Login.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:meta/meta.dart';
@@ -62,9 +61,9 @@ class LoginButtonWidgetListViewModel {
     boolQThereIsStateViewModelForLoading
         .notifyStreamBoolForLoading();
     // 1
-    final boolTypeParameter = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(LoginTypeParameter.success(Login(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput?.getTwoParametersNamedForLoginButtonWidget ?? "")));
-    if(boolTypeParameter
+    final result = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+        .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput?.getTwoParametersNamedForLoginButtonWidget ?? ""));
+    if(result
         !.exceptionController
         .isExceptionNotEqualsNull())
     {
@@ -73,7 +72,7 @@ class LoginButtonWidgetListViewModel {
           ?.isField = false;
       boolQThereIsStateViewModelForLoading
           .notifyStreamBoolForLoading();
-      callbackForException(boolTypeParameter
+      callbackForException(result
           .exceptionController
           .getMessageForViewByException);
       return;

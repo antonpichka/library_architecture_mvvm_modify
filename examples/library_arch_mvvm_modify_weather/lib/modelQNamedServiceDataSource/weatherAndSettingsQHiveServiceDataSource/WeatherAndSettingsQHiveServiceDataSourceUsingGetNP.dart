@@ -3,14 +3,12 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/ListSettings.dar
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/ListWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherAndSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherAndSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/settingsQHiveServiceDataSource/SettingsQHiveServiceDataSourceUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHiveServiceDataSource/WeatherQHiveServiceDataSourceUsingGetNP.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_np.dart';
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
 
-class WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<T extends WeatherAndSettings,Y extends ListWeatherAndSettings<T>>
+class WeatherAndSettingsQHiveServiceDataSourceUsingGetNP<T extends WeatherSettings,Y extends ListWeatherSettings<T>>
     implements
         GetModelFromNamedServiceNPDataSource<T>
 {

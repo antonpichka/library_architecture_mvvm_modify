@@ -5,7 +5,6 @@ import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewMod
 import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewModel/postQThereIsStateViewModel/PostQThereIsStateViewModelForStartIndexFromJsonPlaceholder.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 import 'package:meta/meta.dart';
 
 class PostsListWidgetListViewModel {
@@ -45,7 +44,7 @@ class PostsListWidgetListViewModel {
         ?.isField = true;
     // 1
     final listPost = await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterInt(IntTypeParameter.success(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getListPostForStartIndexFromJsonPlaceholder?.list?.length));
+        .getListPostFromHttpClientServiceParameterInt(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getListPostForStartIndexFromJsonPlaceholder?.list?.length ?? 0);
     boolQThereIsStateViewModelForAntiSpam
         .getBoolForAntiSpam
         ?.isField = false;

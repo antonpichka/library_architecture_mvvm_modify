@@ -11,9 +11,9 @@ class WeatherForObjectTIP
     }
     final weather = parameter as Weather;
     return Weather.success(
-        weather.getParameterLocation,
-        weather.getParameterWeatherCode,
-        weather.getParameterTemperature,
-        weather.getParameterLastUpdated);
+        weather.location,
+        weather.weatherCode,
+        weather.temperature,
+        weather.lastUpdated);
   }
 }

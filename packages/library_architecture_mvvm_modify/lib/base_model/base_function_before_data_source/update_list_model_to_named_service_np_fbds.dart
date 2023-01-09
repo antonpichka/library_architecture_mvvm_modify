@@ -1,9 +1,9 @@
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/result.dart';
 
-abstract class UpdateListModelToNamedServiceNPFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>
+abstract class UpdateListModelToNamedServiceNPFBDS<X extends Object,C extends Object>
 {
   UpdateListModelToNamedServiceNPFBDS();
 
-  X? updateListModelToNamedServiceNP(
-      C? typeParameterForFBDS);
+  Result<X>? updateListModelToNamedServiceNP(
+      C? parameterForFBDS);
 }

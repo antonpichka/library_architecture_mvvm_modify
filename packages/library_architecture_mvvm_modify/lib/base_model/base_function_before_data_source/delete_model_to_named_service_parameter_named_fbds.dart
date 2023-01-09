@@ -1,10 +1,10 @@
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/result.dart';
 
-abstract class DeleteModelToNamedServiceParameterNamedFBDS<Z extends BaseTypeParameter,X extends BaseTypeParameter,C extends BaseTypeParameter>
+abstract class DeleteModelToNamedServiceParameterNamedFBDS<Z extends Object,X extends Object,C extends Object>
 {
   DeleteModelToNamedServiceParameterNamedFBDS();
 
-  Z? deleteModelToNamedServiceParameterNamed(
-      X? typeParameter,
-      C? typeParameterForFBDS);
+  Result<Z>? deleteModelToNamedServiceParameterNamed(
+      X? parameter,
+      C? parameterForFBDS);
 }

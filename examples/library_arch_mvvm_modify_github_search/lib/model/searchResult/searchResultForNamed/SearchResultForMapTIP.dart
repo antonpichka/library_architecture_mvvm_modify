@@ -1,4 +1,4 @@
-import 'package:library_arch_mvvm_modify_github_search/model/githubUser/githubUserForNamed/GithubUserForMapTIP.dart';
+import 'package:library_arch_mvvm_modify_github_search/model/githubUser/GithubUser.dart';
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/SearchResult.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 
@@ -10,6 +10,8 @@ class SearchResultForMapTIP
     return SearchResult.success(
         parameter![SearchResult.constParameterFullName] as String,
         parameter[SearchResult.constParameterHtmlUrl] as String,
-        GithubUserForMapTIP().getModelForNamedTIP(parameter[SearchResult.constParameterGithubUser] as Map<String,dynamic>));
+        GithubUser.success(
+            parameter[SearchResult.constParameterGithubUser][GithubUser.constParameterLogin] as String,
+            parameter[SearchResult.constParameterGithubUser][GithubUser.constParameterAvatarUrl] as String));
   }
 }

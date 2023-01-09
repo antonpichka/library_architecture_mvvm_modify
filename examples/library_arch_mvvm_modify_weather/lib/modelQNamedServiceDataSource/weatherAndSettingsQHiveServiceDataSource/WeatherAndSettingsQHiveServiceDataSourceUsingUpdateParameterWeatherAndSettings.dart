@@ -3,8 +3,8 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/ListSettings.dar
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/ListWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherAndSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherAndSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/settingsQHiveServiceDataSource/SettingsQHiveServiceDataSourceUsingUpdateParameterSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/weatherQHiveServiceDataSource/WeatherQHiveServiceDataSourceUsingUpdateParameterWeather.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/namedTypeParameter/SettingsTypeParameter.dart';
@@ -13,7 +13,7 @@ import 'package:library_arch_mvvm_modify_weather/utility/namedTypeParameter/Weat
 import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
 
-class WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSettings<T extends WeatherAndSettings,Y extends ListWeatherAndSettings<T>>
+class WeatherAndSettingsQHiveServiceDataSourceUsingUpdateParameterWeatherAndSettings<T extends WeatherSettings,Y extends ListWeatherSettings<T>>
     implements
         UpdateModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,WeatherAndSettingsTypeParameter<T>>
 {

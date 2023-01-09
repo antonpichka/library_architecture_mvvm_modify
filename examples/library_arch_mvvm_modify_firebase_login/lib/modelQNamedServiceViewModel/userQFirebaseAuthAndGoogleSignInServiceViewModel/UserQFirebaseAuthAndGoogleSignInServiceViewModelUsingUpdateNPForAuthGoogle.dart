@@ -5,20 +5,20 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthAndGoogleSignInService.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
 class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<T extends User,Y extends ListUser<T>>
     extends BaseModelQNamedServiceViewModel<T,Y>
-    implements UpdateModelToNamedServiceNPDataSource<BoolTypeParameter>
+    implements UpdateModelToNamedServiceNPDataSource<bool>
 {
   @protected
   final firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
 
-  Future<BoolTypeParameter?> updateUserToFirebaseAuthAndGoogleSignInServiceNP() {
-    return updateModelToNamedServiceNP<BoolTypeParameter>();
+  Future<Result<bool>?> updateUserToFirebaseAuthAndGoogleSignInServiceNP() {
+    return updateModelToNamedServiceNP<bool>();
   }
 
   @protected
@@ -27,7 +27,7 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
 
   @protected
   @override
-  Future<BoolTypeParameter> updateModelToNamedServiceNPDS()
+  Future<Result<bool>?> updateModelToNamedServiceNPDS()
   async {
     try {
       late final firebase_auth.AuthCredential credential;
@@ -53,11 +53,11 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
           ?.signInWithCredential(credential);
-      return BoolTypeParameter.success(true);
+      return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForGoogle(this,e.code));
+      return Result<bool>.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForGoogle(this,e.code));
     } catch (_) {
-      return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 }

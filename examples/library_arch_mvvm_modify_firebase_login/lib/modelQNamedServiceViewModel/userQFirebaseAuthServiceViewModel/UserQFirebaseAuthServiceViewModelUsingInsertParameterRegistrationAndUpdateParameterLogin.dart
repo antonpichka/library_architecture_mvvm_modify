@@ -3,33 +3,33 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/fbds/UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Login.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Registration.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/LoginTypeParameter.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationTypeParameter.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/bool_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
 class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<T extends User,Y extends ListUser<T>>
     extends BaseModelQNamedServiceViewModel<T,Y>
     implements
-        InsertModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,RegistrationTypeParameter>,
-        UpdateModelToNamedServiceParameterNamedDataSource<BoolTypeParameter,LoginTypeParameter>
+        InsertModelToNamedServiceParameterNamedDataSource<bool,Registration>,
+        UpdateModelToNamedServiceParameterNamedDataSource<bool,Login>
 {
   @protected
   final firebaseAuthService = FirebaseAuthService();
 
-  Future<BoolTypeParameter?> insertUserToFirebaseAuthServiceParameterRegistration(RegistrationTypeParameter registrationTypeParameter) {
-    return insertModelToNamedServiceParameterNamed<BoolTypeParameter,RegistrationTypeParameter>(registrationTypeParameter);
+  Future<Result<bool>?> insertUserToFirebaseAuthServiceParameterRegistration(Registration registration) {
+    return insertModelToNamedServiceParameterNamed<bool,Registration>(registration);
   }
 
-  Future<BoolTypeParameter?> updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(LoginTypeParameter loginTypeParameter) {
-    return updateModelToNamedServiceParameterNamedUsingFBDS<BoolTypeParameter,LoginTypeParameter>(
+  Future<Result<bool>?> updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login login) {
+    return updateModelToNamedServiceParameterNamedUsingFBDS<bool,Login>(
         UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin(),
-        loginTypeParameter);
+        login);
   }
 
   @protected
@@ -38,37 +38,37 @@ class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdate
 
   @protected
   @override
-  Future<BoolTypeParameter> insertModelToNamedServiceParameterNamedDS(
-      RegistrationTypeParameter? registration)
+  Future<Result<bool>?> insertModelToNamedServiceParameterNamedDS(
+      Registration? parameter)
   async {
     try {
       await firebaseAuthService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
-          ?.createUserWithEmailAndPassword(email: registration!.parameter!.email, password: registration.parameter!.password);
-      return BoolTypeParameter.success(true);
+          ?.createUserWithEmailAndPassword(email: parameter!.email, password: parameter.password);
+      return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
+      return Result<bool>.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
     } catch (_) {
-      return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 
   @protected
   @override
-  Future<BoolTypeParameter> updateModelToNamedServiceParameterNamedDS(
-      LoginTypeParameter? login)
+  Future<Result<bool>?> updateModelToNamedServiceParameterNamedDS(
+      Login? parameter)
   async {
     try {
       await firebaseAuthService
           .getFirebaseAuthSingleton
           ?.getFirebaseAuth
-          ?.signInWithEmailAndPassword(email: login!.parameter!.email, password: login.parameter!.password);
-      return BoolTypeParameter.success(true);
+          ?.signInWithEmailAndPassword(email: parameter!.email, password: parameter.password);
+      return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      return BoolTypeParameter.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
+      return Result<bool>.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
     } catch (_) {
-      return BoolTypeParameter.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
     }
   }
 }

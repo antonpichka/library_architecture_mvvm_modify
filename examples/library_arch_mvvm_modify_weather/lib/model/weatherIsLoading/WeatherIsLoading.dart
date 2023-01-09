@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherAndSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/model/weatherSettings/WeatherSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
@@ -14,14 +14,11 @@ enum EnumWeatherIsLoadingForWeatherWidget {
 class WeatherIsLoading
     extends BaseModel
 {
-  @protected
   bool? isLoading;
-  @protected
   TemperatureUnits? temperatureUnits;
-  @protected
   Weather? weather;
 
-  WeatherIsLoading.success(this.isLoading,this.temperatureUnits,this.weather) : super.success(weather?.getParameterUniqueId);
+  WeatherIsLoading.success(this.isLoading,this.temperatureUnits,this.weather) : super.success(weather?.uniqueId);
   WeatherIsLoading.exception(super.exception) : super.exception();
 
   static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false,TemperatureUnits.celsius,Weather.getWeatherForSuccess);
@@ -48,28 +45,28 @@ class WeatherIsLoading
   }
 
   String? get getThreeParametersNamedForWeatherWidget {
-    return weather?.getParameterLocation?.getParameterName;
+    return weather?.location?.name;
   }
 
   String? getFourParametersNamedForWeatherWidget(BuildContext context) {
-    return "Last Updated at ${TimeOfDay.fromDateTime(weather!.getParameterLastUpdated!).format(context)}";
+    return "Last Updated at ${TimeOfDay.fromDateTime(weather?.lastUpdated ?? DateTime(0)).format(context)}";
   }
 
   String? get getFiveParametersNamedForWeatherWidget {
-    return weather?.getParameterLocation?.getParameterName;
+    return weather?.location?.name;
   }
 
   void setOneParametersNamedForFloatingActionButtonSearchWidget() {
     isLoading = true;
   }
 
-  set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherAndSettings weatherAndSettings) {
-    exceptionController = weatherAndSettings.getParameterExceptionController;
+  set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.exceptionController;
     isLoading = false;
   }
 
-  set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherAndSettings weatherAndSettings) {
-    weather = weatherAndSettings.getParameterWeather;
+  set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherAndSettings) {
+    weather = weatherAndSettings.weather;
     weather
         ?.setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForFloatingActionButtonSearchWidget = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
@@ -79,14 +76,14 @@ class WeatherIsLoading
     isLoading = true;
   }
 
-  set setTwoParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
-    exceptionController = weatherAndSettings.getParameterExceptionController;
+  set setTwoParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.exceptionController;
     isLoading = false;
   }
 
-  set setThreeParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
-    weather = weatherAndSettings.getParameterWeather;
-    temperatureUnits = weatherAndSettings.getParameterSettings?.getParameterTemperatureUnits;
+  set setThreeParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
+    weather = weatherAndSettings.weather;
+    temperatureUnits = weatherAndSettings.settings?.temperatureUnits;
     weather
         ?.setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForWeatherWidget = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
@@ -96,13 +93,13 @@ class WeatherIsLoading
     isLoading = true;
   }
 
-  set setFiveParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
-    exceptionController = weatherAndSettings.getParameterExceptionController;
+  set setFiveParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
+    exceptionController = weatherAndSettings.exceptionController;
     isLoading = false;
   }
 
-  set setSixParametersNamedForWeatherWidget(WeatherAndSettings weatherAndSettings) {
-    weather = weatherAndSettings.getParameterWeather;
+  set setSixParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
+    weather = weatherAndSettings.weather;
     weather
         ?.setOneParametersNamedForWeatherIsLoadingWhereSetSixParametersNamedForWeatherWidget = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;

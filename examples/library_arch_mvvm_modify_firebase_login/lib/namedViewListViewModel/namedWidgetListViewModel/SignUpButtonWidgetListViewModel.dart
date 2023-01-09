@@ -12,8 +12,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewMo
 import 'package:library_arch_mvvm_modify_firebase_login/utility/ConfirmedPassword.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/Registration.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/namedTypeParameter/RegistrationTypeParameter.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Registration.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:meta/meta.dart';
@@ -68,18 +67,18 @@ class SignUpButtonWidgetListViewModel {
     boolQThereIsStateViewModelForLoading
         .notifyStreamBoolForLoading();
     // 1
-    final boolTypeParameter = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .insertUserToFirebaseAuthServiceParameterRegistration(RegistrationTypeParameter.success(Registration(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForSignUpButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput!.getThreeParametersNamedForSignUpButtonWidget ?? "")));
+    final result = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+        .insertUserToFirebaseAuthServiceParameterRegistration(Registration(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForSignUpButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput!.getThreeParametersNamedForSignUpButtonWidget ?? ""));
     boolQThereIsStateViewModelForLoading
         .getBoolForLoading
         ?.isField = false;
     boolQThereIsStateViewModelForLoading
         .notifyStreamBoolForLoading();
-    if(boolTypeParameter
+    if(result
         !.exceptionController
         .isExceptionNotEqualsNull())
     {
-      callbackForException(boolTypeParameter
+      callbackForException(result
           .exceptionController
           .getMessageForViewByException);
       return;

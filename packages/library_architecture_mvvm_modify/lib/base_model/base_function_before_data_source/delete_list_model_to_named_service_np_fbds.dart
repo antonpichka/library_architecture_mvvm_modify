@@ -1,9 +1,9 @@
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/base_type_parameter.dart';
+import 'package:library_architecture_mvvm_modify/utility/result.dart';
 
-abstract class DeleteListModelToNamedServiceNPFBDS<X extends BaseTypeParameter,C extends BaseTypeParameter>
+abstract class DeleteListModelToNamedServiceNPFBDS<X extends Object,C extends Object>
 {
   DeleteListModelToNamedServiceNPFBDS();
 
-  X? deleteListModelToNamedServiceNP(
-      C? typeParameterForFBDS);
+  Result<X>? deleteListModelToNamedServiceNP(
+      C? parameterForFBDS);
 }

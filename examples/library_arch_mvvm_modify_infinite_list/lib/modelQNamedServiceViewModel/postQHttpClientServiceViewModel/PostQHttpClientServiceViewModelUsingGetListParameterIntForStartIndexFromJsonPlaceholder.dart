@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:core';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/namedService/HttpClientService.dart';
@@ -6,15 +7,14 @@ import 'package:library_arch_mvvm_modify_infinite_list/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_list_model_for_named_tip.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/int_type_parameter.dart';
 import 'package:meta/meta.dart';
 
 class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost<T>>
     extends BaseModelQNamedServiceViewModel<T,Y>
-    implements GetListModelFromNamedServiceParameterNamedDataSource<Y,IntTypeParameter>
+    implements GetListModelFromNamedServiceParameterNamedDataSource<Y,int>
 {
   @protected
   final httpClientService = HttpClientService();
@@ -33,8 +33,8 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
       this.iListPostForNetworkExceptionTIP,
       this.iListPostForLocalExceptionTIP);
 
-  Future<Y?> getListPostFromHttpClientServiceParameterInt(IntTypeParameter intTypeParameter) {
-    return getListModelFromNamedServiceParameterNamed<IntTypeParameter>(intTypeParameter);
+  Future<Y?> getListPostFromHttpClientServiceParameterInt(int parameter) {
+    return getListModelFromNamedServiceParameterNamed<int>(parameter);
   }
 
   @protected
@@ -43,7 +43,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
 
   @protected
   @override
-  Future<Y?> getListModelFromNamedServiceParameterNamedDS(IntTypeParameter? parameter)
+  Future<Y?> getListModelFromNamedServiceParameterNamedDS(int? parameter)
   async {
     try {
       final response = await httpClientService
@@ -68,7 +68,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
   }
 
   @protected
-  Uri getUriForGetListModelFromNamedServiceParameterNamed(IntTypeParameter? intTypeParameter) {
-    return Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '${intTypeParameter?.parameter}', '_limit': '20'});
+  Uri getUriForGetListModelFromNamedServiceParameterNamed(int? parameter) {
+    return Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '$parameter', '_limit': '20'});
   }
 }

@@ -14,7 +14,6 @@ import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
 import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
 import 'package:meta/meta.dart';
 
 class SearchBarWidgetListViewModel {
@@ -83,7 +82,7 @@ class SearchBarWidgetListViewModel {
               ?.isField= false;
           // 1
           final listSearchResult = await searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub
-              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterString(StringTypeParameter.success(stringsQThereIsStateViewModelForSaveLettersSearch.getStringsForSaveLettersSearch!.field));
+              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterString(stringsQThereIsStateViewModelForSaveLettersSearch.getStringsForSaveLettersSearch!.field);
           searchResultInLoadingQThereIsStateViewModel
               .getListSearchResultInLoading
               ?.setTwoParametersNamedForSearchBarWidget = listSearchResult!;
