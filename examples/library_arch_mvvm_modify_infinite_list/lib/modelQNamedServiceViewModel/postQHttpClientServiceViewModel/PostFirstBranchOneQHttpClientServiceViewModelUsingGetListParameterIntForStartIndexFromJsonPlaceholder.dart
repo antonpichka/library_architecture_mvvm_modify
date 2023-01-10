@@ -8,19 +8,15 @@ import 'package:meta/meta.dart';
 class PostFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends PostFirstBranchOne,Y extends ListPostFirstBranchOne<T>>
     extends PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T,Y>
 {
-  Future<Y?> getListPostFirstBranchOneFromHttpClientServiceParameterInt(int parameter) {
-    return getListPostFromHttpClientServiceParameterInt(parameter);
+  @protected
+  @override
+  Y? getListPostFromBaseException(BaseException? baseException) {
+    return ListPostFirstBranchOne.exception(baseException!) as Y?;
   }
 
   @protected
   @override
-  Y? getListPostFromBaseException(BaseException baseException) {
-    return ListPostFirstBranchOne.exception(baseException) as Y?;
-  }
-
-  @protected
-  @override
-  Y? getListPostFromObject(Object object) {
+  Y? getListPostFromObject(Object? object) {
     final list = object as List;
     final listPost = list.map((dynamic json) {
       final map = json as Map<String,dynamic>;

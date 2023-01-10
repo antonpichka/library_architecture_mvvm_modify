@@ -1,54 +1,46 @@
 import 'package:formz/formz.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForLoading.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputFirstBranchOneQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/ConfirmedPassword.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Registration.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
 class SignUpButtonWidgetListViewModel {
   @protected
-  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>> userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
+  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
   @protected
-  final EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>> emailInputQThereIsStateViewModel;
+  final EmailInputQThereIsStateViewModel emailInputQThereIsStateViewModel;
   @protected
-  final PasswordInputQThereIsStateViewModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>> passwordInputQThereIsStateViewModel;
+  final PasswordInputFirstBranchOneQThereIsStateViewModel passwordInputFirstBranchOneQThereIsStateViewModel;
   @protected
-  final BoolQThereIsStateViewModelForLoading<Bool,ListBool<Bool>> boolQThereIsStateViewModelForLoading;
+  final BoolQThereIsStateViewModel boolQThereIsStateViewModelForLoading;
 
   SignUpButtonWidgetListViewModel(
       this.userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
       this.emailInputQThereIsStateViewModel,
-      this.passwordInputQThereIsStateViewModel,
+      this.passwordInputFirstBranchOneQThereIsStateViewModel,
       this.boolQThereIsStateViewModelForLoading);
 
-  Stream<Bool>? get getStreamBoolUsingGetNPForLoading {
-    return boolQThereIsStateViewModelForLoading.getStreamBoolForLoading;
+  Stream<Bool?>? get getStreamBoolForLoading {
+    return boolQThereIsStateViewModelForLoading.getStreamBool;
   }
 
   Future<void> insertUserToFirebaseAuthServiceParameterRegistrationAndInGeneralOneTask(
       Function(String message) callbackForException,
       Function() callbackForSuccess)
   async {
-    if(!Formz.validate([
-      emailInputQThereIsStateViewModel
+    if(!Formz.validate([emailInputQThereIsStateViewModel
           .getEmailInput
           ?.getOneParametersNamedForSignUpButtonWidget ?? const Email.pure(),
-      passwordInputQThereIsStateViewModel
+      passwordInputFirstBranchOneQThereIsStateViewModel
           .getPasswordInput
           ?.getOneParametersNamedForSignUpButtonWidget ?? const Password.pure(),
-      passwordInputQThereIsStateViewModel
+      passwordInputFirstBranchOneQThereIsStateViewModel
           .getPasswordInput
           ?.getTwoParametersNamedForSignUpButtonWidget ?? const ConfirmedPassword.pure()])
         .isValidated)
@@ -56,24 +48,24 @@ class SignUpButtonWidgetListViewModel {
       return;
     }
     if(boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         !.isField)
     {
       return;
     }
     boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         ?.isField = true;
     boolQThereIsStateViewModelForLoading
-        .notifyStreamBoolForLoading();
+        .notifyStreamBool();
     // 1
     final result = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .insertUserToFirebaseAuthServiceParameterRegistration(Registration(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForSignUpButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput!.getThreeParametersNamedForSignUpButtonWidget ?? ""));
+        .insertUserToFirebaseAuthServiceParameterRegistration(Registration(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForSignUpButtonWidget ?? "", passwordInputFirstBranchOneQThereIsStateViewModel.getPasswordInput!.getThreeParametersNamedForSignUpButtonWidget ?? ""));
     boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         ?.isField = false;
     boolQThereIsStateViewModelForLoading
-        .notifyStreamBoolForLoading();
+        .notifyStreamBool();
     if(result
         !.exceptionController
         .isExceptionNotEqualsNull())

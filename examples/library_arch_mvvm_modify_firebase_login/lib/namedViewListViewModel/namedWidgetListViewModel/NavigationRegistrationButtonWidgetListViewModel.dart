@@ -1,11 +1,9 @@
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForLoading.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
 class NavigationRegistrationButtonWidgetListViewModel {
   @protected
-  final BoolQThereIsStateViewModelForLoading<Bool,ListBool<Bool>> boolQThereIsStateViewModelForLoading;
+  final BoolQThereIsStateViewModel boolQThereIsStateViewModelForLoading;
 
   NavigationRegistrationButtonWidgetListViewModel(this.boolQThereIsStateViewModelForLoading);
 
@@ -13,7 +11,7 @@ class NavigationRegistrationButtonWidgetListViewModel {
       Function() callbackForNavigationIfLoadingFalse)
   {
     if(boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         !.isField)
     {
       return;

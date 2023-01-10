@@ -1,30 +1,23 @@
 import 'package:formz/formz.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForLoading.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Email.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Login.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
 class LoginButtonWidgetListViewModel {
   @protected
-  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>> userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
+  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
   @protected
-  final EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>> emailInputQThereIsStateViewModel;
+  final EmailInputQThereIsStateViewModel emailInputQThereIsStateViewModel;
   @protected
-  final PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>> passwordInputQThereIsStateViewModel;
+  final PasswordInputQThereIsStateViewModel passwordInputQThereIsStateViewModel;
   @protected
-  final BoolQThereIsStateViewModelForLoading<Bool,ListBool> boolQThereIsStateViewModelForLoading;
+  final BoolQThereIsStateViewModel boolQThereIsStateViewModelForLoading;
 
   LoginButtonWidgetListViewModel(
       this.userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
@@ -32,8 +25,8 @@ class LoginButtonWidgetListViewModel {
       this.passwordInputQThereIsStateViewModel,
       this.boolQThereIsStateViewModelForLoading);
 
-  Stream<Bool>? get getStreamBoolForLoading {
-    return boolQThereIsStateViewModelForLoading.getStreamBoolForLoading;
+  Stream<Bool?>? get getStreamBool {
+    return boolQThereIsStateViewModelForLoading.getStreamBool;
   }
 
   Future<void> updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask(
@@ -50,16 +43,16 @@ class LoginButtonWidgetListViewModel {
       return;
     }
     if(boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         !.isField)
     {
       return;
     }
     boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         ?.isField = true;
     boolQThereIsStateViewModelForLoading
-        .notifyStreamBoolForLoading();
+        .notifyStreamBool();
     // 1
     final result = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
         .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput?.getTwoParametersNamedForLoginButtonWidget ?? ""));
@@ -68,10 +61,10 @@ class LoginButtonWidgetListViewModel {
         .isExceptionNotEqualsNull())
     {
       boolQThereIsStateViewModelForLoading
-          .getBoolForLoading
+          .getBool
           ?.isField = false;
       boolQThereIsStateViewModelForLoading
-          .notifyStreamBoolForLoading();
+          .notifyStreamBool();
       callbackForException(result
           .exceptionController
           .getMessageForViewByException);

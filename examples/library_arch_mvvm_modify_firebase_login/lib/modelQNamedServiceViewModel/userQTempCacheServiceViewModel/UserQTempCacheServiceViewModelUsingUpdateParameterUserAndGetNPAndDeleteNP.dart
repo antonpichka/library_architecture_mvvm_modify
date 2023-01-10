@@ -1,33 +1,24 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/TempCacheService.dart';
-import 'package:library_architecture_mvvm_modify/base_model/interface_model_for_named/i_model_for_named_tip.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
 class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<User,ListUser>
+    extends BaseModelQNamedServiceViewModel<T,Y>
     implements
-        UpdateModelToNamedServiceParameterNamedDataSource<bool,User>,
-        GetModelFromNamedServiceNPDataSource<User>,
+        UpdateModelToNamedServiceParameterNamedDataSource<bool,T>,
+        GetModelFromNamedServiceNPDataSource<T>,
         DeleteModelToNamedServiceNPDataSource<bool>
 {
   @protected
   final tempCacheService = TempCacheService();
-  @protected
-  final IModelForNamedTIP<T,LocalException> iUserForLocalExceptionTIP;
-  @protected
-  final IModelForNamedTIP<T,Object> iUserForObjectTIP;
-
-  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP(
-      this.iUserForLocalExceptionTIP,
-      this.iUserForObjectTIP);
-
 
   Future<Result<bool>?> updateUserToTempCacheServiceParameterNamed(T parameter) {
     return updateModelToNamedServiceParameterNamed<bool,T>(parameter);
@@ -41,7 +32,7 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
     return deleteModelToNamedServiceNP<bool>();
   }
 
-  @protected
+  @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
 
@@ -54,7 +45,7 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
       tempCacheService
           .getTempCacheSingleton
           ?.getTempCache
-          ?.write<T>(User.constUserQTempCacheService, parameter);
+          ?.write(User.constUserQTempCacheService, parameter);
       return Result<bool>.success(true);
     } catch (e) {
       return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
@@ -66,12 +57,12 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
   Future<T?> getModelFromNamedServiceNPDS()
   async {
     try {
-      return iUserForObjectTIP.getModelForNamedTIP(tempCacheService
+      return getUserFromObject(tempCacheService
           .getTempCacheSingleton
           ?.getTempCache
           ?.read(User.constUserQTempCacheService));
     } catch (e) {
-      return iUserForLocalExceptionTIP.getModelForNamedTIP(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return getUserFromBaseException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
@@ -88,5 +79,23 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
     } catch (e) {
       return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
+  }
+
+  @protected
+  T? getUserFromObject(Object? object) {
+    if(object == null) {
+      return null;
+    }
+    final user = object as User;
+    return User.success(
+        user.uniqueId,
+        user.email,
+        user.name,
+        user.photo) as T?;
+  }
+
+  @protected
+  T? getUserFromBaseException(BaseException? baseException) {
+    return User.exception(baseException!) as T?;
   }
 }

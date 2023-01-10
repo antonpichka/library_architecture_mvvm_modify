@@ -10,15 +10,15 @@ class PostsListWidgetListViewModel {
   @protected
   final BoolQThereIsStateViewModel boolQThereIsStateViewModelForAntiSpam;
   @protected
-  final PostQThereIsStateViewModel postQThereIsStateViewModelForStartIndexFromJsonPlaceholder;
+  final PostQThereIsStateViewModel postQThereIsStateViewModel;
 
   PostsListWidgetListViewModel(
       this.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
       this.boolQThereIsStateViewModelForAntiSpam,
-      this.postQThereIsStateViewModelForStartIndexFromJsonPlaceholder);
+      this.postQThereIsStateViewModel);
 
-  Stream<ListPost?>? get getStreamListPostForStartIndexFromJsonPlaceholder {
-    return postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getStreamListPost;
+  Stream<ListPost?>? get getStreamListPost {
+    return postQThereIsStateViewModel.getStreamListPost;
   }
 
   Future<void> getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask()
@@ -30,7 +30,7 @@ class PostsListWidgetListViewModel {
     {
       return;
     }
-    if(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+    if(postQThereIsStateViewModel
         .getListPost
         ?.getOneParametersNamedForPostsListWidget ?? true)
     {
@@ -41,7 +41,7 @@ class PostsListWidgetListViewModel {
         ?.isField = true;
     // 1
     final listPost = await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterInt(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getListPost?.listModel?.length ?? 0);
+        .getListPostFromHttpClientServiceParameterInt(postQThereIsStateViewModel.getListPost?.listModel?.length ?? 0);
     boolQThereIsStateViewModelForAntiSpam
         .getBool
         ?.isField = false;
@@ -49,17 +49,17 @@ class PostsListWidgetListViewModel {
         !.exceptionController
         .isExceptionNotEqualsNull())
     {
-      postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+      postQThereIsStateViewModel
           .getListPost
           ?.setTwoParametersNamedForPostsListWidget(listPost);
-      postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+      postQThereIsStateViewModel
           .notifyStreamListPost();
       return;
     }
-    postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+    postQThereIsStateViewModel
         .getListPost
         ?.setOneParametersNamedForPostsListWidget(listPost);
-    postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
+    postQThereIsStateViewModel
         .notifyStreamListPost();
     return;
   }

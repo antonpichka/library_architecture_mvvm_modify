@@ -1,31 +1,30 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputFirstBranchOneQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
 class ConfirmedPasswordInputWidgetListViewModel {
   @protected
-  final PasswordInputQThereIsStateViewModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>> passwordInputQThereIsStateViewModel;
+  final PasswordInputFirstBranchOneQThereIsStateViewModel passwordInputFirstBranchOneQThereIsStateViewModel;
 
-  ConfirmedPasswordInputWidgetListViewModel(this.passwordInputQThereIsStateViewModel);
+  ConfirmedPasswordInputWidgetListViewModel(this.passwordInputFirstBranchOneQThereIsStateViewModel);
 
-  Stream<PasswordInputFirstBranchOne>? get getStreamPasswordInput {
-    return passwordInputQThereIsStateViewModel.getStreamPasswordInput;
+  Stream<PasswordInputFirstBranchOne?>? get getStreamPasswordInput {
+    return passwordInputFirstBranchOneQThereIsStateViewModel.getStreamPasswordInput;
   }
 
   void setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
       String str)
   {
-    if(passwordInputQThereIsStateViewModel
+    if(passwordInputFirstBranchOneQThereIsStateViewModel
         .getPasswordInput
         ?.getOneParametersNamedForConfirmedPasswordInputWidget == str)
     {
       return;
     }
-    passwordInputQThereIsStateViewModel
+    passwordInputFirstBranchOneQThereIsStateViewModel
         .getPasswordInput
         ?.setOneParametersNamedForConfirmedPasswordInputWidget = str;
-    passwordInputQThereIsStateViewModel
+    passwordInputFirstBranchOneQThereIsStateViewModel
         .notifyStreamPasswordInput();
     return;
   }

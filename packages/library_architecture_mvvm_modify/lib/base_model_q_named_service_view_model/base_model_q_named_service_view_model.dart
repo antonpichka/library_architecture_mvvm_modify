@@ -46,7 +46,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   ///   @nonVirtual
   ///   @override
   ///   Object? get modelQNamedServiceDataSource => this;
-  @protected
   Object? get modelQNamedServiceDataSource;
   ///   End ModelQNamedServiceDataSource **/
 

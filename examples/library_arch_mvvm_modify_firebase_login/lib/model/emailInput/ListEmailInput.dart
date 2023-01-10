@@ -5,4 +5,6 @@ class ListEmailInput<T extends EmailInput>
     extends BaseListModel<T>
 {
   ListEmailInput.success(super.list) : super.success();
+
+  static ListEmailInput get getListEmailInputForSuccess => ListEmailInput.success([]);
 }

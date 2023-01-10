@@ -12,9 +12,9 @@ class PasswordInputWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<PasswordInput>(
+    return StreamBuilder<PasswordInput?>(
         stream: lo.getStreamPasswordInput,
-        builder: (BuildContext buildContext, AsyncSnapshot<PasswordInput> asyncSnapshot)
+        builder: (BuildContext buildContext, AsyncSnapshot<PasswordInput?> asyncSnapshot)
         {
           PasswordInput? passwordInput = asyncSnapshot.data;
           return TextField(

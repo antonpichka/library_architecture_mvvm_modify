@@ -1,14 +1,7 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/initializedStreamEmailInput/InitializedStreamEmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/initializedStreamPasswordInput/InitializedStreamPasswordInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndGoogleSignInServiceViewModel/UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthServiceViewModel/UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForLoading.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/EmailInputWidgetListViewModel.dart';
@@ -16,9 +9,8 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/LoginButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/NavigationRegistrationButtonWidgetListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 import 'package:library_architecture_mvvm_modify/base_model/interface_initialized_stream_model/initialized_stream_bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
 class LoginViewListViewModel
@@ -26,20 +18,17 @@ class LoginViewListViewModel
 {
   // ModelQThereIsStateViewModel
   final _emailInputQThereIsStateViewModel =
-  EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>>(
-      InitializedStreamEmailInput());
+  EmailInputQThereIsStateViewModel(InitializedStreamEmailInput());
   final _passwordInputQThereIsStateViewModel =
-  PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>>(
-      InitializedStreamPasswordInput());
+  PasswordInputQThereIsStateViewModel(InitializedStreamPasswordInput());
   final _boolQThereIsStateViewModelForLoading =
-  BoolQThereIsStateViewModelForLoading<Bool,ListBool<Bool>>(
-      InitializedStreamBool());
+  BoolQThereIsStateViewModel(InitializedStreamBool());
 
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
-  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<User,ListUser<User>>();
+  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin();
   final _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle =
-  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser<User>>();
+  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle();
 
   // NamedWidgetListViewModel
   late final EmailInputWidgetListViewModel emailInputWidgetListViewModel;

@@ -12,9 +12,9 @@ class ConfirmedPasswordInputWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<PasswordInputFirstBranchOne>(
+    return StreamBuilder<PasswordInputFirstBranchOne?>(
         stream: lo.getStreamPasswordInput,
-        builder: (BuildContext buildContext, AsyncSnapshot<PasswordInputFirstBranchOne> asyncSnapshot)
+        builder: (BuildContext buildContext, AsyncSnapshot<PasswordInputFirstBranchOne?> asyncSnapshot)
         {
           PasswordInputFirstBranchOne? passwordInput = asyncSnapshot.data;
           return buildSuccess(passwordInput);

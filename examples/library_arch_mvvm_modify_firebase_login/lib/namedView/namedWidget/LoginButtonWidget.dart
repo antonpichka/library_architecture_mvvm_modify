@@ -13,9 +13,9 @@ class LoginButtonWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Bool>(
-        stream: lo.getStreamBoolForLoading,
-        builder: (BuildContext buildContext, AsyncSnapshot<Bool> asyncSnapshot)
+    return StreamBuilder<Bool?>(
+        stream: lo.getStreamBool,
+        builder: (BuildContext buildContext, AsyncSnapshot<Bool?> asyncSnapshot)
         {
           Bool? bool = asyncSnapshot.data;
           return bool?.isField ?? false

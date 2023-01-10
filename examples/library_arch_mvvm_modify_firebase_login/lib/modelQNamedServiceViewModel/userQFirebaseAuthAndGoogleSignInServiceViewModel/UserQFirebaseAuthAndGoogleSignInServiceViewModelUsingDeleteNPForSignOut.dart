@@ -7,8 +7,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
-    extends BaseModelQNamedServiceViewModel<User,ListUser>
+class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<T extends User,Y extends ListUser<T>>
+    extends BaseModelQNamedServiceViewModel<T,Y>
     implements DeleteModelToNamedServiceNPDataSource<bool>
 {
   @protected
@@ -18,7 +18,7 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
     return deleteModelToNamedServiceNP<bool>();
   }
 
-  @protected
+  @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
 

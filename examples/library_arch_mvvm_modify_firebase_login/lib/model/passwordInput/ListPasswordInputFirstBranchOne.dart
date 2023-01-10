@@ -5,4 +5,6 @@ class ListPasswordInputFirstBranchOne<T extends PasswordInputFirstBranchOne>
     extends ListPasswordInput<T>
 {
   ListPasswordInputFirstBranchOne.success(super.list) : super.success();
+
+  static ListPasswordInputFirstBranchOne get getListPasswordInputFirstBranchOneForSuccess => ListPasswordInputFirstBranchOne.success([]);
 }

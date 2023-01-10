@@ -7,7 +7,7 @@ class EmailInputQThereIsStateViewModel<T extends EmailInput,Y extends ListEmailI
 {
   EmailInputQThereIsStateViewModel(super.iInitializedStreamModel);
 
-  Stream<T>? get getStreamEmailInput {
+  Stream<T?>? get getStreamEmailInput {
     return getStreamModel;
   }
 

@@ -6,13 +6,11 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache
-    extends BaseModelQNamedServiceViewModel<User,ListUser>
+class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser<T>>
+    extends BaseModelQNamedServiceViewModel<T,Y>
 {
   @protected
   final firebaseAuthAndTempCacheService = FirebaseAuthAndTempCacheService();
-
-  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache();
 
   Stream<User>? get getCustomStreamUser {
     return firebaseAuthAndTempCacheService
@@ -32,7 +30,7 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
     });
   }
 
-  @protected
+  @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
 

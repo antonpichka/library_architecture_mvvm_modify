@@ -6,24 +6,4 @@ class PostFirstBranchOneQThereIsStateViewModel<T extends PostFirstBranchOne,Y ex
     extends PostQThereIsStateViewModel<T,Y>
 {
   PostFirstBranchOneQThereIsStateViewModel(super.iInitializedStreamModel);
-
-  Future<Y?> get getFutureListPostFirstBranchOne {
-    return getFutureListPost;
-  }
-
-  Stream<Y?>? get getStreamListPostFirstBranchOne {
-    return getStreamListPost;
-  }
-
-  Y? get getListPostFirstBranchOne {
-    return getListPost;
-  }
-
-  set setListPostFirstBranchOne(Y listPostFirstBranchOne) {
-    setListPost = listPostFirstBranchOne;
-  }
-
-  void notifyStreamListPostFirstBranchOne() {
-    notifyStreamListPost();
-  }
 }

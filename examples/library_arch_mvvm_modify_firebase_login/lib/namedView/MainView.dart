@@ -23,9 +23,7 @@ class _MainViewState
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _lo.listensCustomStreamUserAndInGeneralZeroTask((User user) {
-      _lo.setUserAndInGeneralZeroTask(user);
-    });
+    _lo.customListenStreamUserAndInGeneralZeroTask();
   }
 
   @override
@@ -38,9 +36,9 @@ class _MainViewState
   @override
   Widget build(BuildContext context) {
     _lo.getUserFromTempCacheServiceNPAndInGeneralOneTask();
-    return StreamBuilder<User>(
+    return StreamBuilder<User?>(
         stream: _lo.getStreamUser,
-        builder: (BuildContext buildContext, AsyncSnapshot<User> asyncSnapshot)
+        builder: (BuildContext buildContext, AsyncSnapshot<User?> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return LoadingView();

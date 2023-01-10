@@ -12,9 +12,9 @@ class EmailInputWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<EmailInput>(
+    return StreamBuilder<EmailInput?>(
         stream: lo.getStreamEmailInput,
-        builder: (BuildContext buildContext, AsyncSnapshot<EmailInput> asyncSnapshot)
+        builder: (BuildContext buildContext, AsyncSnapshot<EmailInput?> asyncSnapshot)
         {
           EmailInput? emailInput = asyncSnapshot.data;
           return buildSuccess(emailInput);

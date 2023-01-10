@@ -18,7 +18,7 @@ class PostsListFirstBranchOneWidgetState
   @override
   Widget build(BuildContext context) {
     final lo = widget.lo as PostsListFirstBranchOneWidgetListViewModel;
-    lo.getListPostFirstBranchOneFromHttpClientServiceParameterIntAndInGeneralOneTask();
+    lo.getListPostFromHttpClientServiceParameterIntAndInGeneralOneTaskException();
     return super.build(context);
   }
 

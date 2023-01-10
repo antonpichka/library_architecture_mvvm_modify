@@ -1,16 +1,12 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/userQFirebaseAuthAndGoogleSignInServiceViewModel/UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForLoading.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
 class GoogleButtonWidgetListViewModel {
   @protected
-  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<User,ListUser<User>> userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle;
+  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle;
   @protected
-  final BoolQThereIsStateViewModelForLoading<Bool,ListBool<Bool>> boolQThereIsStateViewModelForLoading;
+  final BoolQThereIsStateViewModel boolQThereIsStateViewModelForLoading;
 
   GoogleButtonWidgetListViewModel(
       this.userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle,
@@ -20,24 +16,24 @@ class GoogleButtonWidgetListViewModel {
       Function(String message) callbackForException)
   async {
     if(boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         !.isField)
     {
       return;
     }
     boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         ?.isField = true;
     boolQThereIsStateViewModelForLoading
-        .notifyStreamBoolForLoading();
+        .notifyStreamBool();
     // 1
     final boolTypeParameter = await userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
         .updateUserToFirebaseAuthAndGoogleSignInServiceNP();
     boolQThereIsStateViewModelForLoading
-        .getBoolForLoading
+        .getBool
         ?.isField = false;
     boolQThereIsStateViewModelForLoading
-        .notifyStreamBoolForLoading();
+        .notifyStreamBool();
     if(boolTypeParameter
         !.exceptionController
         .isExceptionNotEqualsNull())

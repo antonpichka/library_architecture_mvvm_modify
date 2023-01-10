@@ -5,4 +5,6 @@ class ListPasswordInput<T extends PasswordInput>
     extends BaseListModel<T>
 {
   ListPasswordInput.success(super.list) : super.success();
+
+  static ListPasswordInput get getListPasswordInputForSuccess => ListPasswordInput.success([]);
 }

@@ -1,15 +1,14 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/ListEmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
 class EmailInputWidgetListViewModel {
   @protected
-  final EmailInputQThereIsStateViewModel<EmailInput,ListEmailInput<EmailInput>> emailInputQThereIsStateViewModel;
+  final EmailInputQThereIsStateViewModel emailInputQThereIsStateViewModel;
 
   EmailInputWidgetListViewModel(this.emailInputQThereIsStateViewModel);
 
-  Stream<EmailInput>? get getStreamEmailInput {
+  Stream<EmailInput?>? get getStreamEmailInput {
     return emailInputQThereIsStateViewModel.getStreamEmailInput;
   }
 

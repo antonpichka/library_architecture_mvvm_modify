@@ -39,7 +39,7 @@ class PostsListWidgetState
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListPost?>(
-        stream: widget.lo.getStreamListPostForStartIndexFromJsonPlaceholder,
+        stream: widget.lo.getStreamListPost,
         builder: (BuildContext buildContext, AsyncSnapshot<ListPost?> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {

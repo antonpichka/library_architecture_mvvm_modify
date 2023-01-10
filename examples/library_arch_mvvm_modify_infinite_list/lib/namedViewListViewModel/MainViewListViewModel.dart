@@ -16,7 +16,7 @@ class MainViewListViewModel
   // ModelQThereIsStateViewModel
   final _boolQThereIsStateViewModelForAntiSpam =
   BoolQThereIsStateViewModel(InitializedStreamBool());
-  final _postFirstBranchOneQThereIsStateViewModelForStartIndexFromJsonPlaceholder =
+  final _postFirstBranchOneQThereIsStateViewModel =
   PostFirstBranchOneQThereIsStateViewModel(InitializedStreamPostFirstBranchOne());
 
   // NamedWidgetListViewModel
@@ -26,12 +26,12 @@ class MainViewListViewModel
     postsListFirstBranchOneWidgetListViewModel = PostsListFirstBranchOneWidgetListViewModel(
         _postFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
         _boolQThereIsStateViewModelForAntiSpam,
-        _postFirstBranchOneQThereIsStateViewModelForStartIndexFromJsonPlaceholder);
+        _postFirstBranchOneQThereIsStateViewModel);
   }
 
   @override
   void dispose() {
     _boolQThereIsStateViewModelForAntiSpam.dispose();
-    _postFirstBranchOneQThereIsStateViewModelForStartIndexFromJsonPlaceholder.dispose();
+    _postFirstBranchOneQThereIsStateViewModel.dispose();
   }
 }

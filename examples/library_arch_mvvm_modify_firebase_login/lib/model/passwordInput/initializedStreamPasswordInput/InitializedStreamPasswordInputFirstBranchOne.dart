@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamPasswordInputFirstBranchOne
-    implements IInitializedStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>
+    implements IInitializedStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne>
 {
   @override
-  IStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>? initializedStreamModel() {
-    return DefaultStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne<PasswordInputFirstBranchOne>>(PasswordInputFirstBranchOne.getPasswordInputFirstBranchOneForSuccess, ListPasswordInputFirstBranchOne.success([]));
+  IStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne>? initializedStreamModel() {
+    return DefaultStreamModel<PasswordInputFirstBranchOne,ListPasswordInputFirstBranchOne>(PasswordInputFirstBranchOne.getPasswordInputFirstBranchOneForSuccess, ListPasswordInputFirstBranchOne.getListPasswordInputFirstBranchOneForSuccess);
   }
 }

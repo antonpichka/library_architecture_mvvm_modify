@@ -7,7 +7,7 @@ class PasswordInputQThereIsStateViewModel<T extends PasswordInput,Y extends List
 {
   PasswordInputQThereIsStateViewModel(super.iInitializedStreamModel);
 
-  Stream<T>? get getStreamPasswordInput {
+  Stream<T?>? get getStreamPasswordInput {
     return getStreamModel;
   }
 

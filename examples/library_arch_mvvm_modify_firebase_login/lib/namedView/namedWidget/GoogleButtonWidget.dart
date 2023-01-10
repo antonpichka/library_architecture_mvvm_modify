@@ -19,7 +19,8 @@ class GoogleButtonWidget
       label: buildLabel(),
       style: buildButtonStyle(theme),
       icon: buildIcon(),
-      onPressed: () => lo.updateUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message))
+      onPressed: () => lo
+          .updateUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message))
     );
   }
 

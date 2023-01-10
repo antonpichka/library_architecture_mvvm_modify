@@ -8,8 +8,8 @@ class PostsListFirstBranchOneWidgetListViewModel
 {
   PostsListFirstBranchOneWidgetListViewModel(
       super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
-      super.boolQNoServiceViewModelUsingGetNPForAntiSpam,
-      super.postQThereIsStateViewModelForStartIndexFromJsonPlaceholder) : super();
+      super.boolQNoServiceViewModelForAntiSpam,
+      super.postQThereIsStateViewModel);
 
   @protected
   @nonVirtual
@@ -18,18 +18,18 @@ class PostsListFirstBranchOneWidgetListViewModel
 
   @protected
   @nonVirtual
-  PostFirstBranchOneQThereIsStateViewModel get postFirstBranchOneQThereIsStateViewModelForStartIndexFromJsonPlaceholder =>
-      postQThereIsStateViewModelForStartIndexFromJsonPlaceholder as PostFirstBranchOneQThereIsStateViewModel;
+  PostFirstBranchOneQThereIsStateViewModel get postFirstBranchOneQThereIsStateViewModel =>
+      postQThereIsStateViewModel as PostFirstBranchOneQThereIsStateViewModel;
 
-  Future<void> getListPostFirstBranchOneFromHttpClientServiceParameterIntAndInGeneralOneTask()
+  Future<void> getListPostFromHttpClientServiceParameterIntAndInGeneralOneTaskException()
   async {
     // 1
     final listPostFirstBranchOne = await postFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFirstBranchOneFromHttpClientServiceParameterInt(0);
-    postFirstBranchOneQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-        .setListPostFirstBranchOne = listPostFirstBranchOne!;
-    postFirstBranchOneQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-        .notifyStreamListPostFirstBranchOne();
+        .getListPostFromHttpClientServiceParameterInt(0);
+    postFirstBranchOneQThereIsStateViewModel
+        .setListPost = listPostFirstBranchOne!;
+    postFirstBranchOneQThereIsStateViewModel
+        .notifyStreamListPost();
     return;
   }
 }

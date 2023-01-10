@@ -1,15 +1,14 @@
-import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/ListPasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
 class PasswordInputWidgetListViewModel {
   @protected
-  final PasswordInputQThereIsStateViewModel<PasswordInput,ListPasswordInput<PasswordInput>> passwordInputQThereIsStateViewModel;
+  final PasswordInputQThereIsStateViewModel passwordInputQThereIsStateViewModel;
 
   PasswordInputWidgetListViewModel(this.passwordInputQThereIsStateViewModel);
 
-  Stream<PasswordInput>? get getStreamPasswordInput {
+  Stream<PasswordInput?>? get getStreamPasswordInput {
     return passwordInputQThereIsStateViewModel.getStreamPasswordInput;
   }
 

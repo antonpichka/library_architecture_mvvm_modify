@@ -49,7 +49,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
   }
 
   @protected
-  Y? getListPostFromObject(Object object) {
+  Y? getListPostFromObject(Object? object) {
     final list = object as List;
     final listPost = list.map((dynamic json) {
       final map = json as Map<String,dynamic>;
@@ -62,7 +62,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
   }
 
   @protected
-  Y? getListPostFromBaseException(BaseException baseException) {
-    return ListPost.exception(baseException) as Y?;
+  Y? getListPostFromBaseException(BaseException? baseException) {
+    return ListPost.exception(baseException!) as Y?;
   }
 }
