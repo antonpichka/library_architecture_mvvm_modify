@@ -55,9 +55,8 @@ Examples taken for processing from library <a href="https://github.com/felangel/
   - ##### IInitializedStreamModel
   - ##### IStreamModel
 - #### ModelQNamedServiceViewModel
+  - ##### IModelQNamedServiceDataSource
   - ##### FBDS
-  - ##### (List/Model)ForNamed(TIP/NP)
-  - ##### INamedDataSource
   - ##### NamedService
     - ###### NamedSingleton
 - #### NamedViewListViewModel
