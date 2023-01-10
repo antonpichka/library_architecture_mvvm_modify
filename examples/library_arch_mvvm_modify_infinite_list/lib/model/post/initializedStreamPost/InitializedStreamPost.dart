@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamPost
-    implements IInitializedStreamModel<Post,ListPost<Post>>
+    implements IInitializedStreamModel<Post,ListPost>
 {
   @override
-  IStreamModel<Post, ListPost<Post>>? initializedStreamModel() {
-    return DefaultStreamModel<Post,ListPost<Post>>(Post.getPostForSuccess,ListPost.success([]));
+  IStreamModel<Post, ListPost>? initializedStreamModel() {
+    return DefaultStreamModel<Post,ListPost>(Post.getPostForSuccess,ListPost.getListPostForSuccess);
   }
 }

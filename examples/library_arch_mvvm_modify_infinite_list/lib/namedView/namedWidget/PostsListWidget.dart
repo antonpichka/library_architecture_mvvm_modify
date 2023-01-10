@@ -38,14 +38,14 @@ class PostsListWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<ListPost<Post>>(
+    return StreamBuilder<ListPost?>(
         stream: widget.lo.getStreamListPostForStartIndexFromJsonPlaceholder,
-        builder: (BuildContext buildContext, AsyncSnapshot<ListPost<Post>> asyncSnapshot)
+        builder: (BuildContext buildContext, AsyncSnapshot<ListPost?> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return buildDataNull();
           }
-          ListPost<Post>? listPost = asyncSnapshot.data;
+          ListPost? listPost = asyncSnapshot.data;
           switch(listPost?.getEnumListPostForPostsListWidget) {
             case EnumListPostForPostsListWidget.success:
               return buildSuccess(listPost);
@@ -62,13 +62,13 @@ class PostsListWidgetState
   }
 
   @protected
-  Widget buildSuccess(ListPost<Post>? listPost) {
+  Widget buildSuccess(ListPost? listPost) {
     return ListView.builder(
         itemBuilder: (BuildContext context, int index) {
           if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
             return buildLoadingForSuccess(listPost);
           }
-          Post? itemPost = listPost.list![index];
+          Post? itemPost = listPost.listModel![index];
           return buildItemForSuccess(itemPost);
         },
         itemCount: listPost?.getTwoParametersNamedForPostsListWidget,
@@ -76,7 +76,7 @@ class PostsListWidgetState
   }
 
   @protected
-  Widget buildLoadingForSuccess(ListPost<Post>? listPost) {
+  Widget buildLoadingForSuccess(ListPost? listPost) {
     return const Center(
       child: SizedBox(
         height: 24,
@@ -105,17 +105,17 @@ class PostsListWidgetState
   }
 
   @protected
-  Widget buildIsEmptyList(ListPost<Post>? listPost) {
+  Widget buildIsEmptyList(ListPost? listPost) {
     return const Center(child: Text('no posts'));
   }
 
   @protected
-  Widget buildNoInternetItLocalException(ListPost<Post>? listPost) {
+  Widget buildNoInternetItLocalException(ListPost? listPost) {
     return const Center(child: Text('no Internet. Connect to the Internet'));
   }
 
   @protected
-  Widget buildServerNotWorkItNetworkException(ListPost<Post>? listPost) {
+  Widget buildServerNotWorkItNetworkException(ListPost? listPost) {
     return const Center(child: Text('failed to fetch posts'));
   }
 

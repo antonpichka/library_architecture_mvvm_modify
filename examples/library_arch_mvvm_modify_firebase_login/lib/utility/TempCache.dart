@@ -9,7 +9,7 @@ class TempCache {
     return value;
   }
 
-  void write<T extends Object>(String key, T? value) {
+  void write(String key, Object? value) {
     _mapStringAndObject[key] = value;
   }
 

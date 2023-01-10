@@ -1,69 +1,66 @@
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/postQHttpClientServiceViewModel/PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForAntiSpam.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewModel/postQThereIsStateViewModel/PostQThereIsStateViewModelForStartIndexFromJsonPlaceholder.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
+import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewModel/postQThereIsStateViewModel/PostQThereIsStateViewModel.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
 class PostsListWidgetListViewModel {
   @protected
-  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<Post,ListPost<Post>> postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
+  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
   @protected
-  final BoolQThereIsStateViewModelForAntiSpam<Bool,ListBool<Bool>> boolQThereIsStateViewModelForAntiSpam;
+  final BoolQThereIsStateViewModel boolQThereIsStateViewModelForAntiSpam;
   @protected
-  final PostQThereIsStateViewModelForStartIndexFromJsonPlaceholder<Post,ListPost<Post>> postQThereIsStateViewModelForStartIndexFromJsonPlaceholder;
+  final PostQThereIsStateViewModel postQThereIsStateViewModelForStartIndexFromJsonPlaceholder;
 
   PostsListWidgetListViewModel(
       this.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
       this.boolQThereIsStateViewModelForAntiSpam,
       this.postQThereIsStateViewModelForStartIndexFromJsonPlaceholder);
 
-  Stream<ListPost<Post>>? get getStreamListPostForStartIndexFromJsonPlaceholder {
-    return postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getStreamListPostForStartIndexFromJsonPlaceholder;
+  Stream<ListPost?>? get getStreamListPostForStartIndexFromJsonPlaceholder {
+    return postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getStreamListPost;
   }
 
   Future<void> getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask()
   async {
     await Future.delayed(const Duration(seconds: 1));
     if(boolQThereIsStateViewModelForAntiSpam
-        .getBoolForAntiSpam
-        !.isField)
+        .getBool
+        ?.isField ?? false)
     {
       return;
     }
     if(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-        .getListPostForStartIndexFromJsonPlaceholder
+        .getListPost
         ?.getOneParametersNamedForPostsListWidget ?? true)
     {
       return;
     }
     boolQThereIsStateViewModelForAntiSpam
-        .getBoolForAntiSpam
+        .getBool
         ?.isField = true;
     // 1
     final listPost = await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterInt(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getListPostForStartIndexFromJsonPlaceholder?.list?.length ?? 0);
+        .getListPostFromHttpClientServiceParameterInt(postQThereIsStateViewModelForStartIndexFromJsonPlaceholder.getListPost?.listModel?.length ?? 0);
     boolQThereIsStateViewModelForAntiSpam
-        .getBoolForAntiSpam
+        .getBool
         ?.isField = false;
     if(listPost
         !.exceptionController
         .isExceptionNotEqualsNull())
     {
       postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-          .getListPostForStartIndexFromJsonPlaceholder
+          .getListPost
           ?.setTwoParametersNamedForPostsListWidget(listPost);
       postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-          .notifyStreamListPostForStartIndexFromJsonPlaceholder();
+          .notifyStreamListPost();
       return;
     }
     postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-        .getListPostForStartIndexFromJsonPlaceholder
+        .getListPost
         ?.setOneParametersNamedForPostsListWidget(listPost);
     postQThereIsStateViewModelForStartIndexFromJsonPlaceholder
-        .notifyStreamListPostForStartIndexFromJsonPlaceholder();
+        .notifyStreamListPost();
     return;
   }
 }

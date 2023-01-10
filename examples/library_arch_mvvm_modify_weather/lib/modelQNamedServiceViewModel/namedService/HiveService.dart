@@ -1,4 +1,4 @@
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/namedService/namedSingleton/HiveSingleton.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/namedService/namedSingleton/HiveSingleton.dart';
 
 class HiveService {
   HiveSingleton? _hiveSingleton;

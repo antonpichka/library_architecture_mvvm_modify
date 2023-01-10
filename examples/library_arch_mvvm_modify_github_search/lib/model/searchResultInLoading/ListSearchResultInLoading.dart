@@ -32,7 +32,7 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
     if(exceptionController.isExceptionNotEqualsNull()) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.error;
     }
-    if(list!.isEmpty) {
+    if(listModel!.isEmpty) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isEmptyList;
     }
     return EnumListSearchResultInLoadingForSearchBodyWidget.success;
@@ -48,12 +48,12 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
 
   set setTwoParametersNamedForSearchBarWidget(ListSearchResult<SearchResult> listSearchResult) {
     List<SearchResultInLoading> listSearchResultInLoading = List.empty(growable: true);
-    listSearchResult.list?.forEach((SearchResult searchResult) {
+    listSearchResult.listModel?.forEach((SearchResult searchResult) {
       listSearchResultInLoading.add(SearchResultInLoading.success(searchResult));
     });
     isLoading = false;
     isEmptyValueFromTextInput = false;
-    list = listSearchResultInLoading as List<T>;
+    listModel = listSearchResultInLoading as List<T>;
     exceptionController = listSearchResult.exceptionController;
   }
 

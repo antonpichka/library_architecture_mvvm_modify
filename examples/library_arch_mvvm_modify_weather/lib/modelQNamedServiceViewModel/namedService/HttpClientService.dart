@@ -1,4 +1,4 @@
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceDataSource/namedService/namedSingleton/HttpClientSingleton.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/namedService/namedSingleton/HttpClientSingleton.dart';
 
 class HttpClientService {
   HttpClientSingleton? _httpClientSingleton;

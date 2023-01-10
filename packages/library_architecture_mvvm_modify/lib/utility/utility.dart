@@ -1,4 +1,3 @@
-
 void debugPrint(String text) {
   // ignore: avoid_print
   print(text);

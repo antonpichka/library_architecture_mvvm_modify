@@ -10,8 +10,8 @@ class Double
   Double.successForFBDS() : field = 0.0,super.successForFBDS();
   Double.exceptionForFBDS(super.exception) : field = 0.0,super.exceptionForFBDS();
 
-  String get getOneParametersNamedForNamedWidgetOrView => field.toString();
+  String get getOneParametersNamedForNamed => field.toString();
 
-  void setOneParametersNamedForNamedWidgetOrView() =>  field = (field + 1);
-  void setTwoParametersNamedForNamedWidgetOrView() =>  field = (field - 1);
+  void setOneParametersNamedForNamed() =>  field = (field + 1);
+  void setTwoParametersNamedForNamed() =>  field = (field - 1);
 }

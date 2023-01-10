@@ -4,6 +4,8 @@ import 'package:library_arch_mvvm_modify_infinite_list/model/post/PostFirstBranc
 class ListPostFirstBranchOne<T extends PostFirstBranchOne>
     extends ListPost<T>
 {
-  ListPostFirstBranchOne.success(super.list) : super.success();
+  ListPostFirstBranchOne.success(super.listModel) : super.success();
   ListPostFirstBranchOne.exception(super.exception) : super.exception();
+
+  static ListPostFirstBranchOne get getListPostFirstBranchOneForSuccess => ListPostFirstBranchOne.success([]);
 }

@@ -14,7 +14,9 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   final userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
-  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser>(UserForSuccessWhereParametersEqualsStringNullNP(),UserForFirebaseUserTIP());
+  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<User,ListUser>(
+      UserForSuccessWhereParametersEqualsStringNullNP(),
+      UserForFirebaseUserTIP());
   await userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache
       .getCustomStreamUser
       ?.first;

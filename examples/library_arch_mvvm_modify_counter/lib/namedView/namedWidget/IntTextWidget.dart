@@ -12,10 +12,10 @@ class IntTextWidget
 
   @override
   Widget build(BuildContext context) {
-    lo.notifyStreamIntForIncrementAndDecrementAndInGeneralZeroTask();
-    return StreamBuilder<Int>(
-        stream: lo.getStreamIntForIncrementAndDecrement,
-        builder: (BuildContext buildContext, AsyncSnapshot<Int> asyncSnapshot) {
+    lo.notifyStreamIntAndInGeneralZeroTask();
+    return StreamBuilder<Int?>(
+        stream: lo.getStreamInt,
+        builder: (BuildContext buildContext, AsyncSnapshot<Int?> asyncSnapshot) {
           if(asyncSnapshot.data == null) {
             return buildDataNull();
           }
@@ -32,7 +32,7 @@ class IntTextWidget
   @protected
   Widget buildSuccess(BuildContext context,Int? int) {
     return Text(
-      "${int?.getOneParametersNamedForNamedWidgetOrView}",
+      "${int?.getOneParametersNamedForNamed}",
       style: Theme.of(context).textTheme.headline4,
     );
   }

@@ -1,16 +1,17 @@
 import 'package:meta/meta.dart';
 
 class Testing {
-  int? _numberOfExecutedMethodsInThisClass = 0;
+  int? numberOfExecutedMethodsInThisClass = 0;
 
   @visibleForTesting
   @nonVirtual
-  int? get getTheNumberOfExecutedMethodsInThisClass {
-    return _numberOfExecutedMethodsInThisClass;
+  int? get getNumberOfExecutedMethodsInThisClassUsingVisibleOnlyForTesting {
+    return numberOfExecutedMethodsInThisClass;
   }
 
   @protected
+  @nonVirtual
   void incrementForNumberOfExecutedMethodsInThisClass() {
-    _numberOfExecutedMethodsInThisClass = (_numberOfExecutedMethodsInThisClass! + 1);
+    numberOfExecutedMethodsInThisClass = ((numberOfExecutedMethodsInThisClass ?? 0) + 1);
   }
 }

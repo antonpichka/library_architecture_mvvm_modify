@@ -13,8 +13,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
+class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+    extends BaseModelQNamedServiceViewModel<User,ListUser>
     implements
         InsertModelToNamedServiceParameterNamedDataSource<bool,Registration>,
         UpdateModelToNamedServiceParameterNamedDataSource<bool,Login>

@@ -6,12 +6,13 @@ import 'package:library_architecture_mvvm_modify/utility/exception_controller.da
 import 'package:meta/meta.dart';
 
 abstract class BaseListModel<T extends BaseModel> {
-  List<T>? list;
+  List<T>? listModel;
   ExceptionController exceptionController;
+  @protected
   Enum? enumNamedForIterator;
   final Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
 
-  BaseListModel.success(this.list,[this._mapEnumNamedForIteratorAndIterator,this.enumNamedForIterator])
+  BaseListModel.success(this.listModel,[this.enumNamedForIterator,this._mapEnumNamedForIteratorAndIterator])
       : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
       : exceptionController = ExceptionController.exception(exception),
@@ -24,16 +25,14 @@ abstract class BaseListModel<T extends BaseModel> {
         _mapEnumNamedForIteratorAndIterator = null;
 
   @nonVirtual
-  void startIteratorForList(
-      Object thisClass)
-  {
+  void startIteratorForListModel() {
     if(_mapEnumNamedForIteratorAndIterator!.isEmpty) {
-      throw LocalException(thisClass,EnumGuiltyForLocalException.developer,"MapEnumNamedForIteratorAndIterator isEmpty");
+      return;
     }
     BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
     if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
-      iterator.list = list!;
-      list = iterator.getSortedListByParameterList;
+      iterator.listModel = listModel!;
+      listModel = iterator.getSortedListModelParameterListModel;
       return;
     }
     for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator!.keys) {
@@ -43,53 +42,53 @@ abstract class BaseListModel<T extends BaseModel> {
       iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
-    iterator.list = list!;
-    list = iterator.getSortedListByParameterList;
+    iterator.listModel = listModel!;
+    listModel = iterator.getSortedListModelParameterListModel;
   }
 
   @nonVirtual
-  void insertToList(
+  void insertToListModel(
       T model)
   {
-    list?.add(model);
+    listModel?.add(model);
   }
 
   @nonVirtual
-  void updateToList(
+  void updateToListModel(
       T model)
   {
-    list?[list!.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
+    listModel?[listModel!.indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
-  void deleteToList(
+  void deleteToListModel(
       T model)
   {
-    list?.removeWhere((T item) => item.uniqueId == model.uniqueId);
+    listModel?.removeWhere((T item) => item.uniqueId == model.uniqueId);
   }
 
   @nonVirtual
-  void insertListToList(
+  void insertListToListModel(
       List<T> listForInsert)
   {
-    list?.addAll(listForInsert);
+    listModel?.addAll(listForInsert);
   }
 
   @nonVirtual
-  void updateListToList(
+  void updateListToListModel(
       List<T> listForUpdate)
   {
     for(T itemForUpdate in listForUpdate) {
-      list?[list!.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
+      listModel?[listModel!.indexWhere((T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
     }
   }
 
   @nonVirtual
-  void deleteListToList(
+  void deleteListToListModel(
       List<T> listForDelete)
   {
     for(T itemForDelete in listForDelete) {
-      list?.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
+      listModel?.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
     }
   }
 }

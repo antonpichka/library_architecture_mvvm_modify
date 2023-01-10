@@ -10,8 +10,8 @@ class Int
   Int.successForFBDS() : field = 0,super.successForFBDS();
   Int.exceptionForFBDS(super.exception) : field = 0,super.exceptionForFBDS();
 
-  String get getOneParametersNamedForNamedWidgetOrView => field.toString();
+  String get getOneParametersNamedForNamed => field.toString();
 
-  void setOneParametersNamedForNamedWidgetOrView() =>  field = (field + 1);
-  void setTwoParametersNamedForNamedWidgetOrView() =>  field = (field - 1);
+  void setOneParametersNamedForNamed() =>  field = (field + 1);
+  void setTwoParametersNamedForNamed() =>  field = (field - 1);
 }

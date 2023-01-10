@@ -10,5 +10,5 @@ class Bool
   Bool.successForFBDS() : isField = false,super.successForFBDS();
   Bool.exceptionForFBDS(super.exception) : isField = false,super.exceptionForFBDS();
 
-  String get getOneParametersNamedForNamedWidgetOrView => isField.toString();
+  String get getOneParametersNamedForNamed => isField.toString();
 }

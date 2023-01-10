@@ -19,7 +19,7 @@ class User
   User.exception(super.exception) : super.exception();
 
   static User get getUserForSuccess => User.success("","","","");
-  static User get getUserForSuccessWhereParametersEqualsStringNull => User.success("null","null","null","null");
+  static User get getUserForSuccessWhereParametersEqualsNull => User.success(null,null,null,null);
   static const constUserQTempCacheService = "__user_q_temp_cache_service__";
 
   EnumUserForMainView get getEnumUserForMainView {
@@ -45,9 +45,9 @@ class User
 
   @protected
   bool? isOneParametersNamedForGetEnumUserForMainView() {
-    return uniqueId == "null" &&
-        email == "null" &&
-        name == "null" &&
-        photo == "null";
+    return uniqueId == null &&
+        email == null &&
+        name == null &&
+        photo == null;
   }
 }

@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamUser
-    implements IInitializedStreamModel<User,ListUser<User>>
+    implements IInitializedStreamModel<User,ListUser>
 {
   @override
-  IStreamModel<User, ListUser<User>>? initializedStreamModel() {
-    return DefaultStreamModel<User,ListUser<User>>(User.getUserForSuccess, ListUser.success([]));
+  IStreamModel<User, ListUser>? initializedStreamModel() {
+    return DefaultStreamModel<User,ListUser>(User.getUserForSuccess, ListUser.getListUserForSuccess);
   }
 }

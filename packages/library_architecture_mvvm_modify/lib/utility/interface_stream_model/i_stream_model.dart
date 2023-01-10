@@ -5,8 +5,8 @@ import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 abstract class IStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     implements IDispose
 {
-  Stream<T>? get getStreamModel;
-  Stream<Y>? get getStreamListModel;
+  Stream<T?> get getStreamModel;
+  Stream<Y?> get getStreamListModel;
   T? get getModel;
   Y? get getListModel;
   set setModel(T? model);

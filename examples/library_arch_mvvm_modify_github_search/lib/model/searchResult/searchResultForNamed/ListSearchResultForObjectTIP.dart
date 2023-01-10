@@ -10,6 +10,6 @@ class ListSearchResultForObjectTIP
       return null;
     }
     final listSearchResult = parameter as ListSearchResult;
-    return ListSearchResult.success(listSearchResult.list);
+    return ListSearchResult.success(listSearchResult.listModel);
   }
 }

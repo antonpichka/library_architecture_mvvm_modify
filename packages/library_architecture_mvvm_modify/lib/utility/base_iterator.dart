@@ -4,16 +4,16 @@ import 'package:meta/meta.dart';
 abstract class BaseIterator<T extends BaseModel>
     implements Iterator<T>
 {
-  List<T>? list;
+  List<T>? listModel;
 
   @nonVirtual
-  List<T> get getSortedListByParameterList {
-    List<T> list = List.empty(growable: true);
+  List<T> get getSortedListModelParameterListModel {
+    List<T> listModel = List.empty(growable: true);
     while(moveNext()) {
-      T item = current;
-      list.add(item);
+      final model = current;
+      listModel.add(model);
     }
-    this.list = list;
-    return this.list!;
+    this.listModel = listModel;
+    return this.listModel!;
   }
 }

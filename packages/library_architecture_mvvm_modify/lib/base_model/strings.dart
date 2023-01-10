@@ -10,5 +10,5 @@ class Strings
   Strings.successForFBDS() : field = "",super.successForFBDS();
   Strings.exceptionForFBDS(super.exception) : field = "",super.exceptionForFBDS();
 
-  String get getOneParametersNamedForNamedWidgetOrView => field.toString();
+  String get getOneParametersNamedForNamed => field.toString();
 }

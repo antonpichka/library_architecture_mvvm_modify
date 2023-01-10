@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamPostFirstBranchOne
-    implements IInitializedStreamModel<PostFirstBranchOne,ListPostFirstBranchOne<PostFirstBranchOne>>
+    implements IInitializedStreamModel<PostFirstBranchOne,ListPostFirstBranchOne>
 {
   @override
-  IStreamModel<PostFirstBranchOne,ListPostFirstBranchOne<PostFirstBranchOne>>? initializedStreamModel() {
-    return DefaultStreamModel<PostFirstBranchOne,ListPostFirstBranchOne<PostFirstBranchOne>>(PostFirstBranchOne.getPostFirstBranchOneForSuccess,ListPostFirstBranchOne.success([]));
+  IStreamModel<PostFirstBranchOne,ListPostFirstBranchOne>? initializedStreamModel() {
+    return DefaultStreamModel<PostFirstBranchOne,ListPostFirstBranchOne>(PostFirstBranchOne.getPostFirstBranchOneForSuccess,ListPostFirstBranchOne.getListPostFirstBranchOneForSuccess);
   }
 }

@@ -70,7 +70,7 @@ class SearchBodyWidgetState
 
   @protected
   Widget buildSuccess(ListSearchResultInLoading<SearchResultInLoading>? list) {
-    return Expanded(child: buildListViewForSuccess(list!.list));
+    return Expanded(child: buildListViewForSuccess(list!.listModel));
   }
 
   @protected

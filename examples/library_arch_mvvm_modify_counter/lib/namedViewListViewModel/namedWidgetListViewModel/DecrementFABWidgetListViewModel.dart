@@ -1,21 +1,19 @@
-import 'package:flutter/foundation.dart';
-import 'package:library_arch_mvvm_modify_counter/modelQThereIsStateViewModel/intQThereIsStateViewModel/IntQThereIsStateViewModelForIncrementAndDecrement.dart';
-import 'package:library_architecture_mvvm_modify/base_model/int.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_int.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/int_q_there_is_state_view_model.dart';
+import 'package:meta/meta.dart';
 
 class DecrementFABWidgetListViewModel {
   @protected
-  final IntQThereIsStateViewModelForIncrementAndDecrement<Int,ListInt<Int>> intQThereIsStateViewModelForIncrementAndDecrement;
+  final IntQThereIsStateViewModel intQThereIsStateViewModelForDecrement;
 
-  DecrementFABWidgetListViewModel(this.intQThereIsStateViewModelForIncrementAndDecrement);
+  DecrementFABWidgetListViewModel(this.intQThereIsStateViewModelForDecrement);
 
-  void setTwoParametersNamedForNamedWidgetOrViewByIntForIncrementAndDecrementAndInGeneralZeroTask()
+  void setTwoParametersNamedForNamedByIntAndInGeneralZeroTask()
   {
-    intQThereIsStateViewModelForIncrementAndDecrement
-        .getIntForIncrementAndDecrement
-        ?.setTwoParametersNamedForNamedWidgetOrView();
-    intQThereIsStateViewModelForIncrementAndDecrement
-        .notifyStreamIntForIncrementAndDecrement();
+    intQThereIsStateViewModelForDecrement
+        .getInt
+        ?.setTwoParametersNamedForNamed();
+    intQThereIsStateViewModelForDecrement
+        .notifyStreamInt();
     return;
   }
 }

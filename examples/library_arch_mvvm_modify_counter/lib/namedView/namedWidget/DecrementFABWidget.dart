@@ -14,6 +14,6 @@ class DecrementFABWidget
     return FloatingActionButton(
         child: const Icon(Icons.remove),
         onPressed: () => lo
-            .setTwoParametersNamedForNamedWidgetOrViewByIntForIncrementAndDecrementAndInGeneralZeroTask());
+            .setTwoParametersNamedForNamedByIntAndInGeneralZeroTask());
   }
 }

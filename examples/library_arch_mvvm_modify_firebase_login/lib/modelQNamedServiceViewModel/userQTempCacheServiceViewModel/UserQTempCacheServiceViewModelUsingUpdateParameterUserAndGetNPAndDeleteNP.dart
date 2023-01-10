@@ -11,10 +11,10 @@ import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
 class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
+    extends BaseModelQNamedServiceViewModel<User,ListUser>
     implements
-        UpdateModelToNamedServiceParameterNamedDataSource<bool,T>,
-        GetModelFromNamedServiceNPDataSource<T>,
+        UpdateModelToNamedServiceParameterNamedDataSource<bool,User>,
+        GetModelFromNamedServiceNPDataSource<User>,
         DeleteModelToNamedServiceNPDataSource<bool>
 {
   @protected

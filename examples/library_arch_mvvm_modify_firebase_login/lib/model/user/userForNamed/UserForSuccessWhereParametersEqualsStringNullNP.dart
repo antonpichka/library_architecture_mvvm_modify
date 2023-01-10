@@ -6,6 +6,6 @@ class UserForSuccessWhereParametersEqualsStringNullNP
 {
   @override
   User getModelForNamedNP() {
-    return User.getUserForSuccessWhereParametersEqualsStringNull;
+    return User.getUserForSuccessWhereParametersEqualsNull;
   }
 }

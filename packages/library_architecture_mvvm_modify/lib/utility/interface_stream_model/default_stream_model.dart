@@ -34,10 +34,10 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   }
 
   @override
-  Stream<T>? get getStreamModel => _streamControllerForModel!.stream;
+  Stream<T?> get getStreamModel => _streamControllerForModel!.stream;
 
   @override
-  Stream<Y>? get getStreamListModel => _streamControllerForListModel!.stream;
+  Stream<Y?> get getStreamListModel => _streamControllerForListModel!.stream;
 
   @override
   T? get getModel => _model;

@@ -13,9 +13,7 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
 {
   final IStreamModel<T,Y>? _iStreamModel;
 
-  BaseModelQThereIsStateViewModel(
-      IInitializedStreamModel<T,Y> iInitializedStreamModel,
-      {Object? theClassForBaseNamedViewListViewModel})
+  BaseModelQThereIsStateViewModel(IInitializedStreamModel<T,Y> iInitializedStreamModel)
       : _iStreamModel = iInitializedStreamModel.initializedStreamModel();
 
   @override
@@ -25,7 +23,6 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   }
 
   /// Start IStreamModel **/
-  @protected
   @nonVirtual
   IStreamModel<T,Y>? get getIStreamModel {
     incrementForNumberOfExecutedMethodsInThisClass();
@@ -34,7 +31,6 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   /// End IStreamModel **/
 
   /// Start Model **/
-  @protected
   @nonVirtual
   Future<T?> get getFutureModel
   async {
@@ -42,28 +38,24 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
     return _iStreamModel?.getModel;
   }
 
-  @protected
   @nonVirtual
-  Stream<T>? get getStreamModel {
+  Stream<T?>? get getStreamModel {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _iStreamModel?.getStreamModel;
   }
 
-  @protected
   @nonVirtual
   T? get getModel {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _iStreamModel?.getModel;
   }
 
-  @protected
   @nonVirtual
   set setModel(T? model) {
     incrementForNumberOfExecutedMethodsInThisClass();
     _iStreamModel?.setModel = model;
   }
 
-  @protected
   @nonVirtual
   void notifyStreamModel() {
     incrementForNumberOfExecutedMethodsInThisClass();
@@ -72,7 +64,6 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   /// End Model **/
 
   /// Start ListModel **/
-  @protected
   @nonVirtual
   Future<Y?> get getFutureListModel
   async {
@@ -80,28 +71,24 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
     return _iStreamModel?.getListModel;
   }
 
-  @protected
   @nonVirtual
-  Stream<Y>? get getStreamListModel {
+  Stream<Y?>? get getStreamListModel {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _iStreamModel?.getStreamListModel;
   }
 
-  @protected
   @nonVirtual
   Y? get getListModel {
     incrementForNumberOfExecutedMethodsInThisClass();
     return _iStreamModel?.getListModel;
   }
 
-  @protected
   @nonVirtual
   set setListModel(Y? listModel) {
     incrementForNumberOfExecutedMethodsInThisClass();
     _iStreamModel?.setListModel = listModel;
   }
 
-  @protected
   @nonVirtual
   void notifyStreamListModel() {
     incrementForNumberOfExecutedMethodsInThisClass();

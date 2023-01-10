@@ -14,8 +14,8 @@ class ListPost<T extends Post>
 {
   bool? hasReachedMax;
 
-  ListPost.success(super.list) : super.success() {
-    if(list!.isEmpty) {
+  ListPost.success(super.listModel) : super.success() {
+    if(listModel!.isEmpty) {
       hasReachedMax = true;
       return;
     }
@@ -26,6 +26,8 @@ class ListPost<T extends Post>
       : hasReachedMax = false,
         super.exception();
 
+  static ListPost get getListPostForSuccess => ListPost.success([]);
+
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
     if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
@@ -33,7 +35,7 @@ class ListPost<T extends Post>
     if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
       return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
-    if(list!.isEmpty) {
+    if(listModel!.isEmpty) {
       return EnumListPostForPostsListWidget.isEmptyList;
     }
     return EnumListPostForPostsListWidget.success;
@@ -41,10 +43,10 @@ class ListPost<T extends Post>
 
   bool? get getOneParametersNamedForPostsListWidget => hasReachedMax;
   int? get getTwoParametersNamedForPostsListWidget {
-    if(hasReachedMax!) {
-      return list!.length;
+    if(hasReachedMax ?? true) {
+      return listModel!.length;
     }
-    return list!.length + 1;
+    return listModel!.length + 1;
   }
   bool? get getThreeParametersNamedForPostsListWidget => hasReachedMax;
   bool? get getFourParametersNamedForPostsListWidget => hasReachedMax;
@@ -54,8 +56,8 @@ class ListPost<T extends Post>
   {
     exceptionController = listPost.exceptionController;
     hasReachedMax = listPost.getThreeParametersNamedForPostsListWidget;
-    if(!hasReachedMax!) {
-      insertListToList(listPost.list!);
+    if(!(hasReachedMax ?? true)) {
+      insertListToListModel(listPost.listModel!);
       return;
     }
   }
@@ -70,6 +72,6 @@ class ListPost<T extends Post>
   bool isOneParametersNamedForPostsListWidget(
       int index)
   {
-    return index >= list!.length;
+    return index >= listModel!.length;
   }
 }
