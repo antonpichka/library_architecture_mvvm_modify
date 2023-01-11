@@ -55,10 +55,9 @@ Examples taken for processing from library <a href="https://github.com/felangel/
   - ##### IInitializedStreamModel
   - ##### IStreamModel
 - #### ModelQNamedServiceViewModel
+  - ##### NamedService
   - ##### IModelQNamedServiceDataSource
   - ##### FBDS
-  - ##### NamedService
-    - ###### NamedSingleton
 - #### NamedViewListViewModel
   - ##### NamedWidgetListViewModel
 - #### NamedView
