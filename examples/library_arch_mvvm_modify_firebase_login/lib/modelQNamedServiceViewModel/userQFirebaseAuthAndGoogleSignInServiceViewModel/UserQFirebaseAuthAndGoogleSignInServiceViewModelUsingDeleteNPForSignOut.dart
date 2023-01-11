@@ -1,6 +1,7 @@
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthAndGoogleSignInService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/GoogleSignInService.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
@@ -12,7 +13,9 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<T 
     implements DeleteModelToNamedServiceNPDataSource<bool>
 {
   @protected
-  final firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
+  final firebaseAuthService = FirebaseAuthService();
+  @protected
+  final googleSignInService = GoogleSignInService();
 
   Future<Result<bool>?> deleteUserToFirebaseAuthAndGoogleSignInServiceNP() {
     return deleteModelToNamedServiceNP<bool>();
@@ -27,13 +30,11 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<T 
   Future<Result<bool>?> deleteModelToNamedServiceNPDS()
   async {
     try {
-      await firebaseAuthAndGoogleSignInService
-          .getFirebaseAuthSingleton
-          ?.getFirebaseAuth
+      await firebaseAuthService
+          .getFirebaseAuth
           ?.signOut();
-      await firebaseAuthAndGoogleSignInService
-          .getGoogleSignInSingleton
-          ?.getGoogleSignIn
+      await googleSignInService
+          .getGoogleSignIn
           ?.signOut();
       return Result<bool>.success(true);
     } catch (_) {

@@ -18,13 +18,13 @@ class PostFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForSt
   @override
   Y? getListPostFromObject(Object? object) {
     final list = object as List;
-    final listPost = list.map((dynamic json) {
+    final listPostFirstBranchOne = list.map((dynamic json) {
       final map = json as Map<String,dynamic>;
       return PostFirstBranchOne.success(
           map[Post.constParameterId],
           map[Post.constParameterTitle],
           map[Post.constParameterBody]);
     }).toList();
-    return ListPostFirstBranchOne.success(listPost) as Y?;
+    return ListPostFirstBranchOne.success(listPostFirstBranchOne) as Y?;
   }
 }

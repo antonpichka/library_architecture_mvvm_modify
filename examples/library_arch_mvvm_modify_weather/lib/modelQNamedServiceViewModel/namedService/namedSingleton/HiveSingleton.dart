@@ -4,7 +4,7 @@ import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/named_singleton/base_named_singleton.dart';
 
 class HiveSingleton
-    extends BaseNamedSingleton
+    extends BaseNamedService
 {
   static Box? _boxSettings;
   static Box? _boxWeather;

@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthAndTempCacheService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/TempCacheService.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:meta/meta.dart';
 
@@ -10,21 +11,21 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
     extends BaseModelQNamedServiceViewModel<T,Y>
 {
   @protected
-  final firebaseAuthAndTempCacheService = FirebaseAuthAndTempCacheService();
+  final firebaseAuthService = FirebaseAuthService();
+  @protected
+  final tempCacheService = TempCacheService();
 
-  Stream<User>? get getCustomStreamUser {
-    return firebaseAuthAndTempCacheService
-        .getFirebaseAuthSingleton
-        ?.getFirebaseAuth
+  Stream<T?>? get getCustomStreamUser {
+    return firebaseAuthService
+        .getFirebaseAuth
         ?.authStateChanges()
         .map((firebase_auth.User? firebaseUser)
     {
       final user = firebaseUser == null
           ? getUserWhereFirebaseUserNull()
           : getUserWhereFirebaseUserNotNull(firebaseUser);
-      firebaseAuthAndTempCacheService
-          .getTempCacheSingleton
-          ?.getTempCache
+      tempCacheService
+          .getTempCache
           ?.write(User.constUserQTempCacheService,user);
       return user;
     });
@@ -35,16 +36,16 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
   Object? get modelQNamedServiceDataSource => this;
 
   @protected
-  User getUserWhereFirebaseUserNull() {
-    return User.getUserForSuccessWhereParametersEqualsNull;
+  T? getUserWhereFirebaseUserNull() {
+    return User.getUserForSuccessWhereParametersEqualsNull as T?;
   }
 
   @protected
-  User getUserWhereFirebaseUserNotNull(firebase_auth.User firebaseUser) {
+  T? getUserWhereFirebaseUserNotNull(firebase_auth.User firebaseUser) {
     return User.success(
         firebaseUser.uid,
         firebaseUser.email,
         firebaseUser.displayName,
-        firebaseUser.photoURL);
+        firebaseUser.photoURL) as T?;
   }
 }

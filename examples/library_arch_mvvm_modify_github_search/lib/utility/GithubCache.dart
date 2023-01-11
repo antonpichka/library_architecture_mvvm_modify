@@ -7,7 +7,7 @@ class GithubCache {
     return value;
   }
 
-  void set<T extends Object>(String? term, T result) => _cache[term!] = result;
+  void set(String? term, Object result) => _cache[term!] = result;
   void remove(String? term) => _cache.remove(term);
   bool contains(String? term) => _cache.containsKey(term);
 }

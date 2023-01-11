@@ -1,13 +1,17 @@
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/namedSingleton/TempCacheSingleton.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/utility/TempCache.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/base_named_service.dart';
 
-class TempCacheService {
-  TempCacheSingleton? _tempCacheSingleton;
+class TempCacheService
+    extends BaseNamedService
+{
+  static TempCache? _tempCache;
 
-  TempCacheSingleton? get getTempCacheSingleton {
-    if(_tempCacheSingleton != null) {
-      return _tempCacheSingleton;
+  TempCache? get getTempCache {
+    incrementForNumberOfExecutedMethodsInThisClass();
+    if(_tempCache != null) {
+      return _tempCache;
     }
-    _tempCacheSingleton = TempCacheSingleton();
-    return _tempCacheSingleton;
+    _tempCache = TempCache();
+    return _tempCache;
   }
 }

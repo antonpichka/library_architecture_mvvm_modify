@@ -1,6 +1,6 @@
 import 'package:library_architecture_mvvm_modify/utility/testing.dart';
 
-class BaseNamedSingleton
+class BaseNamedService
     extends Testing
 {
 

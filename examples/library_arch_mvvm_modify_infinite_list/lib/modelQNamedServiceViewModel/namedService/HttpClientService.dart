@@ -1,13 +1,17 @@
-import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/namedService/namedSingleton/HttpClientSingleton.dart';
+import 'package:http/http.dart' as http;
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/base_named_service.dart';
 
-class HttpClientService {
-  HttpClientSingleton? _httpClientSingleton;
+class HttpClientService
+    extends BaseNamedService
+{
+  static http.Client? _httpClient;
 
-  HttpClientSingleton? get getHttpClientSingleton {
-    if(_httpClientSingleton != null) {
-      return _httpClientSingleton;
+  http.Client? get getHttpClient {
+    incrementForNumberOfExecutedMethodsInThisClass();
+    if(_httpClient != null) {
+      return _httpClient;
     }
-    _httpClientSingleton = HttpClientSingleton();
-    return _httpClientSingleton;
+    _httpClient = http.Client();
+    return _httpClient;
   }
 }

@@ -7,8 +7,7 @@ class SearchResultInLoadingQThereIsStateViewModel<T extends SearchResultInLoadin
 {
   SearchResultInLoadingQThereIsStateViewModel(super.iInitializedStreamModel);
 
-
-  Stream<Y>? get getStreamListSearchResultInLoading {
+  Stream<Y?>? get getStreamListSearchResultInLoading {
     return getStreamListModel;
   }
 

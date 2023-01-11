@@ -43,8 +43,7 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
   async {
     try {
       tempCacheService
-          .getTempCacheSingleton
-          ?.getTempCache
+          .getTempCache
           ?.write(User.constUserQTempCacheService, parameter);
       return Result<bool>.success(true);
     } catch (e) {
@@ -57,10 +56,10 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
   Future<T?> getModelFromNamedServiceNPDS()
   async {
     try {
-      return getUserFromObject(tempCacheService
-          .getTempCacheSingleton
-          ?.getTempCache
-          ?.read(User.constUserQTempCacheService));
+      return getUserFromObject(
+          tempCacheService
+              .getTempCache
+              ?.read(User.constUserQTempCacheService));
     } catch (e) {
       return getUserFromBaseException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
@@ -72,8 +71,7 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
   async {
     try {
       tempCacheService
-          .getTempCacheSingleton
-          ?.getTempCache
+          .getTempCache
           ?.delete(User.constUserQTempCacheService);
       return Result<bool>.success(true);
     } catch (e) {

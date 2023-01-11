@@ -43,8 +43,7 @@ class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdate
   async {
     try {
       await firebaseAuthService
-          .getFirebaseAuthSingleton
-          ?.getFirebaseAuth
+          .getFirebaseAuth
           ?.createUserWithEmailAndPassword(email: parameter!.email, password: parameter.password);
       return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
@@ -61,8 +60,7 @@ class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdate
   async {
     try {
       await firebaseAuthService
-          .getFirebaseAuthSingleton
-          ?.getFirebaseAuth
+          .getFirebaseAuth
           ?.signInWithEmailAndPassword(email: parameter!.email, password: parameter.password);
       return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {

@@ -5,11 +5,11 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamSearchResultInLoading
-    implements IInitializedStreamModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>
+    implements IInitializedStreamModel<SearchResultInLoading,ListSearchResultInLoading>
 {
   @override
-  IStreamModel<SearchResultInLoading, ListSearchResultInLoading<SearchResultInLoading>>? initializedStreamModel() {
-    return DefaultStreamModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>>(SearchResultInLoading.getSearchResultInLoadingForSuccess,ListSearchResultInLoading.getListSearchResultInLoadingForSuccess);
+  IStreamModel<SearchResultInLoading, ListSearchResultInLoading>? initializedStreamModel() {
+    return DefaultStreamModel<SearchResultInLoading,ListSearchResultInLoading>(SearchResultInLoading.getSearchResultInLoadingForSuccess,ListSearchResultInLoading.getListSearchResultInLoadingForSuccess);
   }
 
 }

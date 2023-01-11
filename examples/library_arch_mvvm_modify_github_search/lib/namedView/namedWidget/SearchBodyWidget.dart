@@ -20,13 +20,13 @@ class SearchBodyWidgetState
 {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<ListSearchResultInLoading<SearchResultInLoading>>(
+    return StreamBuilder<ListSearchResultInLoading?>(
       stream: widget.lo.getStreamListSearchResultInLoading,
-      builder: (BuildContext context, AsyncSnapshot<ListSearchResultInLoading<SearchResultInLoading>> state) {
+      builder: (BuildContext context, AsyncSnapshot<ListSearchResultInLoading?> state) {
         if(state.data == null) {
           return buildDataNull();
         }
-        ListSearchResultInLoading<SearchResultInLoading>? list = state.data;
+        ListSearchResultInLoading? list = state.data;
         switch(list!.getEnumListSearchResultInLoadingForSearchBodyWidget) {
           case EnumListSearchResultInLoadingForSearchBodyWidget.error:
             return buildError(list);

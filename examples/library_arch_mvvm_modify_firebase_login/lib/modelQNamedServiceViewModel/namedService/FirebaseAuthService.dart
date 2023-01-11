@@ -1,13 +1,17 @@
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/namedSingleton/FirebaseAuthSingleton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/base_named_service.dart';
 
-class FirebaseAuthService {
-  FirebaseAuthSingleton? _firebaseAuthSingleton;
+class FirebaseAuthService
+    extends BaseNamedService
+{
+  static FirebaseAuth? _firebaseAuth;
 
-  FirebaseAuthSingleton? get getFirebaseAuthSingleton {
-    if(_firebaseAuthSingleton != null) {
-      return _firebaseAuthSingleton;
+  FirebaseAuth? get getFirebaseAuth {
+    incrementForNumberOfExecutedMethodsInThisClass();
+    if(_firebaseAuth != null) {
+      return _firebaseAuth;
     }
-    _firebaseAuthSingleton = FirebaseAuthSingleton();
-    return _firebaseAuthSingleton;
+    _firebaseAuth = FirebaseAuth.instance;
+    return _firebaseAuth;
   }
 }

@@ -4,5 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 class ListCustomTimer<T extends CustomTimer>
     extends BaseListModel<T>
 {
-  ListCustomTimer.success(super.list) : super.success();
+  ListCustomTimer.success(super.listModel) : super.success();
+
+  static ListCustomTimer get getListCustomTimerForSuccess => ListCustomTimer.success([]);
 }

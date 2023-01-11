@@ -7,5 +7,6 @@ class ListSearchResult<T extends SearchResult>
   ListSearchResult.success(super.list) : super.success();
   ListSearchResult.exception(super.exception) : super.exception();
 
-  static const constParameterList = "items";
+  static ListSearchResult get getListSearchResultForSuccess => ListSearchResult.success([]);
+  static const constParameterListModel = "items";
 }

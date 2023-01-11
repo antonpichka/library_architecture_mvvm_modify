@@ -32,8 +32,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
   async {
     try {
       final response = await httpClientService
-          .getHttpClientSingleton
-          ?.getHttpClient
+          .getHttpClient
           ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '$parameter', '_limit': '20'}))
           .timeout(const Duration(seconds: 5));
       if(response?.statusCode != 200) {

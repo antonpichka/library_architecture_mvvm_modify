@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
-import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthAndGoogleSignInService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthService.dart';
+import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/GoogleSignInService.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_np_data_source.dart';
@@ -15,7 +16,9 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
     implements UpdateModelToNamedServiceNPDataSource<bool>
 {
   @protected
-  final firebaseAuthAndGoogleSignInService = FirebaseAuthAndGoogleSignInService();
+  final firebaseAuthService = FirebaseAuthService();
+  @protected
+  final googleSignInService = GoogleSignInService();
 
   Future<Result<bool>?> updateUserToFirebaseAuthAndGoogleSignInServiceNP() {
     return updateModelToNamedServiceNP<bool>();
@@ -33,15 +36,13 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
       late final firebase_auth.AuthCredential credential;
       if (kIsWeb) {
         final googleProvider = firebase_auth.GoogleAuthProvider();
-        final userCredential = await firebaseAuthAndGoogleSignInService
-            .getFirebaseAuthSingleton
-            ?.getFirebaseAuth
-            ?.signInWithPopup(googleProvider,);
+        final userCredential = await firebaseAuthService
+            .getFirebaseAuth
+            ?.signInWithPopup(googleProvider);
         credential = userCredential!.credential!;
       } else {
-        final googleUser = await firebaseAuthAndGoogleSignInService
-            .getGoogleSignInSingleton
-            ?.getGoogleSignIn
+        final googleUser = await googleSignInService
+            .getGoogleSignIn
             ?.signIn();
         final googleAuth = await googleUser?.authentication;
         credential = firebase_auth.GoogleAuthProvider.credential(
@@ -49,9 +50,8 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle
           idToken: googleAuth?.idToken,
         );
       }
-      await firebaseAuthAndGoogleSignInService
-          .getFirebaseAuthSingleton
-          ?.getFirebaseAuth
+      await firebaseAuthService
+          .getFirebaseAuth
           ?.signInWithCredential(credential);
       return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {

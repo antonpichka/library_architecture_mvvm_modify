@@ -1,32 +1,22 @@
 import 'dart:async';
-import 'package:library_arch_mvvm_modify_github_search/model/customTimer/CustomTimer.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/customTimer/ListCustomTimer.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/searchResult/ListSearchResult.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/searchResult/SearchResult.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/ListSearchResultInLoading.dart';
-import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoading/SearchResultInLoading.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceViewModel/searchResultQGithubCacheAndHttpClientServiceViewModel/SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub.dart';
-import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/boolQThereIsStateViewModel/BoolQThereIsStateViewModelForAntiSpam.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/customTimerQThereIsStateViewModel/CustomTimerQThereIsStateViewModel.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/searchResultInLoadingQThereIsStateViewModel/SearchResultInLoadingQThereIsStateViewModel.dart';
-import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/stringsQThereIsStateViewModel/StringsQThereIsStateViewModelForSaveLettersSearch.dart';
-import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_bool.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
-import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/strings_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
 class SearchBarWidgetListViewModel {
   @protected
-  final SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub<SearchResult,ListSearchResult<SearchResult>> searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub;
+  final SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub;
   @protected
-  final BoolQThereIsStateViewModelForAntiSpam<Bool,ListBool<Bool>> boolQThereIsStateViewModelForAntiSpam;
+  final BoolQThereIsStateViewModel boolQThereIsStateViewModelForAntiSpam;
   @protected
-  final StringsQThereIsStateViewModelForSaveLettersSearch<Strings,ListStrings<Strings>> stringsQThereIsStateViewModelForSaveLettersSearch;
+  final StringsQThereIsStateViewModel stringsQThereIsStateViewModelForSaveLettersSearch;
   @protected
-  final SearchResultInLoadingQThereIsStateViewModel<SearchResultInLoading,ListSearchResultInLoading<SearchResultInLoading>> searchResultInLoadingQThereIsStateViewModel;
+  final SearchResultInLoadingQThereIsStateViewModel searchResultInLoadingQThereIsStateViewModel;
   @protected
-  final CustomTimerQThereIsStateViewModel<CustomTimer,ListCustomTimer<CustomTimer>> customTimerQThereIsStateViewModel;
+  final CustomTimerQThereIsStateViewModel customTimerQThereIsStateViewModel;
 
   SearchBarWidgetListViewModel(
       this.searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub,
@@ -39,10 +29,10 @@ class SearchBarWidgetListViewModel {
       String search)
   async {
     stringsQThereIsStateViewModelForSaveLettersSearch
-        .getStringsForSaveLettersSearch
+        .getStrings
         ?.field = search;
     if(stringsQThereIsStateViewModelForSaveLettersSearch
-        .getStringsForSaveLettersSearch
+        .getStrings
         !.field
         .isEmpty)
     {
@@ -50,7 +40,7 @@ class SearchBarWidgetListViewModel {
           .getCustomTimer
           ?.oneParametersNamedForSearchBarWidget();
       boolQThereIsStateViewModelForAntiSpam
-          .getBoolForAntiSpam
+          .getBool
           ?.isField = false;
       searchResultInLoadingQThereIsStateViewModel
           .getListSearchResultInLoading
@@ -60,13 +50,13 @@ class SearchBarWidgetListViewModel {
       return;
     }
     if(boolQThereIsStateViewModelForAntiSpam
-        .getBoolForAntiSpam
+        .getBool
         !.isField)
     {
       return;
     }
     boolQThereIsStateViewModelForAntiSpam
-        .getBoolForAntiSpam
+        .getBool
         ?.isField = true;
     searchResultInLoadingQThereIsStateViewModel
         .getListSearchResultInLoading
@@ -78,11 +68,11 @@ class SearchBarWidgetListViewModel {
         ?.setOneParametersNamedForSearchBarWidget =
         () async {
           boolQThereIsStateViewModelForAntiSpam
-              .getBoolForAntiSpam
+              .getBool
               ?.isField= false;
           // 1
           final listSearchResult = await searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub
-              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterString(stringsQThereIsStateViewModelForSaveLettersSearch.getStringsForSaveLettersSearch!.field);
+              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterString(stringsQThereIsStateViewModelForSaveLettersSearch.getStrings!.field);
           searchResultInLoadingQThereIsStateViewModel
               .getListSearchResultInLoading
               ?.setTwoParametersNamedForSearchBarWidget = listSearchResult!;

@@ -1,8 +1,8 @@
 import 'package:http/http.dart' as http;
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/named_singleton/base_named_singleton.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/base_named_service.dart';
 
-class HttpClientSingleton
-    extends BaseNamedSingleton
+class HttpClientService
+    extends BaseNamedService
 {
   static http.Client? _httpClient;
 

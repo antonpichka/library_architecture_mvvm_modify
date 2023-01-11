@@ -8,7 +8,7 @@ class UserQThereIsStateViewModel<T extends User,Y extends ListUser<T>>
     extends BaseModelQThereIsStateViewModel<T,Y>
 {
   @protected
-  StreamSubscription<T>? customStreamSubscriptionUser;
+  StreamSubscription<T?>? customStreamSubscriptionUser;
 
   UserQThereIsStateViewModel(super.iInitializedStreamModel);
 
@@ -34,7 +34,7 @@ class UserQThereIsStateViewModel<T extends User,Y extends ListUser<T>>
     notifyStreamModel();
   }
 
-  void customListenStreamUser(Stream<T>? customStreamUser,Function(User user) callback) {
+  void customListenStreamUser(Stream<T?>? customStreamUser,Function(User? user) callback) {
     customStreamSubscriptionUser = customStreamUser
         ?.listen((event) {
           callback(event);
