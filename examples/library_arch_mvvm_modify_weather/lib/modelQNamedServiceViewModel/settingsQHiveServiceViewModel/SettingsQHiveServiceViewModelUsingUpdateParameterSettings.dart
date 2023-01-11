@@ -31,9 +31,8 @@ class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<T extends Settin
   async {
     try {
       final Box? boxSettings = await hiveService
-          .getHiveSingleton
-          ?.getBoxSettings();
-      boxSettings?.put(Settings.constKeySettingsQHiveService, parameter);
+          .getBoxSettings();
+      boxSettings?.put(Settings.constKeySettingsQHiveService,parameter);
       return Result<bool>.success(true);
     } catch(e) {
       return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));

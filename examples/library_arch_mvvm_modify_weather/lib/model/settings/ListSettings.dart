@@ -4,8 +4,8 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 class ListSettings<T extends Settings>
     extends BaseListModel<T>
 {
-  ListSettings.success(super.list) : super.success();
+  ListSettings.success(super.listModel) : super.success();
   ListSettings.exception(super.exception) : super.exception();
 
-  static ListSettings<Settings> get getListSettingsForSuccess => ListSettings<Settings>.success([]);
+  static ListSettings get getListSettingsForSuccess => ListSettings.success([]);
 }

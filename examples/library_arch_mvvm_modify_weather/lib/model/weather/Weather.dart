@@ -42,51 +42,7 @@ class Weather
   static const constParameterWeatherCode = "weathercode";
   static const constParameterTemperature = "temperature";
 
-  String? get getOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi {
-    switch(getEnumWeatherConditionForGetOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi) {
-      case EnumWeatherCondition.clear:
-        return Colors.orangeAccent.value.toString();
-      case EnumWeatherCondition.rainy:
-        return Colors.indigoAccent.value.toString();
-      case EnumWeatherCondition.cloudy:
-        return Colors.blueGrey.value.toString();
-      case EnumWeatherCondition.snowy:
-        return Colors.lightBlueAccent.value.toString();
-      case EnumWeatherCondition.unknown:
-        return constDefaultColor.value.toString();
-    }
-  }
-
-  String? get getOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget {
-    switch(getEnumWeatherConditionForGetOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget) {
-      case EnumWeatherCondition.clear:
-        return '☀️';
-      case EnumWeatherCondition.rainy:
-        return '🌧️';
-      case EnumWeatherCondition.cloudy:
-        return '☁️';
-      case EnumWeatherCondition.snowy:
-        return '🌨️';
-      case EnumWeatherCondition.unknown:
-        return '❓';
-    }
-  }
-
-  String? get getOneParametersNamedForWeatherIsLoadingWhereGetOneParametersNamedForWeatherWidget {
-    return temperature?.toStringAsPrecision(2);
-  }
-
-  @protected
-  EnumWeatherCondition get getEnumWeatherConditionForGetOneParametersNamedForWeatherAndSettingsWhereSetThreeParametersNamedForWeatherAndSettingsQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi {
-    return _getEnumWeatherCondition;
-  }
-
-  @protected
-  EnumWeatherCondition get getEnumWeatherConditionForGetOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget {
-    return _getEnumWeatherCondition;
-  }
-
-  EnumWeatherCondition get _getEnumWeatherCondition {
+  EnumWeatherCondition get getEnumWeatherCondition {
     switch (weatherCode?.toInt()) {
       case 0:
         return EnumWeatherCondition.clear;
@@ -101,46 +57,30 @@ class Weather
     }
   }
 
-  set setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForFloatingActionButtonSearchWidget(
-      TemperatureUnits temperatureUnits)
-  {
-    _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
+  String? get getNameColorFromGetEnumWeatherCondition {
+    switch(getEnumWeatherCondition) {
+      case EnumWeatherCondition.clear:
+        return Colors.orangeAccent.value.toString();
+      case EnumWeatherCondition.rainy:
+        return Colors.indigoAccent.value.toString();
+      case EnumWeatherCondition.cloudy:
+        return Colors.blueGrey.value.toString();
+      case EnumWeatherCondition.snowy:
+        return Colors.lightBlueAccent.value.toString();
+      case EnumWeatherCondition.unknown:
+        return constDefaultColor.value.toString();
+      default:
+        return constDefaultColor.value.toString();
+    }
   }
 
-  set setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForWeatherWidget(
-      TemperatureUnits temperatureUnits)
-  {
-    _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
-  }
-
-  set setOneParametersNamedForWeatherIsLoadingWhereSetSixParametersNamedForWeatherWidget(
-      TemperatureUnits temperatureUnits)
-  {
-    _setFromTemperatureUnitsParameterTemperature = temperatureUnits;
-  }
-
-  set _setFromTemperatureUnitsParameterTemperature(TemperatureUnits temperatureUnits) {
+  set setFromTemperatureUnitsParameterTemperature(TemperatureUnits temperatureUnits) {
     temperature = temperatureUnits == TemperatureUnits.celsius
         ? temperature?.toCelsius()
         : temperature?.toFahrenheit();
   }
 
-  bool? isOneParametersNamedForWeatherQHttpClientAndHiveServiceDataSourceUsingGetParameterStringForLocationFromOpenMeteoApi() {
-    return location != null &&
-        weatherCode != null &&
-        temperature != null &&
-        lastUpdated != null;
-  }
-
-  bool? isOneParametersNamedForWeatherIsLoadingWhereIsOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() {
-    return _isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
-  }
-
-  bool? isOneParametersNamedForWeatherIsLoadingWhereIsThreeParametersNamedForWeatherWidget() {
-    return _isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
-  }
-
-  bool _isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() {
+  bool isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() {
     return location == null &&
         weatherCode == null &&
         temperature == null &&

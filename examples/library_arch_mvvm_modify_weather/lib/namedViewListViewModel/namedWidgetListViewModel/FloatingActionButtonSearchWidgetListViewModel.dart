@@ -11,7 +11,7 @@ class FloatingActionButtonSearchWidgetListViewModel {
   @protected
   final WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>> weatherIsLoadingQNoServiceViewModelUsingGetNP;
   @protected
-  final WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
+  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
 
   FloatingActionButtonSearchWidgetListViewModel(
       this.weatherIsLoadingQNoServiceViewModelUsingGetNP,
@@ -29,7 +29,7 @@ class FloatingActionButtonSearchWidgetListViewModel {
         .notifyStreamWeatherIsLoadingUsingGetNP();
     // 1
     final weatherAndSettingsFromHttpClientAndHive = await weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi
-        .getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettings(StringTypeParameter.success(location));
+        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(StringTypeParameter.success(location));
     if(weatherAndSettingsFromHttpClientAndHive
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())

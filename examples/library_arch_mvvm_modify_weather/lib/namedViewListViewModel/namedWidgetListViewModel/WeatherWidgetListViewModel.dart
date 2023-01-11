@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWe
 import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/ListWeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHiveServiceViewModel/WeatherAndSettingsQHiveServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHiveServiceViewModel/WeatherSettingsQHiveServiceViewModelUsingGetNP.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHttpClientAndHiveServiceViewModel/WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherIsLoadingQNoServiceViewModel/WeatherIsLoadingQNoServiceViewModelUsingGetNP.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
@@ -12,9 +12,9 @@ class WeatherWidgetListViewModel {
   @protected
   final WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>> weatherIsLoadingQNoServiceViewModelUsingGetNP;
   @protected
-  final WeatherAndSettingsQHiveServiceViewModelUsingGetNP<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHiveServiceViewModelUsingGetNP;
+  final WeatherSettingsQHiveServiceViewModelUsingGetNP<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHiveServiceViewModelUsingGetNP;
   @protected
-  final WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
+  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
 
   WeatherWidgetListViewModel(
       this.weatherIsLoadingQNoServiceViewModelUsingGetNP,
@@ -40,7 +40,7 @@ class WeatherWidgetListViewModel {
         .notifyStreamWeatherIsLoadingUsingGetNP();
     // 1
     final weatherAndSettingsFromHive = await weatherAndSettingsQHiveServiceViewModelUsingGetNP
-        .getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettings();
+        .getWeatherSettingsFromHiveServiceNP();
     if(weatherAndSettingsFromHive
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())
@@ -81,7 +81,7 @@ class WeatherWidgetListViewModel {
         .notifyStreamWeatherIsLoadingUsingGetNP();
     // 1
     final weatherAndSettingsFromHttpClientAndHive = await weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi
-        .getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettings(StringTypeParameter.success(weatherIsLoadingQNoServiceViewModelUsingGetNP.getWeatherIsLoadingUsingGetNP?.getFiveParametersNamedForWeatherWidget));
+        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(StringTypeParameter.success(weatherIsLoadingQNoServiceViewModelUsingGetNP.getWeatherIsLoadingUsingGetNP?.getFiveParametersNamedForWeatherWidget));
     if(weatherAndSettingsFromHttpClientAndHive
         !.getParameterExceptionController
         .isExceptionNotEqualsNull())

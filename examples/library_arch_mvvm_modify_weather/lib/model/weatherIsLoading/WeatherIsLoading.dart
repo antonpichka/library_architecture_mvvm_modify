@@ -30,18 +30,31 @@ class WeatherIsLoading
     if(exceptionController.isExceptionNotEqualsNull()) {
       return EnumWeatherIsLoadingForWeatherWidget.exception;
     }
-    if(isOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() ?? false) {
+    if(weather?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() ?? false) {
       return EnumWeatherIsLoadingForWeatherWidget.isEmpty;
     }
     return EnumWeatherIsLoadingForWeatherWidget.success;
   }
 
   String? get getOneParametersNamedForWeatherWidget {
-    return '''${weather?.getOneParametersNamedForWeatherIsLoadingWhereGetOneParametersNamedForWeatherWidget}°${(isOneParametersNamedForGetOneParametersNamedForWeatherWidget() ?? true) ? 'C' : 'F'}''';
+    return '''${weather?.temperature?.toStringAsPrecision(2)}°${(temperatureUnits == TemperatureUnits.celsius) ? 'C' : 'F'}''';
   }
 
   String? get getTwoParametersNamedForWeatherWidget {
-    return weather?.getOneParametersNamedForWeatherIsLoadingWhereGetTwoParametersNamedForWeatherWidget;
+    switch(weather?.getEnumWeatherCondition) {
+      case EnumWeatherCondition.clear:
+        return '☀️';
+      case EnumWeatherCondition.rainy:
+        return '🌧️';
+      case EnumWeatherCondition.cloudy:
+        return '☁️';
+      case EnumWeatherCondition.snowy:
+        return '🌨️';
+      case EnumWeatherCondition.unknown:
+        return '❓';
+      default:
+        return '❓';
+    }
   }
 
   String? get getThreeParametersNamedForWeatherWidget {
@@ -67,8 +80,7 @@ class WeatherIsLoading
 
   set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherAndSettings) {
     weather = weatherAndSettings.weather;
-    weather
-        ?.setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForFloatingActionButtonSearchWidget = temperatureUnits ?? TemperatureUnits.celsius;
+    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 
@@ -84,8 +96,7 @@ class WeatherIsLoading
   set setThreeParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
     weather = weatherAndSettings.weather;
     temperatureUnits = weatherAndSettings.settings?.temperatureUnits;
-    weather
-        ?.setOneParametersNamedForWeatherIsLoadingWhereSetThreeParametersNamedForWeatherWidget = temperatureUnits ?? TemperatureUnits.celsius;
+    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 
@@ -100,8 +111,7 @@ class WeatherIsLoading
 
   set setSixParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
     weather = weatherAndSettings.weather;
-    weather
-        ?.setOneParametersNamedForWeatherIsLoadingWhereSetSixParametersNamedForWeatherWidget = temperatureUnits ?? TemperatureUnits.celsius;
+    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 
@@ -114,16 +124,6 @@ class WeatherIsLoading
   }
 
   bool? isThreeParametersNamedForWeatherWidget() {
-    return weather?.isOneParametersNamedForWeatherIsLoadingWhereIsThreeParametersNamedForWeatherWidget();
-  }
-
-  @protected
-  bool? isOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget() {
-    return weather?.isOneParametersNamedForWeatherIsLoadingWhereIsOneParametersNamedForGetEnumWeatherIsLoadingForWeatherWidget();
-  }
-
-  @protected
-  bool? isOneParametersNamedForGetOneParametersNamedForWeatherWidget() {
-    return temperatureUnits == TemperatureUnits.celsius;
+    return weather?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
   }
 }

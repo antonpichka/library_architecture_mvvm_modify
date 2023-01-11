@@ -4,8 +4,8 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 class ListWeather<T extends Weather>
     extends BaseListModel<T>
 {
-  ListWeather.success(super.list) : super.success();
+  ListWeather.success(super.listModel) : super.success();
   ListWeather.exception(super.exception) : super.exception();
 
-  static ListWeather<Weather> get getListWeatherForSuccess => ListWeather<Weather>.success([]);
+  static ListWeather get getListWeatherForSuccess => ListWeather.success([]);
 }
