@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherSettings/WeatherSettings.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/EnumWeatherCondition.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
@@ -73,13 +74,13 @@ class WeatherIsLoading
     isLoading = true;
   }
 
-  set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherAndSettings) {
-    exceptionController = weatherAndSettings.exceptionController;
+  set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherSettings) {
+    exceptionController = weatherSettings.exceptionController;
     isLoading = false;
   }
 
-  set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherAndSettings) {
-    weather = weatherAndSettings.weather;
+  set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherSettings) {
+    weather = weatherSettings.weather;
     weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
@@ -88,14 +89,14 @@ class WeatherIsLoading
     isLoading = true;
   }
 
-  set setTwoParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
-    exceptionController = weatherAndSettings.exceptionController;
+  set setTwoParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+    exceptionController = weatherSettings.exceptionController;
     isLoading = false;
   }
 
-  set setThreeParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
-    weather = weatherAndSettings.weather;
-    temperatureUnits = weatherAndSettings.settings?.temperatureUnits;
+  set setThreeParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+    weather = weatherSettings.weather;
+    temperatureUnits = weatherSettings.settings?.temperatureUnits;
     weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
@@ -104,15 +105,21 @@ class WeatherIsLoading
     isLoading = true;
   }
 
-  set setFiveParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
-    exceptionController = weatherAndSettings.exceptionController;
+  set setFiveParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+    exceptionController = weatherSettings.exceptionController;
     isLoading = false;
   }
 
-  set setSixParametersNamedForWeatherWidget(WeatherSettings weatherAndSettings) {
-    weather = weatherAndSettings.weather;
+  set setSixParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+    weather = weatherSettings.weather;
     weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
+  }
+
+  set setOneParametersNamedForIconButtonSettingsWidget(WeatherSettings weatherSettings) {
+    weather?.temperature = weatherSettings.weather?.temperature;
+    temperatureUnits = weatherSettings.settings?.temperatureUnits;
+    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
   }
 
   bool? isOneParametersNamedForWeatherWidget() {

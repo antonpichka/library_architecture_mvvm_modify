@@ -35,7 +35,7 @@ class FloatingActionButtonSearchWidgetState
     if (!mounted) return;
     await widget
         .lo
-        .getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask(city as String);
+        .getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(city as String);
     return;
   }
 }

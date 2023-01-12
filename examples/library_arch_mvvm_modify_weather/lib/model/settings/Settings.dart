@@ -24,6 +24,13 @@ class Settings
     return Color(int.parse(color!));
   }
 
+  set setOneParametersNamedForListTileTemperatureUnitsWidget(bool isSwitch) {
+    final isNotSwitch = !isSwitch;
+    temperatureUnits = isNotSwitch
+        ? TemperatureUnits.celsius
+        : TemperatureUnits.fahrenheit;
+  }
+
   bool? isOneParametersNamedForListTileTemperatureUnitsWidget() {
     return temperatureUnits == TemperatureUnits.celsius;
   }

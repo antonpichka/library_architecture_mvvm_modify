@@ -7,5 +7,5 @@ class ListWeatherSettings<T extends WeatherSettings>
   ListWeatherSettings.success(super.listModel) : super.success();
   ListWeatherSettings.exception(super.exception) : super.exception();
 
-  static ListWeatherSettings<WeatherSettings> get getListWeatherAndSettingsForSuccess => ListWeatherSettings<WeatherSettings>.success([]);
+  static ListWeatherSettings get getListWeatherSettingsForSuccess => ListWeatherSettings.success([]);
 }

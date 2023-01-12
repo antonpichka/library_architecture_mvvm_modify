@@ -28,24 +28,22 @@ class TextFieldSearchWidgetState
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: (text) => callbackOnChanged(context, text),
-      decoration: buildInputDecoration(context)
-    );
+        onChanged: (text) => callbackOnChanged(context, text),
+        decoration: buildInputDecoration(context));
   }
 
   @protected
   InputDecoration buildInputDecoration(BuildContext buildContext) {
     return const InputDecoration(
-      labelText: 'City',
-      hintText: 'Chicago',
-    );
+        labelText: 'City',
+        hintText: 'Chicago');
   }
 
   @protected
   void callbackOnChanged(BuildContext context,String text) {
     widget
         .lo
-        .setParameterFieldByStringsUsingGetNPAndInGeneralZeroTask(text);
+        .setFieldByStringsAndInGeneralZeroTask(text);
     return;
   }
 }

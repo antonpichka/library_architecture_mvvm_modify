@@ -2,6 +2,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/ListUser.dart
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/TempCacheService.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
@@ -35,6 +36,11 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
   @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
+
+  @visibleForTesting
+  @nonVirtual
+  @override
+  List<BaseNamedService?> get listNamedService => [tempCacheService];
 
   @protected
   @override

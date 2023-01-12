@@ -24,8 +24,8 @@ class IconButtonSearchWidget
   @protected
   void callbackOnPressed(BuildContext context) {
     Navigator.of(context).pop(lo
-        .getStringsUsingGetNP
-        ?.getParameterField);
+        .getStrings
+        ?.field);
     return;
   }
 }

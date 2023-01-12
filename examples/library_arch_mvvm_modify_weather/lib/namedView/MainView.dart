@@ -3,7 +3,6 @@ import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/FloatingA
 import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/IconButtonSettingsWidget.dart';
 import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/WeatherWidget.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/MainViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class MainView
     extends StatefulWidget
@@ -13,9 +12,22 @@ class MainView
 }
 
 class _MainViewState
-    extends BaseNamedView<MainView,MainViewListViewModel>
+    extends State<MainView>
+    with WidgetsBindingObserver
 {
-  _MainViewState() : super(MainViewListViewModel());
+  final _lo = MainViewListViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +35,13 @@ class _MainViewState
       appBar: AppBar(
         title: const Text('LibraryArchMVVMModifyWeather'),
         actions: [
-          IconButtonSettingsWidget(lo.iconButtonSettingsWidgetListViewModel),
+          IconButtonSettingsWidget(_lo.iconButtonSettingsWidgetListViewModel),
         ],
       ),
       body: Center(
-        child: WeatherWidget(lo.weatherWidgetListViewModel),
+        child: WeatherWidget(_lo.weatherWidgetListViewModel),
       ),
-      floatingActionButton: FloatingActionButtonSearchWidget(lo.floatingActionButtonSearchWidgetListViewModel)
+      floatingActionButton: FloatingActionButtonSearchWidget(_lo.floatingActionButtonSearchWidgetListViewModel)
     );
   }
 }

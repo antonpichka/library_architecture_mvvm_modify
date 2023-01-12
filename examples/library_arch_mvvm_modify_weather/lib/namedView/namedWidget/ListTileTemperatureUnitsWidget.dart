@@ -12,10 +12,13 @@ class ListTileTemperatureUnitsWidget
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Settings>(
-        stream: ,
-        builder: (BuildContext context,AsyncSnapshot<Settings> asyncSnapshot)
+    return StreamBuilder<Settings?>(
+        stream: lo.getStreamSettings,
+        builder: (BuildContext context,AsyncSnapshot<Settings?> asyncSnapshot)
         {
+          if(asyncSnapshot.data == null) {
+            return buildNull(context);
+          }
           Settings? settings = asyncSnapshot.data;
           return ListTile(
               title: buildTitle(context, settings),
@@ -23,6 +26,11 @@ class ListTileTemperatureUnitsWidget
               subtitle: buildSubTitle(context, settings),
               trailing: buildTrailing(context, settings));
         });
+  }
+
+  @protected
+  Widget buildNull(BuildContext buildContext) {
+    return const CircularProgressIndicator();
   }
 
   @protected
@@ -39,7 +47,7 @@ class ListTileTemperatureUnitsWidget
   Widget buildTrailing(BuildContext buildContext, Settings? settings) {
     return Switch(
       value: settings?.isOneParametersNamedForListTileTemperatureUnitsWidget() ?? true,
-      onChanged: (bool isSwitch) => context.read<WeatherCubit>().toggleUnits(),
+      onChanged: (bool isSwitch) => lo.updateSettingsToHiveServiceParameterSettingsAndInGeneralOneTask(isSwitch),
     );
   }
 

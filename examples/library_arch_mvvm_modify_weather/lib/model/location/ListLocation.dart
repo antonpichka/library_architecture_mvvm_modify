@@ -7,5 +7,5 @@ class ListLocation<T extends Location>
   ListLocation.success(super.listModel) : super.success();
   ListLocation.exception(super.exception) : super.exception();
 
-  static ListLocation<Location> get getListLocationForSuccess => ListLocation<Location>.success([]);
+  static ListLocation get getListLocationForSuccess => ListLocation.success([]);
 }

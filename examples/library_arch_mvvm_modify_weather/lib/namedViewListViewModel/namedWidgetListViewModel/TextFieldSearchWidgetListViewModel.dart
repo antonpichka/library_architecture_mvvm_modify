@@ -1,19 +1,17 @@
-import 'package:flutter/foundation.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/stringsQNoServiceViewModel/StringsQNoServiceViewModelUsingGetNP.dart';
-import 'package:library_architecture_mvvm_modify/base_model/list_strings.dart';
-import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/strings_q_there_is_state_view_model.dart';
+import 'package:meta/meta.dart';
 
 class TextFieldSearchWidgetListViewModel {
   @protected
-  final StringsQNoServiceViewModelUsingGetNP<Strings,ListStrings<Strings>> stringsQNoServiceViewModelUsingGetNP;
+  final StringsQThereIsStateViewModel stringsQThereIsStateViewModelForSearch;
 
-  TextFieldSearchWidgetListViewModel(this.stringsQNoServiceViewModelUsingGetNP);
+  TextFieldSearchWidgetListViewModel(this.stringsQThereIsStateViewModelForSearch);
 
-  void setParameterFieldByStringsUsingGetNPAndInGeneralZeroTask(
+  void setFieldByStringsAndInGeneralZeroTask(
       String value)
   {
-    stringsQNoServiceViewModelUsingGetNP
-        .getStringsUsingGetNP
-        ?.setParameterField = value;
+    stringsQThereIsStateViewModelForSearch
+        .getStrings
+        ?.field = value;
   }
 }

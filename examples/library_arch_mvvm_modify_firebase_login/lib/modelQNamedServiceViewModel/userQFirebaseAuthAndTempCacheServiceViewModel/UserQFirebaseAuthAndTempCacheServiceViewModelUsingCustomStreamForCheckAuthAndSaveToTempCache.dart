@@ -5,6 +5,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthService.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/TempCacheService.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:meta/meta.dart';
 
 class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser<T>>
@@ -34,6 +35,11 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
   @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
+
+  @visibleForTesting
+  @nonVirtual
+  @override
+  List<BaseNamedService?> get listNamedService => [firebaseAuthService,tempCacheService];
 
   @protected
   T? getUserWhereFirebaseUserNull() {

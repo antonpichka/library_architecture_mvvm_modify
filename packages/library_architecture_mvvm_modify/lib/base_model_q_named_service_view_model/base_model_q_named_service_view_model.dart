@@ -17,6 +17,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_function_before
 import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_model_to_named_service_parameter_named_fbds.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_list_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_list_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
@@ -40,14 +41,20 @@ import 'package:meta/meta.dart';
 abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>>
     extends Testing
 {
-  ///   Start ModelQNamedServiceDataSource **/
   ///   Example Using:
   ///
   ///   @nonVirtual
   ///   @override
   ///   Object? get modelQNamedServiceDataSource => this;
   Object? get modelQNamedServiceDataSource;
-  ///   End ModelQNamedServiceDataSource **/
+
+  ///   Example Using:
+  ///
+  ///   @visibleForTesting
+  ///   @nonVirtual
+  ///   @override
+  ///   List<BaseNamedService?> get listNamedService => [httpClientService,hiveService,firebaseAuthService];
+  List<BaseNamedService?> get listNamedService;
 
   // Start getListNP 3
   @protected

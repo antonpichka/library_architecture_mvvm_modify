@@ -1,103 +1,111 @@
-import 'package:flutter/foundation.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/ListWeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHiveServiceViewModel/WeatherSettingsQHiveServiceViewModelUsingGetNP.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHttpClientAndHiveServiceViewModel/WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherIsLoadingQNoServiceViewModel/WeatherIsLoadingQNoServiceViewModelUsingGetNP.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherSettingsQHiveServiceViewModel/WeatherSettingsQHiveServiceViewModelUsingGetNP.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherSettingsQHttpClientAndHiveServiceViewModel/WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/weatherIsLoadingQThereIsStateViewModel/WeatherIsLoadingQThereIsStateViewModel.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/weatherSettingsQThereIsStateViewModel/WeatherSettingsQThereIsStateViewModel.dart';
+import 'package:meta/meta.dart';
 
 class WeatherWidgetListViewModel {
   @protected
-  final WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>> weatherIsLoadingQNoServiceViewModelUsingGetNP;
+  final WeatherIsLoadingQThereIsStateViewModel weatherIsLoadingQThereIsStateViewModel;
   @protected
-  final WeatherSettingsQHiveServiceViewModelUsingGetNP<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHiveServiceViewModelUsingGetNP;
+  final WeatherSettingsQHiveServiceViewModelUsingGetNP weatherSettingsQHiveServiceViewModelUsingGetNP;
   @protected
-  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
+  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal;
+  @protected
+  final WeatherSettingsQThereIsStateViewModel weatherSettingsQThereIsStateViewModel;
 
   WeatherWidgetListViewModel(
-      this.weatherIsLoadingQNoServiceViewModelUsingGetNP,
-      this.weatherAndSettingsQHiveServiceViewModelUsingGetNP,
-      this.weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi);
+      this.weatherIsLoadingQThereIsStateViewModel,
+      this.weatherSettingsQHiveServiceViewModelUsingGetNP,
+      this.weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal,
+      this.weatherSettingsQThereIsStateViewModel);
 
-  Stream<WeatherIsLoading>? get getStreamWeatherIsLoadingUsingGetNP {
-    return weatherIsLoadingQNoServiceViewModelUsingGetNP.getStreamWeatherIsLoadingUsingGetNP;
+  Stream<WeatherIsLoading?>? get getStreamWeatherIsLoading {
+    return weatherIsLoadingQThereIsStateViewModel.getStreamWeatherIsLoading;
   }
 
-  Future<void> getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettingsAndInGeneralOneTask()
+  Future<void> getWeatherSettingsFromHiveServiceNPAndInGeneralOneTask()
   async {
-    if(weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
+    if(weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
         ?.isOneParametersNamedForWeatherWidget() ?? false)
     {
       return;
     }
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
+    weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
         ?.setOneParametersNamedForWeatherWidget();
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .notifyStreamWeatherIsLoadingUsingGetNP();
+    weatherIsLoadingQThereIsStateViewModel
+        .notifyStreamWeatherIsLoading();
     // 1
-    final weatherAndSettingsFromHive = await weatherAndSettingsQHiveServiceViewModelUsingGetNP
+    final weatherSettingsFromHive = await weatherSettingsQHiveServiceViewModelUsingGetNP
         .getWeatherSettingsFromHiveServiceNP();
-    if(weatherAndSettingsFromHive
-        !.getParameterExceptionController
+    if(weatherSettingsFromHive
+        !.exceptionController
         .isExceptionNotEqualsNull())
     {
-      weatherIsLoadingQNoServiceViewModelUsingGetNP
-          .getWeatherIsLoadingUsingGetNP
-          ?.setTwoParametersNamedForWeatherWidget = weatherAndSettingsFromHive;
-      weatherIsLoadingQNoServiceViewModelUsingGetNP
-          .notifyStreamWeatherIsLoadingUsingGetNP();
+      weatherSettingsQThereIsStateViewModel
+          .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHive;
+      weatherIsLoadingQThereIsStateViewModel
+          .getWeatherIsLoading
+          ?.setTwoParametersNamedForWeatherWidget = weatherSettingsFromHive;
+      weatherIsLoadingQThereIsStateViewModel
+          .notifyStreamWeatherIsLoading();
       return;
     }
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
-        ?.setThreeParametersNamedForWeatherWidget = weatherAndSettingsFromHive;
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .notifyStreamWeatherIsLoadingUsingGetNP();
+    weatherSettingsQThereIsStateViewModel
+        .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHive;
+    weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
+        ?.setThreeParametersNamedForWeatherWidget = weatherSettingsFromHive;
+    weatherIsLoadingQThereIsStateViewModel
+        .notifyStreamWeatherIsLoading();
     return;
   }
 
-  Future<void> getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask()
+  Future<void> getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask()
   async {
-    if(weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
+    if(weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
         ?.isTwoParametersNamedForWeatherWidget() ?? false)
     {
       return;
     }
-    if(weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
+    if(weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
         ?.isThreeParametersNamedForWeatherWidget() ?? false)
     {
       return;
     }
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
+    weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
         ?.setFourParametersNamedForWeatherWidget();
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .notifyStreamWeatherIsLoadingUsingGetNP();
+    weatherIsLoadingQThereIsStateViewModel
+        .notifyStreamWeatherIsLoading();
     // 1
-    final weatherAndSettingsFromHttpClientAndHive = await weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi
-        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(StringTypeParameter.success(weatherIsLoadingQNoServiceViewModelUsingGetNP.getWeatherIsLoadingUsingGetNP?.getFiveParametersNamedForWeatherWidget));
-    if(weatherAndSettingsFromHttpClientAndHive
-        !.getParameterExceptionController
+    final weatherSettingsFromHttpClientAndHive = await weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal
+        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(weatherIsLoadingQThereIsStateViewModel.getWeatherIsLoading?.getFiveParametersNamedForWeatherWidget ?? "");
+    if(weatherSettingsFromHttpClientAndHive
+        !.exceptionController
         .isExceptionNotEqualsNull())
     {
-      weatherIsLoadingQNoServiceViewModelUsingGetNP
-          .getWeatherIsLoadingUsingGetNP
-          ?.setFiveParametersNamedForWeatherWidget = weatherAndSettingsFromHttpClientAndHive;
-      weatherIsLoadingQNoServiceViewModelUsingGetNP
-          .notifyStreamWeatherIsLoadingUsingGetNP();
+      weatherSettingsQThereIsStateViewModel
+          .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;
+      weatherIsLoadingQThereIsStateViewModel
+          .getWeatherIsLoading
+          ?.setFiveParametersNamedForWeatherWidget = weatherSettingsFromHttpClientAndHive;
+      weatherIsLoadingQThereIsStateViewModel
+          .notifyStreamWeatherIsLoading();
       return;
     }
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
-        ?.setSixParametersNamedForWeatherWidget = weatherAndSettingsFromHttpClientAndHive;
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .notifyStreamWeatherIsLoadingUsingGetNP();
+    weatherSettingsQThereIsStateViewModel
+        .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;
+    weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
+        ?.setSixParametersNamedForWeatherWidget = weatherSettingsFromHttpClientAndHive;
+    weatherIsLoadingQThereIsStateViewModel
+        .notifyStreamWeatherIsLoading();
     return;
   }
 }

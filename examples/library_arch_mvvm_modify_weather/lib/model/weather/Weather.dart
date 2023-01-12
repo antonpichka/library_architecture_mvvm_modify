@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/EnumWeatherCondition.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
 part 'Weather.g.dart';
-
-enum EnumWeatherCondition {
-  clear,
-  rainy,
-  cloudy,
-  snowy,
-  unknown;
-}
 
 @JsonSerializable(ignoreUnannotated: true)
 class Weather

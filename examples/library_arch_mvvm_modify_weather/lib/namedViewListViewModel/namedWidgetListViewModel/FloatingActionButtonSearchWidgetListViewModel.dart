@@ -1,51 +1,54 @@
-import 'package:flutter/foundation.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/ListWeatherSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherAndSettings/WeatherSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/ListWeatherIsLoading.dart';
-import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherAndSettingsQHttpClientAndHiveServiceViewModel/WeatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi.dart';
-import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherIsLoadingQNoServiceViewModel/WeatherIsLoadingQNoServiceViewModelUsingGetNP.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_type_parameter/string_type_parameter.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/weatherSettingsQHttpClientAndHiveServiceViewModel/WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/weatherIsLoadingQThereIsStateViewModel/WeatherIsLoadingQThereIsStateViewModel.dart';
+import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/weatherSettingsQThereIsStateViewModel/WeatherSettingsQThereIsStateViewModel.dart';
+import 'package:meta/meta.dart';
 
 class FloatingActionButtonSearchWidgetListViewModel {
   @protected
-  final WeatherIsLoadingQNoServiceViewModelUsingGetNP<WeatherIsLoading,ListWeatherIsLoading<WeatherIsLoading>> weatherIsLoadingQNoServiceViewModelUsingGetNP;
+  final WeatherIsLoadingQThereIsStateViewModel weatherIsLoadingQThereIsStateViewModel;
   @protected
-  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal<WeatherSettings,ListWeatherSettings<WeatherSettings>> weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi;
+  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal;
+  @protected
+  final WeatherSettingsQThereIsStateViewModel weatherSettingsQThereIsStateViewModel;
 
   FloatingActionButtonSearchWidgetListViewModel(
-      this.weatherIsLoadingQNoServiceViewModelUsingGetNP,
-      this.weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi);
+      this.weatherIsLoadingQThereIsStateViewModel,
+      this.weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal,
+      this.weatherSettingsQThereIsStateViewModel);
 
-  Future<void> getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask(String? location)
+  Future<void> getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(String? location)
   async {
     if(location?.isEmpty ?? false) {
       return;
     }
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
+    weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
         ?.setOneParametersNamedForFloatingActionButtonSearchWidget();
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .notifyStreamWeatherIsLoadingUsingGetNP();
+    weatherIsLoadingQThereIsStateViewModel
+        .notifyStreamWeatherIsLoading();
     // 1
-    final weatherAndSettingsFromHttpClientAndHive = await weatherAndSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApi
-        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(StringTypeParameter.success(location));
-    if(weatherAndSettingsFromHttpClientAndHive
-        !.getParameterExceptionController
+    final weatherSettingsFromHttpClientAndHive = await weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal
+        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(location!);
+    if(weatherSettingsFromHttpClientAndHive
+        !.exceptionController
         .isExceptionNotEqualsNull())
     {
-      weatherIsLoadingQNoServiceViewModelUsingGetNP
-          .getWeatherIsLoadingUsingGetNP
-          ?.setTwoParametersNamedForFloatingActionButtonSearchWidget = weatherAndSettingsFromHttpClientAndHive;
-      weatherIsLoadingQNoServiceViewModelUsingGetNP
-          .notifyStreamWeatherIsLoadingUsingGetNP();
+      weatherSettingsQThereIsStateViewModel
+          .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;
+      weatherIsLoadingQThereIsStateViewModel
+          .getWeatherIsLoading
+          ?.setTwoParametersNamedForFloatingActionButtonSearchWidget = weatherSettingsFromHttpClientAndHive;
+      weatherIsLoadingQThereIsStateViewModel
+          .notifyStreamWeatherIsLoading();
       return;
     }
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .getWeatherIsLoadingUsingGetNP
-        ?.setThreeParametersNamedForFloatingActionButtonSearchWidget = weatherAndSettingsFromHttpClientAndHive;
-    weatherIsLoadingQNoServiceViewModelUsingGetNP
-        .notifyStreamWeatherIsLoadingUsingGetNP();
+    weatherSettingsQThereIsStateViewModel
+        .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;
+    weatherIsLoadingQThereIsStateViewModel
+        .getWeatherIsLoading
+        ?.setThreeParametersNamedForFloatingActionButtonSearchWidget = weatherSettingsFromHttpClientAndHive;
+    weatherIsLoadingQThereIsStateViewModel
+        .notifyStreamWeatherIsLoading();
     return;
   }
 }

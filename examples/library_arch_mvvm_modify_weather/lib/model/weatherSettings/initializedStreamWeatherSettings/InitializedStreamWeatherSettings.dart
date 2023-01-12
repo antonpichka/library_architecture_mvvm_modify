@@ -8,7 +8,7 @@ class InitializedStreamWeatherSettings
     implements IInitializedStreamModel<WeatherSettings,ListWeatherSettings>
 {
   @override
-  IStreamModel<WeatherSettings, ListWeatherSettings>? initializedStreamModel() {
-    return DefaultStreamModel<WeatherSettings, ListWeatherSettings>(WeatherSettings.getWeatherSettingsForSuccess,ListWeatherSettings.getListWeatherAndSettingsForSuccess);
+  IStreamModel<WeatherSettings,ListWeatherSettings>? initializedStreamModel() {
+    return DefaultStreamModel<WeatherSettings,ListWeatherSettings>(WeatherSettings.getWeatherSettingsForSuccess,ListWeatherSettings.getListWeatherSettingsForSuccess);
   }
 }

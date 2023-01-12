@@ -7,7 +7,6 @@ import 'package:library_arch_mvvm_modify_weather/namedView/SearchWeatherView.dar
 import 'package:library_arch_mvvm_modify_weather/namedView/SettingsView.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/AppViewListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class AppView
     extends StatefulWidget
@@ -17,27 +16,29 @@ class AppView
 }
 
 class _AppViewState
-    extends BaseNamedView<AppView,AppViewListViewModel>
+    extends State<AppView>
+    with WidgetsBindingObserver
 {
-  _AppViewState() : super(AppViewListViewModel());
+  final _lo = AppViewListViewModel();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: lo.getCustomValueListenableBoxSettings,
+        valueListenable: _lo.getCustomValueListenableBoxSettings!,
         builder: (BuildContext buildContext, Box<dynamic> box,_)
         {
-          final textTheme = Theme.of(context).textTheme;
           Settings? settings = box.get(
               Settings.constKeySettingsQHiveService,
               defaultValue: Settings.getSettingsForSuccessWhereKeyNotFound);
@@ -48,7 +49,7 @@ class _AppViewState
                 primaryColor: settings?.getOneParametersNamedForAppView,
                 textTheme: GoogleFonts.rajdhaniTextTheme(),
                 appBarTheme: AppBarTheme(
-                  titleTextStyle: GoogleFonts.rajdhaniTextTheme(textTheme)
+                  titleTextStyle: GoogleFonts.rajdhaniTextTheme(Theme.of(context).textTheme)
                       .apply(bodyColor: Colors.white)
                       .headline6,
                 ),

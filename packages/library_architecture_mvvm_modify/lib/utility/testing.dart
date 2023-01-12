@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
 
 class Testing {
+  @protected
   int? numberOfExecutedMethodsInThisClass = 0;
 
   @visibleForTesting

@@ -29,10 +29,10 @@ class WeatherWidgetState
 
   @override
   Widget build(BuildContext context) {
-    widget.lo.getWeatherAndSettingsFromHiveServiceNPAndSetWeatherAndSettingsAndInGeneralOneTask();
-    return StreamBuilder<WeatherIsLoading>(
-        stream: widget.lo.getStreamWeatherIsLoadingUsingGetNP,
-        builder: (BuildContext context,AsyncSnapshot<WeatherIsLoading> asyncSnapshot)
+    widget.lo.getWeatherSettingsFromHiveServiceNPAndInGeneralOneTask();
+    return StreamBuilder<WeatherIsLoading?>(
+        stream: widget.lo.getStreamWeatherIsLoading,
+        builder: (BuildContext context,AsyncSnapshot<WeatherIsLoading?> asyncSnapshot)
         {
           if(asyncSnapshot.data == null) {
             return buildIsLoading(context);
@@ -137,7 +137,7 @@ class WeatherWidgetState
   @protected
   Widget buildDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
     return RefreshIndicator(
-      onRefresh: () => widget.lo.getWeatherAndSettingsFromHttpClientAndHiveServiceParameterStringForLocationFromOpenMeteoApiAndSetWeatherAndSettingsAndInGeneralOneTask(),
+      onRefresh: () => widget.lo.getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(),
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         clipBehavior: Clip.none,

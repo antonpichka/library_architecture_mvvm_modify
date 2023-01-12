@@ -1,5 +1,5 @@
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/named_service/base_named_service.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 
 class GoogleSignInService
     extends BaseNamedService

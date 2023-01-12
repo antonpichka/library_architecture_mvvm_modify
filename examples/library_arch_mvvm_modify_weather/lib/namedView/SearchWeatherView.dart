@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/IconButtonSearchWidget.dart';
 import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/TextFieldSearchWidget.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/SearchWeatherViewListViewModel.dart';
-import 'package:library_architecture_mvvm_modify/base_named_view/base_named_view.dart';
 
 class SearchWeatherView
     extends StatefulWidget
@@ -12,9 +11,22 @@ class SearchWeatherView
 }
 
 class _SearchWeatherViewState
-    extends BaseNamedView<SearchWeatherView,SearchWeatherViewListViewModel>
+    extends State<SearchWeatherView>
+    with WidgetsBindingObserver
 {
-  _SearchWeatherViewState() : super(SearchWeatherViewListViewModel());
+  final _lo = SearchWeatherViewListViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +37,10 @@ class _SearchWeatherViewState
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8),
-              child: TextFieldSearchWidget(lo.textFieldSearchWidgetListViewModel),
+              child: TextFieldSearchWidget(_lo.textFieldSearchWidgetListViewModel),
             ),
           ),
-          IconButtonSearchWidget(lo.iconButtonSearchWidgetListViewModel),
+          IconButtonSearchWidget(_lo.iconButtonSearchWidgetListViewModel),
         ],
       ),
     );
