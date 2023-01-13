@@ -39,14 +39,12 @@ class _AppViewState
         valueListenable: _lo.getCustomValueListenableBoxSettings!,
         builder: (BuildContext buildContext, Box<dynamic> box,_)
         {
-          Settings? settings = box.get(
-              Settings.constKeySettingsQHiveService,
-              defaultValue: Settings.getSettingsForSuccessWhereKeyNotFound);
+          Settings? settings = Settings.fromBoxSettings(box);
           return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'LibraryArchMVVMModifyWeather',
               theme: ThemeData(
-                primaryColor: settings?.getOneParametersNamedForAppView,
+                primaryColor: settings.getColorParameterColor,
                 textTheme: GoogleFonts.rajdhaniTextTheme(),
                 appBarTheme: AppBarTheme(
                   titleTextStyle: GoogleFonts.rajdhaniTextTheme(Theme.of(context).textTheme)

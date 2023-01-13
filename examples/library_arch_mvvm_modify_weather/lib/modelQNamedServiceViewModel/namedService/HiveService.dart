@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
+import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnitsAdapter.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 
 class HiveService
@@ -13,6 +14,7 @@ class HiveService
   async {
     incrementForNumberOfExecutedMethodsInThisClass();
     await Hive.initFlutter();
+    Hive.registerAdapter(TemperatureUnitsAdapter());
     await _getBoxSettings();
     await _getBoxWeather();
     return;

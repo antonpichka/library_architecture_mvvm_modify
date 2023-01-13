@@ -38,7 +38,7 @@ class WeatherIsLoading
   }
 
   String? get getOneParametersNamedForWeatherWidget {
-    return '''${weather?.temperature?.toStringAsPrecision(2)}°${(temperatureUnits == TemperatureUnits.celsius) ? 'C' : 'F'}''';
+    return '''${weather?.temperature?.toStringAsPrecision(2)}°${((temperatureUnits ?? TemperatureUnits.celsius) == TemperatureUnits.celsius) ? 'C' : 'F'}''';
   }
 
   String? get getTwoParametersNamedForWeatherWidget {
@@ -75,14 +75,11 @@ class WeatherIsLoading
   }
 
   set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherSettings) {
-    exceptionController = weatherSettings.exceptionController;
-    isLoading = false;
+    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading = weatherSettings;
   }
 
   set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherSettings) {
-    weather = weatherSettings.weather;
-    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
-    isLoading = false;
+    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading  = weatherSettings;
   }
 
   void setOneParametersNamedForWeatherWidget() {
@@ -90,15 +87,12 @@ class WeatherIsLoading
   }
 
   set setTwoParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
-    exceptionController = weatherSettings.exceptionController;
-    isLoading = false;
+    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading = weatherSettings;
   }
 
   set setThreeParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
-    weather = weatherSettings.weather;
     temperatureUnits = weatherSettings.settings?.temperatureUnits;
-    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
-    isLoading = false;
+    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading  = weatherSettings;
   }
 
   void setFourParametersNamedForWeatherWidget() {
@@ -106,20 +100,23 @@ class WeatherIsLoading
   }
 
   set setFiveParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading = weatherSettings;
+  }
+
+  set setSixParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading = weatherSettings;
+  }
+
+  set _setFromWeatherSettingsParametersExceptionControllerAndIsLoading(WeatherSettings weatherSettings) {
     exceptionController = weatherSettings.exceptionController;
     isLoading = false;
   }
 
-  set setSixParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
+  set _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading(WeatherSettings weatherSettings) {
+    exceptionController = weatherSettings.exceptionController;
     weather = weatherSettings.weather;
-    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
+    weather?.setOneFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
-  }
-
-  set setOneParametersNamedForIconButtonSettingsWidget(WeatherSettings weatherSettings) {
-    weather?.temperature = weatherSettings.weather?.temperature;
-    temperatureUnits = weatherSettings.settings?.temperatureUnits;
-    weather?.setFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
   }
 
   bool? isOneParametersNamedForWeatherWidget() {

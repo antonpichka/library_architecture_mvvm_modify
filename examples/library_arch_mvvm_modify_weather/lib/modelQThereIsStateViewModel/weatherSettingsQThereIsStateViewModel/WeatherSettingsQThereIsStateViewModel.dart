@@ -1,6 +1,5 @@
 import 'package:library_arch_mvvm_modify_weather/model/weatherSettings/ListWeatherSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherSettings/WeatherSettings.dart';
-import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/base_model_q_there_is_state_view_model.dart';
 
 class WeatherSettingsQThereIsStateViewModel<T extends WeatherSettings,Y extends ListWeatherSettings<T>>
@@ -12,11 +11,7 @@ class WeatherSettingsQThereIsStateViewModel<T extends WeatherSettings,Y extends 
     return getModel;
   }
 
-  T? get getWeatherSettingsUsingCloneWeatherSettings {
-    return cloneWeatherSettings(getModel!) as T?;
-  }
-
   set setWeatherSettingsUsingCloneWeatherSettings(T weatherSettings) {
-    setModel = cloneWeatherSettings(weatherSettings) as T?;
+    setModel = weatherSettings.cloneWeatherSettings() as T?;
   }
 }

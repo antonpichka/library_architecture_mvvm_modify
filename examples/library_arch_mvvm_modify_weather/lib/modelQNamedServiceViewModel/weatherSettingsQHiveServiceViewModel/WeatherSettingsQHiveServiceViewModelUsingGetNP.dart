@@ -37,41 +37,25 @@ class WeatherSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherSettings,Y
   Future<T?> getModelFromNamedServiceNPDS()
   async {
     try {
-      final Box? boxSettings = await hiveService
+      final boxSettings = await hiveService
           .getBoxSettings();
-      final Box? boxWeather = await hiveService
+      final boxWeather = await hiveService
           .getBoxWeather();
-      final objectFromBoxSettings = boxSettings?.get(
-          Settings.constKeySettingsQHiveService,
-          defaultValue: getSettingsForSuccessWhereKeyNotFound());
-      final objectFromBoxWeather = boxWeather?.get(
-          Weather.constKeyWeatherQHiveService,
-          defaultValue: getWeatherForSuccessWhereKeyNotFound());
-      return getWeatherSettingsFromBoxSettingsAndBoxWeather(objectFromBoxSettings,objectFromBoxWeather);
+      return getWeatherSettingsFromBoxSettingsAndBoxWeather(boxSettings,boxWeather);
     } catch(e) {
       return getWeatherSettingsFromBaseException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
   }
 
   @protected
-  T? getWeatherSettingsFromBoxSettingsAndBoxWeather(Object? objectFromBoxSettings,Object? objectFromBoxWeather) {
-    final settings = objectFromBoxSettings as Settings;
-    final weather = objectFromBoxWeather as Weather;
-    return WeatherSettings.success(weather,settings) as T?;
+  T? getWeatherSettingsFromBoxSettingsAndBoxWeather(Box? boxSettings,Box? boxWeather) {
+    return WeatherSettings.success(
+        Weather.fromBoxWeather(boxWeather!),
+        Settings.fromBoxSettings(boxSettings!)) as T?;
   }
 
   @protected
   T? getWeatherSettingsFromBaseException(BaseException? baseException) {
     return WeatherSettings.exception(baseException!) as T?;
-  }
-
-  @protected
-  Settings? getSettingsForSuccessWhereKeyNotFound() {
-    return Settings.getSettingsForSuccessWhereKeyNotFound;
-  }
-
-  @protected
-  Weather? getWeatherForSuccessWhereKeyNotFound() {
-    return Weather.getWeatherForSuccessWhereKeyNotFound;
   }
 }

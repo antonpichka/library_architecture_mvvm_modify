@@ -34,9 +34,11 @@ class SettingsViewListViewModel
     return _settingsQThereIsStateViewModel.getSettings;
   }
 
-  void setSettingsAndInGeneralZeroTask(Settings settings) {
+  Future<void> setSettingsAndInGeneralZeroTask(Settings settings)
+  async {
     _settingsQThereIsStateViewModel
         .setSettings = settings;
+    await Future.delayed(const Duration(milliseconds: 100));
     _settingsQThereIsStateViewModel
         .notifyStreamSettings();
   }

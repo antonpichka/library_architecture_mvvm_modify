@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:library_arch_mvvm_modify_weather/model/location/Location.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/EnumWeatherCondition.dart';
@@ -26,23 +27,66 @@ class Weather
       : lastUpdated = DateTime.now(), super.success(location?.uniqueId);
   Weather.exception(super.exception) : super.exception();
   factory Weather.fromMapThisNetwork(Map<String, dynamic> map) => _$WeatherFromJson(map);
+  factory Weather.fromBoxWeather(Box boxWeather) {
+    final locationIdFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterId}");
+    final locationNameFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterName}");
+    final locationLatitudeFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterLatitude}");
+    final locationLongitudeFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterLongitude}");
+    final locationFromBoxWeather = Location.success(
+        locationIdFromBoxWeather,
+        locationNameFromBoxWeather,
+        locationLatitudeFromBoxWeather,
+        locationLongitudeFromBoxWeather);
+    final weatherCodeFromBoxWeather = boxWeather.get(constParameterWeatherCode);
+    final temperatureFromBoxWeather = boxWeather.get(constParameterTemperature);
+    final lastUpdatedFromBoxWeather = boxWeather.get(constParameterLastUpdated);
+    return Weather.success(
+        locationFromBoxWeather.isEqualsNullParametersIdAndNameAndLatitudeAndLongitude()
+            ? null : locationFromBoxWeather,
+        weatherCodeFromBoxWeather,
+        temperatureFromBoxWeather,
+        lastUpdatedFromBoxWeather);
+  }
 
   static Weather get getWeatherForSuccess => Weather.success(Location.getLocationForSuccess,0.0,0.0,DateTime(0));
-  static Weather get getWeatherForSuccessWhereKeyNotFound => Weather.success(null,null,null,null);
   static const constWeatherQHiveService = "__weather_q_hive_service__";
-  static const constKeyWeatherQHiveService = "__key_weather_q_hive_service__";
   static const constParameterLocation = "location";
   static const constParameterWeatherCode = "weathercode";
   static const constParameterTemperature = "temperature";
+  static const constParameterLastUpdated = "last_updated";
 
   EnumWeatherCondition get getEnumWeatherCondition {
     switch (weatherCode?.toInt()) {
       case 0:
         return EnumWeatherCondition.clear;
+      case 1:
+      case 2:
+      case 3:
+      case 45:
       case 48:
         return EnumWeatherCondition.cloudy;
+      case 51:
+      case 53:
+      case 55:
+      case 56:
+      case 57:
+      case 61:
+      case 63:
+      case 65:
+      case 66:
+      case 67:
+      case 80:
+      case 81:
+      case 82:
+      case 95:
+      case 96:
       case 99:
         return EnumWeatherCondition.rainy;
+      case 71:
+      case 73:
+      case 75:
+      case 77:
+      case 85:
       case 86:
         return EnumWeatherCondition.snowy;
       default:
@@ -67,9 +111,9 @@ class Weather
     }
   }
 
-  set setFromTemperatureUnitsParameterTemperature(TemperatureUnits temperatureUnits) {
+  set setOneFromTemperatureUnitsParameterTemperature(TemperatureUnits temperatureUnits) {
     temperature = temperatureUnits == TemperatureUnits.celsius
-        ? temperature?.toCelsius()
+        ? temperature
         : temperature?.toFahrenheit();
   }
 

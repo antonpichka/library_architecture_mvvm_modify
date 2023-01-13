@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSettingsWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
@@ -28,9 +27,7 @@ class IconButtonSettingsWidget
     Navigator.of(context).pushNamed(
         "/$constSettingsView",
         arguments: {
-          constArgumentSettingsView : lo.getWeatherSettings!.settings
-        }).then((value) {
-          lo.setOneParametersForIconButtonSettingsWidgetAndInGeneralZeroTask(value as Settings);
+          constArgumentSettingsView : lo.getWeatherSettings?.settings
         });
     return;
   }

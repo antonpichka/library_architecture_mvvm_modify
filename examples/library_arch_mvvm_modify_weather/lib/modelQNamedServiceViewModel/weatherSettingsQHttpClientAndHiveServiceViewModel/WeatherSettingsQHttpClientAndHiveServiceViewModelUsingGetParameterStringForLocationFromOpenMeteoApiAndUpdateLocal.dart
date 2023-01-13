@@ -57,7 +57,8 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
       );
       final locationResponse = await httpClientService
           .getHttpClient
-          ?.get(locationRequest);
+          ?.get(locationRequest)
+          .timeout(const Duration(seconds: 5));
       if(locationResponse!.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,locationResponse.statusCode);
       }
@@ -80,7 +81,8 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
           });
       final weatherResponse = await httpClientService
           .getHttpClient
-          ?.get(weatherRequest);
+          ?.get(weatherRequest)
+          .timeout(const Duration(seconds: 5));
       if(weatherResponse!.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,weatherResponse.statusCode);
       }
@@ -95,13 +97,11 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
           .getBoxSettings();
       final Box? boxWeather = await hiveService
           .getBoxWeather();
-      final objectFromBoxSettings = boxSettings?.get(
-          Settings.constKeySettingsQHiveService,
-          defaultValue: getSettingsForSuccessWhereKeyNotFound());
-
-      final weatherSettingsFromMapAndBoxSettings = getWeatherSettingsFromMapAndBoxSettings(weatherFromMap,objectFromBoxSettings);
-      boxSettings?.put(Settings.constKeySettingsQHiveService,weatherSettingsFromMapAndBoxSettings?.settings);
-      boxWeather?.put(Weather.constKeyWeatherQHiveService,weatherSettingsFromMapAndBoxSettings?.weather);
+      final weatherSettingsFromMapAndBoxSettings = getWeatherSettingsFromMapAndBoxSettings(weatherFromMap,boxSettings);
+      updateWeatherSettingsFromBoxSettingsAndBoxWeatherAndWeatherSettingsFromMapAndBoxSettings(
+          boxSettings,
+          boxWeather,
+          weatherSettingsFromMapAndBoxSettings);
       return weatherSettingsFromMapAndBoxSettings;
     } on NetworkException catch(e) {
       return getWeatherSettingsFromBaseException(e);
@@ -113,9 +113,35 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
   }
 
   @protected
-  T? getWeatherSettingsFromMapAndBoxSettings(Map<String, dynamic>? weatherFromMap,Object? objectFromBoxSettings) {
+  void updateWeatherSettingsFromBoxSettingsAndBoxWeatherAndWeatherSettingsFromMapAndBoxSettings(
+      Box? boxSettings,
+      Box? boxWeather,
+      WeatherSettings? weatherSettingsFromMapAndBoxSettings)
+  {
+    boxSettings?.put(Settings.constParameterColor,
+        weatherSettingsFromMapAndBoxSettings?.settings?.color);
+    boxSettings?.put(Settings.constParameterTemperatureUnits,
+        weatherSettingsFromMapAndBoxSettings?.settings?.temperatureUnits);
+    boxWeather?.put("${Weather.constParameterLocation}_${Location.constParameterId}",
+        weatherSettingsFromMapAndBoxSettings?.weather?.location?.id);
+    boxWeather?.put("${Weather.constParameterLocation}_${Location.constParameterName}",
+        weatherSettingsFromMapAndBoxSettings?.weather?.location?.name);
+    boxWeather?.put("${Weather.constParameterLocation}_${Location.constParameterLatitude}",
+        weatherSettingsFromMapAndBoxSettings?.weather?.location?.latitude);
+    boxWeather?.put("${Weather.constParameterLocation}_${Location.constParameterLongitude}",
+        weatherSettingsFromMapAndBoxSettings?.weather?.location?.longitude);
+    boxWeather?.put(Weather.constParameterWeatherCode,
+        weatherSettingsFromMapAndBoxSettings?.weather?.weatherCode);
+    boxWeather?.put(Weather.constParameterTemperature,
+        weatherSettingsFromMapAndBoxSettings?.weather?.temperature);
+    boxWeather?.put(Weather.constParameterLastUpdated,
+        weatherSettingsFromMapAndBoxSettings?.weather?.lastUpdated);
+  }
+
+  @protected
+  T? getWeatherSettingsFromMapAndBoxSettings(Map<String, dynamic>? weatherFromMap,Box? boxSettings) {
     final weather = Weather.fromMapThisNetwork(weatherFromMap!);
-    final settings = objectFromBoxSettings as Settings;
+    final settings = Settings.fromBoxSettings(boxSettings!);
     settings.color = weather.getNameColorFromGetEnumWeatherCondition;
     return WeatherSettings.success(weather,settings) as T?;
   }
@@ -123,15 +149,5 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
   @protected
   T? getWeatherSettingsFromBaseException(BaseException? baseException) {
     return WeatherSettings.exception(baseException!) as T?;
-  }
-
-  @protected
-  Settings? getSettingsForSuccessWhereKeyNotFound() {
-    return Settings.getSettingsForSuccessWhereKeyNotFound;
-  }
-
-  @protected
-  Weather? getWeatherForSuccessWhereKeyNotFound() {
-    return Weather.getWeatherForSuccessWhereKeyNotFound;
   }
 }

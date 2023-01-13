@@ -38,10 +38,18 @@ class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<T extends Settin
     try {
       final Box? boxSettings = await hiveService
           .getBoxSettings();
-      boxSettings?.put(Settings.constKeySettingsQHiveService,parameter);
+      updateSettingsFromBoxSettingsAndSettings(boxSettings,parameter);
       return Result<bool>.success(true);
     } catch(e) {
       return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
     }
+  }
+
+  @protected
+  void updateSettingsFromBoxSettingsAndSettings(Box? boxSettings,T? settings) {
+    boxSettings?.put(Settings.constParameterColor,
+        settings?.color);
+    boxSettings?.put(Settings.constParameterTemperatureUnits,
+        settings?.temperatureUnits);
   }
 }
