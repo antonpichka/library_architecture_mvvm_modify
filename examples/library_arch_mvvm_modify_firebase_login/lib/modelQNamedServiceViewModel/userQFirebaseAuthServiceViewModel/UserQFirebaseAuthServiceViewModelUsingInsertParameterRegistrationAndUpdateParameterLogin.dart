@@ -7,7 +7,6 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/Login.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Registration.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/namedException/SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
@@ -36,11 +35,6 @@ class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdate
   @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
-
-  @visibleForTesting
-  @nonVirtual
-  @override
-  List<BaseNamedService?> get listNamedService => [firebaseAuthService];
 
   @protected
   @override

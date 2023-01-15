@@ -48,25 +48,23 @@ class ListPost<T extends Post>
     }
     return listModel!.length + 1;
   }
-  bool? get getThreeParametersNamedForPostsListWidget => hasReachedMax;
-  bool? get getFourParametersNamedForPostsListWidget => hasReachedMax;
 
-  void setOneParametersNamedForPostsListWidget(
+  set setOneParametersNamedForPostsListWidget(
       ListPost<T> listPost)
   {
     exceptionController = listPost.exceptionController;
-    hasReachedMax = listPost.getThreeParametersNamedForPostsListWidget;
+    hasReachedMax = listPost.hasReachedMax;
     if(!(hasReachedMax ?? true)) {
       insertListToListModel(listPost.listModel!);
       return;
     }
   }
 
-  void setTwoParametersNamedForPostsListWidget(
+  set setTwoParametersNamedForPostsListWidget(
       ListPost<T> listPost)
   {
     exceptionController = listPost.exceptionController;
-    hasReachedMax = listPost.getFourParametersNamedForPostsListWidget;
+    hasReachedMax = listPost.hasReachedMax;
   }
 
   bool isOneParametersNamedForPostsListWidget(

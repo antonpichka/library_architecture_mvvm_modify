@@ -3,7 +3,6 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/FirebaseAuthService.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewModel/namedService/GoogleSignInService.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
@@ -25,11 +24,6 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<T 
   @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
-
-  @visibleForTesting
-  @nonVirtual
-  @override
-  List<BaseNamedService?> get listNamedService => [firebaseAuthService,googleSignInService];
 
   @protected
   @override

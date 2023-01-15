@@ -14,6 +14,6 @@ class UserExceptionTextWidget
 
   @override
   Widget build(BuildContext context) {
-    return Text(user!.exceptionController.getMessageForViewByException);
+    return Text(user!.exceptionController.getMessageForViewParameterException!);
   }
 }

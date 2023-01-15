@@ -19,7 +19,7 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
 
   ListSearchResultInLoading.success(super.list,this.isLoading,this.isEmptyValueFromTextInput) : super.success();
 
-  static ListSearchResultInLoading<SearchResultInLoading> get getListSearchResultInLoadingForSuccess => ListSearchResultInLoading<SearchResultInLoading>.success([],false,true);
+  static ListSearchResultInLoading get getListSearchResultInLoadingForSuccess => ListSearchResultInLoading.success([],false,true);
 
   EnumListSearchResultInLoadingForSearchBodyWidget get getEnumListSearchResultInLoadingForSearchBodyWidget {
     if(isEmptyValueFromTextInput!) {
@@ -38,11 +38,11 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
   }
 
   String? get getOneParametersNamedForSearchBodyWidget {
-    switch(exceptionController.getMessageForViewByException) {
+    switch(exceptionController.getMessageForViewParameterException) {
       case "403":
         return "The server understood the request, but is refusing to fulfill it.";
       default:
-        return exceptionController.getMessageForViewByException;
+        return exceptionController.getMessageForViewParameterException;
     }
   }
 

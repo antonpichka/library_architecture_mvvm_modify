@@ -51,14 +51,14 @@ class PostsListWidgetListViewModel {
     {
       postQThereIsStateViewModel
           .getListPost
-          ?.setTwoParametersNamedForPostsListWidget(listPost);
+          ?.setTwoParametersNamedForPostsListWidget = listPost;
       postQThereIsStateViewModel
           .notifyStreamListPost();
       return;
     }
     postQThereIsStateViewModel
         .getListPost
-        ?.setOneParametersNamedForPostsListWidget(listPost);
+        ?.setOneParametersNamedForPostsListWidget = listPost;
     postQThereIsStateViewModel
         .notifyStreamListPost();
     return;

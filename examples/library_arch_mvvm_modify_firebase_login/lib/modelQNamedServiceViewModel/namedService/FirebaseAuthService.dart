@@ -1,13 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 
-class FirebaseAuthService
-    extends BaseNamedService
-{
+class FirebaseAuthService {
   static FirebaseAuth? _firebaseAuth;
 
   FirebaseAuth? get getFirebaseAuth {
-    incrementForNumberOfExecutedMethodsInThisClass();
     if(_firebaseAuth != null) {
       return _firebaseAuth;
     }

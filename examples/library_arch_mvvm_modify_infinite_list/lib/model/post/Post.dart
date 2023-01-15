@@ -9,6 +9,12 @@ class Post
 
   Post.success(this.id,this.title,this.body) : super.success(id.toString());
   Post.exception(super.exception) : super.exception();
+  factory Post.fromMap(Map<String,dynamic> map) {
+    return Post.success(
+        map[constParameterId],
+        map[constParameterTitle],
+        map[constParameterBody]);
+  }
 
   static Post get getPostForSuccess => Post.success(0,"", "");
   static const constParameterId = "id";

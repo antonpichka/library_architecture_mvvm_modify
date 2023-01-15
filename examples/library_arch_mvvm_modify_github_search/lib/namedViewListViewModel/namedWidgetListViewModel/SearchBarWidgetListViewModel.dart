@@ -38,7 +38,7 @@ class SearchBarWidgetListViewModel {
     {
       customTimerQThereIsStateViewModel
           .getCustomTimer
-          ?.oneParametersNamedForSearchBarWidget();
+          ?.setTwoParametersNamedForSearchBarWidget();
       boolQThereIsStateViewModelForAntiSpam
           .getBool
           ?.isField = false;

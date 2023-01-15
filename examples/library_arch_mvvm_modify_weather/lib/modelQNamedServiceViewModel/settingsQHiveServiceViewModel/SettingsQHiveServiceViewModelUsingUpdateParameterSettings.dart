@@ -3,7 +3,6 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/ListSettings.dar
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/namedService/HiveService.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
@@ -24,11 +23,6 @@ class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<T extends Settin
   @protected
   @override
   Object? get modelQNamedServiceDataSource => this;
-
-  @visibleForTesting
-  @nonVirtual
-  @override
-  List<BaseNamedService?> get listNamedService => [hiveService];
 
   @protected
   @override

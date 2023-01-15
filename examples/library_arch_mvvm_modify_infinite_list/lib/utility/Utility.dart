@@ -1,1 +1,0 @@
-const constUrlJsonPlaceholderTypicodeCom = "jsonplaceholder.typicode.com";

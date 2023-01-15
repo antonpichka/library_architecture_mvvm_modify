@@ -8,7 +8,6 @@ import 'package:meta/meta.dart';
 abstract class BaseListModel<T extends BaseModel> {
   List<T>? listModel;
   ExceptionController exceptionController;
-  @protected
   Enum? enumNamedForIterator;
   final Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
 

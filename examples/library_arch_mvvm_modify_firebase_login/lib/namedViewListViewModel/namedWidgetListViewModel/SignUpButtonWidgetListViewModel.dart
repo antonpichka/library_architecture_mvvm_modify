@@ -72,7 +72,7 @@ class SignUpButtonWidgetListViewModel {
     {
       callbackForException(result
           .exceptionController
-          .getMessageForViewByException);
+          .getMessageForViewParameterException!);
       return;
     }
     callbackForSuccess();

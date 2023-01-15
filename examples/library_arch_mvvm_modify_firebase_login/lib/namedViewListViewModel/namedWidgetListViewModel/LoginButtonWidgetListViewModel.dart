@@ -67,7 +67,7 @@ class LoginButtonWidgetListViewModel {
           .notifyStreamBool();
       callbackForException(result
           .exceptionController
-          .getMessageForViewByException);
+          .getMessageForViewParameterException!);
       return;
     }
     return;

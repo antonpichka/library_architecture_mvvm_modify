@@ -24,8 +24,8 @@ class ExceptionController {
       ? EnumWhatIsTheException.networkException : EnumWhatIsTheException.otherException;
 
   @nonVirtual
-  String get getMessageForViewByException {
-    return _exception!.getMessageForView;
+  String? get getMessageForViewParameterException {
+    return _exception?.getMessageForView;
   }
 
   @nonVirtual

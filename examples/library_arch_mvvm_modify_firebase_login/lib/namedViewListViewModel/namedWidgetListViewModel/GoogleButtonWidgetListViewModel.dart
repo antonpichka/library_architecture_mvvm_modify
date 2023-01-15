@@ -40,7 +40,7 @@ class GoogleButtonWidgetListViewModel {
     {
       callbackForException(boolTypeParameter
           .exceptionController
-          .getMessageForViewByException);
+          .getMessageForViewParameterException!);
       return;
     }
     return;

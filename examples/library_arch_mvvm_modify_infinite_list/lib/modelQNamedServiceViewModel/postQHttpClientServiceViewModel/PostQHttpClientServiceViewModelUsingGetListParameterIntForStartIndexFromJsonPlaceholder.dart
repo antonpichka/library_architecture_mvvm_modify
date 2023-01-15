@@ -3,9 +3,7 @@ import 'dart:core';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewModel/namedService/HttpClientService.dart';
-import 'package:library_arch_mvvm_modify_infinite_list/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
@@ -27,11 +25,6 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
   @override
   Object get modelQNamedServiceDataSource => this;
 
-  @visibleForTesting
-  @nonVirtual
-  @override
-  List<BaseNamedService?> get listNamedService => [httpClientService];
-
   @protected
   @override
   Future<Y?> getListModelFromNamedServiceParameterNamedDS(int? parameter)
@@ -39,7 +32,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
     try {
       final response = await httpClientService
           .getHttpClient
-          ?.get(Uri.https(constUrlJsonPlaceholderTypicodeCom, "/posts", <String, String>{'_start': '$parameter', '_limit': '20'}))
+          ?.get(Uri.parse("https://jsonplaceholder.typicode.com/posts?_start=$parameter&_limit=20"))
           .timeout(const Duration(seconds: 5));
       if(response?.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,response!.statusCode);
@@ -58,10 +51,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
     final list = object as List;
     final listPost = list.map((dynamic json) {
       final map = json as Map<String,dynamic>;
-      return Post.success(
-          map[Post.constParameterId],
-          map[Post.constParameterTitle],
-          map[Post.constParameterBody]);
+      return Post.fromMap(map);
     }).toList();
     return ListPost.success(listPost) as Y?;
   }

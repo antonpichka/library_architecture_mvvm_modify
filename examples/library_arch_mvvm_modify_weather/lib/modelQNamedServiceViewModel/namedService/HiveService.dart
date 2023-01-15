@@ -2,17 +2,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnitsAdapter.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 
-class HiveService
-    extends BaseNamedService
-{
+class HiveService {
   static Box? _boxSettings;
   static Box? _boxWeather;
 
   Future<void> initFlutterAndGetBoxModels()
   async {
-    incrementForNumberOfExecutedMethodsInThisClass();
     await Hive.initFlutter();
     Hive.registerAdapter(TemperatureUnitsAdapter());
     await _getBoxSettings();
@@ -21,17 +17,14 @@ class HiveService
   }
 
   Future<Box?> getBoxSettings() {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _getBoxSettings();
   }
 
   Future<Box?> getBoxWeather() {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _getBoxWeather();
   }
 
   Box? getBoxSettingsAlreadyOpen() {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _getBoxSettingsAlreadyOpen();
   }
 

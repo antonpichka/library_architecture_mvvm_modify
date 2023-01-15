@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_list_model_to_named_service_np_fbds.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_list_model_to_named_service_parameter_named_fbds.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_model_to_named_service_np_fbds.dart';
@@ -17,7 +18,6 @@ import 'package:library_architecture_mvvm_modify/base_model/base_function_before
 import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_model_to_named_service_parameter_named_fbds.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_list_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_list_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
@@ -34,12 +34,10 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_list_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_np_data_source.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/utility/testing.dart';
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
 abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>>
-    extends Testing
 {
   ///   Example Using:
   ///
@@ -48,20 +46,11 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   ///   Object? get modelQNamedServiceDataSource => this;
   Object? get modelQNamedServiceDataSource;
 
-  ///   Example Using:
-  ///
-  ///   @visibleForTesting
-  ///   @nonVirtual
-  ///   @override
-  ///   List<BaseNamedService?> get listNamedService => [httpClientService,hiveService,firebaseAuthService];
-  List<BaseNamedService?> get listNamedService;
-
   // Start getListNP 3
   @protected
   @nonVirtual
   Future<Y?> getListModelFromNamedServiceNP()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<Object>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
         null,
@@ -73,7 +62,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Y?> getListModelFromNamedServiceNPUsingFBDS(
       GetListModelFromNamedServiceNPFBDS<Y,Object> getListModelFromNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<Object>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
         getListModelFromNamedServiceNPFBDS,
@@ -86,7 +74,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       GetListModelFromNamedServiceNPFBDS<Y,C> getListModelFromNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<C>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
         getListModelFromNamedServiceNPFBDS,
@@ -100,7 +87,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Y?> getListModelFromNamedServiceParameterNamed<X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         null,
@@ -114,7 +100,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       GetListModelFromNamedServiceParameterNamedFBDS<Y,X,Object> getModelFromNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         getModelFromNamedServiceParameterNamedFBDS,
@@ -129,7 +114,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceParameterNamedDataSource<Y,X>,
         getModelFromNamedServiceParameterNamedFBDS,
@@ -143,7 +127,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<T?> getModelFromNamedServiceNP()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<Object>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
         null,
@@ -155,7 +138,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<T?> getModelFromNamedServiceNPUsingFBDS(
       GetModelFromNamedServiceNPFBDS<T,Object> getModelFromNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<Object>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
         getModelFromNamedServiceNPFBDS,
@@ -168,7 +150,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       GetModelFromNamedServiceNPFBDS<T,C> getModelFromNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<C>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
         getModelFromNamedServiceNPFBDS,
@@ -182,7 +163,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<T?> getModelFromNamedServiceParameterNamed<X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         null,
@@ -196,7 +176,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       GetModelFromNamedServiceParameterNamedFBDS<T,X,Object> getModelFromNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         getModelFromNamedServiceParameterNamedFBDS,
@@ -211,7 +190,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceParameterNamedDataSource<T,X>,
         getModelFromNamedServiceParameterNamedFBDS,
@@ -225,7 +203,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<Result<X>?> insertModelToNamedServiceNP<X extends Object>()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         null,
@@ -237,7 +214,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<X>?> insertModelToNamedServiceNPUsingFBDS<X extends Object>(
       InsertModelToNamedServiceNPFBDS<X,Object> insertModelToNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         insertModelToNamedServiceNPFBDS,
@@ -250,7 +226,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       InsertModelToNamedServiceNPFBDS<X,C> insertModelToNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         insertModelToNamedServiceNPFBDS,
@@ -264,7 +239,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<Z>?> insertModelToNamedServiceParameterNamed<Z extends Object,X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         null,
@@ -278,7 +252,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       InsertModelToNamedServiceParameterNamedFBDS<Z,X,Object> insertModelToNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         insertModelToNamedServiceParameterNamedFBDS,
@@ -293,7 +266,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,C>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceParameterNamedDataSource<Z,X>,
         insertModelToNamedServiceParameterNamedFBDS,
@@ -307,7 +279,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<Result<X>?> insertListModelToNamedServiceNP<X extends Object>()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         null,
@@ -319,7 +290,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<X>?> insertListModelToNamedServiceNPUsingFBDS<X extends Object>(
       InsertListModelToNamedServiceNPFBDS<X,Object> insertListModelToNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         insertListModelToNamedServiceNPFBDS,
@@ -332,7 +302,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       InsertListModelToNamedServiceNPFBDS<X,C> insertListModelToNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         insertListModelToNamedServiceNPFBDS,
@@ -346,7 +315,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<Z>?> insertListModelToNamedServiceParameterNamed<Z extends Object,X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         null,
@@ -360,7 +328,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       InsertListModelToNamedServiceParameterNamedFBDS<Z,X,Object> insertListModelToNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         insertListModelToNamedServiceParameterNamedFBDS,
@@ -375,7 +342,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,C>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceParameterNamedDataSource<Z,X>,
         insertListModelToNamedServiceParameterNamedFBDS,
@@ -389,7 +355,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<Result<X>?> updateModelToNamedServiceNP<X extends Object>()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         null,
@@ -401,7 +366,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<X>?> updateModelToNamedServiceNPUsingFBDS<X extends Object>(
       UpdateModelToNamedServiceNPFBDS<X,Object> updateModelToNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         updateModelToNamedServiceNPFBDS,
@@ -414,7 +378,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       UpdateModelToNamedServiceNPFBDS<X,C> updateModelToNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         updateModelToNamedServiceNPFBDS,
@@ -428,7 +391,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<Z>?> updateModelToNamedServiceParameterNamed<Z extends Object,X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         null,
@@ -442,7 +404,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       UpdateModelToNamedServiceParameterNamedFBDS<Z,X,Object> updateModelToNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         updateModelToNamedServiceParameterNamedFBDS,
@@ -457,7 +418,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,C>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceParameterNamedDataSource<Z,X>,
         updateModelToNamedServiceParameterNamedFBDS,
@@ -471,7 +431,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<Result<X>?> updateListModelToNamedServiceNP<X extends Object>()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         null,
@@ -483,7 +442,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<X>?> updateListModelToNamedServiceNPUsingFBDS<X extends Object>(
       UpdateListModelToNamedServiceNPFBDS<X,Object> updateListModelToNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         updateListModelToNamedServiceNPFBDS,
@@ -496,7 +454,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       UpdateListModelToNamedServiceNPFBDS<X,C> updateListModelToNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         updateListModelToNamedServiceNPFBDS,
@@ -510,7 +467,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<Z>?> updateListModelToNamedServiceParameterNamed<Z extends Object,X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         null,
@@ -524,7 +480,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       UpdateListModelToNamedServiceParameterNamedFBDS<Z,X,Object> updateListModelToNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         updateListModelToNamedServiceParameterNamedFBDS,
@@ -539,7 +494,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,C>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceParameterNamedDataSource<Z,X>,
         updateListModelToNamedServiceParameterNamedFBDS,
@@ -553,7 +507,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<Result<X>?> deleteModelToNamedServiceNP<X extends Object>()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         null,
@@ -565,7 +518,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<X>?> deleteModelToNamedServiceNPUsingFBDS<X extends Object>(
       DeleteModelToNamedServiceNPFBDS<X,Object> deleteModelToNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         deleteModelToNamedServiceNPFBDS,
@@ -578,7 +530,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       DeleteModelToNamedServiceNPFBDS<X,C> deleteModelToNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         deleteModelToNamedServiceNPFBDS,
@@ -592,7 +543,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<Z>?> deleteModelToNamedServiceParameterNamed<Z extends Object,X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         null,
@@ -606,7 +556,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       DeleteModelToNamedServiceParameterNamedFBDS<Z,X,Object> deleteModelToNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         deleteModelToNamedServiceParameterNamedFBDS,
@@ -621,7 +570,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,C>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceParameterNamedDataSource<Z,X>,
         deleteModelToNamedServiceParameterNamedFBDS,
@@ -635,7 +583,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   @nonVirtual
   Future<Result<X>?> deleteListModelToNamedServiceNP<X extends Object>()
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         null,
@@ -647,7 +594,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<X>?> deleteListModelToNamedServiceNPUsingFBDS<X extends Object>(
       DeleteListModelToNamedServiceNPFBDS<X,Object> deleteListModelToNamedServiceNPFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         deleteListModelToNamedServiceNPFBDS,
@@ -660,7 +606,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       DeleteListModelToNamedServiceNPFBDS<X,C> deleteListModelToNamedServiceNPFBDS,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X,C>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         deleteListModelToNamedServiceNPFBDS,
@@ -674,7 +619,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   Future<Result<Z>?> deleteListModelToNamedServiceParameterNamed<Z extends Object,X extends Object>(
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         null,
@@ -688,7 +632,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       DeleteListModelToNamedServiceParameterNamedFBDS<Z,X,Object> deleteListModelToNamedServiceParameterNamedFBDS,
       X parameter)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,Object>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         deleteListModelToNamedServiceParameterNamedFBDS,
@@ -703,7 +646,6 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
       X parameter,
       C parameterForFBDS)
   {
-    incrementForNumberOfExecutedMethodsInThisClass();
     return _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,X,C>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceParameterNamedDataSource<Z,X>,
         deleteListModelToNamedServiceParameterNamedFBDS,

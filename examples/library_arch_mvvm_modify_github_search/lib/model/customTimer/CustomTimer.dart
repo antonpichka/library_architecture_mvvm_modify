@@ -16,7 +16,7 @@ class CustomTimer
     });
   }
 
-  void oneParametersNamedForSearchBarWidget() {
+  void setTwoParametersNamedForSearchBarWidget() {
     if(_isNotActiveParameterTimer()) {
       return;
     }

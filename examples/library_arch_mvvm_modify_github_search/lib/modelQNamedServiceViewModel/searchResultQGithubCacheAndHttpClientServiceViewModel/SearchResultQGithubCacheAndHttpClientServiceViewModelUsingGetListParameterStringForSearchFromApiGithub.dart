@@ -4,9 +4,7 @@ import 'package:library_arch_mvvm_modify_github_search/model/searchResult/ListSe
 import 'package:library_arch_mvvm_modify_github_search/model/searchResult/SearchResult.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceViewModel/namedService/GithubCacheService.dart';
 import 'package:library_arch_mvvm_modify_github_search/modelQNamedServiceViewModel/namedService/HttpClientService.dart';
-import 'package:library_arch_mvvm_modify_github_search/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_named_service.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
@@ -21,11 +19,6 @@ class SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameter
   final githubCacheService = GithubCacheService();
   @protected
   final httpClientService = HttpClientService();
-  @protected
-  final String baseUrl;
-
-  SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub(
-      [this.baseUrl = constUrlApiGithubComSearchRepositories]);
 
   Future<Y?> getListSearchResultFromGithubCacheAndHttpClientServiceParameterString(String parameter) {
     return getListModelFromNamedServiceParameterNamed<String>(parameter);
@@ -34,11 +27,6 @@ class SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameter
   @nonVirtual
   @override
   Object? get modelQNamedServiceDataSource => this;
-
-  @visibleForTesting
-  @nonVirtual
-  @override
-  List<BaseNamedService?> get listNamedService => [githubCacheService,httpClientService];
 
   @protected
   @override
@@ -54,7 +42,7 @@ class SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameter
       }
       final response = await httpClientService
           .getHttpClient
-          ?.get(Uri.parse('$baseUrl$parameter'));
+          ?.get(Uri.parse('https://api.github.com/search/repositories?q=$parameter'));
       if (response!.statusCode != 200) {
         throw NetworkException.fromStatusCode(this,response.statusCode);
       }
