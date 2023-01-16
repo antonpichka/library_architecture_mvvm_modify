@@ -3,15 +3,15 @@ import 'package:test/test.dart';
 
 void main() {
   group('get success', () {
-    test('getOneParametersNamedForSearchBodyWidget success', () {
+    test('getOneParametersNamedForSearchBodyWidget', () {
       final searchResultInLoading = SearchResultInLoading.getSearchResultInLoadingForSuccess;
       expect(searchResultInLoading.getOneParametersNamedForSearchBodyWidget, "");
     });
-    test('getTwoParametersNamedForSearchBodyWidget success', () {
+    test('getTwoParametersNamedForSearchBodyWidget', () {
       final searchResultInLoading = SearchResultInLoading.getSearchResultInLoadingForSuccess;
       expect(searchResultInLoading.getTwoParametersNamedForSearchBodyWidget, "");
     });
-    test('getThreeParametersNamedForSearchBodyWidget success', () {
+    test('getThreeParametersNamedForSearchBodyWidget', () {
       final searchResultInLoading = SearchResultInLoading.getSearchResultInLoadingForSuccess;
       expect(searchResultInLoading.getThreeParametersNamedForSearchBodyWidget, "");
     });

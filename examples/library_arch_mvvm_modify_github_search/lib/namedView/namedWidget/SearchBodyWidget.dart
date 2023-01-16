@@ -49,27 +49,27 @@ class SearchBodyWidgetState
   }
 
   @protected
-  Widget buildError(ListSearchResultInLoading<SearchResultInLoading>? list) {
+  Widget buildError(ListSearchResultInLoading? list) {
     return Text(list?.getOneParametersNamedForSearchBodyWidget ?? "");
   }
 
   @protected
-  Widget buildIsEmptyValueFromTextInput(ListSearchResultInLoading<SearchResultInLoading>? list) {
+  Widget buildIsEmptyValueFromTextInput(ListSearchResultInLoading? list) {
     return const Text('Please enter a term to begin');
   }
 
   @protected
-  Widget buildIsLoading(ListSearchResultInLoading<SearchResultInLoading>? list) {
+  Widget buildIsLoading(ListSearchResultInLoading? list) {
     return const CircularProgressIndicator();
   }
 
   @protected
-  Widget buildIsEmptyList(ListSearchResultInLoading<SearchResultInLoading>? list) {
+  Widget buildIsEmptyList(ListSearchResultInLoading? list) {
     return const Text('No Results');
   }
 
   @protected
-  Widget buildSuccess(ListSearchResultInLoading<SearchResultInLoading>? list) {
+  Widget buildSuccess(ListSearchResultInLoading? list) {
     return Expanded(child: buildListViewForSuccess(list!.listModel));
   }
 

@@ -31,6 +31,7 @@ class User
     }
     return EnumUserForMainView.authenticated;
   }
+
   String? get getOneParametersNamedForOneUserTextWidget => email;
   String? get getOneParametersNamedForTwoUserTextWidget => name;
   String? get getOneParametersNamedForCircleAvatarWidget => photo;

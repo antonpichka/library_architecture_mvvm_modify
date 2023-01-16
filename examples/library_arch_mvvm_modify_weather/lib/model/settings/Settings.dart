@@ -18,7 +18,7 @@ class Settings
     return Settings.success(color,temperatureUnits);
   }
 
-  static Settings get getSettingsForSuccess => Settings.success("",TemperatureUnits.celsius);
+  static Settings get getSettingsForSuccess => Settings.success(null,TemperatureUnits.celsius);
   static const constSettingsQHiveService = "__settings_q_hive_service__";
   static const constParameterColor = "__color__";
   static const constParameterTemperatureUnits = "__temperature_units__";

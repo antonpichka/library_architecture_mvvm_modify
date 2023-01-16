@@ -29,8 +29,4 @@ class WeatherSettings
             settings?.color,
             settings?.temperatureUnits));
   }
-
-  set setOneParametersForIconButtonSettingsWidget(Settings settings) {
-    this.settings = settings;
-  }
 }

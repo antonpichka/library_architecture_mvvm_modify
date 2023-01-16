@@ -36,7 +36,7 @@ class GoogleButtonWidgetListViewModel {
         .notifyStreamBool();
     if(boolTypeParameter
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       callbackForException(boolTypeParameter
           .exceptionController

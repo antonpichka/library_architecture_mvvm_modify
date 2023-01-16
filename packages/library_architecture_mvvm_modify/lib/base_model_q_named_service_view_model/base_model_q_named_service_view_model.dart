@@ -665,7 +665,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = getListModelFromNamedServiceNPFBDS
         .getListModelFromNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await getListModelFromNamedServiceNPDataSource
@@ -684,7 +684,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = getListModelFromNamedServiceParameterNamedFBDS
         .getListModelFromNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await getListModelFromNamedServiceParameterNamedDataSource
@@ -702,7 +702,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = getModelFromNamedServiceNPFBDS
         .getModelFromNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await getModelFromNamedServiceNPDataSource
@@ -721,7 +721,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = getModelFromNamedServiceParameterNamedFBDS
         .getModelFromNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await getModelFromNamedServiceParameterNamedDataSource
@@ -739,7 +739,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = insertModelToNamedServiceNPFBDS
         .insertModelToNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await insertModelToNamedServiceNPDataSource
@@ -758,7 +758,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = insertModelToNamedServiceParameterNamedFBDS
         .insertModelToNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await insertModelToNamedServiceParameterNamedDataSource
@@ -776,7 +776,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = insertListModelToNamedServiceNPFBDS
         .insertListModelToNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await insertListModelToNamedServiceNPDataSource
@@ -795,7 +795,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = insertListModelToNamedServiceParameterNamedFBDS
         .insertListModelToNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await insertListModelToNamedServiceParameterNamedDataSource
@@ -813,7 +813,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = updateModelToNamedServiceNPFBDS
         .updateModelToNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await updateModelToNamedServiceNPDataSource
@@ -832,7 +832,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = updateModelToNamedServiceParameterNamedFBDS
         .updateModelToNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await updateModelToNamedServiceParameterNamedDataSource
@@ -850,7 +850,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = updateListModelToNamedServiceNPFBDS
         .updateListModelToNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await updateListModelToNamedServiceNPDataSource
@@ -869,7 +869,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = updateListModelToNamedServiceParameterNamedFBDS
         .updateListModelToNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await updateListModelToNamedServiceParameterNamedDataSource
@@ -887,7 +887,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = deleteModelToNamedServiceNPFBDS
         .deleteModelToNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await deleteModelToNamedServiceNPDataSource
@@ -906,7 +906,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = deleteModelToNamedServiceParameterNamedFBDS
         .deleteModelToNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await deleteModelToNamedServiceParameterNamedDataSource
@@ -924,7 +924,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = deleteListModelToNamedServiceNPFBDS
         .deleteListModelToNamedServiceNP(parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await deleteListModelToNamedServiceNPDataSource
@@ -943,7 +943,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
     }
     final response = deleteListModelToNamedServiceParameterNamedFBDS
         .deleteListModelToNamedServiceParameterNamed(parameter,parameterForFBDS);
-    if(response!.exceptionController.isExceptionNotEqualsNull()) {
+    if(response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
     return await deleteListModelToNamedServiceParameterNamedDataSource

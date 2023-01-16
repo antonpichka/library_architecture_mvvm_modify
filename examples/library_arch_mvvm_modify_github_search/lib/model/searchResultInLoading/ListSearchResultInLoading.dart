@@ -28,7 +28,7 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
     if(isLoading!) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isLoading;
     }
-    if(exceptionController.isExceptionNotEqualsNull()) {
+    if(exceptionController.isNotEqualsNullParameterException()) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.error;
     }
     if(listModel!.isEmpty) {

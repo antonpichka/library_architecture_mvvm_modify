@@ -47,7 +47,7 @@ class PostsListWidgetListViewModel {
         ?.isField = false;
     if(listPost
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       postQThereIsStateViewModel
           .getListPost

@@ -31,7 +31,7 @@ class FloatingActionButtonSearchWidgetListViewModel {
         .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(location!);
     if(weatherSettingsFromHttpClientAndHive
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       weatherSettingsQThereIsStateViewModel
           .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;

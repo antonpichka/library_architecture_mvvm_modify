@@ -188,7 +188,7 @@ class WeatherWidgetState
 
   @protected
   Widget buildThreeTextForDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
-    return Text(weatherIsLoading?.getFourParametersNamedForWeatherWidget(context) ?? "");
+    return Text("${weatherIsLoading?.getFourParametersNamedForWeatherWidget ?? ""}${weatherIsLoading?.getSixParametersNamedForWeatherWidget?.format(context)}");
   }
 }
 

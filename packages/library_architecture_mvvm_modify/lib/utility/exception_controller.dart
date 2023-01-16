@@ -29,7 +29,7 @@ class ExceptionController {
   }
 
   @nonVirtual
-  bool isExceptionNotEqualsNull() {
+  bool isNotEqualsNullParameterException() {
     if(_exception == null) {
       return false;
     }

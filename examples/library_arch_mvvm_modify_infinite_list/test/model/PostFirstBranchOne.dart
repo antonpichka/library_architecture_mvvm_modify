@@ -3,12 +3,12 @@ import 'package:test/test.dart';
 
 void main() {
   group('get success', () {
-    test('getOneParametersNamedForPostsListWidget success', () {
+    test('getOneParametersNamedForPostsListWidget', () {
       final post = PostFirstBranchOne.getPostFirstBranchOneForSuccess;
       post.id = 10;
       expect(post.getOneParametersNamedForPostsListWidget, "100");
     });
-    test('getTwoParametersNamedForPostsListWidget success', () {
+    test('getTwoParametersNamedForPostsListWidget', () {
       final post = PostFirstBranchOne.getPostFirstBranchOneForSuccess;
       expect(post.getTwoParametersNamedForPostsListWidget, " POST EXT HELLO");
     });

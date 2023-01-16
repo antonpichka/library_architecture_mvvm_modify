@@ -68,7 +68,7 @@ class SignUpButtonWidgetListViewModel {
         .notifyStreamBool();
     if(result
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       callbackForException(result
           .exceptionController

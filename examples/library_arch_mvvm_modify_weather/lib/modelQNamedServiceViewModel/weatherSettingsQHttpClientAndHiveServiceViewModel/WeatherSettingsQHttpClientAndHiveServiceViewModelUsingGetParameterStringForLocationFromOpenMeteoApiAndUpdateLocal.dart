@@ -7,7 +7,6 @@ import 'package:library_arch_mvvm_modify_weather/model/weatherSettings/ListWeath
 import 'package:library_arch_mvvm_modify_weather/model/weatherSettings/WeatherSettings.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/namedService/HiveService.dart';
 import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/namedService/HttpClientService.dart';
-import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_model_from_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
@@ -41,14 +40,8 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
   Future<T?> getModelFromNamedServiceParameterNamedDS(String? parameter)
   async {
     try {
-      final locationRequest = Uri.https(
-        constBaseUrlGeocodingOpenMeteoApi,
-        '/v1/search',
-        {
-          'name': parameter,
-          'count': '1'
-        },
-      );
+      final locationRequest = Uri
+          .parse("https://geocoding-api.open-meteo.com/v1/search?name=$parameter&count=1");
       final locationResponse = await httpClientService
           .getHttpClient
           ?.get(locationRequest)
@@ -65,14 +58,8 @@ class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringFo
         throw LocalException(this,EnumGuiltyForLocalException.user,constLocationNotFound);
       }
       final locationFirstMapByLocationListMap = locationListMap.first as Map<String,dynamic>;
-      final weatherRequest = Uri.https(
-          constBaseUrlOpenMeteoApi,
-          'v1/forecast',
-          {
-            Location.constParameterLatitude: '${locationFirstMapByLocationListMap[Location.constParameterLatitude]}',
-            Location.constParameterLongitude: '${locationFirstMapByLocationListMap[Location.constParameterLongitude]}',
-            'current_weather': 'true'
-          });
+      final weatherRequest = Uri
+          .parse("https://api.open-meteo.com/v1/forecast?latitude=${locationFirstMapByLocationListMap[Location.constParameterLatitude]}&longitude=${locationFirstMapByLocationListMap[Location.constParameterLongitude]}&current_weather=true");
       final weatherResponse = await httpClientService
           .getHttpClient
           ?.get(weatherRequest)

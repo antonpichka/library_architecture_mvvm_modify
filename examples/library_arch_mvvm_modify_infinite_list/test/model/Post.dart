@@ -3,15 +3,15 @@ import 'package:test/test.dart';
 
 void main() {
   group('get success', () {
-    test('getOneParametersNamedForPostsListWidget success', () {
+    test('getOneParametersNamedForPostsListWidget', () {
       final post = Post.getPostForSuccess;
       expect(post.getOneParametersNamedForPostsListWidget, "0");
     });
-    test('getTwoParametersNamedForPostsListWidget success', () {
+    test('getTwoParametersNamedForPostsListWidget', () {
       final post = Post.getPostForSuccess;
       expect(post.getTwoParametersNamedForPostsListWidget, "");
     });
-    test('getThreeParametersNamedForPostsListWidget success', () {
+    test('getThreeParametersNamedForPostsListWidget', () {
       final post = Post.getPostForSuccess;
       expect(post.getThreeParametersNamedForPostsListWidget, "");
     });

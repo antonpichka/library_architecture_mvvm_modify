@@ -44,7 +44,7 @@ class WeatherWidgetListViewModel {
         .getWeatherSettingsFromHiveServiceNP();
     if(weatherSettingsFromHive
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       weatherSettingsQThereIsStateViewModel
           .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHive;
@@ -89,7 +89,7 @@ class WeatherWidgetListViewModel {
         .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(weatherIsLoadingQThereIsStateViewModel.getWeatherIsLoading?.getFiveParametersNamedForWeatherWidget ?? "");
     if(weatherSettingsFromHttpClientAndHive
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       weatherSettingsQThereIsStateViewModel
           .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;

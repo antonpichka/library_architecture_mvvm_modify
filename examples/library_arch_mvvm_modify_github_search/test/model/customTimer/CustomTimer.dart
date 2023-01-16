@@ -3,12 +3,12 @@ import 'package:test/test.dart';
 
 void main() {
   group('set success', () {
-    test('setOneParametersNamedForSearchBarWidget success', () {
+    test('setOneParametersNamedForSearchBarWidget', () {
       final customTimer = CustomTimer.getCustomTimerForSuccess;
       customTimer.setOneParametersNamedForSearchBarWidget = () {};
       expect(customTimer.timer != null, true);
     });
-    test('setTwoParametersNamedForSearchBarWidget success', () {
+    test('setTwoParametersNamedForSearchBarWidget', () {
       final customTimer = CustomTimer.getCustomTimerForSuccess;
       customTimer.setTwoParametersNamedForSearchBarWidget();
       expect(customTimer.timer == null, true);

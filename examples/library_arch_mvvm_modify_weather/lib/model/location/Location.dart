@@ -26,7 +26,6 @@ class Location
   static const constParameterLatitude = "latitude";
   static const constParameterLongitude = "longitude";
 
-
   bool isEqualsNullParametersIdAndNameAndLatitudeAndLongitude() {
     return id == null &&
         name == null &&

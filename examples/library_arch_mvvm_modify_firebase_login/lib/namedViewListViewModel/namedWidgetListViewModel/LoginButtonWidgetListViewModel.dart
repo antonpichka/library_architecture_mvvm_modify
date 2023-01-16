@@ -58,7 +58,7 @@ class LoginButtonWidgetListViewModel {
         .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput?.getTwoParametersNamedForLoginButtonWidget ?? ""));
     if(result
         !.exceptionController
-        .isExceptionNotEqualsNull())
+        .isNotEqualsNullParameterException())
     {
       boolQThereIsStateViewModelForLoading
           .getBool

@@ -28,7 +28,7 @@ class WeatherIsLoading
     if(isLoading ?? false) {
       return EnumWeatherIsLoadingForWeatherWidget.isLoading;
     }
-    if(exceptionController.isExceptionNotEqualsNull()) {
+    if(exceptionController.isNotEqualsNullParameterException()) {
       return EnumWeatherIsLoadingForWeatherWidget.exception;
     }
     if(weather?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() ?? false) {
@@ -62,12 +62,16 @@ class WeatherIsLoading
     return weather?.location?.name;
   }
 
-  String? getFourParametersNamedForWeatherWidget(BuildContext context) {
-    return "Last Updated at ${TimeOfDay.fromDateTime(weather?.lastUpdated ?? DateTime(0)).format(context)}";
+  String? get getFourParametersNamedForWeatherWidget {
+    return "Last Updated at ";
   }
 
   String? get getFiveParametersNamedForWeatherWidget {
     return weather?.location?.name;
+  }
+
+  TimeOfDay? get getSixParametersNamedForWeatherWidget {
+    return TimeOfDay.fromDateTime(weather?.lastUpdated ?? DateTime(0));
   }
 
   void setOneParametersNamedForFloatingActionButtonSearchWidget() {

@@ -4,21 +4,21 @@ import 'package:test/test.dart';
 
 void main() {
   group('get success', () {
-    test('getEnumListPostForPostsListWidget success', () {
+    test('getEnumListPostForPostsListWidget', () {
       final listPost = ListPost.getListPostForSuccess;
       expect(listPost.getEnumListPostForPostsListWidget, EnumListPostForPostsListWidget.isEmptyList);
     });
-    test('getOneParametersNamedForPostsListWidget success', () {
+    test('getOneParametersNamedForPostsListWidget', () {
       final listPost = ListPost.getListPostForSuccess;
       expect(listPost.getOneParametersNamedForPostsListWidget, true);
     });
-    test('getTwoParametersNamedForPostsListWidget success', () {
+    test('getTwoParametersNamedForPostsListWidget', () {
       final listPost = ListPost.getListPostForSuccess;
       expect(listPost.getTwoParametersNamedForPostsListWidget, 0);
     });
   });
   group('set success', () {
-    test('setOneParametersNamedForPostsListWidget success', () {
+    test('setOneParametersNamedForPostsListWidget', () {
       final listPost = ListPost.getListPostForSuccess;
       listPost
           .setOneParametersNamedForPostsListWidget = ListPost.getListPostForSuccess;
@@ -28,7 +28,7 @@ void main() {
       expect(listPost.hasReachedMax, true);
       expect(listPost.listModel, []);
     });
-    test('setOneParametersNamedForPostsListWidget success', () {
+    test('setTwoParametersNamedForPostsListWidget', () {
       final listPost = ListPost.getListPostForSuccess;
       listPost
           .setTwoParametersNamedForPostsListWidget = ListPost.getListPostForSuccess;
@@ -39,7 +39,7 @@ void main() {
     });
   });
   group('is success', () {
-    test('isOneParametersNamedForPostsListWidget success', () {
+    test('isOneParametersNamedForPostsListWidget', () {
       final listPost = ListPost.getListPostForSuccess;
       expect(listPost.isOneParametersNamedForPostsListWidget(1),true);
     });
