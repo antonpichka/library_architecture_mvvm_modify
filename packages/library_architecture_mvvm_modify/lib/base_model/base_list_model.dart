@@ -8,10 +8,9 @@ import 'package:meta/meta.dart';
 abstract class BaseListModel<T extends BaseModel> {
   List<T>? listModel;
   ExceptionController exceptionController;
-  Enum? enumNamedForIterator;
   final Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
 
-  BaseListModel.success(this.listModel,[this.enumNamedForIterator,this._mapEnumNamedForIteratorAndIterator])
+  BaseListModel.success(this.listModel,[this._mapEnumNamedForIteratorAndIterator])
       : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
       : exceptionController = ExceptionController.exception(exception),
@@ -24,7 +23,7 @@ abstract class BaseListModel<T extends BaseModel> {
         _mapEnumNamedForIteratorAndIterator = null;
 
   @nonVirtual
-  void startIteratorForListModel() {
+  void iteratorForListModel(Enum? enumNamedForIterator) {
     if(_mapEnumNamedForIteratorAndIterator!.isEmpty) {
       return;
     }
