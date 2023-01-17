@@ -15,6 +15,8 @@ The library is implemented according to the principles of SOLID, and is an examp
 ## Examples
 
 Examples taken for processing from library <a href="https://github.com/felangel/bloc#examples">BLoC</a>.
+In the first five examples (<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_github_search">Github Search</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_weather">Weather</a>), the file and directory names are all uppercase, but this is not correct, as there are filesystems that are case sensitive, and therefore it is necessary to create .dart files only with lowercase
+Applications <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_architecture_mvvm_modify_todo">Todo</a>, program files and directories are written in lowercase, and is also the main example because, the documentation is written based on this example
 
 <div style="text-align: center">
     <table>
@@ -48,6 +50,7 @@ Examples taken for processing from library <a href="https://github.com/felangel/
 - <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>
 - <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_github_search">Github Search</a>
 - <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_weather">Weather</a>
+- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_architecture_mvvm_modify_todo">Todo</a>
 
 ## Documentation
 
