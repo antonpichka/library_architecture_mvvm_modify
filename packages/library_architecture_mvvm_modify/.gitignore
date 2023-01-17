@@ -1,8 +1,6 @@
-# Flutter/Dart/Pub related
-**/doc/api/
+# IntelliJ related
+.idea/
+
+# Dart/Pub related
 .dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
 pubspec.lock
-.metadata
-build/
