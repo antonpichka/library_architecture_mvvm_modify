@@ -1,5 +1,13 @@
 # library_architecture_mvvm_modify_todo
 
+## Compiled issues in Jira
+
+Approximate number of issues, based on the <a href="https://github.com/felangel/bloc/blob/master/docs/assets/gifs/flutter_todos.gif">GIF</a>, which is located in the BLoC repository
+
+<p align="center">
+<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/tasks_to_todo_application.png" alt="Tasks to Todo application"/>
+</p>
+
 ## Working with Translations 🌐
 
 This project relies on [flutter_localizations][flutter_localizations_link] and follows the [official internationalization guide for Flutter][internationalization_link].
@@ -50,15 +58,11 @@ Widget build(BuildContext context) {
 Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info.plist` to include the new locale.
 
 ```xml
-    ...
-
     <key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
 		<string>es</string>
 	</array>
-
-    ...
 ```
 
 ### Adding Translations
