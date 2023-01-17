@@ -1,7 +1,7 @@
-name: library_arch_mvvm_modify_github_search
+name: library_architecture_mvvm_modify_todo
 description: A new Flutter project.
 version: 1.0.0+1
-publish_to: none
+publish_to: 'none'
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -12,14 +12,19 @@ dependencies:
     path: ../../packages/library_architecture_mvvm_modify
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
   meta: ^1.8.0
+  uuid: ^3.0.6
+  rxdart: ^0.27.7
+  sqflite: ^2.2.3
   cupertino_icons: ^1.0.2
-  http: ^0.13.0
-  url_launcher: ^6.0.0
 
 dev_dependencies:
-  test: ^1.18.2
+  test: ^1.21.4
   flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
+  generate: true

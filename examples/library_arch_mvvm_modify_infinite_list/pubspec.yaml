@@ -5,13 +5,14 @@ publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
+  flutter: 3.3.8
 
 dependencies:
   library_architecture_mvvm_modify:
     path: ../../packages/library_architecture_mvvm_modify
   flutter:
     sdk: flutter
-  meta: ^1.3.0
+  meta: ^1.8.0
   cupertino_icons: ^1.0.2
   http: ^0.13.0
 
