@@ -4,7 +4,6 @@ linter:
   rules:
     use_key_in_widget_constructors: false
     await_only_futures: true
-    depend_on_referenced_packages: false
 
 analyzer:
   errors:
