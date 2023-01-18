@@ -77,7 +77,3 @@ Applications <a href="https://github.com/JacobOdd/library_architecture_mvvm_modi
   - ##### IDispose 
   - ##### ExceptionController
   - ##### Result
-
-## Maintainers
-
-- [Anton Pichka](https://github.com/jacobodd)
