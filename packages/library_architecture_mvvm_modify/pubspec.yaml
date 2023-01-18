@@ -1,9 +1,9 @@
 name: library_architecture_mvvm_modify
 description: MVVM Modify for Dart but you can also port to another language
-version: 0.0.1
-issue_tracker: https://github.com/JacobOdd/library_architecture_mvvm_modify/issues
-homepage: https://github.com/JacobOdd/library_architecture_mvvm_modify
+repository: https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify
 documentation: https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#documentation
+issue_tracker: https://github.com/JacobOdd/library_architecture_mvvm_modify/issues
+version: 0.0.1
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
