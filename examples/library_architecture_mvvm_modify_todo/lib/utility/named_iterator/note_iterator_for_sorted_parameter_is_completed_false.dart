@@ -1,12 +1,12 @@
 import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 
-class NoteIteratorForSortedParameterIsCompletedFalse
-    extends BaseIterator<Note>
+class NoteIteratorForSortedParameterIsCompletedFalse<T extends Note>
+    extends BaseIterator<T>
 {
   @override
-  Note get current {
-    Note note = listModel![0];
+  T get current {
+    T note = listModel![0];
     int iteration = 0;
     if(note.isCompleted == false) {
       listModel!.removeAt(iteration);

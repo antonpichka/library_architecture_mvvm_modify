@@ -8,36 +8,34 @@ import 'package:meta/meta.dart';
 abstract class BaseListModel<T extends BaseModel> {
   List<T>? listModel;
   ExceptionController exceptionController;
-  final Map<Enum,BaseIterator<T>>? _mapEnumNamedForIteratorAndIterator;
+  @protected
+  Map<Enum,BaseIterator<T>>? mapEnumNamedForIteratorAndIterator;
 
-  BaseListModel.success(this.listModel,[this._mapEnumNamedForIteratorAndIterator])
+  BaseListModel.success(this.listModel)
       : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
-      : exceptionController = ExceptionController.exception(exception),
-        _mapEnumNamedForIteratorAndIterator = null;
+      : exceptionController = ExceptionController.exception(exception);
   BaseListModel.successForFBDS()
-      : exceptionController = ExceptionController.success(),
-        _mapEnumNamedForIteratorAndIterator = null;
+      : exceptionController = ExceptionController.success();
   BaseListModel.exceptionForFBDS(LocalException exception)
-      : exceptionController = ExceptionController.exception(exception),
-        _mapEnumNamedForIteratorAndIterator = null;
+      : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual
   void iteratorForListModel(Enum? enumNamedForIterator) {
-    if(_mapEnumNamedForIteratorAndIterator!.isEmpty) {
+    if(mapEnumNamedForIteratorAndIterator!.isEmpty) {
       return;
     }
-    BaseIterator<T> iterator = _mapEnumNamedForIteratorAndIterator!.values.first;
-    if(_mapEnumNamedForIteratorAndIterator!.length == 1) {
+    BaseIterator<T> iterator = mapEnumNamedForIteratorAndIterator!.values.first;
+    if(mapEnumNamedForIteratorAndIterator!.length == 1) {
       iterator.listModel = listModel!;
       listModel = iterator.getSortedListModelParameterListModel;
       return;
     }
-    for(Enum itemEnumNamedForIterator in _mapEnumNamedForIteratorAndIterator!.keys) {
+    for(Enum itemEnumNamedForIterator in mapEnumNamedForIteratorAndIterator!.keys) {
       if(enumNamedForIterator != itemEnumNamedForIterator) {
         continue;
       }
-      iterator = _mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
+      iterator = mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
       break;
     }
     iterator.listModel = listModel!;
