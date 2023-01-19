@@ -7,15 +7,11 @@ class InsertNoteToSqfliteServiceParameterNoteFBDSUsingInsertParameterNote<T exte
     extends InsertModelToNamedServiceParameterNamedFBDS<int,T,Object>
 {
   static const constIsEmptyByTrimParameterName = "constIsEmptyByTrimParameterName";
-  static const constIsEmptyByTrimParameterDescription = "constIsEmptyByTrimParameterDescription";
 
   @override
   Result<int>? insertModelToNamedServiceParameterNamed(T? parameter, Object? parameterForFBDS) {
-    if(parameter!.isEmptyByTrimParameterName() ?? true) {
+    if(parameter?.isEmptyByTrimParameterName() ?? true) {
       return Result<int>.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this,constIsEmptyByTrimParameterName));
-    }
-    if(parameter.isEmptyByTrimParameterDescription() ?? true) {
-      return Result<int>.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this,constIsEmptyByTrimParameterDescription));
     }
     return Result<int>.successForFBDS();
   }

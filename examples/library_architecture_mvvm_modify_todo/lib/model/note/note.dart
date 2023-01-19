@@ -34,20 +34,38 @@ class Note
       constParameterIsCompletedForSqflite : isCompleted == true ? 1 : 0
     };
   }
-
   static Note get getNoteForSuccess => Note.success("","",false);
   static const constParameterUuIdForSqflite = "uuId";
   static const constParameterNameForSqflite = "name";
   static const constParameterDescriptionForSqflite = "description";
   static const constParameterIsCompletedForSqflite = "is_completed";
 
-  @nonVirtual
-  bool? isEmptyByTrimParameterName() {
-    return (name?.trim() ?? "").isEmpty;
+  String? get getOneParametersNamedForNotesListViewWidget {
+    return name;
+  }
+
+  String? get getTwoParametersNamedForNotesListViewWidget {
+    return description;
+  }
+
+  bool? get getThreeParametersNamedForNotesListViewWidget {
+    return isCompleted;
+  }
+
+  bool? get getFourParametersNamedForNotesListViewWidget {
+    return !isCompleted!;
+  }
+
+  String? get getFiveParametersNamedForNotesListViewWidget {
+    return uuId;
+  }
+
+  set setOneParametersNamedForNotesListViewWidget(bool isCompleted) {
+    this.isCompleted = isCompleted;
   }
 
   @nonVirtual
-  bool? isEmptyByTrimParameterDescription() {
-    return (description?.trim() ?? "").isEmpty;
+  bool? isEmptyByTrimParameterName() {
+    return (name?.trim() ?? "").isEmpty;
   }
 }

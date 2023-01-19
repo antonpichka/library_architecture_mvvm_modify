@@ -15,11 +15,15 @@ class NoteQThereIsStateViewModel<T extends Note,Y extends ListNote<T>>
     return getListModel;
   }
 
+  Y? get getListNoteUsingCloneListNoteForSuccess {
+    return getListModel?.cloneListNoteForSuccess() as Y?;
+  }
+
   set setNote(T note) {
     setModel = note;
   }
 
-  set setListNote(Y listNote) {
-    setListModel = listNote;
+  set setListNoteUsingCloneListNoteForSuccess(Y listNote) {
+    setListModel = listNote.cloneListNoteForSuccess() as Y?;
   }
 }

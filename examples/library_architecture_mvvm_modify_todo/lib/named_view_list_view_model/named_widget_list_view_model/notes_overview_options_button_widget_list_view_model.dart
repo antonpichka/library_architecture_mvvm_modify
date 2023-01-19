@@ -1,0 +1,26 @@
+import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view_model/note_q_sqflite_service_view_model/note_q_sqflite_service_view_model_using_update_list_parameter_bool_for_is_completed.dart';
+import 'package:library_architecture_mvvm_modify_todo/model_q_there_is_state_view_model/note_option_q_there_is_state_view_model/note_option_q_there_is_state_view_model.dart';
+import 'package:library_architecture_mvvm_modify_todo/model_q_there_is_state_view_model/note_q_there_is_state_view_model/note_q_there_is_state_view_model.dart';
+import 'package:library_architecture_mvvm_modify_todo/model_q_there_is_state_view_model/note_sorted_q_there_is_state_view_model/note_sorted_q_there_is_state_view_model.dart';
+import 'package:library_architecture_mvvm_modify_todo/model_q_there_is_state_view_model/notes_is_loading_q_there_is_state_view_model/notes_is_loading_q_there_is_state_view_model.dart';
+import 'package:meta/meta.dart';
+
+class NotesOverviewOptionsButtonWidgetListViewModel {
+  @protected
+  final NoteQThereIsStateViewModel noteQThereIsStateViewModel;
+  @protected
+  final NotesIsLoadingQThereIsStateViewModel notesIsLoadingQThereIsStateViewModel;
+  @protected
+  final NoteSortedQThereIsStateViewModel noteSortedQThereIsStateViewModel;
+  @protected
+  final NoteOptionQThereIsStateViewModel noteOptionQThereIsStateViewModel;
+  @protected
+  final NoteQSqfliteServiceViewModelUsingUpdateListParameterBoolForIsCompleted noteQSqfliteServiceViewModelUsingUpdateListParameterBoolForIsCompleted;
+
+  NotesOverviewOptionsButtonWidgetListViewModel(
+      this.noteQThereIsStateViewModel,
+      this.notesIsLoadingQThereIsStateViewModel,
+      this.noteSortedQThereIsStateViewModel,
+      this.noteOptionQThereIsStateViewModel,
+      this.noteQSqfliteServiceViewModelUsingUpdateListParameterBoolForIsCompleted);
+}

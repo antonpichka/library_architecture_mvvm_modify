@@ -15,15 +15,7 @@ class NotesIsLoadingQThereIsStateViewModel<T extends NotesIsLoading,Y extends Li
     return getModel;
   }
 
-  Y? get getListNotesIsLoading {
-    return getListModel;
-  }
-
-  set setNotesIsLoading(T notesIsLoading) {
-    setModel = notesIsLoading;
-  }
-
-  set setListNotesIsLoading(Y listNotesIsLoading) {
-    setListModel = listNotesIsLoading;
+  void notifyStreamNotesIsLoading() {
+    notifyStreamModel();
   }
 }
