@@ -24,6 +24,12 @@ class NotesOverviewFilterButtonWidgetListViewModel {
   void setOneParametersNamedForNotesOverviewFilterButtonWidgetByNoteSortedAndInGeneralZeroTask(
       EnumNoteSorted enumNoteSorted)
   {
+    if(notesIsLoadingQThereIsStateViewModel
+        .getNotesIsLoading
+        ?.isOneParametersNamedForNotesOverviewFilterButtonWidget() ?? false)
+    {
+      return;
+    }
     noteSortedQThereIsStateViewModel
         .getNoteSorted
         ?.setOneParametersNamedForNotesOverviewFilterButtonWidget = enumNoteSorted;

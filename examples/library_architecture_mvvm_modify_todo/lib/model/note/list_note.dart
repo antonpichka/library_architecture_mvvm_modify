@@ -22,6 +22,28 @@ class ListNote<T extends Note>
     return ListNote.success(listModel);
   }
 
+  int? get getIteratorNoteWhereIsCompletedEqualsTrueParameterListModel {
+    int iteratorNoteWhereIsCompletedEqualsTrue = 0;
+    for(T note in listModel!) {
+      if(!(note.isCompleted ?? false)) {
+        continue;
+      }
+      iteratorNoteWhereIsCompletedEqualsTrue++;
+    }
+    return iteratorNoteWhereIsCompletedEqualsTrue;
+  }
+
+  int? get getIteratorNoteWhereIsCompletedEqualsFalseParameterListModel {
+    int iteratorNoteWhereIsCompletedEqualsFalse = 0;
+    for(T note in listModel!) {
+      if(note.isCompleted ?? false) {
+        continue;
+      }
+      iteratorNoteWhereIsCompletedEqualsFalse++;
+    }
+    return iteratorNoteWhereIsCompletedEqualsFalse;
+  }
+
   set setOneParametersNamedForNotesListViewWidget(T note) {
     deleteToListModel(note);
   }
@@ -32,5 +54,11 @@ class ListNote<T extends Note>
 
   set setThreeParametersNamedForNotesListViewWidget(T note) {
     updateToListModel(note);
+  }
+
+  set setOneParametersNamedForNotesOverviewOptionsButtonWidget(bool isCompleted) {
+    for(T note in listModel!) {
+      note.isCompleted = isCompleted;
+    }
   }
 }

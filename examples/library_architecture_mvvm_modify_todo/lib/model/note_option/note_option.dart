@@ -42,6 +42,14 @@ class NoteOption
     _setFromListNoteParameterListNote = listNote;
   }
 
+  set setOneParametersNamedForNotesOverviewOptionsButtonWidget(EnumNoteOption enumNoteOption) {
+    this.enumNoteOption = enumNoteOption;
+  }
+
+  set setTwoParametersNamedForNotesOverviewOptionsButtonWidget(ListNote listNote) {
+    _setFromListNoteParameterListNote = listNote;
+  }
+
   set _setFromListNoteParameterListNote(ListNote listNote) {
     this.listNote = listNote;
   }
@@ -51,14 +59,7 @@ class NoteOption
   }
 
   bool? isTwoParametersNamedForNotesOverviewOptionsButtonWidget() {
-    int countNoteParameterIsCompleted = 0;
-    for(Note note in listNote?.listModel ?? List.empty()) {
-      if(!(note.isCompleted ?? false)) {
-        continue;
-      }
-      countNoteParameterIsCompleted++;
-    }
-    return countNoteParameterIsCompleted == listNote?.listModel?.length;
+    return _isCountNoteParameterIsCompletedEqualsLengthByListNoteParameterListNote();
   }
 
   bool? isThreeParametersNamedForNotesOverviewOptionsButtonWidget() {
@@ -72,5 +73,24 @@ class NoteOption
     }
     return (listNote?.listModel?.isNotEmpty ?? false)
         && isTrueParameterCompletedByNoteFromListNote;
+  }
+
+  bool? isFourParametersNamedForNotesOverviewOptionsButtonWidget() {
+    return enumNoteOption == EnumNoteOption.clearCompleted;
+  }
+
+  bool? isFiveParametersNamedForNotesOverviewOptionsButtonWidget() {
+    return _isCountNoteParameterIsCompletedEqualsLengthByListNoteParameterListNote();
+  }
+
+  bool? _isCountNoteParameterIsCompletedEqualsLengthByListNoteParameterListNote() {
+    int countNoteParameterIsCompleted = 0;
+    for(Note note in listNote?.listModel ?? List.empty()) {
+      if(!(note.isCompleted ?? false)) {
+        continue;
+      }
+      countNoteParameterIsCompleted++;
+    }
+    return countNoteParameterIsCompleted == listNote?.listModel?.length;
   }
 }

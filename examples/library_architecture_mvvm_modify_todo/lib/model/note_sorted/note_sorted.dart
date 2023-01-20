@@ -34,6 +34,22 @@ class NoteSorted
     return enumNoteSorted;
   }
 
+  EnumNoteSorted? get getOneParametersNamedForNotesOverviewOptionsButtonWidget {
+    return enumNoteSorted;
+  }
+
+  EnumNoteSorted? get getOneParametersNamedForNotesListViewWidget {
+    return enumNoteSorted;
+  }
+
+  EnumNoteSorted? get getTwoParametersNamedForNotesListViewWidget {
+    return enumNoteSorted;
+  }
+
+  EnumNoteSorted? get getThreeParametersNamedForNotesListViewWidget {
+    return enumNoteSorted;
+  }
+
   set setOneParametersNamedForNotesOverviewFilterButtonWidget(EnumNoteSorted enumNoteSorted) {
     this.enumNoteSorted = enumNoteSorted;
   }

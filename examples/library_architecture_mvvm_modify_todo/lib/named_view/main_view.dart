@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view/notes_overview_view.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view/stats_view.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/main_view_list_view_model.dart';
+import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
 class MainView
     extends StatefulWidget
@@ -35,7 +36,7 @@ class _MainViewState
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => null/*Navigator.of(context).push(EditTodoPage.route())*/,
+        onPressed: () => Navigator.of(context).pushNamed("/$constAddNoteView"),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(

@@ -1,6 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/list_note.dart';
-import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note_sorted/note_sorted.dart';
 
 enum EnumNotesIsLoadingForNotesListViewWidget {
@@ -57,16 +56,16 @@ class NotesIsLoading
     exceptionController = listNote.exceptionController;
   }
 
-  set setFourParametersNamedForNotesListViewWidget(Note note) {
-    listNote?.deleteToListModel(note);
+  void setFourParametersNamedForNotesListViewWidget(EnumNoteSorted enumNoteSorted, ListNote listNote) {
+    _setFromEnumNoteSortedAndListNoteParametersListNoteUsingIteratorForListNote(enumNoteSorted,listNote);
   }
 
-  set setFiveParametersNamedForNotesListViewWidget(Note note) {
-    listNote?.insertToListModel(note);
+  void setFiveParametersNamedForNotesListViewWidget(EnumNoteSorted enumNoteSorted, ListNote listNote) {
+    _setFromEnumNoteSortedAndListNoteParametersListNoteUsingIteratorForListNote(enumNoteSorted,listNote);
   }
 
-  set setSixParametersNamedForNotesListViewWidget(Note note) {
-    listNote?.updateToListModel(note);
+  void setSixParametersNamedForNotesListViewWidget(EnumNoteSorted enumNoteSorted, ListNote listNote) {
+    _setFromEnumNoteSortedAndListNoteParametersListNoteUsingIteratorForListNote(enumNoteSorted,listNote);
   }
 
   void setOneParametersNamedForNotesOverviewFilterButtonWidget() {
@@ -74,6 +73,22 @@ class NotesIsLoading
   }
 
   void setTwoParametersNamedForNotesOverviewFilterButtonWidget(
+      EnumNoteSorted enumNoteSorted,
+      ListNote listNote)
+  {
+    isLoading = false;
+    _setFromEnumNoteSortedAndListNoteParametersListNoteUsingIteratorForListNote(enumNoteSorted,listNote);
+  }
+
+  void setOneParametersNamedForNotesOverviewOptionsButtonWidget() {
+    isLoading = true;
+  }
+
+  void setTwoParametersNamedForNotesOverviewOptionsButtonWidget() {
+    isLoading = false;
+  }
+
+  void setThreeParametersNamedForNotesOverviewOptionsButtonWidget(
       EnumNoteSorted enumNoteSorted,
       ListNote listNote)
   {
@@ -90,5 +105,13 @@ class NotesIsLoading
       return;
     }
     this.listNote?.iteratorForListModel(enumNoteSorted);
+  }
+
+  bool? isOneParametersNamedForNotesOverviewOptionsButtonWidget() {
+    return isLoading;
+  }
+
+  bool? isOneParametersNamedForNotesOverviewFilterButtonWidget() {
+    return isLoading;
   }
 }

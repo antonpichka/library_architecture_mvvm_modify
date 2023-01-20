@@ -14,7 +14,7 @@ class NotesOverviewOptionsButtonWidget
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<NoteOption?>(
-        stream: /*lo.getStreamNoteOption*/,
+        stream: lo.getStreamNoteOption,
         builder: (BuildContext context,AsyncSnapshot<NoteOption?> asyncSnapshot)
         {
           final noteOption = asyncSnapshot.data;
@@ -32,7 +32,7 @@ class NotesOverviewOptionsButtonWidget
       initialValue: noteOption?.getOneParametersNamedForNotesOverviewOptionsButtonWidget,
       tooltip: l10n.todosOverviewFilterTooltip,
       onSelected: (EnumNoteOption option) {
-
+        lo.callMethodUpdateListNoteToSqfliteServiceParameterBoolAndInGeneralOneTask(option);
       },
       itemBuilder: (context) {
         return [

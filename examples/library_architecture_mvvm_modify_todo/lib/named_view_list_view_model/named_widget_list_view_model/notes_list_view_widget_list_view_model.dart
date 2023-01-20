@@ -61,13 +61,13 @@ class NotesListViewWidgetListViewModel {
           .setListNoteUsingCloneListNoteForSuccess = listNote;
       notesIsLoadingQThereIsStateViewModel
           .getNotesIsLoading
-          ?.setTwoParametersNamedForNotesListViewWidget = listNote;
+          ?.setTwoParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
       noteSortedQThereIsStateViewModel
           .getNoteSorted
-          ?.setOneParametersNamedForNotesListViewWidget = listNote;
+          ?.setOneParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
       noteOptionQThereIsStateViewModel
           .getNoteOption
-          ?.setOneParametersNamedForNotesListViewWidget = listNote;
+          ?.setOneParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
       notesIsLoadingQThereIsStateViewModel
           .notifyStreamNotesIsLoading();
       noteSortedQThereIsStateViewModel
@@ -80,13 +80,13 @@ class NotesListViewWidgetListViewModel {
         .setListNoteUsingCloneListNoteForSuccess = listNote;
     notesIsLoadingQThereIsStateViewModel
         .getNotesIsLoading
-        ?.setThreeParametersNamedForNotesListViewWidget = listNote;
+        ?.setThreeParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
     noteSortedQThereIsStateViewModel
         .getNoteSorted
-        ?.setTwoParametersNamedForNotesListViewWidget = listNote;
+        ?.setTwoParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
     noteOptionQThereIsStateViewModel
         .getNoteOption
-        ?.setTwoParametersNamedForNotesListViewWidget = listNote;
+        ?.setTwoParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
     notesIsLoadingQThereIsStateViewModel
         .notifyStreamNotesIsLoading();
     noteSortedQThereIsStateViewModel
@@ -113,7 +113,7 @@ class NotesListViewWidgetListViewModel {
         ?.setOneParametersNamedForNotesListViewWidget = note;
     notesIsLoadingQThereIsStateViewModel
         .getNotesIsLoading
-        ?.setFourParametersNamedForNotesListViewWidget = note;
+        ?.setFourParametersNamedForNotesListViewWidget(noteSortedQThereIsStateViewModel.getNoteSorted!.getOneParametersNamedForNotesListViewWidget!,noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!);
     noteSortedQThereIsStateViewModel
         .getNoteSorted
         ?.setThreeParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
@@ -146,7 +146,7 @@ class NotesListViewWidgetListViewModel {
         ?.setTwoParametersNamedForNotesListViewWidget = note;
     notesIsLoadingQThereIsStateViewModel
         .getNotesIsLoading
-        ?.setFiveParametersNamedForNotesListViewWidget = note;
+        ?.setFiveParametersNamedForNotesListViewWidget(noteSortedQThereIsStateViewModel.getNoteSorted!.getTwoParametersNamedForNotesListViewWidget!,noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!);
     noteSortedQThereIsStateViewModel
         .getNoteSorted
         ?.setFourParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
@@ -178,7 +178,7 @@ class NotesListViewWidgetListViewModel {
         ?.setThreeParametersNamedForNotesListViewWidget = note!;
     notesIsLoadingQThereIsStateViewModel
         .getNotesIsLoading
-        ?.setSixParametersNamedForNotesListViewWidget = note!;
+        ?.setSixParametersNamedForNotesListViewWidget(noteSortedQThereIsStateViewModel.getNoteSorted!.getThreeParametersNamedForNotesListViewWidget!,noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!);
     noteSortedQThereIsStateViewModel
         .getNoteSorted
         ?.setFiveParametersNamedForNotesListViewWidget = noteQThereIsStateViewModel.getListNoteUsingCloneListNoteForSuccess!;
