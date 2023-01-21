@@ -110,6 +110,7 @@ class NotesIsLoading
       this.listNote = listNote;
       return;
     }
+    this.listNote = listNote;
     this.listNote?.iteratorForListModel(enumNoteSorted);
   }
 

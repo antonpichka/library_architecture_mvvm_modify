@@ -24,7 +24,7 @@ class ListNote<T extends Note>
     Note.successWhereIsExistsParameterUuid("","","",false)]);
 
   ListNote? cloneListNoteForSuccess() {
-    return ListNote.success(listModel);
+    return ListNote.success(listModel?.toList());
   }
 
   int? get getIteratorNoteWhereIsCompletedEqualsTrueParameterListModel {
