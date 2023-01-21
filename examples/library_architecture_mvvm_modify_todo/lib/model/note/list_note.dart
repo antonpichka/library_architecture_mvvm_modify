@@ -3,6 +3,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note_sorted/note_sorted.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_iterator/note_iterator_for_sorted_parameter_is_completed_false.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_iterator/note_iterator_for_sorted_parameter_is_completed_true.dart';
+import 'package:meta/meta.dart';
 
 class ListNote<T extends Note>
     extends BaseListModel<T>
@@ -17,6 +18,10 @@ class ListNote<T extends Note>
   ListNote.exception(super.exception) : super.exception();
 
   static ListNote get getListNoteForSuccess => ListNote.success([]);
+  @visibleForTesting
+  static ListNote get getListNoteForSuccessWhereUnitTest => ListNote.success([
+    Note.successWhereIsExistsParameterUuid("","","",false),
+    Note.successWhereIsExistsParameterUuid("","","",false)]);
 
   ListNote? cloneListNoteForSuccess() {
     return ListNote.success(listModel);

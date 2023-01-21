@@ -1,4 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:meta/meta.dart';
 
 enum EnumMainTab {
   todos,
@@ -14,6 +15,8 @@ class MainTab
   MainTab.exception(super.exception) : super.exception();
 
   static MainTab get getMainTabForSuccess => MainTab.success(EnumMainTab.todos);
+  @visibleForTesting
+  static MainTab get getMainTabForSuccessWhereUnitTest => MainTab.success(EnumMainTab.todos);
 
   int? get getIndexParameterEnumMainTab {
     return enumMainTab?.index;

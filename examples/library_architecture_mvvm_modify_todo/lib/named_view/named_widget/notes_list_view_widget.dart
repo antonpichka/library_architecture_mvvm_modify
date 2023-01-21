@@ -16,6 +16,7 @@ class NotesListViewWidget
 
   @override
   Widget build(BuildContext context) {
+    lo.getListNoteFromSqfliteServiceNPAndInGeneralOneTask();
     return StreamBuilder<NotesIsLoading?>(
         stream: lo.getStreamNotesIsLoading,
         builder: (BuildContext context,AsyncSnapshot<NotesIsLoading?> asyncSnapshot)
@@ -99,13 +100,17 @@ class NotesListViewWidget
       ),
       child: ListTile(
         onTap: () {
-          // Navigator.of(context).push(EditTodoPage.route(initialTodo: todo),);
+          Navigator.of(context).pushNamed(
+              "/$constEditNoteView",
+              arguments: {
+                constArgumentEditNoteView : lo.getNote
+              });
         },
         title: Text(
           note?.getOneParametersNamedForNotesListViewWidget ?? "",
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: (note?.getFourParametersNamedForNotesListViewWidget ?? false)
+          style: (note?.isTwoParametersNamedForNotesListViewWidget() ?? false)
               ? null
               : TextStyle(
             color: captionColor,
@@ -121,7 +126,7 @@ class NotesListViewWidget
           shape: const ContinuousRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
-          value: note?.getThreeParametersNamedForNotesListViewWidget,
+          value: note?.isOneParametersNamedForNotesListViewWidget(),
           onChanged: (bool? value) {
             lo.updateNoteToSqfliteServiceParameterCompletedItemAndInGeneralOneTask(note, value);
           }

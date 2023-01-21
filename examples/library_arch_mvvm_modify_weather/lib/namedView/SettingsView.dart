@@ -46,7 +46,7 @@ class _SettingsViewState
   void _init() {
     final arguments = ModalRoute.of(context)?.settings.arguments as Map;
     final settings = arguments[constArgumentSettingsView] as Settings;
-    _lo.setSettingsAndInGeneralZeroTask(settings);
+    _lo.setSettingsBySettingsAndInGeneralZeroTask(settings);
   }
 
   Future<bool> _onWillPop() async {

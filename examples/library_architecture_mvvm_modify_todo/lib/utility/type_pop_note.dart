@@ -2,7 +2,8 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 
 enum EnumTypePopNote {
   addPopNote,
-  editPopNote;
+  editPopNote,
+  deletePopNote;
 }
 
 class TypePopNote {

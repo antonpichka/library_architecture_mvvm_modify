@@ -1,6 +1,8 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/list_note.dart';
+import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note_sorted/note_sorted.dart';
+import 'package:meta/meta.dart';
 
 enum EnumNotesIsLoadingForNotesListViewWidget {
   isLoading,
@@ -19,6 +21,10 @@ class NotesIsLoading
   NotesIsLoading.exception(super.exception) : super.exception();
 
   static NotesIsLoading get getNotesIsLoadingForSuccess => NotesIsLoading.success(false,ListNote.getListNoteForSuccess);
+  @visibleForTesting
+  static NotesIsLoading get getNotesIsLoadingForSuccessWhereUnitTest => NotesIsLoading.success(false,ListNote.success([
+    Note.successWhereIsExistsParameterUuid("","","",false),
+    Note.successWhereIsExistsParameterUuid("","","",false)]));
 
   EnumNotesIsLoadingForNotesListViewWidget get getEnumNotesIsLoadingForNotesListViewWidget {
     if(isLoading ?? false) {

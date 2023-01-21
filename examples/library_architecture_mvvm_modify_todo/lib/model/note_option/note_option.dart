@@ -1,6 +1,7 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/list_note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
+import 'package:meta/meta.dart';
 
 enum EnumNoteOption {
   toggleAll,
@@ -17,8 +18,12 @@ class NoteOption
   NoteOption.exception(super.exception) : super.exception();
 
   static NoteOption get getNoteOptionForSuccess => NoteOption.success(EnumNoteOption.toggleAll, ListNote.getListNoteForSuccess);
+  @visibleForTesting
+  static NoteOption get getNoteOptionForSuccessWhereUnitTest => NoteOption.success(EnumNoteOption.toggleAll, ListNote.success([
+    Note.successWhereIsExistsParameterUuid("","","",false),
+    Note.successWhereIsExistsParameterUuid("","","",false)]));
 
-  EnumNoteOption? get getOneParametersNamedForNotesOverviewOptionsButtonWidget{
+  EnumNoteOption? get getOneParametersNamedForNotesOverviewOptionsButtonWidget {
     return enumNoteOption;
   }
 
@@ -59,7 +64,7 @@ class NoteOption
   }
 
   bool? isTwoParametersNamedForNotesOverviewOptionsButtonWidget() {
-    return _isCountNoteParameterIsCompletedEqualsLengthByListNoteParameterListNote();
+    return _isCountNoteParameterIsCompletedEqualsLengthByListModelParameterListNote();
   }
 
   bool? isThreeParametersNamedForNotesOverviewOptionsButtonWidget() {
@@ -80,10 +85,10 @@ class NoteOption
   }
 
   bool? isFiveParametersNamedForNotesOverviewOptionsButtonWidget() {
-    return _isCountNoteParameterIsCompletedEqualsLengthByListNoteParameterListNote();
+    return _isCountNoteParameterIsCompletedEqualsLengthByListModelParameterListNote();
   }
 
-  bool? _isCountNoteParameterIsCompletedEqualsLengthByListNoteParameterListNote() {
+  bool? _isCountNoteParameterIsCompletedEqualsLengthByListModelParameterListNote() {
     int countNoteParameterIsCompleted = 0;
     for(Note note in listNote?.listModel ?? List.empty()) {
       if(!(note.isCompleted ?? false)) {

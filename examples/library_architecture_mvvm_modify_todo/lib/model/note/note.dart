@@ -35,6 +35,8 @@ class Note
     };
   }
   static Note get getNoteForSuccess => Note.success("","",false);
+  @visibleForTesting
+  static Note get getNoteForSuccessWhereUnitTest => Note.successWhereIsExistsParameterUuid("","","",false);
   static const constParameterUuIdForSqflite = "uuId";
   static const constParameterNameForSqflite = "name";
   static const constParameterDescriptionForSqflite = "description";
@@ -48,15 +50,7 @@ class Note
     return description;
   }
 
-  bool? get getThreeParametersNamedForNotesListViewWidget {
-    return isCompleted;
-  }
-
-  bool? get getFourParametersNamedForNotesListViewWidget {
-    return !isCompleted!;
-  }
-
-  String? get getFiveParametersNamedForNotesListViewWidget {
+  String? get getThreeParametersNamedForNotesListViewWidget {
     return uuId;
   }
 
@@ -67,5 +61,13 @@ class Note
   @nonVirtual
   bool? isEmptyByTrimParameterName() {
     return (name?.trim() ?? "").isEmpty;
+  }
+
+  bool? isOneParametersNamedForNotesListViewWidget() {
+    return isCompleted;
+  }
+
+  bool? isTwoParametersNamedForNotesListViewWidget() {
+    return !isCompleted!;
   }
 }

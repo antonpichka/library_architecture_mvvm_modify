@@ -1,5 +1,6 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/list_note.dart';
+import 'package:meta/meta.dart';
 
 enum EnumNoteSortedForNotesOverviewFilterButtonWidget {
   isEmptyListNote,
@@ -22,6 +23,8 @@ class NoteSorted
   NoteSorted.exception(super.exception) : super.exception();
 
   static NoteSorted get getNoteSortedForSuccess => NoteSorted.success(EnumNoteSorted.all,false);
+  @visibleForTesting
+  static NoteSorted get getNoteSortedForSuccessWhereUnitTest => NoteSorted.success(EnumNoteSorted.all,false);
 
   EnumNoteSortedForNotesOverviewFilterButtonWidget get getEnumNoteSortedForNotesOverviewFilterButtonWidget {
     if(isEmptyListNote ?? false) {

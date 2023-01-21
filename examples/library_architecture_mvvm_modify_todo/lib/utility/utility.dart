@@ -4,9 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 
 const constAddNoteView = "addNoteView";
 const constEditNoteView = "editNoteView";
-const constDetailsNoteView = "detailsNoteView";
 const constArgumentEditNoteView = "argumentEditNoteView";
-const constArgumentDetailsNoteView = "argumentDetailsNoteView";
 
 ScaffoldMessengerState scaffoldMessengerStateForDeletedNote(BuildContext context,Note note,Function(Note insertNote) onPressed) {
   final l10n = context.l10n;
