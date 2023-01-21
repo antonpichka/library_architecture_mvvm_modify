@@ -41,7 +41,7 @@ Applications <a href="https://github.com/JacobOdd/library_architecture_mvvm_modi
                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/weather.gif" width="200"/>
             </td>
             <td style="text-align: center">
-               Coming Soon
+               <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/todo.gif" width="200"/>
             </td>
         </tr>
     </table>
