@@ -11,20 +11,17 @@ class MainView
 
 class _MainViewState
     extends State<MainView>
-    with WidgetsBindingObserver
 {
   final _lo = MainViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     _lo.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

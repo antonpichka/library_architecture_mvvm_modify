@@ -16,7 +16,6 @@ class PostsListWidget
 
 class PostsListWidgetState
     extends State<PostsListWidget>
-    with WidgetsBindingObserver
 {
   @protected
   final scrollController =
