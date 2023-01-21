@@ -14,20 +14,17 @@ class RegistrationView
 
 class _RegistrationViewState
     extends State<RegistrationView>
-    with WidgetsBindingObserver
 {
   final _lo = RegistrationViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     _lo.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

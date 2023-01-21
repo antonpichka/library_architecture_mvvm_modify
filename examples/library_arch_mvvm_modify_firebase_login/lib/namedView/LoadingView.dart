@@ -10,20 +10,17 @@ class LoadingView
 
 class _LoadingViewState
     extends State<LoadingView>
-    with WidgetsBindingObserver
 {
   final _lo = LoadingViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     _lo.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

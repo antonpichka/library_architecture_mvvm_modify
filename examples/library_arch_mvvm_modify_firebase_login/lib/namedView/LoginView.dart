@@ -15,20 +15,17 @@ class LoginView
 
 class _LoginViewState
     extends State<LoginView>
-    with WidgetsBindingObserver
 {
   final _lo = LoginViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     _lo.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

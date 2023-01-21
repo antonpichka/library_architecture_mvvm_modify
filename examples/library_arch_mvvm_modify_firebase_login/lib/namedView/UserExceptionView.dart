@@ -16,20 +16,17 @@ class UserExceptionView
 
 class _UserExceptionViewState
     extends State<UserExceptionView>
-    with WidgetsBindingObserver
 {
   final _lo = UserExceptionViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
     _lo.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
