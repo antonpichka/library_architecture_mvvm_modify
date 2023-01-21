@@ -31,6 +31,7 @@ class _AddNoteViewState
 
   @override
   Widget build(BuildContext context) {
+    _lo.notifyStreamStringsByStringsAndInGeneralZeroTask();
     final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(

@@ -15,14 +15,16 @@ class TitleTextFormFieldWidget
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<Strings?>(
-        initialData: Strings.success(""),
         stream: lo.getStreamStrings,
         builder: (BuildContext context,AsyncSnapshot<Strings?> asyncSnapshot)
         {
+          if(asyncSnapshot.data == null) {
+            return Container();
+          }
           final strings = asyncSnapshot.data;
           return TextFormField(
             initialValue: strings?.field,
-            decoration: buildDecoration(context, strings!),
+            decoration: buildDecoration(context, strings),
             maxLength: maxLength(),
             inputFormatters: inputFormatters(),
             onChanged: (value) => onChanged(context,value));
@@ -30,7 +32,7 @@ class TitleTextFormFieldWidget
   }
 
   @protected
-  InputDecoration buildDecoration(BuildContext context, Strings strings) {
+  InputDecoration buildDecoration(BuildContext context, Strings? strings) {
     final l10n = context.l10n;
     return InputDecoration(labelText: l10n.editTodoTitleLabel);
   }

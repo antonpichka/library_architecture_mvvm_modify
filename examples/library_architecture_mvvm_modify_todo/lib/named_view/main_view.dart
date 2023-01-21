@@ -36,7 +36,8 @@ class _MainViewState
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).pushNamed("/$constAddNoteView"),
+        onPressed: () => Navigator.of(context).pushNamed("/$constAddNoteView")
+            .then((value) => setState((){})),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(

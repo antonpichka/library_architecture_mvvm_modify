@@ -103,8 +103,8 @@ class NotesListViewWidget
           Navigator.of(context).pushNamed(
               "/$constEditNoteView",
               arguments: {
-                constArgumentEditNoteView : lo.getNote
-              });
+                constArgumentEditNoteView : note
+              }).then((value) => lo.getListNoteFromSqfliteServiceNPAndInGeneralOneTask());
         },
         title: Text(
           note?.getOneParametersNamedForNotesListViewWidget ?? "",
