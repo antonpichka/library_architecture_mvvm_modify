@@ -40,4 +40,13 @@ class AddNoteViewListViewModel
     _stringsQThereIsStateViewModelForTitle.dispose();
     _stringsQThereIsStateViewModelForDescription.dispose();
   }
+
+  Future<void> notifyStreamStringsByStringsAndInGeneralZeroTask()
+  async {
+    await Future.delayed(const Duration(milliseconds: 100));
+    _stringsQThereIsStateViewModelForTitle
+        .notifyStreamStrings();
+    _stringsQThereIsStateViewModelForDescription
+        .notifyStreamStrings();
+  }
 }

@@ -43,15 +43,12 @@ class NotesListViewWidgetListViewModel {
     return notesIsLoadingQThereIsStateViewModel.getStreamNotesIsLoading;
   }
 
-  Note? get getNote {
-    return noteQThereIsStateViewModel.getNote;
-  }
-
   Future<void> getListNoteFromSqfliteServiceNPAndInGeneralOneTask()
   async {
     notesIsLoadingQThereIsStateViewModel
         .getNotesIsLoading
         ?.setOneParametersNamedForNotesListViewWidget();
+    await Future.delayed(const Duration(milliseconds: 100));
     notesIsLoadingQThereIsStateViewModel
         .notifyStreamModel();
     // 1
