@@ -15,7 +15,6 @@ class WeatherWidget
 
 class WeatherWidgetState
     extends State<WeatherWidget>
-    with WidgetsBindingObserver
 {
   @override
   void initState() {

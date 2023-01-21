@@ -12,19 +12,17 @@ class SearchWeatherView
 
 class _SearchWeatherViewState
     extends State<SearchWeatherView>
-    with WidgetsBindingObserver
 {
   final _lo = SearchWeatherViewListViewModel();
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    _lo.dispose();
     super.dispose();
   }
 
