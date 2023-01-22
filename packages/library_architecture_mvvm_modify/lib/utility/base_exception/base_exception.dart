@@ -15,6 +15,8 @@ abstract class BaseException
     debugPrintException("===end_to_trace_exception===\n");
   }
 
+  /// Show message for view
   String get getMessageForView;
+  /// Show an exception to the developer when that same exception occurs
   String get exceptionInStringForDebugPrintException;
 }

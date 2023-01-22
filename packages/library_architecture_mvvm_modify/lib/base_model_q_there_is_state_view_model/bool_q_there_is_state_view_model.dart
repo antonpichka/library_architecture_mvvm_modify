@@ -9,46 +9,61 @@ class BoolQThereIsStateViewModel<T extends Bool,Y extends ListBool<T>>
 {
   BoolQThereIsStateViewModel(super.iInitializedStreamModel);
 
+  /// The purpose of this method is to force IStreamModel to override your implementation and call your methods.
+  /// Example:
+  /// DefaultStreamModel<T,Y>? get getIStreamBool {
+  //    return getIStreamModel;
+  //  }
   IStreamModel<T,Y>? get getIStreamBool {
     return getIStreamModel;
   }
 
+  /// Get a future Bool from IStreamModel
   Future<T?> get getFutureBool {
     return getFutureModel;
   }
 
+  /// Get a stream Bool from IStreamModel
   Stream<T?>? get getStreamBool {
     return getStreamModel;
   }
 
+  /// Get a Bool from IStreamModel
   T? get getBool {
     return getModel;
   }
 
+  /// Set a Bool from IStreamModel
   set setBool(T? bool) {
     setModel = bool;
   }
 
+  /// Notify stream Bool from IStreamModel
   void notifyStreamBool() {
     notifyStreamModel();
   }
 
+  /// Get a future ListBool from IStreamModel
   Future<Y?> get getFutureListBool {
     return getFutureListModel;
   }
 
+  /// Get a stream ListBool from IStreamModel
   Stream<Y?>? get getStreamListBool {
     return getStreamListModel;
   }
 
+  /// Get a ListBool from IStreamModel
   Y? get getListBool {
     return getListModel;
   }
 
+  /// Set a ListBool from IStreamModel
   set setListBool(Y? listBool) {
     setListModel = listBool;
   }
 
+  /// Notify stream ListBool from IStreamModel
   void notifyStreamListBool() {
     notifyStreamListModel();
   }

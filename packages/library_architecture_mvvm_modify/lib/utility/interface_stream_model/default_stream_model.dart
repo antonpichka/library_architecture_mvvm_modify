@@ -34,28 +34,35 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     }
   }
 
+  /// Get a stream Model
   @override
   Stream<T?> get getStreamModel => _streamControllerForModel!.stream;
 
+  /// Get a stream ListModel
   @override
   Stream<Y?> get getStreamListModel => _streamControllerForListModel!.stream;
 
+  /// Get a Model
   @override
   T? get getModel => _model;
 
+  /// Get a ListModel
   @override
   Y? get getListModel => _listModel;
 
+  /// Set a Model
   @override
   set setModel(T? model) {
     _model = model;
   }
 
+  /// Set a ListModel
   @override
   set setListModel(Y? listModel) {
     _listModel = listModel;
   }
 
+  /// Notify stream Model
   @override
   void notifyStreamModel() {
     if(!_streamControllerForModel!.hasListener) {
@@ -69,6 +76,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
         .add(_model!);
   }
 
+  /// Notify stream ListModel
   @override
   void notifyStreamListModel() {
     if(!_streamControllerForListModel!.hasListener) {
@@ -82,6 +90,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
         .add(_listModel!);
   }
 
+  /// Listens stream Model
   void listensStreamModel(
       Function(T event) callback)
   {
@@ -92,6 +101,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
         });
   }
 
+  /// Listens stream ListModel
   void listensStreamListModel(
       Function(Y event) callback)
   {
@@ -102,6 +112,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
         });
   }
 
+  /// Resume stream subscription for Model
   void resumeStreamSubscriptionForModel() {
     if(!_streamSubscriptionForModel!.isPaused) {
       return;
@@ -109,6 +120,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     _streamSubscriptionForModel?.resume();
   }
 
+  /// Resume stream subscription for ListModel
   void resumeStreamSubscriptionForListModel() {
     if(!_streamSubscriptionForListModel!.isPaused) {
       return;
@@ -116,6 +128,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     _streamSubscriptionForListModel?.resume();
   }
 
+  /// Pause stream subscription for Model
   void pauseStreamSubscriptionForModel() {
     if(_streamSubscriptionForModel!.isPaused) {
       return;
@@ -123,6 +136,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
     _streamSubscriptionForModel?.pause();
   }
 
+  /// Pause stream subscription for ListModel
   void pauseStreamSubscriptionForListModel() {
     if(_streamSubscriptionForListModel!.isPaused) {
       return;

@@ -9,46 +9,61 @@ class DoubleQThereIsStateViewModel<T extends Double,Y extends ListDouble<T>>
 {
   DoubleQThereIsStateViewModel(super.iInitializedStreamModel);
 
+  /// The purpose of this method is to force IStreamModel to override your implementation and call your methods.
+  /// Example:
+  /// DefaultStreamModel<T,Y>? get getIStreamDouble {
+  //    return getIStreamModel;
+  //  }
   IStreamModel<T,Y>? get getIStreamDouble {
     return getIStreamModel;
   }
 
+  /// Get a future Double from IStreamModel
   Future<T?> get getFutureDouble {
     return getFutureModel;
   }
 
+  /// Get a stream Double from IStreamModel
   Stream<T?>? get getStreamDouble {
     return getStreamModel;
   }
 
+  /// Get a Double from IStreamModel
   T? get getDouble {
     return getModel;
   }
 
+  /// Set a Double from IStreamModel
   set setDouble(T? double) {
     setModel = double;
   }
 
+  /// Notify stream Double from IStreamModel
   void notifyStreamDouble() {
     notifyStreamModel();
   }
 
+  /// Get a future ListDouble from IStreamModel
   Future<Y?> get getFutureListDouble {
     return getFutureListModel;
   }
 
+  /// Get a stream ListDouble from IStreamModel
   Stream<Y?>? get getStreamListDouble {
     return getStreamListModel;
   }
 
+  /// Get a ListDouble from IStreamModel
   Y? get getListDouble {
     return getListModel;
   }
 
+  /// Set a ListDouble from IStreamModel
   set setListDouble(Y? listDouble) {
     setListModel = listDouble;
   }
 
+  /// Notify stream ListDouble from IStreamModel
   void notifyStreamListDouble() {
     notifyStreamListModel();
   }

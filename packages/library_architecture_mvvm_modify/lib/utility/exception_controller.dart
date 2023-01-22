@@ -25,11 +25,16 @@ class ExceptionController {
       ? EnumWhatIsTheException.localException : _exception is NetworkException
       ? EnumWhatIsTheException.networkException : EnumWhatIsTheException.otherException;
 
+  /// We get a message for the view from the exception parameter,
+  /// if there was no exception, this method will return null
   @nonVirtual
   String? get getMessageForViewParameterException {
     return _exception?.getMessageForView;
   }
 
+  /// If the exception is not null then it will return true.
+  /// In general, if you want to check if there is an exception,
+  /// then true is when you have an exception
   @nonVirtual
   bool isNotEqualsNullParameterException() {
     if(_exception == null) {

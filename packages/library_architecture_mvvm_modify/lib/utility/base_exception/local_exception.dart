@@ -26,11 +26,13 @@ class LocalException
       : enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
         super(thisClass,LocalException);
 
+  /// Show message for view
   @override
   String get getMessageForView {
     return message;
   }
 
+  /// Show an exception to the developer when that same exception occurs
   @override
   String get exceptionInStringForDebugPrintException {
     return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "

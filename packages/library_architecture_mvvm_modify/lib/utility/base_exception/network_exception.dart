@@ -244,11 +244,13 @@ class NetworkException
     }
   }
 
+  /// Show message for view
   @override
   String get getMessageForView {
     return "$statusCode";
   }
 
+  /// Show an exception to the developer when that same exception occurs
   @override
   String get exceptionInStringForDebugPrintException {
     return "StatusCode: $statusCode | "

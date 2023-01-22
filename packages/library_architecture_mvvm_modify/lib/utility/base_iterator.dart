@@ -5,8 +5,11 @@ import 'package:meta/meta.dart';
 abstract class BaseIterator<T extends BaseModel>
     implements Iterator<T>
 {
+  /// ListModel which defaults to null
   List<T>? listModel;
 
+  /// Get the sorted list from the ListModel parameter
+  /// (ListModel also takes a value like a sorted list)
   @nonVirtual
   List<T> get getSortedListModelParameterListModel {
     List<T> listModel = List.empty(growable: true);
