@@ -1,3 +1,8 @@
+## 0.0.2
+
+- Updated image path in README.md
+- Added documentation to the derived code
+
 ## 0.0.1
 
 Initial Version of the library.
