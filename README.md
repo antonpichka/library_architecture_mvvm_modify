@@ -4,6 +4,6 @@
 
 --- 
 
-| Package                                                                                                                                              | Pub           |
-|------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| [library_architecture_mvvm_modify](https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify) | [Coming Soon] |
+| Package                                                                                                                                              | Pub                                                                                                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| [library_architecture_mvvm_modify](https://github.com/JacobOdd/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify) | [![pub package](https://img.shields.io/pub/v/library_architecture_mvvm_modify.svg)](https://pub.dev/packages/library_architecture_mvvm_modify) |
