@@ -9,7 +9,7 @@
 The library is implemented according to the principles of SOLID, and is an example of a clean architecture
 
 <p align="center"> 
-<img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/logo_library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
+<img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
 ## Examples
