@@ -61,7 +61,7 @@ Documentation based on the Todo app example <a href="https://github.com/JacobOdd
 
 - #### ModelQThereIsStateViewModel
 
-A class that provides the state of the model and the stream, if you need private methods, you can call IStreamModel and, through the 'as' modifier, refer to your class
+The class that provides the state of the model and the stream can be called IStreamModel, through the as modifier to refer to your class
 ```dart
 class NoteQThereIsStateViewModel<T extends Note,Y extends ListNote<T>> 
         extends BaseModelQThereIsStateViewModel<T,Y>
