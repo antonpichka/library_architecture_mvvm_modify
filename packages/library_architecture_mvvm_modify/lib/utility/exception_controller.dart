@@ -10,6 +10,8 @@ enum EnumWhatIsTheException {
   otherException
 }
 
+/// This class is needed to manage the exception and provide
+/// the necessary information to the developer about the error.
 class ExceptionController {
   final EnumWhatIsTheException? enumWhatIsTheException;
   final BaseException? _exception;

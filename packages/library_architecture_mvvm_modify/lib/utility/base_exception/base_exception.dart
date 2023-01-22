@@ -1,5 +1,8 @@
 import 'package:library_architecture_mvvm_modify/utility/utility.dart';
 
+/// This class is necessary to show the developer the necessary information about the exception
+/// "where the exception occurred", "what class of the exception", "detailed error message".
+/// Also, this class is inherited by other classes, as it is base, and can send a message anywhere
 abstract class BaseException
     implements Exception
 {

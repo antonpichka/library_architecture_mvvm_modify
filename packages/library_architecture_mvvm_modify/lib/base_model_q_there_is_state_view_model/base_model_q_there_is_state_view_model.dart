@@ -6,6 +6,8 @@ import 'package:library_architecture_mvvm_modify/utility/i_dispose.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 import 'package:meta/meta.dart';
 
+/// This class is needed to manage the state of the model and streams,
+/// which also receives models and streams under its control from "ModelQNamedServiceViewModel"
 abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends BaseListModel<T>>
     implements IDispose
 {

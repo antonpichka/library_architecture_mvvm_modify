@@ -2,6 +2,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
+/// This class is required to get success or exception
 class Result<T extends Object> {
   final T? parameter;
   final ExceptionController exceptionController;

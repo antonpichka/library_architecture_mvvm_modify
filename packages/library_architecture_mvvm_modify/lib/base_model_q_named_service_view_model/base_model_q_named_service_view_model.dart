@@ -36,8 +36,12 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>>
-{
+/// This class is necessary for accessing the database,
+/// the network (DataSource) and also before accessing the database, the network,
+/// check the data and calculate if necessary in (FBDS),
+/// also if there is a Stream in the Service,
+/// it can pass it for control to the "ModelQThereIsStateViewModel" class if it is necessary
+abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends BaseListModel<T>> {
   ///   Example Using:
   ///
   ///   @nonVirtual
@@ -48,8 +52,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start getListNP 3
   @protected
   @nonVirtual
-  Future<Y?> getListModelFromNamedServiceNP()
-  {
+  Future<Y?> getListModelFromNamedServiceNP() {
     return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<Object>(
         modelQNamedServiceDataSource as GetListModelFromNamedServiceNPDataSource<Y>,
         null,
@@ -124,8 +127,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start getNP 3
   @protected
   @nonVirtual
-  Future<T?> getModelFromNamedServiceNP()
-  {
+  Future<T?> getModelFromNamedServiceNP() {
     return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<Object>(
         modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
         null,
@@ -200,8 +202,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start insertNP 3
   @protected
   @nonVirtual
-  Future<Result<X>?> insertModelToNamedServiceNP<X extends Object>()
-  {
+  Future<Result<X>?> insertModelToNamedServiceNP<X extends Object>() {
     return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as InsertModelToNamedServiceNPDataSource<X>,
         null,
@@ -276,8 +277,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start insertListNP 3
   @protected
   @nonVirtual
-  Future<Result<X>?> insertListModelToNamedServiceNP<X extends Object>()
-  {
+  Future<Result<X>?> insertListModelToNamedServiceNP<X extends Object>() {
     return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as InsertListModelToNamedServiceNPDataSource<X>,
         null,
@@ -352,8 +352,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start updateNP 3
   @protected
   @nonVirtual
-  Future<Result<X>?> updateModelToNamedServiceNP<X extends Object>()
-  {
+  Future<Result<X>?> updateModelToNamedServiceNP<X extends Object>() {
     return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as UpdateModelToNamedServiceNPDataSource<X>,
         null,
@@ -428,8 +427,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start updateListNP 3
   @protected
   @nonVirtual
-  Future<Result<X>?> updateListModelToNamedServiceNP<X extends Object>()
-  {
+  Future<Result<X>?> updateListModelToNamedServiceNP<X extends Object>() {
     return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as UpdateListModelToNamedServiceNPDataSource<X>,
         null,
@@ -504,8 +502,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start deleteNP 3
   @protected
   @nonVirtual
-  Future<Result<X>?> deleteModelToNamedServiceNP<X extends Object>()
-  {
+  Future<Result<X>?> deleteModelToNamedServiceNP<X extends Object>() {
     return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as DeleteModelToNamedServiceNPDataSource<X>,
         null,
@@ -580,8 +577,7 @@ abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,Y extends Bas
   // Start deleteListNP 3
   @protected
   @nonVirtual
-  Future<Result<X>?> deleteListModelToNamedServiceNP<X extends Object>()
-  {
+  Future<Result<X>?> deleteListModelToNamedServiceNP<X extends Object>() {
     return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X,Object>(
         modelQNamedServiceDataSource as DeleteListModelToNamedServiceNPDataSource<X>,
         null,
