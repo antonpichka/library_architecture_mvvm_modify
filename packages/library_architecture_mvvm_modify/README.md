@@ -9,7 +9,7 @@
 The library is implemented according to the principles of SOLID, and is an example of a clean architecture
 
 <p align="center"> 
-<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
+<img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/logo_library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
 ## Examples
@@ -24,24 +24,24 @@ Applications <a href="https://github.com/JacobOdd/library_architecture_mvvm_modi
     <table>
         <tr>
             <td style="text-align: center">
-                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/counter.gif" width="200"/>
+                <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/counter.gif" width="200"/>
             </td>            
             <td style="text-align: center">
-                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/infinite_list.gif" width="200"/>
+                <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/infinite_list.gif" width="200"/>
             </td>
             <td style="text-align: center">
-                <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/firebase_login.gif" width="200"/>
+                <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/firebase_login.gif" width="200"/>
             </td>
         </tr>
         <tr>
             <td style="text-align: center">
-               <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/github_search.gif" width="200"/>
+               <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/github_search.gif" width="200"/>
             </td>
             <td style="text-align: center">
-               <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/weather.gif" width="200"/>
+               <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/weather.gif" width="200"/>
             </td>
             <td style="text-align: center">
-               <img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/todo.gif" width="200"/>
+               <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/todo.gif" width="200"/>
             </td>
         </tr>
     </table>
