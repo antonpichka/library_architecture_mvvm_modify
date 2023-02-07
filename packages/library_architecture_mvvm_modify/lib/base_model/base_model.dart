@@ -9,6 +9,7 @@ abstract class BaseModel {
   /// A unique identifier to indicate the uniqueness of the model,
   /// and is also used in the methods of the "BaseListModel" class
   String? uniqueId;
+
   /// if an exception happens then here is "ExceptionController"
   ExceptionController exceptionController;
 

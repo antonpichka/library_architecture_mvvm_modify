@@ -8,12 +8,12 @@ import 'package:meta/meta.dart';
 
 /// This class is needed to manage the state of the model and streams,
 /// which also receives models and streams under its control from "ModelQNamedServiceViewModel"
-abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends BaseListModel<T>>
-    implements IDispose
-{
-  final IStreamModel<T,Y>? _iStreamModel;
+abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,
+    Y extends BaseListModel<T>> implements IDispose {
+  final IStreamModel<T, Y>? _iStreamModel;
 
-  BaseModelQThereIsStateViewModel(IInitializedStreamModel<T,Y> iInitializedStreamModel)
+  BaseModelQThereIsStateViewModel(
+      IInitializedStreamModel<T, Y> iInitializedStreamModel)
       : _iStreamModel = iInitializedStreamModel.initializedStreamModel();
 
   /// The purpose of the method is to release resources
@@ -25,7 +25,7 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   // Start IStreamModel
   /// The purpose of this method is to force IStreamModel to override your implementation and call your methods.
   @nonVirtual
-  IStreamModel<T,Y>? get getIStreamModel {
+  IStreamModel<T, Y>? get getIStreamModel {
     return _iStreamModel;
   }
   // End IStreamModel
@@ -33,8 +33,7 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   // Start Model
   /// Get a future model from IStreamModel
   @nonVirtual
-  Future<T?> get getFutureModel
-  async {
+  Future<T?> get getFutureModel async {
     return _iStreamModel?.getModel;
   }
 
@@ -66,8 +65,7 @@ abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,Y extends Bas
   // Start ListModel
   /// Get a future list model from IStreamModel
   @nonVirtual
-  Future<Y?> get getFutureListModel
-  async {
+  Future<Y?> get getFutureListModel async {
     return _iStreamModel?.getListModel;
   }
 

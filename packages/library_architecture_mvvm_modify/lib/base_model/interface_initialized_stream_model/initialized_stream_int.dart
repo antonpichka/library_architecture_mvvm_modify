@@ -5,9 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 /// An example of the implementation of the "IInitializedStreamModel" class, for the Int model
-class InitializedStreamInt implements IInitializedStreamModel<Int,ListInt> {
+class InitializedStreamInt implements IInitializedStreamModel<Int, ListInt> {
   @override
   IStreamModel<Int, ListInt>? initializedStreamModel() {
-    return DefaultStreamModel<Int,ListInt>(Int.success(0), ListInt.success([]));
+    return DefaultStreamModel<Int, ListInt>(
+        Int.success(0), ListInt.success([]));
   }
 }

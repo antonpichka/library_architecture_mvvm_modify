@@ -9,8 +9,8 @@ import 'package:library_architecture_mvvm_modify/utility/result.dart';
 /// ParameterMovie - with a parameter for insert
 /// Using - is specified because it is also specified in the ModelQNamedServiceViewModel file name, and this binds fbds to this object, by file name.
 /// This is done so as not to get confused where and which fbds is used
-abstract class InsertModelToNamedServiceParameterNamedFBDS<Z extends Object,X extends Object,C extends Object> {
+abstract class InsertModelToNamedServiceParameterNamedFBDS<Z extends Object,
+    X extends Object, C extends Object> {
   Result<Z>? insertModelToNamedServiceParameterNamed(
-      X? parameter,
-      C? parameterForFBDS);
+      X? parameter, C? parameterForFBDS);
 }

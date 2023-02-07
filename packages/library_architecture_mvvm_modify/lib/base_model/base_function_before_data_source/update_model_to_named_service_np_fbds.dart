@@ -8,6 +8,7 @@ import 'package:library_architecture_mvvm_modify/utility/result.dart';
 /// NP - no parameter
 /// Using - is specified because it is also specified in the ModelQNamedServiceViewModel file name, and this binds fbds to this object, by file name.
 /// This is done so as not to get confused where and which fbds is used
-abstract class UpdateModelToNamedServiceNPFBDS<X extends Object,C extends Object> {
+abstract class UpdateModelToNamedServiceNPFBDS<X extends Object,
+    C extends Object> {
   Result<X>? updateModelToNamedServiceNP(C? parameterForFBDS);
 }

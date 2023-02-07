@@ -9,8 +9,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 /// ParameterDouble - with a parameter (with such an SQL query (SELECT * FROM movies WHERE rating = :rating LIMIT 1;)
 /// Using - is specified because it is also specified in the ModelQNamedServiceViewModel file name, and this binds fbds to this object, by file name.
 /// This is done so as not to get confused where and which fbds is used
-abstract class GetModelFromNamedServiceParameterNamedFBDS<Z extends BaseModel,X extends Object,C extends Object> {
-  Z? getModelFromNamedServiceParameterNamed(
-      X? parameter,
-      C? parameterForFBDS);
+abstract class GetModelFromNamedServiceParameterNamedFBDS<Z extends BaseModel,
+    X extends Object, C extends Object> {
+  Z? getModelFromNamedServiceParameterNamed(X? parameter, C? parameterForFBDS);
 }

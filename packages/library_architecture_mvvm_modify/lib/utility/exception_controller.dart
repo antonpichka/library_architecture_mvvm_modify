@@ -13,7 +13,7 @@ enum EnumWhatIsTheException {
 /// This class is needed to manage the exception and provide
 /// the necessary information to the developer about the error.
 class ExceptionController {
-  final EnumWhatIsTheException? enumWhatIsTheException;
+  final EnumWhatIsTheException enumWhatIsTheException;
   final BaseException? _exception;
 
   ExceptionController.success()
@@ -22,8 +22,10 @@ class ExceptionController {
 
   ExceptionController.exception(this._exception)
       : enumWhatIsTheException = _exception is LocalException
-      ? EnumWhatIsTheException.localException : _exception is NetworkException
-      ? EnumWhatIsTheException.networkException : EnumWhatIsTheException.otherException;
+            ? EnumWhatIsTheException.localException
+            : _exception is NetworkException
+                ? EnumWhatIsTheException.networkException
+                : EnumWhatIsTheException.otherException;
 
   /// We get a message for the view from the exception parameter,
   /// if there was no exception, this method will return null
@@ -37,7 +39,7 @@ class ExceptionController {
   /// then true is when you have an exception
   @nonVirtual
   bool isNotEqualsNullParameterException() {
-    if(_exception == null) {
+    if (_exception == null) {
       return false;
     }
     return true;

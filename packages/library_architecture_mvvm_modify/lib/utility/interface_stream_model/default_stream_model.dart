@@ -5,9 +5,8 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 /// An example of the implementation of the "IStreamModel" class, named DefaultStreamModel
-class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
-    implements IStreamModel<T,Y>
-{
+class DefaultStreamModel<T extends BaseModel, Y extends BaseListModel<T>>
+    implements IStreamModel<T, Y> {
   final StreamController<T>? _streamControllerForModel;
   final StreamController<Y>? _streamControllerForListModel;
   T? _model;
@@ -15,21 +14,18 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   StreamSubscription<T>? _streamSubscriptionForModel;
   StreamSubscription<Y>? _streamSubscriptionForListModel;
 
-  DefaultStreamModel(
-      this._model,
-      this._listModel)
+  DefaultStreamModel(this._model, this._listModel)
       : _streamControllerForModel = StreamController<T>.broadcast(),
         _streamControllerForListModel = StreamController<Y>.broadcast();
-
 
   @override
   void dispose() {
     _streamSubscriptionForModel?.cancel();
     _streamSubscriptionForListModel?.cancel();
-    if(!_streamControllerForModel!.isClosed) {
+    if (!_streamControllerForModel!.isClosed) {
       _streamControllerForModel?.close();
     }
-    if(!_streamControllerForListModel!.isClosed) {
+    if (!_streamControllerForListModel!.isClosed) {
       _streamControllerForListModel?.close();
     }
   }
@@ -65,56 +61,50 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
   /// Notify stream Model
   @override
   void notifyStreamModel() {
-    if(!_streamControllerForModel!.hasListener) {
-      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream has no listener");
+    if (!_streamControllerForModel!.hasListener) {
+      throw LocalException(this, EnumGuiltyForLocalException.developer,
+          "stream has no listener");
     }
-    if(_streamControllerForModel!.isClosed) {
-      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream closed");
+    if (_streamControllerForModel!.isClosed) {
+      throw LocalException(
+          this, EnumGuiltyForLocalException.developer, "stream closed");
     }
-    _streamControllerForModel
-        ?.sink
-        .add(_model!);
+    _streamControllerForModel?.sink.add(_model!);
   }
 
   /// Notify stream ListModel
   @override
   void notifyStreamListModel() {
-    if(!_streamControllerForListModel!.hasListener) {
-      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream has no listener");
+    if (!_streamControllerForListModel!.hasListener) {
+      throw LocalException(this, EnumGuiltyForLocalException.developer,
+          "stream has no listener");
     }
-    if(_streamControllerForListModel!.isClosed) {
-      throw LocalException(this,EnumGuiltyForLocalException.developer,"stream closed");
+    if (_streamControllerForListModel!.isClosed) {
+      throw LocalException(
+          this, EnumGuiltyForLocalException.developer, "stream closed");
     }
-    _streamControllerForListModel
-        ?.sink
-        .add(_listModel!);
+    _streamControllerForListModel?.sink.add(_listModel!);
   }
 
   /// Listens stream Model
-  void listensStreamModel(
-      Function(T event) callback)
-  {
-    _streamSubscriptionForModel = _streamControllerForModel
-        !.stream
-        .listen((event) {
-          callback(event);
-        });
+  void listensStreamModel(Function(T event) callback) {
+    _streamSubscriptionForModel =
+        _streamControllerForModel!.stream.listen((event) {
+      callback(event);
+    });
   }
 
   /// Listens stream ListModel
-  void listensStreamListModel(
-      Function(Y event) callback)
-  {
-    _streamSubscriptionForListModel = _streamControllerForListModel
-        !.stream
-        .listen((event) {
-          callback(event);
-        });
+  void listensStreamListModel(Function(Y event) callback) {
+    _streamSubscriptionForListModel =
+        _streamControllerForListModel!.stream.listen((event) {
+      callback(event);
+    });
   }
 
   /// Resume stream subscription for Model
   void resumeStreamSubscriptionForModel() {
-    if(!_streamSubscriptionForModel!.isPaused) {
+    if (!_streamSubscriptionForModel!.isPaused) {
       return;
     }
     _streamSubscriptionForModel?.resume();
@@ -122,7 +112,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
 
   /// Resume stream subscription for ListModel
   void resumeStreamSubscriptionForListModel() {
-    if(!_streamSubscriptionForListModel!.isPaused) {
+    if (!_streamSubscriptionForListModel!.isPaused) {
       return;
     }
     _streamSubscriptionForListModel?.resume();
@@ -130,7 +120,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
 
   /// Pause stream subscription for Model
   void pauseStreamSubscriptionForModel() {
-    if(_streamSubscriptionForModel!.isPaused) {
+    if (_streamSubscriptionForModel!.isPaused) {
       return;
     }
     _streamSubscriptionForModel?.pause();
@@ -138,7 +128,7 @@ class DefaultStreamModel<T extends BaseModel,Y extends BaseListModel<T>>
 
   /// Pause stream subscription for ListModel
   void pauseStreamSubscriptionForListModel() {
-    if(_streamSubscriptionForListModel!.isPaused) {
+    if (_streamSubscriptionForListModel!.isPaused) {
       return;
     }
     _streamSubscriptionForListModel?.pause();

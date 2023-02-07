@@ -2,9 +2,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:meta/meta.dart';
 
 /// Iterator to sort the list of models
-abstract class BaseIterator<T extends BaseModel>
-    implements Iterator<T>
-{
+abstract class BaseIterator<T extends BaseModel> implements Iterator<T> {
   /// ListModel which defaults to null
   List<T>? listModel;
 
@@ -13,7 +11,7 @@ abstract class BaseIterator<T extends BaseModel>
   @nonVirtual
   List<T> get getSortedListModelParameterListModel {
     List<T> listModel = List.empty(growable: true);
-    while(moveNext()) {
+    while (moveNext()) {
       final model = current;
       listModel.add(model);
     }
