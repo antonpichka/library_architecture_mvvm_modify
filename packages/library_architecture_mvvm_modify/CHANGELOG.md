@@ -1,3 +1,9 @@
+## 0.0.3
+
+- Added folder 'example' with file 'EXAMPLE.md' for pub.dev (although all examples are given in the README.md file)
+- Passed static analysis of files, namely formatted using the command 'dart format .' for pub.dev
+- Updated dependencies, and replaced dependency from 'flutter_lints' to 'lints'
+
 ## 0.0.2
 
 - Updated image path in README.md
