@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Updated dependencies from meta 1.9.0 to meta 1.8.0 (flutter sdk depends on meta 1.8.0, meta 1.8.0 is required.)
+
 ## 0.0.3
 
 - Added folder 'example' with file 'EXAMPLE.md' for pub.dev (although all examples are given in the README.md file)
