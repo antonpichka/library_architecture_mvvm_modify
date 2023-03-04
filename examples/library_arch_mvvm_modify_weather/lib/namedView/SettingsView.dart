@@ -4,16 +4,12 @@ import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/ListTileT
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/SettingsViewListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class SettingsView
-    extends StatefulWidget
-{
+class SettingsView extends StatefulWidget {
   @override
   State<SettingsView> createState() => _SettingsViewState();
 }
 
-class _SettingsViewState
-    extends State<SettingsView>
-{
+class _SettingsViewState extends State<SettingsView> {
   final _lo = SettingsViewListViewModel();
 
   @override
@@ -30,13 +26,15 @@ class _SettingsViewState
   @override
   Widget build(BuildContext context) {
     _init();
-    return  WillPopScope(
+    return WillPopScope(
         onWillPop: _onWillPop,
         child: Scaffold(
           appBar: AppBar(title: const Text('Settings')),
           body: ListView(
             children: <Widget>[
-              ListTileTemperatureUnitsWidget(_lo.listTileTemperatureUnitsWidgetListViewModel)],
+              ListTileTemperatureUnitsWidget(
+                  _lo.listTileTemperatureUnitsWidgetListViewModel)
+            ],
           ),
         ));
   }

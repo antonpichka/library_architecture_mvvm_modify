@@ -7,13 +7,10 @@ class IncrementFABWidgetListViewModel {
 
   IncrementFABWidgetListViewModel(this.intQThereIsStateViewModelForIncrement);
 
-  void setOneParametersNamedForNamedByIntAndInGeneralZeroTask()
-  {
-    intQThereIsStateViewModelForIncrement
-        .getInt
+  void setOneParametersNamedForNamedByIntAndInGeneralZeroTask() {
+    intQThereIsStateViewModelForIncrement.getInt
         ?.setOneParametersNamedForNamed();
-    intQThereIsStateViewModelForIncrement
-        .notifyStreamInt();
+    intQThereIsStateViewModelForIncrement.notifyStreamInt();
     return;
   }
 }

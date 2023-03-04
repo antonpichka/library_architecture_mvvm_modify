@@ -4,25 +4,26 @@ import 'package:meta/meta.dart';
 
 class ConfirmedPasswordInputWidgetListViewModel {
   @protected
-  final PasswordInputFirstBranchOneQThereIsStateViewModel passwordInputFirstBranchOneQThereIsStateViewModel;
+  final PasswordInputFirstBranchOneQThereIsStateViewModel
+      passwordInputFirstBranchOneQThereIsStateViewModel;
 
-  ConfirmedPasswordInputWidgetListViewModel(this.passwordInputFirstBranchOneQThereIsStateViewModel);
+  ConfirmedPasswordInputWidgetListViewModel(
+      this.passwordInputFirstBranchOneQThereIsStateViewModel);
 
   Stream<PasswordInputFirstBranchOne?>? get getStreamPasswordInput {
-    return passwordInputFirstBranchOneQThereIsStateViewModel.getStreamPasswordInput;
+    return passwordInputFirstBranchOneQThereIsStateViewModel
+        .getStreamPasswordInput;
   }
 
-  void setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
-      String str)
-  {
-    if(passwordInputFirstBranchOneQThereIsStateViewModel
-        .getPasswordInput
-        ?.getOneParametersNamedForConfirmedPasswordInputWidget == str)
-    {
+  void
+      setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
+          String str) {
+    if (passwordInputFirstBranchOneQThereIsStateViewModel.getPasswordInput
+            ?.getOneParametersNamedForConfirmedPasswordInputWidget ==
+        str) {
       return;
     }
-    passwordInputFirstBranchOneQThereIsStateViewModel
-        .getPasswordInput
+    passwordInputFirstBranchOneQThereIsStateViewModel.getPasswordInput
         ?.setOneParametersNamedForConfirmedPasswordInputWidget = str;
     passwordInputFirstBranchOneQThereIsStateViewModel
         .notifyStreamPasswordInput();

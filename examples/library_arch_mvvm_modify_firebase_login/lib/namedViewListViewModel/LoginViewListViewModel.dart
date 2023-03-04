@@ -13,35 +13,34 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_initialize
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class LoginViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class LoginViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _emailInputQThereIsStateViewModel =
-  EmailInputQThereIsStateViewModel(InitializedStreamEmailInput());
+      EmailInputQThereIsStateViewModel(InitializedStreamEmailInput());
   final _passwordInputQThereIsStateViewModel =
-  PasswordInputQThereIsStateViewModel(InitializedStreamPasswordInput());
+      PasswordInputQThereIsStateViewModel(InitializedStreamPasswordInput());
   final _boolQThereIsStateViewModelForLoading =
-  BoolQThereIsStateViewModel(InitializedStreamBool());
+      BoolQThereIsStateViewModel(InitializedStreamBool());
 
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
-  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin();
+      UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin();
   final _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle =
-  UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle();
+      UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle();
 
   // NamedWidgetListViewModel
   late final EmailInputWidgetListViewModel emailInputWidgetListViewModel;
   late final PasswordInputWidgetListViewModel passwordInputWidgetListViewModel;
   late final LoginButtonWidgetListViewModel loginButtonWidgetListViewModel;
   late final GoogleButtonWidgetListViewModel googleButtonWidgetListViewModel;
-  late final NavigationRegistrationButtonWidgetListViewModel navigationRegistrationButtonWidgetListViewModel;
+  late final NavigationRegistrationButtonWidgetListViewModel
+      navigationRegistrationButtonWidgetListViewModel;
 
   LoginViewListViewModel() {
-    emailInputWidgetListViewModel = EmailInputWidgetListViewModel(
-        _emailInputQThereIsStateViewModel);
-    passwordInputWidgetListViewModel = PasswordInputWidgetListViewModel(
-        _passwordInputQThereIsStateViewModel);
+    emailInputWidgetListViewModel =
+        EmailInputWidgetListViewModel(_emailInputQThereIsStateViewModel);
+    passwordInputWidgetListViewModel =
+        PasswordInputWidgetListViewModel(_passwordInputQThereIsStateViewModel);
     loginButtonWidgetListViewModel = LoginButtonWidgetListViewModel(
         _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
         _emailInputQThereIsStateViewModel,
@@ -50,8 +49,9 @@ class LoginViewListViewModel
     googleButtonWidgetListViewModel = GoogleButtonWidgetListViewModel(
         _userQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle,
         _boolQThereIsStateViewModelForLoading);
-    navigationRegistrationButtonWidgetListViewModel = NavigationRegistrationButtonWidgetListViewModel(
-        _boolQThereIsStateViewModelForLoading);
+    navigationRegistrationButtonWidgetListViewModel =
+        NavigationRegistrationButtonWidgetListViewModel(
+            _boolQThereIsStateViewModelForLoading);
   }
 
   @override
@@ -60,5 +60,4 @@ class LoginViewListViewModel
     _passwordInputQThereIsStateViewModel.dispose();
     _boolQThereIsStateViewModelForLoading.dispose();
   }
-
 }

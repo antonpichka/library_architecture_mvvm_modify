@@ -10,28 +10,41 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 part 'Weather.g.dart';
 
 @JsonSerializable(ignoreUnannotated: true)
-class Weather
-    extends BaseModel
-{
+class Weather extends BaseModel {
+  static const String constWeatherQHiveService = "__weather_q_hive_service__";
+  static const String constParameterLocation = "location";
+  static const String constParameterWeatherCode = "weathercode";
+  static const String constParameterTemperature = "temperature";
+  static const String constParameterLastUpdated = "last_updated";
+
   @JsonKey(name: constParameterLocation)
   Location? location;
   @JsonKey(name: constParameterWeatherCode)
   double? weatherCode;
   @JsonKey(name: constParameterTemperature)
   double? temperature;
-  @JsonKey(ignore: true)
+  @JsonKey(includeToJson: false, includeFromJson: false)
   DateTime? lastUpdated;
 
-  Weather.success(this.location,this.weatherCode,this.temperature,this.lastUpdated) : super.success(location?.uniqueId);
-  Weather.successWhereNotExistsParameterLastUpdated(this.location,this.weatherCode,this.temperature)
-      : lastUpdated = DateTime.now(), super.success(location?.uniqueId);
+  Weather.success(
+      this.location, this.weatherCode, this.temperature, this.lastUpdated)
+      : super.success(location?.uniqueId);
+  Weather.successWhereNotExistsParameterLastUpdated(
+      this.location, this.weatherCode, this.temperature)
+      : lastUpdated = DateTime.now(),
+        super.success(location?.uniqueId);
   Weather.exception(super.exception) : super.exception();
-  factory Weather.fromMapThisNetwork(Map<String, dynamic> map) => _$WeatherFromJson(map);
+  factory Weather.fromMapThisNetwork(Map<String, dynamic> map) =>
+      _$WeatherFromJson(map);
   factory Weather.fromBoxWeather(Box boxWeather) {
-    final locationIdFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterId}");
-    final locationNameFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterName}");
-    final locationLatitudeFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterLatitude}");
-    final locationLongitudeFromBoxWeather = boxWeather.get("${constParameterLocation}_${Location.constParameterLongitude}");
+    final locationIdFromBoxWeather = boxWeather
+        .get("${constParameterLocation}_${Location.constParameterId}");
+    final locationNameFromBoxWeather = boxWeather
+        .get("${constParameterLocation}_${Location.constParameterName}");
+    final locationLatitudeFromBoxWeather = boxWeather
+        .get("${constParameterLocation}_${Location.constParameterLatitude}");
+    final locationLongitudeFromBoxWeather = boxWeather
+        .get("${constParameterLocation}_${Location.constParameterLongitude}");
     final locationFromBoxWeather = Location.success(
         locationIdFromBoxWeather,
         locationNameFromBoxWeather,
@@ -41,19 +54,17 @@ class Weather
     final temperatureFromBoxWeather = boxWeather.get(constParameterTemperature);
     final lastUpdatedFromBoxWeather = boxWeather.get(constParameterLastUpdated);
     return Weather.success(
-        locationFromBoxWeather.isEqualsNullParametersIdAndNameAndLatitudeAndLongitude()
-            ? null : locationFromBoxWeather,
+        locationFromBoxWeather
+                .isEqualsNullParametersIdAndNameAndLatitudeAndLongitude()
+            ? null
+            : locationFromBoxWeather,
         weatherCodeFromBoxWeather,
         temperatureFromBoxWeather,
         lastUpdatedFromBoxWeather);
   }
 
-  static Weather get getWeatherForSuccess => Weather.success(Location.getLocationForSuccess,0.0,0.0,DateTime(0));
-  static const constWeatherQHiveService = "__weather_q_hive_service__";
-  static const constParameterLocation = "location";
-  static const constParameterWeatherCode = "weathercode";
-  static const constParameterTemperature = "temperature";
-  static const constParameterLastUpdated = "last_updated";
+  static Weather get getWeatherForSuccess =>
+      Weather.success(Location.getLocationForSuccess, 0.0, 0.0, DateTime(0));
 
   EnumWeatherCondition get getEnumWeatherCondition {
     switch (weatherCode?.toInt()) {
@@ -95,7 +106,7 @@ class Weather
   }
 
   String? get getNameColorFromGetEnumWeatherCondition {
-    switch(getEnumWeatherCondition) {
+    switch (getEnumWeatherCondition) {
       case EnumWeatherCondition.clear:
         return Colors.orangeAccent.value.toString();
       case EnumWeatherCondition.rainy:
@@ -111,13 +122,15 @@ class Weather
     }
   }
 
-  set setOneFromTemperatureUnitsParameterTemperature(TemperatureUnits temperatureUnits) {
+  set setOneFromTemperatureUnitsParameterTemperature(
+      TemperatureUnits temperatureUnits) {
     temperature = temperatureUnits == TemperatureUnits.celsius
         ? temperature
         : temperature?.toFahrenheit();
   }
 
-  bool isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() {
+  bool
+      isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() {
     return location == null &&
         weatherCode == null &&
         temperature == null &&
@@ -127,5 +140,5 @@ class Weather
 
 extension on double {
   double toFahrenheit() => (this * 9 / 5) + 32;
- // double toCelsius() => (this - 32) * 5 / 9;
+  // double toCelsius() => (this - 32) * 5 / 9;
 }

@@ -3,12 +3,14 @@ import 'package:meta/meta.dart';
 
 class IconButtonExitToAppWidgetListViewModel {
   @protected
-  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut;
+  final UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
+      userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut;
 
-  IconButtonExitToAppWidgetListViewModel(this.userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut);
+  IconButtonExitToAppWidgetListViewModel(
+      this.userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut);
 
-  Future<void> deleteUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask()
-  async {
+  Future<void>
+      deleteUserToFirebaseAuthAndGoogleSignInServiceNPAndInGeneralOneTask() async {
     // 1
     await userQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut
         .deleteUserToFirebaseAuthAndGoogleSignInServiceNP();

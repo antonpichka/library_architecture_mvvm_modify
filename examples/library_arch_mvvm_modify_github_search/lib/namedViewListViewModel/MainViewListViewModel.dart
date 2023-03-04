@@ -11,22 +11,21 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/strings_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class MainViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class MainViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _boolQThereIsStateViewModelForAntiSpam =
-  BoolQThereIsStateViewModel(InitializedStreamBool());
+      BoolQThereIsStateViewModel(InitializedStreamBool());
   final _stringsQThereIsStateViewModelForSaveLettersSearch =
-  StringsQThereIsStateViewModel(InitializedStreamStrings());
+      StringsQThereIsStateViewModel(InitializedStreamStrings());
   final _searchResultInLoadingQThereIsStateViewModel =
-  SearchResultInLoadingQThereIsStateViewModel(InitializedStreamSearchResultInLoading());
+      SearchResultInLoadingQThereIsStateViewModel(
+          InitializedStreamSearchResultInLoading());
   final _customTimerQThereIsStateViewModel =
-  CustomTimerQThereIsStateViewModel(InitializedStreamCustomTimer());
+      CustomTimerQThereIsStateViewModel(InitializedStreamCustomTimer());
 
   // ModelQNamedServiceViewModel
   final _searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub =
-  SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub();
+      SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub();
 
   // NamedWidgetListViewModel
   late final SearchBarWidgetListViewModel searchBarWidgetListViewModel;

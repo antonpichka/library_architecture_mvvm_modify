@@ -6,7 +6,8 @@ import 'package:meta/meta.dart';
 
 class PostsListWidgetListViewModel {
   @protected
-  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
+  final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
+      postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;
   @protected
   final BoolQThereIsStateViewModel boolQThereIsStateViewModelForAntiSpam;
   @protected
@@ -21,46 +22,33 @@ class PostsListWidgetListViewModel {
     return postQThereIsStateViewModel.getStreamListPost;
   }
 
-  Future<void> getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask()
-  async {
+  Future<void>
+      getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask() async {
     await Future.delayed(const Duration(seconds: 1));
-    if(boolQThereIsStateViewModelForAntiSpam
-        .getBool
-        ?.isField ?? false)
-    {
+    if (boolQThereIsStateViewModelForAntiSpam.getBool?.isField ?? false) {
       return;
     }
-    if(postQThereIsStateViewModel
-        .getListPost
-        ?.getOneParametersNamedForPostsListWidget ?? true)
-    {
+    if (postQThereIsStateViewModel.getListPost
+            ?.isTwoParametersNamedForPostsListWidget() ??
+        true) {
       return;
     }
-    boolQThereIsStateViewModelForAntiSpam
-        .getBool
-        ?.isField = true;
+    boolQThereIsStateViewModelForAntiSpam.getBool?.isField = true;
     // 1
-    final listPost = await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
-        .getListPostFromHttpClientServiceParameterInt(postQThereIsStateViewModel.getListPost?.listModel?.length ?? 0);
-    boolQThereIsStateViewModelForAntiSpam
-        .getBool
-        ?.isField = false;
-    if(listPost
-        !.exceptionController
-        .isNotEqualsNullParameterException())
-    {
+    final listPost =
+        await postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
+            .getListPostFromHttpClientServiceParameterInt(
+                postQThereIsStateViewModel.getListPost?.listModel?.length ?? 0);
+    boolQThereIsStateViewModelForAntiSpam.getBool?.isField = false;
+    if (listPost!.exceptionController.isNotEqualsNullParameterException()) {
       postQThereIsStateViewModel
-          .getListPost
-          ?.setTwoParametersNamedForPostsListWidget = listPost;
-      postQThereIsStateViewModel
-          .notifyStreamListPost();
+          .getListPost?.setTwoParametersNamedForPostsListWidget = listPost;
+      postQThereIsStateViewModel.notifyStreamListPost();
       return;
     }
     postQThereIsStateViewModel
-        .getListPost
-        ?.setOneParametersNamedForPostsListWidget = listPost;
-    postQThereIsStateViewModel
-        .notifyStreamListPost();
+        .getListPost?.setOneParametersNamedForPostsListWidget = listPost;
+    postQThereIsStateViewModel.notifyStreamListPost();
     return;
   }
 }

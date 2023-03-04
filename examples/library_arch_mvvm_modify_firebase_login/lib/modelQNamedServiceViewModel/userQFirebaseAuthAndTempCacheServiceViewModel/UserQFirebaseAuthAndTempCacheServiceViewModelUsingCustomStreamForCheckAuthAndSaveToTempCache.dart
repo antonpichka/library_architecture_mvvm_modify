@@ -7,26 +7,23 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/base_model_q_named_service_view_model.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
-{
+class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache<
+    T extends User,
+    Y extends ListUser<T>> extends BaseModelQNamedServiceViewModel<T, Y> {
   @protected
   final firebaseAuthService = FirebaseAuthService();
   @protected
   final tempCacheService = TempCacheService();
 
   Stream<T?>? get getCustomStreamUser {
-    return firebaseAuthService
-        .getFirebaseAuth
+    return firebaseAuthService.getFirebaseAuth
         ?.authStateChanges()
-        .map((firebase_auth.User? firebaseUser)
-    {
+        .map((firebase_auth.User? firebaseUser) {
       final user = firebaseUser == null
           ? getUserWhereFirebaseUserNull()
           : getUserWhereFirebaseUserNotNull(firebaseUser);
-      tempCacheService
-          .getTempCache
-          ?.write(User.constUserQTempCacheService,user);
+      tempCacheService.getTempCache
+          ?.write(User.constUserQTempCacheService, user);
       return user;
     });
   }
@@ -42,10 +39,7 @@ class UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuth
 
   @protected
   T? getUserWhereFirebaseUserNotNull(firebase_auth.User firebaseUser) {
-    return User.success(
-        firebaseUser.uid,
-        firebaseUser.email,
-        firebaseUser.displayName,
-        firebaseUser.photoURL) as T?;
+    return User.success(firebaseUser.uid, firebaseUser.email,
+        firebaseUser.displayName, firebaseUser.photoURL) as T?;
   }
 }

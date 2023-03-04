@@ -6,27 +6,28 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_initialize
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class MainViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class MainViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQNamedServiceViewModel
   final _postFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder =
-  PostFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
+      PostFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder();
 
   // ModelQThereIsStateViewModel
   final _boolQThereIsStateViewModelForAntiSpam =
-  BoolQThereIsStateViewModel(InitializedStreamBool());
+      BoolQThereIsStateViewModel(InitializedStreamBool());
   final _postFirstBranchOneQThereIsStateViewModel =
-  PostFirstBranchOneQThereIsStateViewModel(InitializedStreamPostFirstBranchOne());
+      PostFirstBranchOneQThereIsStateViewModel(
+          InitializedStreamPostFirstBranchOne());
 
   // NamedWidgetListViewModel
-  late final PostsListFirstBranchOneWidgetListViewModel postsListFirstBranchOneWidgetListViewModel;
+  late final PostsListFirstBranchOneWidgetListViewModel
+      postsListFirstBranchOneWidgetListViewModel;
 
   MainViewListViewModel() {
-    postsListFirstBranchOneWidgetListViewModel = PostsListFirstBranchOneWidgetListViewModel(
-        _postFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
-        _boolQThereIsStateViewModelForAntiSpam,
-        _postFirstBranchOneQThereIsStateViewModel);
+    postsListFirstBranchOneWidgetListViewModel =
+        PostsListFirstBranchOneWidgetListViewModel(
+            _postFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,
+            _boolQThereIsStateViewModelForAntiSpam,
+            _postFirstBranchOneQThereIsStateViewModel);
   }
 
   @override

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/ListTileTemperatureUnitsWidgetListViewModel.dart';
 
-class ListTileTemperatureUnitsWidget
-    extends StatelessWidget
-{
+class ListTileTemperatureUnitsWidget extends StatelessWidget {
   @protected
   final ListTileTemperatureUnitsWidgetListViewModel lo;
 
@@ -14,9 +12,9 @@ class ListTileTemperatureUnitsWidget
   Widget build(BuildContext context) {
     return StreamBuilder<Settings?>(
         stream: lo.getStreamSettings,
-        builder: (BuildContext context,AsyncSnapshot<Settings?> asyncSnapshot)
-        {
-          if(asyncSnapshot.data == null) {
+        builder:
+            (BuildContext context, AsyncSnapshot<Settings?> asyncSnapshot) {
+          if (asyncSnapshot.data == null) {
             return buildNull(context);
           }
           Settings? settings = asyncSnapshot.data;
@@ -40,14 +38,20 @@ class ListTileTemperatureUnitsWidget
 
   @protected
   Widget buildSubTitle(BuildContext buildContext, Settings? settings) {
-    return const Text('Use metric measurements for temperature units.',);
+    return const Text(
+      'Use metric measurements for temperature units.',
+    );
   }
 
   @protected
   Widget buildTrailing(BuildContext buildContext, Settings? settings) {
     return Switch(
-      value: settings?.isOneParametersNamedForListTileTemperatureUnitsWidget() ?? true,
-      onChanged: (bool isSwitch) => lo.updateSettingsToHiveServiceParameterSettingsAndInGeneralOneTask(isSwitch),
+      value:
+          settings?.isOneParametersNamedForListTileTemperatureUnitsWidget() ??
+              true,
+      onChanged: (bool isSwitch) =>
+          lo.updateSettingsToHiveServiceParameterSettingsAndInGeneralOneTask(
+              isSwitch),
     );
   }
 

@@ -8,118 +8,122 @@ void main() {
   group('get success', () {
     test('getEnumWeatherIsLoadingForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getEnumWeatherIsLoadingForWeatherWidget,EnumWeatherIsLoadingForWeatherWidget.success);
+      expect(weatherIsLoading.getEnumWeatherIsLoadingForWeatherWidget,
+          EnumWeatherIsLoadingForWeatherWidget.success);
     });
     test('getOneParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getOneParametersNamedForWeatherWidget,"0.0°C");
+      expect(weatherIsLoading.getOneParametersNamedForWeatherWidget, "0.0°C");
     });
     test('getTwoParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getTwoParametersNamedForWeatherWidget,"☀️");
+      expect(weatherIsLoading.getTwoParametersNamedForWeatherWidget, "☀️");
     });
     test('getThreeParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getThreeParametersNamedForWeatherWidget,"");
+      expect(weatherIsLoading.getThreeParametersNamedForWeatherWidget, "");
     });
     test('getFourParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getFourParametersNamedForWeatherWidget,"Last Updated at ");
+      expect(weatherIsLoading.getFourParametersNamedForWeatherWidget,
+          "Last Updated at ");
     });
     test('getFiveParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getFiveParametersNamedForWeatherWidget,"");
+      expect(weatherIsLoading.getFiveParametersNamedForWeatherWidget, "");
     });
     test('getSixParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.getSixParametersNamedForWeatherWidget != null,true);
+      expect(
+          weatherIsLoading.getSixParametersNamedForWeatherWidget != null, true);
     });
   });
   group('set success', () {
     test('setOneParametersNamedForFloatingActionButtonSearchWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      weatherIsLoading.setOneParametersNamedForFloatingActionButtonSearchWidget();
-      expect(weatherIsLoading.isLoading,true);
+      weatherIsLoading
+          .setOneParametersNamedForFloatingActionButtonSearchWidget();
+      expect(weatherIsLoading.isLoading, true);
     });
     test('setTwoParametersNamedForFloatingActionButtonSearchWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
       weatherIsLoading
-          .setTwoParametersNamedForFloatingActionButtonSearchWidget = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherIsLoading
-          .exceptionController
-          .enumWhatIsTheException,EnumWhatIsTheException.noException);
-      expect(weatherIsLoading.isLoading,false);
+              .setTwoParametersNamedForFloatingActionButtonSearchWidget =
+          WeatherSettings.getWeatherSettingsForSuccess;
+      expect(weatherIsLoading.exceptionController.enumWhatIsTheException,
+          EnumWhatIsTheException.noException);
+      expect(weatherIsLoading.isLoading, false);
     });
     test('setThreeParametersNamedForFloatingActionButtonSearchWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
       weatherIsLoading
-          .setThreeParametersNamedForFloatingActionButtonSearchWidget = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherIsLoading
-          .exceptionController
-          .enumWhatIsTheException,EnumWhatIsTheException.noException);
-      expect(weatherIsLoading.isLoading,false);
-      expect(weatherIsLoading.temperatureUnits,TemperatureUnits.celsius);
-      expect(weatherIsLoading.weather != null,true);
+              .setThreeParametersNamedForFloatingActionButtonSearchWidget =
+          WeatherSettings.getWeatherSettingsForSuccess;
+      expect(weatherIsLoading.exceptionController.enumWhatIsTheException,
+          EnumWhatIsTheException.noException);
+      expect(weatherIsLoading.isLoading, false);
+      expect(weatherIsLoading.temperatureUnits, TemperatureUnits.celsius);
+      expect(weatherIsLoading.weather != null, true);
     });
     test('setOneParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
       weatherIsLoading.setOneParametersNamedForWeatherWidget();
-      expect(weatherIsLoading.isLoading,true);
+      expect(weatherIsLoading.isLoading, true);
     });
     test('setTwoParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      weatherIsLoading.setTwoParametersNamedForWeatherWidget = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherIsLoading
-          .exceptionController
-          .enumWhatIsTheException,EnumWhatIsTheException.noException);
-      expect(weatherIsLoading.isLoading,false);
+      weatherIsLoading.setTwoParametersNamedForWeatherWidget =
+          WeatherSettings.getWeatherSettingsForSuccess;
+      expect(weatherIsLoading.exceptionController.enumWhatIsTheException,
+          EnumWhatIsTheException.noException);
+      expect(weatherIsLoading.isLoading, false);
     });
     test('setThreeParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      weatherIsLoading.setThreeParametersNamedForWeatherWidget = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherIsLoading
-          .exceptionController
-          .enumWhatIsTheException,EnumWhatIsTheException.noException);
-      expect(weatherIsLoading.isLoading,false);
-      expect(weatherIsLoading.temperatureUnits,TemperatureUnits.celsius);
-      expect(weatherIsLoading.weather != null,true);
+      weatherIsLoading.setThreeParametersNamedForWeatherWidget =
+          WeatherSettings.getWeatherSettingsForSuccess;
+      expect(weatherIsLoading.exceptionController.enumWhatIsTheException,
+          EnumWhatIsTheException.noException);
+      expect(weatherIsLoading.isLoading, false);
+      expect(weatherIsLoading.temperatureUnits, TemperatureUnits.celsius);
+      expect(weatherIsLoading.weather != null, true);
     });
     test('setFourParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
       weatherIsLoading.setFourParametersNamedForWeatherWidget();
-      expect(weatherIsLoading.isLoading,true);
+      expect(weatherIsLoading.isLoading, true);
     });
     test('setFiveParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      weatherIsLoading.setFiveParametersNamedForWeatherWidget = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherIsLoading
-          .exceptionController
-          .enumWhatIsTheException,EnumWhatIsTheException.noException);
-      expect(weatherIsLoading.isLoading,false);
+      weatherIsLoading.setFiveParametersNamedForWeatherWidget =
+          WeatherSettings.getWeatherSettingsForSuccess;
+      expect(weatherIsLoading.exceptionController.enumWhatIsTheException,
+          EnumWhatIsTheException.noException);
+      expect(weatherIsLoading.isLoading, false);
     });
     test('setSixParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      weatherIsLoading.setSixParametersNamedForWeatherWidget = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherIsLoading
-          .exceptionController
-          .enumWhatIsTheException,EnumWhatIsTheException.noException);
-      expect(weatherIsLoading.isLoading,false);
-      expect(weatherIsLoading.temperatureUnits,TemperatureUnits.celsius);
-      expect(weatherIsLoading.weather != null,true);
+      weatherIsLoading.setSixParametersNamedForWeatherWidget =
+          WeatherSettings.getWeatherSettingsForSuccess;
+      expect(weatherIsLoading.exceptionController.enumWhatIsTheException,
+          EnumWhatIsTheException.noException);
+      expect(weatherIsLoading.isLoading, false);
+      expect(weatherIsLoading.temperatureUnits, TemperatureUnits.celsius);
+      expect(weatherIsLoading.weather != null, true);
     });
   });
   group('is success', () {
     test('isOneParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.isOneParametersNamedForWeatherWidget(),false);
+      expect(weatherIsLoading.isOneParametersNamedForWeatherWidget(), false);
     });
     test('isTwoParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.isTwoParametersNamedForWeatherWidget(),false);
+      expect(weatherIsLoading.isTwoParametersNamedForWeatherWidget(), false);
     });
     test('isTwoParametersNamedForWeatherWidget', () {
       final weatherIsLoading = WeatherIsLoading.getWeatherIsLoadingForSuccess;
-      expect(weatherIsLoading.isThreeParametersNamedForWeatherWidget(),false);
+      expect(weatherIsLoading.isThreeParametersNamedForWeatherWidget(), false);
     });
   });
 }

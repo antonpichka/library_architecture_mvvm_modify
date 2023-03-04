@@ -5,9 +5,11 @@ import 'package:meta/meta.dart';
 
 class IconButtonSettingsWidgetListViewModel {
   @protected
-  final WeatherIsLoadingQThereIsStateViewModel weatherIsLoadingQThereIsStateViewModel;
+  final WeatherIsLoadingQThereIsStateViewModel
+      weatherIsLoadingQThereIsStateViewModel;
   @protected
-  final WeatherSettingsQThereIsStateViewModel weatherSettingsQThereIsStateViewModel;
+  final WeatherSettingsQThereIsStateViewModel
+      weatherSettingsQThereIsStateViewModel;
 
   IconButtonSettingsWidgetListViewModel(
       this.weatherIsLoadingQThereIsStateViewModel,

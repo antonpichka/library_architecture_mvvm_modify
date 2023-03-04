@@ -1,7 +1,7 @@
 class TempCache {
   final Map<String, Object?> _mapStringAndObject;
 
-  TempCache() : _mapStringAndObject = <String,Object>{};
+  TempCache() : _mapStringAndObject = <String, Object>{};
 
   Object? read(String key) {
     final value = _mapStringAndObject[key];

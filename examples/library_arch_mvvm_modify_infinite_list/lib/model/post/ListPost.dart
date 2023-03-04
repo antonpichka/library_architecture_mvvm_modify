@@ -9,19 +9,16 @@ enum EnumListPostForPostsListWidget {
   serverNotWorkItNetworkException,
 }
 
-class ListPost<T extends Post>
-    extends BaseListModel<T>
-{
+class ListPost<T extends Post> extends BaseListModel<T> {
   bool? hasReachedMax;
 
   ListPost.success(super.listModel) : super.success() {
-    if(listModel!.isEmpty) {
+    if (listModel!.isEmpty) {
       hasReachedMax = true;
       return;
     }
     hasReachedMax = false;
   }
-
   ListPost.exception(super.exception)
       : hasReachedMax = false,
         super.exception();
@@ -29,47 +26,46 @@ class ListPost<T extends Post>
   static ListPost get getListPostForSuccess => ListPost.success([]);
 
   EnumListPostForPostsListWidget get getEnumListPostForPostsListWidget {
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if (exceptionController.enumWhatIsTheException ==
+        EnumWhatIsTheException.localException) {
       return EnumListPostForPostsListWidget.noInternetItLocalException;
     }
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.networkException) {
+    if (exceptionController.enumWhatIsTheException ==
+        EnumWhatIsTheException.networkException) {
       return EnumListPostForPostsListWidget.serverNotWorkItNetworkException;
     }
-    if(listModel!.isEmpty) {
+    if (listModel!.isEmpty) {
       return EnumListPostForPostsListWidget.isEmptyList;
     }
     return EnumListPostForPostsListWidget.success;
   }
 
-  bool? get getOneParametersNamedForPostsListWidget => hasReachedMax;
   int? get getTwoParametersNamedForPostsListWidget {
-    if(hasReachedMax ?? true) {
+    if (hasReachedMax ?? true) {
       return listModel!.length;
     }
     return listModel!.length + 1;
   }
 
-  set setOneParametersNamedForPostsListWidget(
-      ListPost<T> listPost)
-  {
+  set setOneParametersNamedForPostsListWidget(ListPost<T> listPost) {
     exceptionController = listPost.exceptionController;
     hasReachedMax = listPost.hasReachedMax;
-    if(!(hasReachedMax ?? true)) {
+    if (!(hasReachedMax ?? true)) {
       insertListToListModel(listPost.listModel!);
       return;
     }
   }
 
-  set setTwoParametersNamedForPostsListWidget(
-      ListPost<T> listPost)
-  {
+  set setTwoParametersNamedForPostsListWidget(ListPost<T> listPost) {
     exceptionController = listPost.exceptionController;
     hasReachedMax = listPost.hasReachedMax;
   }
 
-  bool isOneParametersNamedForPostsListWidget(
-      int index)
-  {
+  bool isOneParametersNamedForPostsListWidget(int index) {
     return index >= listModel!.length;
+  }
+
+  bool? isTwoParametersNamedForPostsListWidget() {
+    return hasReachedMax;
   }
 }

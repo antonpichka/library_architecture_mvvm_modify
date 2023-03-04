@@ -7,13 +7,10 @@ class DecrementFABWidgetListViewModel {
 
   DecrementFABWidgetListViewModel(this.intQThereIsStateViewModelForDecrement);
 
-  void setTwoParametersNamedForNamedByIntAndInGeneralZeroTask()
-  {
-    intQThereIsStateViewModelForDecrement
-        .getInt
+  void setTwoParametersNamedForNamedByIntAndInGeneralZeroTask() {
+    intQThereIsStateViewModelForDecrement.getInt
         ?.setTwoParametersNamedForNamed();
-    intQThereIsStateViewModelForDecrement
-        .notifyStreamInt();
+    intQThereIsStateViewModelForDecrement.notifyStreamInt();
     return;
   }
 }

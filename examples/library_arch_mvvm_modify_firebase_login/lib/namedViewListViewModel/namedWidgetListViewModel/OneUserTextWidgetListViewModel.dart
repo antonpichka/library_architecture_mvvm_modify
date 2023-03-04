@@ -1,3 +1,1 @@
-class OneUserTextWidgetListViewModel {
-
-}
+class OneUserTextWidgetListViewModel {}

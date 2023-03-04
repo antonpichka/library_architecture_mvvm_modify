@@ -7,9 +7,9 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 // ignore: unnecessary_import
 import 'package:meta/meta.dart';
 
-class SettingsQHiveServiceViewModelUsingCustomValueListenableBoxSettings<T extends Settings,Y extends ListSettings<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
-{
+class SettingsQHiveServiceViewModelUsingCustomValueListenableBoxSettings<
+    T extends Settings,
+    Y extends ListSettings<T>> extends BaseModelQNamedServiceViewModel<T, Y> {
   @protected
   final hiveService = HiveService();
 
@@ -18,8 +18,6 @@ class SettingsQHiveServiceViewModelUsingCustomValueListenableBoxSettings<T exten
   Object? get modelQNamedServiceDataSource => this;
 
   ValueListenable<Box>? get getCustomValueListenableBoxSettings {
-    return hiveService
-        .getBoxSettingsAlreadyOpen()
-        ?.listenable();
+    return hiveService.getBoxSettingsAlreadyOpen()?.listenable();
   }
 }

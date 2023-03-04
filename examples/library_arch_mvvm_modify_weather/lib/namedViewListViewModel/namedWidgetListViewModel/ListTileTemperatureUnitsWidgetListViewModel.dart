@@ -7,7 +7,8 @@ class ListTileTemperatureUnitsWidgetListViewModel {
   @protected
   final SettingsQThereIsStateViewModel settingsQThereIsStateViewModel;
   @protected
-  final SettingsQHiveServiceViewModelUsingUpdateParameterSettings settingsQHiveServiceViewModelUsingUpdateParameterSettings;
+  final SettingsQHiveServiceViewModelUsingUpdateParameterSettings
+      settingsQHiveServiceViewModelUsingUpdateParameterSettings;
 
   ListTileTemperatureUnitsWidgetListViewModel(
       this.settingsQThereIsStateViewModel,
@@ -17,15 +18,14 @@ class ListTileTemperatureUnitsWidgetListViewModel {
     return settingsQThereIsStateViewModel.getStreamSettings;
   }
 
-  Future<void> updateSettingsToHiveServiceParameterSettingsAndInGeneralOneTask(bool isSwitch)
-  async {
-    settingsQThereIsStateViewModel
-        .getSettings
+  Future<void> updateSettingsToHiveServiceParameterSettingsAndInGeneralOneTask(
+      bool isSwitch) async {
+    settingsQThereIsStateViewModel.getSettings
         ?.setOneParametersNamedForListTileTemperatureUnitsWidget = isSwitch;
-    settingsQThereIsStateViewModel
-        .notifyStreamSettings();
+    settingsQThereIsStateViewModel.notifyStreamSettings();
     // 1
     await settingsQHiveServiceViewModelUsingUpdateParameterSettings
-        .updateSettingsToHiveServiceParameterSettings(settingsQThereIsStateViewModel.getSettings!);
+        .updateSettingsToHiveServiceParameterSettings(
+            settingsQThereIsStateViewModel.getSettings!);
   }
 }

@@ -2,31 +2,30 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 import 'package:meta/meta.dart';
 
-enum EnumUserForMainView {
-  authenticated,
-  unauthenticated,
-  localException
-}
+enum EnumUserForMainView { authenticated, unauthenticated, localException }
 
-class User
-    extends BaseModel
-{
+class User extends BaseModel {
+  static const String constUserQTempCacheService =
+      "__user_q_temp_cache_service__";
+
   String? email;
   String? name;
   String? photo;
 
-  User.success(super.uniqueId,this.email,this.name,this.photo) : super.success();
+  User.success(super.uniqueId, this.email, this.name, this.photo)
+      : super.success();
   User.exception(super.exception) : super.exception();
 
-  static User get getUserForSuccess => User.success("","","","");
-  static User get getUserForSuccessWhereParametersEqualsNull => User.success(null,null,null,null);
-  static const constUserQTempCacheService = "__user_q_temp_cache_service__";
+  static User get getUserForSuccess => User.success("", "", "", "");
+  static User get getUserForSuccessWhereParametersEqualsNull =>
+      User.success(null, null, null, null);
 
   EnumUserForMainView get getEnumUserForMainView {
-    if(exceptionController.enumWhatIsTheException == EnumWhatIsTheException.localException) {
+    if (exceptionController.enumWhatIsTheException ==
+        EnumWhatIsTheException.localException) {
       return EnumUserForMainView.localException;
     }
-    if(isOneParametersNamedForGetEnumUserForMainView() ?? false) {
+    if (isOneParametersNamedForGetEnumUserForMainView() ?? false) {
       return EnumUserForMainView.unauthenticated;
     }
     return EnumUserForMainView.authenticated;
@@ -46,9 +45,6 @@ class User
 
   @protected
   bool? isOneParametersNamedForGetEnumUserForMainView() {
-    return uniqueId == null &&
-        email == null &&
-        name == null &&
-        photo == null;
+    return uniqueId == null && email == null && name == null && photo == null;
   }
 }

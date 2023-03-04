@@ -7,8 +7,7 @@ class HiveService {
   static Box? _boxSettings;
   static Box? _boxWeather;
 
-  Future<void> initFlutterAndGetBoxModels()
-  async {
+  Future<void> initFlutterAndGetBoxModels() async {
     await Hive.initFlutter();
     Hive.registerAdapter(TemperatureUnitsAdapter());
     await _getBoxSettings();
@@ -28,18 +27,16 @@ class HiveService {
     return _getBoxSettingsAlreadyOpen();
   }
 
-  Future<Box?> _getBoxSettings()
-  async {
-    if(_boxSettings != null) {
+  Future<Box?> _getBoxSettings() async {
+    if (_boxSettings != null) {
       return _boxSettings;
     }
     _boxSettings = await Hive.openBox(Settings.constSettingsQHiveService);
     return _boxSettings;
   }
 
-  Future<Box?> _getBoxWeather()
-  async {
-    if(_boxWeather != null) {
+  Future<Box?> _getBoxWeather() async {
+    if (_boxWeather != null) {
       return _boxWeather;
     }
     _boxWeather = await Hive.openBox(Weather.constWeatherQHiveService);
@@ -47,7 +44,7 @@ class HiveService {
   }
 
   Box? _getBoxSettingsAlreadyOpen() {
-    if(_boxSettings != null) {
+    if (_boxSettings != null) {
       return _boxSettings;
     }
     _boxSettings = Hive.box(Settings.constSettingsQHiveService);

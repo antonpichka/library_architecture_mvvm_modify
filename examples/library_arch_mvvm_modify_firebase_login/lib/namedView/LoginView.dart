@@ -6,16 +6,12 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/Pa
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/NavigationRegistrationButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoginViewListViewModel.dart';
 
-class LoginView
-    extends StatefulWidget
-{
+class LoginView extends StatefulWidget {
   @override
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState
-    extends State<LoginView>
-{
+class _LoginViewState extends State<LoginView> {
   final _lo = LoginViewListViewModel();
 
   @override
@@ -50,7 +46,8 @@ class _LoginViewState
                 const SizedBox(height: 8),
                 GoogleButtonWidget(_lo.googleButtonWidgetListViewModel),
                 const SizedBox(height: 4),
-                NavigationRegistrationButtonWidget(_lo.navigationRegistrationButtonWidgetListViewModel),
+                NavigationRegistrationButtonWidget(
+                    _lo.navigationRegistrationButtonWidgetListViewModel),
               ],
             ),
           ),

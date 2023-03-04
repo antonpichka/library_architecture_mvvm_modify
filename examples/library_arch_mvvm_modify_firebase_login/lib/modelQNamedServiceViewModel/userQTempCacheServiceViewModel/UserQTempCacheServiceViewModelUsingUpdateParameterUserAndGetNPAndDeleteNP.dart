@@ -10,18 +10,19 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
+class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
+        T extends User,
+        Y extends ListUser<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements
-        UpdateModelToNamedServiceParameterNamedDataSource<bool,T>,
+        UpdateModelToNamedServiceParameterNamedDataSource<bool, T>,
         GetModelFromNamedServiceNPDataSource<T>,
-        DeleteModelToNamedServiceNPDataSource<bool>
-{
+        DeleteModelToNamedServiceNPDataSource<bool> {
   @protected
   final tempCacheService = TempCacheService();
 
-  Future<Result<bool>?> updateUserToTempCacheServiceParameterNamed(T parameter) {
-    return updateModelToNamedServiceParameterNamed<bool,T>(parameter);
+  Future<Result<bool>?> updateUserToTempCacheServiceParameterNamed(
+      T parameter) {
+    return updateModelToNamedServiceParameterNamed<bool, T>(parameter);
   }
 
   Future<T?> getUserFromTempCacheServiceNP() {
@@ -39,57 +40,48 @@ class UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP<
   @protected
   @override
   Future<Result<bool>?> updateModelToNamedServiceParameterNamedDS(
-      T? parameter)
-  async {
+      T? parameter) async {
     try {
-      tempCacheService
-          .getTempCache
+      tempCacheService.getTempCache
           ?.write(User.constUserQTempCacheService, parameter);
       return Result<bool>.success(true);
     } catch (e) {
-      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return Result<bool>.exception(LocalException(
+          this, EnumGuiltyForLocalException.device, e.toString()));
     }
   }
 
   @protected
   @override
-  Future<T?> getModelFromNamedServiceNPDS()
-  async {
+  Future<T?> getModelFromNamedServiceNPDS() async {
     try {
       return getUserFromObject(
-          tempCacheService
-              .getTempCache
-              ?.read(User.constUserQTempCacheService));
+          tempCacheService.getTempCache?.read(User.constUserQTempCacheService));
     } catch (e) {
-      return getUserFromBaseException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return getUserFromBaseException(LocalException(
+          this, EnumGuiltyForLocalException.device, e.toString()));
     }
   }
 
   @protected
   @override
-  Future<Result<bool>?> deleteModelToNamedServiceNPDS()
-  async {
+  Future<Result<bool>?> deleteModelToNamedServiceNPDS() async {
     try {
-      tempCacheService
-          .getTempCache
-          ?.delete(User.constUserQTempCacheService);
+      tempCacheService.getTempCache?.delete(User.constUserQTempCacheService);
       return Result<bool>.success(true);
     } catch (e) {
-      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      return Result<bool>.exception(LocalException(
+          this, EnumGuiltyForLocalException.device, e.toString()));
     }
   }
 
   @protected
   T? getUserFromObject(Object? object) {
-    if(object == null) {
+    if (object == null) {
       return null;
     }
     final user = object as User;
-    return User.success(
-        user.uniqueId,
-        user.email,
-        user.name,
-        user.photo) as T?;
+    return User.success(user.uniqueId, user.email, user.name, user.photo) as T?;
   }
 
   @protected

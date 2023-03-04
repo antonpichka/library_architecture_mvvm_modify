@@ -3,9 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 
-class LoginButtonWidget
-    extends StatelessWidget
-{
+class LoginButtonWidget extends StatelessWidget {
   @protected
   final LoginButtonWidgetListViewModel lo;
 
@@ -15,8 +13,8 @@ class LoginButtonWidget
   Widget build(BuildContext context) {
     return StreamBuilder<Bool?>(
         stream: lo.getStreamBool,
-        builder: (BuildContext buildContext, AsyncSnapshot<Bool?> asyncSnapshot)
-        {
+        builder:
+            (BuildContext buildContext, AsyncSnapshot<Bool?> asyncSnapshot) {
           Bool? bool = asyncSnapshot.data;
           return bool?.isField ?? false
               ? const CircularProgressIndicator()
@@ -30,7 +28,10 @@ class LoginButtonWidget
                   ),
                   onPressed: bool?.isField ?? false
                       ? null
-                      : () => lo.updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask((String message) => defaultScaffoldMessenger(context, message)),
+                      : () => lo
+                          .updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask(
+                              (String message) =>
+                                  defaultScaffoldMessenger(context, message)),
                   child: const Text('LOGIN'),
                 );
         });

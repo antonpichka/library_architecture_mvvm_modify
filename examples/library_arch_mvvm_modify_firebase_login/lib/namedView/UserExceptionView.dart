@@ -3,9 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/UserExceptionTextWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/UserExceptionViewListViewModel.dart';
 
-class UserExceptionView
-    extends StatefulWidget
-{
+class UserExceptionView extends StatefulWidget {
   final User? user;
 
   const UserExceptionView(this.user);
@@ -14,9 +12,7 @@ class UserExceptionView
   State<UserExceptionView> createState() => _UserExceptionViewState();
 }
 
-class _UserExceptionViewState
-    extends State<UserExceptionView>
-{
+class _UserExceptionViewState extends State<UserExceptionView> {
   final _lo = UserExceptionViewListViewModel();
 
   @override
@@ -34,8 +30,7 @@ class _UserExceptionViewState
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-            child: UserExceptionTextWidget(_lo.userExceptionTextWidgetListViewModel,widget.user)
-        )
-    );
+            child: UserExceptionTextWidget(
+                _lo.userExceptionTextWidgetListViewModel, widget.user)));
   }
 }

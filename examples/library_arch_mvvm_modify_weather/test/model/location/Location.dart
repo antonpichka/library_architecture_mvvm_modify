@@ -5,7 +5,8 @@ void main() {
   group('is success', () {
     test('isEqualsNullParametersIdAndNameAndLatitudeAndLongitude', () {
       final location = Location.getLocationForSuccess;
-      expect(location.isEqualsNullParametersIdAndNameAndLatitudeAndLongitude(),false);
+      expect(location.isEqualsNullParametersIdAndNameAndLatitudeAndLongitude(),
+          false);
     });
   });
 }

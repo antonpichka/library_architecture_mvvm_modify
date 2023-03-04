@@ -13,19 +13,15 @@ class EmailInputWidgetListViewModel {
   }
 
   void setOneParametersNamedForEmailInputWidgetByEmailInputAndInGeneralZeroTask(
-      String str)
-  {
-    if(emailInputQThereIsStateViewModel
-        .getEmailInput
-        ?.getOneParametersNamedForEmailInputWidget == str)
-    {
+      String str) {
+    if (emailInputQThereIsStateViewModel
+            .getEmailInput?.getOneParametersNamedForEmailInputWidget ==
+        str) {
       return;
     }
     emailInputQThereIsStateViewModel
-        .getEmailInput
-        ?.setOneParametersNamedForEmailInputWidget = str;
-    emailInputQThereIsStateViewModel
-        .notifyStreamEmailInput();
+        .getEmailInput?.setOneParametersNamedForEmailInputWidget = str;
+    emailInputQThereIsStateViewModel.notifyStreamEmailInput();
     return;
   }
 }

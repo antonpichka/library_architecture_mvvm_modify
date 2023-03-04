@@ -12,20 +12,17 @@ class PasswordInputWidgetListViewModel {
     return passwordInputQThereIsStateViewModel.getStreamPasswordInput;
   }
 
-  void setOneParametersNamedForPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
-      String str)
-  {
-    if(passwordInputQThereIsStateViewModel
-        .getPasswordInput
-        ?.getOneParametersNamedForPasswordInputWidget == str)
-    {
+  void
+      setOneParametersNamedForPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
+          String str) {
+    if (passwordInputQThereIsStateViewModel
+            .getPasswordInput?.getOneParametersNamedForPasswordInputWidget ==
+        str) {
       return;
     }
     passwordInputQThereIsStateViewModel
-        .getPasswordInput
-        ?.setOneParametersNamedForPasswordInputWidget = str;
-    passwordInputQThereIsStateViewModel
-        .notifyStreamPasswordInput();
+        .getPasswordInput?.setOneParametersNamedForPasswordInputWidget = str;
+    passwordInputQThereIsStateViewModel.notifyStreamPasswordInput();
     return;
   }
 }

@@ -5,15 +5,12 @@ class NavigationRegistrationButtonWidgetListViewModel {
   @protected
   final BoolQThereIsStateViewModel boolQThereIsStateViewModelForLoading;
 
-  NavigationRegistrationButtonWidgetListViewModel(this.boolQThereIsStateViewModelForLoading);
+  NavigationRegistrationButtonWidgetListViewModel(
+      this.boolQThereIsStateViewModelForLoading);
 
   void checkIsLoadingAndInGeneralZeroTask(
-      Function() callbackForNavigationIfLoadingFalse)
-  {
-    if(boolQThereIsStateViewModelForLoading
-        .getBool
-        !.isField)
-    {
+      Function() callbackForNavigationIfLoadingFalse) {
+    if (boolQThereIsStateViewModelForLoading.getBool!.isField) {
       return;
     }
     callbackForNavigationIfLoadingFalse();

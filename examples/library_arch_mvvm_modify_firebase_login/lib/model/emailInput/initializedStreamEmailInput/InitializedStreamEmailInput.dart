@@ -5,10 +5,11 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamEmailInput
-    implements IInitializedStreamModel<EmailInput,ListEmailInput>
-{
+    implements IInitializedStreamModel<EmailInput, ListEmailInput> {
   @override
-  IStreamModel<EmailInput,ListEmailInput>? initializedStreamModel() {
-    return DefaultStreamModel<EmailInput,ListEmailInput>(EmailInput.getEmailInputForSuccess, ListEmailInput.getListEmailInputForSuccess);
+  IStreamModel<EmailInput, ListEmailInput>? initializedStreamModel() {
+    return DefaultStreamModel<EmailInput, ListEmailInput>(
+        EmailInput.getEmailInputForSuccess,
+        ListEmailInput.getListEmailInputForSuccess);
   }
 }

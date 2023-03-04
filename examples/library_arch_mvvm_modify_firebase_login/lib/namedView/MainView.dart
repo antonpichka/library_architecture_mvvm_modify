@@ -6,16 +6,12 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/LoginView.dart
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/UserExceptionView.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/MainViewListViewModel.dart';
 
-class MainView
-    extends StatefulWidget
-{
+class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState
-    extends State<MainView>
-{
+class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override
@@ -35,13 +31,13 @@ class _MainViewState
     _lo.getUserFromTempCacheServiceNPAndInGeneralOneTask();
     return StreamBuilder<User?>(
         stream: _lo.getStreamUser,
-        builder: (BuildContext buildContext, AsyncSnapshot<User?> asyncSnapshot)
-        {
-          if(asyncSnapshot.data == null) {
+        builder:
+            (BuildContext buildContext, AsyncSnapshot<User?> asyncSnapshot) {
+          if (asyncSnapshot.data == null) {
             return LoadingView();
           }
           User? user = asyncSnapshot.data;
-          switch(user?.getEnumUserForMainView) {
+          switch (user?.getEnumUserForMainView) {
             case EnumUserForMainView.authenticated:
               return HomeView(user);
             case EnumUserForMainView.unauthenticated:

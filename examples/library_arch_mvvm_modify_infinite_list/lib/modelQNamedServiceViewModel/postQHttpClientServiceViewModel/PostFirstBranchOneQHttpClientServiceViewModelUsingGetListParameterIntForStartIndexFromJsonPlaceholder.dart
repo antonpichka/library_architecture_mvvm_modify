@@ -4,9 +4,10 @@ import 'package:library_arch_mvvm_modify_infinite_list/modelQNamedServiceViewMod
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:meta/meta.dart';
 
-class PostFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends PostFirstBranchOne,Y extends ListPostFirstBranchOne<T>>
-    extends PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T,Y>
-{
+class PostFirstBranchOneQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<
+        T extends PostFirstBranchOne, Y extends ListPostFirstBranchOne<T>>
+    extends PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<
+        T, Y> {
   @protected
   @override
   Y? getListPostFromBaseException(BaseException? baseException) {

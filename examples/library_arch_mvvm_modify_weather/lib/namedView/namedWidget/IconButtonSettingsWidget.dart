@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSettingsWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class IconButtonSettingsWidget
-    extends StatelessWidget
-{
+class IconButtonSettingsWidget extends StatelessWidget {
   @protected
   final IconButtonSettingsWidgetListViewModel lo;
 
@@ -13,8 +11,7 @@ class IconButtonSettingsWidget
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        icon: buildIcon(context),
-        onPressed: () => callbackOnPressed(context));
+        icon: buildIcon(context), onPressed: () => callbackOnPressed(context));
   }
 
   @protected
@@ -24,11 +21,9 @@ class IconButtonSettingsWidget
 
   @protected
   void callbackOnPressed(BuildContext context) {
-    Navigator.of(context).pushNamed(
-        "/$constSettingsView",
-        arguments: {
-          constArgumentSettingsView : lo.getWeatherSettings?.settings
-        });
+    Navigator.of(context).pushNamed("/$constSettingsView", arguments: {
+      constArgumentSettingsView: lo.getWeatherSettings?.settings
+    });
     return;
   }
 }

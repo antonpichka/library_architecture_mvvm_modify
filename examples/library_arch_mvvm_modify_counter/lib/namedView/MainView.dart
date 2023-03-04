@@ -4,16 +4,12 @@ import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/Increment
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/IntTextWidget.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/MainViewListViewModel.dart';
 
-class MainView
-    extends StatefulWidget
-{
+class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState
-    extends State<MainView>
-{
+class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override
@@ -37,7 +33,9 @@ class _MainViewState
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:',),
+            const Text(
+              'You have pushed the button this many times:',
+            ),
             IntTextWidget(_lo.intTextWidgetListViewModel),
           ],
         ),
@@ -47,7 +45,9 @@ class _MainViewState
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           IncrementFABWidget(_lo.incrementFABWidgetListViewModel),
-          const SizedBox(height: 8,),
+          const SizedBox(
+            height: 8,
+          ),
           DecrementFABWidget(_lo.decrementFABWidgetListViewModel),
         ],
       ),

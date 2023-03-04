@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/ConfirmedPasswordInputWidgetListViewModel.dart';
 
-class ConfirmedPasswordInputWidget
-    extends StatelessWidget
-{
+class ConfirmedPasswordInputWidget extends StatelessWidget {
   @protected
   final ConfirmedPasswordInputWidgetListViewModel lo;
 
@@ -14,8 +12,8 @@ class ConfirmedPasswordInputWidget
   Widget build(BuildContext context) {
     return StreamBuilder<PasswordInputFirstBranchOne?>(
         stream: lo.getStreamPasswordInput,
-        builder: (BuildContext buildContext, AsyncSnapshot<PasswordInputFirstBranchOne?> asyncSnapshot)
-        {
+        builder: (BuildContext buildContext,
+            AsyncSnapshot<PasswordInputFirstBranchOne?> asyncSnapshot) {
           PasswordInputFirstBranchOne? passwordInput = asyncSnapshot.data;
           return buildSuccess(passwordInput);
         });
@@ -24,22 +22,24 @@ class ConfirmedPasswordInputWidget
   @protected
   Widget buildSuccess(PasswordInputFirstBranchOne? passwordInput) {
     return TextField(
-      onChanged: (String str) => lo.setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(str),
-      obscureText: true,
-      decoration: buildInputDecorationForSuccess(passwordInput)
-    );
+        onChanged: (String str) => lo
+            .setOneParametersNamedForConfirmedPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
+                str),
+        obscureText: true,
+        decoration: buildInputDecorationForSuccess(passwordInput));
   }
 
   @protected
-  InputDecoration buildInputDecorationForSuccess(PasswordInputFirstBranchOne? passwordInput) {
+  InputDecoration buildInputDecorationForSuccess(
+      PasswordInputFirstBranchOne? passwordInput) {
     return InputDecoration(
       labelText: 'confirm password',
       helperText: '',
-      errorText: passwordInput?.isOneParametersNamedForConfirmedPasswordInputWidget() ?? false
+      errorText: passwordInput
+                  ?.isOneParametersNamedForConfirmedPasswordInputWidget() ??
+              false
           ? 'passwords do not match'
           : null,
     );
   }
-
-
 }

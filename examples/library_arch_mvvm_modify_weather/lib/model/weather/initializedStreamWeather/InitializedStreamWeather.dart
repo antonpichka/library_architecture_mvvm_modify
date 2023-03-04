@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamWeather
-    implements IInitializedStreamModel<Weather,ListWeather>
-{
+    implements IInitializedStreamModel<Weather, ListWeather> {
   @override
-  IStreamModel<Weather,ListWeather>? initializedStreamModel() {
-    return DefaultStreamModel<Weather,ListWeather>(Weather.getWeatherForSuccess,ListWeather.getListWeatherForSuccess);
+  IStreamModel<Weather, ListWeather>? initializedStreamModel() {
+    return DefaultStreamModel<Weather, ListWeather>(
+        Weather.getWeatherForSuccess, ListWeather.getListWeatherForSuccess);
   }
 }

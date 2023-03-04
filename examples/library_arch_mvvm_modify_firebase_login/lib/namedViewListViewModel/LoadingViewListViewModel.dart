@@ -1,11 +1,8 @@
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class LoadingViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class LoadingViewListViewModel extends BaseNamedViewListViewModel {
   @override
   void dispose() {
     // TODO: implement dispose
   }
-
 }

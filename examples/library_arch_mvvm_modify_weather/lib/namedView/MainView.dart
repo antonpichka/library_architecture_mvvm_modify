@@ -4,16 +4,12 @@ import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/IconButto
 import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/WeatherWidget.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/MainViewListViewModel.dart';
 
-class MainView
-    extends StatefulWidget
-{
+class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState
-    extends State<MainView>
-{
+class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override
@@ -30,16 +26,16 @@ class _MainViewState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('LibraryArchMVVMModifyWeather'),
-        actions: [
-          IconButtonSettingsWidget(_lo.iconButtonSettingsWidgetListViewModel),
-        ],
-      ),
-      body: Center(
-        child: WeatherWidget(_lo.weatherWidgetListViewModel),
-      ),
-      floatingActionButton: FloatingActionButtonSearchWidget(_lo.floatingActionButtonSearchWidgetListViewModel)
-    );
+        appBar: AppBar(
+          title: const Text('LibraryArchMVVMModifyWeather'),
+          actions: [
+            IconButtonSettingsWidget(_lo.iconButtonSettingsWidgetListViewModel),
+          ],
+        ),
+        body: Center(
+          child: WeatherWidget(_lo.weatherWidgetListViewModel),
+        ),
+        floatingActionButton: FloatingActionButtonSearchWidget(
+            _lo.floatingActionButtonSearchWidgetListViewModel));
   }
 }

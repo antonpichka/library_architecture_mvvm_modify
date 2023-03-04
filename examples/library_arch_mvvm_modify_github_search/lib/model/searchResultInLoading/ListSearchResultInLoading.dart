@@ -12,33 +12,37 @@ enum EnumListSearchResultInLoadingForSearchBodyWidget {
 }
 
 class ListSearchResultInLoading<T extends SearchResultInLoading>
-    extends BaseListModel<T>
-{
+    extends BaseListModel<T> {
   bool? isLoading;
   bool? isEmptyValueFromTextInput;
 
-  ListSearchResultInLoading.success(super.list,this.isLoading,this.isEmptyValueFromTextInput) : super.success();
+  ListSearchResultInLoading.success(
+      super.list, this.isLoading, this.isEmptyValueFromTextInput)
+      : super.success();
 
-  static ListSearchResultInLoading get getListSearchResultInLoadingForSuccess => ListSearchResultInLoading.success([],false,true);
+  static ListSearchResultInLoading get getListSearchResultInLoadingForSuccess =>
+      ListSearchResultInLoading.success([], false, true);
 
-  EnumListSearchResultInLoadingForSearchBodyWidget get getEnumListSearchResultInLoadingForSearchBodyWidget {
-    if(isEmptyValueFromTextInput!) {
-      return EnumListSearchResultInLoadingForSearchBodyWidget.isEmptyValueFromTextInput;
+  EnumListSearchResultInLoadingForSearchBodyWidget
+      get getEnumListSearchResultInLoadingForSearchBodyWidget {
+    if (isEmptyValueFromTextInput!) {
+      return EnumListSearchResultInLoadingForSearchBodyWidget
+          .isEmptyValueFromTextInput;
     }
-    if(isLoading!) {
+    if (isLoading!) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isLoading;
     }
-    if(exceptionController.isNotEqualsNullParameterException()) {
+    if (exceptionController.isNotEqualsNullParameterException()) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.error;
     }
-    if(listModel!.isEmpty) {
+    if (listModel!.isEmpty) {
       return EnumListSearchResultInLoadingForSearchBodyWidget.isEmptyList;
     }
     return EnumListSearchResultInLoadingForSearchBodyWidget.success;
   }
 
   String? get getOneParametersNamedForSearchBodyWidget {
-    switch(exceptionController.getMessageForViewParameterException) {
+    switch (exceptionController.getMessageForViewParameterException) {
       case "403":
         return "The server understood the request, but is refusing to fulfill it.";
       default:
@@ -51,10 +55,13 @@ class ListSearchResultInLoading<T extends SearchResultInLoading>
     isEmptyValueFromTextInput = false;
   }
 
-  set setTwoParametersNamedForSearchBarWidget(ListSearchResult listSearchResult) {
-    List<SearchResultInLoading> listSearchResultInLoading = List.empty(growable: true);
+  set setTwoParametersNamedForSearchBarWidget(
+      ListSearchResult listSearchResult) {
+    List<SearchResultInLoading> listSearchResultInLoading =
+        List.empty(growable: true);
     listSearchResult.listModel?.forEach((SearchResult searchResult) {
-      listSearchResultInLoading.add(SearchResultInLoading.success(searchResult));
+      listSearchResultInLoading
+          .add(SearchResultInLoading.success(searchResult));
     });
     isLoading = false;
     isEmptyValueFromTextInput = false;

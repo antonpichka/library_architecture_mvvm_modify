@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSearchWidgetListViewModel.dart';
 
-class IconButtonSearchWidget
-    extends StatelessWidget
-{
+class IconButtonSearchWidget extends StatelessWidget {
   @protected
   final IconButtonSearchWidgetListViewModel lo;
 
@@ -12,8 +10,7 @@ class IconButtonSearchWidget
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: buildIcon(context),
-      onPressed: () => callbackOnPressed(context));
+        icon: buildIcon(context), onPressed: () => callbackOnPressed(context));
   }
 
   @protected
@@ -23,9 +20,7 @@ class IconButtonSearchWidget
 
   @protected
   void callbackOnPressed(BuildContext context) {
-    Navigator.of(context).pop(lo
-        .getStrings
-        ?.field);
+    Navigator.of(context).pop(lo.getStrings?.field);
     return;
   }
 }

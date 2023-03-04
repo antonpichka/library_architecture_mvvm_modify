@@ -3,9 +3,7 @@ import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart'
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListWidgetListViewModel.dart';
 
-class PostsListWidget
-    extends StatefulWidget
-{
+class PostsListWidget extends StatefulWidget {
   final PostsListWidgetListViewModel lo;
 
   const PostsListWidget(this.lo);
@@ -14,12 +12,9 @@ class PostsListWidget
   State<PostsListWidget> createState() => PostsListWidgetState();
 }
 
-class PostsListWidgetState
-    extends State<PostsListWidget>
-{
+class PostsListWidgetState extends State<PostsListWidget> {
   @protected
-  final scrollController =
-  ScrollController();
+  final scrollController = ScrollController();
 
   @override
   void initState() {
@@ -39,13 +34,13 @@ class PostsListWidgetState
   Widget build(BuildContext context) {
     return StreamBuilder<ListPost?>(
         stream: widget.lo.getStreamListPost,
-        builder: (BuildContext buildContext, AsyncSnapshot<ListPost?> asyncSnapshot)
-        {
-          if(asyncSnapshot.data == null) {
+        builder: (BuildContext buildContext,
+            AsyncSnapshot<ListPost?> asyncSnapshot) {
+          if (asyncSnapshot.data == null) {
             return buildDataNull();
           }
           ListPost? listPost = asyncSnapshot.data;
-          switch(listPost?.getEnumListPostForPostsListWidget) {
+          switch (listPost?.getEnumListPostForPostsListWidget) {
             case EnumListPostForPostsListWidget.success:
               return buildSuccess(listPost);
             case EnumListPostForPostsListWidget.isEmptyList:
@@ -64,7 +59,7 @@ class PostsListWidgetState
   Widget buildSuccess(ListPost? listPost) {
     return ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          if(listPost!.isOneParametersNamedForPostsListWidget(index)) {
+          if (listPost!.isOneParametersNamedForPostsListWidget(index)) {
             return buildLoadingForSuccess(listPost);
           }
           Post? itemPost = listPost.listModel![index];
@@ -80,7 +75,8 @@ class PostsListWidgetState
       child: SizedBox(
         height: 24,
         width: 24,
-        child: CircularProgressIndicator(strokeWidth: 1.5),),
+        child: CircularProgressIndicator(strokeWidth: 1.5),
+      ),
     );
   }
 
@@ -89,10 +85,12 @@ class PostsListWidgetState
     TextTheme textTheme = Theme.of(context).textTheme;
     return Material(
       child: ListTile(
-        leading: Text(itemPost?.getOneParametersNamedForPostsListWidget ?? "", style: textTheme.caption),
+        leading: Text(itemPost?.getOneParametersNamedForPostsListWidget ?? "",
+            style: textTheme.caption),
         title: Text(itemPost?.getTwoParametersNamedForPostsListWidget ?? ""),
         isThreeLine: true,
-        subtitle: Text(itemPost?.getThreeParametersNamedForPostsListWidget ?? ""),
+        subtitle:
+            Text(itemPost?.getThreeParametersNamedForPostsListWidget ?? ""),
         dense: true,
       ),
     );
@@ -121,7 +119,8 @@ class PostsListWidgetState
   @protected
   void onScroll() {
     if (isBottom) {
-      widget.lo.getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
+      widget.lo
+          .getListPostFromHttpClientServiceParameterIntAndInGeneralOneTask();
     }
   }
 

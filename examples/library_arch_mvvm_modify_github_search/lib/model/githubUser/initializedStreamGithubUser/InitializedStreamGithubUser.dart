@@ -5,10 +5,11 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamGithubUser
-    implements IInitializedStreamModel<GithubUser,ListGithubUser>
-{
+    implements IInitializedStreamModel<GithubUser, ListGithubUser> {
   @override
-  IStreamModel<GithubUser,ListGithubUser>? initializedStreamModel() {
-    return DefaultStreamModel<GithubUser,ListGithubUser>(GithubUser.getGithubUserForSuccess,ListGithubUser.getListGithubUserForSuccess);
+  IStreamModel<GithubUser, ListGithubUser>? initializedStreamModel() {
+    return DefaultStreamModel<GithubUser, ListGithubUser>(
+        GithubUser.getGithubUserForSuccess,
+        ListGithubUser.getListGithubUserForSuccess);
   }
 }

@@ -5,24 +5,24 @@ import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/set
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/ListTileTemperatureUnitsWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class SettingsViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class SettingsViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _settingsQThereIsStateViewModel =
-  SettingsQThereIsStateViewModel(InitializedStreamSettings());
+      SettingsQThereIsStateViewModel(InitializedStreamSettings());
 
   // ModelQNamedServiceViewModel
   final _settingsQHiveServiceViewModelUsingUpdateParameterSettings =
-  SettingsQHiveServiceViewModelUsingUpdateParameterSettings();
+      SettingsQHiveServiceViewModelUsingUpdateParameterSettings();
 
   // NamedWidgetListViewModel
-  late final ListTileTemperatureUnitsWidgetListViewModel listTileTemperatureUnitsWidgetListViewModel;
+  late final ListTileTemperatureUnitsWidgetListViewModel
+      listTileTemperatureUnitsWidgetListViewModel;
 
   SettingsViewListViewModel() {
-    listTileTemperatureUnitsWidgetListViewModel = ListTileTemperatureUnitsWidgetListViewModel(
-        _settingsQThereIsStateViewModel,
-        _settingsQHiveServiceViewModelUsingUpdateParameterSettings);
+    listTileTemperatureUnitsWidgetListViewModel =
+        ListTileTemperatureUnitsWidgetListViewModel(
+            _settingsQThereIsStateViewModel,
+            _settingsQHiveServiceViewModelUsingUpdateParameterSettings);
   }
 
   @override
@@ -34,12 +34,10 @@ class SettingsViewListViewModel
     return _settingsQThereIsStateViewModel.getSettings;
   }
 
-  Future<void> setSettingsBySettingsAndInGeneralZeroTask(Settings settings)
-  async {
-    _settingsQThereIsStateViewModel
-        .setSettings = settings;
+  Future<void> setSettingsBySettingsAndInGeneralZeroTask(
+      Settings settings) async {
+    _settingsQThereIsStateViewModel.setSettings = settings;
     await Future.delayed(const Duration(milliseconds: 100));
-    _settingsQThereIsStateViewModel
-        .notifyStreamSettings();
+    _settingsQThereIsStateViewModel.notifyStreamSettings();
   }
 }

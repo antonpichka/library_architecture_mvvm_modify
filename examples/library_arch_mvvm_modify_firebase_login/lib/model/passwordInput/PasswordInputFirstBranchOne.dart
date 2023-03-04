@@ -2,18 +2,22 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/Pass
 import 'package:library_arch_mvvm_modify_firebase_login/utility/ConfirmedPassword.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 
-class PasswordInputFirstBranchOne
-    extends PasswordInput
-{
+class PasswordInputFirstBranchOne extends PasswordInput {
   ConfirmedPassword? confirmedPassword;
 
-  PasswordInputFirstBranchOne.success(super.password,this.confirmedPassword) : super.success();
+  PasswordInputFirstBranchOne.success(super.password, this.confirmedPassword)
+      : super.success();
 
-  static PasswordInputFirstBranchOne get getPasswordInputFirstBranchOneForSuccess => PasswordInputFirstBranchOne.success(const Password.pure(),const ConfirmedPassword.pure());
+  static PasswordInputFirstBranchOne
+      get getPasswordInputFirstBranchOneForSuccess =>
+          PasswordInputFirstBranchOne.success(
+              const Password.pure(), const ConfirmedPassword.pure());
 
-  String? get getOneParametersNamedForConfirmedPasswordInputWidget => confirmedPassword?.value;
+  String? get getOneParametersNamedForConfirmedPasswordInputWidget =>
+      confirmedPassword?.value;
   Password? get getOneParametersNamedForSignUpButtonWidget => password;
-  ConfirmedPassword? get getTwoParametersNamedForSignUpButtonWidget => confirmedPassword;
+  ConfirmedPassword? get getTwoParametersNamedForSignUpButtonWidget =>
+      confirmedPassword;
   String? get getThreeParametersNamedForSignUpButtonWidget => password?.value;
 
   @override
@@ -21,8 +25,7 @@ class PasswordInputFirstBranchOne
     super.setOneParametersNamedForPasswordInputWidget = str;
     final valueByConfirmedPassword = confirmedPassword!.value;
     confirmedPassword = ConfirmedPassword.dirty(
-        password: password!.value,
-        value: valueByConfirmedPassword);
+        password: password!.value, value: valueByConfirmedPassword);
   }
 
   set setOneParametersNamedForConfirmedPasswordInputWidget(String str) {

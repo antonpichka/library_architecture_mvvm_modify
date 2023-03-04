@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/TextFieldSearchWidgetListViewModel.dart';
 
-class TextFieldSearchWidget
-    extends StatefulWidget
-{
+class TextFieldSearchWidget extends StatefulWidget {
   final TextFieldSearchWidgetListViewModel lo;
 
   const TextFieldSearchWidget(this.lo);
@@ -12,9 +10,7 @@ class TextFieldSearchWidget
   State<TextFieldSearchWidget> createState() => TextFieldSearchWidgetState();
 }
 
-class TextFieldSearchWidgetState
-    extends State<TextFieldSearchWidget>
-{
+class TextFieldSearchWidgetState extends State<TextFieldSearchWidget> {
   @override
   void initState() {
     super.initState();
@@ -34,16 +30,12 @@ class TextFieldSearchWidgetState
 
   @protected
   InputDecoration buildInputDecoration(BuildContext buildContext) {
-    return const InputDecoration(
-        labelText: 'City',
-        hintText: 'Chicago');
+    return const InputDecoration(labelText: 'City', hintText: 'Chicago');
   }
 
   @protected
-  void callbackOnChanged(BuildContext context,String text) {
-    widget
-        .lo
-        .setFieldByStringsAndInGeneralZeroTask(text);
+  void callbackOnChanged(BuildContext context, String text) {
+    widget.lo.setFieldByStringsAndInGeneralZeroTask(text);
     return;
   }
 }

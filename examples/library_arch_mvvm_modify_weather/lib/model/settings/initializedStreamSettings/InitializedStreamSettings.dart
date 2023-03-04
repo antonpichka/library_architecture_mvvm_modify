@@ -5,10 +5,10 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamSettings
-    implements IInitializedStreamModel<Settings,ListSettings>
-{
+    implements IInitializedStreamModel<Settings, ListSettings> {
   @override
   IStreamModel<Settings, ListSettings>? initializedStreamModel() {
-    return DefaultStreamModel<Settings,ListSettings>(Settings.getSettingsForSuccess,ListSettings.getListSettingsForSuccess);
+    return DefaultStreamModel<Settings, ListSettings>(
+        Settings.getSettingsForSuccess, ListSettings.getListSettingsForSuccess);
   }
 }

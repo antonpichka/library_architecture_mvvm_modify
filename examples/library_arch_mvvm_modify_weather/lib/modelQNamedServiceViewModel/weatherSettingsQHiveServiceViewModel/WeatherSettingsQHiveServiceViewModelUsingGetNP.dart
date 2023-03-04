@@ -10,11 +10,10 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:meta/meta.dart';
 
-class WeatherSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherSettings,Y extends ListWeatherSettings<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
-    implements
-        GetModelFromNamedServiceNPDataSource<T>
-{
+class WeatherSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherSettings,
+        Y extends ListWeatherSettings<T>>
+    extends BaseModelQNamedServiceViewModel<T, Y>
+    implements GetModelFromNamedServiceNPDataSource<T> {
   @protected
   final hiveService = HiveService();
 
@@ -28,23 +27,22 @@ class WeatherSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherSettings,Y
 
   @protected
   @override
-  Future<T?> getModelFromNamedServiceNPDS()
-  async {
+  Future<T?> getModelFromNamedServiceNPDS() async {
     try {
-      final boxSettings = await hiveService
-          .getBoxSettings();
-      final boxWeather = await hiveService
-          .getBoxWeather();
-      return getWeatherSettingsFromBoxSettingsAndBoxWeather(boxSettings,boxWeather);
-    } catch(e) {
-      return getWeatherSettingsFromBaseException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+      final boxSettings = await hiveService.getBoxSettings();
+      final boxWeather = await hiveService.getBoxWeather();
+      return getWeatherSettingsFromBoxSettingsAndBoxWeather(
+          boxSettings, boxWeather);
+    } catch (e) {
+      return getWeatherSettingsFromBaseException(LocalException(
+          this, EnumGuiltyForLocalException.device, e.toString()));
     }
   }
 
   @protected
-  T? getWeatherSettingsFromBoxSettingsAndBoxWeather(Box? boxSettings,Box? boxWeather) {
-    return WeatherSettings.success(
-        Weather.fromBoxWeather(boxWeather!),
+  T? getWeatherSettingsFromBoxSettingsAndBoxWeather(
+      Box? boxSettings, Box? boxWeather) {
+    return WeatherSettings.success(Weather.fromBoxWeather(boxWeather!),
         Settings.fromBoxSettings(boxSettings!)) as T?;
   }
 

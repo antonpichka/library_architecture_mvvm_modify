@@ -4,18 +4,22 @@ import 'package:library_architecture_mvvm_modify/base_model/base_function_before
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 
 class UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin
-    extends UpdateModelToNamedServiceParameterNamedFBDS<bool,Login,Object>
-{
-  static const constIsNotHasMatchParameterEmail = "isNotHasMatchParameterEmail";
-  static const constIsNotHasMatchParameterPassword = "isNotHasMatchParameterPassword";
+    extends UpdateModelToNamedServiceParameterNamedFBDS<bool, Login, Object> {
+  static const String constIsNotHasMatchParameterEmail =
+      "isNotHasMatchParameterEmail";
+  static const String constIsNotHasMatchParameterPassword =
+      "isNotHasMatchParameterPassword";
 
   @override
-  Result<bool>? updateModelToNamedServiceParameterNamed(Login? parameter, Object? parameterForFBDS) {
-    if(parameter!.isNotHasMatchParameterEmail()) {
-      return Result<bool>.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, constIsNotHasMatchParameterEmail));
+  Result<bool>? updateModelToNamedServiceParameterNamed(
+      Login? parameter, Object? parameterForFBDS) {
+    if (parameter!.isNotHasMatchParameterEmail()) {
+      return Result<bool>.exceptionForFBDS(LocalException.whereTheUserIsGuilty(
+          this, constIsNotHasMatchParameterEmail));
     }
-    if(parameter.isNotHasMatchParameterPassword()) {
-      return Result<bool>.exceptionForFBDS(LocalException.whereTheUserIsGuilty(this, constIsNotHasMatchParameterPassword));
+    if (parameter.isNotHasMatchParameterPassword()) {
+      return Result<bool>.exceptionForFBDS(LocalException.whereTheUserIsGuilty(
+          this, constIsNotHasMatchParameterPassword));
     }
     return Result<bool>.successForFBDS();
   }

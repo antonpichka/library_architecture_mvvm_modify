@@ -4,7 +4,7 @@ class TempCacheService {
   static TempCache? _tempCache;
 
   TempCache? get getTempCache {
-    if(_tempCache != null) {
+    if (_tempCache != null) {
       return _tempCache;
     }
     _tempCache = TempCache();

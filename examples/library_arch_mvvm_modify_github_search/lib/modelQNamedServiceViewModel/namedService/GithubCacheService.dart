@@ -4,7 +4,7 @@ class GithubCacheService {
   static GithubCache? _githubCache;
 
   GithubCache? get getGithubCache {
-    if(_githubCache != null) {
+    if (_githubCache != null) {
       return _githubCache;
     }
     _githubCache = GithubCache();

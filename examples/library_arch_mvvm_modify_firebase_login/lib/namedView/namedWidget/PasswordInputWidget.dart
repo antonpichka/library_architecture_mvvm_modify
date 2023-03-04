@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/PasswordInputWidgetListViewModel.dart';
 
-class PasswordInputWidget
-    extends StatelessWidget
-{
+class PasswordInputWidget extends StatelessWidget {
   @protected
   final PasswordInputWidgetListViewModel lo;
 
@@ -14,22 +12,24 @@ class PasswordInputWidget
   Widget build(BuildContext context) {
     return StreamBuilder<PasswordInput?>(
         stream: lo.getStreamPasswordInput,
-        builder: (BuildContext buildContext, AsyncSnapshot<PasswordInput?> asyncSnapshot)
-        {
+        builder: (BuildContext buildContext,
+            AsyncSnapshot<PasswordInput?> asyncSnapshot) {
           PasswordInput? passwordInput = asyncSnapshot.data;
           return TextField(
             onChanged: (String str) => lo
-                .setOneParametersNamedForPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(str),
+                .setOneParametersNamedForPasswordInputWidgetByPasswordInputAndInGeneralZeroTask(
+                    str),
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'password',
               helperText: '',
-              errorText: passwordInput?.isOneParametersNamedForPasswordInputWidget() ?? false
-                  ? 'invalid password'
-                  : null,
+              errorText:
+                  passwordInput?.isOneParametersNamedForPasswordInputWidget() ??
+                          false
+                      ? 'invalid password'
+                      : null,
             ),
           );
         });
   }
-
 }

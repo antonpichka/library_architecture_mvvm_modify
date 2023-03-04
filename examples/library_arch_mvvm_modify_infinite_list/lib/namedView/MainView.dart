@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedView/namedWidget/PostsListFirstBranchOneWidget.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/MainViewListViewModel.dart';
 
-class MainView
-    extends StatefulWidget
-{
+class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState
-    extends State<MainView>
-{
+class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override
@@ -31,6 +27,7 @@ class _MainViewState
         appBar: AppBar(
           title: const Text("LibraryArchMVVMModifyInfiniteList"),
         ),
-        body: PostsListFirstBranchOneWidget(_lo.postsListFirstBranchOneWidgetListViewModel));
+        body: PostsListFirstBranchOneWidget(
+            _lo.postsListFirstBranchOneWidgetListViewModel));
   }
 }

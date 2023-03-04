@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/EmailInputWidgetListViewModel.dart';
 
-class EmailInputWidget
-    extends StatelessWidget
-{
+class EmailInputWidget extends StatelessWidget {
   @protected
   final EmailInputWidgetListViewModel lo;
 
@@ -14,8 +12,8 @@ class EmailInputWidget
   Widget build(BuildContext context) {
     return StreamBuilder<EmailInput?>(
         stream: lo.getStreamEmailInput,
-        builder: (BuildContext buildContext, AsyncSnapshot<EmailInput?> asyncSnapshot)
-        {
+        builder: (BuildContext buildContext,
+            AsyncSnapshot<EmailInput?> asyncSnapshot) {
           EmailInput? emailInput = asyncSnapshot.data;
           return buildSuccess(emailInput);
         });
@@ -24,10 +22,11 @@ class EmailInputWidget
   @protected
   Widget buildSuccess(EmailInput? emailInput) {
     return TextField(
-      onChanged: (String str) => lo.setOneParametersNamedForEmailInputWidgetByEmailInputAndInGeneralZeroTask(str),
-      keyboardType: TextInputType.emailAddress,
-      decoration: buildInputDecorationForSuccess(emailInput)
-    );
+        onChanged: (String str) => lo
+            .setOneParametersNamedForEmailInputWidgetByEmailInputAndInGeneralZeroTask(
+                str),
+        keyboardType: TextInputType.emailAddress,
+        decoration: buildInputDecorationForSuccess(emailInput));
   }
 
   @protected

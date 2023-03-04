@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBarWidgetListViewModel.dart';
 
-class SearchBarWidget
-    extends StatefulWidget
-{
+class SearchBarWidget extends StatefulWidget {
   final SearchBarWidgetListViewModel lo;
 
   const SearchBarWidget(this.lo);
@@ -12,9 +10,7 @@ class SearchBarWidget
   State<SearchBarWidget> createState() => SearchBarWidgetState();
 }
 
-class SearchBarWidgetState
-    extends State<SearchBarWidget>
-{
+class SearchBarWidgetState extends State<SearchBarWidget> {
   @protected
   final textController = TextEditingController();
 
@@ -32,15 +28,14 @@ class SearchBarWidgetState
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: textController,
-      autocorrect: false,
-      onChanged: (text) {
-        widget
-            .lo
-            .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndInGeneralOneTask(text);
-      },
-      decoration: buildDecorationForTextField()
-    );
+        controller: textController,
+        autocorrect: false,
+        onChanged: (text) {
+          widget.lo
+              .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndInGeneralOneTask(
+                  text);
+        },
+        decoration: buildDecorationForTextField());
   }
 
   @protected
@@ -59,8 +54,8 @@ class SearchBarWidgetState
   @protected
   void onClearTappedForDecorationForTextField() {
     textController.text = '';
-    widget
-        .lo
-        .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndInGeneralOneTask("");
+    widget.lo
+        .getListSearchResultFromGithubCacheAndHttpClientServiceParameterStringAndInGeneralOneTask(
+            "");
   }
 }

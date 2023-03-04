@@ -5,18 +5,16 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/userQThereIsStateViewModel/UserQThereIsStateViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class MainViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class MainViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _userQThereIsStateViewModel =
-  UserQThereIsStateViewModel(InitializedStreamUser());
+      UserQThereIsStateViewModel(InitializedStreamUser());
 
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache =
-  UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache();
+      UserQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache();
   final _userQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP =
-  UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP();
+      UserQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP();
 
   @override
   void dispose() {
@@ -29,23 +27,21 @@ class MainViewListViewModel
 
   void customListenStreamUserAndInGeneralZeroTask() {
     _userQThereIsStateViewModel.customListenStreamUser(
-        _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache.getCustomStreamUser,
+        _userQFirebaseAuthAndTempCacheServiceViewModelUsingCustomStreamForCheckAuthAndSaveToTempCache
+            .getCustomStreamUser,
         _setUserAndInGeneralZeroTask);
   }
 
-  Future<void> getUserFromTempCacheServiceNPAndInGeneralOneTask()
-  async {
+  Future<void> getUserFromTempCacheServiceNPAndInGeneralOneTask() async {
     // 1
-    final user = await _userQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP
-        .getUserFromTempCacheServiceNP();
+    final user =
+        await _userQTempCacheServiceViewModelUsingUpdateParameterUserAndGetNPAndDeleteNP
+            .getUserFromTempCacheServiceNP();
     _setUserAndInGeneralZeroTask(user);
   }
 
   void _setUserAndInGeneralZeroTask(User? user) {
-    _userQThereIsStateViewModel
-        .setUser = user!;
-    _userQThereIsStateViewModel
-        .notifyStreamUser();
+    _userQThereIsStateViewModel.setUser = user!;
+    _userQThereIsStateViewModel.notifyStreamUser();
   }
-
 }

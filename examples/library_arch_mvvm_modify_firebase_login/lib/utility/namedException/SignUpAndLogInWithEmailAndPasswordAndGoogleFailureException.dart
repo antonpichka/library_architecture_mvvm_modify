@@ -1,21 +1,18 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 
 class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
-    extends BaseException
-{
+    extends BaseException {
   final String code;
   final String message;
 
   SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
-      Object thisClass,
-      this.code,
-      this.message) : super(thisClass,SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException);
+      Object thisClass, this.code, this.message)
+      : super(thisClass,
+            SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException);
 
   factory SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(
-      Object thisClass,
-      String code)
-  {
-    switch(code) {
+      Object thisClass, String code) {
+    switch (code) {
       case 'invalid-email':
         return SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
           thisClass,
@@ -42,17 +39,12 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
         );
       default:
         return SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
-          thisClass,
-            "unknown LogIn",
-          "An unknown exception occurred."
-        );
+            thisClass, "unknown LogIn", "An unknown exception occurred.");
     }
   }
 
   factory SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(
-      Object thisClass,
-      String code)
-  {
+      Object thisClass, String code) {
     switch (code) {
       case 'invalid-email':
         return SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
@@ -86,18 +78,13 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
         );
       default:
         return SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
-            thisClass,
-            "unknown signUp",
-            "An unknown exception occurred."
-        );
+            thisClass, "unknown signUp", "An unknown exception occurred.");
     }
   }
 
   factory SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForGoogle(
-      Object thisClass,
-      String code)
-  {
-    switch(code) {
+      Object thisClass, String code) {
+    switch (code) {
       case 'account-exists-with-different-credential':
         return SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
           thisClass,
@@ -148,10 +135,7 @@ class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
         );
       default:
         return SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException(
-            thisClass,
-            "unknown google",
-            "An unknown exception occurred."
-        );
+            thisClass, "unknown google", "An unknown exception occurred.");
     }
   }
 

@@ -8,24 +8,31 @@ void main() {
   group('get success', () {
     test('getEnumWeatherCondition', () {
       final weather = Weather.getWeatherForSuccess;
-      expect(weather.getEnumWeatherCondition,EnumWeatherCondition.clear);
+      expect(weather.getEnumWeatherCondition, EnumWeatherCondition.clear);
     });
     test('getNameColorFromGetEnumWeatherCondition', () {
       final weather = Weather.getWeatherForSuccess;
-      expect(weather.getNameColorFromGetEnumWeatherCondition,Colors.orangeAccent.value.toString());
+      expect(weather.getNameColorFromGetEnumWeatherCondition,
+          Colors.orangeAccent.value.toString());
     });
   });
   group('set success', () {
     test('setOneFromTemperatureUnitsParameterTemperature', () {
       final weather = Weather.getWeatherForSuccess;
-      weather.setOneFromTemperatureUnitsParameterTemperature = TemperatureUnits.fahrenheit;
-      expect(weather.temperature,32);
+      weather.setOneFromTemperatureUnitsParameterTemperature =
+          TemperatureUnits.fahrenheit;
+      expect(weather.temperature, 32);
     });
   });
   group('is success', () {
-    test('isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated', () {
+    test(
+        'isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated',
+        () {
       final weather = Weather.getWeatherForSuccess;
-      expect(weather.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated(),false);
+      expect(
+          weather
+              .isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated(),
+          false);
     });
   });
 }

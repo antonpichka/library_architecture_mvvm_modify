@@ -5,50 +5,52 @@ import 'package:meta/meta.dart';
 
 class FloatingActionButtonSearchWidgetListViewModel {
   @protected
-  final WeatherIsLoadingQThereIsStateViewModel weatherIsLoadingQThereIsStateViewModel;
+  final WeatherIsLoadingQThereIsStateViewModel
+      weatherIsLoadingQThereIsStateViewModel;
   @protected
-  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal;
+  final WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal
+      weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal;
   @protected
-  final WeatherSettingsQThereIsStateViewModel weatherSettingsQThereIsStateViewModel;
+  final WeatherSettingsQThereIsStateViewModel
+      weatherSettingsQThereIsStateViewModel;
 
   FloatingActionButtonSearchWidgetListViewModel(
       this.weatherIsLoadingQThereIsStateViewModel,
       this.weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal,
       this.weatherSettingsQThereIsStateViewModel);
 
-  Future<void> getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(String? location)
-  async {
-    if(location?.isEmpty ?? false) {
+  Future<void>
+      getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(
+          String? location) async {
+    if (location?.isEmpty ?? false) {
       return;
     }
-    weatherIsLoadingQThereIsStateViewModel
-        .getWeatherIsLoading
+    weatherIsLoadingQThereIsStateViewModel.getWeatherIsLoading
         ?.setOneParametersNamedForFloatingActionButtonSearchWidget();
-    weatherIsLoadingQThereIsStateViewModel
-        .notifyStreamWeatherIsLoading();
+    weatherIsLoadingQThereIsStateViewModel.notifyStreamWeatherIsLoading();
     // 1
-    final weatherSettingsFromHttpClientAndHive = await weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal
-        .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(location!);
-    if(weatherSettingsFromHttpClientAndHive
-        !.exceptionController
-        .isNotEqualsNullParameterException())
-    {
+    final weatherSettingsFromHttpClientAndHive =
+        await weatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal
+            .getWeatherSettingsFromHttpClientAndHiveServiceParameterString(
+                location!);
+    if (weatherSettingsFromHttpClientAndHive!.exceptionController
+        .isNotEqualsNullParameterException()) {
       weatherSettingsQThereIsStateViewModel
-          .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;
-      weatherIsLoadingQThereIsStateViewModel
-          .getWeatherIsLoading
-          ?.setTwoParametersNamedForFloatingActionButtonSearchWidget = weatherSettingsFromHttpClientAndHive;
-      weatherIsLoadingQThereIsStateViewModel
-          .notifyStreamWeatherIsLoading();
+              .setWeatherSettingsUsingCloneWeatherSettingsForSuccess =
+          weatherSettingsFromHttpClientAndHive;
+      weatherIsLoadingQThereIsStateViewModel.getWeatherIsLoading
+              ?.setTwoParametersNamedForFloatingActionButtonSearchWidget =
+          weatherSettingsFromHttpClientAndHive;
+      weatherIsLoadingQThereIsStateViewModel.notifyStreamWeatherIsLoading();
       return;
     }
     weatherSettingsQThereIsStateViewModel
-        .setWeatherSettingsUsingCloneWeatherSettings = weatherSettingsFromHttpClientAndHive;
-    weatherIsLoadingQThereIsStateViewModel
-        .getWeatherIsLoading
-        ?.setThreeParametersNamedForFloatingActionButtonSearchWidget = weatherSettingsFromHttpClientAndHive;
-    weatherIsLoadingQThereIsStateViewModel
-        .notifyStreamWeatherIsLoading();
+            .setWeatherSettingsUsingCloneWeatherSettingsForSuccess =
+        weatherSettingsFromHttpClientAndHive;
+    weatherIsLoadingQThereIsStateViewModel.getWeatherIsLoading
+            ?.setThreeParametersNamedForFloatingActionButtonSearchWidget =
+        weatherSettingsFromHttpClientAndHive;
+    weatherIsLoadingQThereIsStateViewModel.notifyStreamWeatherIsLoading();
     return;
   }
 }

@@ -8,16 +8,16 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<T extends Settings,Y extends ListSettings<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
-    implements
-        UpdateModelToNamedServiceParameterNamedDataSource<bool,T>
-{
+class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<
+        T extends Settings,
+        Y extends ListSettings<T>> extends BaseModelQNamedServiceViewModel<T, Y>
+    implements UpdateModelToNamedServiceParameterNamedDataSource<bool, T> {
   @protected
   final hiveService = HiveService();
 
-  Future<Result<bool>?> updateSettingsToHiveServiceParameterSettings(T parameter) {
-    return updateModelToNamedServiceParameterNamed<bool,T>(parameter);
+  Future<Result<bool>?> updateSettingsToHiveServiceParameterSettings(
+      T parameter) {
+    return updateModelToNamedServiceParameterNamed<bool, T>(parameter);
   }
 
   @protected
@@ -27,23 +27,21 @@ class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<T extends Settin
   @protected
   @override
   Future<Result<bool>?> updateModelToNamedServiceParameterNamedDS(
-      T? parameter)
-  async {
+      T? parameter) async {
     try {
-      final Box? boxSettings = await hiveService
-          .getBoxSettings();
-      updateSettingsFromBoxSettingsAndSettings(boxSettings,parameter);
+      final Box? boxSettings = await hiveService.getBoxSettings();
+      updateSettingsFromBoxSettingsAndSettings(boxSettings, parameter);
       return Result<bool>.success(true);
-    } catch(e) {
-      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+    } catch (e) {
+      return Result<bool>.exception(LocalException(
+          this, EnumGuiltyForLocalException.device, e.toString()));
     }
   }
 
   @protected
-  void updateSettingsFromBoxSettingsAndSettings(Box? boxSettings,T? settings) {
-    boxSettings?.put(Settings.constParameterColor,
-        settings?.color);
-    boxSettings?.put(Settings.constParameterTemperatureUnits,
-        settings?.temperatureUnits);
+  void updateSettingsFromBoxSettingsAndSettings(Box? boxSettings, T? settings) {
+    boxSettings?.put(Settings.constParameterColor, settings?.color);
+    boxSettings?.put(
+        Settings.constParameterTemperatureUnits, settings?.temperatureUnits);
   }
 }

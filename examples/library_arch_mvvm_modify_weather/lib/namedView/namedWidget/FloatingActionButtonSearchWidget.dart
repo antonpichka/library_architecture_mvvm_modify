@@ -2,25 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/FloatingActionButtonSearchWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class FloatingActionButtonSearchWidget
-    extends StatefulWidget
-{
+class FloatingActionButtonSearchWidget extends StatefulWidget {
   final FloatingActionButtonSearchWidgetListViewModel lo;
 
   const FloatingActionButtonSearchWidget(this.lo);
 
   @override
-  State<FloatingActionButtonSearchWidget> createState() => FloatingActionButtonSearchWidgetState();
+  State<FloatingActionButtonSearchWidget> createState() =>
+      FloatingActionButtonSearchWidgetState();
 }
 
 class FloatingActionButtonSearchWidgetState
-    extends State<FloatingActionButtonSearchWidget>
-{
+    extends State<FloatingActionButtonSearchWidget> {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      child: buildChild(context),
-      onPressed: () => callbackOnPressed(context));
+        child: buildChild(context),
+        onPressed: () => callbackOnPressed(context));
   }
 
   @protected
@@ -29,14 +27,14 @@ class FloatingActionButtonSearchWidgetState
   }
 
   @protected
-  Future<void> callbackOnPressed(BuildContext context)
-  async {
-    var city = await Navigator.of(context).pushNamed("/$constSearchWeatherView");
+  Future<void> callbackOnPressed(BuildContext context) async {
+    var city =
+        await Navigator.of(context).pushNamed("/$constSearchWeatherView");
     if (!mounted) return;
     city ??= "";
-    await widget
-        .lo
-        .getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(city as String);
+    await widget.lo
+        .getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(
+            city as String);
     return;
   }
 }

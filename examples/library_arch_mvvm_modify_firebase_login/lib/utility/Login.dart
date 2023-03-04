@@ -4,7 +4,7 @@ class Login {
   String email;
   String password;
 
-  Login(this.email,this.password);
+  Login(this.email, this.password);
 
   bool isNotHasMatchParameterEmail() {
     return !emailRegExp.hasMatch(email);

@@ -12,26 +12,30 @@ enum EnumWeatherIsLoadingForWeatherWidget {
   success
 }
 
-class WeatherIsLoading
-    extends BaseModel
-{
+class WeatherIsLoading extends BaseModel {
   bool? isLoading;
   TemperatureUnits? temperatureUnits;
   Weather? weather;
 
-  WeatherIsLoading.success(this.isLoading,this.temperatureUnits,this.weather) : super.success(weather?.uniqueId);
+  WeatherIsLoading.success(this.isLoading, this.temperatureUnits, this.weather)
+      : super.success(weather?.uniqueId);
   WeatherIsLoading.exception(super.exception) : super.exception();
 
-  static WeatherIsLoading get getWeatherIsLoadingForSuccess => WeatherIsLoading.success(false,TemperatureUnits.celsius,Weather.getWeatherForSuccess);
+  static WeatherIsLoading get getWeatherIsLoadingForSuccess =>
+      WeatherIsLoading.success(
+          false, TemperatureUnits.celsius, Weather.getWeatherForSuccess);
 
-  EnumWeatherIsLoadingForWeatherWidget get getEnumWeatherIsLoadingForWeatherWidget {
-    if(isLoading ?? false) {
+  EnumWeatherIsLoadingForWeatherWidget
+      get getEnumWeatherIsLoadingForWeatherWidget {
+    if (isLoading ?? false) {
       return EnumWeatherIsLoadingForWeatherWidget.isLoading;
     }
-    if(exceptionController.isNotEqualsNullParameterException()) {
+    if (exceptionController.isNotEqualsNullParameterException()) {
       return EnumWeatherIsLoadingForWeatherWidget.exception;
     }
-    if(weather?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() ?? false) {
+    if (weather
+            ?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated() ??
+        false) {
       return EnumWeatherIsLoadingForWeatherWidget.isEmpty;
     }
     return EnumWeatherIsLoadingForWeatherWidget.success;
@@ -42,7 +46,7 @@ class WeatherIsLoading
   }
 
   String? get getTwoParametersNamedForWeatherWidget {
-    switch(weather?.getEnumWeatherCondition) {
+    switch (weather?.getEnumWeatherCondition) {
       case EnumWeatherCondition.clear:
         return '☀️';
       case EnumWeatherCondition.rainy:
@@ -78,12 +82,16 @@ class WeatherIsLoading
     isLoading = true;
   }
 
-  set setTwoParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherSettings) {
-    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading = weatherSettings;
+  set setTwoParametersNamedForFloatingActionButtonSearchWidget(
+      WeatherSettings weatherSettings) {
+    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading =
+        weatherSettings;
   }
 
-  set setThreeParametersNamedForFloatingActionButtonSearchWidget(WeatherSettings weatherSettings) {
-    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading  = weatherSettings;
+  set setThreeParametersNamedForFloatingActionButtonSearchWidget(
+      WeatherSettings weatherSettings) {
+    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading =
+        weatherSettings;
   }
 
   void setOneParametersNamedForWeatherWidget() {
@@ -91,12 +99,14 @@ class WeatherIsLoading
   }
 
   set setTwoParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
-    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading = weatherSettings;
+    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading =
+        weatherSettings;
   }
 
   set setThreeParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
     temperatureUnits = weatherSettings.settings?.temperatureUnits;
-    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading  = weatherSettings;
+    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading =
+        weatherSettings;
   }
 
   void setFourParametersNamedForWeatherWidget() {
@@ -104,22 +114,27 @@ class WeatherIsLoading
   }
 
   set setFiveParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
-    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading = weatherSettings;
+    _setFromWeatherSettingsParametersExceptionControllerAndIsLoading =
+        weatherSettings;
   }
 
   set setSixParametersNamedForWeatherWidget(WeatherSettings weatherSettings) {
-    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading = weatherSettings;
+    _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading =
+        weatherSettings;
   }
 
-  set _setFromWeatherSettingsParametersExceptionControllerAndIsLoading(WeatherSettings weatherSettings) {
+  set _setFromWeatherSettingsParametersExceptionControllerAndIsLoading(
+      WeatherSettings weatherSettings) {
     exceptionController = weatherSettings.exceptionController;
     isLoading = false;
   }
 
-  set _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading(WeatherSettings weatherSettings) {
+  set _setFromWeatherSettingsParametersExceptionControllerAndWeatherAndIsLoading(
+      WeatherSettings weatherSettings) {
     exceptionController = weatherSettings.exceptionController;
     weather = weatherSettings.weather;
-    weather?.setOneFromTemperatureUnitsParameterTemperature = temperatureUnits ?? TemperatureUnits.celsius;
+    weather?.setOneFromTemperatureUnitsParameterTemperature =
+        temperatureUnits ?? TemperatureUnits.celsius;
     isLoading = false;
   }
 
@@ -132,6 +147,7 @@ class WeatherIsLoading
   }
 
   bool? isThreeParametersNamedForWeatherWidget() {
-    return weather?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
+    return weather
+        ?.isEqualsNullParametersLocationAndWeatherCodeAndTemperatureAndLastUpdated();
   }
 }

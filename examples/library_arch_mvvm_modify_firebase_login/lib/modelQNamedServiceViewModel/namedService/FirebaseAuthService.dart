@@ -4,7 +4,7 @@ class FirebaseAuthService {
   static FirebaseAuth? _firebaseAuth;
 
   FirebaseAuth? get getFirebaseAuth {
-    if(_firebaseAuth != null) {
+    if (_firebaseAuth != null) {
       return _firebaseAuth;
     }
     _firebaseAuth = FirebaseAuth.instance;

@@ -8,10 +8,10 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
-    implements DeleteModelToNamedServiceNPDataSource<bool>
-{
+class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<
+        T extends User,
+        Y extends ListUser<T>> extends BaseModelQNamedServiceViewModel<T, Y>
+    implements DeleteModelToNamedServiceNPDataSource<bool> {
   @protected
   final firebaseAuthService = FirebaseAuthService();
   @protected
@@ -27,18 +27,14 @@ class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingDeleteNPForSignOut<T 
 
   @protected
   @override
-  Future<Result<bool>?> deleteModelToNamedServiceNPDS()
-  async {
+  Future<Result<bool>?> deleteModelToNamedServiceNPDS() async {
     try {
-      await firebaseAuthService
-          .getFirebaseAuth
-          ?.signOut();
-      await googleSignInService
-          .getGoogleSignIn
-          ?.signOut();
+      await firebaseAuthService.getFirebaseAuth?.signOut();
+      await googleSignInService.getGoogleSignIn?.signOut();
       return Result<bool>.success(true);
     } catch (_) {
-      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Result<bool>.exception(LocalException(
+          this, EnumGuiltyForLocalException.device, _.toString()));
     }
   }
 }

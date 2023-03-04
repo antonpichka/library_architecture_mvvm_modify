@@ -3,16 +3,12 @@ import 'package:library_arch_mvvm_modify_github_search/namedView/namedWidget/Sea
 import 'package:library_arch_mvvm_modify_github_search/namedView/namedWidget/SearchBodyWidget.dart';
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/MainViewListViewModel.dart';
 
-class MainView
-    extends StatefulWidget
-{
+class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState
-    extends State<MainView>
-{
+class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override
@@ -35,7 +31,6 @@ class _MainViewState
             SearchBarWidget(_lo.searchBarWidgetListViewModel),
             SearchBodyWidget(_lo.searchBodyWidgetListViewModel),
           ],
-        )
-    );
+        ));
   }
 }

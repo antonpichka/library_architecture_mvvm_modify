@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IncrementFABWidgetListViewModel.dart';
 
-class IncrementFABWidget
-    extends StatelessWidget
-{
+class IncrementFABWidget extends StatelessWidget {
   @protected
   final IncrementFABWidgetListViewModel lo;
 
@@ -13,7 +11,7 @@ class IncrementFABWidget
   Widget build(BuildContext context) {
     return FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => lo
-            .setOneParametersNamedForNamedByIntAndInGeneralZeroTask());
+        onPressed: () =>
+            lo.setOneParametersNamedForNamedByIntAndInGeneralZeroTask());
   }
 }

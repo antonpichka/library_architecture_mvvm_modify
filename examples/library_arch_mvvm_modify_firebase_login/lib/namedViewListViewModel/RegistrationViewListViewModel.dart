@@ -11,34 +11,35 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_initialize
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class RegistrationViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class RegistrationViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _emailInputQThereIsStateViewModel =
-  EmailInputQThereIsStateViewModel(InitializedStreamEmailInput());
+      EmailInputQThereIsStateViewModel(InitializedStreamEmailInput());
   final _passwordInputFirstBranchOneQThereIsStateViewModel =
-  PasswordInputFirstBranchOneQThereIsStateViewModel(InitializedStreamPasswordInputFirstBranchOne());
+      PasswordInputFirstBranchOneQThereIsStateViewModel(
+          InitializedStreamPasswordInputFirstBranchOne());
   final _boolQThereIsStateViewModelForLoading =
-  BoolQThereIsStateViewModel(InitializedStreamBool());
+      BoolQThereIsStateViewModel(InitializedStreamBool());
 
   // ModelQNamedServiceViewModel
   final _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin =
-  UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin();
+      UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin();
 
   // NamedWidgetListViewModel
   late final EmailInputWidgetListViewModel emailInputWidgetListViewModel;
   late final PasswordInputWidgetListViewModel passwordInputWidgetListViewModel;
-  late final ConfirmedPasswordInputWidgetListViewModel confirmedPasswordInputWidgetListViewModel;
+  late final ConfirmedPasswordInputWidgetListViewModel
+      confirmedPasswordInputWidgetListViewModel;
   late final SignUpButtonWidgetListViewModel signUpButtonWidgetListViewModel;
 
   RegistrationViewListViewModel() {
-    emailInputWidgetListViewModel = EmailInputWidgetListViewModel(
-        _emailInputQThereIsStateViewModel);
+    emailInputWidgetListViewModel =
+        EmailInputWidgetListViewModel(_emailInputQThereIsStateViewModel);
     passwordInputWidgetListViewModel = PasswordInputWidgetListViewModel(
         _passwordInputFirstBranchOneQThereIsStateViewModel);
-    confirmedPasswordInputWidgetListViewModel = ConfirmedPasswordInputWidgetListViewModel(
-        _passwordInputFirstBranchOneQThereIsStateViewModel);
+    confirmedPasswordInputWidgetListViewModel =
+        ConfirmedPasswordInputWidgetListViewModel(
+            _passwordInputFirstBranchOneQThereIsStateViewModel);
     signUpButtonWidgetListViewModel = SignUpButtonWidgetListViewModel(
         _userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin,
         _emailInputQThereIsStateViewModel,

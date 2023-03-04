@@ -11,7 +11,8 @@ import 'package:meta/meta.dart';
 
 class LoginButtonWidgetListViewModel {
   @protected
-  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
+  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+      userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
   @protected
   final EmailInputQThereIsStateViewModel emailInputQThereIsStateViewModel;
   @protected
@@ -29,48 +30,41 @@ class LoginButtonWidgetListViewModel {
     return boolQThereIsStateViewModelForLoading.getStreamBool;
   }
 
-  Future<void> updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask(
-      Function(String message) callbackForException)
-  async {
-    if(!Formz.validate([emailInputQThereIsStateViewModel
-        .getEmailInput
-        ?.getOneParametersNamedForLoginButtonWidget ?? const Email.pure(),
+  Future<void>
+      updateUserToFirebaseAuthServiceParameterLoginUsingFBDSAndInGeneralOneTask(
+          Function(String message) callbackForException) async {
+    if (!Formz.validate([
+      emailInputQThereIsStateViewModel
+              .getEmailInput?.getOneParametersNamedForLoginButtonWidget ??
+          const Email.pure(),
       passwordInputQThereIsStateViewModel
-          .getPasswordInput
-          ?.getOneParametersNamedForLoginButtonWidget ?? const Password.pure()])
-        .isValidated)
-    {
+              .getPasswordInput?.getOneParametersNamedForLoginButtonWidget ??
+          const Password.pure()
+    ]).isValidated) {
       return;
     }
-    if(boolQThereIsStateViewModelForLoading
-        .getBool
-        !.isField)
-    {
+    if (boolQThereIsStateViewModelForLoading.getBool!.isField) {
       return;
     }
-    boolQThereIsStateViewModelForLoading
-        .getBool
-        ?.isField = true;
-    boolQThereIsStateViewModelForLoading
-        .notifyStreamBool();
+    boolQThereIsStateViewModelForLoading.getBool?.isField = true;
+    boolQThereIsStateViewModelForLoading.notifyStreamBool();
     // 1
-    final result = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForLoginButtonWidget ?? "", passwordInputQThereIsStateViewModel.getPasswordInput?.getTwoParametersNamedForLoginButtonWidget ?? ""));
-    if(result
-        !.exceptionController
-        .isNotEqualsNullParameterException())
-    {
-      boolQThereIsStateViewModelForLoading
-          .getBool
-          ?.isField = false;
-      boolQThereIsStateViewModelForLoading
-          .notifyStreamBool();
-      callbackForException(result
-          .exceptionController
-          .getMessageForViewParameterException!);
+    final result =
+        await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+            .updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login(
+                emailInputQThereIsStateViewModel.getEmailInput
+                        ?.getTwoParametersNamedForLoginButtonWidget ??
+                    "",
+                passwordInputQThereIsStateViewModel.getPasswordInput
+                        ?.getTwoParametersNamedForLoginButtonWidget ??
+                    ""));
+    if (result!.exceptionController.isNotEqualsNullParameterException()) {
+      boolQThereIsStateViewModelForLoading.getBool?.isField = false;
+      boolQThereIsStateViewModelForLoading.notifyStreamBool();
+      callbackForException(
+          result.exceptionController.getMessageForViewParameterException!);
       return;
     }
     return;
   }
-
 }

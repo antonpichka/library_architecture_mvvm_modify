@@ -12,11 +12,13 @@ import 'package:meta/meta.dart';
 
 class SignUpButtonWidgetListViewModel {
   @protected
-  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
+  final UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+      userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin;
   @protected
   final EmailInputQThereIsStateViewModel emailInputQThereIsStateViewModel;
   @protected
-  final PasswordInputFirstBranchOneQThereIsStateViewModel passwordInputFirstBranchOneQThereIsStateViewModel;
+  final PasswordInputFirstBranchOneQThereIsStateViewModel
+      passwordInputFirstBranchOneQThereIsStateViewModel;
   @protected
   final BoolQThereIsStateViewModel boolQThereIsStateViewModelForLoading;
 
@@ -30,49 +32,44 @@ class SignUpButtonWidgetListViewModel {
     return boolQThereIsStateViewModelForLoading.getStreamBool;
   }
 
-  Future<void> insertUserToFirebaseAuthServiceParameterRegistrationAndInGeneralOneTask(
-      Function(String message) callbackForException,
-      Function() callbackForSuccess)
-  async {
-    if(!Formz.validate([emailInputQThereIsStateViewModel
-          .getEmailInput
-          ?.getOneParametersNamedForSignUpButtonWidget ?? const Email.pure(),
+  Future<void>
+      insertUserToFirebaseAuthServiceParameterRegistrationAndInGeneralOneTask(
+          Function(String message) callbackForException,
+          Function() callbackForSuccess) async {
+    if (!Formz.validate([
+      emailInputQThereIsStateViewModel
+              .getEmailInput?.getOneParametersNamedForSignUpButtonWidget ??
+          const Email.pure(),
       passwordInputFirstBranchOneQThereIsStateViewModel
-          .getPasswordInput
-          ?.getOneParametersNamedForSignUpButtonWidget ?? const Password.pure(),
+              .getPasswordInput?.getOneParametersNamedForSignUpButtonWidget ??
+          const Password.pure(),
       passwordInputFirstBranchOneQThereIsStateViewModel
-          .getPasswordInput
-          ?.getTwoParametersNamedForSignUpButtonWidget ?? const ConfirmedPassword.pure()])
-        .isValidated)
-    {
+              .getPasswordInput?.getTwoParametersNamedForSignUpButtonWidget ??
+          const ConfirmedPassword.pure()
+    ]).isValidated) {
       return;
     }
-    if(boolQThereIsStateViewModelForLoading
-        .getBool
-        !.isField)
-    {
+    if (boolQThereIsStateViewModelForLoading.getBool!.isField) {
       return;
     }
-    boolQThereIsStateViewModelForLoading
-        .getBool
-        ?.isField = true;
-    boolQThereIsStateViewModelForLoading
-        .notifyStreamBool();
+    boolQThereIsStateViewModelForLoading.getBool?.isField = true;
+    boolQThereIsStateViewModelForLoading.notifyStreamBool();
     // 1
-    final result = await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
-        .insertUserToFirebaseAuthServiceParameterRegistration(Registration(emailInputQThereIsStateViewModel.getEmailInput?.getTwoParametersNamedForSignUpButtonWidget ?? "", passwordInputFirstBranchOneQThereIsStateViewModel.getPasswordInput!.getThreeParametersNamedForSignUpButtonWidget ?? ""));
-    boolQThereIsStateViewModelForLoading
-        .getBool
-        ?.isField = false;
-    boolQThereIsStateViewModelForLoading
-        .notifyStreamBool();
-    if(result
-        !.exceptionController
-        .isNotEqualsNullParameterException())
-    {
-      callbackForException(result
-          .exceptionController
-          .getMessageForViewParameterException!);
+    final result =
+        await userQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin
+            .insertUserToFirebaseAuthServiceParameterRegistration(Registration(
+                emailInputQThereIsStateViewModel.getEmailInput
+                        ?.getTwoParametersNamedForSignUpButtonWidget ??
+                    "",
+                passwordInputFirstBranchOneQThereIsStateViewModel
+                        .getPasswordInput!
+                        .getThreeParametersNamedForSignUpButtonWidget ??
+                    ""));
+    boolQThereIsStateViewModelForLoading.getBool?.isField = false;
+    boolQThereIsStateViewModelForLoading.notifyStreamBool();
+    if (result!.exceptionController.isNotEqualsNullParameterException()) {
+      callbackForException(
+          result.exceptionController.getMessageForViewParameterException!);
       return;
     }
     callbackForSuccess();

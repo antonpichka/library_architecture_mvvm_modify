@@ -7,20 +7,21 @@ void main() {
   group('get success', () {
     test('getColorParameterColor', () {
       final settings = Settings.getSettingsForSuccess;
-      expect(settings.getColorParameterColor,constDefaultColor);
+      expect(settings.getColorParameterColor, constDefaultColor);
     });
   });
   group('set success', () {
     test('setOneParametersNamedForListTileTemperatureUnitsWidget', () {
       final settings = Settings.getSettingsForSuccess;
       settings.setOneParametersNamedForListTileTemperatureUnitsWidget = false;
-      expect(settings.temperatureUnits,TemperatureUnits.fahrenheit);
+      expect(settings.temperatureUnits, TemperatureUnits.fahrenheit);
     });
   });
   group('is success', () {
     test('isOneParametersNamedForListTileTemperatureUnitsWidget', () {
       final settings = Settings.getSettingsForSuccess;
-      expect(settings.isOneParametersNamedForListTileTemperatureUnitsWidget(),true);
+      expect(settings.isOneParametersNamedForListTileTemperatureUnitsWidget(),
+          true);
     });
   });
 }

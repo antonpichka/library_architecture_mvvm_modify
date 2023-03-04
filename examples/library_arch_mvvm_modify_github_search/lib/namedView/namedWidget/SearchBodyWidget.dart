@@ -4,9 +4,7 @@ import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoadi
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBodyWidgetListViewModel.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SearchBodyWidget
-    extends StatefulWidget
-{
+class SearchBodyWidget extends StatefulWidget {
   final SearchBodyWidgetListViewModel lo;
 
   const SearchBodyWidget(this.lo);
@@ -15,22 +13,22 @@ class SearchBodyWidget
   State<SearchBodyWidget> createState() => SearchBodyWidgetState();
 }
 
-class SearchBodyWidgetState
-    extends State<SearchBodyWidget>
-{
+class SearchBodyWidgetState extends State<SearchBodyWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListSearchResultInLoading?>(
       stream: widget.lo.getStreamListSearchResultInLoading,
-      builder: (BuildContext context, AsyncSnapshot<ListSearchResultInLoading?> state) {
-        if(state.data == null) {
+      builder: (BuildContext context,
+          AsyncSnapshot<ListSearchResultInLoading?> state) {
+        if (state.data == null) {
           return buildDataNull();
         }
         ListSearchResultInLoading? list = state.data;
-        switch(list!.getEnumListSearchResultInLoadingForSearchBodyWidget) {
+        switch (list!.getEnumListSearchResultInLoadingForSearchBodyWidget) {
           case EnumListSearchResultInLoadingForSearchBodyWidget.error:
             return buildError(list);
-          case EnumListSearchResultInLoadingForSearchBodyWidget.isEmptyValueFromTextInput:
+          case EnumListSearchResultInLoadingForSearchBodyWidget
+              .isEmptyValueFromTextInput:
             return buildIsEmptyValueFromTextInput(list);
           case EnumListSearchResultInLoadingForSearchBodyWidget.isLoading:
             return buildIsLoading(list);
@@ -87,11 +85,13 @@ class SearchBodyWidgetState
   Widget buildItemForListViewForSuccess(SearchResultInLoading? item) {
     return ListTile(
       leading: CircleAvatar(
-        child: Image.network(item?.getOneParametersNamedForSearchBodyWidget ?? ""),
+        child:
+            Image.network(item?.getOneParametersNamedForSearchBodyWidget ?? ""),
       ),
       title: Text(item?.getTwoParametersNamedForSearchBodyWidget ?? ""),
       onTap: () async {
-        final uri = Uri.parse(item?.getThreeParametersNamedForSearchBodyWidget ?? "");
+        final uri =
+            Uri.parse(item?.getThreeParametersNamedForSearchBodyWidget ?? "");
         if (await canLaunchUrl(uri)) {
           await launchUrl(uri);
         }

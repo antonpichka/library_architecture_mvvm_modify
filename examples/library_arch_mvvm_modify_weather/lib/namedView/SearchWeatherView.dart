@@ -3,16 +3,12 @@ import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/IconButto
 import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/TextFieldSearchWidget.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/SearchWeatherViewListViewModel.dart';
 
-class SearchWeatherView
-    extends StatefulWidget
-{
+class SearchWeatherView extends StatefulWidget {
   @override
   State<SearchWeatherView> createState() => _SearchWeatherViewState();
 }
 
-class _SearchWeatherViewState
-    extends State<SearchWeatherView>
-{
+class _SearchWeatherViewState extends State<SearchWeatherView> {
   final _lo = SearchWeatherViewListViewModel();
 
   @override
@@ -35,7 +31,8 @@ class _SearchWeatherViewState
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8),
-              child: TextFieldSearchWidget(_lo.textFieldSearchWidgetListViewModel),
+              child:
+                  TextFieldSearchWidget(_lo.textFieldSearchWidgetListViewModel),
             ),
           ),
           IconButtonSearchWidget(_lo.iconButtonSearchWidgetListViewModel),

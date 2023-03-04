@@ -4,11 +4,14 @@ import 'package:meta/meta.dart';
 
 class SearchBodyWidgetListViewModel {
   @protected
-  final SearchResultInLoadingQThereIsStateViewModel searchResultInLoadingQThereIsStateViewModel;
+  final SearchResultInLoadingQThereIsStateViewModel
+      searchResultInLoadingQThereIsStateViewModel;
 
-  SearchBodyWidgetListViewModel(this.searchResultInLoadingQThereIsStateViewModel);
+  SearchBodyWidgetListViewModel(
+      this.searchResultInLoadingQThereIsStateViewModel);
 
   Stream<ListSearchResultInLoading?>? get getStreamListSearchResultInLoading {
-    return searchResultInLoadingQThereIsStateViewModel.getStreamListSearchResultInLoading;
+    return searchResultInLoadingQThereIsStateViewModel
+        .getStreamListSearchResultInLoading;
   }
 }

@@ -5,7 +5,7 @@ void main() {
   group('get success', () {
     test('cloneWeatherSettings', () {
       final weatherSettings = WeatherSettings.getWeatherSettingsForSuccess;
-      expect(weatherSettings.cloneWeatherSettings() != null,true);
+      expect(weatherSettings.cloneWeatherSettingsForSuccess() != null, true);
     });
   });
 }

@@ -1,13 +1,9 @@
 import 'package:formz/formz.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
-enum PasswordValidationError {
-  invalid
-}
+enum PasswordValidationError { invalid }
 
-class Password
-    extends FormzInput<String, PasswordValidationError>
-{
+class Password extends FormzInput<String, PasswordValidationError> {
   /// {@macro password}
   const Password.pure() : super.pure('');
 
@@ -15,9 +11,7 @@ class Password
   const Password.dirty(super.value) : super.dirty();
 
   @override
-  PasswordValidationError? validator(
-      String value)
-  {
+  PasswordValidationError? validator(String value) {
     return passwordRegExp.hasMatch(value)
         ? null
         : PasswordValidationError.invalid;

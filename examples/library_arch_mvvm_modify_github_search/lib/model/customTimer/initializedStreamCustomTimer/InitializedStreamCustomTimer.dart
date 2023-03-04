@@ -5,10 +5,11 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 class InitializedStreamCustomTimer
-   implements IInitializedStreamModel<CustomTimer,ListCustomTimer>
-{
+    implements IInitializedStreamModel<CustomTimer, ListCustomTimer> {
   @override
   IStreamModel<CustomTimer, ListCustomTimer>? initializedStreamModel() {
-    return DefaultStreamModel<CustomTimer,ListCustomTimer>(CustomTimer.getCustomTimerForSuccess, ListCustomTimer.getListCustomTimerForSuccess);
+    return DefaultStreamModel<CustomTimer, ListCustomTimer>(
+        CustomTimer.getCustomTimerForSuccess,
+        ListCustomTimer.getListCustomTimerForSuccess);
   }
 }

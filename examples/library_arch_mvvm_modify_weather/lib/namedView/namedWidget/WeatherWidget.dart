@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/WeatherWidgetListViewModel.dart';
 
-class WeatherWidget
-    extends StatefulWidget
-{
+class WeatherWidget extends StatefulWidget {
   final WeatherWidgetListViewModel lo;
 
   const WeatherWidget(this.lo);
@@ -13,9 +11,7 @@ class WeatherWidget
   State<WeatherWidget> createState() => WeatherWidgetState();
 }
 
-class WeatherWidgetState
-    extends State<WeatherWidget>
-{
+class WeatherWidgetState extends State<WeatherWidget> {
   @override
   void initState() {
     super.initState();
@@ -31,21 +27,21 @@ class WeatherWidgetState
     widget.lo.getWeatherSettingsFromHiveServiceNPAndInGeneralOneTask();
     return StreamBuilder<WeatherIsLoading?>(
         stream: widget.lo.getStreamWeatherIsLoading,
-        builder: (BuildContext context,AsyncSnapshot<WeatherIsLoading?> asyncSnapshot)
-        {
-          if(asyncSnapshot.data == null) {
+        builder: (BuildContext context,
+            AsyncSnapshot<WeatherIsLoading?> asyncSnapshot) {
+          if (asyncSnapshot.data == null) {
             return buildIsLoading(context);
           }
           WeatherIsLoading? weatherIsLoading = asyncSnapshot.data;
-          switch(weatherIsLoading?.getEnumWeatherIsLoadingForWeatherWidget) {
+          switch (weatherIsLoading?.getEnumWeatherIsLoadingForWeatherWidget) {
             case EnumWeatherIsLoadingForWeatherWidget.isLoading:
               return buildIsLoading(context);
             case EnumWeatherIsLoadingForWeatherWidget.exception:
-              return buildException(context,weatherIsLoading);
+              return buildException(context, weatherIsLoading);
             case EnumWeatherIsLoadingForWeatherWidget.isEmpty:
-              return buildIsEmpty(context,weatherIsLoading);
+              return buildIsEmpty(context, weatherIsLoading);
             case EnumWeatherIsLoadingForWeatherWidget.success:
-              return buildSuccess(context,weatherIsLoading);
+              return buildSuccess(context, weatherIsLoading);
             default:
               return Container();
           }
@@ -72,7 +68,8 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildException(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildException(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     final theme = Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -87,7 +84,8 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildIsEmpty(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildIsEmpty(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     final theme = Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -102,17 +100,19 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     return Stack(
       children: [
-        buildWeatherBackgroundForSuccess(context,weatherIsLoading),
-        buildDataForSuccess(context,weatherIsLoading)
+        buildWeatherBackgroundForSuccess(context, weatherIsLoading),
+        buildDataForSuccess(context, weatherIsLoading)
       ],
     );
   }
 
   @protected
-  Widget buildWeatherBackgroundForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildWeatherBackgroundForSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     final color = Theme.of(context).primaryColor;
     return SizedBox.expand(
       child: DecoratedBox(
@@ -134,9 +134,11 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildDataForSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     return RefreshIndicator(
-      onRefresh: () => widget.lo.getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(),
+      onRefresh: () => widget.lo
+          .getWeatherSettingsFromHttpClientAndHiveServiceParameterStringAndInGeneralOneTask(),
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         clipBehavior: Clip.none,
@@ -145,9 +147,9 @@ class WeatherWidgetState
             children: [
               const SizedBox(height: 48),
               buildIconTextForDataForSuccess(context, weatherIsLoading),
-              buildOneTextForDataForSuccess(context,weatherIsLoading),
-              buildTwoTextForDataForSuccess(context,weatherIsLoading),
-              buildThreeTextForDataForSuccess(context,weatherIsLoading),
+              buildOneTextForDataForSuccess(context, weatherIsLoading),
+              buildTwoTextForDataForSuccess(context, weatherIsLoading),
+              buildThreeTextForDataForSuccess(context, weatherIsLoading),
             ],
           ),
         ),
@@ -156,7 +158,8 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildIconTextForDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildIconTextForDataForSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     return Text(
       weatherIsLoading?.getTwoParametersNamedForWeatherWidget ?? "",
       style: const TextStyle(fontSize: 75.0),
@@ -164,7 +167,8 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildOneTextForDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildOneTextForDataForSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     final theme = Theme.of(context);
     return Text(
       weatherIsLoading?.getThreeParametersNamedForWeatherWidget ?? "",
@@ -175,7 +179,8 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildTwoTextForDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
+  Widget buildTwoTextForDataForSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
     final theme = Theme.of(context);
     return Text(
       weatherIsLoading?.getOneParametersNamedForWeatherWidget ?? "",
@@ -186,16 +191,18 @@ class WeatherWidgetState
   }
 
   @protected
-  Widget buildThreeTextForDataForSuccess(BuildContext context,WeatherIsLoading? weatherIsLoading) {
-    return Text("${weatherIsLoading?.getFourParametersNamedForWeatherWidget ?? ""}${weatherIsLoading?.getSixParametersNamedForWeatherWidget?.format(context)}");
+  Widget buildThreeTextForDataForSuccess(
+      BuildContext context, WeatherIsLoading? weatherIsLoading) {
+    return Text(
+        "${weatherIsLoading?.getFourParametersNamedForWeatherWidget ?? ""}${weatherIsLoading?.getSixParametersNamedForWeatherWidget?.format(context)}");
   }
 }
 
 extension on Color {
   Color brighten([int percent = 10]) {
     assert(
-    1 <= percent && percent <= 100,
-    'percentage must be between 1 and 100',
+      1 <= percent && percent <= 100,
+      'percentage must be between 1 and 100',
     );
     final p = percent / 100;
     return Color.fromARGB(

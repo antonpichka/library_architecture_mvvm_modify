@@ -4,16 +4,17 @@ import 'package:meta/meta.dart';
 
 class IntTextWidgetListViewModel {
   @protected
-  final IntQThereIsStateViewModel intQThereIsStateViewModelForIncrementAndDecrement;
+  final IntQThereIsStateViewModel
+      intQThereIsStateViewModelForIncrementAndDecrement;
 
-  IntTextWidgetListViewModel(this.intQThereIsStateViewModelForIncrementAndDecrement);
+  IntTextWidgetListViewModel(
+      this.intQThereIsStateViewModelForIncrementAndDecrement);
 
   Stream<Int?>? get getStreamInt {
     return intQThereIsStateViewModelForIncrementAndDecrement.getStreamInt;
   }
 
-  Future<void> notifyStreamIntAndInGeneralZeroTask()
-  async {
+  Future<void> notifyStreamIntAndInGeneralZeroTask() async {
     await Future.delayed(const Duration(milliseconds: 100));
     intQThereIsStateViewModelForIncrementAndDecrement.notifyStreamInt();
   }

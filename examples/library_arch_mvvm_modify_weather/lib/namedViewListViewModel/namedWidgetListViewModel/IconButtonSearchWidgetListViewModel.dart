@@ -6,7 +6,8 @@ class IconButtonSearchWidgetListViewModel {
   @protected
   final StringsQThereIsStateViewModel stringsQThereIsStateViewModelForSearch;
 
-  IconButtonSearchWidgetListViewModel(this.stringsQThereIsStateViewModelForSearch);
+  IconButtonSearchWidgetListViewModel(
+      this.stringsQThereIsStateViewModelForSearch);
 
   Strings? get getStrings {
     return stringsQThereIsStateViewModelForSearch.getStrings;

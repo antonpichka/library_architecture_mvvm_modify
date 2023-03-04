@@ -8,16 +8,12 @@ import 'package:library_arch_mvvm_modify_weather/namedView/SettingsView.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/AppViewListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class AppView
-    extends StatefulWidget
-{
+class AppView extends StatefulWidget {
   @override
   State<AppView> createState() => _AppViewState();
 }
 
-class _AppViewState
-    extends State<AppView>
-{
+class _AppViewState extends State<AppView> {
   final _lo = AppViewListViewModel();
 
   @override
@@ -35,8 +31,7 @@ class _AppViewState
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: _lo.getCustomValueListenableBoxSettings!,
-        builder: (BuildContext buildContext, Box<dynamic> box,_)
-        {
+        builder: (BuildContext buildContext, Box<dynamic> box, _) {
           Settings? settings = Settings.fromBoxSettings(box);
           return MaterialApp(
               debugShowCheckedModeBanner: false,
@@ -45,16 +40,17 @@ class _AppViewState
                 primaryColor: settings.getColorParameterColor,
                 textTheme: GoogleFonts.rajdhaniTextTheme(),
                 appBarTheme: AppBarTheme(
-                  titleTextStyle: GoogleFonts.rajdhaniTextTheme(Theme.of(context).textTheme)
-                      .apply(bodyColor: Colors.white)
-                      .headline6,
+                  titleTextStyle:
+                      GoogleFonts.rajdhaniTextTheme(Theme.of(context).textTheme)
+                          .apply(bodyColor: Colors.white)
+                          .headline6,
                 ),
               ),
               initialRoute: "/",
               routes: {
-                "/" : (context) => MainView(),
-                "/$constSettingsView" : (context) => SettingsView(),
-                "/$constSearchWeatherView" : (context) => SearchWeatherView(),
+                "/": (context) => MainView(),
+                "/$constSettingsView": (context) => SettingsView(),
+                "/$constSearchWeatherView": (context) => SearchWeatherView(),
               });
         });
   }

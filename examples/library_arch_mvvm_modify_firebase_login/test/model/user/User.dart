@@ -5,29 +5,29 @@ void main() {
   group('get success', () {
     test('getEnumUserForMainView', () {
       final user = User.getUserForSuccess;
-      expect(user.getEnumUserForMainView,EnumUserForMainView.authenticated);
+      expect(user.getEnumUserForMainView, EnumUserForMainView.authenticated);
     });
     test('getOneParametersNamedForOneUserTextWidget', () {
       final user = User.getUserForSuccess;
-      expect(user.getOneParametersNamedForOneUserTextWidget,"");
+      expect(user.getOneParametersNamedForOneUserTextWidget, "");
     });
     test('getOneParametersNamedForTwoUserTextWidget', () {
       final user = User.getUserForSuccess;
-      expect(user.getOneParametersNamedForTwoUserTextWidget,"");
+      expect(user.getOneParametersNamedForTwoUserTextWidget, "");
     });
     test('getOneParametersNamedForCircleAvatarWidget', () {
       final user = User.getUserForSuccess;
-      expect(user.getOneParametersNamedForCircleAvatarWidget,"");
+      expect(user.getOneParametersNamedForCircleAvatarWidget, "");
     });
   });
   group('is success', () {
     test('isOneParametersNamedForCircleAvatarWidget', () {
       final user = User.getUserForSuccess;
-      expect(user.isOneParametersNamedForCircleAvatarWidget(),true);
+      expect(user.isOneParametersNamedForCircleAvatarWidget(), true);
     });
     test('isTwoParametersNamedForCircleAvatarWidget', () {
       final user = User.getUserForSuccess;
-      expect(user.isTwoParametersNamedForCircleAvatarWidget(),false);
+      expect(user.isTwoParametersNamedForCircleAvatarWidget(), false);
     });
   });
 }

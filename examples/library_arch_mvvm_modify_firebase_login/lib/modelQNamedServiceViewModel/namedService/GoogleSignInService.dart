@@ -4,7 +4,7 @@ class GoogleSignInService {
   static GoogleSignIn? _googleSignIn;
 
   GoogleSignIn? get getGoogleSignIn {
-    if(_googleSignIn != null) {
+    if (_googleSignIn != null) {
       return _googleSignIn;
     }
     _googleSignIn = GoogleSignIn.standard();

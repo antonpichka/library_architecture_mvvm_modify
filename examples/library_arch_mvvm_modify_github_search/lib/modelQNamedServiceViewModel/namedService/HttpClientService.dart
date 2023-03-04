@@ -4,7 +4,7 @@ class HttpClientService {
   static http.Client? _httpClient;
 
   http.Client? get getHttpClient {
-    if(_httpClient != null) {
+    if (_httpClient != null) {
       return _httpClient;
     }
     _httpClient = http.Client();

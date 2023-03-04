@@ -5,13 +5,10 @@ class TextFieldSearchWidgetListViewModel {
   @protected
   final StringsQThereIsStateViewModel stringsQThereIsStateViewModelForSearch;
 
-  TextFieldSearchWidgetListViewModel(this.stringsQThereIsStateViewModelForSearch);
+  TextFieldSearchWidgetListViewModel(
+      this.stringsQThereIsStateViewModelForSearch);
 
-  void setFieldByStringsAndInGeneralZeroTask(
-      String value)
-  {
-    stringsQThereIsStateViewModelForSearch
-        .getStrings
-        ?.field = value;
+  void setFieldByStringsAndInGeneralZeroTask(String value) {
+    stringsQThereIsStateViewModelForSearch.getStrings?.field = value;
   }
 }

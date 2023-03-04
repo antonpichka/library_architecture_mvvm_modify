@@ -13,21 +13,24 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<T extends User,Y extends ListUser<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
+class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdateParameterLogin<
+        T extends User,
+        Y extends ListUser<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements
-        InsertModelToNamedServiceParameterNamedDataSource<bool,Registration>,
-        UpdateModelToNamedServiceParameterNamedDataSource<bool,Login>
-{
+        InsertModelToNamedServiceParameterNamedDataSource<bool, Registration>,
+        UpdateModelToNamedServiceParameterNamedDataSource<bool, Login> {
   @protected
   final firebaseAuthService = FirebaseAuthService();
 
-  Future<Result<bool>?> insertUserToFirebaseAuthServiceParameterRegistration(Registration registration) {
-    return insertModelToNamedServiceParameterNamed<bool,Registration>(registration);
+  Future<Result<bool>?> insertUserToFirebaseAuthServiceParameterRegistration(
+      Registration registration) {
+    return insertModelToNamedServiceParameterNamed<bool, Registration>(
+        registration);
   }
 
-  Future<Result<bool>?> updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(Login login) {
-    return updateModelToNamedServiceParameterNamedUsingFBDS<bool,Login>(
+  Future<Result<bool>?> updateUserToFirebaseAuthServiceParameterLoginUsingFBDS(
+      Login login) {
+    return updateModelToNamedServiceParameterNamedUsingFBDS<bool, Login>(
         UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin(),
         login);
   }
@@ -39,34 +42,36 @@ class UserQFirebaseAuthServiceViewModelUsingInsertParameterRegistrationAndUpdate
   @protected
   @override
   Future<Result<bool>?> insertModelToNamedServiceParameterNamedDS(
-      Registration? parameter)
-  async {
+      Registration? parameter) async {
     try {
-      await firebaseAuthService
-          .getFirebaseAuth
-          ?.createUserWithEmailAndPassword(email: parameter!.email, password: parameter.password);
+      await firebaseAuthService.getFirebaseAuth?.createUserWithEmailAndPassword(
+          email: parameter!.email, password: parameter.password);
       return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      return Result<bool>.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForSignUp(this,e.code));
+      return Result<bool>.exception(
+          SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
+              .fromCodeForSignUp(this, e.code));
     } catch (_) {
-      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Result<bool>.exception(LocalException(
+          this, EnumGuiltyForLocalException.device, _.toString()));
     }
   }
 
   @protected
   @override
   Future<Result<bool>?> updateModelToNamedServiceParameterNamedDS(
-      Login? parameter)
-  async {
+      Login? parameter) async {
     try {
-      await firebaseAuthService
-          .getFirebaseAuth
-          ?.signInWithEmailAndPassword(email: parameter!.email, password: parameter.password);
+      await firebaseAuthService.getFirebaseAuth?.signInWithEmailAndPassword(
+          email: parameter!.email, password: parameter.password);
       return Result<bool>.success(true);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      return Result<bool>.exception(SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException.fromCodeForLogIn(this,e.code));
+      return Result<bool>.exception(
+          SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
+              .fromCodeForLogIn(this, e.code));
     } catch (_) {
-      return Result<bool>.exception(LocalException(this,EnumGuiltyForLocalException.device,_.toString()));
+      return Result<bool>.exception(LocalException(
+          this, EnumGuiltyForLocalException.device, _.toString()));
     }
   }
 }

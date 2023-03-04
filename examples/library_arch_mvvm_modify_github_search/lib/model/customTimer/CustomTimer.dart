@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class CustomTimer
-    extends BaseModel
-{
+class CustomTimer extends BaseModel {
   Timer? timer;
 
   CustomTimer.success(this.timer) : super.success("");
@@ -11,13 +9,13 @@ class CustomTimer
   static CustomTimer get getCustomTimerForSuccess => CustomTimer.success(null);
 
   set setOneParametersNamedForSearchBarWidget(dynamic Function() callback) {
-    timer = Timer(const Duration(milliseconds: 1000),() {
+    timer = Timer(const Duration(milliseconds: 1000), () {
       callback();
     });
   }
 
   void setTwoParametersNamedForSearchBarWidget() {
-    if(_isNotActiveParameterTimer()) {
+    if (_isNotActiveParameterTimer()) {
       return;
     }
     timer?.cancel();

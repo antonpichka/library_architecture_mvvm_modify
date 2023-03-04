@@ -4,16 +4,16 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_initialize
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/strings_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class SearchWeatherViewListViewModel
-    extends BaseNamedViewListViewModel
-{
+class SearchWeatherViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _stringsQThereIsStateViewModelForSearch =
-  StringsQThereIsStateViewModel(InitializedStreamStrings());
+      StringsQThereIsStateViewModel(InitializedStreamStrings());
 
   // NamedWidgetListViewModel
-  late final IconButtonSearchWidgetListViewModel iconButtonSearchWidgetListViewModel;
-  late final TextFieldSearchWidgetListViewModel textFieldSearchWidgetListViewModel;
+  late final IconButtonSearchWidgetListViewModel
+      iconButtonSearchWidgetListViewModel;
+  late final TextFieldSearchWidgetListViewModel
+      textFieldSearchWidgetListViewModel;
 
   SearchWeatherViewListViewModel() {
     iconButtonSearchWidgetListViewModel = IconButtonSearchWidgetListViewModel(
