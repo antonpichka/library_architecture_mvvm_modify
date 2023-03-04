@@ -1,3 +1,9 @@
+## 0.0.5
+
+- Added 'Todo' example to 'example' folder
+- Removed documentation section in 'README.md' file
+- Ran the command 'dart format .' in the 'example' folder
+
 ## 0.0.4
 
 - Updated dependencies from meta 1.9.0 to meta 1.8.0 (flutter sdk depends on meta 1.8.0, meta 1.8.0 is required.)
