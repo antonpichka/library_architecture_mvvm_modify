@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_firebase_login/utility/TempCache.dart';
 
-class TempCacheService {
+final class TempCacheService {
   static TempCache? _tempCache;
 
   TempCache? get getTempCache {

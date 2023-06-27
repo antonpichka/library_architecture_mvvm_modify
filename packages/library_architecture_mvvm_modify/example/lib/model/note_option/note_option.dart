@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 
 enum EnumNoteOption { toggleAll, clearCompleted }
 
-class NoteOption extends BaseModel {
+base class NoteOption extends BaseModel {
   EnumNoteOption? enumNoteOption;
   ListNote? listNote;
 

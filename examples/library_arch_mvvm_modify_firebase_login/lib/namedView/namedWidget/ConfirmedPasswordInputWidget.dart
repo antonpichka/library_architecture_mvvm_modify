@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/ConfirmedPasswordInputWidgetListViewModel.dart';
 
-class ConfirmedPasswordInputWidget extends StatelessWidget {
+base class ConfirmedPasswordInputWidget extends StatelessWidget {
   @protected
   final ConfirmedPasswordInputWidgetListViewModel lo;
 

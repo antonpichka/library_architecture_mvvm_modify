@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<
+base class UserQFirebaseAuthAndGoogleSignInServiceViewModelUsingUpdateNPForAuthGoogle<
         T extends User,
         Y extends ListUser<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements UpdateModelToNamedServiceNPDataSource<bool> {

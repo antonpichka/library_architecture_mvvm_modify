@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note_sorted/list_not
 import 'package:library_architecture_mvvm_modify_todo/model/note_sorted/note_sorted.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_stream_model/rx_stream_model.dart';
 
-class InitializedStreamNoteSorted
+final class InitializedStreamNoteSorted
     implements IInitializedStreamModel<NoteSorted, ListNoteSorted> {
   @override
   IStreamModel<NoteSorted, ListNoteSorted>? initializedStreamModel() {

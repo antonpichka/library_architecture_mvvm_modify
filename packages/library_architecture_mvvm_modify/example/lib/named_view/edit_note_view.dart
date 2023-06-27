@@ -9,12 +9,12 @@ import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/ti
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/edit_note_view_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
-class EditNoteView extends StatefulWidget {
+final class EditNoteView extends StatefulWidget {
   @override
   State<EditNoteView> createState() => _EditNoteViewState();
 }
 
-class _EditNoteViewState extends State<EditNoteView> {
+final class _EditNoteViewState extends State<EditNoteView> {
   final _lo = EditNoteViewListViewModel();
 
   @override

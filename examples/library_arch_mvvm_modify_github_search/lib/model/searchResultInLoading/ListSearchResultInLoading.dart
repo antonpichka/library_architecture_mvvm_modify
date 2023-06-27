@@ -11,7 +11,7 @@ enum EnumListSearchResultInLoadingForSearchBodyWidget {
   success
 }
 
-class ListSearchResultInLoading<T extends SearchResultInLoading>
+base class ListSearchResultInLoading<T extends SearchResultInLoading>
     extends BaseListModel<T> {
   bool? isLoading;
   bool? isEmptyValueFromTextInput;

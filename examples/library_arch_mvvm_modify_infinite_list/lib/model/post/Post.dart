@@ -1,6 +1,6 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class Post extends BaseModel {
+base class Post extends BaseModel {
   static const String constParameterId = "id";
   static const String constParameterTitle = "title";
   static const String constParameterBody = "body";

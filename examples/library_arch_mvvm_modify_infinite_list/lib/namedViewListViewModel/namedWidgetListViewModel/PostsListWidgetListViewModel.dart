@@ -4,7 +4,7 @@ import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewMod
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/bool_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
-class PostsListWidgetListViewModel {
+base class PostsListWidgetListViewModel {
   @protected
   final PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder
       postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder;

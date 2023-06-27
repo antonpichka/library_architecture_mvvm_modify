@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_model_to_named_service_parameter_named_fbds.dart';
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 
-class UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin
+final class UpdateUserToFirebaseAuthServiceParameterLoginFBDSUsingInsertParameterRegistrationAndUpdateParameterLogin
     extends UpdateModelToNamedServiceParameterNamedFBDS<bool, Login, Object> {
   static const String constIsNotHasMatchParameterEmail =
       "isNotHasMatchParameterEmail";

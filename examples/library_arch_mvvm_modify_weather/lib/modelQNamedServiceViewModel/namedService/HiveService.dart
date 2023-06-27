@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnitsAdapter.dart';
 
-class HiveService {
+final class HiveService {
   static Box? _boxSettings;
   static Box? _boxWeather;
 

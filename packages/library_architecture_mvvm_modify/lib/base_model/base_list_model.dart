@@ -10,7 +10,7 @@ import 'package:meta/meta.dart';
 /// There is "ExceptionController", in case of an error from the DataSource method,
 /// which is in "ModelQNamedServiceViewModel", you do not need to write additional code for the exception,
 /// since "BaseListModel" can contain both success and exception
-abstract class BaseListModel<T extends BaseModel> {
+abstract base class BaseListModel<T extends BaseModel> {
   /// the list of models
   List<T>? listModel;
 

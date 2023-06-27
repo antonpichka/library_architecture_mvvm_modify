@@ -4,12 +4,12 @@ import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/st
 import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/stats_completed_note_widget.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/stats_view_list_view_model.dart';
 
-class StatsView extends StatefulWidget {
+final class StatsView extends StatefulWidget {
   @override
   State<StatsView> createState() => _StatsViewState();
 }
 
-class _StatsViewState extends State<StatsView> {
+final class _StatsViewState extends State<StatsView> {
   final _lo = StatsViewListViewModel();
 
   @override

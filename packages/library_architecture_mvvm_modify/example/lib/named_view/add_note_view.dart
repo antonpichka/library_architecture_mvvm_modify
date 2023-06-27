@@ -6,12 +6,12 @@ import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/no
 import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/title_text_form_field_widget.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/add_note_view_list_view_model.dart';
 
-class AddNoteView extends StatefulWidget {
+final class AddNoteView extends StatefulWidget {
   @override
   State<AddNoteView> createState() => _AddNoteViewState();
 }
 
-class _AddNoteViewState extends State<AddNoteView> {
+final class _AddNoteViewState extends State<AddNoteView> {
   final _lo = AddNoteViewListViewModel();
 
   @override

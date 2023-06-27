@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/wea
 import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/weatherSettingsQThereIsStateViewModel/WeatherSettingsQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
-class FloatingActionButtonSearchWidgetListViewModel {
+base class FloatingActionButtonSearchWidgetListViewModel {
   @protected
   final WeatherIsLoadingQThereIsStateViewModel
       weatherIsLoadingQThereIsStateViewModel;

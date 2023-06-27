@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IntTextWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 
-class IntTextWidget extends StatelessWidget {
+base class IntTextWidget extends StatelessWidget {
   @protected
   final IntTextWidgetListViewModel lo;
 
@@ -32,7 +32,7 @@ class IntTextWidget extends StatelessWidget {
   Widget buildSuccess(BuildContext context, Int? int) {
     return Text(
       "${int?.getOneParametersNamedForNamed}",
-      style: Theme.of(context).textTheme.headline4,
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 }

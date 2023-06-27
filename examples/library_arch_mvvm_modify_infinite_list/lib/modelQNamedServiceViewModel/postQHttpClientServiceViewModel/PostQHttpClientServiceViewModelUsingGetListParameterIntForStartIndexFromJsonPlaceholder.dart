@@ -10,10 +10,10 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 import 'package:meta/meta.dart';
 
-class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<T extends Post,Y extends ListPost<T>>
-    extends BaseModelQNamedServiceViewModel<T,Y>
-    implements GetListModelFromNamedServiceParameterNamedDataSource<Y,int>
-{
+base class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder<
+        T extends Post,
+        Y extends ListPost<T>> extends BaseModelQNamedServiceViewModel<T, Y>
+    implements GetListModelFromNamedServiceParameterNamedDataSource<Y, int> {
   @protected
   final httpClientService = HttpClientService();
 
@@ -27,22 +27,23 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
 
   @protected
   @override
-  Future<Y?> getListModelFromNamedServiceParameterNamedDS(int? parameter)
-  async {
+  Future<Y?> getListModelFromNamedServiceParameterNamedDS(
+      int? parameter) async {
     try {
-      final response = await httpClientService
-          .getHttpClient
-          ?.get(Uri.parse("https://jsonplaceholder.typicode.com/posts?_start=$parameter&_limit=20"))
+      final response = await httpClientService.getHttpClient
+          ?.get(Uri.parse(
+              "https://jsonplaceholder.typicode.com/posts?_start=$parameter&_limit=20"))
           .timeout(const Duration(seconds: 5));
-      if(response?.statusCode != 200) {
-        throw NetworkException.fromStatusCode(this,response!.statusCode);
+      if (response?.statusCode != 200) {
+        throw NetworkException.fromStatusCode(this, response!.statusCode);
       }
       final body = json.decode(response!.body) as List;
       return getListPostFromObject(body);
-    } on NetworkException catch(e) {
+    } on NetworkException catch (e) {
       return getListPostFromBaseException(e);
-    } catch(e) {
-      return getListPostFromBaseException(LocalException(this,EnumGuiltyForLocalException.device,e.toString()));
+    } catch (e) {
+      return getListPostFromBaseException(LocalException(
+          this, EnumGuiltyForLocalException.device, e.toString()));
     }
   }
 
@@ -50,7 +51,7 @@ class PostQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJs
   Y? getListPostFromObject(Object? object) {
     final list = object as List;
     final listPost = list.map((dynamic json) {
-      final map = json as Map<String,dynamic>;
+      final map = json as Map<String, dynamic>;
       return Post.fromMap(map);
     }).toList();
     return ListPost.success(listPost) as Y?;

@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_weather/modelQNamedServiceViewModel/set
 import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/settingsQThereIsStateViewModel/SettingsQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
-class ListTileTemperatureUnitsWidgetListViewModel {
+base class ListTileTemperatureUnitsWidgetListViewModel {
   @protected
   final SettingsQThereIsStateViewModel settingsQThereIsStateViewModel;
   @protected

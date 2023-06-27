@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify_todo/l10n/l10n.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note_sorted/note_sorted.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/notes_overview_filter_button_widget_list_view_model.dart';
 
-class NotesOverviewFilterButtonWidget extends StatelessWidget {
+base class NotesOverviewFilterButtonWidget extends StatelessWidget {
   @protected
   final NotesOverviewFilterButtonWidgetListViewModel lo;
 
@@ -19,7 +19,7 @@ class NotesOverviewFilterButtonWidget extends StatelessWidget {
           switch (
               noteSorted?.getEnumNoteSortedForNotesOverviewFilterButtonWidget) {
             case EnumNoteSortedForNotesOverviewFilterButtonWidget
-                .isEmptyListNote:
+                  .isEmptyListNote:
               return buildIsEmptyList(context, noteSorted);
             case EnumNoteSortedForNotesOverviewFilterButtonWidget.success:
               return buildSuccess(context, noteSorted);

@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify_todo/l10n/l10n.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/stats_active_note_widget_list_view_model.dart';
 
-class StatsActiveNoteWidget extends StatelessWidget {
+base class StatsActiveNoteWidget extends StatelessWidget {
   @protected
   final StatsActiveNoteWidgetListViewModel lo;
 
@@ -23,7 +23,7 @@ class StatsActiveNoteWidget extends StatelessWidget {
             title: Text(l10n.statsActiveTodoCountLabel),
             trailing: Text(
               '${ints?.getOneParametersNamedForNamed}',
-              style: textTheme.headline5,
+              style: textTheme.headlineSmall,
             ),
           );
         });

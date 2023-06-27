@@ -4,7 +4,8 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/list_note.dart'
 import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_stream_model/rx_stream_model.dart';
 
-class InitializedStreamNote implements IInitializedStreamModel<Note, ListNote> {
+final class InitializedStreamNote
+    implements IInitializedStreamModel<Note, ListNote> {
   @override
   IStreamModel<Note, ListNote>? initializedStreamModel() {
     return RXStreamModel<Note, ListNote>(

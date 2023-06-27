@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/NavigationRegistrationButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
-class NavigationRegistrationButtonWidget extends StatelessWidget {
+base class NavigationRegistrationButtonWidget extends StatelessWidget {
   @protected
   final NavigationRegistrationButtonWidgetListViewModel lo;
 

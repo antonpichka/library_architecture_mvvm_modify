@@ -8,7 +8,7 @@ import 'package:meta/meta.dart';
 
 /// This class is needed to manage the state of the model and streams,
 /// which also receives models and streams under its control from "ModelQNamedServiceViewModel"
-abstract class BaseModelQThereIsStateViewModel<T extends BaseModel,
+abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
     Y extends BaseListModel<T>> implements IDispose {
   final IStreamModel<T, Y>? _iStreamModel;
 

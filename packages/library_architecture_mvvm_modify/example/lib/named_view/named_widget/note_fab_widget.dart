@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify_todo/l10n/l10n.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/note_fab_widget_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
-class NoteFabWidget extends StatelessWidget {
+base class NoteFabWidget extends StatelessWidget {
   @protected
   final NoteFabWidgetListViewModel lo;
 

@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/strings_q_there_is_state_view_model.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class MainViewListViewModel extends BaseNamedViewListViewModel {
+final class MainViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _boolQThereIsStateViewModelForAntiSpam =
       BoolQThereIsStateViewModel(InitializedStreamBool());

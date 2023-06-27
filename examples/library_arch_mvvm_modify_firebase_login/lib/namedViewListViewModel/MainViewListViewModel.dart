@@ -5,7 +5,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/modelQNamedServiceViewMo
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/userQThereIsStateViewModel/UserQThereIsStateViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class MainViewListViewModel extends BaseNamedViewListViewModel {
+final class MainViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _userQThereIsStateViewModel =
       UserQThereIsStateViewModel(InitializedStreamUser());

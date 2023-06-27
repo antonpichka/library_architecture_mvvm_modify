@@ -1,1 +1,1 @@
-class CircleAvatarWidgetListViewModel {}
+base class CircleAvatarWidgetListViewModel {}

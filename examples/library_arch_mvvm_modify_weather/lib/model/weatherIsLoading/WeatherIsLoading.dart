@@ -12,7 +12,7 @@ enum EnumWeatherIsLoadingForWeatherWidget {
   success
 }
 
-class WeatherIsLoading extends BaseModel {
+base class WeatherIsLoading extends BaseModel {
   bool? isLoading;
   TemperatureUnits? temperatureUnits;
   Weather? weather;

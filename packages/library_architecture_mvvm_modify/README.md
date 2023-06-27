@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/logo_library_architecture_mvvm_modify.png" alt="Logo Library Architecture MVVM Modify"/>
+<img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/logo_library_architecture_mvvm_modify.png" alt="Logo Library Architecture MVVM Modify"/>
 </p>
 
 ---
@@ -9,47 +9,47 @@
 The library is implemented according to the principles of SOLID, and is an example of a clean architecture
 
 <p align="center"> 
-<img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
+<img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/library_architecture_mvvm_modify.png" alt="Library Architecture MVVM Modify"/>
 </p>
 
 ## Examples
 
 Examples taken for processing from library <a href="https://github.com/felangel/bloc#examples">Bloc</a>.
 
-In the first five examples (<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_github_search">Github Search</a>,<a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_weather">Weather</a>), the file and directory names are all uppercase, but this is not correct, as there are filesystems that are case sensitive, and therefore it is necessary to create .dart files only with lowercase
+In the first five examples (<a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>,<a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>,<a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>,<a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_github_search">Github Search</a>,<a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_weather">Weather</a>), the file and directory names are all uppercase, but this is not correct, as there are filesystems that are case sensitive, and therefore it is necessary to create .dart files only with lowercase
 
-Applications <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/packages/library_architecture_mvvm_modify/example">Todo</a>, program files and directories are written in lowercase, and is also the main example
+Applications <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/packages/library_architecture_mvvm_modify/example">Todo</a>, program files and directories are written in lowercase, and is also the main example
 
 <div style="text-align: center">
     <table>
         <tr>
             <td style="text-align: center">
-                <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/counter.gif" width="200"/>
+                <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/counter.gif" width="200"/>
             </td>            
             <td style="text-align: center">
-                <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/infinite_list.gif" width="200"/>
+                <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/infinite_list.gif" width="200"/>
             </td>
             <td style="text-align: center">
-                <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/firebase_login.gif" width="200"/>
+                <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/firebase_login.gif" width="200"/>
             </td>
         </tr>
         <tr>
             <td style="text-align: center">
-               <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/github_search.gif" width="200"/>
+               <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/github_search.gif" width="200"/>
             </td>
             <td style="text-align: center">
-               <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/weather.gif" width="200"/>
+               <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/weather.gif" width="200"/>
             </td>
             <td style="text-align: center">
-               <img src="https://raw.githubusercontent.com/JacobOdd/library_architecture_mvvm_modify/main/assets/todo.gif" width="200"/>
+               <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/todo.gif" width="200"/>
             </td>
         </tr>
     </table>
 </div>
 
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_github_search">Github Search</a>
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_weather">Weather</a>
-- <a href="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/packages/library_architecture_mvvm_modify/example">Todo</a>
+- <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_counter">Counter</a>
+- <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_infinite_list">Infinite List</a>
+- <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_firebase_login">Firebase Login</a>
+- <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_github_search">Github Search</a>
+- <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/examples/library_arch_mvvm_modify_weather">Weather</a>
+- <a href="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/packages/library_architecture_mvvm_modify/example">Todo</a>

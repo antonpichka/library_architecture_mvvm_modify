@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/ListSettings.dar
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/base_model_q_there_is_state_view_model.dart';
 
-class SettingsQThereIsStateViewModel<T extends Settings,
+base class SettingsQThereIsStateViewModel<T extends Settings,
     Y extends ListSettings<T>> extends BaseModelQThereIsStateViewModel<T, Y> {
   SettingsQThereIsStateViewModel(super.iInitializedStreamModel);
 

@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
 enum EmailValidationError { invalid }
 
-class Email extends FormzInput<String, EmailValidationError> {
+base class Email extends FormzInput<String, EmailValidationError> {
   /// {@macro email}
   const Email.pure() : super.pure('');
 

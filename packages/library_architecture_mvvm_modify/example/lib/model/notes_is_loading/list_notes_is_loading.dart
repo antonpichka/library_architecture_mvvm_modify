@@ -4,7 +4,8 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/notes_is_loading/notes_is_loading.dart';
 import 'package:meta/meta.dart';
 
-class ListNotesIsLoading<T extends NotesIsLoading> extends BaseListModel<T> {
+base class ListNotesIsLoading<T extends NotesIsLoading>
+    extends BaseListModel<T> {
   ListNotesIsLoading.success(super.listModel) : super.success();
   ListNotesIsLoading.exception(super.exception) : super.exception();
 

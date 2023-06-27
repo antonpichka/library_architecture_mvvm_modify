@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSearchWidgetListViewModel.dart';
 
-class IconButtonSearchWidget extends StatelessWidget {
+base class IconButtonSearchWidget extends StatelessWidget {
   @protected
   final IconButtonSearchWidgetListViewModel lo;
 

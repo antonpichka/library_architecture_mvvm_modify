@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/GoogleButtonWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
-class GoogleButtonWidget extends StatelessWidget {
+base class GoogleButtonWidget extends StatelessWidget {
   @protected
   final GoogleButtonWidgetListViewModel lo;
 

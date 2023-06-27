@@ -1,6 +1,6 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 
-class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
+final class SignUpAndLogInWithEmailAndPasswordAndGoogleFailureException
     extends BaseException {
   final String code;
   final String message;

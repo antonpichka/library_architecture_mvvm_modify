@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/namedWidgetListViewModel/IncrementFABWidgetListViewModel.dart';
 
-class IncrementFABWidget extends StatelessWidget {
+base class IncrementFABWidget extends StatelessWidget {
   @protected
   final IncrementFABWidgetListViewModel lo;
 

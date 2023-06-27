@@ -1,6 +1,6 @@
 import 'package:library_arch_mvvm_modify_github_search/utility/GithubCache.dart';
 
-class GithubCacheService {
+final class GithubCacheService {
   static GithubCache? _githubCache;
 
   GithubCache? get getGithubCache {

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class CustomTimer extends BaseModel {
+base class CustomTimer extends BaseModel {
   Timer? timer;
 
   CustomTimer.success(this.timer) : super.success("");

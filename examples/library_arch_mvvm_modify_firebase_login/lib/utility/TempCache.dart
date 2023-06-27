@@ -1,4 +1,4 @@
-class TempCache {
+final class TempCache {
   final Map<String, Object?> _mapStringAndObject;
 
   TempCache() : _mapStringAndObject = <String, Object>{};

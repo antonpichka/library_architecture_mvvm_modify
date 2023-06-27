@@ -1,1 +1,1 @@
-class UserExceptionTextWidgetListViewModel {}
+base class UserExceptionTextWidgetListViewModel {}

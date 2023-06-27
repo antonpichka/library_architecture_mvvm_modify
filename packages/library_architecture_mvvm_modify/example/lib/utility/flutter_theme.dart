@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FlutterTheme {
+final class FlutterTheme {
   static ThemeData get light {
     return ThemeData(
       appBarTheme: const AppBarTheme(

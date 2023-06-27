@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/Pass
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
-class PasswordInputWidgetListViewModel {
+base class PasswordInputWidgetListViewModel {
   @protected
   final PasswordInputQThereIsStateViewModel passwordInputQThereIsStateViewModel;
 

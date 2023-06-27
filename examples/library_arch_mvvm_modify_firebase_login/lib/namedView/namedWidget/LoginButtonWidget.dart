@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/n
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/bool.dart';
 
-class LoginButtonWidget extends StatelessWidget {
+base class LoginButtonWidget extends StatelessWidget {
   @protected
   final LoginButtonWidgetListViewModel lo;
 

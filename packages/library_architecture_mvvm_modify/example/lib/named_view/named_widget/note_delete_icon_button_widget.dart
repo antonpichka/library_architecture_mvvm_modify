@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/note_delete_icon_button_widget_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
-class NoteDeleteIconButtonWidget extends StatelessWidget {
+base class NoteDeleteIconButtonWidget extends StatelessWidget {
   @protected
   final NoteDeleteIconButtonWidgetListViewModel lo;
 

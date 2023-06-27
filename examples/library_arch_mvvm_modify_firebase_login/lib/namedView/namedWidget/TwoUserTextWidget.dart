@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/TwoUserTextWidgetListViewModel.dart';
 
-class TwoUserTextWidget extends StatelessWidget {
+base class TwoUserTextWidget extends StatelessWidget {
   @protected
   final TwoUserTextWidgetListViewModel twoUserTextWidgetListViewModel;
   @protected
@@ -19,6 +19,6 @@ class TwoUserTextWidget extends StatelessWidget {
   @protected
   TextStyle? buildStyle(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return textTheme.headline5;
+    return textTheme.headlineSmall;
   }
 }

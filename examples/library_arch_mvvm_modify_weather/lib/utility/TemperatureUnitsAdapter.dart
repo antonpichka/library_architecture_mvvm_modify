@@ -1,7 +1,7 @@
 import 'package:hive_flutter/adapters.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 
-class TemperatureUnitsAdapter extends TypeAdapter<TemperatureUnits> {
+final class TemperatureUnitsAdapter extends TypeAdapter<TemperatureUnits> {
   @override
   final typeId = 1;
 

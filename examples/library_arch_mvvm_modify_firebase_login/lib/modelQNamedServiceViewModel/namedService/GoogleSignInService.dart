@@ -1,6 +1,6 @@
 import 'package:google_sign_in/google_sign_in.dart';
 
-class GoogleSignInService {
+final class GoogleSignInService {
   static GoogleSignIn? _googleSignIn;
 
   GoogleSignIn? get getGoogleSignIn {

@@ -16,7 +16,7 @@ import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/notes_overview_filter_button_widget_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/notes_overview_options_button_widget_list_view_model.dart';
 
-class NotesOverviewViewListViewModel extends BaseNamedViewListViewModel {
+final class NotesOverviewViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _noteQThereIsStateViewModel =
       NoteQThereIsStateViewModel(InitializedStreamNote());

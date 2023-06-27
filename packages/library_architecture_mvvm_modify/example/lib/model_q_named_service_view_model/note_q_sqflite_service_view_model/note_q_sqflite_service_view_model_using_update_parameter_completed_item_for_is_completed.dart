@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view
 import 'package:library_architecture_mvvm_modify_todo/utility/completed_item.dart';
 import 'package:meta/meta.dart';
 
-class NoteQSqfliteServiceViewModelUsingUpdateParameterCompletedItemForIsCompleted<
+base class NoteQSqfliteServiceViewModelUsingUpdateParameterCompletedItemForIsCompleted<
         T extends Note,
         Y extends ListNote<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements

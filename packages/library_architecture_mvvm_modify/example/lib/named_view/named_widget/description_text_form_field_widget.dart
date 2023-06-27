@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_model/strings.dart';
 import 'package:library_architecture_mvvm_modify_todo/l10n/l10n.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/description_text_form_field_widget_list_view_model.dart';
 
-class DescriptionTextFormFieldWidget extends StatelessWidget {
+base class DescriptionTextFormFieldWidget extends StatelessWidget {
   @protected
   final DescriptionTextFormFieldWidgetListViewModel lo;
 

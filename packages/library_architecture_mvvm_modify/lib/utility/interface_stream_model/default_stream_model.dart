@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 /// An example of the implementation of the "IStreamModel" class, named DefaultStreamModel
-class DefaultStreamModel<T extends BaseModel, Y extends BaseListModel<T>>
+final class DefaultStreamModel<T extends BaseModel, Y extends BaseListModel<T>>
     implements IStreamModel<T, Y> {
   final StreamController<T>? _streamControllerForModel;
   final StreamController<Y>? _streamControllerForListModel;

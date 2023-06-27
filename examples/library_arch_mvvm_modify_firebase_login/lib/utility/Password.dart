@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/utility/Utility.dart';
 
 enum PasswordValidationError { invalid }
 
-class Password extends FormzInput<String, PasswordValidationError> {
+base class Password extends FormzInput<String, PasswordValidationError> {
   /// {@macro password}
   const Password.pure() : super.pure('');
 

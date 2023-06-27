@@ -1,7 +1,7 @@
 import 'package:library_arch_mvvm_modify_github_search/model/githubUser/GithubUser.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class SearchResult extends BaseModel {
+base class SearchResult extends BaseModel {
   static const String constParameterFullName = "full_name";
   static const String constParameterHtmlUrl = "html_url";
   static const String constParameterGithubUser = "owner";

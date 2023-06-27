@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 enum EnumGuiltyForLocalException { developer, device, user }
 
 /// An example of the extends of the "BaseException" class, named LocalException
-class LocalException extends BaseException {
+final class LocalException extends BaseException {
   final EnumGuiltyForLocalException enumGuiltyForLocalException;
   final String message;
 

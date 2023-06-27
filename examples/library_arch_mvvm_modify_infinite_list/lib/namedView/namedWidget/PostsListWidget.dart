@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_infinite_list/model/post/ListPost.dart'
 import 'package:library_arch_mvvm_modify_infinite_list/model/post/Post.dart';
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListWidgetListViewModel.dart';
 
-class PostsListWidget extends StatefulWidget {
+base class PostsListWidget extends StatefulWidget {
   final PostsListWidgetListViewModel lo;
 
   const PostsListWidget(this.lo);
@@ -12,7 +12,7 @@ class PostsListWidget extends StatefulWidget {
   State<PostsListWidget> createState() => PostsListWidgetState();
 }
 
-class PostsListWidgetState extends State<PostsListWidget> {
+base class PostsListWidgetState extends State<PostsListWidget> {
   @protected
   final scrollController = ScrollController();
 
@@ -86,7 +86,7 @@ class PostsListWidgetState extends State<PostsListWidget> {
     return Material(
       child: ListTile(
         leading: Text(itemPost?.getOneParametersNamedForPostsListWidget ?? "",
-            style: textTheme.caption),
+            style: textTheme.bodySmall),
         title: Text(itemPost?.getTwoParametersNamedForPostsListWidget ?? ""),
         isThreeLine: true,
         subtitle:

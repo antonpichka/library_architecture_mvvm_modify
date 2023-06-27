@@ -6,7 +6,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_view_model/strings_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
-class SearchBarWidgetListViewModel {
+base class SearchBarWidgetListViewModel {
   @protected
   final SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub
       searchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub;

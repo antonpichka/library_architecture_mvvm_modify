@@ -8,12 +8,12 @@ import 'package:library_arch_mvvm_modify_weather/namedView/SettingsView.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/AppViewListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class AppView extends StatefulWidget {
+final class AppView extends StatefulWidget {
   @override
   State<AppView> createState() => _AppViewState();
 }
 
-class _AppViewState extends State<AppView> {
+final class _AppViewState extends State<AppView> {
   final _lo = AppViewListViewModel();
 
   @override
@@ -43,7 +43,7 @@ class _AppViewState extends State<AppView> {
                   titleTextStyle:
                       GoogleFonts.rajdhaniTextTheme(Theme.of(context).textTheme)
                           .apply(bodyColor: Colors.white)
-                          .headline6,
+                          .titleLarge,
                 ),
               ),
               initialRoute: "/",

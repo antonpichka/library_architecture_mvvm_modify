@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 /// An example of the implementation of the "IInitializedStreamModel" class, for the Double model
-class InitializedStreamDouble
+final class InitializedStreamDouble
     implements IInitializedStreamModel<Double, ListDouble> {
   @override
   IStreamModel<Double, ListDouble>? initializedStreamModel() {

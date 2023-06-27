@@ -6,7 +6,7 @@ enum ConfirmedPasswordValidationError {
   invalid
 }
 
-class ConfirmedPassword
+base class ConfirmedPassword
     extends FormzInput<String, ConfirmedPasswordValidationError> {
   /// The original password.
   final String password;

@@ -2,7 +2,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify_todo/model/note/list_note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 
-class NoteQThereIsStateViewModel<T extends Note, Y extends ListNote<T>>
+base class NoteQThereIsStateViewModel<T extends Note, Y extends ListNote<T>>
     extends BaseModelQThereIsStateViewModel<T, Y> {
   NoteQThereIsStateViewModel(super.iInitializedStreamModel);
 

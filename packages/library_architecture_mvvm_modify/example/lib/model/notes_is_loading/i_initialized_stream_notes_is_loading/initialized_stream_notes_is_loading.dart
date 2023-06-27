@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/notes_is_loading/lis
 import 'package:library_architecture_mvvm_modify_todo/model/notes_is_loading/notes_is_loading.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_stream_model/rx_stream_model.dart';
 
-class InitializedStreamNotesIsLoading
+final class InitializedStreamNotesIsLoading
     implements IInitializedStreamModel<NotesIsLoading, ListNotesIsLoading> {
   @override
   IStreamModel<NotesIsLoading, ListNotesIsLoading>? initializedStreamModel() {

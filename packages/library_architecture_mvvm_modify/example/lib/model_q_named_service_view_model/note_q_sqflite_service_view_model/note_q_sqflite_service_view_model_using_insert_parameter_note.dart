@@ -9,7 +9,7 @@ import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view
 import 'package:meta/meta.dart';
 import 'package:sqflite/sqflite.dart';
 
-class NoteQSqfliteServiceViewModelUsingInsertParameterNote<T extends Note,
+base class NoteQSqfliteServiceViewModelUsingInsertParameterNote<T extends Note,
         Y extends ListNote<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements InsertModelToNamedServiceParameterNamedDataSource<int, T> {
   @protected

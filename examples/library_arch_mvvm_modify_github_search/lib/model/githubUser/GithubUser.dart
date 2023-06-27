@@ -1,6 +1,6 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class GithubUser extends BaseModel {
+base class GithubUser extends BaseModel {
   static const String constParameterLogin = "login";
   static const String constParameterAvatarUrl = "avatar_url";
 

@@ -10,8 +10,8 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exc
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:meta/meta.dart';
 
-class WeatherSettingsQHiveServiceViewModelUsingGetNP<T extends WeatherSettings,
-        Y extends ListWeatherSettings<T>>
+base class WeatherSettingsQHiveServiceViewModelUsingGetNP<
+        T extends WeatherSettings, Y extends ListWeatherSettings<T>>
     extends BaseModelQNamedServiceViewModel<T, Y>
     implements GetModelFromNamedServiceNPDataSource<T> {
   @protected

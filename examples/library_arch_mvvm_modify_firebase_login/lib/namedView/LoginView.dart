@@ -6,12 +6,12 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/Pa
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/NavigationRegistrationButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoginViewListViewModel.dart';
 
-class LoginView extends StatefulWidget {
+final class LoginView extends StatefulWidget {
   @override
   State<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+final class _LoginViewState extends State<LoginView> {
   final _lo = LoginViewListViewModel();
 
   @override

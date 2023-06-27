@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_model/interface_initialize
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/default_stream_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
-class InitializedStreamPostFirstBranchOne
+final class InitializedStreamPostFirstBranchOne
     implements
         IInitializedStreamModel<PostFirstBranchOne, ListPostFirstBranchOne> {
   @override

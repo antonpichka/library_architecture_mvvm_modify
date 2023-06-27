@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/note_edit_fab_widget_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/title_text_form_field_widget_list_view_model.dart';
 
-class EditNoteViewListViewModel extends BaseNamedViewListViewModel {
+final class EditNoteViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _stringsQThereIsStateViewModelForTitle =
       StringsQThereIsStateViewModel(InitializedStreamStrings());

@@ -9,7 +9,7 @@ enum EnumNoteSortedForNotesOverviewFilterButtonWidget {
 
 enum EnumNoteSorted { all, isCompleted, isNotCompleted }
 
-class NoteSorted extends BaseModel {
+base class NoteSorted extends BaseModel {
   EnumNoteSorted? enumNoteSorted;
   bool? isEmptyListNote;
 

@@ -10,7 +10,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 part 'Weather.g.dart';
 
 @JsonSerializable(ignoreUnannotated: true)
-class Weather extends BaseModel {
+base class Weather extends BaseModel {
   static const String constWeatherQHiveService = "__weather_q_hive_service__";
   static const String constParameterLocation = "location";
   static const String constParameterWeatherCode = "weathercode";

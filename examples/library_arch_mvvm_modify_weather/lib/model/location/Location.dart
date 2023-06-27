@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 part 'Location.g.dart';
 
 @JsonSerializable(ignoreUnannotated: true)
-class Location extends BaseModel {
+base class Location extends BaseModel {
   static const String constParameterId = "id";
   static const String constParameterName = "name";
   static const String constParameterLatitude = "latitude";

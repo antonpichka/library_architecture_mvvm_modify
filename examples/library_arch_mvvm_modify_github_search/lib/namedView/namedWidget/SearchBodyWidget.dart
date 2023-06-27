@@ -4,7 +4,7 @@ import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoadi
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBodyWidgetListViewModel.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SearchBodyWidget extends StatefulWidget {
+base class SearchBodyWidget extends StatefulWidget {
   final SearchBodyWidgetListViewModel lo;
 
   const SearchBodyWidget(this.lo);
@@ -13,7 +13,7 @@ class SearchBodyWidget extends StatefulWidget {
   State<SearchBodyWidget> createState() => SearchBodyWidgetState();
 }
 
-class SearchBodyWidgetState extends State<SearchBodyWidget> {
+base class SearchBodyWidgetState extends State<SearchBodyWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ListSearchResultInLoading?>(
@@ -28,7 +28,7 @@ class SearchBodyWidgetState extends State<SearchBodyWidget> {
           case EnumListSearchResultInLoadingForSearchBodyWidget.error:
             return buildError(list);
           case EnumListSearchResultInLoadingForSearchBodyWidget
-              .isEmptyValueFromTextInput:
+                .isEmptyValueFromTextInput:
             return buildIsEmptyValueFromTextInput(list);
           case EnumListSearchResultInLoadingForSearchBodyWidget.isLoading:
             return buildIsLoading(list);

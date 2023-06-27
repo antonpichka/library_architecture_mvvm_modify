@@ -6,7 +6,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/notes_is_loading/not
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/notes_list_view_widget_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
-class NotesListViewWidget extends StatelessWidget {
+base class NotesListViewWidget extends StatelessWidget {
   @protected
   final NotesListViewWidgetListViewModel lo;
 
@@ -45,7 +45,7 @@ class NotesListViewWidget extends StatelessWidget {
     return Center(
       child: Text(
         notesIsLoading?.getOneParametersNamedForNotesListViewWidget ?? "",
-        style: Theme.of(context).textTheme.caption,
+        style: Theme.of(context).textTheme.bodySmall,
       ),
     );
   }
@@ -56,7 +56,7 @@ class NotesListViewWidget extends StatelessWidget {
     return Center(
       child: Text(
         l10n.todosOverviewEmptyText,
-        style: Theme.of(context).textTheme.caption,
+        style: Theme.of(context).textTheme.bodySmall,
       ),
     );
   }
@@ -78,7 +78,7 @@ class NotesListViewWidget extends StatelessWidget {
   Widget buildItemForSuccess(
       BuildContext context, NotesIsLoading? notesIsLoading, Note? note) {
     final theme = Theme.of(context);
-    final captionColor = theme.textTheme.caption?.color;
+    final captionColor = theme.textTheme.bodySmall?.color;
     return Dismissible(
       key: Key('noteListTile_dismissible_${note?.uuId}'),
       onDismissed: (_) {

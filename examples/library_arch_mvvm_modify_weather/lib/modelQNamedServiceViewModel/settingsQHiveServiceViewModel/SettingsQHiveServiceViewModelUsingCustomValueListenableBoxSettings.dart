@@ -7,7 +7,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 // ignore: unnecessary_import
 import 'package:meta/meta.dart';
 
-class SettingsQHiveServiceViewModelUsingCustomValueListenableBoxSettings<
+base class SettingsQHiveServiceViewModelUsingCustomValueListenableBoxSettings<
     T extends Settings,
     Y extends ListSettings<T>> extends BaseModelQNamedServiceViewModel<T, Y> {
   @protected

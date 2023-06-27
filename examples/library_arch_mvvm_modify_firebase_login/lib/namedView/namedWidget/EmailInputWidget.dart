@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailInput.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/EmailInputWidgetListViewModel.dart';
 
-class EmailInputWidget extends StatelessWidget {
+base class EmailInputWidget extends StatelessWidget {
   @protected
   final EmailInputWidgetListViewModel lo;
 

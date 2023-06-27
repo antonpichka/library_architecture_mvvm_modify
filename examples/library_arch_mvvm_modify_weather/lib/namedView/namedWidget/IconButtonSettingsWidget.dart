@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/IconButtonSettingsWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class IconButtonSettingsWidget extends StatelessWidget {
+base class IconButtonSettingsWidget extends StatelessWidget {
   @protected
   final IconButtonSettingsWidgetListViewModel lo;
 

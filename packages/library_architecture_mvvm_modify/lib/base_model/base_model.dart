@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/utility/exception_controller.da
 /// This class is the base class of the model.
 /// There is "ExceptionController", in case of an error from the DataSource method, which is in "ModelQNamedServiceViewModel",
 /// you do not need to write additional code for the exception, since "BaseListModel" can contain both success and exception
-abstract class BaseModel {
+abstract base class BaseModel {
   /// A unique identifier to indicate the uniqueness of the model,
   /// and is also used in the methods of the "BaseListModel" class
   String? uniqueId;

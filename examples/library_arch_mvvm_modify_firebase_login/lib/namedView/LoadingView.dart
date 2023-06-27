@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/LoadingViewListViewModel.dart';
 
-class LoadingView extends StatefulWidget {
+final class LoadingView extends StatefulWidget {
   @override
   State<LoadingView> createState() => _LoadingViewState();
 }
 
-class _LoadingViewState extends State<LoadingView> {
+final class _LoadingViewState extends State<LoadingView> {
   final _lo = LoadingViewListViewModel();
 
   @override

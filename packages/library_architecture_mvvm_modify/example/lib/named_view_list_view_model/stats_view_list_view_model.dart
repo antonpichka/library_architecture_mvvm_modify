@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/stats_active_note_widget_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/stats_completed_note_widget_list_view_model.dart';
 
-class StatsViewListViewModel extends BaseNamedViewListViewModel {
+final class StatsViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _intQThereIsStateViewModelForIteratorNoteWhereIsCompletedEqualsTrue =
       IntQThereIsStateViewModel(InitializedStreamInt());

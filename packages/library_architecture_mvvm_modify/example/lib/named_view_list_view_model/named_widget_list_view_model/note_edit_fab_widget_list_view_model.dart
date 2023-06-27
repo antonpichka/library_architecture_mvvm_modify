@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view
 import 'package:library_architecture_mvvm_modify_todo/model_q_there_is_state_view_model/note_q_there_is_state_view_model/note_q_there_is_state_view_model.dart';
 import 'package:meta/meta.dart';
 
-class NoteEditFabWidgetListViewModel {
+base class NoteEditFabWidgetListViewModel {
   @protected
   final StringsQThereIsStateViewModel stringsQThereIsStateViewModelForTitle;
   @protected

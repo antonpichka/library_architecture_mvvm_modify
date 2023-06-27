@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/FloatingActionButtonSearchWidgetListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class FloatingActionButtonSearchWidget extends StatefulWidget {
+base class FloatingActionButtonSearchWidget extends StatefulWidget {
   final FloatingActionButtonSearchWidgetListViewModel lo;
 
   const FloatingActionButtonSearchWidget(this.lo);
@@ -12,7 +12,7 @@ class FloatingActionButtonSearchWidget extends StatefulWidget {
       FloatingActionButtonSearchWidgetState();
 }
 
-class FloatingActionButtonSearchWidgetState
+base class FloatingActionButtonSearchWidgetState
     extends State<FloatingActionButtonSearchWidget> {
   @override
   Widget build(BuildContext context) {

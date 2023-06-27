@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/model/user/User.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/CircleAvatarWidgetListViewModel.dart';
 
-class CircleAvatarWidget extends StatelessWidget {
+base class CircleAvatarWidget extends StatelessWidget {
   @protected
   final CircleAvatarWidgetListViewModel circleAvatarWidgetListViewModel;
   @protected

@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_github_search/model/searchResultInLoadi
 import 'package:library_arch_mvvm_modify_github_search/modelQThereIsStateViewModel/searchResultInLoadingQThereIsStateViewModel/SearchResultInLoadingQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
-class SearchBodyWidgetListViewModel {
+base class SearchBodyWidgetListViewModel {
   @protected
   final SearchResultInLoadingQThereIsStateViewModel
       searchResultInLoadingQThereIsStateViewModel;

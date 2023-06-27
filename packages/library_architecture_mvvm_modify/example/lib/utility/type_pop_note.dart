@@ -6,7 +6,7 @@ enum EnumTypePopNote {
   deletePopNote;
 }
 
-class TypePopNote {
+base class TypePopNote {
   final EnumTypePopNote enumTypePopNote;
   final Note note;
 

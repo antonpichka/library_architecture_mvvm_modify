@@ -6,7 +6,7 @@ import 'package:library_architecture_mvvm_modify_todo/named_view/main_view.dart'
 import 'package:library_architecture_mvvm_modify_todo/utility/flutter_theme.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
-class AppView extends StatelessWidget {
+final class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

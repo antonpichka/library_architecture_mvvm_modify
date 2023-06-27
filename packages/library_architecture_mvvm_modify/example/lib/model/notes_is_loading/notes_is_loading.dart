@@ -11,7 +11,7 @@ enum EnumNotesIsLoadingForNotesListViewWidget {
   success
 }
 
-class NotesIsLoading extends BaseModel {
+base class NotesIsLoading extends BaseModel {
   bool? isLoading;
   ListNote? listNote;
 

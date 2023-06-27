@@ -5,12 +5,12 @@ import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/no
 import 'package:library_architecture_mvvm_modify_todo/named_view/named_widget/notes_overview_options_button_widget.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/notes_overview_view_list_view_model.dart';
 
-class NotesOverviewView extends StatefulWidget {
+final class NotesOverviewView extends StatefulWidget {
   @override
   State<NotesOverviewView> createState() => _NotesOverviewViewState();
 }
 
-class _NotesOverviewViewState extends State<NotesOverviewView> {
+final class _NotesOverviewViewState extends State<NotesOverviewView> {
   final _lo = NotesOverviewViewListViewModel();
 
   @override

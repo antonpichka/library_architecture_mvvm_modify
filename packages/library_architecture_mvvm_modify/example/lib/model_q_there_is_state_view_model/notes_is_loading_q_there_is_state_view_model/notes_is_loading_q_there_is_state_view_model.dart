@@ -2,7 +2,7 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify_todo/model/notes_is_loading/list_notes_is_loading.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/notes_is_loading/notes_is_loading.dart';
 
-class NotesIsLoadingQThereIsStateViewModel<T extends NotesIsLoading,
+base class NotesIsLoadingQThereIsStateViewModel<T extends NotesIsLoading,
         Y extends ListNotesIsLoading<T>>
     extends BaseModelQThereIsStateViewModel<T, Y> {
   NotesIsLoadingQThereIsStateViewModel(super.iInitializedStreamModel);

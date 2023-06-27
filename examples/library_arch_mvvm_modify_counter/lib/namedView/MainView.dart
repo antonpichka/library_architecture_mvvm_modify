@@ -4,12 +4,12 @@ import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/Increment
 import 'package:library_arch_mvvm_modify_counter/namedView/namedWidget/IntTextWidget.dart';
 import 'package:library_arch_mvvm_modify_counter/namedViewListViewModel/MainViewListViewModel.dart';
 
-class MainView extends StatefulWidget {
+final class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState extends State<MainView> {
+final class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override

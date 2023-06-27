@@ -4,12 +4,12 @@ import 'package:library_arch_mvvm_modify_weather/namedView/namedWidget/ListTileT
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/SettingsViewListViewModel.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 
-class SettingsView extends StatefulWidget {
+final class SettingsView extends StatefulWidget {
   @override
   State<SettingsView> createState() => _SettingsViewState();
 }
 
-class _SettingsViewState extends State<SettingsView> {
+final class _SettingsViewState extends State<SettingsView> {
   final _lo = SettingsViewListViewModel();
 
   @override

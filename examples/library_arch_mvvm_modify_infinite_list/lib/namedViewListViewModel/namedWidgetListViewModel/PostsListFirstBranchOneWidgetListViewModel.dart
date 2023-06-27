@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_infinite_list/modelQThereIsStateViewMod
 import 'package:library_arch_mvvm_modify_infinite_list/namedViewListViewModel/namedWidgetListViewModel/PostsListWidgetListViewModel.dart';
 import 'package:meta/meta.dart';
 
-class PostsListFirstBranchOneWidgetListViewModel
+base class PostsListFirstBranchOneWidgetListViewModel
     extends PostsListWidgetListViewModel {
   PostsListFirstBranchOneWidgetListViewModel(
       super.postQHttpClientServiceViewModelUsingGetListParameterIntForStartIndexFromJsonPlaceholder,

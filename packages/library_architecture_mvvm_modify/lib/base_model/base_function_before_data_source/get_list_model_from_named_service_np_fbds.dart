@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 /// NP - no parameter (with such an SQL query (SELECT * FROM movies;)
 /// Using - is specified because it is also specified in the ModelQNamedServiceViewModel file name, and this binds fbds to this object, by file name.
 /// This is done so as not to get confused where and which fbds is used
-abstract class GetListModelFromNamedServiceNPFBDS<X extends BaseListModel,
+abstract base class GetListModelFromNamedServiceNPFBDS<X extends BaseListModel,
     C extends Object> {
   X? getListModelFromNamedServiceNP(C? parameterForFBDS);
 }

@@ -1,4 +1,4 @@
-class CompletedItem {
+base class CompletedItem {
   final String uuId;
   final bool isCompleted;
 

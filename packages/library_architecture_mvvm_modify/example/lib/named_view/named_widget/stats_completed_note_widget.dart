@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/base_model/int.dart';
 import 'package:library_architecture_mvvm_modify_todo/l10n/l10n.dart';
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/named_widget_list_view_model/stats_completed_note_widget_list_view_model.dart';
 
-class StatsCompletedNoteWidget extends StatelessWidget {
+base class StatsCompletedNoteWidget extends StatelessWidget {
   @protected
   final StatsCompletedNoteWidgetListViewModel lo;
 
@@ -23,7 +23,7 @@ class StatsCompletedNoteWidget extends StatelessWidget {
             title: Text(l10n.statsCompletedTodoCountLabel),
             trailing: Text(
               '${ints?.field}',
-              style: textTheme.headline5,
+              style: textTheme.headlineSmall,
             ),
           );
         });

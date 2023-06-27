@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 
-class InsertNoteToSqfliteServiceParameterNoteFBDSUsingInsertParameterNote<
+base class InsertNoteToSqfliteServiceParameterNoteFBDSUsingInsertParameterNote<
         T extends Note>
     extends InsertModelToNamedServiceParameterNamedFBDS<int, T, Object> {
   static const constIsEmptyByTrimParameterName =

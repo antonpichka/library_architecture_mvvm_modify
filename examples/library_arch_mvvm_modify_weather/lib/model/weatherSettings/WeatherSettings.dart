@@ -3,7 +3,7 @@ import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weather/Weather.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class WeatherSettings extends BaseModel {
+base class WeatherSettings extends BaseModel {
   Weather? weather;
   Settings? settings;
 

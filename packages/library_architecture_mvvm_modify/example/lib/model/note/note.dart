@@ -2,7 +2,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
-class Note extends BaseModel {
+base class Note extends BaseModel {
   static const String constParameterUuIdForSqflite = "uuId";
   static const String constParameterNameForSqflite = "name";
   static const String constParameterDescriptionForSqflite = "description";

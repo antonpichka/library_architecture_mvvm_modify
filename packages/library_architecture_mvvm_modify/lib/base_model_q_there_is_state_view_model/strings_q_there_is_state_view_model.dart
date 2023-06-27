@@ -4,8 +4,8 @@ import 'package:library_architecture_mvvm_modify/base_model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 
 /// An example of the extends of the "BaseModelQThereIsStateViewModel" class, named StringsQThereIsStateViewModel
-class StringsQThereIsStateViewModel<T extends Strings, Y extends ListStrings<T>>
-    extends BaseModelQThereIsStateViewModel<T, Y> {
+base class StringsQThereIsStateViewModel<T extends Strings,
+    Y extends ListStrings<T>> extends BaseModelQThereIsStateViewModel<T, Y> {
   StringsQThereIsStateViewModel(super.iInitializedStreamModel);
 
   /// The purpose of this method is to force IStreamModel to override your implementation and call your methods.

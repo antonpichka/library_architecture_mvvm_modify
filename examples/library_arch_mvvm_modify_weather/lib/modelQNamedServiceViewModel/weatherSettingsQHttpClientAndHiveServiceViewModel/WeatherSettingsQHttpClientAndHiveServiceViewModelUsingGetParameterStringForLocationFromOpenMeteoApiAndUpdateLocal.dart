@@ -14,7 +14,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 import 'package:meta/meta.dart';
 
-class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal<
+base class WeatherSettingsQHttpClientAndHiveServiceViewModelUsingGetParameterStringForLocationFromOpenMeteoApiAndUpdateLocal<
         T extends WeatherSettings, Y extends ListWeatherSettings<T>>
     extends BaseModelQNamedServiceViewModel<T, Y>
     implements GetModelFromNamedServiceParameterNamedDataSource<T, String> {

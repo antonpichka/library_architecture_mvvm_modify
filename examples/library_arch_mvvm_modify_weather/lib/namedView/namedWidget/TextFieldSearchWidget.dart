@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/TextFieldSearchWidgetListViewModel.dart';
 
-class TextFieldSearchWidget extends StatefulWidget {
+base class TextFieldSearchWidget extends StatefulWidget {
   final TextFieldSearchWidgetListViewModel lo;
 
   const TextFieldSearchWidget(this.lo);
@@ -10,7 +10,7 @@ class TextFieldSearchWidget extends StatefulWidget {
   State<TextFieldSearchWidget> createState() => TextFieldSearchWidgetState();
 }
 
-class TextFieldSearchWidgetState extends State<TextFieldSearchWidget> {
+base class TextFieldSearchWidgetState extends State<TextFieldSearchWidget> {
   @override
   void initState() {
     super.initState();

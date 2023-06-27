@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-class HttpClientService {
+final class HttpClientService {
   static http.Client? _httpClient;
 
   http.Client? get getHttpClient {

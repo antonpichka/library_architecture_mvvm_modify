@@ -1,3 +1,7 @@
+## 0.0.6
+
+- Migration to Dart version v3.0.0
+
 ## 0.0.5
 
 - Added 'Todo' example to 'example' folder

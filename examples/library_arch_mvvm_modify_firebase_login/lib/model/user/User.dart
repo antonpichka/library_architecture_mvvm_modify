@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 enum EnumUserForMainView { authenticated, unauthenticated, localException }
 
-class User extends BaseModel {
+base class User extends BaseModel {
   static const String constUserQTempCacheService =
       "__user_q_temp_cache_service__";
 

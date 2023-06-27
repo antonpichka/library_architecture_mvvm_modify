@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 
 enum EnumMainTab { todos, stats }
 
-class MainTab extends BaseModel {
+base class MainTab extends BaseModel {
   EnumMainTab? enumMainTab;
 
   MainTab.success(this.enumMainTab) : super.success("");

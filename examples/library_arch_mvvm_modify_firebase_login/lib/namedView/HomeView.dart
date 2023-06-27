@@ -6,7 +6,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/On
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/TwoUserTextWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/HomeViewListViewModel.dart';
 
-class HomeView extends StatefulWidget {
+final class HomeView extends StatefulWidget {
   final User? user;
 
   const HomeView(this.user);
@@ -15,7 +15,7 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+final class _HomeViewState extends State<HomeView> {
   final _lo = HomeViewListViewModel();
 
   @override

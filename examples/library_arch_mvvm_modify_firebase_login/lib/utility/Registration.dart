@@ -1,4 +1,4 @@
-class Registration {
+base class Registration {
   String email;
   String password;
 

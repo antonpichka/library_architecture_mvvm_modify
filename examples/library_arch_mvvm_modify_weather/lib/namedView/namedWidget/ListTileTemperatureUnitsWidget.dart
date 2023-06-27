@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/settings/Settings.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/ListTileTemperatureUnitsWidgetListViewModel.dart';
 
-class ListTileTemperatureUnitsWidget extends StatelessWidget {
+base class ListTileTemperatureUnitsWidget extends StatelessWidget {
   @protected
   final ListTileTemperatureUnitsWidgetListViewModel lo;
 

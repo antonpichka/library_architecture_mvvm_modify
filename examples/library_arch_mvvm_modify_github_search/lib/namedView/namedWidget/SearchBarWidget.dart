@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_github_search/namedViewListViewModel/namedWidgetListViewModel/SearchBarWidgetListViewModel.dart';
 
-class SearchBarWidget extends StatefulWidget {
+base class SearchBarWidget extends StatefulWidget {
   final SearchBarWidgetListViewModel lo;
 
   const SearchBarWidget(this.lo);
@@ -10,7 +10,7 @@ class SearchBarWidget extends StatefulWidget {
   State<SearchBarWidget> createState() => SearchBarWidgetState();
 }
 
-class SearchBarWidgetState extends State<SearchBarWidget> {
+base class SearchBarWidgetState extends State<SearchBarWidget> {
   @protected
   final textController = TextEditingController();
 

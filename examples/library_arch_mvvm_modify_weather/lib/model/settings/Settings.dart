@@ -4,7 +4,7 @@ import 'package:library_arch_mvvm_modify_weather/utility/TemperatureUnits.dart';
 import 'package:library_arch_mvvm_modify_weather/utility/Utility.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-class Settings extends BaseModel {
+base class Settings extends BaseModel {
   static const String constSettingsQHiveService = "__settings_q_hive_service__";
   static const String constParameterColor = "__color__";
   static const String constParameterTemperatureUnits = "__temperature_units__";

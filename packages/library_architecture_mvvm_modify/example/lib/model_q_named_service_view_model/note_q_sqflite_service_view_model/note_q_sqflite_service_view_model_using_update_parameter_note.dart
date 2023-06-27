@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view_model/named_service/sqflite_service.dart';
 import 'package:meta/meta.dart';
 
-class NoteQSqfliteServiceViewModelUsingUpdateParameterNote<T extends Note,
+base class NoteQSqfliteServiceViewModelUsingUpdateParameterNote<T extends Note,
         Y extends ListNote<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements UpdateModelToNamedServiceParameterNamedDataSource<int, T> {
   @protected

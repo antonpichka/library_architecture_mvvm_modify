@@ -41,7 +41,7 @@ import 'package:meta/meta.dart';
 /// check the data and calculate if necessary in (FBDS),
 /// also if there is a Stream in the Service,
 /// it can pass it for control to the "ModelQThereIsStateViewModel" class if it is necessary
-abstract class BaseModelQNamedServiceViewModel<T extends BaseModel,
+abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
     Y extends BaseListModel<T>> {
   ///   Example Using:
   ///

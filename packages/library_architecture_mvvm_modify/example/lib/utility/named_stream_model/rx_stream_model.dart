@@ -5,7 +5,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_model/i_stream_model.dart';
 import 'package:rxdart/rxdart.dart';
 
-class RXStreamModel<T extends BaseModel, Y extends BaseListModel<T>>
+final class RXStreamModel<T extends BaseModel, Y extends BaseListModel<T>>
     implements IStreamModel<T, Y> {
   final StreamController<T>? _streamControllerForModel;
   final StreamController<Y>? _streamControllerForListModel;

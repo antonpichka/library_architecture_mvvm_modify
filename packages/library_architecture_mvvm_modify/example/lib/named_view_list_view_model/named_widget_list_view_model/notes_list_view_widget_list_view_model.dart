@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify_todo/model_q_there_is_state_vie
 import 'package:library_architecture_mvvm_modify_todo/utility/completed_item.dart';
 import 'package:meta/meta.dart';
 
-class NotesListViewWidgetListViewModel {
+base class NotesListViewWidgetListViewModel {
   @protected
   final NoteQThereIsStateViewModel noteQThereIsStateViewModel;
   @protected

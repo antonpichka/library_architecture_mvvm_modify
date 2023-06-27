@@ -4,12 +4,12 @@ import 'package:library_architecture_mvvm_modify_todo/named_view/stats_view.dart
 import 'package:library_architecture_mvvm_modify_todo/named_view_list_view_model/main_view_list_view_model.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/utility.dart';
 
-class MainView extends StatefulWidget {
+final class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState extends State<MainView> {
+final class _MainViewState extends State<MainView> {
   final _lo = MainViewListViewModel();
 
   @override

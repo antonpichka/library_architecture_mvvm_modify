@@ -5,7 +5,7 @@ import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/wea
 import 'package:library_arch_mvvm_modify_weather/modelQThereIsStateViewModel/weatherSettingsQThereIsStateViewModel/WeatherSettingsQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
-class WeatherWidgetListViewModel {
+base class WeatherWidgetListViewModel {
   @protected
   final WeatherIsLoadingQThereIsStateViewModel
       weatherIsLoadingQThereIsStateViewModel;

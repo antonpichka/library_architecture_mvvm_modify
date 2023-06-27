@@ -11,7 +11,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/base_exception/network_exception.dart';
 import 'package:meta/meta.dart';
 
-class SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub<
+base class SearchResultQGithubCacheAndHttpClientServiceViewModelUsingGetListParameterStringForSearchFromApiGithub<
         T extends SearchResult, Y extends ListSearchResult<T>>
     extends BaseModelQNamedServiceViewModel<T, Y>
     implements GetListModelFromNamedServiceParameterNamedDataSource<Y, String> {

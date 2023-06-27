@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/main_tab/list_main_t
 import 'package:library_architecture_mvvm_modify_todo/model/main_tab/main_tab.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_stream_model/rx_stream_model.dart';
 
-class InitializedStreamMainTab
+final class InitializedStreamMainTab
     implements IInitializedStreamModel<MainTab, ListMainTab> {
   @override
   IStreamModel<MainTab, ListMainTab>? initializedStreamModel() {

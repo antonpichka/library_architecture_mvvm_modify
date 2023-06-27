@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/emailInput/EmailIn
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/emailInputQThereIsStateViewModel/EmailInputQThereIsStateViewModel.dart';
 import 'package:meta/meta.dart';
 
-class EmailInputWidgetListViewModel {
+base class EmailInputWidgetListViewModel {
   @protected
   final EmailInputQThereIsStateViewModel emailInputQThereIsStateViewModel;
 

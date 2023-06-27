@@ -3,7 +3,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model_q_named_service_view_model/note_q_sqflite_service_view_model/note_q_sqflite_service_view_model_using_insert_parameter_note.dart';
 import 'package:meta/meta.dart';
 
-class NoteFabWidgetListViewModel {
+base class NoteFabWidgetListViewModel {
   @protected
   final StringsQThereIsStateViewModel stringsQThereIsStateViewModelForTitle;
   @protected

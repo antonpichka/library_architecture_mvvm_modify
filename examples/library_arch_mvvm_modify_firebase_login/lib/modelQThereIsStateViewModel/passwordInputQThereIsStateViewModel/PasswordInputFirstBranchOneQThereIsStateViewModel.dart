@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/List
 import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/PasswordInputFirstBranchOne.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/modelQThereIsStateViewModel/passwordInputQThereIsStateViewModel/PasswordInputQThereIsStateViewModel.dart';
 
-class PasswordInputFirstBranchOneQThereIsStateViewModel<
+base class PasswordInputFirstBranchOneQThereIsStateViewModel<
         T extends PasswordInputFirstBranchOne,
         Y extends ListPasswordInputFirstBranchOne<T>>
     extends PasswordInputQThereIsStateViewModel<T, Y> {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_weather/model/weatherIsLoading/WeatherIsLoading.dart';
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/WeatherWidgetListViewModel.dart';
 
-class WeatherWidget extends StatefulWidget {
+base class WeatherWidget extends StatefulWidget {
   final WeatherWidgetListViewModel lo;
 
   const WeatherWidget(this.lo);
@@ -11,7 +11,7 @@ class WeatherWidget extends StatefulWidget {
   State<WeatherWidget> createState() => WeatherWidgetState();
 }
 
-class WeatherWidgetState extends State<WeatherWidget> {
+base class WeatherWidgetState extends State<WeatherWidget> {
   @override
   void initState() {
     super.initState();
@@ -57,7 +57,7 @@ class WeatherWidgetState extends State<WeatherWidget> {
         const Text('⛅', style: TextStyle(fontSize: 64)),
         Text(
           'Loading Weather',
-          style: theme.textTheme.headline5,
+          style: theme.textTheme.headlineSmall,
         ),
         const Padding(
           padding: EdgeInsets.all(16),
@@ -77,7 +77,7 @@ class WeatherWidgetState extends State<WeatherWidget> {
         const Text('🙈', style: TextStyle(fontSize: 64)),
         Text(
           'Something went wrong!',
-          style: theme.textTheme.headline5,
+          style: theme.textTheme.headlineSmall,
         ),
       ],
     );
@@ -93,7 +93,7 @@ class WeatherWidgetState extends State<WeatherWidget> {
         const Text('🏙️', style: TextStyle(fontSize: 64)),
         Text(
           'Please Select a City!',
-          style: theme.textTheme.headline5,
+          style: theme.textTheme.headlineSmall,
         ),
       ],
     );
@@ -172,7 +172,7 @@ class WeatherWidgetState extends State<WeatherWidget> {
     final theme = Theme.of(context);
     return Text(
       weatherIsLoading?.getThreeParametersNamedForWeatherWidget ?? "",
-      style: theme.textTheme.headline2?.copyWith(
+      style: theme.textTheme.displayMedium?.copyWith(
         fontWeight: FontWeight.w200,
       ),
     );
@@ -184,7 +184,7 @@ class WeatherWidgetState extends State<WeatherWidget> {
     final theme = Theme.of(context);
     return Text(
       weatherIsLoading?.getOneParametersNamedForWeatherWidget ?? "",
-      style: theme.textTheme.headline3?.copyWith(
+      style: theme.textTheme.displaySmall?.copyWith(
         fontWeight: FontWeight.bold,
       ),
     );

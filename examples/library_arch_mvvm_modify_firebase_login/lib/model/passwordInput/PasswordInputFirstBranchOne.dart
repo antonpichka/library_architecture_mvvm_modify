@@ -2,7 +2,7 @@ import 'package:library_arch_mvvm_modify_firebase_login/model/passwordInput/Pass
 import 'package:library_arch_mvvm_modify_firebase_login/utility/ConfirmedPassword.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/utility/Password.dart';
 
-class PasswordInputFirstBranchOne extends PasswordInput {
+base class PasswordInputFirstBranchOne extends PasswordInput {
   ConfirmedPassword? confirmedPassword;
 
   PasswordInputFirstBranchOne.success(super.password, this.confirmedPassword)

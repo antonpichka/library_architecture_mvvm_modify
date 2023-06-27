@@ -5,7 +5,7 @@
 Approximate number of issues, based on the <a href="https://github.com/felangel/bloc/blob/master/docs/assets/gifs/flutter_todos.gif">GIF</a>, which is located in the BLoC repository
 
 <p align="center">
-<img src="https://github.com/JacobOdd/library_architecture_mvvm_modify/blob/main/assets/tasks_to_todo_application.png" alt="Tasks to Todo application"/>
+<img src="https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/assets/tasks_to_todo_application.png" alt="Tasks to Todo application"/>
 </p>
 
 ## Working with Translations 🌐

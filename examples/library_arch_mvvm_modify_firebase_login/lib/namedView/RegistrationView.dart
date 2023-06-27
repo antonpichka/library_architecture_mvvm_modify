@@ -5,12 +5,12 @@ import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/Pa
 import 'package:library_arch_mvvm_modify_firebase_login/namedView/namedWidget/SignUpButtonWidget.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/RegistrationViewListViewModel.dart';
 
-class RegistrationView extends StatefulWidget {
+final class RegistrationView extends StatefulWidget {
   @override
   State<RegistrationView> createState() => _RegistrationViewState();
 }
 
-class _RegistrationViewState extends State<RegistrationView> {
+final class _RegistrationViewState extends State<RegistrationView> {
   final _lo = RegistrationViewListViewModel();
 
   @override

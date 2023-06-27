@@ -1,7 +1,7 @@
 import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 
-class NoteIteratorForSortedParameterIsCompletedFalse<T extends Note>
+final class NoteIteratorForSortedParameterIsCompletedFalse<T extends Note>
     extends BaseIterator<T> {
   @override
   T get current {

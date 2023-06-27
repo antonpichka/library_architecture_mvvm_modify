@@ -1,7 +1,7 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 
 /// An example of the extends of the "BaseException" class, named NetworkException
-class NetworkException extends BaseException {
+final class NetworkException extends BaseException {
   final int statusCode;
   final String nameStatusCode;
   final String descriptionStatusCode;

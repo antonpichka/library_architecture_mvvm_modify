@@ -8,7 +8,7 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<
+base class SettingsQHiveServiceViewModelUsingUpdateParameterSettings<
         T extends Settings,
         Y extends ListSettings<T>> extends BaseModelQNamedServiceViewModel<T, Y>
     implements UpdateModelToNamedServiceParameterNamedDataSource<bool, T> {

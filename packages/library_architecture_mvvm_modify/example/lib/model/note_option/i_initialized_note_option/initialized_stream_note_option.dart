@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note_option/list_not
 import 'package:library_architecture_mvvm_modify_todo/model/note_option/note_option.dart';
 import 'package:library_architecture_mvvm_modify_todo/utility/named_stream_model/rx_stream_model.dart';
 
-class InitializedStreamNoteOption
+final class InitializedStreamNoteOption
     implements IInitializedStreamModel<NoteOption, ListNoteOption> {
   @override
   IStreamModel<NoteOption, ListNoteOption>? initializedStreamModel() {

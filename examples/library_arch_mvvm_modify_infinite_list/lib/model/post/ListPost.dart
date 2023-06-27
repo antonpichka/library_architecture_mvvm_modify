@@ -9,7 +9,7 @@ enum EnumListPostForPostsListWidget {
   serverNotWorkItNetworkException,
 }
 
-class ListPost<T extends Post> extends BaseListModel<T> {
+base class ListPost<T extends Post> extends BaseListModel<T> {
   bool? hasReachedMax;
 
   ListPost.success(super.listModel) : super.success() {

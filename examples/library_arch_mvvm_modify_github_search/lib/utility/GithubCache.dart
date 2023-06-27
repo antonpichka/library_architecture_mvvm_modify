@@ -1,4 +1,4 @@
-class GithubCache {
+base class GithubCache {
   final _cache = <String, Object?>{};
 
   Object? get(String? term) {

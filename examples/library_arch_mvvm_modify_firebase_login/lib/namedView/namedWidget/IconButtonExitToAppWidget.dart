@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:library_arch_mvvm_modify_firebase_login/namedViewListViewModel/namedWidgetListViewModel/IconButtonExitToAppWidgetListViewModel.dart';
 
-class IconButtonExitToAppWidget extends StatelessWidget {
+base class IconButtonExitToAppWidget extends StatelessWidget {
   @protected
   final IconButtonExitToAppWidgetListViewModel lo;
 

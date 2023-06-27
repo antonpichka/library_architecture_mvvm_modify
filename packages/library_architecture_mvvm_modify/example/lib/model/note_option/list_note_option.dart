@@ -4,7 +4,7 @@ import 'package:library_architecture_mvvm_modify_todo/model/note/note.dart';
 import 'package:library_architecture_mvvm_modify_todo/model/note_option/note_option.dart';
 import 'package:meta/meta.dart';
 
-class ListNoteOption<T extends NoteOption> extends BaseListModel<T> {
+base class ListNoteOption<T extends NoteOption> extends BaseListModel<T> {
   ListNoteOption.success(super.listModel) : super.success();
   ListNoteOption.exception(super.exception) : super.exception();
 

@@ -9,7 +9,7 @@ import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWid
 import 'package:library_arch_mvvm_modify_weather/namedViewListViewModel/namedWidgetListViewModel/WeatherWidgetListViewModel.dart';
 import 'package:library_architecture_mvvm_modify/base_named_view_list_view_model/base_named_view_list_view_model.dart';
 
-class MainViewListViewModel extends BaseNamedViewListViewModel {
+final class MainViewListViewModel extends BaseNamedViewListViewModel {
   // ModelQThereIsStateViewModel
   final _weatherIsLoadingQThereIsStateViewModel =
       WeatherIsLoadingQThereIsStateViewModel(
