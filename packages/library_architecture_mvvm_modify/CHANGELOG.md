@@ -1,3 +1,13 @@
+## 0.0.7
+
+Divide and rule.
+
+- Decreased permissions for such objects "BaseModelQNamedServiceViewModel", "BaseModel" etc
+- Added objects "BaseDataForNamedWidgetOrView", "BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel" etc. and gave him the duties that he took away from "Model" objects.
+- The object "BaseDataForNamedWidgetOrView" and its auxiliary classes will be shown in widgets, views, and only they have streams
+- The object "BaseModel" and its auxiliary classes will get data from the DataSource
+- Completely removed the examples and added one single one, where everything you need is
+
 ## 0.0.6
 
 - Migration to Dart version v3.0.0
