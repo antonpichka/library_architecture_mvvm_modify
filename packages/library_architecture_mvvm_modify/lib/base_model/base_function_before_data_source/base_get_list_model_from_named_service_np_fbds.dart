@@ -6,7 +6,7 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 /// 2 generic type, sends additional data for verification and calculation, they are optional, and you can assign null there
 /// An example of a class name in a real project: GetListMovieFromSqfliteServiceNPFBDS
 /// NP - no parameter (with such an SQL query (SELECT * FROM movies;)
-abstract base class BaseGetListModelFromNamedServiceNPFBDS<X extends BaseListModel,
-    C extends Object> {
+abstract base class BaseGetListModelFromNamedServiceNPFBDS<
+    X extends BaseListModel, C extends Object> {
   X? getListModelFromNamedServiceNPFBDS(C? parameter);
 }

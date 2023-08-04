@@ -6,14 +6,17 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_state_
 import 'package:meta/meta.dart';
 
 /// This class is needed to manage the state of the DataForNamedWidgetOrView and streams,
-abstract base class BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel<T extends BaseDataForNamedWidgetOrView>
-    implements IDispose
-{
-  final IStreamStateDataForNamedWidgetOrView<T> _iStreamStateDataForNamedWidgetOrView;
+abstract base class BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel<
+    T extends BaseDataForNamedWidgetOrView> implements IDispose {
+  final IStreamStateDataForNamedWidgetOrView<T>
+      _iStreamStateDataForNamedWidgetOrView;
 
   BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel(
-      IInitializedStreamStateDataForNamedWidgetOrView<T> iInitializedStreamStateDataForNamedWidgetOrView)
-      : _iStreamStateDataForNamedWidgetOrView = iInitializedStreamStateDataForNamedWidgetOrView.getStreamStateDataForNamedWidgetOrView;
+      IInitializedStreamStateDataForNamedWidgetOrView<T>
+          iInitializedStreamStateDataForNamedWidgetOrView)
+      : _iStreamStateDataForNamedWidgetOrView =
+            iInitializedStreamStateDataForNamedWidgetOrView
+                .getStreamStateDataForNamedWidgetOrView;
 
   /// The purpose of the method is to release resources
   @override
@@ -23,7 +26,8 @@ abstract base class BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel<T e
 
   /// The purpose of this method is to force IStreamStateDataForNamedWidgetOrView to override your implementation and call your methods.
   @nonVirtual
-  IStreamStateDataForNamedWidgetOrView<T>? get getIStreamStateDataForNamedWidgetOrView {
+  IStreamStateDataForNamedWidgetOrView<T>?
+      get getIStreamStateDataForNamedWidgetOrView {
     return _iStreamStateDataForNamedWidgetOrView;
   }
 
@@ -36,7 +40,8 @@ abstract base class BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel<T e
   /// Get a stream DataForNamedWidgetOrView from IStreamStateDataForNamedWidgetOrView
   @nonVirtual
   Stream<T?>? get getStreamDataForNamedWidgetOrView {
-    return _iStreamStateDataForNamedWidgetOrView.getStreamDataForNamedWidgetOrView;
+    return _iStreamStateDataForNamedWidgetOrView
+        .getStreamDataForNamedWidgetOrView;
   }
 
   /// Get a DataForNamedWidgetOrView from IStreamStateDataForNamedWidgetOrView
@@ -48,12 +53,14 @@ abstract base class BaseDataForNamedWidgetOrViewQThereIsStreamStateViewModel<T e
   /// Set a DataForNamedWidgetOrView from IStreamStateDataForNamedWidgetOrView
   @nonVirtual
   set setDataForNamedWidgetOrView(T? dataForNamedWidgetOrView) {
-    _iStreamStateDataForNamedWidgetOrView.setDataForNamedWidgetOrView = dataForNamedWidgetOrView;
+    _iStreamStateDataForNamedWidgetOrView.setDataForNamedWidgetOrView =
+        dataForNamedWidgetOrView;
   }
 
   /// Notify stream DataForNamedWidgetOrView from IStreamStateDataForNamedWidgetOrView
   @nonVirtual
   void notifyStreamDataForNamedWidgetOrView() {
-    _iStreamStateDataForNamedWidgetOrView.notifyStreamDataForNamedWidgetOrView();
+    _iStreamStateDataForNamedWidgetOrView
+        .notifyStreamDataForNamedWidgetOrView();
   }
 }

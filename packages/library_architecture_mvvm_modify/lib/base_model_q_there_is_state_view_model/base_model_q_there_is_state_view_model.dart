@@ -7,8 +7,7 @@ import 'package:meta/meta.dart';
 
 /// This class is needed to manage the state of the model,
 abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
-    Y extends BaseListModel<T>>
-{
+    Y extends BaseListModel<T>> {
   final IStateModel<T, Y> _iStateModel;
 
   BaseModelQThereIsStateViewModel(

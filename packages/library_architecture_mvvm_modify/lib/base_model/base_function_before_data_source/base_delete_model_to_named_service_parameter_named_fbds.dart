@@ -6,7 +6,7 @@ import 'package:library_architecture_mvvm_modify/utility/result.dart';
 /// 2 generic type, sends the main parameter, which will be passed to the data source, after processing in fbds.
 /// An example of a class name in a real project: DeleteMovieToSqfliteServiceParameterStringFBDS
 /// ParameterString - with a parameter for string
-abstract base class BaseDeleteModelToNamedServiceParameterNamedFBDS<X extends Object, C extends Object> {
-  Result<X>? deleteModelToNamedServiceParameterNamedFBDS(
-      C? parameter);
+abstract base class BaseDeleteModelToNamedServiceParameterNamedFBDS<
+    X extends Object, C extends Object> {
+  Result<X>? deleteModelToNamedServiceParameterNamedFBDS(C? parameter);
 }

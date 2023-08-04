@@ -7,6 +7,6 @@ import 'package:library_architecture_mvvm_modify/utility/result.dart';
 /// An example of a class name in a real project: UpdateMovieToSqfliteServiceParameterMovieFBDS
 /// ParameterMovie - with a parameter for update
 abstract base class BaseUpdateModelToNamedServiceParameterNamedFBDS<
-X extends Object, C extends Object> {
+    X extends Object, C extends Object> {
   Result<X>? updateModelToNamedServiceParameterNamedFBDS(C? parameter);
 }

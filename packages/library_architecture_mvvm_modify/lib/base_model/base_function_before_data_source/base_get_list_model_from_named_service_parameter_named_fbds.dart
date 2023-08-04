@@ -8,6 +8,5 @@ import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart
 /// ParameterDouble - with a parameter (with such an SQL query (SELECT * FROM movies WHERE rating = :rating;)
 abstract base class BaseGetListModelFromNamedServiceParameterNamedFBDS<
     X extends BaseListModel, C extends Object> {
-  X? getListModelFromNamedServiceParameterNamedFBDS(
-      C? parameter);
+  X? getListModelFromNamedServiceParameterNamedFBDS(C? parameter);
 }

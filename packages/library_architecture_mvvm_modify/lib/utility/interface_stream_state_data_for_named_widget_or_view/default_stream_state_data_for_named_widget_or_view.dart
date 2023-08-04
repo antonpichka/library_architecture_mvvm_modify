@@ -4,15 +4,16 @@ import 'package:library_architecture_mvvm_modify/utility/base_exception/local_ex
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_state_data_for_named_widget_or_view/i_stream_state_data_for_named_widget_or_view.dart';
 
 /// An example of the implementation of the "IStreamStateDataForNamedWidgetOrView" class, named DefaultStreamStateDataForNamedWidgetOrView
-final class DefaultStreamStateDataForNamedWidgetOrView<T extends BaseDataForNamedWidgetOrView>
-    implements IStreamStateDataForNamedWidgetOrView<T>
-{
+final class DefaultStreamStateDataForNamedWidgetOrView<
+        T extends BaseDataForNamedWidgetOrView>
+    implements IStreamStateDataForNamedWidgetOrView<T> {
   final StreamController<T> _streamControllerForDataForNamedWidgetOrView;
   T? _dataForNamedWidgetOrView;
   StreamSubscription<T>? _streamSubscriptionForDataForNamedWidgetOrView;
 
   DefaultStreamStateDataForNamedWidgetOrView(this._dataForNamedWidgetOrView)
-      : _streamControllerForDataForNamedWidgetOrView = StreamController<T>.broadcast();
+      : _streamControllerForDataForNamedWidgetOrView =
+            StreamController<T>.broadcast();
 
   @override
   void dispose() {
@@ -24,7 +25,8 @@ final class DefaultStreamStateDataForNamedWidgetOrView<T extends BaseDataForName
 
   /// Get a stream DataForNamedWidgetOrView
   @override
-  Stream<T?> get getStreamDataForNamedWidgetOrView => _streamControllerForDataForNamedWidgetOrView.stream;
+  Stream<T?> get getStreamDataForNamedWidgetOrView =>
+      _streamControllerForDataForNamedWidgetOrView.stream;
 
   /// Get a DataForNamedWidgetOrView
   @override
@@ -40,20 +42,23 @@ final class DefaultStreamStateDataForNamedWidgetOrView<T extends BaseDataForName
   @override
   void notifyStreamDataForNamedWidgetOrView() {
     if (!_streamControllerForDataForNamedWidgetOrView.hasListener) {
-      throw LocalException(this, EnumGuiltyForLocalException.developer, "stream has no listener");
+      throw LocalException(this, EnumGuiltyForLocalException.developer,
+          "stream has no listener");
     }
     if (_streamControllerForDataForNamedWidgetOrView.isClosed) {
-      throw LocalException(this, EnumGuiltyForLocalException.developer, "stream closed");
+      throw LocalException(
+          this, EnumGuiltyForLocalException.developer, "stream closed");
     }
-    _streamControllerForDataForNamedWidgetOrView.sink.add(_dataForNamedWidgetOrView!);
+    _streamControllerForDataForNamedWidgetOrView.sink
+        .add(_dataForNamedWidgetOrView!);
   }
 
   /// Listens stream DataForNamedWidgetOrView
   void listensStreamDataForNamedWidgetOrView(Function(T event) callback) {
     _streamSubscriptionForDataForNamedWidgetOrView =
         _streamControllerForDataForNamedWidgetOrView.stream.listen((event) {
-          callback(event);
-        });
+      callback(event);
+    });
   }
 
   /// Resume stream subscription for DataForNamedWidgetOrView
