@@ -1,4 +1,5 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
+import 'package:meta/meta.dart';
 
 /// An example of the extends of the "BaseException" class, named NetworkException
 final class NetworkException extends BaseException {
@@ -9,6 +10,11 @@ final class NetworkException extends BaseException {
   NetworkException(Object thisClass, this.statusCode, this.nameStatusCode,
       this.descriptionStatusCode)
       : super(thisClass, NetworkException);
+
+  NetworkException.fromNameStatusCode(Object thisClass, this.nameStatusCode)
+      : statusCode = 0,
+        descriptionStatusCode = "",
+        super(thisClass, NetworkException);
 
   factory NetworkException.fromStatusCode(Object thisClass, int statusCode) {
     switch (statusCode) {
@@ -156,10 +162,11 @@ final class NetworkException extends BaseException {
   /// Show message for view
   @override
   String get getMessageForView {
-    return "$statusCode";
+    return nameStatusCode;
   }
 
   /// Show an exception to the developer when that same exception occurs
+  @protected
   @override
   String get exceptionInStringForDebugPrintException {
     return "StatusCode: $statusCode | "

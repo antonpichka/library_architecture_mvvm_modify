@@ -1,4 +1,5 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
+import 'package:meta/meta.dart';
 
 /// Who is in fault?
 enum EnumGuiltyForLocalException { developer, device, user }
@@ -23,6 +24,7 @@ final class LocalException extends BaseException {
   }
 
   /// Show an exception to the developer when that same exception occurs
+  @protected
   @override
   String get exceptionInStringForDebugPrintException {
     return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "

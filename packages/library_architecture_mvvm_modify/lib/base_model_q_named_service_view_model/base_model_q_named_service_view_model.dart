@@ -1,38 +1,38 @@
 import 'dart:async';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_list_model_to_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_list_model_to_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_model_to_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/delete_model_to_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/get_list_model_from_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/get_list_model_from_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/get_model_from_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/get_model_from_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/insert_list_model_to_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/insert_list_model_to_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/insert_model_to_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/insert_model_to_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_list_model_to_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_list_model_to_named_service_parameter_named_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_model_to_named_service_np_fbds.dart';
-import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/update_model_to_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_delete_list_model_to_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_delete_list_model_to_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_delete_model_to_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_delete_model_to_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_get_list_model_from_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_get_list_model_from_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_get_model_from_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_get_model_from_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_insert_list_model_to_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_insert_list_model_to_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_insert_model_to_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_insert_model_to_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_update_list_model_to_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_update_list_model_to_named_service_parameter_named_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_update_model_to_named_service_np_fbds.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_function_before_data_source/base_update_model_to_named_service_parameter_named_fbds.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_list_model.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_list_model_to_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_list_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/delete_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_list_model_from_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_list_model_from_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_model_from_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/get_model_from_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/insert_list_model_to_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/insert_list_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/insert_model_to_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/insert_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_list_model_to_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_list_model_to_named_service_parameter_named_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_np_data_source.dart';
-import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/update_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_delete_list_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_delete_list_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_delete_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_delete_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_get_list_model_from_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_get_list_model_from_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_get_model_from_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_get_model_from_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_insert_list_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_insert_list_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_insert_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_insert_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_update_list_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_update_list_model_to_named_service_parameter_named_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_update_model_to_named_service_np_data_source.dart';
+import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view_model/interface_model_q_named_service_data_source/i_update_model_to_named_service_parameter_named_data_source.dart';
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
@@ -46,18 +46,20 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   ///   Example Using:
   ///
   ///   @nonVirtual
+  ///   @protected
   ///   @override
-  ///   Object? get modelQNamedServiceDataSource => this;
-  Object? get modelQNamedServiceDataSource;
+  ///   Object get iModelQNamedServiceDataSource => this;
+  @protected
+  Object get iModelQNamedServiceDataSource;
 
-  // Start getListNP 3
+  // Start getListNP 2
   /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<Y?> getListModelFromNamedServiceNP() {
-    return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<Object>(
-        modelQNamedServiceDataSource
-            as GetListModelFromNamedServiceNPDataSource<Y>,
+    return _getListModelFromNamedServiceNPUsingFBDS<Object>(
+        iModelQNamedServiceDataSource
+            as IGetListModelFromNamedServiceNPDataSource<Y>,
         null,
         null);
   }
@@ -66,47 +68,29 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Y?> getListModelFromNamedServiceNPUsingFBDS(
-      GetListModelFromNamedServiceNPFBDS<Y, Object>
-          getListModelFromNamedServiceNPFBDS) {
-    return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<Object>(
-        modelQNamedServiceDataSource
-            as GetListModelFromNamedServiceNPDataSource<Y>,
-        getListModelFromNamedServiceNPFBDS,
-        null);
-  }
-
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
   Future<Y?>
-      getListModelFromNamedServiceNPUsingParameterForFBDS<C extends Object>(
-          GetListModelFromNamedServiceNPFBDS<Y, C>
-              getListModelFromNamedServiceNPFBDS,
-          C parameterForFBDS) {
-    return _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<C>(
-        modelQNamedServiceDataSource
-            as GetListModelFromNamedServiceNPDataSource<Y>,
-        getListModelFromNamedServiceNPFBDS,
-        parameterForFBDS);
+      getListModelFromNamedServiceNPUsingFBDS<X extends Object>(
+          BaseGetListModelFromNamedServiceNPFBDS<Y, X>
+              baseGetListModelFromNamedServiceNPFBDS,
+          X parameter) {
+    return _getListModelFromNamedServiceNPUsingFBDS<X>(
+        iModelQNamedServiceDataSource
+            as IGetListModelFromNamedServiceNPDataSource<Y>,
+        baseGetListModelFromNamedServiceNPFBDS,
+        parameter);
   }
-  // End getListNP 3
+  // End getListNP 2
 
-  // Start getListParameterNamed 3
+  // Start getListParameterNamed 2
   /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<Y?> getListModelFromNamedServiceParameterNamed<X extends Object>(
       X parameter) {
-    return _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-            X, Object>(
-        modelQNamedServiceDataSource
-            as GetListModelFromNamedServiceParameterNamedDataSource<Y, X>,
+    return _getListModelFromNamedServiceParameterNamedUsingFBDS<X>(
+        iModelQNamedServiceDataSource as IGetListModelFromNamedServiceParameterNamedDataSource<Y, X>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to take data from the Service,
@@ -115,46 +99,23 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   @nonVirtual
   Future<Y?>
       getListModelFromNamedServiceParameterNamedUsingFBDS<X extends Object>(
-          GetListModelFromNamedServiceParameterNamedFBDS<Y, X, Object>
+          BaseGetListModelFromNamedServiceParameterNamedFBDS<Y, X>
               getModelFromNamedServiceParameterNamedFBDS,
           X parameter) {
-    return _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-            X, Object>(
-        modelQNamedServiceDataSource
-            as GetListModelFromNamedServiceParameterNamedDataSource<Y, X>,
+    return _getListModelFromNamedServiceParameterNamedUsingFBDS<X>(
+        iModelQNamedServiceDataSource as IGetListModelFromNamedServiceParameterNamedDataSource<Y, X>,
         getModelFromNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End getListParameterNamed 2
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Y?> getListModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      GetListModelFromNamedServiceParameterNamedFBDS<Y, X, C>
-          getModelFromNamedServiceParameterNamedFBDS,
-      X parameter,
-      C parameterForFBDS) {
-    return _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-            X, C>(
-        modelQNamedServiceDataSource
-            as GetListModelFromNamedServiceParameterNamedDataSource<Y, X>,
-        getModelFromNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End getListParameterNamed 3
-
-  // Start getNP 3
+  // Start getNP 2
   /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceNP() {
-    return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<Object>(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
+    return _getModelFromNamedServiceNPUsingFBDS<Object>(
+        iModelQNamedServiceDataSource as IGetModelFromNamedServiceNPDataSource<T>,
         null,
         null);
   }
@@ -163,43 +124,27 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<T?> getModelFromNamedServiceNPUsingFBDS(
-      GetModelFromNamedServiceNPFBDS<T, Object>
-          getModelFromNamedServiceNPFBDS) {
-    return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<Object>(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
+  Future<T?> getModelFromNamedServiceNPUsingFBDS<X extends Object>(
+      BaseGetModelFromNamedServiceNPFBDS<T,X> getModelFromNamedServiceNPFBDS,
+      X parameter) {
+    return _getModelFromNamedServiceNPUsingFBDS<X>(
+        iModelQNamedServiceDataSource as IGetModelFromNamedServiceNPDataSource<T>,
         getModelFromNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End getNP 2
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<T?> getModelFromNamedServiceNPUsingParameterForFBDS<C extends Object>(
-      GetModelFromNamedServiceNPFBDS<T, C> getModelFromNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseGetModelFromNamedServiceNPUsingParameterForFBDS<C>(
-        modelQNamedServiceDataSource as GetModelFromNamedServiceNPDataSource<T>,
-        getModelFromNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End getNP 3
-
-  // Start getParameterNamed 3
+  // Start getParameterNamed 2
   /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceParameterNamed<X extends Object>(
       X parameter) {
-    return _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,
-            Object>(
-        modelQNamedServiceDataSource
-            as GetModelFromNamedServiceParameterNamedDataSource<T, X>,
+    return _getModelFromNamedServiceParameterNamedUsingFBDS<X>(
+        iModelQNamedServiceDataSource
+            as IGetModelFromNamedServiceParameterNamedDataSource<T, X>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to take data from the Service,
@@ -207,47 +152,23 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceParameterNamedUsingFBDS<X extends Object>(
-      GetModelFromNamedServiceParameterNamedFBDS<T, X, Object>
+      BaseGetModelFromNamedServiceParameterNamedFBDS<T,X>
           getModelFromNamedServiceParameterNamedFBDS,
       X parameter) {
-    return _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,
-            Object>(
-        modelQNamedServiceDataSource
-            as GetModelFromNamedServiceParameterNamedDataSource<T, X>,
+    return _getModelFromNamedServiceParameterNamedUsingFBDS<X>(
+        iModelQNamedServiceDataSource as IGetModelFromNamedServiceParameterNamedDataSource<T, X>,
         getModelFromNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End getParameterNamed 2
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<T?> getModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      GetModelFromNamedServiceParameterNamedFBDS<T, X, C>
-          getModelFromNamedServiceParameterNamedFBDS,
-      X parameter,
-      C parameterForFBDS) {
-    return _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<X,
-            C>(
-        modelQNamedServiceDataSource
-            as GetModelFromNamedServiceParameterNamedDataSource<T, X>,
-        getModelFromNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End getParameterNamed 3
-
-  // Start insertNP 3
+  // Start insertNP 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> insertModelToNamedServiceNP<X extends Object>() {
-    return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as InsertModelToNamedServiceNPDataSource<X>,
+    return _insertModelToNamedServiceNPUsingFBDS<X, Object>(
+        iModelQNamedServiceDataSource as IInsertModelToNamedServiceNPDataSource<X>,
         null,
         null);
   }
@@ -256,96 +177,51 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<X>?> insertModelToNamedServiceNPUsingFBDS<X extends Object>(
-      InsertModelToNamedServiceNPFBDS<X, Object>
-          insertModelToNamedServiceNPFBDS) {
-    return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as InsertModelToNamedServiceNPDataSource<X>,
+  Future<Result<X>?> insertModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
+      BaseInsertModelToNamedServiceNPFBDS<X, C> insertModelToNamedServiceNPFBDS,
+      C parameter) {
+    return _insertModelToNamedServiceNPUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IInsertModelToNamedServiceNPDataSource<X>,
         insertModelToNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End insertNP 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<X>?> insertModelToNamedServiceNPUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      InsertModelToNamedServiceNPFBDS<X, C> insertModelToNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseInsertModelToNamedServiceNPUsingParameterForFBDS<X, C>(
-        modelQNamedServiceDataSource
-            as InsertModelToNamedServiceNPDataSource<X>,
-        insertModelToNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End insertNP 3
-
-  // Start insertParameterNamed 3
+  // Start insertParameterNamed 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
-  Future<Result<Z>?> insertModelToNamedServiceParameterNamed<Z extends Object,
-      X extends Object>(X parameter) {
-    return _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, Object>(
-        modelQNamedServiceDataSource
-            as InsertModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> insertModelToNamedServiceParameterNamed<X extends Object, C extends Object>(
+      C parameter)
+  {
+    return _insertModelToNamedServiceParameterNamedUsingFBDS<X,C>(
+        iModelQNamedServiceDataSource as IInsertModelToNamedServiceParameterNamedDataSource<X,C>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<Z>?> insertModelToNamedServiceParameterNamedUsingFBDS<
-          Z extends Object, X extends Object>(
-      InsertModelToNamedServiceParameterNamedFBDS<Z, X, Object>
-          insertModelToNamedServiceParameterNamedFBDS,
-      X parameter) {
-    return _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, Object>(
-        modelQNamedServiceDataSource
-            as InsertModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?>
+      insertModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          BaseInsertModelToNamedServiceParameterNamedFBDS<X, C> insertModelToNamedServiceParameterNamedFBDS,
+          C parameter) {
+    return _insertModelToNamedServiceParameterNamedUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IInsertModelToNamedServiceParameterNamedDataSource<X,C>,
         insertModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End insertParameterNamed 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<Z>?>
-      insertModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          InsertModelToNamedServiceParameterNamedFBDS<Z, X, C>
-              insertModelToNamedServiceParameterNamedFBDS,
-          X parameter,
-          C parameterForFBDS) {
-    return _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, C>(
-        modelQNamedServiceDataSource
-            as InsertModelToNamedServiceParameterNamedDataSource<Z, X>,
-        insertModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End insertParameterNamed 3
-
-  // Start insertListNP 3
+  // Start insertListNP 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> insertListModelToNamedServiceNP<X extends Object>() {
-    return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as InsertListModelToNamedServiceNPDataSource<X>,
+    return _insertListModelToNamedServiceNPUsingFBDS<X, Object>(
+        iModelQNamedServiceDataSource as IInsertListModelToNamedServiceNPDataSource<X>,
         null,
         null);
   }
@@ -354,97 +230,50 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<X>?> insertListModelToNamedServiceNPUsingFBDS<X extends Object>(
-      InsertListModelToNamedServiceNPFBDS<X, Object>
-          insertListModelToNamedServiceNPFBDS) {
-    return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as InsertListModelToNamedServiceNPDataSource<X>,
+  Future<Result<X>?> insertListModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
+      BaseInsertListModelToNamedServiceNPFBDS<X, C> insertListModelToNamedServiceNPFBDS,
+      C parameter) {
+    return _insertListModelToNamedServiceNPUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IInsertListModelToNamedServiceNPDataSource<X>,
         insertListModelToNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End insertListNP 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<X>?> insertListModelToNamedServiceNPUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      InsertListModelToNamedServiceNPFBDS<X, C>
-          insertListModelToNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<X, C>(
-        modelQNamedServiceDataSource
-            as InsertListModelToNamedServiceNPDataSource<X>,
-        insertListModelToNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End insertListNP 3
-
-  // Start insertListParameterNamed 3
+  // Start insertListParameterNamed 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
-  Future<Result<Z>?> insertListModelToNamedServiceParameterNamed<
-      Z extends Object, X extends Object>(X parameter) {
-    return _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, Object>(
-        modelQNamedServiceDataSource
-            as InsertListModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> insertListModelToNamedServiceParameterNamed<X extends Object,C extends Object>(C parameter) {
+    return _insertListModelToNamedServiceParameterNamedUsingFBDS<X,C>(
+        iModelQNamedServiceDataSource as IInsertListModelToNamedServiceParameterNamedDataSource<X,C>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<Z>?> insertListModelToNamedServiceParameterNamedUsingFBDS<
-          Z extends Object, X extends Object>(
-      InsertListModelToNamedServiceParameterNamedFBDS<Z, X, Object>
-          insertListModelToNamedServiceParameterNamedFBDS,
-      X parameter) {
-    return _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, Object>(
-        modelQNamedServiceDataSource
-            as InsertListModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?>
+      insertListModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          BaseInsertListModelToNamedServiceParameterNamedFBDS<X, C> insertListModelToNamedServiceParameterNamedFBDS,
+          C parameter) {
+    return _insertListModelToNamedServiceParameterNamedUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IInsertListModelToNamedServiceParameterNamedDataSource<X,C>,
         insertListModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End insertListParameterNamed 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<Z>?>
-      insertListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          InsertListModelToNamedServiceParameterNamedFBDS<Z, X, C>
-              insertListModelToNamedServiceParameterNamedFBDS,
-          X parameter,
-          C parameterForFBDS) {
-    return _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, C>(
-        modelQNamedServiceDataSource
-            as InsertListModelToNamedServiceParameterNamedDataSource<Z, X>,
-        insertListModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End insertListParameterNamed 3
-
-  // Start updateNP 3
+  // Start updateNP 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> updateModelToNamedServiceNP<X extends Object>() {
-    return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateModelToNamedServiceNPDataSource<X>,
+    return _updateModelToNamedServiceNPUsingFBDS<X, Object>(
+        iModelQNamedServiceDataSource
+            as IUpdateModelToNamedServiceNPDataSource<X>,
         null,
         null);
   }
@@ -453,96 +282,50 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<X>?> updateModelToNamedServiceNPUsingFBDS<X extends Object>(
-      UpdateModelToNamedServiceNPFBDS<X, Object>
-          updateModelToNamedServiceNPFBDS) {
-    return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateModelToNamedServiceNPDataSource<X>,
+  Future<Result<X>?> updateModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
+      BaseUpdateModelToNamedServiceNPFBDS<X, C> updateModelToNamedServiceNPFBDS,
+      C parameter) {
+    return _updateModelToNamedServiceNPUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource
+            as IUpdateModelToNamedServiceNPDataSource<X>,
         updateModelToNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End updateNP 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<X>?> updateModelToNamedServiceNPUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      UpdateModelToNamedServiceNPFBDS<X, C> updateModelToNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<X, C>(
-        modelQNamedServiceDataSource
-            as UpdateModelToNamedServiceNPDataSource<X>,
-        updateModelToNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End updateNP 3
-
-  // Start updateParameterNamed 3
+  // Start updateParameterNamed 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
-  Future<Result<Z>?> updateModelToNamedServiceParameterNamed<Z extends Object,
-      X extends Object>(X parameter) {
-    return _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> updateModelToNamedServiceParameterNamed<X extends Object, C extends Object>(C parameter) {
+    return _updateModelToNamedServiceParameterNamedUsingFBDS<X,C>(
+        iModelQNamedServiceDataSource as IUpdateModelToNamedServiceParameterNamedDataSource<X,C>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<Z>?> updateModelToNamedServiceParameterNamedUsingFBDS<
-          Z extends Object, X extends Object>(
-      UpdateModelToNamedServiceParameterNamedFBDS<Z, X, Object>
-          updateModelToNamedServiceParameterNamedFBDS,
-      X parameter) {
-    return _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?>
+      updateModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          BaseUpdateModelToNamedServiceParameterNamedFBDS<X, C> updateModelToNamedServiceParameterNamedFBDS,
+          C parameter) {
+    return _updateModelToNamedServiceParameterNamedUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IUpdateModelToNamedServiceParameterNamedDataSource<X,C>,
         updateModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End updateParameterNamed 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<Z>?>
-      updateModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          UpdateModelToNamedServiceParameterNamedFBDS<Z, X, C>
-              updateModelToNamedServiceParameterNamedFBDS,
-          X parameter,
-          C parameterForFBDS) {
-    return _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, C>(
-        modelQNamedServiceDataSource
-            as UpdateModelToNamedServiceParameterNamedDataSource<Z, X>,
-        updateModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End updateParameterNamed 3
-
-  // Start updateListNP 3
+  // Start updateListNP 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> updateListModelToNamedServiceNP<X extends Object>() {
-    return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateListModelToNamedServiceNPDataSource<X>,
+    return _updateListModelToNamedServiceNPUsingFBDS<X, Object>(
+        iModelQNamedServiceDataSource as IUpdateListModelToNamedServiceNPDataSource<X>,
         null,
         null);
   }
@@ -551,97 +334,50 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<X>?> updateListModelToNamedServiceNPUsingFBDS<X extends Object>(
-      UpdateListModelToNamedServiceNPFBDS<X, Object>
-          updateListModelToNamedServiceNPFBDS) {
-    return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateListModelToNamedServiceNPDataSource<X>,
+  Future<Result<X>?> updateListModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
+      BaseUpdateListModelToNamedServiceNPFBDS<X, C>updateListModelToNamedServiceNPFBDS,
+      C parameter) {
+    return _updateListModelToNamedServiceNPUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IUpdateListModelToNamedServiceNPDataSource<X>,
         updateListModelToNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End updateListNP 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<X>?> updateListModelToNamedServiceNPUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      UpdateListModelToNamedServiceNPFBDS<X, C>
-          updateListModelToNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<X, C>(
-        modelQNamedServiceDataSource
-            as UpdateListModelToNamedServiceNPDataSource<X>,
-        updateListModelToNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End updateListNP 3
-
-  // Start updateListParameterNamed 3
+  // Start updateListParameterNamed 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
-  Future<Result<Z>?> updateListModelToNamedServiceParameterNamed<
-      Z extends Object, X extends Object>(X parameter) {
-    return _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateListModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> updateListModelToNamedServiceParameterNamed<
+      X extends Object, C extends Object>(C parameter) {
+    return _updateListModelToNamedServiceParameterNamedUsingFBDS<X,C>(
+        iModelQNamedServiceDataSource as IUpdateListModelToNamedServiceParameterNamedDataSource<X,C>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<Z>?> updateListModelToNamedServiceParameterNamedUsingFBDS<
-          Z extends Object, X extends Object>(
-      UpdateListModelToNamedServiceParameterNamedFBDS<Z, X, Object>
-          updateListModelToNamedServiceParameterNamedFBDS,
-      X parameter) {
-    return _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, Object>(
-        modelQNamedServiceDataSource
-            as UpdateListModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?>
+      updateListModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          BaseUpdateListModelToNamedServiceParameterNamedFBDS<X, C>updateListModelToNamedServiceParameterNamedFBDS,
+          C parameter) {
+    return _updateListModelToNamedServiceParameterNamedUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IUpdateListModelToNamedServiceParameterNamedDataSource<X,C>,
         updateListModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End updateListParameterNamed 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<Z>?>
-      updateListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          UpdateListModelToNamedServiceParameterNamedFBDS<Z, X, C>
-              updateListModelToNamedServiceParameterNamedFBDS,
-          X parameter,
-          C parameterForFBDS) {
-    return _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, C>(
-        modelQNamedServiceDataSource
-            as UpdateListModelToNamedServiceParameterNamedDataSource<Z, X>,
-        updateListModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End updateListParameterNamed 3
-
-  // Start deleteNP 3
+  // Start deleteNP 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> deleteModelToNamedServiceNP<X extends Object>() {
-    return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteModelToNamedServiceNPDataSource<X>,
+    return _deleteModelToNamedServiceNPUsingFBDS<X, Object>(
+        iModelQNamedServiceDataSource as IDeleteModelToNamedServiceNPDataSource<X>,
         null,
         null);
   }
@@ -650,96 +386,48 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<X>?> deleteModelToNamedServiceNPUsingFBDS<X extends Object>(
-      DeleteModelToNamedServiceNPFBDS<X, Object>
-          deleteModelToNamedServiceNPFBDS) {
-    return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteModelToNamedServiceNPDataSource<X>,
+  Future<Result<X>?> deleteModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
+      BaseDeleteModelToNamedServiceNPFBDS<X, C> deleteModelToNamedServiceNPFBDS,
+      C parameter) {
+    return _deleteModelToNamedServiceNPUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IDeleteModelToNamedServiceNPDataSource<X>,
         deleteModelToNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End deleteNP 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<X>?> deleteModelToNamedServiceNPUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      DeleteModelToNamedServiceNPFBDS<X, C> deleteModelToNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<X, C>(
-        modelQNamedServiceDataSource
-            as DeleteModelToNamedServiceNPDataSource<X>,
-        deleteModelToNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End deleteNP 3
-
-  // Start deleteParameterNamed 3
+  // Start deleteParameterNamed 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
-  Future<Result<Z>?> deleteModelToNamedServiceParameterNamed<Z extends Object,
-      X extends Object>(X parameter) {
-    return _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> deleteModelToNamedServiceParameterNamed<X extends Object, C extends Object>(C parameter) {
+    return _deleteModelToNamedServiceParameterNamedUsingFBDS<X,C>(
+        iModelQNamedServiceDataSource as IDeleteModelToNamedServiceParameterNamedDataSource<X,C>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<Z>?> deleteModelToNamedServiceParameterNamedUsingFBDS<
-          Z extends Object, X extends Object>(
-      DeleteModelToNamedServiceParameterNamedFBDS<Z, X, Object>
-          deleteModelToNamedServiceParameterNamedFBDS,
-      X parameter) {
-    return _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> deleteModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+      BaseDeleteModelToNamedServiceParameterNamedFBDS<X, C> deleteModelToNamedServiceParameterNamedFBDS,
+      C parameter) {
+    return _deleteModelToNamedServiceParameterNamedUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IDeleteModelToNamedServiceParameterNamedDataSource<X,C>,
         deleteModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
+  // End deleteParameterNamed 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<Z>?>
-      deleteModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          DeleteModelToNamedServiceParameterNamedFBDS<Z, X, C>
-              deleteModelToNamedServiceParameterNamedFBDS,
-          X parameter,
-          C parameterForFBDS) {
-    return _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<Z,
-            X, C>(
-        modelQNamedServiceDataSource
-            as DeleteModelToNamedServiceParameterNamedDataSource<Z, X>,
-        deleteModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End deleteParameterNamed 3
-
-  // Start deleteListNP 3
+  // Start deleteListNP 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> deleteListModelToNamedServiceNP<X extends Object>() {
-    return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteListModelToNamedServiceNPDataSource<X>,
+    return _deleteListModelToNamedServiceNPUsingFBDS<X, Object>(
+        iModelQNamedServiceDataSource as IDeleteListModelToNamedServiceNPDataSource<X>,
         null,
         null);
   }
@@ -748,469 +436,391 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<X>?> deleteListModelToNamedServiceNPUsingFBDS<X extends Object>(
-      DeleteListModelToNamedServiceNPFBDS<X, Object>
-          deleteListModelToNamedServiceNPFBDS) {
-    return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteListModelToNamedServiceNPDataSource<X>,
+  Future<Result<X>?> deleteListModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
+      BaseDeleteListModelToNamedServiceNPFBDS<X, C>deleteListModelToNamedServiceNPFBDS,
+      C parameter) {
+    return _deleteListModelToNamedServiceNPUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IDeleteListModelToNamedServiceNPDataSource<X>,
         deleteListModelToNamedServiceNPFBDS,
-        null);
+        parameter);
   }
+  // End deleteListNP 2
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<X>?> deleteListModelToNamedServiceNPUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      DeleteListModelToNamedServiceNPFBDS<X, C>
-          deleteListModelToNamedServiceNPFBDS,
-      C parameterForFBDS) {
-    return _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<X, C>(
-        modelQNamedServiceDataSource
-            as DeleteListModelToNamedServiceNPDataSource<X>,
-        deleteListModelToNamedServiceNPFBDS,
-        parameterForFBDS);
-  }
-  // End deleteListNP 3
-
-  // Start deleteListParameterNamed 3
+  // Start deleteListParameterNamed 2
   /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
-  Future<Result<Z>?> deleteListModelToNamedServiceParameterNamed<
-      Z extends Object, X extends Object>(X parameter) {
-    return _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteListModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> deleteListModelToNamedServiceParameterNamed<X extends Object, C extends Object>(C parameter) {
+    return _deleteListModelToNamedServiceParameterNamedUsingFBDS<X,C>(
+        iModelQNamedServiceDataSource as IDeleteListModelToNamedServiceParameterNamedDataSource<X,C>,
         null,
-        parameter,
-        null);
+        parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
-  Future<Result<Z>?> deleteListModelToNamedServiceParameterNamedUsingFBDS<
-          Z extends Object, X extends Object>(
-      DeleteListModelToNamedServiceParameterNamedFBDS<Z, X, Object>
-          deleteListModelToNamedServiceParameterNamedFBDS,
-      X parameter) {
-    return _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, Object>(
-        modelQNamedServiceDataSource
-            as DeleteListModelToNamedServiceParameterNamedDataSource<Z, X>,
+  Future<Result<X>?> deleteListModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+      BaseDeleteListModelToNamedServiceParameterNamedFBDS<X, C> deleteListModelToNamedServiceParameterNamedFBDS,
+      C parameter) {
+    return _deleteListModelToNamedServiceParameterNamedUsingFBDS<X, C>(
+        iModelQNamedServiceDataSource as IDeleteListModelToNamedServiceParameterNamedDataSource<X,C>,
         deleteListModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        null);
+        parameter);
   }
-
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  @protected
-  @nonVirtual
-  Future<Result<Z>?>
-      deleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          DeleteListModelToNamedServiceParameterNamedFBDS<Z, X, C>
-              deleteListModelToNamedServiceParameterNamedFBDS,
-          X parameter,
-          C parameterForFBDS) {
-    return _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-            Z, X, C>(
-        modelQNamedServiceDataSource
-            as DeleteListModelToNamedServiceParameterNamedDataSource<Z, X>,
-        deleteListModelToNamedServiceParameterNamedFBDS,
-        parameter,
-        parameterForFBDS);
-  }
-  // End deleteListParameterNamed 3
+  // End deleteListParameterNamed 2
 
   /// The purpose of this method is to take data from the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Y?> _baseGetListModelFromNamedServiceNPUsingParameterForFBDS<
-          C extends Object>(
-      GetListModelFromNamedServiceNPDataSource<Y>
-          getListModelFromNamedServiceNPDataSource,
-      GetListModelFromNamedServiceNPFBDS<Y, C>?
-          getListModelFromNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (getListModelFromNamedServiceNPFBDS == null) {
-      return await getListModelFromNamedServiceNPDataSource
+  Future<Y?> _getListModelFromNamedServiceNPUsingFBDS<
+          X extends Object>(
+      IGetListModelFromNamedServiceNPDataSource<Y>
+          iGetListModelFromNamedServiceNPDataSource,
+      BaseGetListModelFromNamedServiceNPFBDS<Y, X>?
+          baseGetListModelFromNamedServiceNPFBDS,
+      X? parameter) async {
+    if (baseGetListModelFromNamedServiceNPFBDS == null) {
+      return await iGetListModelFromNamedServiceNPDataSource
           .getListModelFromNamedServiceNPDS();
     }
-    final response = getListModelFromNamedServiceNPFBDS
-        .getListModelFromNamedServiceNP(parameterForFBDS);
+    final response = baseGetListModelFromNamedServiceNPFBDS
+        .getListModelFromNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await getListModelFromNamedServiceNPDataSource
+    return await iGetListModelFromNamedServiceNPDataSource
         .getListModelFromNamedServiceNPDS();
   }
 
   /// The purpose of this method is to take data from the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
   Future<Y?>
-      _baseGetListModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-              X extends Object, C extends Object>(
-          GetListModelFromNamedServiceParameterNamedDataSource<Y, X>
-              getListModelFromNamedServiceParameterNamedDataSource,
-          GetListModelFromNamedServiceParameterNamedFBDS<Y, X, C>?
-              getListModelFromNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (getListModelFromNamedServiceParameterNamedFBDS == null) {
-      return await getListModelFromNamedServiceParameterNamedDataSource
+      _getListModelFromNamedServiceParameterNamedUsingFBDS<
+              X extends Object>(
+          IGetListModelFromNamedServiceParameterNamedDataSource<Y, X>
+              iGetListModelFromNamedServiceParameterNamedDataSource,
+          BaseGetListModelFromNamedServiceParameterNamedFBDS<Y, X>?
+              baseGetListModelFromNamedServiceParameterNamedFBDS,
+          X? parameter) async {
+    if (baseGetListModelFromNamedServiceParameterNamedFBDS == null) {
+      return await iGetListModelFromNamedServiceParameterNamedDataSource
           .getListModelFromNamedServiceParameterNamedDS(parameter);
     }
-    final response = getListModelFromNamedServiceParameterNamedFBDS
-        .getListModelFromNamedServiceParameterNamed(
-            parameter, parameterForFBDS);
+    final response = baseGetListModelFromNamedServiceParameterNamedFBDS
+        .getListModelFromNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await getListModelFromNamedServiceParameterNamedDataSource
+    return await iGetListModelFromNamedServiceParameterNamedDataSource
         .getListModelFromNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to take data from the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
   Future<T?>
-      _baseGetModelFromNamedServiceNPUsingParameterForFBDS<C extends Object>(
-          GetModelFromNamedServiceNPDataSource<T>
-              getModelFromNamedServiceNPDataSource,
-          GetModelFromNamedServiceNPFBDS<T, C>? getModelFromNamedServiceNPFBDS,
-          C? parameterForFBDS) async {
-    if (getModelFromNamedServiceNPFBDS == null) {
-      return await getModelFromNamedServiceNPDataSource
+      _getModelFromNamedServiceNPUsingFBDS<X extends Object>(
+          IGetModelFromNamedServiceNPDataSource<T>
+              iGetModelFromNamedServiceNPDataSource,
+          BaseGetModelFromNamedServiceNPFBDS<T, X>? baseGetModelFromNamedServiceNPFBDS,
+          X? parameter) async {
+    if (baseGetModelFromNamedServiceNPFBDS == null) {
+      return await iGetModelFromNamedServiceNPDataSource
           .getModelFromNamedServiceNPDS();
     }
-    final response = getModelFromNamedServiceNPFBDS
-        .getModelFromNamedServiceNP(parameterForFBDS);
+    final response = baseGetModelFromNamedServiceNPFBDS
+        .getModelFromNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await getModelFromNamedServiceNPDataSource
+    return await iGetModelFromNamedServiceNPDataSource
         .getModelFromNamedServiceNPDS();
   }
 
   /// The purpose of this method is to take data from the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<T?> _baseGetModelFromNamedServiceParameterNamedUsingParameterForFBDS<
-          X extends Object, C extends Object>(
-      GetModelFromNamedServiceParameterNamedDataSource<T, X>
-          getModelFromNamedServiceParameterNamedDataSource,
-      GetModelFromNamedServiceParameterNamedFBDS<T, X, C>?
-          getModelFromNamedServiceParameterNamedFBDS,
-      X? parameter,
-      C? parameterForFBDS) async {
-    if (getModelFromNamedServiceParameterNamedFBDS == null) {
-      return await getModelFromNamedServiceParameterNamedDataSource
+  Future<T?> _getModelFromNamedServiceParameterNamedUsingFBDS<
+          X extends Object>(
+      IGetModelFromNamedServiceParameterNamedDataSource<T, X>
+          iGetModelFromNamedServiceParameterNamedDataSource,
+      BaseGetModelFromNamedServiceParameterNamedFBDS<T, X>?
+          baseGetModelFromNamedServiceParameterNamedFBDS,
+      X? parameter) async {
+    if (baseGetModelFromNamedServiceParameterNamedFBDS == null) {
+      return await iGetModelFromNamedServiceParameterNamedDataSource
           .getModelFromNamedServiceParameterNamedDS(parameter);
     }
-    final response = getModelFromNamedServiceParameterNamedFBDS
-        .getModelFromNamedServiceParameterNamed(parameter, parameterForFBDS);
+    final response = baseGetModelFromNamedServiceParameterNamedFBDS
+        .getModelFromNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await getModelFromNamedServiceParameterNamedDataSource
+    return await iGetModelFromNamedServiceParameterNamedDataSource
         .getModelFromNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<X>?> _baseInsertModelToNamedServiceNPUsingParameterForFBDS<
+  Future<Result<X>?> _insertModelToNamedServiceNPUsingFBDS<
           X extends Object, C extends Object>(
-      InsertModelToNamedServiceNPDataSource<X>
-          insertModelToNamedServiceNPDataSource,
-      InsertModelToNamedServiceNPFBDS<X, C>? insertModelToNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (insertModelToNamedServiceNPFBDS == null) {
-      return await insertModelToNamedServiceNPDataSource
+      IInsertModelToNamedServiceNPDataSource<X>
+          iInsertModelToNamedServiceNPDataSource,
+      BaseInsertModelToNamedServiceNPFBDS<X, C>? baseInsertModelToNamedServiceNPFBDS,
+      C? parameter) async {
+    if (baseInsertModelToNamedServiceNPFBDS == null) {
+      return await iInsertModelToNamedServiceNPDataSource
           .insertModelToNamedServiceNPDS();
     }
-    final response = insertModelToNamedServiceNPFBDS
-        .insertModelToNamedServiceNP(parameterForFBDS);
+    final response = baseInsertModelToNamedServiceNPFBDS
+        .insertModelToNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await insertModelToNamedServiceNPDataSource
+    return await iInsertModelToNamedServiceNPDataSource
         .insertModelToNamedServiceNPDS();
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<Z>?>
-      _baseInsertModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          InsertModelToNamedServiceParameterNamedDataSource<Z, X>
-              insertModelToNamedServiceParameterNamedDataSource,
-          InsertModelToNamedServiceParameterNamedFBDS<Z, X, C>?
-              insertModelToNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (insertModelToNamedServiceParameterNamedFBDS == null) {
-      return await insertModelToNamedServiceParameterNamedDataSource
+  Future<Result<X>?>
+      _insertModelToNamedServiceParameterNamedUsingFBDS<
+              X extends Object, C extends Object>(
+          IInsertModelToNamedServiceParameterNamedDataSource<X,C>
+              iInsertModelToNamedServiceParameterNamedDataSource,
+          BaseInsertModelToNamedServiceParameterNamedFBDS<X,C>?
+              baseInsertModelToNamedServiceParameterNamedFBDS,
+          C? parameter) async {
+    if (baseInsertModelToNamedServiceParameterNamedFBDS == null) {
+      return await iInsertModelToNamedServiceParameterNamedDataSource
           .insertModelToNamedServiceParameterNamedDS(parameter);
     }
-    final response = insertModelToNamedServiceParameterNamedFBDS
-        .insertModelToNamedServiceParameterNamed(parameter, parameterForFBDS);
+    final response = baseInsertModelToNamedServiceParameterNamedFBDS
+        .insertModelToNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await insertModelToNamedServiceParameterNamedDataSource
+    return await iInsertModelToNamedServiceParameterNamedDataSource
         .insertModelToNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<X>?> _baseInsertListModelToNamedServiceNPUsingParameterForFBDS<
+  Future<Result<X>?> _insertListModelToNamedServiceNPUsingFBDS<
           X extends Object, C extends Object>(
-      InsertListModelToNamedServiceNPDataSource<X>
-          insertListModelToNamedServiceNPDataSource,
-      InsertListModelToNamedServiceNPFBDS<X, C>?
-          insertListModelToNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (insertListModelToNamedServiceNPFBDS == null) {
-      return await insertListModelToNamedServiceNPDataSource
+      IInsertListModelToNamedServiceNPDataSource<X>
+          iInsertListModelToNamedServiceNPDataSource,
+      BaseInsertListModelToNamedServiceNPFBDS<X, C>?
+          baseInsertListModelToNamedServiceNPFBDS,
+      C? parameter) async {
+    if (baseInsertListModelToNamedServiceNPFBDS == null) {
+      return await iInsertListModelToNamedServiceNPDataSource
           .insertListModelToNamedServiceNPDS();
     }
-    final response = insertListModelToNamedServiceNPFBDS
-        .insertListModelToNamedServiceNP(parameterForFBDS);
+    final response = baseInsertListModelToNamedServiceNPFBDS
+        .insertListModelToNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await insertListModelToNamedServiceNPDataSource
+    return await iInsertListModelToNamedServiceNPDataSource
         .insertListModelToNamedServiceNPDS();
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<Z>?>
-      _baseInsertListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          InsertListModelToNamedServiceParameterNamedDataSource<Z, X>
-              insertListModelToNamedServiceParameterNamedDataSource,
-          InsertListModelToNamedServiceParameterNamedFBDS<Z, X, C>?
-              insertListModelToNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (insertListModelToNamedServiceParameterNamedFBDS == null) {
-      return await insertListModelToNamedServiceParameterNamedDataSource
+  Future<Result<X>?>
+      _insertListModelToNamedServiceParameterNamedUsingFBDS<
+              X extends Object, C extends Object>(
+          IInsertListModelToNamedServiceParameterNamedDataSource<X,C>
+              iInsertListModelToNamedServiceParameterNamedDataSource,
+          BaseInsertListModelToNamedServiceParameterNamedFBDS<X, C>?
+              baseInsertListModelToNamedServiceParameterNamedFBDS,
+          C? parameter) async {
+    if (baseInsertListModelToNamedServiceParameterNamedFBDS == null) {
+      return await iInsertListModelToNamedServiceParameterNamedDataSource
           .insertListModelToNamedServiceParameterNamedDS(parameter);
     }
-    final response = insertListModelToNamedServiceParameterNamedFBDS
-        .insertListModelToNamedServiceParameterNamed(
-            parameter, parameterForFBDS);
+    final response = baseInsertListModelToNamedServiceParameterNamedFBDS
+        .insertListModelToNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await insertListModelToNamedServiceParameterNamedDataSource
+    return await iInsertListModelToNamedServiceParameterNamedDataSource
         .insertListModelToNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<X>?> _baseUpdateModelToNamedServiceNPUsingParameterForFBDS<
+  Future<Result<X>?> _updateModelToNamedServiceNPUsingFBDS<
           X extends Object, C extends Object>(
-      UpdateModelToNamedServiceNPDataSource<X>
-          updateModelToNamedServiceNPDataSource,
-      UpdateModelToNamedServiceNPFBDS<X, C>? updateModelToNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (updateModelToNamedServiceNPFBDS == null) {
-      return await updateModelToNamedServiceNPDataSource
+      IUpdateModelToNamedServiceNPDataSource<X>
+          iUpdateModelToNamedServiceNPDataSource,
+      BaseUpdateModelToNamedServiceNPFBDS<X, C>? baseUpdateModelToNamedServiceNPFBDS,
+      C? parameter) async {
+    if (baseUpdateModelToNamedServiceNPFBDS == null) {
+      return await iUpdateModelToNamedServiceNPDataSource
           .updateModelToNamedServiceNPDS();
     }
-    final response = updateModelToNamedServiceNPFBDS
-        .updateModelToNamedServiceNP(parameterForFBDS);
+    final response = baseUpdateModelToNamedServiceNPFBDS
+        .updateModelToNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await updateModelToNamedServiceNPDataSource
+    return await iUpdateModelToNamedServiceNPDataSource
         .updateModelToNamedServiceNPDS();
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<Z>?>
-      _baseUpdateModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          UpdateModelToNamedServiceParameterNamedDataSource<Z, X>
-              updateModelToNamedServiceParameterNamedDataSource,
-          UpdateModelToNamedServiceParameterNamedFBDS<Z, X, C>?
-              updateModelToNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (updateModelToNamedServiceParameterNamedFBDS == null) {
-      return await updateModelToNamedServiceParameterNamedDataSource
+  Future<Result<X>?>
+      _updateModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          IUpdateModelToNamedServiceParameterNamedDataSource<X,C>
+              iUpdateModelToNamedServiceParameterNamedDataSource,
+          BaseUpdateModelToNamedServiceParameterNamedFBDS<X,C>?
+              baseUpdateModelToNamedServiceParameterNamedFBDS,
+          C? parameter) async {
+    if (baseUpdateModelToNamedServiceParameterNamedFBDS == null) {
+      return await iUpdateModelToNamedServiceParameterNamedDataSource
           .updateModelToNamedServiceParameterNamedDS(parameter);
     }
-    final response = updateModelToNamedServiceParameterNamedFBDS
-        .updateModelToNamedServiceParameterNamed(parameter, parameterForFBDS);
+    final response = baseUpdateModelToNamedServiceParameterNamedFBDS
+        .updateModelToNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await updateModelToNamedServiceParameterNamedDataSource
+    return await iUpdateModelToNamedServiceParameterNamedDataSource
         .updateModelToNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<X>?> _baseUpdateListModelToNamedServiceNPUsingParameterForFBDS<
+  Future<Result<X>?> _updateListModelToNamedServiceNPUsingFBDS<
           X extends Object, C extends Object>(
-      UpdateListModelToNamedServiceNPDataSource<X>
-          updateListModelToNamedServiceNPDataSource,
-      UpdateListModelToNamedServiceNPFBDS<X, C>?
-          updateListModelToNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (updateListModelToNamedServiceNPFBDS == null) {
-      return await updateListModelToNamedServiceNPDataSource
+      IUpdateListModelToNamedServiceNPDataSource<X>
+          iUpdateListModelToNamedServiceNPDataSource,
+      BaseUpdateListModelToNamedServiceNPFBDS<X, C>?
+          baseUpdateListModelToNamedServiceNPFBDS,
+      C? parameter) async {
+    if (baseUpdateListModelToNamedServiceNPFBDS == null) {
+      return await iUpdateListModelToNamedServiceNPDataSource
           .updateListModelToNamedServiceNPDS();
     }
-    final response = updateListModelToNamedServiceNPFBDS
-        .updateListModelToNamedServiceNP(parameterForFBDS);
+    final response = baseUpdateListModelToNamedServiceNPFBDS
+        .updateListModelToNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await updateListModelToNamedServiceNPDataSource
+    return await iUpdateListModelToNamedServiceNPDataSource
         .updateListModelToNamedServiceNPDS();
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<Z>?>
-      _baseUpdateListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          UpdateListModelToNamedServiceParameterNamedDataSource<Z, X>
-              updateListModelToNamedServiceParameterNamedDataSource,
-          UpdateListModelToNamedServiceParameterNamedFBDS<Z, X, C>?
-              updateListModelToNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (updateListModelToNamedServiceParameterNamedFBDS == null) {
-      return await updateListModelToNamedServiceParameterNamedDataSource
+  Future<Result<X>?>
+      _updateListModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          IUpdateListModelToNamedServiceParameterNamedDataSource<X,C>
+              iUpdateListModelToNamedServiceParameterNamedDataSource,
+          BaseUpdateListModelToNamedServiceParameterNamedFBDS<X, C>?
+              baseUpdateListModelToNamedServiceParameterNamedFBDS,
+          C? parameter) async {
+    if (baseUpdateListModelToNamedServiceParameterNamedFBDS == null) {
+      return await iUpdateListModelToNamedServiceParameterNamedDataSource
           .updateListModelToNamedServiceParameterNamedDS(parameter);
     }
-    final response = updateListModelToNamedServiceParameterNamedFBDS
-        .updateListModelToNamedServiceParameterNamed(
-            parameter, parameterForFBDS);
+    final response = baseUpdateListModelToNamedServiceParameterNamedFBDS
+        .updateListModelToNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await updateListModelToNamedServiceParameterNamedDataSource
+    return await iUpdateListModelToNamedServiceParameterNamedDataSource
         .updateListModelToNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<X>?> _baseDeleteModelToNamedServiceNPUsingParameterForFBDS<
+  Future<Result<X>?> _deleteModelToNamedServiceNPUsingFBDS<
           X extends Object, C extends Object>(
-      DeleteModelToNamedServiceNPDataSource<X>
-          deleteModelToNamedServiceNPDataSource,
-      DeleteModelToNamedServiceNPFBDS<X, C>? deleteModelToNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (deleteModelToNamedServiceNPFBDS == null) {
-      return await deleteModelToNamedServiceNPDataSource
+      IDeleteModelToNamedServiceNPDataSource<X>
+          iDeleteModelToNamedServiceNPDataSource,
+      BaseDeleteModelToNamedServiceNPFBDS<X, C>? baseDeleteModelToNamedServiceNPFBDS,
+      C? parameter) async {
+    if (baseDeleteModelToNamedServiceNPFBDS == null) {
+      return await iDeleteModelToNamedServiceNPDataSource
           .deleteModelToNamedServiceNPDS();
     }
-    final response = deleteModelToNamedServiceNPFBDS
-        .deleteModelToNamedServiceNP(parameterForFBDS);
+    final response = baseDeleteModelToNamedServiceNPFBDS
+        .deleteModelToNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await deleteModelToNamedServiceNPDataSource
+    return await iDeleteModelToNamedServiceNPDataSource
         .deleteModelToNamedServiceNPDS();
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<Z>?>
-      _baseDeleteModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          DeleteModelToNamedServiceParameterNamedDataSource<Z, X>
-              deleteModelToNamedServiceParameterNamedDataSource,
-          DeleteModelToNamedServiceParameterNamedFBDS<Z, X, C>?
-              deleteModelToNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (deleteModelToNamedServiceParameterNamedFBDS == null) {
-      return await deleteModelToNamedServiceParameterNamedDataSource
+  Future<Result<X>?>
+      _deleteModelToNamedServiceParameterNamedUsingFBDS<
+              X extends Object, C extends Object>(
+          IDeleteModelToNamedServiceParameterNamedDataSource<X,C>
+              iDeleteModelToNamedServiceParameterNamedDataSource,
+          BaseDeleteModelToNamedServiceParameterNamedFBDS<X, C>?
+              baseDeleteModelToNamedServiceParameterNamedFBDS,
+          C? parameter) async {
+    if (baseDeleteModelToNamedServiceParameterNamedFBDS == null) {
+      return await iDeleteModelToNamedServiceParameterNamedDataSource
           .deleteModelToNamedServiceParameterNamedDS(parameter);
     }
-    final response = deleteModelToNamedServiceParameterNamedFBDS
-        .deleteModelToNamedServiceParameterNamed(parameter, parameterForFBDS);
+    final response = baseDeleteModelToNamedServiceParameterNamedFBDS
+        .deleteModelToNamedServiceParameterNamedFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await deleteModelToNamedServiceParameterNamedDataSource
+    return await iDeleteModelToNamedServiceParameterNamedDataSource
         .deleteModelToNamedServiceParameterNamedDS(parameter);
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<X>?> _baseDeleteListModelToNamedServiceNPUsingParameterForFBDS<
+  Future<Result<X>?> _deleteListModelToNamedServiceNPUsingFBDS<
           X extends Object, C extends Object>(
-      DeleteListModelToNamedServiceNPDataSource<X>
-          deleteListModelToNamedServiceNPDataSource,
-      DeleteListModelToNamedServiceNPFBDS<X, C>?
-          deleteListModelToNamedServiceNPFBDS,
-      C? parameterForFBDS) async {
-    if (deleteListModelToNamedServiceNPFBDS == null) {
-      return await deleteListModelToNamedServiceNPDataSource
+      IDeleteListModelToNamedServiceNPDataSource<X>
+          iDeleteListModelToNamedServiceNPDataSource,
+      BaseDeleteListModelToNamedServiceNPFBDS<X, C>?
+          baseDeleteListModelToNamedServiceNPFBDS,
+      C? parameter) async {
+    if (baseDeleteListModelToNamedServiceNPFBDS == null) {
+      return await iDeleteListModelToNamedServiceNPDataSource
           .deleteListModelToNamedServiceNPDS();
     }
-    final response = deleteListModelToNamedServiceNPFBDS
-        .deleteListModelToNamedServiceNP(parameterForFBDS);
+    final response = baseDeleteListModelToNamedServiceNPFBDS
+        .deleteListModelToNamedServiceNPFBDS(parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await deleteListModelToNamedServiceNPDataSource
+    return await iDeleteListModelToNamedServiceNPDataSource
         .deleteListModelToNamedServiceNPDS();
   }
 
   /// The purpose of this method is to send data to the Service,
   /// but before the start there will be a call to FBDS (if yours is not null)
-  /// you can also throw additional parameters for FBDS
-  Future<Result<Z>?>
-      _baseDeleteListModelToNamedServiceParameterNamedUsingParameterForFBDS<
-              Z extends Object, X extends Object, C extends Object>(
-          DeleteListModelToNamedServiceParameterNamedDataSource<Z, X>
-              deleteListModelToNamedServiceParameterNamedDataSource,
-          DeleteListModelToNamedServiceParameterNamedFBDS<Z, X, C>?
-              deleteListModelToNamedServiceParameterNamedFBDS,
-          X? parameter,
-          C? parameterForFBDS) async {
-    if (deleteListModelToNamedServiceParameterNamedFBDS == null) {
-      return await deleteListModelToNamedServiceParameterNamedDataSource
+  Future<Result<X>?>
+      _deleteListModelToNamedServiceParameterNamedUsingFBDS<X extends Object, C extends Object>(
+          IDeleteListModelToNamedServiceParameterNamedDataSource<X,C>
+              iDeleteListModelToNamedServiceParameterNamedDataSource,
+          BaseDeleteListModelToNamedServiceParameterNamedFBDS<X, C>?
+              baseDeleteListModelToNamedServiceParameterNamedFBDS,
+          C? parameter) async {
+    if (baseDeleteListModelToNamedServiceParameterNamedFBDS == null) {
+      return await iDeleteListModelToNamedServiceParameterNamedDataSource
           .deleteListModelToNamedServiceParameterNamedDS(parameter);
     }
-    final response = deleteListModelToNamedServiceParameterNamedFBDS
-        .deleteListModelToNamedServiceParameterNamed(
-            parameter, parameterForFBDS);
+    final response = baseDeleteListModelToNamedServiceParameterNamedFBDS
+        .deleteListModelToNamedServiceParameterNamedFBDS(
+            parameter);
     if (response!.exceptionController.isNotEqualsNullParameterException()) {
       return response;
     }
-    return await deleteListModelToNamedServiceParameterNamedDataSource
+    return await iDeleteListModelToNamedServiceParameterNamedDataSource
         .deleteListModelToNamedServiceParameterNamedDS(parameter);
   }
 }

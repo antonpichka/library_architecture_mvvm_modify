@@ -1,7 +1,6 @@
-import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
-import 'package:library_architecture_mvvm_modify/utility/base_iterator.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_iterator/base_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
+import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 import 'package:meta/meta.dart';
 
@@ -25,10 +24,6 @@ abstract base class BaseListModel<T extends BaseModel> {
   BaseListModel.success(this.listModel)
       : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
-      : exceptionController = ExceptionController.exception(exception);
-  BaseListModel.successForFBDS()
-      : exceptionController = ExceptionController.success();
-  BaseListModel.exceptionForFBDS(LocalException exception)
       : exceptionController = ExceptionController.exception(exception);
 
   /// Call this method to sort the list of models
