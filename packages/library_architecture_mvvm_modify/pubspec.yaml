@@ -12,5 +12,4 @@ dependencies:
   ansicolor: ^2.0.1
 
 dev_dependencies:
-  test: ^1.22.2
   lints: ^2.0.1
