@@ -1,3 +1,8 @@
+## 0.0.8
+
+- Rename type objects "BaseDataForNamedWidgetOrView" to "BaseDataForNamed"
+- Full delete documentation
+
 ## 0.0.7
 
 Divide and rule.
