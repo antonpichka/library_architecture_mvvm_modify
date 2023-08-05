@@ -36,11 +36,6 @@ import 'package:library_architecture_mvvm_modify/base_model_q_named_service_view
 import 'package:library_architecture_mvvm_modify/utility/result.dart';
 import 'package:meta/meta.dart';
 
-/// This class is necessary for accessing the database,
-/// the network (DataSource) and also before accessing the database, the network,
-/// check the data and calculate if necessary in (FBDS),
-/// also if there is a Stream in the Service,
-/// it can pass it for control to the "ModelQThereIsStateViewModel" class if it is necessary
 abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
     Y extends BaseListModel<T>> {
   ///   Example Using:
@@ -53,7 +48,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   Object get iModelQNamedServiceDataSource;
 
   // Start getListNP 2
-  /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<Y?> getListModelFromNamedServiceNP() {
@@ -64,8 +58,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Y?> getListModelFromNamedServiceNPUsingFBDS<X extends Object>(
@@ -81,7 +73,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End getListNP 2
 
   // Start getListParameterNamed 2
-  /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<Y?> getListModelFromNamedServiceParameterNamed<X extends Object>(
@@ -93,8 +84,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Y?>
@@ -111,7 +100,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End getListParameterNamed 2
 
   // Start getNP 2
-  /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceNP() {
@@ -122,8 +110,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceNPUsingFBDS<X extends Object>(
@@ -138,7 +124,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End getNP 2
 
   // Start getParameterNamed 2
-  /// The purpose of this method is to take data from the Service
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceParameterNamed<X extends Object>(
@@ -150,8 +135,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<T?> getModelFromNamedServiceParameterNamedUsingFBDS<X extends Object>(
@@ -167,7 +150,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End getParameterNamed 2
 
   // Start insertNP 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> insertModelToNamedServiceNP<X extends Object>() {
@@ -178,8 +160,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> insertModelToNamedServiceNPUsingFBDS<X extends Object,
@@ -195,7 +175,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End insertNP 2
 
   // Start insertParameterNamed 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> insertModelToNamedServiceParameterNamed<X extends Object,
@@ -207,8 +186,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> insertModelToNamedServiceParameterNamedUsingFBDS<
@@ -225,7 +202,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End insertParameterNamed 2
 
   // Start insertListNP 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> insertListModelToNamedServiceNP<X extends Object>() {
@@ -236,8 +212,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> insertListModelToNamedServiceNPUsingFBDS<X extends Object,
@@ -254,7 +228,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End insertListNP 2
 
   // Start insertListParameterNamed 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> insertListModelToNamedServiceParameterNamed<
@@ -266,8 +239,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> insertListModelToNamedServiceParameterNamedUsingFBDS<
@@ -284,7 +255,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End insertListParameterNamed 2
 
   // Start updateNP 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> updateModelToNamedServiceNP<X extends Object>() {
@@ -295,8 +265,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> updateModelToNamedServiceNPUsingFBDS<X extends Object,
@@ -312,7 +280,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End updateNP 2
 
   // Start updateParameterNamed 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> updateModelToNamedServiceParameterNamed<X extends Object,
@@ -324,8 +291,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> updateModelToNamedServiceParameterNamedUsingFBDS<
@@ -342,7 +307,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End updateParameterNamed 2
 
   // Start updateListNP 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> updateListModelToNamedServiceNP<X extends Object>() {
@@ -353,8 +317,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> updateListModelToNamedServiceNPUsingFBDS<X extends Object,
@@ -371,7 +333,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End updateListNP 2
 
   // Start updateListParameterNamed 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> updateListModelToNamedServiceParameterNamed<
@@ -383,8 +344,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> updateListModelToNamedServiceParameterNamedUsingFBDS<
@@ -401,7 +360,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End updateListParameterNamed 2
 
   // Start deleteNP 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> deleteModelToNamedServiceNP<X extends Object>() {
@@ -412,8 +370,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> deleteModelToNamedServiceNPUsingFBDS<X extends Object,
@@ -429,7 +385,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End deleteNP 2
 
   // Start deleteParameterNamed 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> deleteModelToNamedServiceParameterNamed<X extends Object,
@@ -441,8 +396,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> deleteModelToNamedServiceParameterNamedUsingFBDS<
@@ -459,7 +412,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End deleteParameterNamed 2
 
   // Start deleteListNP 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> deleteListModelToNamedServiceNP<X extends Object>() {
@@ -470,8 +422,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         null);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> deleteListModelToNamedServiceNPUsingFBDS<X extends Object,
@@ -488,7 +438,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   // End deleteListNP 2
 
   // Start deleteListParameterNamed 2
-  /// The purpose of this method is to send data to the Service
   @protected
   @nonVirtual
   Future<Result<X>?> deleteListModelToNamedServiceParameterNamed<
@@ -500,8 +449,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   @protected
   @nonVirtual
   Future<Result<X>?> deleteListModelToNamedServiceParameterNamedUsingFBDS<
@@ -517,8 +464,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
   }
   // End deleteListParameterNamed 2
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Y?> _getListModelFromNamedServiceNPUsingFBDS<X extends Object>(
       IGetListModelFromNamedServiceNPDataSource<Y>
           iGetListModelFromNamedServiceNPDataSource,
@@ -538,8 +483,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .getListModelFromNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Y?>
       _getListModelFromNamedServiceParameterNamedUsingFBDS<X extends Object>(
           IGetListModelFromNamedServiceParameterNamedDataSource<Y, X>
@@ -560,8 +503,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .getListModelFromNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<T?> _getModelFromNamedServiceNPUsingFBDS<X extends Object>(
       IGetModelFromNamedServiceNPDataSource<T>
           iGetModelFromNamedServiceNPDataSource,
@@ -581,8 +522,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .getModelFromNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to take data from the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<T?> _getModelFromNamedServiceParameterNamedUsingFBDS<X extends Object>(
       IGetModelFromNamedServiceParameterNamedDataSource<T, X>
           iGetModelFromNamedServiceParameterNamedDataSource,
@@ -602,8 +541,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .getModelFromNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?>
       _insertModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
           IInsertModelToNamedServiceNPDataSource<X>
@@ -624,8 +561,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .insertModelToNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _insertModelToNamedServiceParameterNamedUsingFBDS<
           X extends Object, C extends Object>(
       IInsertModelToNamedServiceParameterNamedDataSource<X, C>
@@ -646,8 +581,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .insertModelToNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _insertListModelToNamedServiceNPUsingFBDS<X extends Object,
           C extends Object>(
       IInsertListModelToNamedServiceNPDataSource<X>
@@ -668,8 +601,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .insertListModelToNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _insertListModelToNamedServiceParameterNamedUsingFBDS<
           X extends Object, C extends Object>(
       IInsertListModelToNamedServiceParameterNamedDataSource<X, C>
@@ -690,8 +621,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .insertListModelToNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?>
       _updateModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
           IUpdateModelToNamedServiceNPDataSource<X>
@@ -712,8 +641,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .updateModelToNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _updateModelToNamedServiceParameterNamedUsingFBDS<
           X extends Object, C extends Object>(
       IUpdateModelToNamedServiceParameterNamedDataSource<X, C>
@@ -734,8 +661,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .updateModelToNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _updateListModelToNamedServiceNPUsingFBDS<X extends Object,
           C extends Object>(
       IUpdateListModelToNamedServiceNPDataSource<X>
@@ -756,8 +681,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .updateListModelToNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _updateListModelToNamedServiceParameterNamedUsingFBDS<
           X extends Object, C extends Object>(
       IUpdateListModelToNamedServiceParameterNamedDataSource<X, C>
@@ -778,8 +701,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .updateListModelToNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?>
       _deleteModelToNamedServiceNPUsingFBDS<X extends Object, C extends Object>(
           IDeleteModelToNamedServiceNPDataSource<X>
@@ -800,8 +721,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .deleteModelToNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _deleteModelToNamedServiceParameterNamedUsingFBDS<
           X extends Object, C extends Object>(
       IDeleteModelToNamedServiceParameterNamedDataSource<X, C>
@@ -822,8 +741,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .deleteModelToNamedServiceParameterNamedDS(parameter);
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _deleteListModelToNamedServiceNPUsingFBDS<X extends Object,
           C extends Object>(
       IDeleteListModelToNamedServiceNPDataSource<X>
@@ -844,8 +761,6 @@ abstract base class BaseModelQNamedServiceViewModel<T extends BaseModel,
         .deleteListModelToNamedServiceNPDS();
   }
 
-  /// The purpose of this method is to send data to the Service,
-  /// but before the start there will be a call to FBDS (if yours is not null)
   Future<Result<X>?> _deleteListModelToNamedServiceParameterNamedUsingFBDS<
           X extends Object, C extends Object>(
       IDeleteListModelToNamedServiceParameterNamedDataSource<X, C>

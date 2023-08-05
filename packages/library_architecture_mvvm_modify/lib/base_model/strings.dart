@@ -1,6 +1,5 @@
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 
-/// An example of the extends of the "BaseModel" class, named Strings
 base class Strings extends BaseModel {
   String? field;
 

@@ -10,8 +10,6 @@ enum EnumWhatIsTheException {
   otherException
 }
 
-/// This class is needed to manage the exception and provide
-/// the necessary information to the developer about the error.
 final class ExceptionController {
   final EnumWhatIsTheException enumWhatIsTheException;
   final BaseException? _exception;
@@ -27,16 +25,11 @@ final class ExceptionController {
                 ? EnumWhatIsTheException.networkException
                 : EnumWhatIsTheException.otherException;
 
-  /// We get a message for the view from the exception parameter,
-  /// if there was no exception, this method will return null
   @nonVirtual
   String? get getMessageForViewParameterException {
     return _exception?.getMessageForView;
   }
 
-  /// If the exception is not null then it will return true.
-  /// In general, if you want to check if there is an exception,
-  /// then true is when you have an exception
   @nonVirtual
   bool isNotEqualsNullParameterException() {
     if (_exception == null) {

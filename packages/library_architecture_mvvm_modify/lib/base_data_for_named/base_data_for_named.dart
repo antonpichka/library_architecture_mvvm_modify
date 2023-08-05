@@ -1,13 +1,11 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
 
-/// This class is needed to display data in a widget or view.
-abstract base class BaseDataForNamedWidgetOrView {
-  /// if an exception happens then here is "ExceptionController"
+abstract base class BaseDataForNamed {
   ExceptionController exceptionController;
 
-  BaseDataForNamedWidgetOrView.success()
+  BaseDataForNamed.success()
       : exceptionController = ExceptionController.success();
-  BaseDataForNamedWidgetOrView.exception(BaseException exception)
+  BaseDataForNamed.exception(BaseException exception)
       : exceptionController = ExceptionController.exception(exception);
 }

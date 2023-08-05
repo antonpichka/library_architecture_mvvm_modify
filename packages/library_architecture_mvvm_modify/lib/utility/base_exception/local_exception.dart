@@ -1,10 +1,8 @@
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:meta/meta.dart';
 
-/// Who is in fault?
 enum EnumGuiltyForLocalException { developer, device, user }
 
-/// An example of the extends of the "BaseException" class, named LocalException
 final class LocalException extends BaseException {
   final EnumGuiltyForLocalException enumGuiltyForLocalException;
   final String message;
@@ -17,13 +15,11 @@ final class LocalException extends BaseException {
       : enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
         super(thisClass, LocalException);
 
-  /// Show message for view
   @override
   String get getMessageForView {
     return message;
   }
 
-  /// Show an exception to the developer when that same exception occurs
   @protected
   @override
   String get exceptionInStringForDebugPrintException {
