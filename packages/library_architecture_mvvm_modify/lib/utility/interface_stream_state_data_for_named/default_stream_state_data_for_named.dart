@@ -3,17 +3,14 @@ import 'package:library_architecture_mvvm_modify/base_data_for_named/base_data_f
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_state_data_for_named/i_stream_state_data_for_named.dart';
 
-final class DefaultStreamStateDataForNamed<
-        T extends BaseDataForNamed>
-    implements IStreamStateDataForNamed<T>
-{
+final class DefaultStreamStateDataForNamed<T extends BaseDataForNamed>
+    implements IStreamStateDataForNamed<T> {
   final StreamController<T> _streamControllerForDataForNamed;
   T? _dataForNamed;
   StreamSubscription<T>? _streamSubscriptionForDataForNamed;
 
   DefaultStreamStateDataForNamed(this._dataForNamed)
-      : _streamControllerForDataForNamed =
-            StreamController<T>.broadcast();
+      : _streamControllerForDataForNamed = StreamController<T>.broadcast();
 
   @override
   void dispose() {
@@ -45,8 +42,7 @@ final class DefaultStreamStateDataForNamed<
       throw LocalException(
           this, EnumGuiltyForLocalException.developer, "stream closed");
     }
-    _streamControllerForDataForNamed.sink
-        .add(_dataForNamed!);
+    _streamControllerForDataForNamed.sink.add(_dataForNamed!);
   }
 
   void listensStreamDataForNamed(Function(T event) callback) {

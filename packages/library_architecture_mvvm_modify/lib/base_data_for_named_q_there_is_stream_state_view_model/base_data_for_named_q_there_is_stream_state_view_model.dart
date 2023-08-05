@@ -7,15 +7,13 @@ import 'package:meta/meta.dart';
 
 abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
     T extends BaseDataForNamed> implements IDispose {
-  final IStreamStateDataForNamed<T>
-      _iStreamStateDataForNamed;
+  final IStreamStateDataForNamed<T> _iStreamStateDataForNamed;
 
   BaseDataForNamedQThereIsStreamStateViewModel(
       IInitializedStreamStateDataForNamed<T>
           iInitializedStreamStateDataForNamed)
       : _iStreamStateDataForNamed =
-            iInitializedStreamStateDataForNamed
-                .getStreamStateDataForNamed;
+            iInitializedStreamStateDataForNamed.getStreamStateDataForNamed;
 
   @override
   void dispose() {
@@ -23,8 +21,7 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
   }
 
   @nonVirtual
-  IStreamStateDataForNamed<T>?
-      get getIStreamStateDataForNamed {
+  IStreamStateDataForNamed<T>? get getIStreamStateDataForNamed {
     return _iStreamStateDataForNamed;
   }
 
@@ -35,8 +32,7 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
 
   @nonVirtual
   Stream<T?>? get getStreamDataForNamed {
-    return _iStreamStateDataForNamed
-        .getStreamDataForNamed;
+    return _iStreamStateDataForNamed.getStreamDataForNamed;
   }
 
   @nonVirtual
@@ -46,13 +42,11 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
 
   @nonVirtual
   set setDataForNamed(T? dataForNamed) {
-    _iStreamStateDataForNamed.setDataForNamed =
-        dataForNamed;
+    _iStreamStateDataForNamed.setDataForNamed = dataForNamed;
   }
 
   @nonVirtual
   void notifyStreamDataForNamed() {
-    _iStreamStateDataForNamed
-        .notifyStreamDataForNamed();
+    _iStreamStateDataForNamed.notifyStreamDataForNamed();
   }
 }

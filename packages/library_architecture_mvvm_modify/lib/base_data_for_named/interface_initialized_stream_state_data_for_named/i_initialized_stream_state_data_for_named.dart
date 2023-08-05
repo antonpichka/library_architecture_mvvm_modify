@@ -3,6 +3,5 @@ import 'package:library_architecture_mvvm_modify/utility/interface_stream_state_
 
 abstract interface class IInitializedStreamStateDataForNamed<
     T extends BaseDataForNamed> {
-  IStreamStateDataForNamed<T>
-      get getStreamStateDataForNamed;
+  IStreamStateDataForNamed<T> get getStreamStateDataForNamed;
 }
