@@ -1,4 +1,4 @@
-import 'package:library_architecture_mvvm_modify/base_model/base_iterator/base_iterator.dart';
+import 'package:library_architecture_mvvm_modify/base_model/base_model_q_named_iterator/base_model_q_named_iterator.dart';
 import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/base_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/exception_controller.dart';
@@ -10,7 +10,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   ExceptionController exceptionController;
 
   @protected
-  Map<Enum, BaseIterator<T>>? mapEnumNamedForIteratorAndIterator;
+  Map<Enum, BaseModelQNamedIterator<T>>? mapEnumModelIteratorAndModelQNamedIterator;
 
   BaseListModel.success(this.listModel)
       : exceptionController = ExceptionController.success();
@@ -18,26 +18,28 @@ abstract base class BaseListModel<T extends BaseModel> {
       : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual
-  void iteratorForListModel(Enum? enumNamedForIterator) {
-    if (mapEnumNamedForIteratorAndIterator!.isEmpty) {
+  void iteratorForListModel(Enum? enumModelIterator) {
+    if (mapEnumModelIteratorAndModelQNamedIterator!.isEmpty) {
       return;
     }
-    BaseIterator<T> iterator = mapEnumNamedForIteratorAndIterator!.values.first;
-    if (mapEnumNamedForIteratorAndIterator!.length == 1) {
-      iterator.listModel = listModel!;
-      listModel = iterator.getSortedListModelParameterListModel;
+    BaseModelQNamedIterator<T> modelQNamedIterator = mapEnumModelIteratorAndModelQNamedIterator!.values.first;
+    if (mapEnumModelIteratorAndModelQNamedIterator!.length == 1) {
+      modelQNamedIterator.listModel = listModel!;
+      modelQNamedIterator.sortToListModel();
+      listModel = modelQNamedIterator.listModel;
       return;
     }
-    for (Enum itemEnumNamedForIterator
-        in mapEnumNamedForIteratorAndIterator!.keys) {
-      if (enumNamedForIterator != itemEnumNamedForIterator) {
+    for (Enum keyEnumModelIterator
+        in mapEnumModelIteratorAndModelQNamedIterator!.keys) {
+      if (enumModelIterator != keyEnumModelIterator) {
         continue;
       }
-      iterator = mapEnumNamedForIteratorAndIterator![itemEnumNamedForIterator]!;
+      modelQNamedIterator = mapEnumModelIteratorAndModelQNamedIterator![keyEnumModelIterator]!;
       break;
     }
-    iterator.listModel = listModel!;
-    listModel = iterator.getSortedListModelParameterListModel;
+    modelQNamedIterator.listModel = listModel!;
+    modelQNamedIterator.sortToListModel();
+    listModel = modelQNamedIterator.listModel;
   }
 
   @nonVirtual
