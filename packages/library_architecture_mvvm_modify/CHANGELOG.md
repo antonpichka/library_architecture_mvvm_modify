@@ -1,3 +1,8 @@
+## 0.0.9
+
+- Deleted FBDS
+- Changed the name of some unimportant classes
+
 ## 0.0.8
 
 - Rename type objects "BaseDataForNamedWidgetOrView" to "BaseDataForNamed"
