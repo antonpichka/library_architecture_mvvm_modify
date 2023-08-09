@@ -10,7 +10,8 @@ abstract base class BaseListModel<T extends BaseModel> {
   ExceptionController exceptionController;
 
   @protected
-  Map<Enum, BaseModelQNamedIterator<T>>? mapEnumModelIteratorAndModelQNamedIterator;
+  Map<Enum, BaseModelQNamedIterator<T>>?
+      mapEnumModelIteratorAndModelQNamedIterator;
 
   BaseListModel.success(this.listModel)
       : exceptionController = ExceptionController.success();
@@ -22,7 +23,8 @@ abstract base class BaseListModel<T extends BaseModel> {
     if (mapEnumModelIteratorAndModelQNamedIterator!.isEmpty) {
       return;
     }
-    BaseModelQNamedIterator<T> modelQNamedIterator = mapEnumModelIteratorAndModelQNamedIterator!.values.first;
+    BaseModelQNamedIterator<T> modelQNamedIterator =
+        mapEnumModelIteratorAndModelQNamedIterator!.values.first;
     if (mapEnumModelIteratorAndModelQNamedIterator!.length == 1) {
       modelQNamedIterator.listModel = listModel!;
       modelQNamedIterator.sortToListModel();
@@ -34,7 +36,8 @@ abstract base class BaseListModel<T extends BaseModel> {
       if (enumModelIterator != keyEnumModelIterator) {
         continue;
       }
-      modelQNamedIterator = mapEnumModelIteratorAndModelQNamedIterator![keyEnumModelIterator]!;
+      modelQNamedIterator =
+          mapEnumModelIteratorAndModelQNamedIterator![keyEnumModelIterator]!;
       break;
     }
     modelQNamedIterator.listModel = listModel!;
