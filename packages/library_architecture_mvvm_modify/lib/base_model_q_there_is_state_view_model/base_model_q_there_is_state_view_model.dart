@@ -14,7 +14,7 @@ abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
       : _iStateModel = iInitializedStateModel.getStateModel;
 
   @nonVirtual
-  IStateModel<T,Y>? get getIStateModel {
+  IStateModel<T, Y>? get getIStateModel {
     return _iStateModel;
   }
 

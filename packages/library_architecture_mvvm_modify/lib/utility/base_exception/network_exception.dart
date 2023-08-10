@@ -6,10 +6,12 @@ final class NetworkException extends BaseException {
   final String? nameStatusCode;
   final String? descriptionStatusCode;
 
-  NetworkException(Object thisClass, String key, this.statusCode, [this.nameStatusCode, this.descriptionStatusCode])
+  NetworkException(Object thisClass, String key, this.statusCode,
+      [this.nameStatusCode, this.descriptionStatusCode])
       : super(thisClass, NetworkException, key);
 
-  factory NetworkException.fromKeyAndStatusCode(Object thisClass, String key, int statusCode) {
+  factory NetworkException.fromKeyAndStatusCode(
+      Object thisClass, String key, int statusCode) {
     switch (statusCode) {
       case 201:
         return NetworkException(thisClass, key, 201, '201 Created',
@@ -115,13 +117,21 @@ final class NetworkException extends BaseException {
         return NetworkException(thisClass, key, 412, '412 Precondition Failed',
             'The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server.');
       case 413:
-        return NetworkException(thisClass, key, 413, '413 Request Entity Too Large',
+        return NetworkException(
+            thisClass,
+            key,
+            413,
+            '413 Request Entity Too Large',
             'The server is refusing to process a request because the request entity is larger than the server is willing or able to process.');
       case 414:
         return NetworkException(thisClass, key, 414, '414 Request-URI Too Long',
             'The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret.');
       case 415:
-        return NetworkException(thisClass, key, 415, '415 Unsupported Media Type',
+        return NetworkException(
+            thisClass,
+            key,
+            415,
+            '415 Unsupported Media Type',
             'The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method.');
       case 416:
         return NetworkException(
@@ -134,7 +144,11 @@ final class NetworkException extends BaseException {
         return NetworkException(thisClass, key, 417, '417 Expectation Failed',
             'The expectation given in an Expect request-header field (see section 14.20) could not be met by this server.');
       case 500:
-        return NetworkException(thisClass, key, 500, '500 Internal Server Error',
+        return NetworkException(
+            thisClass,
+            key,
+            500,
+            '500 Internal Server Error',
             'The server encountered an unexpected condition which prevented it from fulfilling the request.');
       case 501:
         return NetworkException(thisClass, key, 501, '501 Not Implemented',

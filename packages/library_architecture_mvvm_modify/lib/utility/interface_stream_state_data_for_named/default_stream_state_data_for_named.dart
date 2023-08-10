@@ -36,10 +36,18 @@ final class DefaultStreamStateDataForNamed<T extends BaseDataForNamed>
   @override
   void notifyStreamDataForNamed() {
     if (!_streamControllerForDataForNamed.hasListener) {
-      throw LocalException(this,EnumGuiltyForLocalException.developer,KeysException.dSSDFNWhereLocalExceptionGuiltyDeveloperStream, "stream has no listener");
+      throw LocalException(
+          this,
+          EnumGuiltyForLocalException.developer,
+          KeysException.dSSDFNWhereLocalExceptionGuiltyDeveloperStream,
+          "stream has no listener");
     }
     if (_streamControllerForDataForNamed.isClosed) {
-      throw LocalException(this,EnumGuiltyForLocalException.developer,KeysException.dSSDFNWhereLocalExceptionGuiltyDeveloperStream, "stream closed");
+      throw LocalException(
+          this,
+          EnumGuiltyForLocalException.developer,
+          KeysException.dSSDFNWhereLocalExceptionGuiltyDeveloperStream,
+          "stream closed");
     }
     _streamControllerForDataForNamed.sink.add(_dataForNamed!);
   }
