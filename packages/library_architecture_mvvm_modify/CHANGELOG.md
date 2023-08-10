@@ -1,3 +1,7 @@
+## 0.1.1
+
+- "BaseDataForNamedQThereIsStreamStateViewModel" and "BaseModelQThereIsStateViewModel". Fixed interfaces in these classes (they are not public now)
+
 ## 0.1.0
 
 - Simplified a lot of things, especially with the "BaseException" class and its descendants
