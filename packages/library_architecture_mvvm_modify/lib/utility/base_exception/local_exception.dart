@@ -5,25 +5,17 @@ enum EnumGuiltyForLocalException { developer, device, user }
 
 final class LocalException extends BaseException {
   final EnumGuiltyForLocalException enumGuiltyForLocalException;
-  final String message;
+  final String? message;
 
   LocalException(
-      Object thisClass, this.enumGuiltyForLocalException, this.message)
-      : super(thisClass, LocalException);
-
-  LocalException.whereTheUserIsGuilty(Object thisClass, this.message)
-      : enumGuiltyForLocalException = EnumGuiltyForLocalException.user,
-        super(thisClass, LocalException);
-
-  @override
-  String get getMessageForView {
-    return message;
-  }
+      Object thisClass, this.enumGuiltyForLocalException, String key, [this.message])
+      : super(thisClass, LocalException, key);
 
   @protected
   @override
   String get exceptionInStringForDebugPrintException {
-    return "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
-        "Message: $message";
+    return "Key: $key | "
+        "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
+        "Message (optional): ${message ?? ""}";
   }
 }

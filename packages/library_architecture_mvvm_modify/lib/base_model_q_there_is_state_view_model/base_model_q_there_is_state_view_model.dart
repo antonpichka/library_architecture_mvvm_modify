@@ -14,7 +14,7 @@ abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
       : _iStateModel = iInitializedStateModel.getStateModel;
 
   @nonVirtual
-  IStateModel<T, Y>? get getIStateModel {
+  IStateModel<T,Y>? get getIStateModel {
     return _iStateModel;
   }
 
@@ -29,7 +29,7 @@ abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
   }
 
   @nonVirtual
-  set setModel(T? model) {
+  set setModel(T model) {
     _iStateModel.setModel = model;
   }
 
@@ -44,7 +44,7 @@ abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
   }
 
   @nonVirtual
-  set setListModel(Y? listModel) {
+  set setListModel(Y listModel) {
     _iStateModel.setListModel = listModel;
   }
 }

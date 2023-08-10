@@ -16,12 +16,12 @@ final class DefaultStateModel<T extends BaseModel, Y extends BaseListModel<T>>
   Y? get getListModel => _listModel;
 
   @override
-  set setModel(T? model) {
+  set setModel(T model) {
     _model = model;
   }
 
   @override
-  set setListModel(Y? listModel) {
+  set setListModel(Y listModel) {
     _listModel = listModel;
   }
 }

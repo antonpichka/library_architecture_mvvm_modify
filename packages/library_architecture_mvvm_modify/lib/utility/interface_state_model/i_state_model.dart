@@ -7,7 +7,7 @@ abstract interface class IStateModel<T extends BaseModel,
 
   Y? get getListModel;
 
-  set setModel(T? model);
+  set setModel(T model);
 
-  set setListModel(Y? listModel);
+  set setListModel(Y listModel);
 }

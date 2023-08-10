@@ -19,7 +19,7 @@ abstract base class BaseListModel<T extends BaseModel> {
       : exceptionController = ExceptionController.exception(exception);
 
   @nonVirtual
-  void iteratorForListModel(Enum? enumModelIterator) {
+  void iteratorForListModel(Enum enumModelIterator) {
     if (mapEnumModelIteratorAndModelQNamedIterator!.isEmpty) {
       return;
     }

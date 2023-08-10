@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:library_architecture_mvvm_modify/base_data_for_named/base_data_for_named.dart';
 import 'package:library_architecture_mvvm_modify/utility/base_exception/local_exception.dart';
 import 'package:library_architecture_mvvm_modify/utility/interface_stream_state_data_for_named/i_stream_state_data_for_named.dart';
+import 'package:library_architecture_mvvm_modify/utility/keys_exception.dart';
 
 final class DefaultStreamStateDataForNamed<T extends BaseDataForNamed>
     implements IStreamStateDataForNamed<T> {
@@ -28,19 +29,17 @@ final class DefaultStreamStateDataForNamed<T extends BaseDataForNamed>
   T? get getDataForNamed => _dataForNamed;
 
   @override
-  set setDataForNamed(T? dataForNamed) {
+  set setDataForNamed(T dataForNamed) {
     _dataForNamed = dataForNamed;
   }
 
   @override
   void notifyStreamDataForNamed() {
     if (!_streamControllerForDataForNamed.hasListener) {
-      throw LocalException(this, EnumGuiltyForLocalException.developer,
-          "stream has no listener");
+      throw LocalException(this,EnumGuiltyForLocalException.developer,KeysException.dSSDFNWhereLocalExceptionGuiltyDeveloperStream, "stream has no listener");
     }
     if (_streamControllerForDataForNamed.isClosed) {
-      throw LocalException(
-          this, EnumGuiltyForLocalException.developer, "stream closed");
+      throw LocalException(this,EnumGuiltyForLocalException.developer,KeysException.dSSDFNWhereLocalExceptionGuiltyDeveloperStream, "stream closed");
     }
     _streamControllerForDataForNamed.sink.add(_dataForNamed!);
   }

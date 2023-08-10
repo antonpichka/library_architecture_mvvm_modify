@@ -7,7 +7,7 @@ abstract interface class IStreamStateDataForNamed<T extends BaseDataForNamed>
 
   T? get getDataForNamed;
 
-  set setDataForNamed(T? dataForNamed);
+  set setDataForNamed(T dataForNamed);
 
   void notifyStreamDataForNamed();
 }

@@ -31,7 +31,7 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
   }
 
   @nonVirtual
-  Stream<T?>? get getStreamDataForNamed {
+  Stream<T?> get getStreamDataForNamed {
     return _iStreamStateDataForNamed.getStreamDataForNamed;
   }
 
@@ -41,7 +41,7 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
   }
 
   @nonVirtual
-  set setDataForNamed(T? dataForNamed) {
+  set setDataForNamed(T dataForNamed) {
     _iStreamStateDataForNamed.setDataForNamed = dataForNamed;
   }
 
