@@ -14,11 +14,6 @@ abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
       : _iStateModel = iInitializedStateModel.getStateModel;
 
   @nonVirtual
-  IStateModel<T, Y>? get getIStateModel {
-    return _iStateModel;
-  }
-
-  @nonVirtual
   Future<T?> get getFutureModel async {
     return _iStateModel.getModel;
   }
@@ -46,5 +41,11 @@ abstract base class BaseModelQThereIsStateViewModel<T extends BaseModel,
   @nonVirtual
   set setListModel(Y listModel) {
     _iStateModel.setListModel = listModel;
+  }
+
+  @protected
+  @nonVirtual
+  IStateModel<T, Y>? get getIStateModel {
+    return _iStateModel;
   }
 }

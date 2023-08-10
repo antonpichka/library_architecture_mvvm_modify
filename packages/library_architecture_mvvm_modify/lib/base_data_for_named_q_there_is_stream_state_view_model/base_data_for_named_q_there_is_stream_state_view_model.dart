@@ -21,11 +21,6 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
   }
 
   @nonVirtual
-  IStreamStateDataForNamed<T>? get getIStreamStateDataForNamed {
-    return _iStreamStateDataForNamed;
-  }
-
-  @nonVirtual
   Future<T?> get getFutureDataForNamed async {
     return _iStreamStateDataForNamed.getDataForNamed;
   }
@@ -48,5 +43,11 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
   @nonVirtual
   void notifyStreamDataForNamed() {
     _iStreamStateDataForNamed.notifyStreamDataForNamed();
+  }
+
+  @protected
+  @nonVirtual
+  IStreamStateDataForNamed<T>? get getIStreamStateDataForNamed {
+    return _iStreamStateDataForNamed;
   }
 }
