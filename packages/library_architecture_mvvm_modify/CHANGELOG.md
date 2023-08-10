@@ -1,3 +1,7 @@
+## 0.1.0
+
+- Simplified a lot of things, especially with the "BaseException" class and its descendants
+
 ## 0.0.9
 
 - Deleted FBDS
