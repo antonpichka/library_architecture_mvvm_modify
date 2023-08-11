@@ -1,3 +1,7 @@
+## 0.1.3
+
+- Added method clone object to classes "BaseModel" and "BaseListModel", and change method sorted to class "BaseModelQNamedIterator"
+
 ## 0.1.2
 
 - Deleted objects "BaseModelQThereIsStateViewModel" and "IStateModel" and "IInitializedStateModel"
