@@ -2,16 +2,20 @@ import 'package:library_architecture_mvvm_modify/base_model/base_model.dart';
 import 'package:meta/meta.dart';
 
 abstract base class BaseModelQNamedIterator<T extends BaseModel>
-    implements Iterator<T> {
-  List<T>? listModel;
+    implements Iterator<T>
+{
+  final List<T> listModel;
+
+  BaseModelQNamedIterator(this.listModel);
 
   @nonVirtual
   void sortToListModel() {
-    List<T> listModel = List.empty(growable: true);
+    List<T> newListModel = List.empty(growable: true);
     while (moveNext()) {
-      final model = current;
-      listModel.add(model);
+      final newModel = current;
+      newListModel.add(newModel);
     }
-    this.listModel = listModel;
+    listModel.clear();
+    listModel.addAll(newListModel);
   }
 }

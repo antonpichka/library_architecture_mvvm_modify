@@ -5,44 +5,23 @@ import 'package:library_architecture_mvvm_modify/utility/exception_controller.da
 import 'package:meta/meta.dart';
 
 abstract base class BaseListModel<T extends BaseModel> {
-  List<T>? listModel;
+  final List<T>? listModel;
 
-  ExceptionController exceptionController;
-
-  @protected
-  Map<Enum, BaseModelQNamedIterator<T>>?
-      mapEnumModelIteratorAndModelQNamedIterator;
+  final ExceptionController exceptionController;
 
   BaseListModel.success(this.listModel)
       : exceptionController = ExceptionController.success();
   BaseListModel.exception(BaseException exception)
-      : exceptionController = ExceptionController.exception(exception);
+      : listModel = null,
+        exceptionController = ExceptionController.exception(exception);
+
+  List<T> clone();
 
   @nonVirtual
-  void iteratorForListModel(Enum enumModelIterator) {
-    if (mapEnumModelIteratorAndModelQNamedIterator!.isEmpty) {
-      return;
-    }
-    BaseModelQNamedIterator<T> modelQNamedIterator =
-        mapEnumModelIteratorAndModelQNamedIterator!.values.first;
-    if (mapEnumModelIteratorAndModelQNamedIterator!.length == 1) {
-      modelQNamedIterator.listModel = listModel!;
-      modelQNamedIterator.sortToListModel();
-      listModel = modelQNamedIterator.listModel;
-      return;
-    }
-    for (Enum keyEnumModelIterator
-        in mapEnumModelIteratorAndModelQNamedIterator!.keys) {
-      if (enumModelIterator != keyEnumModelIterator) {
-        continue;
-      }
-      modelQNamedIterator =
-          mapEnumModelIteratorAndModelQNamedIterator![keyEnumModelIterator]!;
-      break;
-    }
-    modelQNamedIterator.listModel = listModel!;
+  void modelQNamedIterator(BaseModelQNamedIterator<T> modelQNamedIterator) {
     modelQNamedIterator.sortToListModel();
-    listModel = modelQNamedIterator.listModel;
+    listModel?.clear();
+    listModel?.addAll(modelQNamedIterator.listModel);
   }
 
   @nonVirtual

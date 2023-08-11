@@ -4,4 +4,13 @@ import 'package:library_architecture_mvvm_modify/base_model/ints.dart';
 base class ListInts<T extends Ints> extends BaseListModel<T> {
   ListInts.success(super.listModel) : super.success();
   ListInts.exception(super.exception) : super.exception();
+
+  @override
+  List<T> clone() {
+    List<T> newListModel = List.empty(growable: true);
+    for(T ints in listModel ?? List.empty(growable: true)) {
+      newListModel.add(Ints.success(ints.field) as T);
+    }
+    return newListModel;
+  }
 }
