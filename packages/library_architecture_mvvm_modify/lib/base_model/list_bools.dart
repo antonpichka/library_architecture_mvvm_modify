@@ -8,7 +8,7 @@ base class ListBools<T extends Bools> extends BaseListModel<T> {
   @override
   List<T> clone() {
     List<T> newListModel = List.empty(growable: true);
-    for(T bools in listModel ?? List.empty(growable: true)) {
+    for (T bools in listModel ?? List.empty(growable: true)) {
       newListModel.add(Bools.success(bools.isField) as T);
     }
     return newListModel;

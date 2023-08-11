@@ -4,5 +4,7 @@ base class Strings extends BaseModel {
   final String? field;
 
   Strings.success(this.field) : super.success(field.toString());
-  Strings.exception(super.exception) : field = null, super.exception();
+  Strings.exception(super.exception)
+      : field = null,
+        super.exception();
 }

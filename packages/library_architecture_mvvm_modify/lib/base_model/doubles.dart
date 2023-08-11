@@ -4,5 +4,7 @@ base class Doubles extends BaseModel {
   final double? field;
 
   Doubles.success(this.field) : super.success(field.toString());
-  Doubles.exception(super.exception) : field = null,super.exception();
+  Doubles.exception(super.exception)
+      : field = null,
+        super.exception();
 }

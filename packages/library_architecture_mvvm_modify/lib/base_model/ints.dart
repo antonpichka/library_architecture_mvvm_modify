@@ -4,5 +4,7 @@ base class Ints extends BaseModel {
   final int? field;
 
   Ints.success(this.field) : super.success(field.toString());
-  Ints.exception(super.exception) : field = null, super.exception();
+  Ints.exception(super.exception)
+      : field = null,
+        super.exception();
 }

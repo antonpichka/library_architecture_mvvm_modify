@@ -8,7 +8,7 @@ base class ListDoubles<T extends Doubles> extends BaseListModel<T> {
   @override
   List<T> clone() {
     List<T> newListModel = List.empty(growable: true);
-    for(T doubles in listModel ?? List.empty(growable: true)) {
+    for (T doubles in listModel ?? List.empty(growable: true)) {
       newListModel.add(Doubles.success(doubles.field) as T);
     }
     return newListModel;

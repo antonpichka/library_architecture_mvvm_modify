@@ -4,5 +4,7 @@ base class Bools extends BaseModel {
   final bool? isField;
 
   Bools.success(this.isField) : super.success(isField.toString());
-  Bools.exception(super.exception) : isField = null, super.exception();
+  Bools.exception(super.exception)
+      : isField = null,
+        super.exception();
 }

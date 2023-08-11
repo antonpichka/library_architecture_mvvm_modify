@@ -8,7 +8,7 @@ base class ListStrings<T extends Strings> extends BaseListModel<T> {
   @override
   List<T> clone() {
     List<T> newListModel = List.empty(growable: true);
-    for(T strings in listModel ?? List.empty(growable: true)) {
+    for (T strings in listModel ?? List.empty(growable: true)) {
       newListModel.add(Strings.success(strings.field) as T);
     }
     return newListModel;
