@@ -1,3 +1,7 @@
+## 0.1.2
+
+- Deleted objects "BaseModelQThereIsStateViewModel" and "IStateModel" and "IInitializedStateModel"
+
 ## 0.1.1
 
 - "BaseDataForNamedQThereIsStreamStateViewModel" and "BaseModelQThereIsStateViewModel". Fixed interfaces in these classes (they are not public now)
