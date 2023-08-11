@@ -15,13 +15,13 @@ abstract base class BaseListModel<T extends BaseModel> {
       : listModel = null,
         exceptionController = ExceptionController.exception(exception);
 
-  List<T> clone();
+  BaseListModel<T> get getCloneListModel;
 
   @nonVirtual
   void modelQNamedIterator(BaseModelQNamedIterator<T> modelQNamedIterator) {
-    modelQNamedIterator.sortToListModel();
+    final sortedListModel = modelQNamedIterator.getSortedListModel(getCloneListModel.listModel ?? List.empty(growable: true));
     listModel?.clear();
-    listModel?.addAll(modelQNamedIterator.listModel);
+    listModel?.addAll(sortedListModel);
   }
 
   @nonVirtual

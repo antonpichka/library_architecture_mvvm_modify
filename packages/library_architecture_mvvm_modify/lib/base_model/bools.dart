@@ -7,4 +7,7 @@ base class Bools extends BaseModel {
   Bools.exception(super.exception)
       : isField = null,
         super.exception();
+
+  @override
+  Bools get getCloneModel => Bools.success(isField);
 }

@@ -6,11 +6,11 @@ base class ListDoubles<T extends Doubles> extends BaseListModel<T> {
   ListDoubles.exception(super.exception) : super.exception();
 
   @override
-  List<T> clone() {
+  ListDoubles<T> get getCloneListModel {
     List<T> newListModel = List.empty(growable: true);
-    for (T doubles in listModel ?? List.empty(growable: true)) {
-      newListModel.add(Doubles.success(doubles.field) as T);
+    for (T model in listModel ?? List.empty(growable: true)) {
+      newListModel.add(Doubles.success(model.field) as T);
     }
-    return newListModel;
+    return ListDoubles<T>.success(newListModel);
   }
 }

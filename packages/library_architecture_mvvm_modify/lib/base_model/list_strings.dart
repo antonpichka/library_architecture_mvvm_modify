@@ -6,11 +6,11 @@ base class ListStrings<T extends Strings> extends BaseListModel<T> {
   ListStrings.exception(super.exception) : super.exception();
 
   @override
-  List<T> clone() {
+  ListStrings<T> get getCloneListModel {
     List<T> newListModel = List.empty(growable: true);
-    for (T strings in listModel ?? List.empty(growable: true)) {
-      newListModel.add(Strings.success(strings.field) as T);
+    for (T model in listModel ?? List.empty(growable: true)) {
+      newListModel.add(Strings.success(model.field) as T);
     }
-    return newListModel;
+    return ListStrings<T>.success(newListModel);
   }
 }

@@ -11,4 +11,6 @@ abstract base class BaseModel {
   BaseModel.exception(BaseException exception)
       : uniqueId = null,
         exceptionController = ExceptionController.exception(exception);
+
+  BaseModel get getCloneModel;
 }

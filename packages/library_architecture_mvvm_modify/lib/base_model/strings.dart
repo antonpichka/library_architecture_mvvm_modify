@@ -7,4 +7,7 @@ base class Strings extends BaseModel {
   Strings.exception(super.exception)
       : field = null,
         super.exception();
+
+  @override
+  Strings get getCloneModel => Strings.success(field);
 }

@@ -6,11 +6,11 @@ base class ListInts<T extends Ints> extends BaseListModel<T> {
   ListInts.exception(super.exception) : super.exception();
 
   @override
-  List<T> clone() {
+  ListInts<T> get getCloneListModel {
     List<T> newListModel = List.empty(growable: true);
-    for (T ints in listModel ?? List.empty(growable: true)) {
-      newListModel.add(Ints.success(ints.field) as T);
+    for (T model in listModel ?? List.empty(growable: true)) {
+      newListModel.add(Ints.success(model.field) as T);
     }
-    return newListModel;
+    return ListInts<T>.success(newListModel);
   }
 }

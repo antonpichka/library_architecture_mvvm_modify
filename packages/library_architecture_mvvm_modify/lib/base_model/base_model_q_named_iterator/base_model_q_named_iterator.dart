@@ -3,18 +3,18 @@ import 'package:meta/meta.dart';
 
 abstract base class BaseModelQNamedIterator<T extends BaseModel>
     implements Iterator<T> {
-  final List<T> listModel;
-
-  BaseModelQNamedIterator(this.listModel);
+  @protected
+  final List<T> listModelForIterator = List.empty(growable: true);
 
   @nonVirtual
-  void sortToListModel() {
+  List<T> getSortedListModel(List<T> oldListModel) {
+    listModelForIterator.clear();
+    listModelForIterator.addAll(oldListModel);
     List<T> newListModel = List.empty(growable: true);
     while (moveNext()) {
       final newModel = current;
       newListModel.add(newModel);
     }
-    listModel.clear();
-    listModel.addAll(newListModel);
+    return newListModel;
   }
 }

@@ -6,11 +6,11 @@ base class ListBools<T extends Bools> extends BaseListModel<T> {
   ListBools.exception(super.exception) : super.exception();
 
   @override
-  List<T> clone() {
+  ListBools<T> get getCloneListModel {
     List<T> newListModel = List.empty(growable: true);
-    for (T bools in listModel ?? List.empty(growable: true)) {
-      newListModel.add(Bools.success(bools.isField) as T);
+    for (T model in listModel ?? List.empty(growable: true)) {
+      newListModel.add(Bools.success(model.isField) as T);
     }
-    return newListModel;
+    return ListBools<T>.success(newListModel);
   }
 }

@@ -7,4 +7,7 @@ base class Ints extends BaseModel {
   Ints.exception(super.exception)
       : field = null,
         super.exception();
+
+  @override
+  Ints get getCloneModel => Ints.success(field);
 }

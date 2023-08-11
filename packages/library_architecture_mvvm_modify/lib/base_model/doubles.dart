@@ -7,4 +7,7 @@ base class Doubles extends BaseModel {
   Doubles.exception(super.exception)
       : field = null,
         super.exception();
+
+  @override
+  Doubles get getCloneModel => Doubles.success(field);
 }
