@@ -19,7 +19,8 @@ abstract base class BaseListModel<T extends BaseModel> {
 
   @nonVirtual
   void modelQNamedIterator(BaseModelQNamedIterator<T> modelQNamedIterator) {
-    final sortedListModel = modelQNamedIterator.getSortedListModel(getCloneListModel.listModel ?? List.empty(growable: true));
+    final sortedListModel = modelQNamedIterator.getSortedListModel(
+        getCloneListModel.listModel ?? List.empty(growable: true));
     listModel?.clear();
     listModel?.addAll(sortedListModel);
   }
