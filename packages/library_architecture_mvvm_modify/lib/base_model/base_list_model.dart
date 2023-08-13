@@ -33,32 +33,32 @@ abstract base class BaseListModel<T extends BaseModel> {
   @nonVirtual
   void updateToListModel(T model) {
     listModel?[listModel!
-        .indexWhere((T item) => item.uniqueId == model.uniqueId)] = model;
+        .indexWhere((T itemModel) => itemModel.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
-  void deleteToListModel(T model) {
-    listModel?.removeWhere((T item) => item.uniqueId == model.uniqueId);
+  void deleteToListModel(String uniqueIdByModel) {
+    listModel?.removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
   }
 
   @nonVirtual
-  void insertListToListModel(List<T> listForInsert) {
-    listModel?.addAll(listForInsert);
+  void insertListToListModel(List<T> list) {
+    listModel?.addAll(list);
   }
 
   @nonVirtual
-  void updateListToListModel(List<T> listForUpdate) {
-    for (T itemForUpdate in listForUpdate) {
+  void updateListToListModel(List<T> list) {
+    for (T item in list) {
       listModel?[listModel!.indexWhere(
-          (T item) => item.uniqueId == itemForUpdate.uniqueId)] = itemForUpdate;
+          (T itemModel) => itemModel.uniqueId == item.uniqueId)] = item;
     }
   }
 
   @nonVirtual
-  void deleteListToListModel(List<T> listForDelete) {
-    for (T itemForDelete in listForDelete) {
+  void deleteListToListModel(List<String> listUniqueIdByModel) {
+    for (String uniqueIdByModel in listUniqueIdByModel) {
       listModel
-          ?.removeWhere((T item) => item.uniqueId == itemForDelete.uniqueId);
+          ?.removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
     }
   }
 }
