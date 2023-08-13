@@ -32,13 +32,14 @@ abstract base class BaseListModel<T extends BaseModel> {
 
   @nonVirtual
   void updateToListModel(T model) {
-    listModel?[listModel!
-        .indexWhere((T itemModel) => itemModel.uniqueId == model.uniqueId)] = model;
+    listModel?[listModel!.indexWhere(
+        (T itemModel) => itemModel.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
   void deleteToListModel(String uniqueIdByModel) {
-    listModel?.removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
+    listModel
+        ?.removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
   }
 
   @nonVirtual
