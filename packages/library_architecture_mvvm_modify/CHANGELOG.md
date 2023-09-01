@@ -1,3 +1,10 @@
+## 0.1.5
+
+- Updated 'meta' and 'lints' dependencies
+- Import 1 file and get all files and added parameter 'isLoading' to 'BaseDataForNamed' 
+- Rename files 
+- Most classes became base and not interface
+
 ## 0.1.4
 
 - Now "BaseDataForNamed" has only 1 constructor, and deleting elements in "BaseListModel" is now only through the String parameter (We delete by a unique identifier, it makes no sense to pass the entire object)
