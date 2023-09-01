@@ -4,8 +4,8 @@ base class DatesTimes extends BaseModel {
   final DateTime? dateTime;
 
   DatesTimes.success(this.dateTime) : super.success(dateTime.toString());
-  DatesTimes.exception(super.exception) :
-        dateTime = null,
+  DatesTimes.exception(super.exception)
+      : dateTime = null,
         super.exception();
 
   @override

@@ -10,7 +10,8 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
       BaseInitializedNamedStreamStateQDataForNamed<T>
           baseInitializedNamedStreamStateQDataForNamed)
       : _baseNamedStreamStateQDataForNamed =
-            baseInitializedNamedStreamStateQDataForNamed.getNamedStreamStateQDataForNamed;
+            baseInitializedNamedStreamStateQDataForNamed
+                .getNamedStreamStateQDataForNamed;
 
   @override
   void dispose() {

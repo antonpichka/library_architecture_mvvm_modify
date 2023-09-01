@@ -9,7 +9,7 @@ final class LocalException extends BaseException {
 
   LocalException(Object thisClass, this.enumGuiltyForLocalException, String key,
       [this.message])
-      : super(thisClass,key,LocalException);
+      : super(thisClass, key, LocalException);
 
   @protected
   @override

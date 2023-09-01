@@ -5,11 +5,9 @@ Future<void> main() async {
   tempCacheService.insertOrUpdateObjectToTempCache("Op", "One");
   final first = tempCacheService.getObjectFromTempCache("Op");
   debugPrint("First: $first");
-  tempCacheService
-      .getStreamObjectFromTempCache("Op")
-      .listen((event) {
-        debugPrint("Listen: ${event.toString()}");
-      });
+  tempCacheService.getStreamObjectFromTempCache("Op").listen((event) {
+    debugPrint("Listen: ${event.toString()}");
+  });
   tempCacheService.insertOrUpdateObjectToTempCache("Op", "Two");
   await Future.delayed(const Duration(seconds: 1));
   tempCacheService.insertOrUpdateObjectToTempCache("Op", "Three");

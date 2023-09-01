@@ -1,6 +1,7 @@
 final class KeysException {
   /* DefaultStreamStateQDataForNamed */
-  static const String defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream =
+  static const String
+      defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream =
       "defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream";
 
   KeysException._();

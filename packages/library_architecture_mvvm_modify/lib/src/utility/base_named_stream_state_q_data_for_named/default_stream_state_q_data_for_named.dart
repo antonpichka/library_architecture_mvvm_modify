@@ -36,14 +36,16 @@ final class DefaultStreamStateQDataForNamed<T extends BaseDataForNamed>
       throw LocalException(
           this,
           EnumGuiltyForLocalException.developer,
-          KeysException.defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream,
+          KeysException
+              .defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream,
           "stream has no listener");
     }
     if (_streamControllerForDataForNamed.isClosed) {
       throw LocalException(
           this,
           EnumGuiltyForLocalException.developer,
-          KeysException.defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream,
+          KeysException
+              .defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream,
           "stream closed");
     }
     _streamControllerForDataForNamed.sink.add(_dataForNamed!);

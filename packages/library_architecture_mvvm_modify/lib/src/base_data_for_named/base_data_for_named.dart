@@ -4,5 +4,6 @@ abstract base class BaseDataForNamed {
   bool isLoading;
   ExceptionController exceptionController;
 
-  BaseDataForNamed(this.isLoading) : exceptionController = ExceptionController.success();
+  BaseDataForNamed(this.isLoading)
+      : exceptionController = ExceptionController.success();
 }

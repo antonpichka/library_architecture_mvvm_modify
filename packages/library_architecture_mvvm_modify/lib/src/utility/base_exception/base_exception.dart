@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 abstract base class BaseException implements Exception {
   final String key;
 
-  BaseException(Object thisClass,this.key,Type exceptionClass) {
+  BaseException(Object thisClass, this.key, Type exceptionClass) {
     debugPrintException("===start_to_trace_exception===\n");
     debugPrintException(
         "NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: $exceptionInStringForDebugPrintException\n");
