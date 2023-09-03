@@ -1,3 +1,7 @@
+## 0.1.6
+
+- Now 'Model' has 1 constructor. object and errors will take the class "Result"
+
 ## 0.1.5
 
 - Updated 'meta' and 'lints' dependencies
