@@ -1,18 +1,15 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 
 base class Strings extends BaseModel {
-  final String? field;
+  final String field;
 
-  Strings.success(this.field) : super.success(field.toString());
-  Strings.exception(super.exception)
-      : field = null,
-        super.exception();
+  Strings(this.field) : super(field.toString());
 
   @override
-  Strings get getCloneModel => Strings.success(field);
+  Strings get getCloneModel => Strings(field);
 
   @override
   String toString() {
-    return "$field";
+    return field;
   }
 }

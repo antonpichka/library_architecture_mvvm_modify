@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 enum EnumGuiltyForLocalException { developer, device, user }
 
+@immutable
 final class LocalException extends BaseException {
   final EnumGuiltyForLocalException enumGuiltyForLocalException;
   final String? message;

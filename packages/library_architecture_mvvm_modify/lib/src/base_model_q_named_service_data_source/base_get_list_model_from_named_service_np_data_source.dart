@@ -2,5 +2,5 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 
 abstract base class BaseGetListModelFromNamedServiceNPDataSource<
     T extends BaseListModel> {
-  Future<T> getListModelFromNamedServiceNPDS();
+  Future<Result<T>> getListModelFromNamedServiceNPDS();
 }

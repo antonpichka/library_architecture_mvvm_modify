@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 
+@immutable
 abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
     T extends BaseDataForNamed> implements IDispose {
   final BaseNamedStreamStateQDataForNamed<T> _baseNamedStreamStateQDataForNamed;

@@ -1,15 +1,14 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
+import 'package:meta/meta.dart';
 
+@immutable
 base class DatesTimes extends BaseModel {
-  final DateTime? dateTime;
+  final DateTime dateTime;
 
-  DatesTimes.success(this.dateTime) : super.success(dateTime.toString());
-  DatesTimes.exception(super.exception)
-      : dateTime = null,
-        super.exception();
+  const DatesTimes(this.dateTime) : super("$dateTime");
 
   @override
-  DatesTimes get getCloneModel => DatesTimes.success(dateTime);
+  DatesTimes get getCloneModel => DatesTimes(dateTime);
 
   @override
   String toString() {

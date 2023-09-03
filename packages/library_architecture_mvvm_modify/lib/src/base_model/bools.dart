@@ -1,15 +1,14 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
+import 'package:meta/meta.dart';
 
+@immutable
 base class Bools extends BaseModel {
-  final bool? isField;
+  final bool isField;
 
-  Bools.success(this.isField) : super.success(isField.toString());
-  Bools.exception(super.exception)
-      : isField = null,
-        super.exception();
+  const Bools(this.isField) : super("$isField");
 
   @override
-  Bools get getCloneModel => Bools.success(isField);
+  Bools get getCloneModel => Bools(isField);
 
   @override
   String toString() {

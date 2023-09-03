@@ -1,15 +1,10 @@
-import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
+import 'package:meta/meta.dart';
 
+@immutable
 abstract base class BaseModel {
-  final String? uniqueId;
+  final String uniqueId;
 
-  final ExceptionController exceptionController;
-
-  BaseModel.success(this.uniqueId)
-      : exceptionController = ExceptionController.success();
-  BaseModel.exception(BaseException exception)
-      : uniqueId = null,
-        exceptionController = ExceptionController.exception(exception);
+  const BaseModel(this.uniqueId);
 
   BaseModel get getCloneModel;
 }

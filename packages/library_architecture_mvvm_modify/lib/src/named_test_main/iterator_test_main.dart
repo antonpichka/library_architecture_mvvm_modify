@@ -11,7 +11,7 @@ base class IntsQWhereOrderByDescParameterFieldIterator<T extends Ints>
     }
     int indexRemove = 0;
     for (int i = 1; i < listModelForIterator.length; i++) {
-      if ((listModelForIterator[i].field ?? 0) > (itemCurrentInts.field ?? 0)) {
+      if (listModelForIterator[i].field > itemCurrentInts.field) {
         itemCurrentInts = listModelForIterator[i].getCloneModel as T;
         indexRemove = i;
         continue;
@@ -28,13 +28,13 @@ base class IntsQWhereOrderByDescParameterFieldIterator<T extends Ints>
 }
 
 void main() {
-  ListInts<Ints> listInts = ListInts.success(List.empty(growable: true));
-  listInts.insertToListModel(Ints.success(3)); // 0
-  listInts.insertToListModel(Ints.success(1)); // 1
-  listInts.insertToListModel(Ints.success(10)); // 2
-  listInts.insertToListModel(Ints.success(5)); // 3
-  listInts.insertToListModel(Ints.success(7)); // 4
-  listInts.insertToListModel(Ints.success(-1)); // 5
+  ListInts<Ints> listInts = ListInts(List.empty(growable: true));
+  listInts.insertToListModel(Ints(3)); // 0
+  listInts.insertToListModel(Ints(1)); // 1
+  listInts.insertToListModel(Ints(10)); // 2
+  listInts.insertToListModel(Ints(5)); // 3
+  listInts.insertToListModel(Ints(7)); // 4
+  listInts.insertToListModel(Ints(-1)); // 5
   debugPrint("Before: ${listInts.listModel.toString()}"); // 3, 1, 10, 5, 7, -1
   final intsQWhereOrderByDescParameterFieldIterator =
       IntsQWhereOrderByDescParameterFieldIterator<Ints>();

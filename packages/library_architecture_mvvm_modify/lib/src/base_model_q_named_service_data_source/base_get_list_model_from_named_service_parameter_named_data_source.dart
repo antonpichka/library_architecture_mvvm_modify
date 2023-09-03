@@ -2,5 +2,5 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 
 abstract base class BaseGetListModelFromNamedServiceParameterNamedDataSource<
     T extends BaseListModel, Y extends Object> {
-  Future<T> getListModelFromNamedServiceParameterNamedDS(Y parameter);
+  Future<Result<T>> getListModelFromNamedServiceParameterNamedDS(Y parameter);
 }
