@@ -1,3 +1,8 @@
+## 0.1.7
+
+- Adding annotations 'immutable' and 'const' to 'strings' 
+- New Example
+
 ## 0.1.6
 
 - Now 'Model' has 1 constructor. object and errors will take the class "Result"
