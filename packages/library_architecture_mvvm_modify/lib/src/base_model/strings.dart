@@ -1,9 +1,11 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
+import 'package:meta/meta.dart';
 
+@immutable
 base class Strings extends BaseModel {
   final String field;
 
-  Strings(this.field) : super(field.toString());
+  const Strings(this.field) : super(field);
 
   @override
   Strings get getCloneModel => Strings(field);

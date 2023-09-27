@@ -9,6 +9,6 @@ final class Result<T extends Object> {
   Result.success(this.parameter)
       : exceptionController = ExceptionController.success();
   Result.exception(BaseException exception)
-      : exceptionController = ExceptionController.exception(exception),
-        parameter = null;
+      : parameter = null,
+        exceptionController = ExceptionController.exception(exception);
 }

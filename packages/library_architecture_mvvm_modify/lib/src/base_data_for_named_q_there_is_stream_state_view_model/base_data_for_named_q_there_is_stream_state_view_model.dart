@@ -46,7 +46,7 @@ abstract base class BaseDataForNamedQThereIsStreamStateViewModel<
 
   @protected
   @nonVirtual
-  BaseNamedStreamStateQDataForNamed<T>? get getNamedStreamStateQDataForNamed {
+  BaseNamedStreamStateQDataForNamed<T> get getNamedStreamStateQDataForNamed {
     return _baseNamedStreamStateQDataForNamed;
   }
 }
