@@ -52,7 +52,7 @@ final class HttpClientService {
 final class KeysHttpClientServiceUtility {
   /* IPAddress */
   static const String iPAddressQIp = "ip";
-  static const String iPAddressQNameCountry = "country";
+  static const String iPAddressQCountry = "country";
 
   const KeysHttpClientServiceUtility._();
 }
@@ -97,7 +97,7 @@ base class IPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI<
       final Map<String, dynamic> data = jsonDecode(response!.body);
       return Result<T>.success(IPAddress(
           data[KeysHttpClientServiceUtility.iPAddressQIp],
-          data[KeysHttpClientServiceUtility.iPAddressQNameCountry]) as T);
+          data[KeysHttpClientServiceUtility.iPAddressQCountry]) as T);
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {

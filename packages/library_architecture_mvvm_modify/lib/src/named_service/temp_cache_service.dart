@@ -4,46 +4,72 @@ final class TempCacheService {
   static final TempCacheService instance = TempCacheService._();
   final Map<String, dynamic> _preTempCache;
   final Map<String, dynamic> _tempCache;
+  final Map<String,Map<String,bool>> _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData;
 
   TempCacheService._()
       : _preTempCache = {},
-        _tempCache = {};
+        _tempCache = {},
+        _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData = {};
 
-  Stream<dynamic> getStreamObjectFromTempCache(String key,
+  Stream<dynamic> getStreamObjectFromTempCache(String keyNameStream,String keyTempCache,
       [int milliseconds = 500]) async* {
+    _insertToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(keyNameStream,keyTempCache);
     while (true) {
       await Future.delayed(Duration(milliseconds: milliseconds));
-      if (!_preTempCache.containsKey(key)) {
+      if (!_preTempCache.containsKey(keyTempCache)) {
         continue;
       }
-      final preValue = _preTempCache[key];
-      if (_tempCache.containsKey(key)) {
+      final preValueTempCache = _preTempCache[keyTempCache];
+      if(_tempCache.containsKey(keyTempCache) && (_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream]?[keyTempCache] ?? false)) {
         continue;
       }
-      _tempCache[key] = preValue;
-      yield preValue;
+      _tempCache[keyTempCache] = preValueTempCache;
+      _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream]?[keyTempCache] = true;
+      yield preValueTempCache;
     }
   }
 
-  dynamic getObjectFromTempCache(String key) {
-    if (!_preTempCache.containsKey(key)) {
+  dynamic getObjectFromTempCache(String keyTempCache) {
+    if (!_preTempCache.containsKey(keyTempCache)) {
       return throw LocalException(
-          this, EnumGuiltyForLocalException.developer, key, "no exists key");
+          this, EnumGuiltyForLocalException.developer, keyTempCache, "no exists key");
     }
-    return _preTempCache[key];
+    return _preTempCache[keyTempCache];
   }
 
-  void insertOrUpdateObjectToTempCache(String key, dynamic value) {
-    if (_tempCache.containsKey(key)) {
-      _tempCache.remove(key);
-      _preTempCache[key] = value;
+  void insertOrUpdateObjectToTempCache(String keyTempCache, dynamic value) {
+    if (_tempCache.containsKey(keyTempCache)) {
+      _tempCache.remove(keyTempCache);
+      _preTempCache[keyTempCache] = value;
+      _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(keyTempCache);
       return;
     }
-    _preTempCache[key] = value;
+    _preTempCache[keyTempCache] = value;
+    _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(keyTempCache);
   }
 
-  void deleteObjectToTempCache(String key) {
-    _preTempCache.remove(key);
-    _tempCache.remove(key);
+  void deleteObjectToTempCache(String keyTempCache) {
+    _preTempCache.remove(keyTempCache);
+    _tempCache.remove(keyTempCache);
+  }
+
+  void _insertToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(String keyNameStream,String keyTempCache) {
+    if(!_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData.containsKey(keyNameStream)) {
+      _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream] = {keyTempCache : false};
+      return;
+    }
+    if(_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream]?.containsKey(keyTempCache) ?? false) {
+      return;
+    }
+    _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream] = {keyTempCache : false};
+  }
+
+  void _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(String keyTempCache) {
+    for(Map<String,bool> mapKeyTempCacheAndIsHaveYouReceivedTheLatestData in _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData.values) {
+      if(!mapKeyTempCacheAndIsHaveYouReceivedTheLatestData.containsKey(keyTempCache)) {
+        continue;
+      }
+      mapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyTempCache] = false;
+    }
   }
 }
