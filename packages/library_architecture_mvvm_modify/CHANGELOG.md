@@ -1,3 +1,7 @@
+## 0.1.9
+
+- Optimization 'TempCacheService'
+
 ## 0.1.8
 
 - 'TempCacheService' you can now assign a name to the stream. This was done so that you can get the same key from temp cache anywhere. That is, before this, whoever managed to listen to the stream first received the latest data, and the remaining streams that were subscribed to the same key from the temp cache did not receive the latest data (Because the stream that first listened to the last data of a certain key denied access to avoid spam)
