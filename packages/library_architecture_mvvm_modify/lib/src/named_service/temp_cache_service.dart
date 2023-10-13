@@ -2,13 +2,11 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 
 final class TempCacheService {
   static final TempCacheService instance = TempCacheService._();
-  final Map<String, dynamic> _preTempCache;
   final Map<String, dynamic> _tempCache;
   final Map<String,Map<String,bool>> _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData;
 
   TempCacheService._()
-      : _preTempCache = {},
-        _tempCache = {},
+      : _tempCache = {},
         _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData = {};
 
   Stream<dynamic> getStreamObjectFromTempCache(String keyNameStream,String keyTempCache,
@@ -16,41 +14,29 @@ final class TempCacheService {
     _insertToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(keyNameStream,keyTempCache);
     while (true) {
       await Future.delayed(Duration(milliseconds: milliseconds));
-      if (!_preTempCache.containsKey(keyTempCache)) {
+      if (!_tempCache.containsKey(keyTempCache)) {
         continue;
       }
-      final preValueTempCache = _preTempCache[keyTempCache];
-      if(_tempCache.containsKey(keyTempCache) && (_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream]?[keyTempCache] ?? false)) {
+      final valueTempCache = _tempCache[keyTempCache];
+      if(_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream]?[keyTempCache] ?? false) {
         continue;
       }
-      _tempCache[keyTempCache] = preValueTempCache;
       _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyNameStream]?[keyTempCache] = true;
-      yield preValueTempCache;
+      yield valueTempCache;
     }
   }
 
   dynamic getObjectFromTempCache(String keyTempCache) {
-    if (!_preTempCache.containsKey(keyTempCache)) {
+    if (!_tempCache.containsKey(keyTempCache)) {
       return throw LocalException(
           this, EnumGuiltyForLocalException.developer, keyTempCache, "no exists key");
     }
-    return _preTempCache[keyTempCache];
+    return _tempCache[keyTempCache];
   }
 
   void insertOrUpdateObjectToTempCache(String keyTempCache, dynamic value) {
-    if (_tempCache.containsKey(keyTempCache)) {
-      _tempCache.remove(keyTempCache);
-      _preTempCache[keyTempCache] = value;
-      _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(keyTempCache);
-      return;
-    }
-    _preTempCache[keyTempCache] = value;
+    _tempCache[keyTempCache] = value;
     _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(keyTempCache);
-  }
-
-  void deleteObjectToTempCache(String keyTempCache) {
-    _preTempCache.remove(keyTempCache);
-    _tempCache.remove(keyTempCache);
   }
 
   void _insertToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(String keyNameStream,String keyTempCache) {
