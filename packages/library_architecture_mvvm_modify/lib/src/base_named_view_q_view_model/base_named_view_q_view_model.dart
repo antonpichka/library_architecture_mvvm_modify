@@ -5,8 +5,8 @@ import 'package:meta/meta.dart';
 // NamedUtility
 
 @immutable
-abstract base class BaseNamedViewQViewModel<T extends BaseDataForNamed<Enum>,Y extends BaseNamedStreamAndStateQDataForNamed<T>>
-    implements IDispose {
+abstract base class BaseNamedViewQViewModel<T extends BaseDataForNamed<Enum>,
+    Y extends BaseNamedStreamAndStateQDataForNamed<T>> implements IDispose {
   @protected
   final Y namedStreamAndStateQDataForNamed;
 

@@ -80,12 +80,12 @@ final class KeysSuccessUtility {
 // OperationQQModelQNamedServiceQNP||ParameterNamed(QQForNamedQQWhereNamed)
 // Variable name: (result)IPAddressForJsonipAPI
 @immutable
-base class GetQQIPAddressQHttpClientServiceQNPQQForJsonipAPI<T extends IPAddress, Y extends ListIPAddress<T>> {
+base class GetQQIPAddressQHttpClientServiceQNPQQForJsonipAPI<
+    T extends IPAddress, Y extends ListIPAddress<T>> {
   @protected
   final httpClientService = HttpClientService.instance;
 
-  Future<Result<T>> getIPAddressHttpClientServiceNPForJsonipAPI()
-  async {
+  Future<Result<T>> getIPAddressHttpClientServiceNPForJsonipAPI() async {
     try {
       final response = await httpClientService.getHttpClient
           ?.get(Uri.parse("https://jsonip.com/"));
@@ -109,7 +109,7 @@ base class GetQQIPAddressQHttpClientServiceQNPQQForJsonipAPI<T extends IPAddress
 final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
   IPAddress ipAddress;
 
-  DataForMainView(super.isLoading,this.ipAddress);
+  DataForMainView(super.isLoading, this.ipAddress);
 
   @override
   EnumDataForMainView get getEnumDataForNamed {
@@ -126,14 +126,17 @@ final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
 enum EnumDataForMainView { isLoading, exception, success }
 
 @immutable
-final class MainViewQViewModel extends BaseNamedViewQViewModel<DataForMainView,DefaultStreamAndStateQDataForNamed<DataForMainView>> {
+final class MainViewQViewModel extends BaseNamedViewQViewModel<DataForMainView,
+    DefaultStreamAndStateQDataForNamed<DataForMainView>> {
   // OperationQQModelQNamedServiceQNP||ParameterNamed(QQForNamedQQWhereNamed)
   final _getQQIPAddressQHttpClientServiceQNPQQForJsonipAPI =
       GetQQIPAddressQHttpClientServiceQNPQQForJsonipAPI();
 
   // NamedUtility
 
-  MainViewQViewModel() : super(DefaultStreamAndStateQDataForNamed(DataForMainView(true, const IPAddress("",""))));
+  MainViewQViewModel()
+      : super(DefaultStreamAndStateQDataForNamed(
+            DataForMainView(true, const IPAddress("", ""))));
 
   @override
   void dispose() {
@@ -151,15 +154,19 @@ final class MainViewQViewModel extends BaseNamedViewQViewModel<DataForMainView,D
           resultIPAddressForJsonipAPI);
     }
     getDataForNamed.isLoading = false;
-    getDataForNamed.ipAddress = resultIPAddressForJsonipAPI.parameter?.getCloneModel ?? const IPAddress("", "");
+    getDataForNamed.ipAddress =
+        resultIPAddressForJsonipAPI.parameter?.getCloneModel ??
+            const IPAddress("", "");
     return KeysSuccessUtility.sUCCESS;
   }
 
   Future<String> _firstQInitQGetIPAddressHttpClientServiceNPForJsonipAPI(
       Result<IPAddress> resultIPAddressForJsonipAPI) async {
     getDataForNamed.isLoading = false;
-    getDataForNamed.exceptionController = resultIPAddressForJsonipAPI.exceptionController;
-    return resultIPAddressForJsonipAPI.exceptionController.getKeyParameterException;
+    getDataForNamed.exceptionController =
+        resultIPAddressForJsonipAPI.exceptionController;
+    return resultIPAddressForJsonipAPI
+        .exceptionController.getKeyParameterException;
   }
 }
 
