@@ -4,5 +4,8 @@ import 'package:meta/meta.dart';
 @immutable
 abstract base class BaseUpdateModelToNamedServiceParameterNamedDataSource<
     T extends Object, Y extends Object> {
+
+  const BaseUpdateModelToNamedServiceParameterNamedDataSource();
+
   Future<Result<T>> updateModelToNamedServiceParameterNamedDS(Y parameter);
 }

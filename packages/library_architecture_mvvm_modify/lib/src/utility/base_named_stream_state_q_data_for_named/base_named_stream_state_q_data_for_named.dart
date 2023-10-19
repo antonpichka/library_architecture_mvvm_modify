@@ -2,11 +2,9 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 
 abstract base class BaseNamedStreamStateQDataForNamed<
     T extends BaseDataForNamed> implements IDispose {
-  Stream<T?> get getStreamDataForNamed;
+  Stream<T> get getStreamDataForNamed;
 
-  T? get getDataForNamed;
-
-  set setDataForNamed(T dataForNamed);
+  T get getDataForNamed;
 
   void notifyStreamDataForNamed();
 }

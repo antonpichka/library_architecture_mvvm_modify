@@ -4,5 +4,5 @@ final class KeysException {
       defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream =
       "defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream";
 
-  KeysException._();
+  const KeysException._();
 }

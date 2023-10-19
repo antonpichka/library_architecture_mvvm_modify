@@ -3,8 +3,8 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 
 final class DefaultStreamStateQDataForNamed<T extends BaseDataForNamed>
     extends BaseNamedStreamStateQDataForNamed<T> {
+  final T _dataForNamed;
   final StreamController<T> _streamControllerForDataForNamed;
-  T? _dataForNamed;
   StreamSubscription<T>? _streamSubscriptionForDataForNamed;
 
   DefaultStreamStateQDataForNamed(this._dataForNamed)
@@ -19,16 +19,11 @@ final class DefaultStreamStateQDataForNamed<T extends BaseDataForNamed>
   }
 
   @override
-  Stream<T?> get getStreamDataForNamed =>
+  Stream<T> get getStreamDataForNamed =>
       _streamControllerForDataForNamed.stream;
 
   @override
-  T? get getDataForNamed => _dataForNamed;
-
-  @override
-  set setDataForNamed(T dataForNamed) {
-    _dataForNamed = dataForNamed;
-  }
+  T get getDataForNamed => _dataForNamed;
 
   @override
   void notifyStreamDataForNamed() {
@@ -48,7 +43,7 @@ final class DefaultStreamStateQDataForNamed<T extends BaseDataForNamed>
               .defaultStreamStateQDataForNamedQWhereLocalExceptionGuiltyDeveloperStream,
           "stream closed");
     }
-    _streamControllerForDataForNamed.sink.add(_dataForNamed!);
+    _streamControllerForDataForNamed.sink.add(_dataForNamed);
   }
 
   void listensStreamDataForNamed(Function(T event) callback) {

@@ -43,4 +43,11 @@ void main() {
   listInts.modelQNamedIterator(intsQWhereOrderByDescParameterFieldIterator);
   debugPrint(
       "After (Two): ${listInts.listModel.toString()}"); // 10, 7, 5, 3, 1, -1
+  // EXPECTED OUTPUT:
+  //
+  // Before: [3, 1, 10, 5, 7, -1]
+  // After: [10, 7, 5, 3, 1, -1]
+  // After (Two): [10, 7, 5, 3, 1, -1]
+  //
+  // Process finished with exit code 0
 }

@@ -7,6 +7,8 @@ abstract base class BaseModelQNamedIterator<T extends BaseModel>
   @protected
   final List<T> listModelForIterator = List.empty(growable: true);
 
+  BaseModelQNamedIterator();
+
   @nonVirtual
   List<T> getSortedListModel(List<T> oldListModel) {
     listModelForIterator.clear();
