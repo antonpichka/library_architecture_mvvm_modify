@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 @immutable
 abstract base class BaseDeleteListModelToNamedServiceNPDataSource<
     T extends Object> {
-
   const BaseDeleteListModelToNamedServiceNPDataSource();
 
   Future<Result<T>> deleteListModelToNamedServiceNPDS();

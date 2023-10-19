@@ -2,7 +2,8 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 import 'package:meta/meta.dart';
 
 @immutable
-abstract base class BaseNamedViewListViewModel<T extends BaseDataForNamed> implements IDispose {
+abstract base class BaseNamedViewListViewModel<T extends BaseDataForNamed>
+    implements IDispose {
   // ModelQNamedServiceViewModel
   // DataForNamedQThereIsStreamStateViewModel
   // NamedUtility

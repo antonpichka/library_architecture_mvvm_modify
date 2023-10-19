@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 @immutable
 abstract base class BaseGetListModelFromNamedServiceParameterNamedDataSource<
     T extends BaseListModel, Y extends Object> {
-
   const BaseGetListModelFromNamedServiceParameterNamedDataSource();
 
   Future<Result<T>> getListModelFromNamedServiceParameterNamedDS(Y parameter);

@@ -142,7 +142,8 @@ final class DataForMainViewQThereIsStreamStateViewModel
       super.baseInitializedNamedStreamStateQDataForNamed);
 }
 
-final class MainViewListViewModel extends BaseNamedViewListViewModel<DataForMainView> {
+final class MainViewListViewModel
+    extends BaseNamedViewListViewModel<DataForMainView> {
   // ModelQNamedServiceViewModel
   final _iPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI =
       IPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI();
@@ -158,22 +159,25 @@ final class MainViewListViewModel extends BaseNamedViewListViewModel<DataForMain
   }
 
   @override
-  Stream<DataForMainView> get getStreamDataForNamed => _dataForMainViewQThereIsStreamStateViewModel.getStreamDataForNamed;
+  Stream<DataForMainView> get getStreamDataForNamed =>
+      _dataForMainViewQThereIsStreamStateViewModel.getStreamDataForNamed;
 
   @override
-  DataForMainView get getDataForNamed => _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed;
+  DataForMainView get getDataForNamed =>
+      _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed;
 
   @override
   Future<String> init() async {
     final resultForJsonipAPI =
         await _iPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI
-        .getIPAddressFromHttpClientServiceNPDS();
+            .getIPAddressFromHttpClientServiceNPDS();
     if (resultForJsonipAPI.exceptionController
         .isNotEqualsNullParameterException()) {
       return _firstQInitQGetIPAddressFromHttpClientServiceNPDS(
           resultForJsonipAPI);
     }
-    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.isLoading = false;
+    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.isLoading =
+        false;
     _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.ipAddress =
         resultForJsonipAPI.parameter?.getCloneModel ?? const IPAddress("", "");
     return KeysSuccessUtility.sUCCESS;
@@ -184,12 +188,12 @@ final class MainViewListViewModel extends BaseNamedViewListViewModel<DataForMain
     _dataForMainViewQThereIsStreamStateViewModel.notifyStreamDataForNamed();
   }
 
-  Future<String>
-      _firstQInitQGetIPAddressFromHttpClientServiceNPDS(
-          Result<IPAddress> resultForJsonipAPI) async {
+  Future<String> _firstQInitQGetIPAddressFromHttpClientServiceNPDS(
+      Result<IPAddress> resultForJsonipAPI) async {
     _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.isLoading =
         false;
-    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.exceptionController = resultForJsonipAPI.exceptionController;
+    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed
+        .exceptionController = resultForJsonipAPI.exceptionController;
     return resultForJsonipAPI.exceptionController.getKeyParameterException;
   }
 }
