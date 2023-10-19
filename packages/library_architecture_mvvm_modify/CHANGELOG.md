@@ -1,3 +1,7 @@
+## 0.2.0
+
+- Adding 'const' to classes and adding required abstract methods to 'BaseNamedViewListViewModel' and deleted null safety to class 'BaseDataForNamedQThereIsStreamStateViewModel'('DataForNamed' should be final, but its parameters are not final, but there may be an exception if there is ready data)
+
 ## 0.1.9
 
 - Optimization 'TempCacheService'
