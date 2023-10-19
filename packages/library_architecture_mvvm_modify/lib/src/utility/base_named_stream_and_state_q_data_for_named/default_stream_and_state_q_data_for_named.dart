@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 
-final class DefaultStreamStateQDataForNamed<T extends BaseDataForNamed>
-    extends BaseNamedStreamStateQDataForNamed<T> {
+final class DefaultStreamAndStateQDataForNamed<T extends BaseDataForNamed<Enum>>
+    extends BaseNamedStreamAndStateQDataForNamed<T> {
   final T _dataForNamed;
   final StreamController<T> _streamControllerForDataForNamed;
   StreamSubscription<T>? _streamSubscriptionForDataForNamed;
 
-  DefaultStreamStateQDataForNamed(this._dataForNamed)
+  DefaultStreamAndStateQDataForNamed(this._dataForNamed)
       : _streamControllerForDataForNamed = StreamController<T>.broadcast();
 
   @override

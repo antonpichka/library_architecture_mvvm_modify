@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:http/http.dart' as http;
@@ -73,20 +75,17 @@ final class KeysSuccessUtility {
   const KeysSuccessUtility._();
 }
 
+// QQ (Delimiter and variable name) Q (Delimiter)
+// (Operation) QQ (Model) Q (NamedService) Q (NP/ParameterNamed) QQ (ForNamed) QQ (WhereNamed)
+// OperationQQModelQNamedServiceQNP||ParameterNamed(QQForNamedQQWhereNamed)
+// Variable name: (result)IPAddressForJsonipAPI
 @immutable
-base class IPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI<
-        T extends IPAddress, Y extends ListIPAddress<T>>
-    extends BaseGetModelFromNamedServiceNPDataSource<T> {
+base class GetQQIPAddressQHttpClientServiceQNPQQForJsonipAPI<T extends IPAddress, Y extends ListIPAddress<T>> {
   @protected
   final httpClientService = HttpClientService.instance;
 
-  Future<Result<T>> getIPAddressFromHttpClientServiceNPDS() {
-    return getModelFromNamedServiceNPDS();
-  }
-
-  @protected
-  @override
-  Future<Result<T>> getModelFromNamedServiceNPDS() async {
+  Future<Result<T>> getIPAddressHttpClientServiceNPForJsonipAPI()
+  async {
     try {
       final response = await httpClientService.getHttpClient
           ?.get(Uri.parse("https://jsonip.com/"));
@@ -107,12 +106,13 @@ base class IPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI<
   }
 }
 
-final class DataForMainView extends BaseDataForNamed {
+final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
   IPAddress ipAddress;
 
-  DataForMainView(super.isLoading, this.ipAddress);
+  DataForMainView(super.isLoading,this.ipAddress);
 
-  EnumDataForMainView get getEnumDataForMainView {
+  @override
+  EnumDataForMainView get getEnumDataForNamed {
     if (isLoading) {
       return EnumDataForMainView.isLoading;
     }
@@ -126,93 +126,58 @@ final class DataForMainView extends BaseDataForNamed {
 enum EnumDataForMainView { isLoading, exception, success }
 
 @immutable
-final class InitializedDefaultStreamStateQDataForMainView
-    extends BaseInitializedNamedStreamStateQDataForNamed<DataForMainView> {
-  @override
-  BaseNamedStreamStateQDataForNamed<DataForMainView>
-      get getNamedStreamStateQDataForNamed =>
-          DefaultStreamStateQDataForNamed<DataForMainView>(
-              DataForMainView(true, IPAddress("", "")));
-}
+final class MainViewQViewModel extends BaseNamedViewQViewModel<DataForMainView,DefaultStreamAndStateQDataForNamed<DataForMainView>> {
+  // OperationQQModelQNamedServiceQNP||ParameterNamed(QQForNamedQQWhereNamed)
+  final _getQQIPAddressQHttpClientServiceQNPQQForJsonipAPI =
+      GetQQIPAddressQHttpClientServiceQNPQQForJsonipAPI();
 
-@immutable
-final class DataForMainViewQThereIsStreamStateViewModel
-    extends BaseDataForNamedQThereIsStreamStateViewModel<DataForMainView> {
-  DataForMainViewQThereIsStreamStateViewModel(
-      super.baseInitializedNamedStreamStateQDataForNamed);
-}
+  // NamedUtility
 
-final class MainViewListViewModel
-    extends BaseNamedViewListViewModel<DataForMainView> {
-  // ModelQNamedServiceViewModel
-  final _iPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI =
-      IPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI();
-
-  // DataForNamedQThereIsStreamStateViewModel
-  final _dataForMainViewQThereIsStreamStateViewModel =
-      DataForMainViewQThereIsStreamStateViewModel(
-          InitializedDefaultStreamStateQDataForMainView());
+  MainViewQViewModel() : super(DefaultStreamAndStateQDataForNamed(DataForMainView(true, const IPAddress("",""))));
 
   @override
   void dispose() {
-    _dataForMainViewQThereIsStreamStateViewModel.dispose();
+    super.dispose();
   }
-
-  @override
-  Stream<DataForMainView> get getStreamDataForNamed =>
-      _dataForMainViewQThereIsStreamStateViewModel.getStreamDataForNamed;
-
-  @override
-  DataForMainView get getDataForNamed =>
-      _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed;
 
   @override
   Future<String> init() async {
-    final resultForJsonipAPI =
-        await _iPAddressQHttpClientServiceViewModelUsingGetNPForJsonipAPI
-            .getIPAddressFromHttpClientServiceNPDS();
-    if (resultForJsonipAPI.exceptionController
+    final resultIPAddressForJsonipAPI =
+        await _getQQIPAddressQHttpClientServiceQNPQQForJsonipAPI
+            .getIPAddressHttpClientServiceNPForJsonipAPI();
+    if (resultIPAddressForJsonipAPI.exceptionController
         .isNotEqualsNullParameterException()) {
-      return _firstQInitQGetIPAddressFromHttpClientServiceNPDS(
-          resultForJsonipAPI);
+      return _firstQInitQGetIPAddressHttpClientServiceNPForJsonipAPI(
+          resultIPAddressForJsonipAPI);
     }
-    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.isLoading =
-        false;
-    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.ipAddress =
-        resultForJsonipAPI.parameter?.getCloneModel ?? const IPAddress("", "");
+    getDataForNamed.isLoading = false;
+    getDataForNamed.ipAddress = resultIPAddressForJsonipAPI.parameter?.getCloneModel ?? const IPAddress("", "");
     return KeysSuccessUtility.sUCCESS;
   }
 
-  @override
-  void notifyStreamDataForNamed() {
-    _dataForMainViewQThereIsStreamStateViewModel.notifyStreamDataForNamed();
-  }
-
-  Future<String> _firstQInitQGetIPAddressFromHttpClientServiceNPDS(
-      Result<IPAddress> resultForJsonipAPI) async {
-    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed.isLoading =
-        false;
-    _dataForMainViewQThereIsStreamStateViewModel.getDataForNamed
-        .exceptionController = resultForJsonipAPI.exceptionController;
-    return resultForJsonipAPI.exceptionController.getKeyParameterException;
+  Future<String> _firstQInitQGetIPAddressHttpClientServiceNPForJsonipAPI(
+      Result<IPAddress> resultIPAddressForJsonipAPI) async {
+    getDataForNamed.isLoading = false;
+    getDataForNamed.exceptionController = resultIPAddressForJsonipAPI.exceptionController;
+    return resultIPAddressForJsonipAPI.exceptionController.getKeyParameterException;
   }
 }
 
 final class MainView {
-  late final MainViewListViewModel _mainViewListViewModel;
+  late final MainViewQViewModel _mainViewQViewModel;
 
   void initState() {
-    _mainViewListViewModel = MainViewListViewModel();
+    _mainViewQViewModel = MainViewQViewModel();
     _init();
   }
 
   void dispose() {
-    _mainViewListViewModel.dispose();
+    _mainViewQViewModel.dispose();
   }
 
   void build() {
-    final dataForNamed = _mainViewListViewModel.getDataForNamed;
-    switch (dataForNamed.getEnumDataForMainView) {
+    final dataForNamed = _mainViewQViewModel.getDataForNamed;
+    switch (dataForNamed.getEnumDataForNamed) {
       case EnumDataForMainView.isLoading:
         debugPrint("Build: IsLoading");
         break;
@@ -229,12 +194,12 @@ final class MainView {
   }
 
   Future<void> _init() async {
-    _mainViewListViewModel.getStreamDataForNamed.listen((event) {
+    _mainViewQViewModel.getStreamDataForNamed.listen((event) {
       build();
     });
-    final result = await _mainViewListViewModel.init();
+    final result = await _mainViewQViewModel.init();
     debugPrint("MainView: $result");
-    _mainViewListViewModel.notifyStreamDataForNamed();
+    _mainViewQViewModel.notifyStreamDataForNamed();
   }
 }
 
