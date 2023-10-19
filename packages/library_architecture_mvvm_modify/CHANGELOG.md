@@ -1,3 +1,8 @@
+## 0.2.1
+
+- Global update (Major change: Removing 'BaseDataForNamedQThereIsStreamStateViewModel' and moving methods to 'NamedViewQViewModel' class, which was previously called 'NamedViewListViewModel')
+- Dependency update 'lints' from 2.1.1 to 3.0.0
+
 ## 0.2.0
 
 - Adding 'const' to classes and adding required abstract methods to 'BaseNamedViewListViewModel' and deleted null safety to class 'BaseDataForNamedQThereIsStreamStateViewModel'('DataForNamed' should be final, but its parameters are not final, but there may be an exception if there is ready data)
