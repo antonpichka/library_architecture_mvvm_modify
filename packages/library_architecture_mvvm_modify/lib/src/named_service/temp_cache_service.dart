@@ -8,12 +8,12 @@ final class TempCacheService {
 
   TempCacheService._()
       : _tempCache = {},
-        _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData =
-            {};
+        _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData = {};
 
-  Stream<dynamic> getStreamObjectFromKeyNameStreamAndKeyTempCacheAndMillisecondsParametersTempCacheAndNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
-      String keyNameStream, String keyTempCache,
-      [int milliseconds = 500]) async* {
+  Stream<dynamic>
+      getStreamObjectFromKeyNameStreamAndKeyTempCacheAndMillisecondsParametersTempCacheAndNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
+          String keyNameStream, String keyTempCache,
+          [int milliseconds = 500]) async* {
     _insertFromKeyNameStreamAndKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
         keyNameStream, keyTempCache);
     while (true) {
@@ -22,13 +22,13 @@ final class TempCacheService {
         continue;
       }
       final valueTempCache = _tempCache[keyTempCache];
-      if (_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
-              keyNameStream]?[keyTempCache] ??
+      if (_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[keyNameStream]
+              ?[keyTempCache] ??
           false) {
         continue;
       }
-      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
-          keyNameStream]?[keyTempCache] = true;
+      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[keyNameStream]
+          ?[keyTempCache] = true;
       yield valueTempCache;
     }
   }
@@ -41,7 +41,8 @@ final class TempCacheService {
     return _tempCache[keyTempCache];
   }
 
-  void updateObjectFromKeyTempCacheAndValueParameterTempCache(String keyTempCache, dynamic value) {
+  void updateObjectFromKeyTempCacheAndValueParameterTempCache(
+      String keyTempCache, dynamic value) {
     _tempCache[keyTempCache] = value;
     _updateFromKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
         keyTempCache);
@@ -52,28 +53,27 @@ final class TempCacheService {
           String keyNameStream, String keyTempCache) {
     if (!_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData
         .containsKey(keyNameStream)) {
-      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
-          keyNameStream] = {keyTempCache: false};
+      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[keyNameStream] = {
+        keyTempCache: false
+      };
       return;
     }
-    if (_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
-                keyNameStream]
+    if (_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[keyNameStream]
             ?.containsKey(keyTempCache) ??
         false) {
       return;
     }
-    _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
-        keyNameStream] = {keyTempCache: false};
+    _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[keyNameStream] = {
+      keyTempCache: false
+    };
   }
 
   void
       _updateFromKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
           String keyTempCache) {
     for (Map<String, bool> tempCacheWIsHaveYouReceivedTheLatestData
-        in _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData
-            .values) {
-      if (!tempCacheWIsHaveYouReceivedTheLatestData
-          .containsKey(keyTempCache)) {
+        in _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData.values) {
+      if (!tempCacheWIsHaveYouReceivedTheLatestData.containsKey(keyTempCache)) {
         continue;
       }
       tempCacheWIsHaveYouReceivedTheLatestData[keyTempCache] = false;

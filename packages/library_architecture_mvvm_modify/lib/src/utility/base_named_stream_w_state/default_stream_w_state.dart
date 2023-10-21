@@ -20,8 +20,7 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
   }
 
   @override
-  Stream<T> get getStreamDataForNamed =>
-      _streamControllerWDataForNamed.stream;
+  Stream<T> get getStreamDataForNamed => _streamControllerWDataForNamed.stream;
 
   @override
   T get getDataForNamed => _dataForNamed;
@@ -36,11 +35,8 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
           "stream has no listener");
     }
     if (_streamControllerWDataForNamed.isClosed) {
-      throw LocalException(
-          this,
-          EnumGuiltyForLocalException.developer,
-          "DefaultStreamWStateQNotifyStreamDataForNamed",
-          "stream closed");
+      throw LocalException(this, EnumGuiltyForLocalException.developer,
+          "DefaultStreamWStateQNotifyStreamDataForNamed", "stream closed");
     }
     _streamControllerWDataForNamed.sink.add(_dataForNamed);
   }

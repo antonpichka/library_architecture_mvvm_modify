@@ -85,11 +85,10 @@ base class GetResultIPAddressInJsonipAPIParameterHttpClientService<
   @protected
   final httpClientService = HttpClientService.instance;
 
-  Future<Result<T>> getResultIPAddressInJsonipAPIParameterHttpClientService()
-  async {
+  Future<Result<T>>
+      getResultIPAddressInJsonipAPIParameterHttpClientService() async {
     try {
-      final response = await httpClientService
-          .getParameterHttpClient
+      final response = await httpClientService.getParameterHttpClient
           ?.get(Uri.parse("https://jsonip.com/"));
       if (response?.statusCode != 200) {
         throw NetworkException.fromKeyAndStatusCode(this,
@@ -163,8 +162,9 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
     return KeysSuccessUtility.sUCCESS;
   }
 
-  Future<String> _firstQInitQGetResultIPAddressInJsonipAPIParameterHttpClientService(
-      Result<IPAddress> resultIPAddressInJsonipAPI) async {
+  Future<String>
+      _firstQInitQGetResultIPAddressInJsonipAPIParameterHttpClientService(
+          Result<IPAddress> resultIPAddressInJsonipAPI) async {
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.exceptionController =
         resultIPAddressInJsonipAPI.exceptionController;
@@ -186,7 +186,8 @@ final class MainView {
   }
 
   void build() {
-    final dataForNamed = _mainViewModel.getDataForNamedParameterNamedStreamWState;
+    final dataForNamed =
+        _mainViewModel.getDataForNamedParameterNamedStreamWState;
     switch (dataForNamed.getEnumDataForNamed) {
       case EnumDataForMainView.isLoading:
         debugPrint("Build: IsLoading");
@@ -204,7 +205,8 @@ final class MainView {
   }
 
   Future<void> _init() async {
-    _mainViewModel.getStreamDataForNamedParameterNamedStreamWState.listen((event) {
+    _mainViewModel.getStreamDataForNamedParameterNamedStreamWState
+        .listen((event) {
       build();
     });
     final result = await _mainViewModel.init();

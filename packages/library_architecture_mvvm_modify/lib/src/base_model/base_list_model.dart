@@ -10,9 +10,11 @@ abstract base class BaseListModel<T extends BaseModel> {
   BaseListModel<T> get getClone;
 
   @nonVirtual
-  void sortingFromModelWhereNamedParameterNamedIteratorParameterListModel(BaseModelWhereNamedParameterNamedIterator<T> modelWhereNamedParameterNamedIterator) {
-    final sortedListModel =
-        modelWhereNamedParameterNamedIterator.getSortedListModelFromListModelParameterListModelIterator(listModel);
+  void sortingFromModelWhereNamedParameterNamedIteratorParameterListModel(
+      BaseModelWhereNamedParameterNamedIterator<T>
+          modelWhereNamedParameterNamedIterator) {
+    final sortedListModel = modelWhereNamedParameterNamedIterator
+        .getSortedListModelFromListModelParameterListModelIterator(listModel);
     listModel.isNotEmpty ? listModel.clear() : null;
     listModel.addAll(sortedListModel);
   }
@@ -43,12 +45,14 @@ abstract base class BaseListModel<T extends BaseModel> {
   void updateFromNewListModelParameterListModel(List<T> newListModel) {
     for (T newItemModel in newListModel) {
       listModel[listModel.indexWhere(
-          (T itemModel) => itemModel.uniqueId == newItemModel.uniqueId)] = newItemModel;
+              (T itemModel) => itemModel.uniqueId == newItemModel.uniqueId)] =
+          newItemModel;
     }
   }
 
   @nonVirtual
-  void deleteFromListUniqueIdByModelParameterListModel(List<String> listUniqueIdByModel) {
+  void deleteFromListUniqueIdByModelParameterListModel(
+      List<String> listUniqueIdByModel) {
     for (String uniqueIdByModel in listUniqueIdByModel) {
       listModel
           .removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
