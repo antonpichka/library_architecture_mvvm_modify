@@ -7,48 +7,48 @@ abstract base class BaseListModel<T extends BaseModel> {
 
   const BaseListModel(this.listModel);
 
-  BaseListModel<T> get getCloneListModel;
+  BaseListModel<T> get getClone;
 
   @nonVirtual
-  void modelQNamedIterator(BaseModelQNamedIterator<T> modelQNamedIterator) {
+  void sortingFromModelWhereNamedParameterNamedIteratorParameterListModel(BaseModelWhereNamedParameterNamedIterator<T> modelWhereNamedParameterNamedIterator) {
     final sortedListModel =
-        modelQNamedIterator.getSortedListModel(getCloneListModel.listModel);
-    listModel.clear();
+        modelWhereNamedParameterNamedIterator.getSortedListModelFromListModelParameterListModelIterator(listModel);
+    listModel.isNotEmpty ? listModel.clear() : null;
     listModel.addAll(sortedListModel);
   }
 
   @nonVirtual
-  void insertToListModel(T model) {
+  void insertFromModelParameterListModel(T model) {
     listModel.add(model);
   }
 
   @nonVirtual
-  void updateToListModel(T model) {
+  void updateFromModelParameterListModel(T model) {
     listModel[listModel.indexWhere(
         (T itemModel) => itemModel.uniqueId == model.uniqueId)] = model;
   }
 
   @nonVirtual
-  void deleteToListModel(String uniqueIdByModel) {
+  void deleteFromUniqueIdByModelParameterListModel(String uniqueIdByModel) {
     listModel
         .removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
   }
 
   @nonVirtual
-  void insertListToListModel(List<T> list) {
-    listModel.addAll(list);
+  void insertFromNewListModelParameterListModel(List<T> newListModel) {
+    listModel.addAll(newListModel);
   }
 
   @nonVirtual
-  void updateListToListModel(List<T> list) {
-    for (T item in list) {
+  void updateFromNewListModelParameterListModel(List<T> newListModel) {
+    for (T newItemModel in newListModel) {
       listModel[listModel.indexWhere(
-          (T itemModel) => itemModel.uniqueId == item.uniqueId)] = item;
+          (T itemModel) => itemModel.uniqueId == newItemModel.uniqueId)] = newItemModel;
     }
   }
 
   @nonVirtual
-  void deleteListToListModel(List<String> listUniqueIdByModel) {
+  void deleteFromListUniqueIdByModelParameterListModel(List<String> listUniqueIdByModel) {
     for (String uniqueIdByModel in listUniqueIdByModel) {
       listModel
           .removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);

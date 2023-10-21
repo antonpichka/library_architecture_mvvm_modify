@@ -8,7 +8,7 @@ base class Ints extends BaseModel {
   const Ints(this.field) : super("$field");
 
   @override
-  Ints get getCloneModel => Ints(field);
+  Ints get getClone => Ints(field);
 
   @override
   String toString() {

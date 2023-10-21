@@ -6,10 +6,10 @@ base class ListDoubles<T extends Doubles> extends BaseListModel<T> {
   const ListDoubles(super.listModel) : super();
 
   @override
-  ListDoubles<T> get getCloneListModel {
+  ListDoubles<T> get getClone {
     List<T> newListModel = List.empty(growable: true);
     for (T model in listModel) {
-      newListModel.add(model.getCloneModel as T);
+      newListModel.add(model.getClone as T);
     }
     return ListDoubles<T>(newListModel);
   }

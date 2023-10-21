@@ -6,10 +6,10 @@ base class ListDatesTimes<T extends DatesTimes> extends BaseListModel<T> {
   const ListDatesTimes(super.listModel) : super();
 
   @override
-  ListDatesTimes<T> get getCloneListModel {
+  ListDatesTimes<T> get getClone {
     List<T> newListModel = List.empty(growable: true);
     for (T model in listModel) {
-      newListModel.add(model.getCloneModel as T);
+      newListModel.add(model.getClone as T);
     }
     return ListDatesTimes<T>(newListModel);
   }

@@ -177,7 +177,7 @@ final class NetworkException extends BaseException {
 
   @protected
   @override
-  String get exceptionInStringForDebugPrintException {
+  String get getStringWhereDebugPrintExceptionParametersKeyAndNamed {
     return "Key: $key | "
         "StatusCode: $statusCode | "
         "NameStatusCode (optional): ${nameStatusCode ?? ""} | "

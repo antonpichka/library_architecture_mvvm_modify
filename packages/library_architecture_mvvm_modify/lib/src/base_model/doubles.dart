@@ -8,7 +8,7 @@ base class Doubles extends BaseModel {
   const Doubles(this.field) : super("$field");
 
   @override
-  Doubles get getCloneModel => Doubles(field);
+  Doubles get getClone => Doubles(field);
 
   @override
   String toString() {

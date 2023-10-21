@@ -8,7 +8,7 @@ base class DatesTimes extends BaseModel {
   const DatesTimes(this.dateTime) : super("$dateTime");
 
   @override
-  DatesTimes get getCloneModel => DatesTimes(dateTime);
+  DatesTimes get getClone => DatesTimes(dateTime);
 
   @override
   String toString() {

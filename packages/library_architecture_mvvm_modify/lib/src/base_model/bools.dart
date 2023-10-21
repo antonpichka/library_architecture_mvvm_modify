@@ -8,7 +8,7 @@ base class Bools extends BaseModel {
   const Bools(this.isField) : super("$isField");
 
   @override
-  Bools get getCloneModel => Bools(isField);
+  Bools get getClone => Bools(isField);
 
   @override
   String toString() {

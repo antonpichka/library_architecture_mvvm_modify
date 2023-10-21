@@ -6,5 +6,5 @@ abstract base class BaseModel {
 
   const BaseModel(this.uniqueId);
 
-  BaseModel get getCloneModel;
+  BaseModel get getClone;
 }

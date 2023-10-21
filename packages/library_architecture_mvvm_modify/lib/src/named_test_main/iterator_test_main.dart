@@ -1,53 +1,81 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
+import 'package:meta/meta.dart';
 
-base class IntsQWhereOrderByDescParameterFieldIterator<T extends Ints>
-    extends BaseModelQNamedIterator<T> {
+@immutable
+base class UserBalance extends BaseModel {
+  final String username;
+  final int money;
+
+  const UserBalance(this.username,this.money) : super(username);
+
+  @override
+  UserBalance get getClone => UserBalance(username,money);
+
+  @override
+  String toString() {
+    return "$username (Money: $money)";
+  }
+}
+
+@immutable
+base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
+  const ListUserBalance(super.listModel) : super();
+
+  @override
+  ListUserBalance<T> get getClone {
+    List<T> newListModel = List.empty(growable: true);
+    for (T model in listModel) {
+      newListModel.add(model.getClone as T);
+    }
+    return ListUserBalance<T>(newListModel);
+  }
+}
+
+@immutable
+base class UserBalanceWhereOrderByDescParameterMoneyIterator<T extends UserBalance>
+    extends BaseModelWhereNamedParameterNamedIterator<T> {
   @override
   T get current {
-    T itemCurrentInts = listModelForIterator[0].getCloneModel as T;
-    if (listModelForIterator.length <= 1) {
-      listModelForIterator.removeAt(0);
+    T itemCurrentInts = listModelIterator[0].getClone as T;
+    if (listModelIterator.length <= 1) {
+      listModelIterator.removeAt(0);
       return itemCurrentInts;
     }
     int indexRemove = 0;
-    for (int i = 1; i < listModelForIterator.length; i++) {
-      if (listModelForIterator[i].field > itemCurrentInts.field) {
-        itemCurrentInts = listModelForIterator[i].getCloneModel as T;
+    for (int i = 1; i < listModelIterator.length; i++) {
+      if (listModelIterator[i].money > itemCurrentInts.money) {
+        itemCurrentInts = listModelIterator[i].getClone as T;
         indexRemove = i;
         continue;
       }
     }
-    listModelForIterator.removeAt(indexRemove);
+    listModelIterator.removeAt(indexRemove);
     return itemCurrentInts;
-  }
-
-  @override
-  bool moveNext() {
-    return listModelForIterator.isNotEmpty;
   }
 }
 
 void main() {
-  ListInts<Ints> listInts = ListInts(List.empty(growable: true));
-  listInts.insertToListModel(Ints(3)); // 0
-  listInts.insertToListModel(Ints(1)); // 1
-  listInts.insertToListModel(Ints(10)); // 2
-  listInts.insertToListModel(Ints(5)); // 3
-  listInts.insertToListModel(Ints(7)); // 4
-  listInts.insertToListModel(Ints(-1)); // 5
-  debugPrint("Before: ${listInts.listModel.toString()}"); // 3, 1, 10, 5, 7, -1
-  final intsQWhereOrderByDescParameterFieldIterator =
-      IntsQWhereOrderByDescParameterFieldIterator<Ints>();
-  listInts.modelQNamedIterator(intsQWhereOrderByDescParameterFieldIterator);
-  debugPrint("After: ${listInts.listModel.toString()}"); // 10, 7, 5, 3, 1, -1
-  listInts.modelQNamedIterator(intsQWhereOrderByDescParameterFieldIterator);
+  ListUserBalance<UserBalance> listUserBalance = ListUserBalance(List.empty(growable: true));
+  listUserBalance.insertFromModelParameterListModel(UserBalance("Jone",3)); // 0
+  listUserBalance.insertFromModelParameterListModel(UserBalance("Freddy",1)); // 1
+  listUserBalance.insertFromModelParameterListModel(UserBalance("Mitsuya",10)); // 2
+  listUserBalance.insertFromModelParameterListModel(UserBalance("Duramichi",5)); // 3
+  listUserBalance.insertFromModelParameterListModel(UserBalance("Hook",7)); // 4
+  listUserBalance.insertFromModelParameterListModel(UserBalance("Sexy",-1)); // 5
+  debugPrint("Before: ${listUserBalance.listModel}"); // 3, 1, 10, 5, 7, -1
+  final userBalanceWhereOrderByDescParameterMoneyIterator =
+      UserBalanceWhereOrderByDescParameterMoneyIterator<UserBalance>();
+  listUserBalance.sortingFromModelWhereNamedParameterNamedIteratorParameterListModel(userBalanceWhereOrderByDescParameterMoneyIterator);
+  debugPrint("After: ${listUserBalance.listModel}"); // 10, 7, 5, 3, 1, -1
+  listUserBalance.updateFromModelParameterListModel(UserBalance("Duramichi",15));
+  listUserBalance.sortingFromModelWhereNamedParameterNamedIteratorParameterListModel(userBalanceWhereOrderByDescParameterMoneyIterator);
   debugPrint(
-      "After (Two): ${listInts.listModel.toString()}"); // 10, 7, 5, 3, 1, -1
+      "After (Two): ${listUserBalance.listModel}"); // 15, 10, 7, 3, 1, -1
   // EXPECTED OUTPUT:
   //
-  // Before: [3, 1, 10, 5, 7, -1]
-  // After: [10, 7, 5, 3, 1, -1]
-  // After (Two): [10, 7, 5, 3, 1, -1]
+  // Before: [Jone (Money: 3), Freddy (Money: 1), Mitsuya (Money: 10), Duramichi (Money: 5), Hook (Money: 7), Sexy (Money: -1)]
+  // After: [Mitsuya (Money: 10), Hook (Money: 7), Duramichi (Money: 5), Jone (Money: 3), Freddy (Money: 1), Sexy (Money: -1)]
+  // After (Two): [Duramichi (Money: 15), Mitsuya (Money: 10), Hook (Money: 7), Jone (Money: 3), Freddy (Money: 1), Sexy (Money: -1)]
   //
   // Process finished with exit code 0
 }

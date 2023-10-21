@@ -14,7 +14,7 @@ final class LocalException extends BaseException {
 
   @protected
   @override
-  String get exceptionInStringForDebugPrintException {
+  String get getStringWhereDebugPrintExceptionParametersKeyAndNamed {
     return "Key: $key | "
         "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
         "Message (optional): ${message ?? ""}";

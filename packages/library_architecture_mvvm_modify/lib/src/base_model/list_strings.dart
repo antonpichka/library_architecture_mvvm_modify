@@ -6,10 +6,10 @@ base class ListStrings<T extends Strings> extends BaseListModel<T> {
   const ListStrings(super.listModel) : super();
 
   @override
-  ListStrings<T> get getCloneListModel {
+  ListStrings<T> get getClone {
     List<T> newListModel = List.empty(growable: true);
     for (T model in listModel) {
-      newListModel.add(model.getCloneModel as T);
+      newListModel.add(model.getClone as T);
     }
     return ListStrings<T>(newListModel);
   }

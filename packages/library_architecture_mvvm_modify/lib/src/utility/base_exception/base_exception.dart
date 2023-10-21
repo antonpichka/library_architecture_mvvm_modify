@@ -8,10 +8,10 @@ abstract base class BaseException implements Exception {
   BaseException(Object thisClass, this.key, Type exceptionClass) {
     debugPrintException("===start_to_trace_exception===\n");
     debugPrintException(
-        "NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: $exceptionInStringForDebugPrintException\n");
+        "NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: $getStringWhereDebugPrintExceptionParametersKeyAndNamed\n");
     debugPrintException("===end_to_trace_exception===\n");
   }
 
   @protected
-  String get exceptionInStringForDebugPrintException;
+  String get getStringWhereDebugPrintExceptionParametersKeyAndNamed;
 }

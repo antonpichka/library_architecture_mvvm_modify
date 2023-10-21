@@ -6,10 +6,10 @@ base class ListBools<T extends Bools> extends BaseListModel<T> {
   const ListBools(super.listModel) : super();
 
   @override
-  ListBools<T> get getCloneListModel {
+  ListBools<T> get getClone {
     List<T> newListModel = List.empty(growable: true);
     for (T model in listModel) {
-      newListModel.add(model.getCloneModel as T);
+      newListModel.add(model.getClone as T);
     }
     return ListBools<T>(newListModel);
   }

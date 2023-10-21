@@ -8,7 +8,7 @@ base class Strings extends BaseModel {
   const Strings(this.field) : super(field);
 
   @override
-  Strings get getCloneModel => Strings(field);
+  Strings get getClone => Strings(field);
 
   @override
   String toString() {

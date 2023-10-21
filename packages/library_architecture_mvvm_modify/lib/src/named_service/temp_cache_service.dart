@@ -4,17 +4,17 @@ final class TempCacheService {
   static final TempCacheService instance = TempCacheService._();
   final Map<String, dynamic> _tempCache;
   final Map<String, Map<String, bool>>
-      _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData;
+      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData;
 
   TempCacheService._()
       : _tempCache = {},
-        _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData =
+        _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData =
             {};
 
-  Stream<dynamic> getStreamObjectFromTempCache(
+  Stream<dynamic> getStreamObjectFromKeyNameStreamAndKeyTempCacheAndMillisecondsParametersTempCacheAndNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
       String keyNameStream, String keyTempCache,
       [int milliseconds = 500]) async* {
-    _insertToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(
+    _insertFromKeyNameStreamAndKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
         keyNameStream, keyTempCache);
     while (true) {
       await Future.delayed(Duration(milliseconds: milliseconds));
@@ -22,18 +22,18 @@ final class TempCacheService {
         continue;
       }
       final valueTempCache = _tempCache[keyTempCache];
-      if (_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[
+      if (_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
               keyNameStream]?[keyTempCache] ??
           false) {
         continue;
       }
-      _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[
+      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
           keyNameStream]?[keyTempCache] = true;
       yield valueTempCache;
     }
   }
 
-  dynamic getObjectFromTempCache(String keyTempCache) {
+  dynamic getObjectFromKeyTempCacheParameterTempCache(String keyTempCache) {
     if (!_tempCache.containsKey(keyTempCache)) {
       return throw LocalException(this, EnumGuiltyForLocalException.developer,
           keyTempCache, "no exists key");
@@ -41,42 +41,42 @@ final class TempCacheService {
     return _tempCache[keyTempCache];
   }
 
-  void insertOrUpdateObjectToTempCache(String keyTempCache, dynamic value) {
+  void updateObjectFromKeyTempCacheAndValueParameterTempCache(String keyTempCache, dynamic value) {
     _tempCache[keyTempCache] = value;
-    _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(
+    _updateFromKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
         keyTempCache);
   }
 
   void
-      _insertToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(
+      _insertFromKeyNameStreamAndKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
           String keyNameStream, String keyTempCache) {
-    if (!_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData
+    if (!_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData
         .containsKey(keyNameStream)) {
-      _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[
+      _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
           keyNameStream] = {keyTempCache: false};
       return;
     }
-    if (_mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[
+    if (_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
                 keyNameStream]
             ?.containsKey(keyTempCache) ??
         false) {
       return;
     }
-    _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData[
+    _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData[
         keyNameStream] = {keyTempCache: false};
   }
 
   void
-      _updateToMapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData(
+      _updateFromKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
           String keyTempCache) {
-    for (Map<String, bool> mapKeyTempCacheAndIsHaveYouReceivedTheLatestData
-        in _mapKeyNameStreamAndMapKeyTempCacheAndIsHaveYouReceivedTheLatestData
+    for (Map<String, bool> tempCacheWIsHaveYouReceivedTheLatestData
+        in _nameStreamWTempCacheWIsHaveYouReceivedTheLatestData
             .values) {
-      if (!mapKeyTempCacheAndIsHaveYouReceivedTheLatestData
+      if (!tempCacheWIsHaveYouReceivedTheLatestData
           .containsKey(keyTempCache)) {
         continue;
       }
-      mapKeyTempCacheAndIsHaveYouReceivedTheLatestData[keyTempCache] = false;
+      tempCacheWIsHaveYouReceivedTheLatestData[keyTempCache] = false;
     }
   }
 }
