@@ -1,3 +1,7 @@
+## 0.2.2
+
+- Globally changing class and method names
+
 ## 0.2.1
 
 - Global update (Major change: Removing 'BaseDataForNamedQThereIsStreamStateViewModel' and moving methods to 'NamedViewQViewModel' class, which was previously called 'NamedViewListViewModel')
