@@ -136,7 +136,7 @@ enum EnumDataForMainView { isLoading, exception, success }
 @immutable
 final class MainViewModel extends BaseNamedViewModel<DataForMainView,
     DefaultStreamWState<DataForMainView>> {
-  // OperationResultModel(InNamedWhereNamed)[FromNamed]ParameterNamedService
+  // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
   final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
       GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
 
