@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Updated example
+
 ## 0.2.2
 
 - Globally changing class and method names
