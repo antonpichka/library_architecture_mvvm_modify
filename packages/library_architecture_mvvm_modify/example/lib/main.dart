@@ -73,20 +73,21 @@ final class KeysSuccessUtility {
   const KeysSuccessUtility._();
 }
 
-// OperationResultModel(InNamedWhereNamed)[FromNamed]ParameterNamedService
+// Minimum three 'EE'. Maximum four 'EE' - needed as a separator that helps to quickly understand what this class does
+// OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
 // () - optional
 // [] - if available
-// (InNamedWhereNamed) - describe in as much detail as possible what this class does
-// [FromNamed] - if the method has parameters, then list
-// Variable name: resultModel(InNamedWhereNamed)
+// (EEWhereNamed) - describe in as much detail as possible what this class does
+// [EEFromNamed] - if the method has parameters, then list
+// Variable name - result(Generic)(WhereNamed)
 @immutable
-base class GetResultIPAddressInJsonipAPIParameterHttpClientService<
+base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
     T extends IPAddress, Y extends ListIPAddress<T>> {
   @protected
   final httpClientService = HttpClientService.instance;
 
   Future<Result<T>>
-      getResultIPAddressInJsonipAPIParameterHttpClientService() async {
+      getIPAddressWhereJsonipAPIParameterHttpClientService() async {
     try {
       final response = await httpClientService.getParameterHttpClient
           ?.get(Uri.parse("https://jsonip.com/"));
@@ -136,8 +137,8 @@ enum EnumDataForMainView { isLoading, exception, success }
 final class MainViewModel extends BaseNamedViewModel<DataForMainView,
     DefaultStreamWState<DataForMainView>> {
   // OperationResultModel(InNamedWhereNamed)[FromNamed]ParameterNamedService
-  final _getResultIPAddressInJsonipAPIParameterHttpClientService =
-      GetResultIPAddressInJsonipAPIParameterHttpClientService();
+  final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
+      GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
 
   // NamedUtility
 
@@ -147,28 +148,28 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
 
   @override
   Future<String> init() async {
-    final resultIPAddressInJsonipAPI =
-        await _getResultIPAddressInJsonipAPIParameterHttpClientService
-            .getResultIPAddressInJsonipAPIParameterHttpClientService();
-    if (resultIPAddressInJsonipAPI.exceptionController
+    final resultIPAddressWhereJsonipAPI =
+        await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
+            .getIPAddressWhereJsonipAPIParameterHttpClientService();
+    if (resultIPAddressWhereJsonipAPI.exceptionController
         .isNotEqualsNullParameterException()) {
-      return _firstQInitQGetResultIPAddressInJsonipAPIParameterHttpClientService(
-          resultIPAddressInJsonipAPI);
+      return _firstQInitQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+          resultIPAddressWhereJsonipAPI);
     }
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.ipAddress =
-        resultIPAddressInJsonipAPI.parameter?.getClone ??
+        resultIPAddressWhereJsonipAPI.parameter?.getClone ??
             const IPAddress("", "");
     return KeysSuccessUtility.sUCCESS;
   }
 
   Future<String>
-      _firstQInitQGetResultIPAddressInJsonipAPIParameterHttpClientService(
-          Result<IPAddress> resultIPAddressInJsonipAPI) async {
+      _firstQInitQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+          Result<IPAddress> resultIPAddressWhereJsonipAPI) async {
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.exceptionController =
-        resultIPAddressInJsonipAPI.exceptionController;
-    return resultIPAddressInJsonipAPI
+        resultIPAddressWhereJsonipAPI.exceptionController;
+    return resultIPAddressWhereJsonipAPI
         .exceptionController.getKeyParameterException;
   }
 }
