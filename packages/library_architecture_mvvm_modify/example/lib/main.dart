@@ -6,16 +6,15 @@ import 'package:meta/meta.dart';
 @immutable
 base class IPAddress extends BaseModel {
   final String ip;
-  final String country;
 
-  const IPAddress(this.ip, this.country) : super(ip);
+  const IPAddress(this.ip) : super(ip);
 
   @override
-  IPAddress get getClone => IPAddress(ip, country);
+  IPAddress get getClone => IPAddress(ip);
 
   @override
   String toString() {
-    return "ip: $ip, country: $country";
+    return "IPAddress(ip: $ip)";
   }
 }
 
@@ -51,8 +50,7 @@ final class HttpClientService {
 @immutable
 final class KeysHttpClientServiceUtility {
   /* IPAddress */
-  static const String iPAddressQIp = "ip";
-  static const String iPAddressQCountry = "country";
+  static const String iPAddressQQIp = "ip";
 
   const KeysHttpClientServiceUtility._();
 }
@@ -73,13 +71,6 @@ final class KeysSuccessUtility {
   const KeysSuccessUtility._();
 }
 
-// Minimum three 'EE'. Maximum four 'EE' - needed as a separator that helps to quickly understand what this class does
-// OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
-// () - optional
-// [] - if available
-// (EEWhereNamed) - describe in as much detail as possible what this class does
-// [EEFromNamed] - if the method has parameters, then list
-// Variable name - result(Generic)(WhereNamed)
 @immutable
 base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
     T extends IPAddress, Y extends ListIPAddress<T>> {
@@ -97,21 +88,20 @@ base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
       }
       final Map<String, dynamic> data = jsonDecode(response!.body);
       return Result<T>.success(IPAddress(
-          data[KeysHttpClientServiceUtility.iPAddressQIp],
-          data[KeysHttpClientServiceUtility.iPAddressQCountry]) as T);
+          data[KeysHttpClientServiceUtility.iPAddressQQIp]) as T);
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {
       return Result<T>.exception(LocalException(this,
-          EnumGuiltyForLocalException.device, KeysExceptionUtility.uNKNOWN));
+          EnumGuiltyForLocalException.device, KeysExceptionUtility.uNKNOWN,e.toString()));
     }
   }
 }
 
 final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
-  IPAddress ipAddress;
+  IPAddress iPAddress;
 
-  DataForMainView(super.isLoading, this.ipAddress);
+  DataForMainView(super.isLoading, this.iPAddress);
 
   @override
   EnumDataForMainView get getEnumDataForNamed {
@@ -127,12 +117,6 @@ final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
 
 enum EnumDataForMainView { isLoading, exception, success }
 
-// private methods:
-// numberQWhichMethodIsItInQWhichMethodTriggersTheCreationOfAPrivateMethod
-// private methods to private methods:
-// numberBranchNumberQWhichMethodIsItInQWhichMethodTriggersTheCreationOfAPrivateMethod
-// private methods to private methods to private methods:
-// numberBranchNumberBranchNumberQWhichMethodIsItInQWhichMethodTriggersTheCreationOfAPrivateMethod
 @immutable
 final class MainViewModel extends BaseNamedViewModel<DataForMainView,
     DefaultStreamWState<DataForMainView>> {
@@ -144,32 +128,32 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
 
   MainViewModel()
       : super(DefaultStreamWState(
-            DataForMainView(true, const IPAddress("", ""))));
+            DataForMainView(true, const IPAddress(""))));
 
   @override
   Future<String> init() async {
-    final resultIPAddressWhereJsonipAPI =
+    final getIPAddressWhereJsonipAPIParameterHttpClientService =
         await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
             .getIPAddressWhereJsonipAPIParameterHttpClientService();
-    if (resultIPAddressWhereJsonipAPI.exceptionController
+    if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
         .isNotEqualsNullParameterException()) {
-      return _firstQInitQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          resultIPAddressWhereJsonipAPI);
+      return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+          getIPAddressWhereJsonipAPIParameterHttpClientService);
     }
     getDataForNamedParameterNamedStreamWState.isLoading = false;
-    getDataForNamedParameterNamedStreamWState.ipAddress =
-        resultIPAddressWhereJsonipAPI.parameter?.getClone ??
-            const IPAddress("", "");
+    getDataForNamedParameterNamedStreamWState.iPAddress =
+        getIPAddressWhereJsonipAPIParameterHttpClientService.parameter?.getClone ??
+            const IPAddress("");
     return KeysSuccessUtility.sUCCESS;
   }
 
   Future<String>
-      _firstQInitQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          Result<IPAddress> resultIPAddressWhereJsonipAPI) async {
+      _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+          Result<IPAddress> getIPAddressWhereJsonipAPIParameterHttpClientService) async {
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.exceptionController =
-        resultIPAddressWhereJsonipAPI.exceptionController;
-    return resultIPAddressWhereJsonipAPI
+        getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController;
+    return getIPAddressWhereJsonipAPIParameterHttpClientService
         .exceptionController.getKeyParameterException;
   }
 }
@@ -177,35 +161,38 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
 final class MainView {
   late final MainViewModel _mainViewModel;
 
+  // Override
   void initState() {
     _mainViewModel = MainViewModel();
-    _init();
+    _initParameterMainViewModel();
   }
 
+  // Override
   void dispose() {
     _mainViewModel.dispose();
   }
 
+  // Override
   void build() {
-    final dataForNamed =
+    final dataForNamedParameterNamedStreamWState =
         _mainViewModel.getDataForNamedParameterNamedStreamWState;
-    switch (dataForNamed.getEnumDataForNamed) {
+    switch (dataForNamedParameterNamedStreamWState.getEnumDataForNamed) {
       case EnumDataForMainView.isLoading:
         debugPrint("Build: IsLoading");
         break;
       case EnumDataForMainView.exception:
         debugPrint(
-            "Build: Exception(${dataForNamed.exceptionController.getKeyParameterException})");
+            "Build: Exception(${dataForNamedParameterNamedStreamWState.exceptionController.getKeyParameterException})");
         break;
       case EnumDataForMainView.success:
-        debugPrint("Build: Success(${dataForNamed.ipAddress})");
+        debugPrint("Build: Success(${dataForNamedParameterNamedStreamWState.iPAddress})");
         break;
       default:
         break;
     }
   }
 
-  Future<void> _init() async {
+  Future<void> _initParameterMainViewModel() async {
     _mainViewModel.getStreamDataForNamedParameterNamedStreamWState
         .listen((event) {
       build();
@@ -227,7 +214,23 @@ Future<void> main() async {
   //
   // Build: IsLoading
   // MainView: sUCCESS
-  // Build: Success(ip: ${your_ip}, country: ${your_country})
+  // Build: Success(IPAddress(ip: ${your_ip}))
+  //
+  // Process finished with exit code 0
+  /// OR
+  // EXPECTED OUTPUT:
+  //
+  // Build: IsLoading
+  // ===start_to_trace_exception===
+  //
+  // NameException(Class): ${NameException(Class)}
+  // WhereHappenedException(Class): GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<IPAddress, ListIPAddress<IPAddress>>
+  // ExceptionInString: ${ExceptionInString}
+  //
+  // ===end_to_trace_exception===
+  //
+  // MainView: ${getKeyParameterException}
+  // Build: Exception(${getKeyParameterException})
   //
   // Process finished with exit code 0
 }

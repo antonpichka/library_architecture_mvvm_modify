@@ -13,7 +13,8 @@ base class UserBalance extends BaseModel {
 
   @override
   String toString() {
-    return "$username (Money: $money)";
+    return "UserBalance(username: $username, "
+        "money: $money)";
   }
 }
 
@@ -86,9 +87,9 @@ void main() {
       "After (Two): ${listUserBalance.listModel}"); // 15, 10, 7, 3, 1, -1
   // EXPECTED OUTPUT:
   //
-  // Before: [Jone (Money: 3), Freddy (Money: 1), Mitsuya (Money: 10), Duramichi (Money: 5), Hook (Money: 7), Sexy (Money: -1)]
-  // After: [Mitsuya (Money: 10), Hook (Money: 7), Duramichi (Money: 5), Jone (Money: 3), Freddy (Money: 1), Sexy (Money: -1)]
-  // After (Two): [Duramichi (Money: 15), Mitsuya (Money: 10), Hook (Money: 7), Jone (Money: 3), Freddy (Money: 1), Sexy (Money: -1)]
+  // Before: [UserBalance(username: Jone, money: 3), UserBalance(username: Freddy, money: 1), UserBalance(username: Mitsuya, money: 10), UserBalance(username: Duramichi, money: 5), UserBalance(username: Hook, money: 7), UserBalance(username: Sexy, money: -1)]
+  // After: [UserBalance(username: Mitsuya, money: 10), UserBalance(username: Hook, money: 7), UserBalance(username: Duramichi, money: 5), UserBalance(username: Jone, money: 3), UserBalance(username: Freddy, money: 1), UserBalance(username: Sexy, money: -1)]
+  // After (Two): [UserBalance(username: Duramichi, money: 15), UserBalance(username: Mitsuya, money: 10), UserBalance(username: Hook, money: 7), UserBalance(username: Jone, money: 3), UserBalance(username: Freddy, money: 1), UserBalance(username: Sexy, money: -1)]  //
   //
   // Process finished with exit code 0
 }
