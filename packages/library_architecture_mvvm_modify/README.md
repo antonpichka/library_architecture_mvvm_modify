@@ -18,15 +18,15 @@
 ### General Rules
 
 - Class names, Global variable names:
-- - Forbidden words (<p><span style="background-color:red;color:white;">...</span></p>):
-- - - <span style="color:red;">And</span>
-- - - <p><span style="background-color:red;color:white;">Or</span></p>
-- - - <p><span style="background-color:red;color:white;">Where</span></p>
-- - - <p><span style="background-color:red;color:white;">For</span></p>
-- - - <p><span style="background-color:red;color:white;">From</span></p>
-- - - <p><span style="background-color:red;color:white;">Parameter/Parameters</span></p>
-- - Alternative to forbidden words (<p><span style="background-color:green;color:white;">...</span></p>):
-- - - <p><span style="background-color:green;color:white;">W</span></p>
+- - Forbidden words (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
+- - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) And
+- - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Or
+- - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Where
+- - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) For
+- - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) From
+- - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
+- - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
+- - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
     
 ### Model
 
