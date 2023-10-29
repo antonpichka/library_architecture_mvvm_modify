@@ -1,3 +1,8 @@
+## 0.2.4
+
+- Adding documentation
+- Updated example
+
 ## 0.2.3
 
 - Updated example
