@@ -31,15 +31,16 @@
 ### Model
 
 - Method names (Type:get,void,bool):
-- - Forbidden words (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)) (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)):
+- - Forbidden words (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) And
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Or
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Where
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) For
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) From
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
-- - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)) (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)):
+- - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)
 - - Type 'get':
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
 - - - - () - optional
@@ -82,15 +83,16 @@
 
 ### OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
 
-- Forbidden words (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)) (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)):
+- Forbidden words (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) And
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Or
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Where
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) For
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) From
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
-- Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)) (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)):
+- Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
+- ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)
 - Minimum two 'EE'. Maximum four 'EE' - needed as a separator that helps to quickly understand what this class does
 - () - optional
 - [] - if available
