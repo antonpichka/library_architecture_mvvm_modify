@@ -40,7 +40,7 @@
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
 - - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
-- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Where to apply (And)
 - - Type 'get':
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
 - - - - () - optional
@@ -92,7 +92,7 @@
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
 - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
-- ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)
+- ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Where to apply (And)
 - Minimum two 'EE'. Maximum four 'EE' - needed as a separator that helps to quickly understand what this class does
 - () - optional
 - [] - if available
