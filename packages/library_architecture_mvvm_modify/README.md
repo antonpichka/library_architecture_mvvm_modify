@@ -31,14 +31,14 @@
 ### Model
 
 - Method names (Type:get,void,bool):
-- - Forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) unless this is a list (And)) (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
+- - Forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)) (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) And
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Or
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Where
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) For
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) From
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
-- - Alternative to forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) unless this is a list (And)) (![#008000](https://placehold.co/15x15/008000/008000.png)):
+- - Alternative to forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)) (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
 - - Type 'get':
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -47,8 +47,8 @@
 - - - - get - required word
 - - - - (Named) - we get primitive type or another model or briefly describe what we are taking
 - - - - (WhereNamed) - describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for listing detailed information)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - to list method parameters)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for parameter listings)
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'FIRST', 'SECOND', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
@@ -58,17 +58,17 @@
 - - - - [] - if available 
 - - - - operation - insert, update, delete, set, init, etc...
 - - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - - (WhereNamed) -  describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for listing detailed information)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - to list method parameters)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for parameter listings)
+- - - - (WhereNamed) -  describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
 - - - - Regarding duplicates - at the end add 'FIRST', 'SECOND', etc...
 - - Type 'bool':
 - - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - - [] - if available
-- - - - isWhereNamed - describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for listing detailed information)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - to list method parameters)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for parameter listings)
+- - - - isWhereNamed - describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'FIRST', 'SECOND', etc...
 
@@ -82,23 +82,23 @@
 
 ### OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
 
-- Forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) unless this is a list (And)) (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
+- Forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)) (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) And
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Or
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Where
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) For
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) From
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
-- Alternative to forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) unless this is a list (And)) (![#008000](https://placehold.co/15x15/008000/008000.png)):
+- Alternative to forbidden words (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) where to apply (And)) (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
 - Minimum two 'EE'. Maximum four 'EE' - needed as a separator that helps to quickly understand what this class does
 - () - optional
 - [] - if available
 - Operation -  insert, update, delete, set, init, etc...
 - EEModel - name model
-- (EEWhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for listing detailed information)
-- [EEFromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - to list method parameters)
-- EEParameterNamedService - what service do you use (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for parameter listings)
+- (EEWhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- [EEFromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
+- EEParameterNamedService - what service do you use (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for transfer)
 - Global variable names - _operationModel(WhereNamed)[FromNamed]ParameterNamedService
 - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamedService
 
