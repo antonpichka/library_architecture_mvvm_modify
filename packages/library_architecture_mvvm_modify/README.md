@@ -12,8 +12,7 @@
 
 ## Documentation 
 
-- In general, I will try in detail write the architecture (MVVM Modification)
-- In the examples the source code itself
+- In general, I will try to describe the architecture in detail (Modification of MVVM)
 
 ### General Rules
 
