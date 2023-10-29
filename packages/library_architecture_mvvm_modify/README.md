@@ -19,7 +19,7 @@
 
 - Class names, Global variable names:
 - - Forbidden words (<p><span style="background-color:red;color:white;">...</span></p>):
-- - - <span style="background-color:red;color:white;">And</span>
+- - - <span style="color:red;">And</span>
 - - - <p><span style="background-color:red;color:white;">Or</span></p>
 - - - <p><span style="background-color:red;color:white;">Where</span></p>
 - - - <p><span style="background-color:red;color:white;">For</span></p>
