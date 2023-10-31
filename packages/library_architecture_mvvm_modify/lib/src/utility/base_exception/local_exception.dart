@@ -1,22 +1,20 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:meta/meta.dart';
 
-enum EnumGuiltyForLocalException { developer, device, user }
-
 @immutable
 final class LocalException extends BaseException {
-  final EnumGuiltyForLocalException enumGuiltyForLocalException;
+  final EnumGuilty enumGuilty;
   final String? message;
 
-  LocalException(Object thisClass, this.enumGuiltyForLocalException, String key,
+  LocalException(Object thisClass, this.enumGuilty, String key,
       [this.message])
-      : super(thisClass, key, LocalException);
+      : super(thisClass,LocalException,key);
 
   @protected
   @override
   String get getStringWhereDebugPrintExceptionParametersKeyAndNamed {
     return "Key: $key | "
-        "EnumGuiltyForLocalException: ${enumGuiltyForLocalException.name} | "
+        "EnumGuiltyForLocalException: ${enumGuilty.name} | "
         "Message (optional): ${message ?? ""}";
   }
 }

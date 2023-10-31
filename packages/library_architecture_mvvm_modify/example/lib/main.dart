@@ -94,7 +94,7 @@ base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
     } catch (e) {
       return Result<T>.exception(LocalException(
           this,
-          EnumGuiltyForLocalException.device,
+          EnumGuilty.device,
           KeysExceptionUtility.uNKNOWN,
           e.toString()));
     }
@@ -111,7 +111,7 @@ final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
     if (isLoading) {
       return EnumDataForMainView.isLoading;
     }
-    if (exceptionController.isNotEqualsNullParameterException()) {
+    if (exceptionController.isWhereNotEqualsNullParameterException()) {
       return EnumDataForMainView.exception;
     }
     return EnumDataForMainView.success;
@@ -138,7 +138,7 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
         await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
             .getIPAddressWhereJsonipAPIParameterHttpClientService();
     if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
-        .isNotEqualsNullParameterException()) {
+        .isWhereNotEqualsNullParameterException()) {
       return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
           getIPAddressWhereJsonipAPIParameterHttpClientService);
     }

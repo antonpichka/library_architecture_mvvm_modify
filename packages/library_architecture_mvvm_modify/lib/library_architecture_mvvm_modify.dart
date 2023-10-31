@@ -2,7 +2,7 @@ library library_architecture_mvvm_modify;
 
 export 'src/base_data_for_named/base_data_for_named.dart';
 
-export 'src/base_model/base_model_where_named_parameter_named_iterator/base_model_where_named_parameter_named_iterator.dart';
+export 'src/base_model/base_model_w_named_w_named_iterator/base_model_w_named_w_named_iterator.dart';
 export 'src/base_model/base_model.dart';
 export 'src/base_model/base_list_model.dart';
 export 'src/base_model/bools.dart';
@@ -20,6 +20,7 @@ export 'src/base_named_view_model/base_named_view_model.dart';
 
 export 'src/named_service/temp_cache_service.dart';
 
+export 'src/utility/base_exception/enum_guilty.dart';
 export 'src/utility/base_exception/base_exception.dart';
 export 'src/utility/base_exception/local_exception.dart';
 export 'src/utility/base_exception/network_exception.dart';

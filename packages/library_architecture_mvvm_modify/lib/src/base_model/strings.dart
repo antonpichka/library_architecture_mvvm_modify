@@ -12,6 +12,6 @@ base class Strings extends BaseModel {
 
   @override
   String toString() {
-    return field;
+    return "Strings(field: $field)";
   }
 }

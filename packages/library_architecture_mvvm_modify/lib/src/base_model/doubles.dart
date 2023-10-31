@@ -12,6 +12,6 @@ base class Doubles extends BaseModel {
 
   @override
   String toString() {
-    return "$field";
+    return "Doubles(field: $field)";
   }
 }

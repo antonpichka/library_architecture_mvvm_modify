@@ -9,7 +9,7 @@ final class NetworkException extends BaseException {
 
   NetworkException(Object thisClass, String key, this.statusCode,
       [this.nameStatusCode, this.descriptionStatusCode])
-      : super(thisClass, key, NetworkException);
+      : super(thisClass,NetworkException,key);
 
   factory NetworkException.fromKeyAndStatusCode(
       Object thisClass, String key, int statusCode) {

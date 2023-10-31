@@ -12,6 +12,6 @@ base class Ints extends BaseModel {
 
   @override
   String toString() {
-    return "$field";
+    return "Ints(field: $field)";
   }
 }

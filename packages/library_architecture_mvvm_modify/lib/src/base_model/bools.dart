@@ -12,6 +12,6 @@ base class Bools extends BaseModel {
 
   @override
   String toString() {
-    return "$isField";
+    return "Bools(isField: $isField)";
   }
 }

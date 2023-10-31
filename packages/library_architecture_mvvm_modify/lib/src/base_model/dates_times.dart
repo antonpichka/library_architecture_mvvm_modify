@@ -12,6 +12,6 @@ base class DatesTimes extends BaseModel {
 
   @override
   String toString() {
-    return dateTime.toString();
+    return "DatesTimes(dateTime: $dateTime)";
   }
 }
