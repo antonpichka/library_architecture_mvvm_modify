@@ -32,13 +32,14 @@
 ### Architectural Objects
 
 In what order to create and write architectural objects?
+
 1234567) [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedUtility)
 1) [NamedView](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedView)
 2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#dataForNamed)
 3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#model)
 4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#listModel)
 5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedService)
-6) [OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#operationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService)
+6) [OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#operationeemodeleewherenamedeefromnamedeeparameternamedservice)
 7) [NamedViewModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedViewModel)
 
 #### NamedUtility
