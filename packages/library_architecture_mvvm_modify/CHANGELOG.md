@@ -1,3 +1,7 @@
+## 0.2.5
+
+- Added more documentation and changed some names of methods and classes
+
 ## 0.2.4
 
 - Adding documentation
