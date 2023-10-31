@@ -33,7 +33,7 @@
 
 In what order to create and write architectural objects?
 
-1234567) [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedUtility)
+1234567 [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedUtility)
 1) [NamedView](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedView)
 2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#dataForNamed)
 3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#model)
