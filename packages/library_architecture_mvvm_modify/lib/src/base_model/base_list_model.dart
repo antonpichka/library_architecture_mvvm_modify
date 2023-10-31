@@ -23,10 +23,11 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
   @nonVirtual
   void sortingFromModelWNamedWNamedIteratorParameterListModel(
-      BaseModelWNamedWNamedIterator<T>
-          modelWNamedWNamedIterator) {
-    final sortedListModelFromNewListModelParameterListModelIterator = modelWNamedWNamedIterator
-        .getSortedListModelFromNewListModelParameterListModelIterator(listModel);
+      BaseModelWNamedWNamedIterator<T> modelWNamedWNamedIterator) {
+    final sortedListModelFromNewListModelParameterListModelIterator =
+        modelWNamedWNamedIterator
+            .getSortedListModelFromNewListModelParameterListModelIterator(
+                listModel);
     listModel.isNotEmpty ? listModel.clear() : null;
     listModel.addAll(sortedListModelFromNewListModelParameterListModelIterator);
   }

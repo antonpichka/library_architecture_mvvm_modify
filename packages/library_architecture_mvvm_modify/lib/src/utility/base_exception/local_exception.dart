@@ -6,9 +6,8 @@ final class LocalException extends BaseException {
   final EnumGuilty enumGuilty;
   final String? message;
 
-  LocalException(Object thisClass, this.enumGuilty, String key,
-      [this.message])
-      : super(thisClass,LocalException,key);
+  LocalException(Object thisClass, this.enumGuilty, String key, [this.message])
+      : super(thisClass, LocalException, key);
 
   @protected
   @override

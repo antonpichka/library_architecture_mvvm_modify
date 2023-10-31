@@ -4,8 +4,8 @@ import 'package:meta/meta.dart';
 /// Sorts the data, 'ListModel', in common parlance 'Iterator'
 /// Where to use ? - use in 'ListModel' class
 @immutable
-abstract base class BaseModelWNamedWNamedIterator<
-    T extends BaseModel> implements Iterator<T> {
+abstract base class BaseModelWNamedWNamedIterator<T extends BaseModel>
+    implements Iterator<T> {
   /// This list of models is used to sort the data
   /// Where to use ? - used to the method 'current' and nowhere else
   @protected

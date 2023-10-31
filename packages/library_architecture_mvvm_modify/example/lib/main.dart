@@ -93,10 +93,7 @@ base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
       return Result<T>.exception(e);
     } catch (e) {
       return Result<T>.exception(LocalException(
-          this,
-          EnumGuilty.device,
-          KeysExceptionUtility.uNKNOWN,
-          e.toString()));
+          this, EnumGuilty.device, KeysExceptionUtility.uNKNOWN, e.toString()));
     }
   }
 }

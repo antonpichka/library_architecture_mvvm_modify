@@ -11,7 +11,7 @@ abstract base class BaseException implements Exception {
 
   /// Initialize the parameters 'thisClass', 'exceptionClass', 'key'
   /// Where to use ? - use in the heirs,'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
-  BaseException(Object thisClass,Type exceptionClass, this.key) {
+  BaseException(Object thisClass, Type exceptionClass, this.key) {
     debugPrintException("===start_to_trace_exception===\n");
     debugPrintException(
         "NameException(Class): $exceptionClass\nWhereHappenedException(Class): ${thisClass.runtimeType}\nExceptionInString: $getStringWhereDebugPrintExceptionParametersKeyAndNamed\n");

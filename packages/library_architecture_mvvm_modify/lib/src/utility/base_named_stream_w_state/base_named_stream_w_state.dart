@@ -6,7 +6,6 @@ import 'package:meta/meta.dart';
 @immutable
 abstract base class BaseNamedStreamWState<T extends BaseDataForNamed>
     implements IDispose {
-
   /// No initialize the parameters
   /// Where to use ? - use in 'NamedViewModel' class
   const BaseNamedStreamWState();

@@ -1,5 +1,1 @@
-enum EnumGuilty {
-  developer,
-  device,
-  user
-}
+enum EnumGuilty { developer, device, user }

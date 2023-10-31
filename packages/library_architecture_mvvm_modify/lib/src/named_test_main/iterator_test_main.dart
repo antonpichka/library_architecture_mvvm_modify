@@ -33,8 +33,7 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
 }
 
 @immutable
-base class UserBalanceWOrderByDescWMoneyIterator<
-        T extends UserBalance>
+base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
     extends BaseModelWNamedWNamedIterator<T> {
   @override
   T get current {
@@ -74,15 +73,13 @@ void main() {
   debugPrint("Before: ${listUserBalance.listModel}"); // 3, 1, 10, 5, 7, -1
   final userBalanceWOrderByDescWMoneyIterator =
       UserBalanceWOrderByDescWMoneyIterator<UserBalance>();
-  listUserBalance
-      .sortingFromModelWNamedWNamedIteratorParameterListModel(
-          userBalanceWOrderByDescWMoneyIterator);
+  listUserBalance.sortingFromModelWNamedWNamedIteratorParameterListModel(
+      userBalanceWOrderByDescWMoneyIterator);
   debugPrint("After: ${listUserBalance.listModel}"); // 10, 7, 5, 3, 1, -1
   listUserBalance
       .updateFromNewModelParameterListModel(UserBalance("Duramichi", 15));
-  listUserBalance
-      .sortingFromModelWNamedWNamedIteratorParameterListModel(
-          userBalanceWOrderByDescWMoneyIterator);
+  listUserBalance.sortingFromModelWNamedWNamedIteratorParameterListModel(
+      userBalanceWOrderByDescWMoneyIterator);
   debugPrint(
       "After (Two): ${listUserBalance.listModel}"); // 15, 10, 7, 3, 1, -1
   // EXPECTED OUTPUT:

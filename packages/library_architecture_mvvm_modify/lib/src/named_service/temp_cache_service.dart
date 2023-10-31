@@ -55,8 +55,8 @@ final class TempCacheService {
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
   dynamic getObjectFromKeyTempCacheParameterTempCache(String keyTempCache) {
     if (!_tempCache.containsKey(keyTempCache)) {
-      return throw LocalException(this, EnumGuilty.developer,
-          keyTempCache, "no exists key");
+      return throw LocalException(
+          this, EnumGuilty.developer, keyTempCache, "no exists key");
     }
     return _tempCache[keyTempCache];
   }
