@@ -27,7 +27,7 @@
 - - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
 - - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
-- Try/catch only at 'NamedUtility','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService'
+- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedUtility)','[OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#operationeemodeleewherenamedeefromnamedeeparameternamedservice)'
 
 ### Architectural Objects
 
