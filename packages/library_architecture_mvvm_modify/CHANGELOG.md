@@ -1,3 +1,8 @@
+## 0.2.6
+
+- Adding full documentation to code
+- Changed logo
+
 ## 0.2.5
 
 - Added more documentation and changed some names of methods and classes
