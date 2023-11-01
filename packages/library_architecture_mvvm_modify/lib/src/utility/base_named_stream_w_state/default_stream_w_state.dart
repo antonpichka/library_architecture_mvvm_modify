@@ -52,7 +52,8 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
           "stream has no listener");
     }
     if (_streamControllerWDataForNamed.isClosed) {
-      throw LocalException(this,
+      throw LocalException(
+          this,
           EnumGuilty.developer,
           "DefaultStreamWStateQQNotifyStreamDataForNamedFIRST",
           "stream closed");

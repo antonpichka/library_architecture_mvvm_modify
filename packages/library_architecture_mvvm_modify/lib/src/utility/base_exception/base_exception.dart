@@ -15,8 +15,8 @@ abstract base class BaseException implements Exception {
     debugPrintException("\n===start_to_trace_exception===\n");
     debugPrintException(
         "WhereHappenedException(Class) --> ${thisClass.runtimeType}\n"
-            "NameException(Class) --> $exceptionClass\n"
-            "toString() --> ${toString()}");
+        "NameException(Class) --> $exceptionClass\n"
+        "toString() --> ${toString()}");
     debugPrintException("\n===end_to_trace_exception===\n");
   }
 }
