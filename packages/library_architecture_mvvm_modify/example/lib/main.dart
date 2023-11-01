@@ -4,6 +4,30 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 @immutable
+final class KeysHttpClientServiceUtility {
+  /* IPAddress */
+  static const String iPAddressQQIp = "ip";
+
+  const KeysHttpClientServiceUtility._();
+}
+
+@immutable
+final class KeysExceptionUtility {
+  /* UNKNOWN */
+  static const String uNKNOWN = "uNKNOWN";
+
+  const KeysExceptionUtility._();
+}
+
+@immutable
+final class KeysSuccessUtility {
+  /* SUCCESS */
+  static const String sUCCESS = "sUCCESS";
+
+  const KeysSuccessUtility._();
+}
+
+@immutable
 base class IPAddress extends BaseModel {
   final String ip;
 
@@ -45,30 +69,6 @@ final class HttpClientService {
     _httpClient = http.Client();
     return _httpClient;
   }
-}
-
-@immutable
-final class KeysHttpClientServiceUtility {
-  /* IPAddress */
-  static const String iPAddressQQIp = "ip";
-
-  const KeysHttpClientServiceUtility._();
-}
-
-@immutable
-final class KeysExceptionUtility {
-  /* UNKNOWN */
-  static const String uNKNOWN = "uNKNOWN";
-
-  const KeysExceptionUtility._();
-}
-
-@immutable
-final class KeysSuccessUtility {
-  /* SUCCESS */
-  static const String sUCCESS = "sUCCESS";
-
-  const KeysSuccessUtility._();
 }
 
 @immutable
@@ -220,15 +220,18 @@ Future<void> main() async {
   // Build: Success(IPAddress(ip: ${your_ip}))
   //
   // Process finished with exit code 0
+
   /// OR
+
   // EXPECTED OUTPUT:
   //
   // Build: IsLoading
+  //
   // ===start_to_trace_exception===
   //
-  // NameException(Class): ${NameException(Class)}
-  // WhereHappenedException(Class): GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<IPAddress, ListIPAddress<IPAddress>>
-  // ExceptionInString: ${ExceptionInString}
+  // WhereHappenedException(Class) --> GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<IPAddress, ListIPAddress<IPAddress>>
+  // NameException(Class) --> ${NameException(Class)}
+  // toString() --> ${toString()}
   //
   // ===end_to_trace_exception===
   //

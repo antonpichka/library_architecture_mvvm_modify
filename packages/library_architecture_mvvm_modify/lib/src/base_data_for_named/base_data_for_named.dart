@@ -1,7 +1,7 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 
 /// Designed for 'NamedViewModel','NamedView'
-/// Where to use ? - use in classes 'NamedViewModel','NamedView'
+/// Where to use ? - use in classes 'NamedViewModel','NamedView','NamedStreamWState'
 abstract base class BaseDataForNamed<T extends Enum> {
   /// So that the user can wait
   /// Where to use ? - used to method 'getEnumDataForNamed' and in class 'NamedViewModel'

@@ -11,14 +11,14 @@ abstract base class BaseNamedStreamWState<T extends BaseDataForNamed>
   const BaseNamedStreamWState();
 
   /// Get stream 'DataForNamed'
-  /// Where to use ? - use in 'NamedView'
+  /// Where to use ? - use in 'NamedViewModel' class
   Stream<T> get getStreamDataForNamed;
 
   /// Get 'DataForNamed'
-  /// Where to use ? - use in 'NamedViewModel','NamedView' classes
+  /// Where to use ? - use in 'NamedViewModel' class
   T get getDataForNamed;
 
   /// Notify the stream about new data 'DataForNamed'
-  /// Where to use ? - use in 'NamedViewModel','NamedView' classes
+  /// Where to use ? - use in 'NamedViewModel' class
   void notifyStreamDataForNamed();
 }

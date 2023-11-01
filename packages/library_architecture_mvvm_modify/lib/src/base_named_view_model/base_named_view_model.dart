@@ -39,7 +39,7 @@ abstract base class BaseNamedViewModel<T extends BaseDataForNamed<Enum>,
 
   /// getDataForNamed - get 'DataForNamed'
   /// ParameterNamedStreamWState - from parameter 'namedStreamWState'
-  /// Where to use ? - use in 'NamedView', in the heirs
+  /// Where to use ? - use in 'NamedView','NamedViewModel' classes
   @nonVirtual
   T get getDataForNamedParameterNamedStreamWState {
     return namedStreamWState.getDataForNamed;
@@ -47,7 +47,7 @@ abstract base class BaseNamedViewModel<T extends BaseDataForNamed<Enum>,
 
   /// notifyStreamDataForNamed - notify the stream about new data
   /// ParameterNamedStreamWState - from parameter 'namedStreamWState'
-  /// Where to use ? - use in 'NamedView', in the heirs
+  /// Where to use ? - use in 'NamedView','NamedViewModel' classes
   @nonVirtual
   void notifyStreamDataForNamedParameterNamedStreamWState() {
     namedStreamWState.notifyStreamDataForNamed();

@@ -20,8 +20,8 @@ export 'src/base_named_view_model/base_named_view_model.dart';
 
 export 'src/named_service/temp_cache_service.dart';
 
-export 'src/utility/base_exception/enum_guilty.dart';
 export 'src/utility/base_exception/base_exception.dart';
+export 'src/utility/base_exception/enum_guilty.dart';
 export 'src/utility/base_exception/local_exception.dart';
 export 'src/utility/base_exception/network_exception.dart';
 export 'src/utility/base_named_stream_w_state/base_named_stream_w_state.dart';

@@ -72,6 +72,10 @@ final class TempCacheService {
         keyTempCache);
   }
 
+  /// insert - add to '_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData'
+  /// FromKeyNameStreamAndKeyTempCache - we get the keys to create an element if it doesn’t exist
+  /// ParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData - to add to '_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData'
+  /// Where to use ? - here
   void
       _insertFromKeyNameStreamAndKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
           String keyNameStream, String keyTempCache) {
@@ -92,6 +96,10 @@ final class TempCacheService {
     };
   }
 
+  /// update - update to '_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData'
+  /// FromKeyTempCache - we get the key to update an element if it exist
+  /// ParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData - to update to '_nameStreamWTempCacheWIsHaveYouReceivedTheLatestData'
+  /// Where to use ? - here
   void
       _updateFromKeyTempCacheParameterNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
           String keyTempCache) {

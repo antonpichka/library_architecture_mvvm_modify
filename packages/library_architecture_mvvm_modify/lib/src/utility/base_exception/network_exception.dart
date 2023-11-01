@@ -1,16 +1,30 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:meta/meta.dart';
 
+/// Exception Handling
+/// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
 @immutable
 final class NetworkException extends BaseException {
+  /// Using this parameter we can get detailed information about the exception
+  /// Where to use ? - here
   final int statusCode;
+
+  /// Additional information about the code status
+  /// Where to use ? - here
   final String? nameStatusCode;
+
+  /// Detailed information about this code status
+  /// Where to use ? - here
   final String? descriptionStatusCode;
 
+  /// Initialize the parameters 'thisClass', 'key', 'statusCode', 'nameStatusCode (optional)', 'descriptionStatusCode (optional)'
+  /// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
   NetworkException(Object thisClass, String key, this.statusCode,
       [this.nameStatusCode, this.descriptionStatusCode])
       : super(thisClass, NetworkException, key);
 
+  /// Initialize the parameters 'thisClass', 'key', 'statusCode'
+  /// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
   factory NetworkException.fromKeyAndStatusCode(
       Object thisClass, String key, int statusCode) {
     switch (statusCode) {
@@ -175,12 +189,13 @@ final class NetworkException extends BaseException {
     }
   }
 
-  @protected
+  /// Necessary method to show the result to the developer
+  /// Where to use ? - anywhere
   @override
-  String get getStringWhereDebugPrintExceptionParametersKeyAndNamed {
-    return "Key: $key | "
-        "StatusCode: $statusCode | "
-        "NameStatusCode (optional): ${nameStatusCode ?? ""} | "
-        "DescriptionStatusCode (optional): ${descriptionStatusCode ?? ""}";
+  String toString() {
+    return "NetworkException(key: $key, "
+        "statusCode: $statusCode, "
+        "nameStatusCode (optional): $nameStatusCode, "
+        "descriptionStatusCode (optional): $descriptionStatusCode)";
   }
 }
