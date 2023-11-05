@@ -2,45 +2,37 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 
 Future<void> main() async {
   final tempCacheService = TempCacheService.instance;
-  tempCacheService.updateObjectFromKeyTempCacheAndValueParameterTempCache(
-      "Op", "One");
-  final object =
-      tempCacheService.getObjectFromKeyTempCacheParameterTempCache("Op");
-  debugPrint("First: $object");
-  tempCacheService
-      .getStreamObjectFromKeyNameStreamAndKeyTempCacheAndMillisecondsParametersTempCacheAndNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
-          "main", "Op")
+  final key = "Key";
+  tempCacheService.updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(key, "One");
+  final object = tempCacheService.getFromKeyTempCacheParameterTempCache(key);
+  debugPrint("Object: $object");
+  final streamSubscription = tempCacheService
+      .getStreamFromKeyTempCacheParameterOne(key)
       .listen((event) {
-    debugPrint("Listen: ${event.toString()}");
-  });
+        debugPrint("Listen: ${event.toString()}");
+      });
   tempCacheService
-      .getStreamObjectFromKeyNameStreamAndKeyTempCacheAndMillisecondsParametersTempCacheAndNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
-          "mainTwo", "Op")
+      .getStreamFromKeyTempCacheParameterOne(key)
       .listen((event) {
-    debugPrint("ListenTwo: ${event.toString()}");
-  });
+        debugPrint("ListenTwo: ${event.toString()}");
+      });
+  await streamSubscription.cancel();
   await Future.delayed(const Duration(seconds: 1));
-  tempCacheService.updateObjectFromKeyTempCacheAndValueParameterTempCache(
-      "Op", "Two");
+  tempCacheService.updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
+      key, "Two");
   await Future.delayed(const Duration(seconds: 1));
-  tempCacheService.updateObjectFromKeyTempCacheAndValueParameterTempCache(
-      "Op", "Three");
+  tempCacheService.updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
+      key, "Three");
   tempCacheService
-      .getStreamObjectFromKeyNameStreamAndKeyTempCacheAndMillisecondsParametersTempCacheAndNameStreamWTempCacheWIsHaveYouReceivedTheLatestData(
-          "mainThree", "Op")
+      .getStreamFromKeyTempCacheParameterOne(key)
       .listen((event) {
-    debugPrint("ListenThree: ${event.toString()}");
-  });
+        debugPrint("ListenThree: ${event.toString()}");
+      });
   // EXPECTED OUTPUT:
   //
-  // First: One
-  // Listen: One
-  // ListenTwo: One
-  // Listen: Two
+  // Object: One
   // ListenTwo: Two
-  // Listen: Three
   // ListenTwo: Three
-  // ListenThree: Three
   //
-  // Process finished with exit code -1
+  // Process finished with exit code 0
 }
