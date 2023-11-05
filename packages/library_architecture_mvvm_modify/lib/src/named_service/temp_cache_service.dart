@@ -14,7 +14,7 @@ final class TempCacheService {
 
   /// It is in the map structure that the data is stored (streamController)
   /// Where to use ? - here
-  final Map<String,StreamController<dynamic>> _tempCacheWStreamController;
+  final Map<String, StreamController<dynamic>> _tempCacheWStreamController;
 
   /// Initialize the parameters '_tempCache','_tempCacheWStreamController'
   /// Where to use ? - here
@@ -26,9 +26,10 @@ final class TempCacheService {
   /// FromKeyTempCache - close the stream using the key
   /// ParameterInstance - use a static instances
   /// Where to use ? - anywhere (just not in models)
-  static void closeStreamFromKeyTempCacheParameterInstance(String keyTempCache) {
+  static void closeStreamFromKeyTempCacheParameterInstance(
+      String keyTempCache) {
     final tempCacheWStreamController = instance._tempCacheWStreamController;
-    if(!tempCacheWStreamController.containsKey(keyTempCache)) {
+    if (!tempCacheWStreamController.containsKey(keyTempCache)) {
       return;
     }
     tempCacheWStreamController[keyTempCache]?.close();
@@ -38,10 +39,11 @@ final class TempCacheService {
   /// FromListKeyTempCache - close the streams using the list keys
   /// ParameterInstance - use a static instances
   /// Where to use ? - anywhere (just not in models)
-  static void closeStreamsFromListKeyTempCacheParameterInstance(List<String> listKeyTempCache) {
+  static void closeStreamsFromListKeyTempCacheParameterInstance(
+      List<String> listKeyTempCache) {
     final tempCacheWStreamController = instance._tempCacheWStreamController;
-    for(String keyTempCache in listKeyTempCache) {
-      if(!tempCacheWStreamController.containsKey(keyTempCache)) {
+    for (String keyTempCache in listKeyTempCache) {
+      if (!tempCacheWStreamController.containsKey(keyTempCache)) {
         continue;
       }
       tempCacheWStreamController[keyTempCache]?.close();
@@ -63,8 +65,9 @@ final class TempCacheService {
   /// ParameterOne - the parameter that gives us the stream
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
   Stream<dynamic> getStreamFromKeyTempCacheParameterOne(String keyTempCache) {
-    if(!_tempCacheWStreamController.containsKey(keyTempCache)) {
-      _tempCacheWStreamController[keyTempCache] = StreamController<dynamic>.broadcast();
+    if (!_tempCacheWStreamController.containsKey(keyTempCache)) {
+      _tempCacheWStreamController[keyTempCache] =
+          StreamController<dynamic>.broadcast();
       return _tempCacheWStreamController[keyTempCache]!.stream;
     }
     return _tempCacheWStreamController[keyTempCache]!.stream;
@@ -87,16 +90,17 @@ final class TempCacheService {
   /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
   /// ParametersTwo - getting data from the temporary cache and notify stream (if it exists and we listen)
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
-  void updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
-      String keyTempCache, dynamic value) {
+  void
+      updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
+          String keyTempCache, dynamic value) {
     _tempCache[keyTempCache] = value;
-    if(!_tempCacheWStreamController.containsKey(keyTempCache)) {
+    if (!_tempCacheWStreamController.containsKey(keyTempCache)) {
       return;
     }
-    if(!(_tempCacheWStreamController[keyTempCache]?.hasListener ?? false)) {
+    if (!(_tempCacheWStreamController[keyTempCache]?.hasListener ?? false)) {
       return;
     }
-    if(_tempCacheWStreamController[keyTempCache]?.isClosed ?? false) {
+    if (_tempCacheWStreamController[keyTempCache]?.isClosed ?? false) {
       return;
     }
     _tempCacheWStreamController[keyTempCache]?.sink.add(value);
