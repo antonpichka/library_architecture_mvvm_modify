@@ -1,3 +1,7 @@
+## 0.2.7
+
+- Simplified and optimized 'TempCacheService'
+
 ## 0.2.6
 
 - Adding full documentation to code
