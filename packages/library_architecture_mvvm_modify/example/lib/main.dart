@@ -137,19 +137,19 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
     if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
         .isWhereNotEqualsNullParameterException()) {
       return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController);
+          getIPAddressWhereJsonipAPIParameterHttpClientService
+              .exceptionController);
     }
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.iPAddress =
         getIPAddressWhereJsonipAPIParameterHttpClientService
-                .parameter!.getClone;
+            .parameter!.getClone;
     return KeysSuccessUtility.sUCCESS;
   }
 
   Future<String>
       _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          ExceptionController
-              exceptionController) async {
+          ExceptionController exceptionController) async {
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.exceptionController =
         exceptionController;
