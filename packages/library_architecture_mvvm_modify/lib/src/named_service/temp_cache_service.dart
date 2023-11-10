@@ -86,6 +86,15 @@ final class TempCacheService {
   }
 
   /// update - update an object in the temporary cache
+  /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
+  /// ParametersTwo - getting data from the temporary cache and notify stream (if it exists and we listen)
+  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  void updateFromKeyTempCacheAndValueParametersTwo(
+      String keyTempCache, dynamic value) {
+    _tempCache[keyTempCache] = value;
+  }
+
+  /// update - update an object in the temporary cache
   /// WhereStreamNotificationIsPossible - notify stream (if it exists and we listen)
   /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
   /// ParametersTwo - getting data from the temporary cache and notify stream (if it exists and we listen)

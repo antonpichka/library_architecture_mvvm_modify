@@ -137,26 +137,23 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
     if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
         .isWhereNotEqualsNullParameterException()) {
       return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          getIPAddressWhereJsonipAPIParameterHttpClientService);
+          getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController);
     }
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.iPAddress =
         getIPAddressWhereJsonipAPIParameterHttpClientService
-                .parameter?.getClone ??
-            const IPAddress("");
+                .parameter!.getClone;
     return KeysSuccessUtility.sUCCESS;
   }
 
   Future<String>
       _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          Result<IPAddress>
-              getIPAddressWhereJsonipAPIParameterHttpClientService) async {
+          ExceptionController
+              exceptionController) async {
     getDataForNamedParameterNamedStreamWState.isLoading = false;
     getDataForNamedParameterNamedStreamWState.exceptionController =
-        getIPAddressWhereJsonipAPIParameterHttpClientService
-            .exceptionController;
-    return getIPAddressWhereJsonipAPIParameterHttpClientService
-        .exceptionController.getKeyParameterException;
+        exceptionController;
+    return exceptionController.getKeyParameterException;
   }
 }
 
@@ -210,12 +207,10 @@ Future<void> main() async {
   // Simulations start MainView
   final mainView = MainView();
   mainView.initState();
-  mainView.build();
-  await Future.delayed(const Duration(seconds: 10));
+  await Future.delayed(const Duration(seconds: 5));
   mainView.dispose();
   // EXPECTED OUTPUT:
   //
-  // Build: IsLoading
   // MainView: sUCCESS
   // Build: Success(IPAddress(ip: ${your_ip}))
   //
@@ -224,8 +219,6 @@ Future<void> main() async {
   /// OR
 
   // EXPECTED OUTPUT:
-  //
-  // Build: IsLoading
   //
   // ===start_to_trace_exception===
   //
