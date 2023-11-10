@@ -1,3 +1,7 @@
+## 0.2.8
+
+- There are now 2 'update' methods in the 'TempCacheService' class. The first method updates according to the standard, and the second method updates and sends a notification to the stream if there are subscribers and the stream is not closed
+
 ## 0.2.7
 
 - Simplified and optimized 'TempCacheService'
