@@ -81,14 +81,15 @@ base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
       getIPAddressWhereJsonipAPIParameterHttpClientService() async {
     try {
       final response = await httpClientService.getParameterHttpClient
-          ?.get(Uri.parse("https://jsonip.com/"));
+          ?.get(Uri.parse("https://jsonip.com/"))
+          .timeout(const Duration(seconds: 5));
       if (response?.statusCode != 200) {
         throw NetworkException.fromKeyAndStatusCode(this,
             response?.statusCode.toString() ?? "", response?.statusCode ?? 0);
       }
       final Map<String, dynamic> data = jsonDecode(response!.body);
       return Result<T>.success(
-          IPAddress(data[KeysHttpClientServiceUtility.iPAddressQQIp]) as T);
+          IPAddress(data[KeysHttpClientServiceUtility.iPAddressQQIp] ?? "") as T);
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {
@@ -207,7 +208,7 @@ Future<void> main() async {
   // Simulations start MainView
   final mainView = MainView();
   mainView.initState();
-  await Future.delayed(const Duration(seconds: 5));
+  await Future.delayed(const Duration(seconds: 10));
   mainView.dispose();
   // EXPECTED OUTPUT:
   //
@@ -222,7 +223,7 @@ Future<void> main() async {
   //
   // ===start_to_trace_exception===
   //
-  // WhereHappenedException(Class) --> GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<IPAddress, ListIPAddress<IPAddress>>
+  // WhereHappenedException(Class) --> ${WhereHappenedException(Class)}
   // NameException(Class) --> ${NameException(Class)}
   // toString() --> ${toString()}
   //
