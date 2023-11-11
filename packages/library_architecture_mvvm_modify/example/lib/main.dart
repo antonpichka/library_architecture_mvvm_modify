@@ -89,7 +89,8 @@ base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
       }
       final Map<String, dynamic> data = jsonDecode(response!.body);
       return Result<T>.success(
-          IPAddress(data[KeysHttpClientServiceUtility.iPAddressQQIp] ?? "") as T);
+          IPAddress(data[KeysHttpClientServiceUtility.iPAddressQQIp] ?? "")
+              as T);
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {

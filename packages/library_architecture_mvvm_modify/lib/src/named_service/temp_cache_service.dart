@@ -110,7 +110,7 @@ final class TempCacheService {
   void
       updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
           String keyTempCache, dynamic value) {
-    updateFromKeyTempCacheAndValueParameterTempCache(keyTempCache,value);
+    updateFromKeyTempCacheAndValueParameterTempCache(keyTempCache, value);
     if (!_tempCacheWStreamController.containsKey(keyTempCache)) {
       return;
     }
