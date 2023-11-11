@@ -22,6 +22,14 @@ final class TempCacheService {
       : _tempCache = {},
         _tempCacheWStreamController = {};
 
+  /// clearTempCache - clear temporary cache
+  /// ParameterInstance - use a static instances
+  /// Where to use ? - anywhere (just not in models)
+  static void clearTempCacheParameterInstance() {
+    final tempCache = instance._tempCache;
+    tempCache.clear();
+  }
+
   /// closeStream - close the stream
   /// FromKeyTempCache - close the stream using the key
   /// ParameterInstance - use a static instances
@@ -87,9 +95,9 @@ final class TempCacheService {
 
   /// update - update an object in the temporary cache
   /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
-  /// ParametersTwo - getting data from the temporary cache and notify stream (if it exists and we listen)
+  /// ParameterTempCache - getting data from the temporary cache
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
-  void updateFromKeyTempCacheAndValueParametersTwo(
+  void updateFromKeyTempCacheAndValueParameterTempCache(
       String keyTempCache, dynamic value) {
     _tempCache[keyTempCache] = value;
   }
@@ -102,7 +110,7 @@ final class TempCacheService {
   void
       updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
           String keyTempCache, dynamic value) {
-    _tempCache[keyTempCache] = value;
+    updateFromKeyTempCacheAndValueParameterTempCache(keyTempCache,value);
     if (!_tempCacheWStreamController.containsKey(keyTempCache)) {
       return;
     }
@@ -113,5 +121,13 @@ final class TempCacheService {
       return;
     }
     _tempCacheWStreamController[keyTempCache]?.sink.add(value);
+  }
+
+  /// delete - delete an object in the temporary cache
+  /// FromKeyTempCache - get the key to delete the data in the temporary cache
+  /// ParameterTempCache - getting data from the temporary cache
+  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  void deleteFromKeyTempCacheParameterTempCache(String keyTempCache) {
+    _tempCache.remove(keyTempCache);
   }
 }
