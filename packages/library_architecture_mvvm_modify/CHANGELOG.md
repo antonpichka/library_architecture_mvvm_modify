@@ -1,3 +1,8 @@
+## 0.2.9
+
+- Added 'delete' method and static 'clear' method to 'TempCacheService' class
+- Updated example
+
 ## 0.2.8
 
 - There are now 2 'update' methods in the 'TempCacheService' class. The first method updates according to the standard, and the second method updates and sends a notification to the stream if there are subscribers and the stream is not closed
