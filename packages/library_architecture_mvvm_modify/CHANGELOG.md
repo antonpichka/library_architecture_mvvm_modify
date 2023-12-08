@@ -1,3 +1,7 @@
+## 0.3.1
+
+- Dependency updates: 'meta: ^1.11.0' to 'meta: ^1.10.0'
+
 ## 0.3.0
 
 - Pre-release v1.0.0 / also there are some method and class name changes
