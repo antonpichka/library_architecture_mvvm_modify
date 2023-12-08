@@ -33,30 +33,30 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
 }
 
 @immutable
-base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
-    extends BaseModelWNamedWNamedIterator<T> {
+base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance> extends BaseModelWNamedWNamedWNamedIterator<T> {
   @override
   T get current {
-    T itemCurrentInts = listModelIterator[0].getClone as T;
+    T clone = listModelIterator.first.getClone as T;
     if (listModelIterator.length <= 1) {
       listModelIterator.removeAt(0);
-      return itemCurrentInts;
+      return clone;
     }
     int indexRemove = 0;
     for (int i = 1; i < listModelIterator.length; i++) {
-      if (listModelIterator[i].money > itemCurrentInts.money) {
-        itemCurrentInts = listModelIterator[i].getClone as T;
+      final itemModelIterator = listModelIterator[i];
+      if (itemModelIterator.money > clone.money) {
+        clone = itemModelIterator.getClone as T;
         indexRemove = i;
         continue;
       }
     }
     listModelIterator.removeAt(indexRemove);
-    return itemCurrentInts;
+    return clone;
   }
 }
 
 void main() {
-  ListUserBalance<UserBalance> listUserBalance =
+  final ListUserBalance<UserBalance> listUserBalance =
       ListUserBalance(List.empty(growable: true));
   listUserBalance
       .insertFromNewModelParameterListModel(UserBalance("Jone", 3)); // 0
@@ -73,12 +73,12 @@ void main() {
   debugPrint("Before: ${listUserBalance.listModel}"); // 3, 1, 10, 5, 7, -1
   final userBalanceWOrderByDescWMoneyIterator =
       UserBalanceWOrderByDescWMoneyIterator<UserBalance>();
-  listUserBalance.sortingFromModelWNamedWNamedIteratorParameterListModel(
+  listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       userBalanceWOrderByDescWMoneyIterator);
   debugPrint("After: ${listUserBalance.listModel}"); // 10, 7, 5, 3, 1, -1
   listUserBalance
       .updateFromNewModelParameterListModel(UserBalance("Duramichi", 15));
-  listUserBalance.sortingFromModelWNamedWNamedIteratorParameterListModel(
+  listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       userBalanceWOrderByDescWMoneyIterator);
   debugPrint(
       "After (Two): ${listUserBalance.listModel}"); // 15, 10, 7, 3, 1, -1

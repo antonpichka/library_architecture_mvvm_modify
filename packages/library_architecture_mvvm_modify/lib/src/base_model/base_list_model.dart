@@ -18,14 +18,14 @@ abstract base class BaseListModel<T extends BaseModel> {
   BaseListModel<T> get getClone;
 
   /// sorting - sorting list of models
-  /// FromModelWNamedWNamedIterator - we get the iterator itself to sort
+  /// FromModelWNamedWNamedWNamedIterator - we get the iterator itself to sort
   /// ParameterListModel - the 'listModel' parameter gets the sorted list
   /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
   @nonVirtual
-  void sortingFromModelWNamedWNamedIteratorParameterListModel(
-      BaseModelWNamedWNamedIterator<T> modelWNamedWNamedIterator) {
+  void sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
+      BaseModelWNamedWNamedWNamedIterator<T> modelWNamedWNamedWNamedIterator) {
     final sortedListModelFromNewListModelParameterListModelIterator =
-        modelWNamedWNamedIterator
+        modelWNamedWNamedWNamedIterator
             .getSortedListModelFromNewListModelParameterListModelIterator(
                 listModel);
     listModel.isNotEmpty ? listModel.clear() : null;
@@ -61,21 +61,21 @@ abstract base class BaseListModel<T extends BaseModel> {
         .removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
   }
 
-  /// insert - add to the list of models
+  /// insertList - add to the list of models
   /// FromNewListModel - we get a new list models that we want to add
   /// ParameterListModel - 'listModel' parameter adds the list models
   /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
   @nonVirtual
-  void insertFromNewListModelParameterListModel(List<T> newListModel) {
+  void insertListFromNewListModelParameterListModel(List<T> newListModel) {
     listModel.addAll(newListModel);
   }
 
-  /// update - update to the list of models
+  /// updateList - update to the list of models
   /// FromNewListModel - we get a new list models that we want to update
   /// ParameterListModel - 'listModel' parameter update the list models
   /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
   @nonVirtual
-  void updateFromNewListModelParameterListModel(List<T> newListModel) {
+  void updateListFromNewListModelParameterListModel(List<T> newListModel) {
     for (T newItemModel in newListModel) {
       listModel[listModel.indexWhere(
               (T itemModel) => itemModel.uniqueId == newItemModel.uniqueId)] =
@@ -83,12 +83,12 @@ abstract base class BaseListModel<T extends BaseModel> {
     }
   }
 
-  /// delete - removal from the list of models
+  /// deleteList - removal from the list of models
   /// FromListUniqueIdByModel - we will delete the list by unique model identifier
   /// ParameterListModel - 'listModel' parameter delete the list models
   /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
   @nonVirtual
-  void deleteFromListUniqueIdByModelParameterListModel(
+  void deleteListFromListUniqueIdByModelParameterListModel(
       List<String> listUniqueIdByModel) {
     for (String uniqueIdByModel in listUniqueIdByModel) {
       listModel

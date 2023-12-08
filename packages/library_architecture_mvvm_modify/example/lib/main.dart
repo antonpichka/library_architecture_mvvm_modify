@@ -120,8 +120,31 @@ final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
 enum EnumDataForMainView { isLoading, exception, success }
 
 @immutable
-final class MainViewModel extends BaseNamedViewModel<DataForMainView,
-    DefaultStreamWState<DataForMainView>> {
+abstract interface class IMainViewModel {
+  const IMainViewModel();
+}
+
+@immutable
+final class TestMainViewModel extends BaseNamedViewModel<DataForMainView, DefaultStreamWState<DataForMainView>>
+    implements IMainViewModel
+{
+  // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+  // NamedUtility
+
+  TestMainViewModel()
+      : super(DefaultStreamWState(DataForMainView(true, const IPAddress(""))));
+
+  @override
+  Future<String> init() async {
+    getDataForNamedParameterNamedStreamWState.isLoading = false;
+    return KeysSuccessUtility.sUCCESS;
+  }
+}
+
+@immutable
+final class MainViewModel extends BaseNamedViewModel<DataForMainView, DefaultStreamWState<DataForMainView>>
+    implements IMainViewModel
+{
   // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
   final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
       GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
@@ -160,23 +183,29 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView,
 }
 
 final class MainView {
-  late final MainViewModel _mainViewModel;
+  /// RELEASE CODE
+  late final MainViewModel _viewModel;
+  /// TEST CODE
+  // late final TestMainViewModel _viewModel;
 
   // Override
   void initState() {
-    _mainViewModel = MainViewModel();
-    _initParameterMainViewModel();
+    /// RELEASE CODE
+    _viewModel = MainViewModel();
+    /// TEST CODE
+    // _viewModel = TestMainViewModel();
+    _initParameterViewModel();
   }
 
   // Override
   void dispose() {
-    _mainViewModel.dispose();
+    _viewModel.dispose();
   }
 
   // Override
   void build() {
     final dataForNamedParameterNamedStreamWState =
-        _mainViewModel.getDataForNamedParameterNamedStreamWState;
+        _viewModel.getDataForNamedParameterNamedStreamWState;
     switch (dataForNamedParameterNamedStreamWState.getEnumDataForNamed) {
       case EnumDataForMainView.isLoading:
         debugPrint("Build: IsLoading");
@@ -194,14 +223,14 @@ final class MainView {
     }
   }
 
-  Future<void> _initParameterMainViewModel() async {
-    _mainViewModel.getStreamDataForNamedParameterNamedStreamWState
+  Future<void> _initParameterViewModel() async {
+    _viewModel.getStreamDataForNamedParameterNamedStreamWState
         .listen((event) {
       build();
     });
-    final result = await _mainViewModel.init();
+    final result = await _viewModel.init();
     debugPrint("MainView: $result");
-    _mainViewModel.notifyStreamDataForNamedParameterNamedStreamWState();
+    _viewModel.notifyStreamDataForNamedParameterNamedStreamWState();
   }
 }
 

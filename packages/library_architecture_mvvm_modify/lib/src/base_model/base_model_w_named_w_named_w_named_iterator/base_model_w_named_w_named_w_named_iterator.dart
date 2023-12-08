@@ -4,16 +4,17 @@ import 'package:meta/meta.dart';
 /// Sorts the data, 'ListModel', in common parlance 'Iterator'
 /// Where to use ? - use in 'ListModel' class
 @immutable
-abstract base class BaseModelWNamedWNamedIterator<T extends BaseModel>
+abstract base class BaseModelWNamedWNamedWNamedIterator<T extends BaseModel>
     implements Iterator<T> {
   /// This list of models is used to sort the data
   /// Where to use ? - used to the method 'current' and nowhere else
   @protected
-  final List<T> listModelIterator = List.empty(growable: true);
+  final List<T> listModelIterator;
 
-  /// No initialize the parameters
+  /// Initialize the parameters 'listModelIterator'
   /// Where to use ? - preferably use in 'ListModel' class
-  BaseModelWNamedWNamedIterator();
+  BaseModelWNamedWNamedWNamedIterator()
+      : listModelIterator = List.empty(growable: true);
 
   /// getSortedListModel - we get a sorted list of models
   /// FromNewListModel - we get a new list of models to sort
