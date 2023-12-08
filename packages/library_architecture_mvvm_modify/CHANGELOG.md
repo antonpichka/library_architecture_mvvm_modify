@@ -1,3 +1,8 @@
+## 0.3.0
+
+- Pre-release v1.0.0 / also there are some method and class name changes
+- Updated example
+
 ## 0.2.9
 
 - Added 'delete' method and static 'clear' method to 'TempCacheService' class
