@@ -33,7 +33,8 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
 }
 
 @immutable
-base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance> extends BaseModelWNamedWNamedWNamedIterator<T> {
+base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
+    extends BaseModelWNamedWNamedWNamedIterator<T> {
   @override
   T get current {
     T clone = listModelIterator.first.getClone as T;

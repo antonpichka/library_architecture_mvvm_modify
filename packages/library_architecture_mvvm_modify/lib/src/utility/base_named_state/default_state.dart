@@ -5,8 +5,7 @@ import 'package:meta/meta.dart';
 /// Where to use ? - use in 'NamedViewModelCutDown' class
 @immutable
 final class DefaultState<T extends BaseDataForNamed<Enum>>
-    extends BaseNamedState<T>
-{
+    extends BaseNamedState<T> {
   /// Object 'DataForNamed'
   /// Where to use ? - here
   final T _dataForNamed;

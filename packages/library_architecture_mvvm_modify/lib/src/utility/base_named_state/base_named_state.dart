@@ -5,8 +5,7 @@ import 'package:meta/meta.dart';
 /// Where to use ? - use in 'NamedViewModelCutDown' class
 @immutable
 abstract base class BaseNamedState<T extends BaseDataForNamed>
-    implements IDispose
-{
+    implements IDispose {
   /// No initialize the parameters
   /// Where to use ? - use in 'NamedViewModelCutDown' class
   const BaseNamedState();

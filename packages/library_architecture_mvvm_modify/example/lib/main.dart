@@ -125,9 +125,8 @@ abstract interface class IMainViewModel {
 }
 
 @immutable
-final class TestMainViewModel extends BaseNamedViewModel<DataForMainView, DefaultStreamWState<DataForMainView>>
-    implements IMainViewModel
-{
+final class TestMainViewModel extends BaseNamedViewModel<DataForMainView,
+    DefaultStreamWState<DataForMainView>> implements IMainViewModel {
   // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
   // NamedUtility
 
@@ -142,9 +141,8 @@ final class TestMainViewModel extends BaseNamedViewModel<DataForMainView, Defaul
 }
 
 @immutable
-final class MainViewModel extends BaseNamedViewModel<DataForMainView, DefaultStreamWState<DataForMainView>>
-    implements IMainViewModel
-{
+final class MainViewModel extends BaseNamedViewModel<DataForMainView,
+    DefaultStreamWState<DataForMainView>> implements IMainViewModel {
   // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
   final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
       GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
@@ -185,6 +183,7 @@ final class MainViewModel extends BaseNamedViewModel<DataForMainView, DefaultStr
 final class MainView {
   /// RELEASE CODE
   late final MainViewModel _viewModel;
+
   /// TEST CODE
   // late final TestMainViewModel _viewModel;
 
@@ -192,6 +191,7 @@ final class MainView {
   void initState() {
     /// RELEASE CODE
     _viewModel = MainViewModel();
+
     /// TEST CODE
     // _viewModel = TestMainViewModel();
     _initParameterViewModel();
@@ -224,8 +224,7 @@ final class MainView {
   }
 
   Future<void> _initParameterViewModel() async {
-    _viewModel.getStreamDataForNamedParameterNamedStreamWState
-        .listen((event) {
+    _viewModel.getStreamDataForNamedParameterNamedStreamWState.listen((event) {
       build();
     });
     final result = await _viewModel.init();
