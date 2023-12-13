@@ -1,3 +1,7 @@
+## 0.3.2
+
+- Pre-release v1.0.0 (Nothing major has changed)
+
 ## 0.3.1
 
 - Dependency updates: 'meta: ^1.11.0' to 'meta: ^1.10.0'
