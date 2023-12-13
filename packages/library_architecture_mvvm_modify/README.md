@@ -13,7 +13,7 @@
 ## Example
 
 - [Small project](https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/packages/library_architecture_mvvm_modify/example/lib/main.dart)
-- Big project (This project will come later)
+- Big project (Coming soon)
 
 ## Template For LAMM
 

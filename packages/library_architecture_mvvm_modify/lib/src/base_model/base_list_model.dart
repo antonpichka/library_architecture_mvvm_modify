@@ -29,7 +29,7 @@ abstract base class BaseListModel<T extends BaseModel> {
             .getSortedListModelFromNewListModelParameterListModelIterator(
                 listModel);
     listModel.isNotEmpty ? listModel.clear() : null;
-    listModel.addAll(sortedListModelFromNewListModelParameterListModelIterator);
+    sortedListModelFromNewListModelParameterListModelIterator.isNotEmpty ? listModel.addAll(sortedListModelFromNewListModelParameterListModelIterator) : null;
   }
 
   /// insert - add to the list of models
@@ -90,9 +90,9 @@ abstract base class BaseListModel<T extends BaseModel> {
   @nonVirtual
   void deleteListFromListUniqueIdByModelParameterListModel(
       List<String> listUniqueIdByModel) {
-    for (String uniqueIdByModel in listUniqueIdByModel) {
+    for (String itemUniqueIdByModel in listUniqueIdByModel) {
       listModel
-          .removeWhere((T itemModel) => itemModel.uniqueId == uniqueIdByModel);
+          .removeWhere((T itemModel) => itemModel.uniqueId == itemUniqueIdByModel);
     }
   }
 }

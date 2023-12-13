@@ -37,6 +37,7 @@ abstract base class BaseModelWNamedWNamedWNamedIterator<T extends BaseModel>
 
   /// Count until there is an empty list 'ListModelIterator'
   /// Where to use ? - do not use
+  @protected
   @nonVirtual
   @override
   bool moveNext() {

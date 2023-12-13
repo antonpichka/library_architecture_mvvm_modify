@@ -25,7 +25,9 @@ abstract base class BaseNamedViewModelCutDown<T extends BaseDataForNamed<Enum>,
   /// Frees up device resources
   /// Where to use ? - use in 'NamedView' and well, the heirs if there are streams from services
   @override
-  void dispose() {}
+  void dispose() {
+    namedState.dispose();
+  }
 
   /// getDataForNamed - get 'DataForNamed'
   /// ParameterNamedState - from parameter 'namedState'

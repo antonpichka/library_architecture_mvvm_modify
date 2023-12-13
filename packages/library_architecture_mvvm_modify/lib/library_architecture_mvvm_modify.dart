@@ -1,3 +1,5 @@
+/// We load all other files into this file, and then use it in the application where we need it
+/// Where to use ? - Anywhere
 library library_architecture_mvvm_modify;
 
 export 'src/base_data_for_named/base_data_for_named.dart';
