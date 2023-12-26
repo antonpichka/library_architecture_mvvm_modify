@@ -1,3 +1,13 @@
+## 1.0.0
+
+- Now you can use the architectural library anywhere. A large project is being completed, but you can already see how all the components of the architecture are written. 2 years were spent writing this architectural library. This library was rewritten many times, and finally reached the canon. In general, the 2 most popular patterns “Observer” and “Singleton” are used; one could also use “Abstract factory”, but I decided to make it a rule that there should be only 6 files in the “named_vm” folder, and all these 6 classes are designated by the “final” modifier ". This was done in order not to waste extra time on creating new files and copying some pieces of code, or distributing these pieces of code into different protected methods. It will be faster to refactor the code, or create a new "named_vm". Refactoring will indeed be faster, since the names of the classes are informative, and each block of code (where there is a condition) is divided into private methods, which are also named informatively. And if you need the old implementation, then use GitHub for this, since any normal coder will tag all his releases.
+
+- Also, in addition to 2 patterns ("Observer", "Singleton"), the code is based on various rules (Where described in the README file, in the documentation section). If you need to share temporary data, then use "TempCacheService". Inheritance of the model and its model list, as well as model data sources, is present, and of the model iterator. Services are “final”, if you need to expand, then add new methods inside the class
+
+- The reason for creating the architecture? Existing architectures (Even so-called clean architectures) lacked simplicity and control (what and where, and how it should be written)
+
+- In general, this is the whole architecture, which gives simplicity and transparency, as well as efficiency (At first it will seem complicated, but any architecture requires research)
+
 ## 0.3.2
 
 - Pre-release v1.0.0 (Nothing major has changed)

@@ -59,18 +59,14 @@ base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
 void main() {
   final ListUserBalance<UserBalance> listUserBalance =
       ListUserBalance(List.empty(growable: true));
-  listUserBalance
-      .insertFromNewModelParameterListModel(UserBalance("Jone", 3)); // 0
-  listUserBalance
-      .insertFromNewModelParameterListModel(UserBalance("Freddy", 1)); // 1
-  listUserBalance
-      .insertFromNewModelParameterListModel(UserBalance("Mitsuya", 10)); // 2
-  listUserBalance
-      .insertFromNewModelParameterListModel(UserBalance("Duramichi", 5)); // 3
-  listUserBalance
-      .insertFromNewModelParameterListModel(UserBalance("Hook", 7)); // 4
-  listUserBalance
-      .insertFromNewModelParameterListModel(UserBalance("Sexy", -1)); // 5
+  listUserBalance.insertListFromNewListModelParameterListModel([
+    UserBalance("Jone", 3),
+    UserBalance("Freddy", 1),
+    UserBalance("Mitsuya", 10),
+    UserBalance("Duramichi", 5),
+    UserBalance("Hook", 7),
+    UserBalance("Sexy", -1)
+  ]);
   debugPrint("Before: ${listUserBalance.listModel}"); // 3, 1, 10, 5, 7, -1
   final userBalanceWOrderByDescWMoneyIterator =
       UserBalanceWOrderByDescWMoneyIterator<UserBalance>();

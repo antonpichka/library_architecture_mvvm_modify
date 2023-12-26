@@ -6,14 +6,14 @@
 
 ## Getting Starting
 
-- [Example](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#example)
-- [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#template-for-lamm)
-- [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#documentation)
+- [Example](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#example)
+- [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
+- [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
 
 ## Example
 
-- [Small project](https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/packages/library_architecture_mvvm_modify/example/lib/main.dart)
-- Big project (Coming soon)
+- [Small project](https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/package/example/lib/main.dart)
+- [Big project](https://github.com/antonpichka/topdbd)
 
 ## Template For LAMM
 
@@ -35,21 +35,22 @@
 - - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
 - Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
 - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
-- ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) Where to apply (And)
-- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedUtility)','[OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#operationeemodeleewherenamedeefromnamedeeparameternamedservice)'
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#operationeemodeleewherenamedeefromnamedeeparameternamedservice)'
 
 ### Architectural Objects
 
 In what order to create and write architectural objects?
 
-1234567 [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedUtility)
-1) [NamedView](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedView)
-2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#dataForNamed)
-3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#model)
-4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#listModel)
-5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedService)
-6) [OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#operationeemodeleewherenamedeefromnamedeeparameternamedservice)
-7) [NamedViewModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/packages/library_architecture_mvvm_modify#namedViewModel)
+1234567 [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)
+1) [NamedView](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedView)
+2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed)
+3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model)
+4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel)
+5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService)
+6) [OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#operationeemodeleewherenamedeefromnamedeeparameternamedservice)
+7) [NamedViewModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedViewModel)
 
 #### NamedUtility
 
@@ -80,7 +81,7 @@ In what order to create and write architectural objects?
 - - - [] - if available 
 - - - get - required word
 - - - (Named) - we get primitive type or another model or briefly describe what we are taking
-- - - (WhereNamed) - describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
@@ -92,7 +93,7 @@ In what order to create and write architectural objects?
 - - - [] - if available 
 - - - operation - insert, update, delete, set, init, etc...
 - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - (WhereNamed) -  describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
@@ -100,7 +101,7 @@ In what order to create and write architectural objects?
 - Bool:
 - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - [] - if available
-- - - isWhereNamed - describe in as much detail as possible what this method does, you can use the [FromNamed] context (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))

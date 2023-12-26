@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
+import 'package:meta/meta.dart';
 
 /// Temporary data storage
 /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+@immutable
 final class TempCacheService {
   /// Singleton
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
