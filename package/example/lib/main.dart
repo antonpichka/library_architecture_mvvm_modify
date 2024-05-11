@@ -49,10 +49,19 @@ base class ListIPAddress<T extends IPAddress> extends BaseListModel<T> {
   @override
   ListIPAddress<T> get getClone {
     List<T> newListModel = List.empty(growable: true);
-    for (T model in listModel) {
+    for(final T model in listModel) {
       newListModel.add(model.getClone as T);
     }
     return ListIPAddress<T>(newListModel);
+  }
+
+  @override
+  String toString() {
+    String strListModel = "\n";
+    for(final T itemModel in listModel) {
+      strListModel += "$itemModel,\n";
+    }
+    return "ListIPAddress(listModel: [$strListModel])";
   }
 }
 
@@ -100,166 +109,137 @@ base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
   }
 }
 
-final class DataForMainView extends BaseDataForNamed<EnumDataForMainView> {
+enum EnumDataForMainVM { isLoading, exception, success }
+
+final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
   IPAddress iPAddress;
 
-  DataForMainView(super.isLoading, this.iPAddress);
+  DataForMainVM(super.isLoading, this.iPAddress);
 
   @override
-  EnumDataForMainView get getEnumDataForNamed {
+  EnumDataForMainVM get getEnumDataForNamed {
     if (isLoading) {
-      return EnumDataForMainView.isLoading;
+      return EnumDataForMainVM.isLoading;
     }
     if (exceptionController.isWhereNotEqualsNullParameterException()) {
-      return EnumDataForMainView.exception;
+      return EnumDataForMainVM.exception;
     }
-    return EnumDataForMainView.success;
+    return EnumDataForMainVM.success;
   }
 }
 
-enum EnumDataForMainView { isLoading, exception, success }
-
-@immutable
-abstract interface class IMainViewModel {
-  const IMainViewModel();
-}
-
-@immutable
-final class TestMainViewModel extends BaseNamedViewModel<DataForMainView,
-    DefaultStreamWState<DataForMainView>> implements IMainViewModel {
-  // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
-  // NamedUtility
-
-  TestMainViewModel()
-      : super(DefaultStreamWState(DataForMainView(true, const IPAddress(""))));
-
-  @override
-  Future<String> init() async {
-    getDataForNamedParameterNamedStreamWState.isLoading = false;
-    return KeysSuccessUtility.sUCCESS;
-  }
-}
-
-@immutable
-final class MainViewModel extends BaseNamedViewModel<DataForMainView,
-    DefaultStreamWState<DataForMainView>> implements IMainViewModel {
+final class MainVM {
   // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
   final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
-      GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
-
+  GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
   // NamedUtility
 
-  MainViewModel()
-      : super(DefaultStreamWState(DataForMainView(true, const IPAddress(""))));
-
-  @override
-  Future<String> init() async {
-    final getIPAddressWhereJsonipAPIParameterHttpClientService =
-        await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
-            .getIPAddressWhereJsonipAPIParameterHttpClientService();
-    if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
-        .isWhereNotEqualsNullParameterException()) {
-      return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          getIPAddressWhereJsonipAPIParameterHttpClientService
-              .exceptionController);
-    }
-    getDataForNamedParameterNamedStreamWState.isLoading = false;
-    getDataForNamedParameterNamedStreamWState.iPAddress =
-        getIPAddressWhereJsonipAPIParameterHttpClientService
-            .parameter!.getClone;
-    return KeysSuccessUtility.sUCCESS;
-  }
-
-  Future<String>
-      _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          ExceptionController exceptionController) async {
-    getDataForNamedParameterNamedStreamWState.isLoading = false;
-    getDataForNamedParameterNamedStreamWState.exceptionController =
-        exceptionController;
-    return exceptionController.getKeyParameterException;
-  }
-}
-
-final class MainView {
-  /// RELEASE CODE
-  late final MainViewModel _viewModel;
-
-  /// TEST CODE
-  // late final TestMainViewModel _viewModel;
+  // Main objects
+  late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
+  late final RWTMode _rwtMode;
 
   // Override
   void initState() {
-    /// RELEASE CODE
-    _viewModel = MainViewModel();
-
-    /// TEST CODE
-    // _viewModel = TestMainViewModel();
-    _initParameterViewModel();
+    _namedStreamWState = DefaultStreamWState(DataForMainVM(true,const IPAddress("")));
+    _rwtMode = RWTMode(
+        EnumRWTMode.release,
+        [
+          NamedCallback("init", () async {
+            final getIPAddressWhereJsonipAPIParameterHttpClientService =
+            await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
+                .getIPAddressWhereJsonipAPIParameterHttpClientService();
+            if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
+                .isWhereNotEqualsNullParameterException()) {
+              return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+                  getIPAddressWhereJsonipAPIParameterHttpClientService
+                      .exceptionController);
+            }
+            _namedStreamWState.getDataForNamed.isLoading = false;
+            _namedStreamWState.getDataForNamed.iPAddress = getIPAddressWhereJsonipAPIParameterHttpClientService.parameter!.getClone;
+            return KeysSuccessUtility.sUCCESS;
+          }),
+        ],
+        [
+          NamedCallback("init", () async {
+            // Simulation get "IPAddress"
+            final iPAddress = IPAddress("121.121.12.12");
+            await Future.delayed(Duration(milliseconds: 1000));
+            _namedStreamWState.getDataForNamed.isLoading = false;
+            _namedStreamWState.getDataForNamed.iPAddress = iPAddress.getClone;
+            return KeysSuccessUtility.sUCCESS;
+          })
+        ]
+    );
+    _init();
   }
 
   // Override
   void dispose() {
-    _viewModel.dispose();
+    _namedStreamWState.dispose();
   }
 
   // Override
   void build() {
-    final dataForNamedParameterNamedStreamWState =
-        _viewModel.getDataForNamedParameterNamedStreamWState;
-    switch (dataForNamedParameterNamedStreamWState.getEnumDataForNamed) {
-      case EnumDataForMainView.isLoading:
+    final dataForNamed = _namedStreamWState.getDataForNamed;
+    switch (dataForNamed.getEnumDataForNamed) {
+      case EnumDataForMainVM.isLoading:
         debugPrint("Build: IsLoading");
         break;
-      case EnumDataForMainView.exception:
+      case EnumDataForMainVM.exception:
         debugPrint(
-            "Build: Exception(${dataForNamedParameterNamedStreamWState.exceptionController.getKeyParameterException})");
+            "Build: Exception(${dataForNamed.exceptionController.getKeyParameterException})");
         break;
-      case EnumDataForMainView.success:
+      case EnumDataForMainVM.success:
         debugPrint(
-            "Build: Success(${dataForNamedParameterNamedStreamWState.iPAddress})");
+            "Build: Success(${dataForNamed.iPAddress})");
         break;
       default:
         break;
     }
   }
 
-  Future<void> _initParameterViewModel() async {
-    _viewModel.getStreamDataForNamedParameterNamedStreamWState.listen((event) {
+  Future<void> _init() async {
+    _namedStreamWState.getStreamDataForNamed.listen((event) {
       build();
     });
-    final result = await _viewModel.init();
+    final result = await _rwtMode.getNamedCallbackFromName("init").callback();
     debugPrint("MainView: $result");
-    _viewModel.notifyStreamDataForNamedParameterNamedStreamWState();
+    _namedStreamWState.notifyStreamDataForNamed();
+  }
+
+  Future<String> _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(ExceptionController exceptionController) async {
+    _namedStreamWState.getDataForNamed.isLoading = false;
+    _namedStreamWState.getDataForNamed.exceptionController = exceptionController;
+    return exceptionController.getKeyParameterException;
   }
 }
 
 Future<void> main() async {
-  // Simulations start MainView
-  final mainView = MainView();
-  mainView.initState();
+  final mainVM = MainVM();
+  mainVM.initState();
   await Future.delayed(const Duration(seconds: 10));
-  mainView.dispose();
-  // EXPECTED OUTPUT:
-  //
-  // MainView: sUCCESS
-  // Build: Success(IPAddress(ip: ${your_ip}))
-  //
-  // Process finished with exit code 0
-
-  /// OR
-
-  // EXPECTED OUTPUT:
-  //
-  // ===start_to_trace_exception===
-  //
-  // WhereHappenedException(Class) --> ${WhereHappenedException(Class)}
-  // NameException(Class) --> ${NameException(Class)}
-  // toString() --> ${toString()}
-  //
-  // ===end_to_trace_exception===
-  //
-  // MainView: ${getKeyParameterException}
-  // Build: Exception(${getKeyParameterException})
-  //
-  // Process finished with exit code 0
+  mainVM.dispose();
 }
+// EXPECTED OUTPUT:
+//
+// MainView: sUCCESS
+// Build: Success(IPAddress(ip: ${your_ip}))
+//
+// Process finished with exit code 0
+
+/// OR
+
+// EXPECTED OUTPUT:
+//
+// ===start_to_trace_exception===
+//
+// WhereHappenedException(Class) --> ${WhereHappenedException(Class)}
+// NameException(Class) --> ${NameException(Class)}
+// toString() --> ${toString()}
+//
+// ===end_to_trace_exception===
+//
+// MainView: ${getKeyParameterException}
+// Build: Exception(${getKeyParameterException})
+//
+// Process finished with exit code 0
