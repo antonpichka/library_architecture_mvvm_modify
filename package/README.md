@@ -41,20 +41,19 @@
 
 ### Architectural Objects
 
-In what order to create and write architectural objects?
+We create and write architectural objects in the order in which it will be faster and better for the developer to run all this code. Example: We wrote the design and basic setup in the 'NamedVM' class, and then we started writing 'DataForNamed' to add simple logic for the data loading simulator and displaying a list, and maybe add error, and only then we write 'Model', 'ListModel' to show the concretive data in the list that we need it, and at the end we write 'NamedService' and 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' to load real data (We take into account that we will return to these objects. Example: you write 'DataForNamed' and started writing a 'Model', and then returned to 'DataForNamed' to add this 'Model'.)
 
-1234567 [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)
-1) [NamedView](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedView)
+123456 [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)
+1) [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM)
 2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed)
 3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model)
 4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel)
 5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService)
 6) [OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#operationeemodeleewherenamedeefromnamedeeparameternamedservice)
-7) [NamedViewModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedViewModel)
 
 #### NamedUtility
 
-- You can use the same rules as 'Model' or your own rules
+- The same rules as the 'Model'
 - Type classes (KeysNamedServiceUtility, KeysNamedUtility, NamedUtility):
 - - KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models
 - - - Example - Model 'IPAddress', Key 'Ip' (static const String iPAddressQQIp = "ip")
@@ -65,9 +64,19 @@ In what order to create and write architectural objects?
 - - NamedUtility - it could be anything
 - - - Example - TimerUtility,InsertUserUtility (To NamedService), etc...
 
-#### NamedView
+#### NamedVM
 
-- The same rules as the 'Model'
+- How are private methods created in this class ?
+- - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
+- - numberQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
+- - - How are private methods to private methods created in this class ?
+- - - - numberBranchNumberQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
+- - - - - How are private methods to private methods to private methods created in this class ?
+- - - - - - numberBranchNumberBranchNumberQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
+- - Example:
+- - - firstQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
+- - - - firstBranchOneQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
+- - - - - firstBranchOneBranchOneQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
 
 #### DataForNamed
 
@@ -139,18 +148,3 @@ In what order to create and write architectural objects?
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - ParameterNamedService - what service do you use (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamedService
-
-#### NamedViewModel
-
-- Global variable names - _namedViewModel
-- How are private methods created in this class ?
-- - numberQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
-- - - How are private methods to private methods created in this class ? 
-- - - - numberBranchNumberQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
-- - - - - How are private methods to private methods to private methods created in this class ? 
-- - - - - - numberBranchNumberBranchNumberQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
-- - Example: 
-- - - firstQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
-- - - - firstBranchOneQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
-- - - - - firstBranchOneBranchOneQQ${InWhatMethod?}QQ${WhichMethodTriggersTheCreationOfAPrivateMethod?}
-- - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
