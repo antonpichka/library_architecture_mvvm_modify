@@ -20,7 +20,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// sorting - sorting list of models
   /// FromModelWNamedWNamedWNamedIterator - we get the iterator itself to sort
   /// ParameterListModel - the 'listModel' parameter gets the sorted list
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       BaseModelWNamedWNamedWNamedIterator<T> modelWNamedWNamedWNamedIterator) {
@@ -38,7 +38,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// insert - add to the list of models
   /// FromNewModel - we get a new model that we want to add
   /// ParameterListModel - 'listModel' parameter adds the model
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void insertFromNewModelParameterListModel(T newModel) {
     listModel.add(newModel);
@@ -47,7 +47,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// update - update to the list of models
   /// FromNewModel - we get a new model that we want to update
   /// ParameterListModel - 'listModel' parameter update the model
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void updateFromNewModelParameterListModel(T newModel) {
     listModel[listModel.indexWhere(
@@ -57,7 +57,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// delete - removal from the list of models
   /// FromUniqueIdByModel - we will delete by unique model identifier
   /// ParameterListModel - 'listModel' parameter delete the model
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void deleteFromUniqueIdByModelParameterListModel(String uniqueIdByModel) {
     listModel
@@ -67,7 +67,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// insertList - add to the list of models
   /// FromNewListModel - we get a new list models that we want to add
   /// ParameterListModel - 'listModel' parameter adds the list models
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void insertListFromNewListModelParameterListModel(List<T> newListModel) {
     listModel.addAll(newListModel);
@@ -76,7 +76,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// updateList - update to the list of models
   /// FromNewListModel - we get a new list models that we want to update
   /// ParameterListModel - 'listModel' parameter update the list models
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void updateListFromNewListModelParameterListModel(List<T> newListModel) {
     for (T newItemModel in newListModel) {
@@ -89,7 +89,7 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// deleteList - removal from the list of models
   /// FromListUniqueIdByModel - we will delete the list by unique model identifier
   /// ParameterListModel - 'listModel' parameter delete the list models
-  /// Where to use ? - preferably in descendant classes and in the 'NamedViewModel' class, but there may be exceptions
+  /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
   void deleteListFromListUniqueIdByModelParameterListModel(
       List<String> listUniqueIdByModel) {

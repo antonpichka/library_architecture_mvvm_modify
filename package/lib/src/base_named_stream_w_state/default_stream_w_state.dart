@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:meta/meta.dart';
 
-/// This class has a stream and object state 'DataForNamed'. Which is part of 'NamedViewModel'
-/// Where to use ? - use in 'NamedViewModel' class
+/// This class has a stream and object state 'DataForNamed'. Which is part of 'NamedVM'
+/// Where to use ? - use in 'NamedVM' class
 @immutable
 final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
     extends BaseNamedStreamWState<T> {
@@ -16,12 +16,12 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
   final StreamController<T> _streamControllerWDataForNamed;
 
   /// Initialize the parameters '_dataForNamed', '_streamControllerWDataForNamed'
-  /// Where to use ? - use in 'NamedViewModel' class
+  /// Where to use ? - use in 'NamedVM' class
   DefaultStreamWState(this._dataForNamed)
       : _streamControllerWDataForNamed = StreamController<T>.broadcast();
 
   /// Frees up device resources
-  /// Where to use ? - use in 'NamedViewModel' class
+  /// Where to use ? - use in 'NamedVM' class
   @override
   void dispose() {
     if (_streamControllerWDataForNamed.isClosed) {
@@ -31,17 +31,17 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
   }
 
   /// Get stream 'DataForNamed'
-  /// Where to use ? - use in 'NamedViewModel' class
+  /// Where to use ? - use in 'NamedVM' class
   @override
   Stream<T> get getStreamDataForNamed => _streamControllerWDataForNamed.stream;
 
   /// Get 'DataForNamed'
-  /// Where to use ? - use in 'NamedViewModel' class
+  /// Where to use ? - use in 'NamedVM' class
   @override
   T get getDataForNamed => _dataForNamed;
 
   /// Notify the stream about new data 'DataForNamed'
-  /// Where to use ? - use in 'NamedViewModel' class
+  /// Where to use ? - use in 'NamedVM' class
   @override
   void notifyStreamDataForNamed() {
     if (!_streamControllerWDataForNamed.hasListener) {

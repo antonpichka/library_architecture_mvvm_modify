@@ -2,7 +2,7 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 import 'package:meta/meta.dart';
 
 /// Exception Handling
-/// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService','NamedStreamWState' classes
+/// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService','NamedStreamWState','NamedState' classes
 @immutable
 final class LocalException extends BaseException {
   /// Who is to blame for this exception?
@@ -14,7 +14,7 @@ final class LocalException extends BaseException {
   final String? message;
 
   /// Initialize the parameters 'thisClass', 'enumGuilty', 'key', 'message (optional)'
-  /// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
+  /// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService','NamedStreamWState','NamedState' classes
   LocalException(Object thisClass, this.enumGuilty, String key, [this.message])
       : super(thisClass, LocalException, key);
 

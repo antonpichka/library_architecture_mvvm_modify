@@ -28,11 +28,11 @@ Future<void> main() async {
   tempCacheService.getStreamFromKeyTempCacheParameterOne(key).listen((event) {
     debugPrint("ListenThree: ${event.toString()}");
   });
-  // EXPECTED OUTPUT:
-  //
-  // Object: One
-  // ListenTwo: Two
-  // ListenTwo: Three
-  //
-  // Process finished with exit code 0
 }
+// EXPECTED OUTPUT:
+//
+// Object: One
+// ListenTwo: Two
+// ListenTwo: Three
+//
+// Process finished with exit code 0

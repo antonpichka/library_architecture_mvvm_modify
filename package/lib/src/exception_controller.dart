@@ -10,7 +10,7 @@ final class ExceptionController {
   final BaseException? _exception;
 
   /// Initialize the parameter '_exception'
-  /// Where to use ? - use in 'Result', 'class
+  /// Where to use ? - use in 'Result' class
   const ExceptionController.success() : _exception = null;
 
   /// Initialize the parameter '_exception'
@@ -27,7 +27,7 @@ final class ExceptionController {
 
   /// isWhereNotEqualsNull - where exception is not null
   /// ParameterException - exception
-  /// Where to use ? - use in 'NamedViewModel','DataForNamed' classes
+  /// Where to use ? - use in 'RWTMode','NamedVM','DataForNamed' classes
   @nonVirtual
   bool isWhereNotEqualsNullParameterException() {
     return _exception != null ? true : false;

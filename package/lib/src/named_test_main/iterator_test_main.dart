@@ -30,6 +30,15 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
     }
     return ListUserBalance<T>(newListModel);
   }
+
+  @override
+  String toString() {
+    String strListModel = "\n";
+    for(final T itemModel in listModel) {
+      strListModel += "$itemModel,\n";
+    }
+    return "ListUserBalance(listModel: [$strListModel])";
+  }
 }
 
 @immutable
@@ -57,8 +66,7 @@ base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
 }
 
 void main() {
-  final ListUserBalance<UserBalance> listUserBalance =
-      ListUserBalance(List.empty(growable: true));
+  final listUserBalance = ListUserBalance<UserBalance>(List.empty(growable: true));
   listUserBalance.insertListFromNewListModelParameterListModel([
     UserBalance("Jone", 3),
     UserBalance("Freddy", 1),
@@ -67,23 +75,44 @@ void main() {
     UserBalance("Hook", 7),
     UserBalance("Sexy", -1)
   ]);
-  debugPrint("Before: ${listUserBalance.listModel}"); // 3, 1, 10, 5, 7, -1
+  debugPrint("Before: $listUserBalance"); // 3, 1, 10, 5, 7, -1
   final userBalanceWOrderByDescWMoneyIterator =
       UserBalanceWOrderByDescWMoneyIterator<UserBalance>();
   listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       userBalanceWOrderByDescWMoneyIterator);
-  debugPrint("After: ${listUserBalance.listModel}"); // 10, 7, 5, 3, 1, -1
+  debugPrint("After: $listUserBalance"); // 10, 7, 5, 3, 1, -1
   listUserBalance
       .updateFromNewModelParameterListModel(UserBalance("Duramichi", 15));
   listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       userBalanceWOrderByDescWMoneyIterator);
   debugPrint(
-      "After (Two): ${listUserBalance.listModel}"); // 15, 10, 7, 3, 1, -1
-  // EXPECTED OUTPUT:
-  //
-  // Before: [UserBalance(username: Jone, money: 3), UserBalance(username: Freddy, money: 1), UserBalance(username: Mitsuya, money: 10), UserBalance(username: Duramichi, money: 5), UserBalance(username: Hook, money: 7), UserBalance(username: Sexy, money: -1)]
-  // After: [UserBalance(username: Mitsuya, money: 10), UserBalance(username: Hook, money: 7), UserBalance(username: Duramichi, money: 5), UserBalance(username: Jone, money: 3), UserBalance(username: Freddy, money: 1), UserBalance(username: Sexy, money: -1)]
-  // After (Two): [UserBalance(username: Duramichi, money: 15), UserBalance(username: Mitsuya, money: 10), UserBalance(username: Hook, money: 7), UserBalance(username: Jone, money: 3), UserBalance(username: Freddy, money: 1), UserBalance(username: Sexy, money: -1)]  //
-  //
-  // Process finished with exit code 0
+      "After (Two): $listUserBalance"); // 15, 10, 7, 3, 1, -1
 }
+// EXPECTED OUTPUT:
+//
+// Before: ListUserBalance(listModel: [
+//  UserBalance(username: Jone, money: 3),
+//  UserBalance(username: Freddy, money: 1),
+//  UserBalance(username: Mitsuya, money: 10),
+//  UserBalance(username: Duramichi, money: 5),
+//  UserBalance(username: Hook, money: 7),
+//  UserBalance(username: Sexy, money: -1),
+// ])
+// After: ListUserBalance(listModel: [
+//  UserBalance(username: Mitsuya, money: 10),
+//  UserBalance(username: Hook, money: 7),
+//  UserBalance(username: Duramichi, money: 5),
+//  UserBalance(username: Jone, money: 3),
+//  UserBalance(username: Freddy, money: 1),
+//  UserBalance(username: Sexy, money: -1),
+// ])
+// After (Two): ListUserBalance(listModel: [
+//  UserBalance(username: Duramichi, money: 15),
+//  UserBalance(username: Mitsuya, money: 10),
+//  UserBalance(username: Hook, money: 7),
+//  UserBalance(username: Jone, money: 3),
+//  UserBalance(username: Freddy, money: 1),
+//  UserBalance(username: Sexy, money: -1),
+// ])
+//
+// Process finished with exit code 0

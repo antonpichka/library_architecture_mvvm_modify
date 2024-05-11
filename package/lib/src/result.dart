@@ -2,15 +2,15 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 import 'package:meta/meta.dart';
 
 /// The purpose of which is to accept success or exception
-/// Where to use ? - use in classes 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService','NamedViewModel'
+/// Where to use ? - use in classes 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService','RWTMode','NamedVM'
 @immutable
 final class Result<T extends Object> {
   /// Success
-  /// Where to use ? - use in class 'NamedViewModel'
+  /// Where to use ? - use in classes 'RWTMode','NamedVM'
   final T? parameter;
 
   /// Exception
-  /// Where to use ? - use in class 'NamedViewModel'
+  /// Where to use ? - use in classes 'RWTMode','NamedVM'
   final ExceptionController exceptionController;
 
   /// Initialize the parameter 'parameter'

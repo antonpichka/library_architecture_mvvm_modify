@@ -1,8 +1,8 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:meta/meta.dart';
 
-/// This class has a object state 'DataForNamed'. Which is part of 'NamedViewModelCutDown'
-/// Where to use ? - use in 'NamedViewModelCutDown' class
+/// This class has a object state 'DataForNamed'. Which is part of 'NamedVM'
+/// Where to use ? - use in 'NamedVM' class
 @immutable
 final class DefaultState<T extends BaseDataForNamed<Enum>>
     extends BaseNamedState<T> {
@@ -11,16 +11,16 @@ final class DefaultState<T extends BaseDataForNamed<Enum>>
   final T _dataForNamed;
 
   /// Initialize the parameters '_dataForNamed'
-  /// Where to use ? - use in 'NamedViewModelCutDown' class
+  /// Where to use ? - use in 'NamedVM' class
   const DefaultState(this._dataForNamed);
 
   /// Frees up device resources
-  /// Where to use ? - use in 'NamedViewModelCutDown' class
+  /// Where to use ? - use in 'NamedVM' class
   @override
   void dispose() {}
 
   /// Get 'DataForNamed'
-  /// Where to use ? - use in 'NamedViewModelCutDown' class
+  /// Where to use ? - use in 'NamedVM' class
   @override
   T get getDataForNamed => _dataForNamed;
 }
