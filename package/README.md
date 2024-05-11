@@ -13,7 +13,6 @@
 ## Example
 
 - [Small project](https://github.com/antonpichka/library_architecture_mvvm_modify/blob/main/package/example/lib/main.dart)
-- [Big project](https://github.com/antonpichka/topdbd)
 
 ## Template For LAMM
 

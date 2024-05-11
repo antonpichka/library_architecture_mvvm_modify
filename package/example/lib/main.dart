@@ -49,7 +49,7 @@ base class ListIPAddress<T extends IPAddress> extends BaseListModel<T> {
   @override
   ListIPAddress<T> get getClone {
     List<T> newListModel = List.empty(growable: true);
-    for(final T model in listModel) {
+    for (final T model in listModel) {
       newListModel.add(model.getClone as T);
     }
     return ListIPAddress<T>(newListModel);
@@ -58,7 +58,7 @@ base class ListIPAddress<T extends IPAddress> extends BaseListModel<T> {
   @override
   String toString() {
     String strListModel = "\n";
-    for(final T itemModel in listModel) {
+    for (final T itemModel in listModel) {
       strListModel += "$itemModel,\n";
     }
     return "ListIPAddress(listModel: [$strListModel])";
@@ -131,7 +131,7 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
 final class MainVM {
   // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
   final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
-  GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
+      GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
   // NamedUtility
 
   // Main objects
@@ -140,36 +140,36 @@ final class MainVM {
 
   // Override
   void initState() {
-    _namedStreamWState = DefaultStreamWState(DataForMainVM(true,const IPAddress("")));
-    _rwtMode = RWTMode(
-        EnumRWTMode.release,
-        [
-          NamedCallback("init", () async {
-            final getIPAddressWhereJsonipAPIParameterHttpClientService =
+    _namedStreamWState =
+        DefaultStreamWState(DataForMainVM(true, const IPAddress("")));
+    _rwtMode = RWTMode(EnumRWTMode.release, [
+      NamedCallback("init", () async {
+        final getIPAddressWhereJsonipAPIParameterHttpClientService =
             await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
                 .getIPAddressWhereJsonipAPIParameterHttpClientService();
-            if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
-                .isWhereNotEqualsNullParameterException()) {
-              return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-                  getIPAddressWhereJsonipAPIParameterHttpClientService
-                      .exceptionController);
-            }
-            _namedStreamWState.getDataForNamed.isLoading = false;
-            _namedStreamWState.getDataForNamed.iPAddress = getIPAddressWhereJsonipAPIParameterHttpClientService.parameter!.getClone;
-            return KeysSuccessUtility.sUCCESS;
-          }),
-        ],
-        [
-          NamedCallback("init", () async {
-            // Simulation get "IPAddress"
-            final iPAddress = IPAddress("121.121.12.12");
-            await Future.delayed(Duration(milliseconds: 1000));
-            _namedStreamWState.getDataForNamed.isLoading = false;
-            _namedStreamWState.getDataForNamed.iPAddress = iPAddress.getClone;
-            return KeysSuccessUtility.sUCCESS;
-          })
-        ]
-    );
+        if (getIPAddressWhereJsonipAPIParameterHttpClientService
+            .exceptionController
+            .isWhereNotEqualsNullParameterException()) {
+          return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+              getIPAddressWhereJsonipAPIParameterHttpClientService
+                  .exceptionController);
+        }
+        _namedStreamWState.getDataForNamed.isLoading = false;
+        _namedStreamWState.getDataForNamed.iPAddress =
+            getIPAddressWhereJsonipAPIParameterHttpClientService
+                .parameter!.getClone;
+        return KeysSuccessUtility.sUCCESS;
+      }),
+    ], [
+      NamedCallback("init", () async {
+        // Simulation get "IPAddress"
+        final iPAddress = IPAddress("121.121.12.12");
+        await Future.delayed(Duration(milliseconds: 1000));
+        _namedStreamWState.getDataForNamed.isLoading = false;
+        _namedStreamWState.getDataForNamed.iPAddress = iPAddress.getClone;
+        return KeysSuccessUtility.sUCCESS;
+      })
+    ]);
     _init();
   }
 
@@ -190,8 +190,7 @@ final class MainVM {
             "Build: Exception(${dataForNamed.exceptionController.getKeyParameterException})");
         break;
       case EnumDataForMainVM.success:
-        debugPrint(
-            "Build: Success(${dataForNamed.iPAddress})");
+        debugPrint("Build: Success(${dataForNamed.iPAddress})");
         break;
       default:
         break;
@@ -207,9 +206,12 @@ final class MainVM {
     _namedStreamWState.notifyStreamDataForNamed();
   }
 
-  Future<String> _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(ExceptionController exceptionController) async {
+  Future<String>
+      _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+          ExceptionController exceptionController) async {
     _namedStreamWState.getDataForNamed.isLoading = false;
-    _namedStreamWState.getDataForNamed.exceptionController = exceptionController;
+    _namedStreamWState.getDataForNamed.exceptionController =
+        exceptionController;
     return exceptionController.getKeyParameterException;
   }
 }

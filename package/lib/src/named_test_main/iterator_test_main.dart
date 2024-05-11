@@ -34,7 +34,7 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
   @override
   String toString() {
     String strListModel = "\n";
-    for(final T itemModel in listModel) {
+    for (final T itemModel in listModel) {
       strListModel += "$itemModel,\n";
     }
     return "ListUserBalance(listModel: [$strListModel])";
@@ -66,7 +66,8 @@ base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
 }
 
 void main() {
-  final listUserBalance = ListUserBalance<UserBalance>(List.empty(growable: true));
+  final listUserBalance =
+      ListUserBalance<UserBalance>(List.empty(growable: true));
   listUserBalance.insertListFromNewListModelParameterListModel([
     UserBalance("Jone", 3),
     UserBalance("Freddy", 1),
@@ -85,8 +86,7 @@ void main() {
       .updateFromNewModelParameterListModel(UserBalance("Duramichi", 15));
   listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       userBalanceWOrderByDescWMoneyIterator);
-  debugPrint(
-      "After (Two): $listUserBalance"); // 15, 10, 7, 3, 1, -1
+  debugPrint("After (Two): $listUserBalance"); // 15, 10, 7, 3, 1, -1
 }
 // EXPECTED OUTPUT:
 //
