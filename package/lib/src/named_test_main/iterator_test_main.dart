@@ -49,7 +49,7 @@ base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
   CurrentModelWIndex<T> get currentModelWIndex {
     T clone = listModelIterator[0].getClone as T;
     if (listModelIterator.length <= 1) {
-      return CurrentModelWIndex<T>(clone,0);
+      return CurrentModelWIndex<T>(clone, 0);
     }
     int indexRemove = 0;
     for (int i = 1; i < listModelIterator.length; i++) {
@@ -60,7 +60,7 @@ base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
         continue;
       }
     }
-    return CurrentModelWIndex<T>(clone,indexRemove);
+    return CurrentModelWIndex<T>(clone, indexRemove);
   }
 }
 

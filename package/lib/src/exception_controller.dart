@@ -21,7 +21,7 @@ final class ExceptionController {
   /// Where to use ? - anywhere
   @override
   String toString() {
-    if(_exception == null) {
+    if (_exception == null) {
       return "ExceptionController(exception: null)";
     }
     return "ExceptionController(exception: $_exception)";

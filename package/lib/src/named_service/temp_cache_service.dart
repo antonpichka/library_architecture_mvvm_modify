@@ -77,19 +77,20 @@ final class TempCacheService {
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
   dynamic getFromKeyTempCacheParameterTempCache(String keyTempCache) {
     if (!_tempCache.containsKey(keyTempCache)) {
-      return throw LocalException(this, EnumGuilty.developer, keyTempCache, "No exists key");
+      return throw LocalException(
+          this, EnumGuilty.developer, keyTempCache, "No exists key");
     }
     return _tempCache[keyTempCache];
   }
-
 
   /// listenStream - register a listener
   /// FromKeyTempCacheAndCallback - we get the key from the callback and the callback itself
   /// ParameterOne - add a new callback to '_tempCacheWListAction'
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
-  void listenStreamFromKeyTempCacheAndCallbackParameterOne(String keyTempCache, void Function(dynamic event) callback) {
+  void listenStreamFromKeyTempCacheAndCallbackParameterOne(
+      String keyTempCache, void Function(dynamic event) callback) {
     final tempCacheWListAction = _tempCacheWListAction;
-    if(!tempCacheWListAction.containsKey(keyTempCache)) {
+    if (!tempCacheWListAction.containsKey(keyTempCache)) {
       tempCacheWListAction[keyTempCache] = List.empty(growable: true);
       tempCacheWListAction[keyTempCache]?.add(callback);
       return;
@@ -119,8 +120,9 @@ final class TempCacheService {
     if (!tempCacheWListAction.containsKey(keyTempCache)) {
       return;
     }
-    final listAction = tempCacheWListAction[keyTempCache] ?? List.empty(growable: true);
-    for(final void Function(dynamic event) itemAction in listAction) {
+    final listAction =
+        tempCacheWListAction[keyTempCache] ?? List.empty(growable: true);
+    for (final void Function(dynamic event) itemAction in listAction) {
       itemAction(value);
     }
   }

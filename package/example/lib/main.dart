@@ -146,8 +146,8 @@ final class MainVM {
   late final RWTMode _rwtMode;
 
   MainVM() {
-    _namedStreamWState =
-        DefaultStreamWState<DataForMainVM>(DataForMainVM(true, const IPAddress("")));
+    _namedStreamWState = DefaultStreamWState<DataForMainVM>(
+        DataForMainVM(true, const IPAddress("")));
     _rwtMode = RWTMode(EnumRWTMode.release, [
       NamedCallback("init", _initReleaseCallback),
     ], [
@@ -187,15 +187,19 @@ final class MainVM {
   }
 
   Future<String> _initReleaseCallback() async {
-    final getIPAddressWhereJsonipAPIParameterHttpClientService = await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService.getIPAddressWhereJsonipAPIParameterHttpClientService();
-    if (getIPAddressWhereJsonipAPIParameterHttpClientService
-        .exceptionController
-        .isWhereNotEqualsNullParameterException())
-    {
-      return _firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService(getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController);
+    final getIPAddressWhereJsonipAPIParameterHttpClientService =
+        await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
+            .getIPAddressWhereJsonipAPIParameterHttpClientService();
+    if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
+        .isWhereNotEqualsNullParameterException()) {
+      return _firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+          getIPAddressWhereJsonipAPIParameterHttpClientService
+              .exceptionController);
     }
     _namedStreamWState.getDataForNamed.isLoading = false;
-    _namedStreamWState.getDataForNamed.iPAddress = getIPAddressWhereJsonipAPIParameterHttpClientService.parameter!.getClone;
+    _namedStreamWState.getDataForNamed.iPAddress =
+        getIPAddressWhereJsonipAPIParameterHttpClientService
+            .parameter!.getClone;
     return KeysSuccessUtility.sUCCESS;
   }
 
