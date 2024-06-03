@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:meta/meta.dart';
 
@@ -14,15 +13,15 @@ final class TempCacheService {
   /// Where to use ? - here
   final Map<String, dynamic> _tempCache;
 
-  /// It is in the map structure that the data is stored (streamController)
+  /// It is in the map structure that the data is stored o about callbacks
   /// Where to use ? - here
-  final Map<String, StreamController<dynamic>> _tempCacheWStreamController;
+  final Map<String, List<void Function(dynamic event)>> _tempCacheWListAction;
 
   /// Initialize the parameters '_tempCache','_tempCacheWStreamController'
   /// Where to use ? - here
   TempCacheService._()
       : _tempCache = {},
-        _tempCacheWStreamController = {};
+        _tempCacheWListAction = {};
 
   /// clearTempCache - clear temporary cache
   /// ParameterInstance - use a static instances
@@ -38,11 +37,12 @@ final class TempCacheService {
   /// Where to use ? - anywhere (just not in models)
   static void closeStreamFromKeyTempCacheParameterInstance(
       String keyTempCache) {
-    final tempCacheWStreamController = instance._tempCacheWStreamController;
-    if (!tempCacheWStreamController.containsKey(keyTempCache)) {
+    final tempCacheWListAction = instance._tempCacheWListAction;
+    if (!tempCacheWListAction.containsKey(keyTempCache)) {
       return;
     }
-    tempCacheWStreamController[keyTempCache]?.close();
+    final listAction = tempCacheWListAction[keyTempCache];
+    listAction?.clear();
   }
 
   /// closeStreams - close the streams
@@ -51,12 +51,13 @@ final class TempCacheService {
   /// Where to use ? - anywhere (just not in models)
   static void closeStreamsFromListKeyTempCacheParameterInstance(
       List<String> listKeyTempCache) {
-    final tempCacheWStreamController = instance._tempCacheWStreamController;
+    final tempCacheWListAction = instance._tempCacheWListAction;
     for (String keyTempCache in listKeyTempCache) {
-      if (!tempCacheWStreamController.containsKey(keyTempCache)) {
+      if (!tempCacheWListAction.containsKey(keyTempCache)) {
         continue;
       }
-      tempCacheWStreamController[keyTempCache]?.close();
+      final listAction = tempCacheWListAction[keyTempCache];
+      listAction?.clear();
     }
   }
 
@@ -64,23 +65,10 @@ final class TempCacheService {
   /// ParameterInstance - use a static instances
   /// Where to use ? - anywhere (just not in models)
   static void closeStreamsParameterInstance() {
-    final tempCacheWStreamController = instance._tempCacheWStreamController;
-    tempCacheWStreamController.forEach((key, value) {
-      value.close();
+    final tempCacheWListAction = instance._tempCacheWListAction;
+    tempCacheWListAction.forEach((key, value) {
+      value.clear();
     });
-  }
-
-  /// getStream - get stream Object
-  /// FromKeyTempCache - we get the temporary cache key
-  /// ParameterOne - the parameter that gives us the stream
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
-  Stream<dynamic> getStreamFromKeyTempCacheParameterOne(String keyTempCache) {
-    if (!_tempCacheWStreamController.containsKey(keyTempCache)) {
-      _tempCacheWStreamController[keyTempCache] =
-          StreamController<dynamic>.broadcast();
-      return _tempCacheWStreamController[keyTempCache]!.stream;
-    }
-    return _tempCacheWStreamController[keyTempCache]!.stream;
   }
 
   /// get - get object
@@ -89,10 +77,24 @@ final class TempCacheService {
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
   dynamic getFromKeyTempCacheParameterTempCache(String keyTempCache) {
     if (!_tempCache.containsKey(keyTempCache)) {
-      return throw LocalException(
-          this, EnumGuilty.developer, keyTempCache, "no exists key");
+      return throw LocalException(this, EnumGuilty.developer, keyTempCache, "No exists key");
     }
     return _tempCache[keyTempCache];
+  }
+
+
+  /// listenStream - register a listener
+  /// FromKeyTempCacheAndCallback - we get the key from the callback and the callback itself
+  /// ParameterOne - add a new callback to '_tempCacheWListAction'
+  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  void listenStreamFromKeyTempCacheAndCallbackParameterOne(String keyTempCache, void Function(dynamic event) callback) {
+    final tempCacheWListAction = _tempCacheWListAction;
+    if(!tempCacheWListAction.containsKey(keyTempCache)) {
+      tempCacheWListAction[keyTempCache] = List.empty(growable: true);
+      tempCacheWListAction[keyTempCache]?.add(callback);
+      return;
+    }
+    tempCacheWListAction[keyTempCache]?.add(callback);
   }
 
   /// update - update an object in the temporary cache
@@ -107,22 +109,20 @@ final class TempCacheService {
   /// update - update an object in the temporary cache
   /// WhereStreamNotificationIsPossible - notify stream (if it exists and we listen)
   /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
-  /// ParametersTwo - temporary cache update and notify stream (if it exists and we listen)
+  /// ParameterOne - temporary cache update and notify stream (if it exists and we listen)
   /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
   void
-      updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
+      updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParameterOne(
           String keyTempCache, dynamic value) {
     updateFromKeyTempCacheAndValueParameterTempCache(keyTempCache, value);
-    if (!_tempCacheWStreamController.containsKey(keyTempCache)) {
+    final tempCacheWListAction = _tempCacheWListAction;
+    if (!tempCacheWListAction.containsKey(keyTempCache)) {
       return;
     }
-    if (!(_tempCacheWStreamController[keyTempCache]?.hasListener ?? false)) {
-      return;
+    final listAction = tempCacheWListAction[keyTempCache] ?? List.empty(growable: true);
+    for(final void Function(dynamic event) itemAction in listAction) {
+      itemAction(value);
     }
-    if (_tempCacheWStreamController[keyTempCache]?.isClosed ?? false) {
-      return;
-    }
-    _tempCacheWStreamController[keyTempCache]?.sink.add(value);
   }
 
   /// delete - delete an object in the temporary cache

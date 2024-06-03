@@ -4,35 +4,31 @@ Future<void> main() async {
   final tempCacheService = TempCacheService.instance;
   final key = "Key";
   tempCacheService
-      .updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
+      .updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParameterOne(
           key, "One");
-  final object = tempCacheService.getFromKeyTempCacheParameterTempCache(key);
-  debugPrint("Object: $object");
-  final streamSubscription = tempCacheService
-      .getStreamFromKeyTempCacheParameterOne(key)
-      .listen((event) {
-    debugPrint("Listen: ${event.toString()}");
+  final fromKeyTempCacheParameterTempCache = tempCacheService.getFromKeyTempCacheParameterTempCache(key);
+  debugPrint("FromKeyTempCacheParameterTempCache: $fromKeyTempCacheParameterTempCache");
+  tempCacheService.listenStreamFromKeyTempCacheAndCallbackParameterOne(key, (event) {
+    debugPrint("Listen: $event");
   });
-  tempCacheService.getStreamFromKeyTempCacheParameterOne(key).listen((event) {
-    debugPrint("ListenTwo: ${event.toString()}");
+  await Future.delayed(const Duration(seconds: 1));
+  tempCacheService.updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParameterOne(key,"Two");
+  tempCacheService.listenStreamFromKeyTempCacheAndCallbackParameterOne(key, (event) {
+    debugPrint("ListenTwo: $event");
   });
-  await streamSubscription.cancel();
   await Future.delayed(const Duration(seconds: 1));
   tempCacheService
-      .updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
-          key, "Two");
-  await Future.delayed(const Duration(seconds: 1));
-  tempCacheService
-      .updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParametersTwo(
+      .updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParameterOne(
           key, "Three");
-  tempCacheService.getStreamFromKeyTempCacheParameterOne(key).listen((event) {
-    debugPrint("ListenThree: ${event.toString()}");
+  tempCacheService.listenStreamFromKeyTempCacheAndCallbackParameterOne(key, (event) {
+    debugPrint("ListenThree: $event");
   });
 }
 // EXPECTED OUTPUT:
 //
-// Object: One
-// ListenTwo: Two
+// FromKeyTempCacheParameterTempCache: One
+// Listen: Two
+// Listen: Three
 // ListenTwo: Three
 //
 // Process finished with exit code 0

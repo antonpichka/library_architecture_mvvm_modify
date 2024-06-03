@@ -1,63 +1,63 @@
-import 'dart:async';
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
-import 'package:meta/meta.dart';
 
 /// This class has a stream and object state 'DataForNamed'. Which is part of 'NamedVM'
 /// Where to use ? - use in 'NamedVM' class
-@immutable
-final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
-    extends BaseNamedStreamWState<T> {
+final class DefaultStreamWState<T extends BaseDataForNamed<Enum>> extends BaseNamedStreamWState<T> {
   /// Object 'DataForNamed'
   /// Where to use ? - here
   final T _dataForNamed;
 
-  /// StreamController 'DataForNamed'
+  /// Required to close streams
   /// Where to use ? - here
-  final StreamController<T> _streamControllerWDataForNamed;
+  bool _isDispose = false;
 
-  /// Initialize the parameters '_dataForNamed', '_streamControllerWDataForNamed'
+  /// Will notify you about changes
+  /// Where to use ? - here
+  void Function(T event)? _callback;
+
+  /// Initialize the parameter '_dataForNamed'
   /// Where to use ? - use in 'NamedVM' class
-  DefaultStreamWState(this._dataForNamed)
-      : _streamControllerWDataForNamed = StreamController<T>.broadcast();
+  DefaultStreamWState(this._dataForNamed);
 
   /// Frees up device resources
   /// Where to use ? - use in 'NamedVM' class
   @override
   void dispose() {
-    if (_streamControllerWDataForNamed.isClosed) {
+    if(_isDispose) {
       return;
     }
-    _streamControllerWDataForNamed.close();
+    _isDispose = true;
+    _callback = null;
   }
-
-  /// Get stream 'DataForNamed'
-  /// Where to use ? - use in 'NamedVM' class
-  @override
-  Stream<T> get getStreamDataForNamed => _streamControllerWDataForNamed.stream;
 
   /// Get 'DataForNamed'
   /// Where to use ? - use in 'NamedVM' class
   @override
   T get getDataForNamed => _dataForNamed;
 
+  /// Register a listener
+  /// Where to use ? - use in 'NamedVM' class
+  @override
+  void listenStreamDataForNamedFromCallback(void Function(T event) callback) {
+    if (_isDispose) {
+      throw LocalException(this, EnumGuilty.developer, "DefaultStreamWStateQQListenStreamDataForNamedFromCallback", "Already disposed of");
+    }
+    if(this._callback != null) {
+      throw LocalException(this,EnumGuilty.developer,"DefaultStreamWStateQQListenStreamDataForNamedFromCallback","Duplicate");
+    }
+    this._callback = callback;
+  }
+
   /// Notify the stream about new data 'DataForNamed'
   /// Where to use ? - use in 'NamedVM' class
   @override
   void notifyStreamDataForNamed() {
-    if (!_streamControllerWDataForNamed.hasListener) {
-      throw LocalException(
-          this,
-          EnumGuilty.developer,
-          "DefaultStreamWStateQQNotifyStreamDataForNamed",
-          "stream has no listener");
+    if (_isDispose) {
+      throw LocalException(this, EnumGuilty.developer, "DefaultStreamWStateQQNotifyStreamDataForNamed", "Already disposed of");
     }
-    if (_streamControllerWDataForNamed.isClosed) {
-      throw LocalException(
-          this,
-          EnumGuilty.developer,
-          "DefaultStreamWStateQQNotifyStreamDataForNamedFIRST",
-          "stream closed");
+    if (_callback == null) {
+      throw LocalException(this, EnumGuilty.developer, "DefaultStreamWStateQQNotifyStreamDataForNamed", "Stream has no listener");
     }
-    _streamControllerWDataForNamed.sink.add(_dataForNamed);
+    _callback!(_dataForNamed);
   }
 }

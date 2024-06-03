@@ -44,12 +44,12 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
 @immutable
 base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
     extends BaseModelWNamedWNamedWNamedIterator<T> {
+  @protected
   @override
-  T get current {
-    T clone = listModelIterator.first.getClone as T;
+  CurrentModelWIndex<T> get currentModelWIndex {
+    T clone = listModelIterator[0].getClone as T;
     if (listModelIterator.length <= 1) {
-      listModelIterator.removeAt(0);
-      return clone;
+      return CurrentModelWIndex<T>(clone,0);
     }
     int indexRemove = 0;
     for (int i = 1; i < listModelIterator.length; i++) {
@@ -60,8 +60,7 @@ base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
         continue;
       }
     }
-    listModelIterator.removeAt(indexRemove);
-    return clone;
+    return CurrentModelWIndex<T>(clone,indexRemove);
   }
 }
 
@@ -86,33 +85,44 @@ void main() {
       .updateFromNewModelParameterListModel(UserBalance("Duramichi", 15));
   listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
       userBalanceWOrderByDescWMoneyIterator);
-  debugPrint("After (Two): $listUserBalance"); // 15, 10, 7, 3, 1, -1
+  debugPrint("After(Two): $listUserBalance"); // 15, 10, 7, 3, 1, -1
+  listUserBalance.deleteFromUniqueIdByModelParameterListModel("Mitsuya");
+  listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
+      userBalanceWOrderByDescWMoneyIterator);
+  debugPrint("After(Three): $listUserBalance"); // 15, 7, 3, 1, -1
 }
 // EXPECTED OUTPUT:
 //
 // Before: ListUserBalance(listModel: [
-//  UserBalance(username: Jone, money: 3),
-//  UserBalance(username: Freddy, money: 1),
-//  UserBalance(username: Mitsuya, money: 10),
-//  UserBalance(username: Duramichi, money: 5),
-//  UserBalance(username: Hook, money: 7),
-//  UserBalance(username: Sexy, money: -1),
+// UserBalance(username: Jone, money: 3),
+// UserBalance(username: Freddy, money: 1),
+// UserBalance(username: Mitsuya, money: 10),
+// UserBalance(username: Duramichi, money: 5),
+// UserBalance(username: Hook, money: 7),
+// UserBalance(username: Sexy, money: -1),
 // ])
 // After: ListUserBalance(listModel: [
-//  UserBalance(username: Mitsuya, money: 10),
-//  UserBalance(username: Hook, money: 7),
-//  UserBalance(username: Duramichi, money: 5),
-//  UserBalance(username: Jone, money: 3),
-//  UserBalance(username: Freddy, money: 1),
-//  UserBalance(username: Sexy, money: -1),
+// UserBalance(username: Mitsuya, money: 10),
+// UserBalance(username: Hook, money: 7),
+// UserBalance(username: Duramichi, money: 5),
+// UserBalance(username: Jone, money: 3),
+// UserBalance(username: Freddy, money: 1),
+// UserBalance(username: Sexy, money: -1),
 // ])
-// After (Two): ListUserBalance(listModel: [
-//  UserBalance(username: Duramichi, money: 15),
-//  UserBalance(username: Mitsuya, money: 10),
-//  UserBalance(username: Hook, money: 7),
-//  UserBalance(username: Jone, money: 3),
-//  UserBalance(username: Freddy, money: 1),
-//  UserBalance(username: Sexy, money: -1),
+// After(Two): ListUserBalance(listModel: [
+// UserBalance(username: Duramichi, money: 15),
+// UserBalance(username: Mitsuya, money: 10),
+// UserBalance(username: Hook, money: 7),
+// UserBalance(username: Jone, money: 3),
+// UserBalance(username: Freddy, money: 1),
+// UserBalance(username: Sexy, money: -1),
+// ])
+// After(Three): ListUserBalance(listModel: [
+// UserBalance(username: Duramichi, money: 15),
+// UserBalance(username: Hook, money: 7),
+// UserBalance(username: Jone, money: 3),
+// UserBalance(username: Freddy, money: 1),
+// UserBalance(username: Sexy, money: -1),
 // ])
 //
 // Process finished with exit code 0

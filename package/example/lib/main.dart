@@ -126,6 +126,13 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
     }
     return EnumDataForMainVM.success;
   }
+
+  @override
+  String toString() {
+    return "DataForMainVM(isLoading: $isLoading, "
+        "exceptionController: $exceptionController, "
+        "iPAddress: $iPAddress)";
+  }
 }
 
 final class MainVM {
@@ -138,48 +145,30 @@ final class MainVM {
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
   late final RWTMode _rwtMode;
 
-  // Override
-  void initState() {
+  MainVM() {
     _namedStreamWState =
-        DefaultStreamWState(DataForMainVM(true, const IPAddress("")));
+        DefaultStreamWState<DataForMainVM>(DataForMainVM(true, const IPAddress("")));
     _rwtMode = RWTMode(EnumRWTMode.release, [
-      NamedCallback("init", () async {
-        final getIPAddressWhereJsonipAPIParameterHttpClientService =
-            await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
-                .getIPAddressWhereJsonipAPIParameterHttpClientService();
-        if (getIPAddressWhereJsonipAPIParameterHttpClientService
-            .exceptionController
-            .isWhereNotEqualsNullParameterException()) {
-          return _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-              getIPAddressWhereJsonipAPIParameterHttpClientService
-                  .exceptionController);
-        }
-        _namedStreamWState.getDataForNamed.isLoading = false;
-        _namedStreamWState.getDataForNamed.iPAddress =
-            getIPAddressWhereJsonipAPIParameterHttpClientService
-                .parameter!.getClone;
-        return KeysSuccessUtility.sUCCESS;
-      }),
+      NamedCallback("init", _initReleaseCallback),
     ], [
-      NamedCallback("init", () async {
-        // Simulation get "IPAddress"
-        final iPAddress = IPAddress("121.121.12.12");
-        await Future.delayed(Duration(milliseconds: 1000));
-        _namedStreamWState.getDataForNamed.isLoading = false;
-        _namedStreamWState.getDataForNamed.iPAddress = iPAddress.getClone;
-        return KeysSuccessUtility.sUCCESS;
-      })
+      NamedCallback("init", _initTestCallback)
     ]);
-    _init();
   }
 
-  // Override
+  Future<void> init() async {
+    _namedStreamWState.listenStreamDataForNamedFromCallback((event) {
+      _build();
+    });
+    final callback = await _rwtMode.getNamedCallbackFromName("init").callback();
+    debugPrint("MainVM: $callback");
+    _namedStreamWState.notifyStreamDataForNamed();
+  }
+
   void dispose() {
     _namedStreamWState.dispose();
   }
 
-  // Override
-  void build() {
+  void _build() {
     final dataForNamed = _namedStreamWState.getDataForNamed;
     switch (dataForNamed.getEnumDataForNamed) {
       case EnumDataForMainVM.isLoading:
@@ -197,17 +186,30 @@ final class MainVM {
     }
   }
 
-  Future<void> _init() async {
-    _namedStreamWState.getStreamDataForNamed.listen((event) {
-      build();
-    });
-    final result = await _rwtMode.getNamedCallbackFromName("init").callback();
-    debugPrint("MainView: $result");
-    _namedStreamWState.notifyStreamDataForNamed();
+  Future<String> _initReleaseCallback() async {
+    final getIPAddressWhereJsonipAPIParameterHttpClientService = await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService.getIPAddressWhereJsonipAPIParameterHttpClientService();
+    if (getIPAddressWhereJsonipAPIParameterHttpClientService
+        .exceptionController
+        .isWhereNotEqualsNullParameterException())
+    {
+      return _firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService(getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController);
+    }
+    _namedStreamWState.getDataForNamed.isLoading = false;
+    _namedStreamWState.getDataForNamed.iPAddress = getIPAddressWhereJsonipAPIParameterHttpClientService.parameter!.getClone;
+    return KeysSuccessUtility.sUCCESS;
+  }
+
+  Future<String> _initTestCallback() async {
+    // Simulation get "IPAddress"
+    final iPAddress = IPAddress("121.121.12.12");
+    await Future.delayed(Duration(milliseconds: 1000));
+    _namedStreamWState.getDataForNamed.isLoading = false;
+    _namedStreamWState.getDataForNamed.iPAddress = iPAddress.getClone;
+    return KeysSuccessUtility.sUCCESS;
   }
 
   Future<String>
-      _firstQQInitQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+      _firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
           ExceptionController exceptionController) async {
     _namedStreamWState.getDataForNamed.isLoading = false;
     _namedStreamWState.getDataForNamed.exceptionController =
@@ -218,13 +220,12 @@ final class MainVM {
 
 Future<void> main() async {
   final mainVM = MainVM();
-  mainVM.initState();
-  await Future.delayed(const Duration(seconds: 10));
+  await mainVM.init();
   mainVM.dispose();
 }
 // EXPECTED OUTPUT:
 //
-// MainView: sUCCESS
+// MainVM: sUCCESS
 // Build: Success(IPAddress(ip: ${your_ip}))
 //
 // Process finished with exit code 0
@@ -241,7 +242,7 @@ Future<void> main() async {
 //
 // ===end_to_trace_exception===
 //
-// MainView: ${getKeyParameterException}
+// MainVM: ${getKeyParameterException}
 // Build: Exception(${getKeyParameterException})
 //
 // Process finished with exit code 0

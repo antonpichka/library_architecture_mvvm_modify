@@ -17,10 +17,19 @@ final class ExceptionController {
   /// Where to use ? - use in 'Result' class
   const ExceptionController.exception(this._exception);
 
+  /// Standard method required for testing
+  /// Where to use ? - anywhere
+  @override
+  String toString() {
+    if(_exception == null) {
+      return "ExceptionController(exception: null)";
+    }
+    return "ExceptionController(exception: $_exception)";
+  }
+
   /// getKey - get the key from the exception
   /// ParameterException - exception
   /// Where to use ? - anywhere
-  @nonVirtual
   String get getKeyParameterException {
     return _exception?.key ?? "";
   }
@@ -28,7 +37,6 @@ final class ExceptionController {
   /// isWhereNotEqualsNull - where exception is not null
   /// ParameterException - exception
   /// Where to use ? - use in 'RWTMode','NamedVM','DataForNamed' classes
-  @nonVirtual
   bool isWhereNotEqualsNullParameterException() {
     return _exception != null ? true : false;
   }

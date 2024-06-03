@@ -17,6 +17,11 @@ abstract base class BaseListModel<T extends BaseModel> {
   /// Where to use ? - anywhere
   BaseListModel<T> get getClone;
 
+  /// Standard method required for testing
+  /// Where to use ? - anywhere
+  @override
+  String toString();
+
   /// sorting - sorting list of models
   /// FromModelWNamedWNamedWNamedIterator - we get the iterator itself to sort
   /// ParameterListModel - the 'listModel' parameter gets the sorted list

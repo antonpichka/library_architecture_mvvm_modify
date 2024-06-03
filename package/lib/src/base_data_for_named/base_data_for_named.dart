@@ -17,6 +17,11 @@ abstract base class BaseDataForNamed<T extends Enum> {
       : exceptionController = ExceptionController.success();
 
   /// Using this method, we process the logic and show the user certain widgets in the 'NamedVM'
-  /// Where to use ? - used to the class 'NamedV,'
+  /// Where to use ? - used to the class 'NamedVM'
   T get getEnumDataForNamed;
+
+  /// Standard method required for testing
+  /// Where to use ? - used to the class 'NamedVM'
+  @override
+  String toString();
 }

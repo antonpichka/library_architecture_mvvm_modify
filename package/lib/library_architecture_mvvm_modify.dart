@@ -25,6 +25,7 @@ export 'src/rwt_mode/enum_rwt_mode.dart';
 export 'src/rwt_mode/named_callback.dart';
 export 'src/rwt_mode/rwt_mode.dart';
 
+export 'src/current_model_w_index.dart';
 export 'src/exception_controller.dart';
 export 'src/i_dispose.dart';
 export 'src/result.dart';

@@ -1,3 +1,12 @@
+## 2.0.1
+
+- In "BaseModelWNamedWNamedWNamedIterator" the abstract method "currentModelWIndex" will return an object of the "CurrentModelWIndex" class,
+and also remove the "IIterator" interface and the "moveNext()" method
+- In "BaseDataForNamed","BaseModel","BaseListModel" write an abstract method "toString()"
+- In "ExceptionController" write the "toString()" method
+- In "TempCacheService" the method name should be "update_where_stream_notification_is_possible_from_key_temp_cache_and_value_parameter_one"
+- Rework all "example" as in "library_architecture_mvvm_modify_python"
+
 ## 2.0.0
 
 - 'NamedViewModel' has become simplified, now there is design and logic, since providing the state of the object and the stream gave 'BaseNamedStreamWState' and only providing the state of the object 'BaseNamedState', then the 'NamedViewModel' itself did nothing, only separated test and release, which allowed to simulate obtaining data and obtaining real data to make it easier to test design, queries, etc. But 'RWTMode' was added which now performs this function in a simplified way, don't even need to writer a class, let alone create files

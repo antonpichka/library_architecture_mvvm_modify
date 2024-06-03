@@ -19,4 +19,9 @@ abstract base class BaseException implements Exception {
         "toString() --> ${toString()}");
     debugPrintException("\n===end_to_trace_exception===\n");
   }
+
+  /// Standard method required for testing
+  /// Where to use ? - anywhere
+  @override
+  String toString();
 }

@@ -15,4 +15,9 @@ abstract base class BaseModel {
   /// Sometimes you need to clone an object to avoid creating references
   /// Where to use ? - anywhere
   BaseModel get getClone;
+
+  /// Standard method required for testing
+  /// Where to use ? - anywhere
+  @override
+  String toString();
 }
