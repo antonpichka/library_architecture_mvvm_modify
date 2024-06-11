@@ -52,7 +52,7 @@ We create and write architectural objects in the order in which it will be faste
 
 #### NamedUtility
 
-- Type classes - KeysNamedServiceUtility, KeysNamedUtility, NamedUtility:
+- Type classes - 'KeysNamedServiceUtility', 'KeysNamedUtility', 'NamedUtility':
 - - KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models:
 - - - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
 - - - - QQ - needed as a separator that helps to quickly understand what this constant does
