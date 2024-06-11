@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Documentation has become more correct and expanded
+
 ## 2.0.1
 
 - In "BaseModelWNamedWNamedWNamedIterator" the abstract method "currentModelWIndex" will return an object of the "CurrentModelWIndex" class,
