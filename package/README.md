@@ -97,7 +97,7 @@ We create and write architectural objects in the order in which it will be faste
 
 #### NamedVM
 
-- Private methods created in this way allow you to write complex logic and readable code:
+- Private methods names (Only in callback methods):
 - - Summary in the form of variables: | Example:
 - - - Summary in the form of variables: 
 - - - - numberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
@@ -108,6 +108,7 @@ We create and write architectural objects in the order in which it will be faste
 - - - - - firstBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 - - - - - - firstBranchOneBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 - - Explanation:
+- - - Private methods created in this way allow you to write complex logic and readable code
 - - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
 - - - 'if' create methods:
 - - - - firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
