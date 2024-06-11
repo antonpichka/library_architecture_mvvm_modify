@@ -97,7 +97,7 @@ We create and write architectural objects in the order in which it will be faste
 
 #### NamedVM
 
-- Private methods names (Only in callback methods):
+- Private methods names, which are used in callback methods:
 - - Summary in the form of variables: | Example:
 - - - Summary in the form of variables: 
 - - - - numberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
