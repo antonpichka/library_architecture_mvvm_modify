@@ -343,10 +343,10 @@ We create and write architectural objects in the order in which it will be faste
 
 ## Documentation Explanation
 
-- The explanation will be supported by “Psychology” (Facts) or “My theory of effective development” (Personal opinion)
+- The explanation will be supported by 'Psychology' (Facts) or 'My theory of effective development' (Personal opinion)
 - Information will be provided in the following template:
 ```
-### Question ?:
+### Question ?
 - Psychology:
 - - Brief information:
 - - - {message}
@@ -357,7 +357,7 @@ We create and write architectural objects in the order in which it will be faste
 OR
 
 ```
-### Question ?:
+### Question ?
 - My theory of effective development:
 - - Development speed:
 - - - (+)||(-){message}
@@ -367,7 +367,7 @@ OR
 - - - (+)||(-){message}
 ```
 
-### Why separators ?:
+### Why separators ?
 
 - Psychology:
 - - Brief information:
@@ -376,7 +376,7 @@ OR
 - - Proof:
 - - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
 
-### Why are classes named this way and inherited only on one branch ?:
+### Why are classes named this way and inherited only on one branch ?
 
 - My theory of effective development:
 - - Development speed:
@@ -387,7 +387,7 @@ OR
 - - Speed && Quality of development:
 - - - (+) Inheritance along one branch simplifies development, because if there is more than one branch, then confusion arises, especially if one of the branches has inheritance to other branches
 
-### Why are "General Rules" written this way and why do we need "General Rules" ?:
+### Why are 'General Rules' written this way and why do we need 'General Rules' ?
 
 - Psychology:
 - - Brief information:
@@ -397,7 +397,7 @@ OR
 - - Proof:
 - - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
 
-### Why are private methods written this way, which are used in callback methods of NamedVM, and generate other private methods within themselves ?:
+### Why are private methods written this way, which are used in callback methods of NamedVM, and generate other private methods within themselves ?
 
 - My theory of effective development:
 - - Development speed:
