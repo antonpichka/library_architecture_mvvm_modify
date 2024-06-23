@@ -1,3 +1,9 @@
+## 3.0.0
+
+- Replaced 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' with added 'ModelRepository' because inheriting one class is easier than a thousand classes. 
+- Replaced the 'RWTMode' design pattern with a stripped-down version in the 'ModelRepository'.
+- Now creating an application has become several times easier
+
 ## 2.0.2
 
 - Documentation has become more correct and expanded

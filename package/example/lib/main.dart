@@ -74,20 +74,23 @@ final class HttpClientService {
 }
 
 @immutable
-base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>> extends BaseModelRepository<T,Y> {
+base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
+    extends BaseModelRepository<T, Y> {
   @protected
   final httpClientService = HttpClientService.instance;
 
   IPAddressRepository(super.enumRWTMode);
 
   Future<Result<T>> getIPAddressParameterHttpClientService() async {
-    return getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(_getIPAddressParameterHttpClientServiceWReleaseCallback,_getIPAddressParameterHttpClientServiceWTestCallback)();
+    return getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
+        _getIPAddressParameterHttpClientServiceWReleaseCallback,
+        _getIPAddressParameterHttpClientServiceWTestCallback)();
   }
 
-  Future<Result<T>> _getIPAddressParameterHttpClientServiceWReleaseCallback() async {
+  Future<Result<T>>
+      _getIPAddressParameterHttpClientServiceWReleaseCallback() async {
     try {
-      final response = await httpClientService
-          .getParameterHttpClient
+      final response = await httpClientService.getParameterHttpClient
           ?.get(Uri.parse(ConstantsUtility.iPAPI))
           .timeout(const Duration(seconds: 5));
       if (response?.statusCode != 200) {
@@ -96,10 +99,7 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>> 
       }
       final Map<String, dynamic> data = jsonDecode(response?.body ?? "");
       return Result<T>.success(getBaseModelFromMapAndListKeys(
-          data,
-          [
-            KeysHttpClientServiceUtility.iPAddressQQIp
-          ]));
+          data, [KeysHttpClientServiceUtility.iPAddressQQIp]));
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {
@@ -108,19 +108,17 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>> 
     }
   }
 
-  Future<Result<T>> _getIPAddressParameterHttpClientServiceWTestCallback() async {
+  Future<Result<T>>
+      _getIPAddressParameterHttpClientServiceWTestCallback() async {
     await Future.delayed(Duration(milliseconds: 1000));
     return Result<T>.success(getBaseModelFromMapAndListKeys(
-        {
-          KeysHttpClientServiceUtility.iPAddressQQIp : "121.121.12.12"
-        },
-        [
-          KeysHttpClientServiceUtility.iPAddressQQIp
-        ]));
+        {KeysHttpClientServiceUtility.iPAddressQQIp: "121.121.12.12"},
+        [KeysHttpClientServiceUtility.iPAddressQQIp]));
   }
 
   @override
-  T getBaseModelFromMapAndListKeys(Map<String,dynamic>? map, List<String>? listKeys) {
+  T getBaseModelFromMapAndListKeys(
+      Map<String, dynamic>? map, List<String>? listKeys) {
     return IPAddress(map?[listKeys?[0] ?? ""] ?? "") as T;
   }
 
@@ -166,7 +164,8 @@ final class MainVM {
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
 
   MainVM() {
-    _namedStreamWState = DefaultStreamWState<DataForMainVM>(DataForMainVM(true, const IPAddress("")));
+    _namedStreamWState = DefaultStreamWState<DataForMainVM>(
+        DataForMainVM(true, const IPAddress("")));
   }
 
   Future<void> init() async {
@@ -201,18 +200,21 @@ final class MainVM {
   }
 
   Future<String> _firstRequest() async {
-    final getIPAddressParameterHttpClientService = await _iPAddressRepository.getIPAddressParameterHttpClientService();
-    if (getIPAddressParameterHttpClientService.exceptionController.isWhereNotEqualsNullParameterException()) {
-      return _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(getIPAddressParameterHttpClientService.exceptionController);
+    final getIPAddressParameterHttpClientService =
+        await _iPAddressRepository.getIPAddressParameterHttpClientService();
+    if (getIPAddressParameterHttpClientService.exceptionController
+        .isWhereNotEqualsNullParameterException()) {
+      return _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
+          getIPAddressParameterHttpClientService.exceptionController);
     }
     _namedStreamWState.getDataForNamed.isLoading = false;
-    _namedStreamWState.getDataForNamed.iPAddress = getIPAddressParameterHttpClientService.parameter!.getClone;
+    _namedStreamWState.getDataForNamed.iPAddress =
+        getIPAddressParameterHttpClientService.parameter!.getClone;
     return ConstantsUtility.success;
   }
 
-  Future<String>
-      _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
-          ExceptionController exceptionController) async {
+  Future<String> _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
+      ExceptionController exceptionController) async {
     _namedStreamWState.getDataForNamed.isLoading = false;
     _namedStreamWState.getDataForNamed.exceptionController =
         exceptionController;
