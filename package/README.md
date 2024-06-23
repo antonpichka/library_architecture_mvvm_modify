@@ -9,6 +9,7 @@
 - [Example](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#example)
 - [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
 - [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
+- [Documentation Explanation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation-explanation)
 
 ## Example
 
@@ -99,7 +100,7 @@ We create and write architectural objects in the order in which it will be faste
 
 - Private methods names, which are used in callback methods:
 - - Summary in the form of variables: | Example:
-- - - Summary in the form of variables: 
+- - - Summary in the form of variables:
 - - - - numberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
 - - - - - numberBranchNumberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
 - - - - - - numberBranchNumberBranchNumberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
@@ -198,7 +199,7 @@ We create and write architectural objects in the order in which it will be faste
 - - - User -> UserFirst -> UserSecond -> UserThird
 - - When inheriting, we also inherit: 
 - - - 'ListModel'
-- - - 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService'
+- - - 'ModelRepository'
 - - - 'ModelWNamedWNamedWNamedIterator' if exists
 - Methods names:
 - - Get:
@@ -245,7 +246,7 @@ We create and write architectural objects in the order in which it will be faste
 - - - ListUser -> ListUserFirst -> ListUserSecond -> ListUserThird
 - - When inheriting, we also inherit:
 - - - 'Model'
-- - - 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService'
+- - - 'ModelRepository'
 - - - 'ModelWNamedWNamedWNamedIterator' if exists
 - Methods names:
 - - Get:
@@ -317,30 +318,18 @@ We create and write architectural objects in the order in which it will be faste
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
-#### OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
+#### ModelRepository
 
 - Inheritance classes:
 - - Names of inherited classes:
-- - - OperationEEModelNumber(EEWhereNamed)[EEFromNamed]EEParameterNamedService:
+- - - ModelNumberRepository:
 - - - - Number - 'First','Second','Third', etc...
-- - - All other explanation is written in 'Class Names'
 - - Inheritance goes along one branch:
-- - - GetListEEUserEEWhereOnlyAuthorizedEEParameterHttpService -> GetListEEUserFirstEEWhereOnlyAuthorizedEEParameterHttpService -> GetListEEUserSecondEEWhereOnlyAuthorizedEEParameterHttpService -> GetListEEUserThirdEEWhereOnlyAuthorizedEEParameterHttpService
+- - - UserRepository -> UserFirstRepository -> UserSecondRepository -> UserThirdRepository
 - - When inheriting, we also inherit:
 - - - 'Model'
 - - - 'ListModel'
 - - - 'ModelWNamedWNamedWNamedIterator' if exists
-- Class names: 
-- - OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService:
-- - - Minimum two 'EE'. Maximum four 'EE' - needed as a separator that helps to quickly understand what this class does
-- - - () - optional
-- - - [] - if available
-- - - Operation -  insert, update, delete, set, init, etc...
-- - - EEModel - name model
-- - - (EEWhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - [EEFromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - EEParameterNamedService - what service do you use (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - Global variable names - _operationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
 - Methods names:
 - - OperationModel(WhereNamed)[FromNamed]ParameterNamedService:
 - - - () - optional
@@ -351,3 +340,67 @@ We create and write architectural objects in the order in which it will be faste
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - ParameterNamedService - what service do you use (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamedService
+
+## Documentation Explanation
+
+- The explanation will be supported by “Psychology” (Facts) or “My theory of effective development” (Personal opinion)
+- Information will be provided in the following template:
+```
+### Question ?:
+- Psychology:
+- - Brief information:
+- - - {message}
+- - Proof:
+- - - {url}
+```
+
+OR
+
+```
+### Question ?:
+- My theory of effective development:
+- - Development speed:
+- - - (+)||(-){message}
+- - Development quality:
+- - - (+)||(-){message}
+- - Speed && Quality of development:
+- - - (+)||(-){message}
+```
+
+### Why separators ?:
+
+- Psychology:
+- - Brief information:
+- - - Separators help you understand faster
+- - - In the simplest terms, gestalt theory is based on the idea that the human brain will attempt to simplify and organize complex images or designs that consist of many elements, by subconsciously arranging the parts into an organized system that creates a whole, rather than just a series of disparate elements.
+- - Proof:
+- - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
+
+### Why are classes named this way and inherited only on one branch ?:
+
+- My theory of effective development:
+- - Development speed:
+- - - (+) The name of the heirs is very simple, because we add 'First', 'Second', 'Third' at the end, and there is no need to think about the name of the class
+- - - (+) It is easy to determine which class to inherit and use, because it is numbered
+- - Development quality:
+- - - (-) A simple class name is harmful, because when the programmer looks at the file name (which is the name of the class), he will not understand what exactly has been changed in the class
+- - Speed && Quality of development:
+- - - (+) Inheritance along one branch simplifies development, because if there is more than one branch, then confusion arises, especially if one of the branches has inheritance to other branches
+
+### Why are "General Rules" written this way and why do we need "General Rules" ?:
+
+- Psychology:
+- - Brief information:
+- - - Separators help you understand faster
+- - - We replace the keywords with 'W', and thus these keywords are written in the name of the class, method, only once
+- - - In the simplest terms, gestalt theory is based on the idea that the human brain will attempt to simplify and organize complex images or designs that consist of many elements, by subconsciously arranging the parts into an organized system that creates a whole, rather than just a series of disparate elements.
+- - Proof:
+- - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
+
+### Why are private methods written this way, which are used in callback methods of NamedVM, and generate other private methods within themselves ?:
+
+- My theory of effective development:
+- - Development speed:
+- - - (-) The methods are very long, because of this we spend more time than we would like
+- - Speed && Quality of development:
+- - - (+) Let me give you an example: we have the following banks: 'CreditBank', 'SonBank', 'QwBank', 'FsqBank', where one bank absorbs all subsequent banks in order, and you need to choose which bank name is more informative . There are 2 options: 1) 'CreditBank'. 2) 'CreditSonQwFsqBank'. Of the proposed options, the second option will be more informative: 'CreditSonQwFsqBank'. This name clearly indicates which banks were absorbed and in what order, which makes it more informative for human perception. That's why the methods are written this way.

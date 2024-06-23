@@ -4,27 +4,20 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 @immutable
+final class ConstantsUtility {
+  static const String unknown = "unknown";
+  static const String success = "success";
+  static const String iPAPI = "https://jsonip.com/";
+
+  const ConstantsUtility._();
+}
+
+@immutable
 final class KeysHttpClientServiceUtility {
   /* IPAddress */
   static const String iPAddressQQIp = "ip";
 
   const KeysHttpClientServiceUtility._();
-}
-
-@immutable
-final class KeysExceptionUtility {
-  /* UNKNOWN */
-  static const String uNKNOWN = "uNKNOWN";
-
-  const KeysExceptionUtility._();
-}
-
-@immutable
-final class KeysSuccessUtility {
-  /* SUCCESS */
-  static const String sUCCESS = "sUCCESS";
-
-  const KeysSuccessUtility._();
 }
 
 @immutable
@@ -81,31 +74,59 @@ final class HttpClientService {
 }
 
 @immutable
-base class GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService<
-    T extends IPAddress, Y extends ListIPAddress<T>> {
+base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>> extends BaseModelRepository<T,Y> {
   @protected
   final httpClientService = HttpClientService.instance;
 
-  Future<Result<T>>
-      getIPAddressWhereJsonipAPIParameterHttpClientService() async {
+  IPAddressRepository(super.enumRWTMode);
+
+  Future<Result<T>> getIPAddressParameterHttpClientService() async {
+    return getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(_getIPAddressParameterHttpClientServiceWReleaseCallback,_getIPAddressParameterHttpClientServiceWTestCallback)();
+  }
+
+  Future<Result<T>> _getIPAddressParameterHttpClientServiceWReleaseCallback() async {
     try {
-      final response = await httpClientService.getParameterHttpClient
-          ?.get(Uri.parse("https://jsonip.com/"))
+      final response = await httpClientService
+          .getParameterHttpClient
+          ?.get(Uri.parse(ConstantsUtility.iPAPI))
           .timeout(const Duration(seconds: 5));
       if (response?.statusCode != 200) {
         throw NetworkException.fromKeyAndStatusCode(this,
             response?.statusCode.toString() ?? "", response?.statusCode ?? 0);
       }
       final Map<String, dynamic> data = jsonDecode(response?.body ?? "");
-      return Result<T>.success(
-          IPAddress(data[KeysHttpClientServiceUtility.iPAddressQQIp] ?? "")
-              as T);
+      return Result<T>.success(getBaseModelFromMapAndListKeys(
+          data,
+          [
+            KeysHttpClientServiceUtility.iPAddressQQIp
+          ]));
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {
       return Result<T>.exception(LocalException(
-          this, EnumGuilty.device, KeysExceptionUtility.uNKNOWN, e.toString()));
+          this, EnumGuilty.device, ConstantsUtility.unknown, e.toString()));
     }
+  }
+
+  Future<Result<T>> _getIPAddressParameterHttpClientServiceWTestCallback() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    return Result<T>.success(getBaseModelFromMapAndListKeys(
+        {
+          KeysHttpClientServiceUtility.iPAddressQQIp : "121.121.12.12"
+        },
+        [
+          KeysHttpClientServiceUtility.iPAddressQQIp
+        ]));
+  }
+
+  @override
+  T getBaseModelFromMapAndListKeys(Map<String,dynamic>? map, List<String>? listKeys) {
+    return IPAddress(map?[listKeys?[0] ?? ""] ?? "") as T;
+  }
+
+  @override
+  Y getBaseListModelFromListModel(List<T> listModel) {
+    return ListIPAddress(listModel) as Y;
   }
 }
 
@@ -136,31 +157,24 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
 }
 
 final class MainVM {
-  // OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService
-  final _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService =
-      GetEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService();
+  // ModelRepository
+  final _iPAddressRepository = IPAddressRepository(EnumRWTMode.release);
+
   // NamedUtility
 
-  // Main objects
+  // NamedStreamWState
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
-  late final RWTMode _rwtMode;
 
   MainVM() {
-    _namedStreamWState = DefaultStreamWState<DataForMainVM>(
-        DataForMainVM(true, const IPAddress("")));
-    _rwtMode = RWTMode(EnumRWTMode.release, [
-      NamedCallback("init", _initReleaseCallback),
-    ], [
-      NamedCallback("init", _initTestCallback)
-    ]);
+    _namedStreamWState = DefaultStreamWState<DataForMainVM>(DataForMainVM(true, const IPAddress("")));
   }
 
   Future<void> init() async {
     _namedStreamWState.listenStreamDataForNamedFromCallback((event) {
       _build();
     });
-    final callback = await _rwtMode.getNamedCallbackFromName("init").callback();
-    debugPrint("MainVM: $callback");
+    final firstRequest = await _firstRequest();
+    debugPrint("MainVM: $firstRequest");
     _namedStreamWState.notifyStreamDataForNamed();
   }
 
@@ -186,34 +200,18 @@ final class MainVM {
     }
   }
 
-  Future<String> _initReleaseCallback() async {
-    final getIPAddressWhereJsonipAPIParameterHttpClientService =
-        await _getEEIPAddressEEWhereJsonipAPIEEParameterHttpClientService
-            .getIPAddressWhereJsonipAPIParameterHttpClientService();
-    if (getIPAddressWhereJsonipAPIParameterHttpClientService.exceptionController
-        .isWhereNotEqualsNullParameterException()) {
-      return _firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
-          getIPAddressWhereJsonipAPIParameterHttpClientService
-              .exceptionController);
+  Future<String> _firstRequest() async {
+    final getIPAddressParameterHttpClientService = await _iPAddressRepository.getIPAddressParameterHttpClientService();
+    if (getIPAddressParameterHttpClientService.exceptionController.isWhereNotEqualsNullParameterException()) {
+      return _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(getIPAddressParameterHttpClientService.exceptionController);
     }
     _namedStreamWState.getDataForNamed.isLoading = false;
-    _namedStreamWState.getDataForNamed.iPAddress =
-        getIPAddressWhereJsonipAPIParameterHttpClientService
-            .parameter!.getClone;
-    return KeysSuccessUtility.sUCCESS;
-  }
-
-  Future<String> _initTestCallback() async {
-    // Simulation get "IPAddress"
-    final iPAddress = IPAddress("121.121.12.12");
-    await Future.delayed(Duration(milliseconds: 1000));
-    _namedStreamWState.getDataForNamed.isLoading = false;
-    _namedStreamWState.getDataForNamed.iPAddress = iPAddress.getClone;
-    return KeysSuccessUtility.sUCCESS;
+    _namedStreamWState.getDataForNamed.iPAddress = getIPAddressParameterHttpClientService.parameter!.getClone;
+    return ConstantsUtility.success;
   }
 
   Future<String>
-      _firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService(
+      _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
           ExceptionController exceptionController) async {
     _namedStreamWState.getDataForNamed.isLoading = false;
     _namedStreamWState.getDataForNamed.exceptionController =
@@ -229,7 +227,7 @@ Future<void> main() async {
 }
 // EXPECTED OUTPUT:
 //
-// MainVM: sUCCESS
+// MainVM: success
 // Build: Success(IPAddress(ip: ${your_ip}))
 //
 // Process finished with exit code 0

@@ -13,6 +13,8 @@ export 'src/base_model/base_model_w_named_w_named_w_named_iterator/base_model_w_
 export 'src/base_model/base_model.dart';
 export 'src/base_model/base_list_model.dart';
 
+export 'src/base_model_repository/base_model_repository.dart';
+
 export 'src/base_named_state/base_named_state.dart';
 export 'src/base_named_state/default_state.dart';
 
@@ -21,11 +23,8 @@ export 'src/base_named_stream_w_state/default_stream_w_state.dart';
 
 export 'src/named_service/temp_cache_service.dart';
 
-export 'src/rwt_mode/enum_rwt_mode.dart';
-export 'src/rwt_mode/named_callback.dart';
-export 'src/rwt_mode/rwt_mode.dart';
-
 export 'src/current_model_w_index.dart';
+export 'src/enum_rwt_mode.dart';
 export 'src/exception_controller.dart';
 export 'src/i_dispose.dart';
 export 'src/result.dart';
