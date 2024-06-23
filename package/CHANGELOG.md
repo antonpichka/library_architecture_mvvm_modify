@@ -1,3 +1,7 @@
+## 3.0.1
+
+- Updated Example
+
 ## 3.0.0
 
 - Replaced 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' with added 'ModelRepository' because inheriting one class is easier than a thousand classes. 

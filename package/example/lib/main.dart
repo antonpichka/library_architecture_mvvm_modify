@@ -4,12 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 @immutable
-final class ConstantsUtility {
+final class ReadyDataUtility {
   static const String unknown = "unknown";
   static const String success = "success";
   static const String iPAPI = "https://jsonip.com/";
 
-  const ConstantsUtility._();
+  const ReadyDataUtility._();
 }
 
 @immutable
@@ -81,6 +81,17 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
 
   IPAddressRepository(super.enumRWTMode);
 
+  @override
+  T getBaseModelFromMapAndListKeys(
+      Map<String, dynamic>? map, List<String>? listKeys) {
+    return IPAddress(map?[listKeys?[0] ?? ""] ?? "") as T;
+  }
+
+  @override
+  Y getBaseListModelFromListModel(List<T> listModel) {
+    return ListIPAddress(listModel) as Y;
+  }
+
   Future<Result<T>> getIPAddressParameterHttpClientService() async {
     return getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
         _getIPAddressParameterHttpClientServiceWReleaseCallback,
@@ -91,7 +102,7 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
       _getIPAddressParameterHttpClientServiceWReleaseCallback() async {
     try {
       final response = await httpClientService.getParameterHttpClient
-          ?.get(Uri.parse(ConstantsUtility.iPAPI))
+          ?.get(Uri.parse(ReadyDataUtility.iPAPI))
           .timeout(const Duration(seconds: 5));
       if (response?.statusCode != 200) {
         throw NetworkException.fromKeyAndStatusCode(this,
@@ -104,7 +115,7 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
       return Result<T>.exception(e);
     } catch (e) {
       return Result<T>.exception(LocalException(
-          this, EnumGuilty.device, ConstantsUtility.unknown, e.toString()));
+          this, EnumGuilty.device, ReadyDataUtility.unknown, e.toString()));
     }
   }
 
@@ -114,17 +125,6 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
     return Result<T>.success(getBaseModelFromMapAndListKeys(
         {KeysHttpClientServiceUtility.iPAddressQQIp: "121.121.12.12"},
         [KeysHttpClientServiceUtility.iPAddressQQIp]));
-  }
-
-  @override
-  T getBaseModelFromMapAndListKeys(
-      Map<String, dynamic>? map, List<String>? listKeys) {
-    return IPAddress(map?[listKeys?[0] ?? ""] ?? "") as T;
-  }
-
-  @override
-  Y getBaseListModelFromListModel(List<T> listModel) {
-    return ListIPAddress(listModel) as Y;
   }
 }
 
@@ -210,7 +210,7 @@ final class MainVM {
     _namedStreamWState.getDataForNamed.isLoading = false;
     _namedStreamWState.getDataForNamed.iPAddress =
         getIPAddressParameterHttpClientService.parameter!.getClone;
-    return ConstantsUtility.success;
+    return ReadyDataUtility.success;
   }
 
   Future<String> _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
