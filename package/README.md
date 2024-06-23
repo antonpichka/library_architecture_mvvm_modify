@@ -37,7 +37,7 @@
 - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
-- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#operationeemodeleewherenamedeefromnamedeeparameternamedservice)'
+- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[ModelRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelRepository)'
 
 ### Architectural Objects
 
