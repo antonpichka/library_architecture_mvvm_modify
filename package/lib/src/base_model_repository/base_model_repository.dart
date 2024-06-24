@@ -16,17 +16,20 @@ abstract base class BaseModelRepository<T extends BaseModel,
 
   /// Getting the model from the map and the list keys
   /// Where to use ? - here
+  @protected
   T getBaseModelFromMapAndListKeys(
-      Map<String, dynamic>? map, List<String>? listKeys);
+      Map<String, dynamic> map, List<String> listKeys);
 
   /// Getting the list model from the list model
   /// Where to use ? - here
+  @protected
   Y getBaseListModelFromListModel(List<T> listModel);
 
   /// getModeCallback - getting the selected callback
   /// FromReleaseCallbackAndTestCallback - here are two callbacks to choose from
   /// ParameterEnumRWTMode - parameter that determines which callback will be used
   /// Where to use ? - here
+  @protected
   @nonVirtual
   dynamic getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
       dynamic releaseCallback, dynamic testCallback) {

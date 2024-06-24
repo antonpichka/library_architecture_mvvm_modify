@@ -81,12 +81,17 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
 
   IPAddressRepository(super.enumRWTMode);
 
+  @protected
   @override
   T getBaseModelFromMapAndListKeys(
-      Map<String, dynamic>? map, List<String>? listKeys) {
-    return IPAddress(map?[listKeys?[0] ?? ""] ?? "") as T;
+      Map<String, dynamic> map, List<String> listKeys) {
+    if (listKeys.isEmpty) {
+      return IPAddress("") as T;
+    }
+    return IPAddress(map.containsKey(listKeys[0]) ? map[listKeys[0]] : "") as T;
   }
 
+  @protected
   @override
   Y getBaseListModelFromListModel(List<T> listModel) {
     return ListIPAddress(listModel) as Y;
