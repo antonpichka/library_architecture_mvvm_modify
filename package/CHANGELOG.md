@@ -1,3 +1,7 @@
+## 3.0.3
+
+- Added chapter with name 'Design Patterns'
+
 ## 3.0.2
 
 - Fix bugs
