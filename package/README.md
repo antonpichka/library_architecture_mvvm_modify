@@ -332,15 +332,24 @@ We create and write architectural objects in the order in which it will be faste
 - - - 'ListModel'
 - - - 'ModelWNamedWNamedWNamedIterator' if exists
 - Methods names:
-- - OperationModel(WhereNamed)[FromNamed]ParameterNamedService:
+- - OperationModel(WhereNamed)[FromNamed]ParameterNamed:
 - - - () - optional
 - - - [] - if available
 - - - Operation -  insert, update, delete, set, init, etc...
 - - - Model - name model
 - - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - ParameterNamedService - what service do you use (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamedService
+- - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamed
+- - OperationModel(WhereNamed)[FromNamed]ParameterNumber:
+- - - () - optional
+- - - [] - if available
+- - - Operation -  insert, update, delete, set, init, etc...
+- - - Model - name model
+- - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - ParameterNumber - when a service or other parameters are still unknown, at the initial stage of development, we designate it with a number; the more services and other parameters, the larger the number. In the future we will not need to refactor the class
+- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNumber
 
 ## Documentation Explanation
 
