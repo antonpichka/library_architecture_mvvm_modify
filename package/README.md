@@ -10,6 +10,7 @@
 - [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
 - [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
 - [Documentation Explanation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation-explanation)
+- [Design Patterns](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#design-patterns)
 
 ## Example
 
@@ -404,3 +405,26 @@ OR
 - - - (-) The methods are very long, because of this we spend more time than we would like
 - - Speed && Quality of development:
 - - - (+) Let me give you an example: we have the following banks: 'CreditBank', 'SonBank', 'QwBank', 'FsqBank', where one bank absorbs all subsequent banks in order, and you need to choose which bank name is more informative . There are 2 options: 1) 'CreditBank'. 2) 'CreditSonQwFsqBank'. Of the proposed options, the second option will be more informative: 'CreditSonQwFsqBank'. This name clearly indicates which banks were absorbed and in what order, which makes it more informative for human perception. That's why the methods are written this way.
+
+## Design Patterns
+
+- Design patterns used in "LAMM" (-Design Patterns/--Classes):
+- - Observer:
+- - - BaseNamedStreamWState
+- - - DefaultStreamWState
+- - Similar to "Pub/Sub":
+- - - TempCacheService
+- - Singleton:
+- - - TempCacheService
+- - Factory method:
+- - - BaseModelWNamedWNamedWNamedIterator
+- - - BaseException
+- - - BaseModelRepository
+- - Prototype:
+- - - BaseModel
+- - - BaseListModel
+- - Similar to "Adapter":
+- - - ExceptionController
+- - Similar to "Strategy":
+- - - EnumRWTMode
+- - - BaseModelRepository
