@@ -1,3 +1,7 @@
+## 3.0.4
+
+- Updated documentation in the "ModelRepository" section
+
 ## 3.0.3
 
 - Added chapter with name 'Design Patterns'
