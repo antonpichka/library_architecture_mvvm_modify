@@ -7,12 +7,12 @@ import 'package:meta/meta.dart';
 abstract base class BaseModelRepository<T extends BaseModel,
     Y extends BaseListModel<T>> {
   /// To determine test and release mode
-  /// Where to use ? - here
-  final EnumRWTMode _enumRWTMode;
+  /// Where to use ? - use in method main
+  static EnumRWTMode enumRWTMode = EnumRWTMode.test;
 
   /// No initialize the parameters
   /// Where to use ? - use in 'NamedVM' class
-  const BaseModelRepository(this._enumRWTMode);
+  const BaseModelRepository();
 
   /// Getting the model from the map and the list keys
   /// Where to use ? - here
@@ -33,11 +33,32 @@ abstract base class BaseModelRepository<T extends BaseModel,
   @nonVirtual
   dynamic getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
       dynamic releaseCallback, dynamic testCallback) {
-    switch (_enumRWTMode) {
+    switch (enumRWTMode) {
       case EnumRWTMode.release:
         return releaseCallback;
       case EnumRWTMode.test:
         return testCallback;
+    }
+  }
+
+  /// getSafeValue - we get a safe value so as not to get an error
+  /// WhereUsedInMethodGetModel - used in the 'getBaseModelFromMapAndListKeys' method
+  /// FromMapAndListKeysAndIndexAndDefaultValue - parameters that are needed to get a safe value, where the 'defaultValue' parameter gives us the default value in case of an error
+  /// Where to use ? - here
+  @protected
+  @nonVirtual
+  dynamic
+      getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(
+          Map<String, dynamic> map,
+          List<String> listKeys,
+          int index,
+          dynamic defaultValue) {
+    try {
+      return map.containsKey(listKeys[index])
+          ? map[listKeys[index]]
+          : defaultValue;
+    } catch (e) {
+      return defaultValue;
     }
   }
 }

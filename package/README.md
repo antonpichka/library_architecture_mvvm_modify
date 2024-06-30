@@ -350,6 +350,13 @@ We create and write architectural objects in the order in which it will be faste
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - ParameterNumber - when a service or other parameters are still unknown, at the initial stage of development, we designate it with a number; the more services and other parameters, the larger the number. In the future we will not need to refactor the class
 - - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNumber
+- Additional names of methods that are needed by the main method:
+- - OperationModel(WhereNamed)[FromNamed]ParameterNamedWReleaseCallback:
+- - - See the example to understand exactly how these methods should be written and how to use them.
+- - OperationModel(WhereNamed)[FromNamed]ParameterNamedWTestCallback:
+- - - See the example to understand exactly how these methods should be written and how to use them.
+- - OperationModel(WhereNamed)[FromNamed]ParameterNamedWListKeys:
+- - - See the example to understand exactly how these methods should be written and how to use them.
 
 ## Documentation Explanation
 

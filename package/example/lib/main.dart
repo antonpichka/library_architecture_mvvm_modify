@@ -4,6 +4,16 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 @immutable
+final class FactoryObjectUtility {
+  const FactoryObjectUtility._();
+
+  /* ModelRepository */
+  static IPAddressRepository get getIPAddressRepository {
+    return IPAddressRepository();
+  }
+}
+
+@immutable
 final class ReadyDataUtility {
   static const String unknown = "unknown";
   static const String success = "success";
@@ -79,16 +89,13 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
   @protected
   final httpClientService = HttpClientService.instance;
 
-  IPAddressRepository(super.enumRWTMode);
-
   @protected
   @override
   T getBaseModelFromMapAndListKeys(
       Map<String, dynamic> map, List<String> listKeys) {
-    if (listKeys.isEmpty) {
-      return IPAddress("") as T;
-    }
-    return IPAddress(map.containsKey(listKeys[0]) ? map[listKeys[0]] : "") as T;
+    return IPAddress(
+        getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(
+            map, listKeys, 0, "")) as T;
   }
 
   @protected
@@ -97,14 +104,16 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
     return ListIPAddress(listModel) as Y;
   }
 
+  @nonVirtual
   Future<Result<T>> getIPAddressParameterHttpClientService() async {
     return getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
-        _getIPAddressParameterHttpClientServiceWReleaseCallback,
-        _getIPAddressParameterHttpClientServiceWTestCallback)();
+        getIPAddressParameterHttpClientServiceWReleaseCallback,
+        getIPAddressParameterHttpClientServiceWTestCallback)();
   }
 
+  @protected
   Future<Result<T>>
-      _getIPAddressParameterHttpClientServiceWReleaseCallback() async {
+      getIPAddressParameterHttpClientServiceWReleaseCallback() async {
     try {
       final response = await httpClientService.getParameterHttpClient
           ?.get(Uri.parse(ReadyDataUtility.iPAPI))
@@ -115,7 +124,7 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
       }
       final Map<String, dynamic> data = jsonDecode(response?.body ?? "");
       return Result<T>.success(getBaseModelFromMapAndListKeys(
-          data, [KeysHttpClientServiceUtility.iPAddressQQIp]));
+          data, getIPAddressParameterHttpClientServiceWListKeys));
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {
@@ -124,12 +133,18 @@ base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
     }
   }
 
+  @protected
   Future<Result<T>>
-      _getIPAddressParameterHttpClientServiceWTestCallback() async {
+      getIPAddressParameterHttpClientServiceWTestCallback() async {
     await Future.delayed(Duration(milliseconds: 1000));
     return Result<T>.success(getBaseModelFromMapAndListKeys(
         {KeysHttpClientServiceUtility.iPAddressQQIp: "121.121.12.12"},
-        [KeysHttpClientServiceUtility.iPAddressQQIp]));
+        getIPAddressParameterHttpClientServiceWListKeys));
+  }
+
+  @protected
+  List<String> get getIPAddressParameterHttpClientServiceWListKeys {
+    return [KeysHttpClientServiceUtility.iPAddressQQIp];
   }
 }
 
@@ -161,7 +176,7 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
 
 final class MainVM {
   // ModelRepository
-  final _iPAddressRepository = IPAddressRepository(EnumRWTMode.release);
+  final _iPAddressRepository = FactoryObjectUtility.getIPAddressRepository;
 
   // NamedUtility
 
@@ -228,6 +243,7 @@ final class MainVM {
 }
 
 Future<void> main() async {
+  BaseModelRepository.enumRWTMode = EnumRWTMode.release;
   final mainVM = MainVM();
   await mainVM.init();
   mainVM.dispose();
