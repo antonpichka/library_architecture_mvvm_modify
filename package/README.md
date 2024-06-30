@@ -357,6 +357,12 @@ We create and write architectural objects in the order in which it will be faste
 - - - See the example to understand exactly how these methods should be written and how to use them.
 - - OperationModel(WhereNamed)[FromNamed]ParameterNamedWListKeys:
 - - - See the example to understand exactly how these methods should be written and how to use them.
+- - OperationModel(WhereNamed)[FromNamed]ParameterNumberWReleaseCallback:
+- - - See the example to understand exactly how these methods should be written and how to use them.
+- - OperationModel(WhereNamed)[FromNamed]ParameterNumberWTestCallback:
+- - - See the example to understand exactly how these methods should be written and how to use them.
+- - OperationModel(WhereNamed)[FromNamed]ParameterNumberWListKeys:
+- - - See the example to understand exactly how these methods should be written and how to use them.
 
 ## Documentation Explanation
 

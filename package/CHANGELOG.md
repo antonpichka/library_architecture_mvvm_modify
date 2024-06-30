@@ -1,3 +1,7 @@
+## 3.0.6
+
+- Updated documentation in the 'ModelRepository' section
+
 ## 3.0.5
 
 - Updated 'BaseModelRepository'
