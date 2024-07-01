@@ -1,3 +1,7 @@
+## 3.0.7
+
+- Updated documentation in the 'NamedVM' section
+
 ## 3.0.6
 
 - Updated documentation in the 'ModelRepository' section

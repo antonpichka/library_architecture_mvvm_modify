@@ -77,7 +77,7 @@ We create and write architectural objects in the order in which it will be faste
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
 - - Void:
-- - - operation[OtherModelOrPrimitiveType] (WhereNamed)[FromNamed][ParameterNamed]
+- - - operation[OtherModelOrPrimitiveType](WhereNamed)[FromNamed][ParameterNamed]
 - - - - () - optional
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
@@ -99,7 +99,7 @@ We create and write architectural objects in the order in which it will be faste
 
 #### NamedVM
 
-- Private methods names, which are used in callback methods:
+- Private methods that are invoked by other methods using if:
 - - Summary in the form of variables: | Example:
 - - - Summary in the form of variables:
 - - - - numberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
@@ -420,7 +420,7 @@ OR
 - - Proof:
 - - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
 
-### Why are private methods written this way, which are used in callback methods of NamedVM, and generate other private methods within themselves ?
+### Why are private methods that are triggered by other methods written this way, using if in 'NamedVM' ?
 
 - My theory of effective development:
 - - Development speed:
@@ -430,11 +430,11 @@ OR
 
 ## Design Patterns
 
-- Design patterns used in "LAMM" (-Design Patterns/--Classes):
+- Design patterns used in 'LAMM' (-Design Patterns/--Classes):
 - - Observer:
 - - - BaseNamedStreamWState
 - - - DefaultStreamWState
-- - Similar to "Pub/Sub":
+- - Similar to 'Pub/Sub':
 - - - TempCacheService
 - - Singleton:
 - - - TempCacheService
@@ -445,8 +445,8 @@ OR
 - - Prototype:
 - - - BaseModel
 - - - BaseListModel
-- - Similar to "Adapter":
+- - Similar to 'Adapter':
 - - - ExceptionController
-- - Similar to "Strategy":
+- - Similar to 'Strategy':
 - - - EnumRWTMode
 - - - BaseModelRepository

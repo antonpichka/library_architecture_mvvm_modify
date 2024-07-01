@@ -1,6 +1,6 @@
 name: library_architecture_mvvm_modify
 description: MVVM Modify for Dart but you can also port to another language
-version: 3.0.6
+version: 3.0.7
 repository: https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package
 
 environment:
