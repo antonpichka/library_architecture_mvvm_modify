@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-/// Provides certain data, takes it from the class 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService'
+/// Provides certain data, takes it from the class 'ModelRepository'
 /// Where to use ? - anywhere
 @immutable
 abstract base class BaseModel {

@@ -2,7 +2,7 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 import 'package:meta/meta.dart';
 
 /// Exception Handling
-/// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
+/// Where to use ? - use in 'NamedService','ModelRepository' classes
 @immutable
 final class NetworkException extends BaseException {
   /// Using this parameter we can get detailed information about the exception
@@ -18,13 +18,13 @@ final class NetworkException extends BaseException {
   final String? descriptionStatusCode;
 
   /// Initialize the parameters 'thisClass', 'key', 'statusCode', 'nameStatusCode (optional)', 'descriptionStatusCode (optional)'
-  /// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
+  /// Where to use ? - use in 'NamedService','ModelRepository' classes
   NetworkException(Object thisClass, String key, this.statusCode,
       [this.nameStatusCode, this.descriptionStatusCode])
       : super(thisClass, NetworkException, key);
 
   /// Initialize the parameters 'thisClass', 'key', 'statusCode'
-  /// Where to use ? - use in 'NamedService','OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' classes
+  /// Where to use ? - use in 'NamedService','ModelRepository' classes
   factory NetworkException.fromKeyAndStatusCode(
       Object thisClass, String key, int statusCode) {
     switch (statusCode) {

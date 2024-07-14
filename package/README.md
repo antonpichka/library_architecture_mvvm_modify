@@ -9,7 +9,6 @@
 - [Example](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#example)
 - [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
 - [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
-- [Documentation Explanation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation-explanation)
 - [Design Patterns](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#design-patterns)
 
 ## Example
@@ -42,15 +41,18 @@
 
 ### Architectural Objects
 
-We create and write architectural objects in the order in which it will be faster and better for the developer to run all this code. Example: We wrote the design and basic setup in the 'NamedVM' class, and then we started writing 'DataForNamed' to add simple logic for the data loading simulator and displaying a list, and maybe add error, and only then we write 'Model', 'ListModel' to show the concretive data in the list that we need it, and at the end we write 'NamedService' and 'ModelRepository' to load real data (We take into account that we will return to these objects. Example: you write 'DataForNamed' and started writing a 'Model', and then returned to 'DataForNamed' to add this 'Model'.)
+- We create and write architectural objects in the order in which it will be faster and better for the developer to run all this code. Example: We wrote the design and basic setup in the 'NamedVM' class, and then we started writing 'DataForNamed' to add simple logic for the data loading simulator and displaying a list, and maybe add error, and only then we write 'Model', 'ListModel' to show the concretive data in the list that we need it, and at the end we write 'NamedService' and 'ModelRepository' to load real data (We take into account that we will return to these objects. Example: you write 'DataForNamed' and started writing a 'Model', and then returned to 'DataForNamed' to add this 'Model'.)
+- To cache temporary data and then share it, that is, the class 'TempCacheService'
 
-123456 [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)
-1) [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM)
-2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed)
-3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model)
-4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel)
-5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService)
-6) [ModelRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelRepository)
+Number. Name - Inheritance | Refactoring
+
+123456 . [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility) - Refactoring
+1) [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM) - Refactoring
+2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed) - Refactoring
+3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model) - Inheritance
+4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel) - Inheritance
+5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Refactoring (Only add new methods)
+6) [ModelRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelRepository) - Inheritance
 
 #### NamedUtility
 
@@ -363,70 +365,6 @@ We create and write architectural objects in the order in which it will be faste
 - - - See the example to understand exactly how these methods should be written and how to use them.
 - - OperationModel(WhereNamed)[FromNamed]ParameterNumberWListKeys:
 - - - See the example to understand exactly how these methods should be written and how to use them.
-
-## Documentation Explanation
-
-- The explanation will be supported by 'Psychology' (Facts) or 'My theory of effective development' (Personal opinion)
-- Information will be provided in the following template:
-```
-### Question ?
-- Psychology:
-- - Brief information:
-- - - {message}
-- - Proof:
-- - - {url}
-```
-
-OR
-
-```
-### Question ?
-- My theory of effective development:
-- - Development speed:
-- - - (+)||(-){message}
-- - Development quality:
-- - - (+)||(-){message}
-- - Speed && Quality of development:
-- - - (+)||(-){message}
-```
-
-### Why separators ?
-
-- Psychology:
-- - Brief information:
-- - - Separators help you understand faster
-- - - In the simplest terms, gestalt theory is based on the idea that the human brain will attempt to simplify and organize complex images or designs that consist of many elements, by subconsciously arranging the parts into an organized system that creates a whole, rather than just a series of disparate elements.
-- - Proof:
-- - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
-
-### Why are classes named this way and inherited only on one branch ?
-
-- My theory of effective development:
-- - Development speed:
-- - - (+) The name of the heirs is very simple, because we add 'First', 'Second', 'Third' at the end, and there is no need to think about the name of the class
-- - - (+) It is easy to determine which class to inherit and use, because it is numbered
-- - Development quality:
-- - - (-) A simple class name is harmful, because when the programmer looks at the file name (which is the name of the class), he will not understand what exactly has been changed in the class
-- - Speed && Quality of development:
-- - - (+) Inheritance along one branch simplifies development, because if there is more than one branch, then confusion arises, especially if one of the branches has inheritance to other branches
-
-### Why are 'General Rules' written this way and why do we need 'General Rules' ?
-
-- Psychology:
-- - Brief information:
-- - - Separators help you understand faster
-- - - We replace the keywords with 'W', and thus these keywords are written in the name of the class, method, only once
-- - - In the simplest terms, gestalt theory is based on the idea that the human brain will attempt to simplify and organize complex images or designs that consist of many elements, by subconsciously arranging the parts into an organized system that creates a whole, rather than just a series of disparate elements.
-- - Proof:
-- - - https://en.wikipedia.org/wiki/Gestalt_psychology#Perceptual_organisation_forms
-
-### Why are private methods that are triggered by other methods written this way, using if in 'NamedVM' ?
-
-- My theory of effective development:
-- - Development speed:
-- - - (-) The methods are very long, because of this we spend more time than we would like
-- - Speed && Quality of development:
-- - - (+) Let me give you an example: we have the following banks: 'CreditBank', 'SonBank', 'QwBank', 'FsqBank', where one bank absorbs all subsequent banks in order, and you need to choose which bank name is more informative . There are 2 options: 1) 'CreditBank'. 2) 'CreditSonQwFsqBank'. Of the proposed options, the second option will be more informative: 'CreditSonQwFsqBank'. This name clearly indicates which banks were absorbed and in what order, which makes it more informative for human perception. That's why the methods are written this way.
 
 ## Design Patterns
 

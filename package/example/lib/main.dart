@@ -11,6 +11,13 @@ final class FactoryObjectUtility {
   static IPAddressRepository get getIPAddressRepository {
     return IPAddressRepository();
   }
+
+  /* NamedStreamWState */
+  static BaseNamedStreamWState<DataForMainVM>
+      get getNamedStreamWStateWhereDataWMainVM {
+    return DefaultStreamWState<DataForMainVM>(
+        DataForMainVM(true, const IPAddress("")));
+  }
 }
 
 @immutable
@@ -72,13 +79,11 @@ final class HttpClientService {
   static final HttpClientService instance = HttpClientService._();
   http.Client? _httpClient;
 
-  HttpClientService._();
+  HttpClientService._() {
+    _httpClient = http.Client();
+  }
 
   http.Client? get getParameterHttpClient {
-    if (_httpClient != null) {
-      return _httpClient;
-    }
-    _httpClient = http.Client();
     return _httpClient;
   }
 }
@@ -184,8 +189,8 @@ final class MainVM {
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
 
   MainVM() {
-    _namedStreamWState = DefaultStreamWState<DataForMainVM>(
-        DataForMainVM(true, const IPAddress("")));
+    _namedStreamWState =
+        FactoryObjectUtility.getNamedStreamWStateWhereDataWMainVM;
   }
 
   Future<void> init() async {

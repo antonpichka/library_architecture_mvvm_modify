@@ -2,11 +2,11 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 import 'package:meta/meta.dart';
 
 /// Temporary data storage
-/// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+/// Where to use ? - use in 'ModelRepository' class
 @immutable
 final class TempCacheService {
   /// Singleton
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  /// Where to use ? - use in 'ModelRepository' class
   static final TempCacheService instance = TempCacheService._();
 
   /// It is in the map structure that the data is stored
@@ -74,7 +74,7 @@ final class TempCacheService {
   /// get - get object
   /// FromKeyTempCache - get the key from the temporary cache to get data from the temporary cache
   /// ParameterTempCache - getting data from the temporary cache
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  /// Where to use ? - use in 'ModelRepository' class
   dynamic getFromKeyTempCacheParameterTempCache(String keyTempCache) {
     if (!_tempCache.containsKey(keyTempCache)) {
       return throw LocalException(
@@ -86,7 +86,7 @@ final class TempCacheService {
   /// listenStream - register a listener
   /// FromKeyTempCacheAndCallback - we get the key from the callback and the callback itself
   /// ParameterOne - add a new callback to '_tempCacheWListAction'
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  /// Where to use ? - use in 'ModelRepository' class
   void listenStreamFromKeyTempCacheAndCallbackParameterOne(
       String keyTempCache, void Function(dynamic event) callback) {
     final tempCacheWListAction = _tempCacheWListAction;
@@ -101,20 +101,18 @@ final class TempCacheService {
   /// update - update an object in the temporary cache
   /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
   /// ParameterTempCache - temporary cache update
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  /// Where to use ? - use in 'ModelRepository' class
   void updateFromKeyTempCacheAndValueParameterTempCache(
       String keyTempCache, dynamic value) {
     _tempCache[keyTempCache] = value;
   }
 
-  /// update - update an object in the temporary cache
-  /// WhereStreamNotificationIsPossible - notify stream (if it exists and we listen)
+  /// updateWNotification - update an object in the temporary cache and notify stream (if it exists and we listen)
   /// FromKeyTempCacheAndValue - get the key and value to update the data in the temporary cache
   /// ParameterOne - temporary cache update and notify stream (if it exists and we listen)
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
-  void
-      updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParameterOne(
-          String keyTempCache, dynamic value) {
+  /// Where to use ? - use in 'ModelRepository' class
+  void updateWNotificationFromKeyTempCacheAndValueParameterOne(
+      String keyTempCache, dynamic value) {
     updateFromKeyTempCacheAndValueParameterTempCache(keyTempCache, value);
     final tempCacheWListAction = _tempCacheWListAction;
     if (!tempCacheWListAction.containsKey(keyTempCache)) {
@@ -130,7 +128,7 @@ final class TempCacheService {
   /// delete - delete an object in the temporary cache
   /// FromKeyTempCache - get the key to delete the data in the temporary cache
   /// ParameterTempCache - removal from temporary cache
-  /// Where to use ? - use in 'OperationEEModel(EEWhereNamed)[EEFromNamed]EEParameterNamedService' class
+  /// Where to use ? - use in 'ModelRepository' class
   void deleteFromKeyTempCacheParameterTempCache(String keyTempCache) {
     _tempCache.remove(keyTempCache);
   }

@@ -1,3 +1,16 @@
+## 3.1.0
+
+- Fix documentation
+
+## 3.0.9
+
+- Fix documentation
+
+## 3.0.8
+
+- Updated documentation
+- Rename method in 'TempCacheService' class from 'updateWhereStreamNotificationIsPossibleFromKeyTempCacheAndValueParameterOne' to 'updateWNotificationFromKeyTempCacheAndValueParameterOne'
+
 ## 3.0.7
 
 - Updated documentation in the 'NamedVM' section
