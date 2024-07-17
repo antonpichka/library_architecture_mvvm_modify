@@ -57,18 +57,17 @@ Number. Name - Inheritance | Refactoring
 
 #### NamedUtility
 
-- Type classes - 'KeysNamedServiceUtility', 'KeysNamedUtility', 'NamedUtility':
-- - KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models:
-- - - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
-- - - - QQ - needed as a separator that helps to quickly understand what this constant does
-- - KeysNamedUtility - a class whose keys belong to other classes and are attached to methods and can be used to store errors and various successes, etc...:
-- - - Example - Class 'DataForAntiDDosSystemView', Key 'GetExceptionInStringWhereNotEqualsParametersCodeAndInputCode', Code 'static const String dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode = "dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode"':
-- - - - QQ - needed as a separator that helps to quickly understand what this constant does
-- - KeysAPIUtility - exception, where the key is the name of the service you are using (not the class)
-- - - Example - Service 'Firebase', Key 'ProjectName', Code 'static const String firebaseQQProjectName = "example"'
-- - - - QQ - needed as a separator that helps to quickly understand what this constant does
-- - NamedUtility - it could be anything:
-- - - Example - TimerUtility,InsertUserUtility (To NamedService), etc...
+- KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models:
+- - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
+- - - QQ - needed as a separator that helps to quickly understand what this constant does
+- KeysNamedUtility - a class whose keys belong to other classes and are attached to methods and can be used to store errors and various successes, etc...:
+- - Example - Class 'DataForAntiDDosSystemView', Key 'GetExceptionInStringWhereNotEqualsParametersCodeAndInputCode', Code 'static const String dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode = "dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode"':
+- - - QQ - needed as a separator that helps to quickly understand what this constant does
+- KeysAPIUtility - exception, where the key is the name of the service you are using (not the class)
+- - Example - Service 'Firebase', Key 'ProjectName', Code 'static const String firebaseQQProjectName = "example"'
+- - - QQ - needed as a separator that helps to quickly understand what this constant does
+- NamedUtility - it could be anything:
+- - Example - TimerUtility,InsertUserUtility (To NamedService), etc...
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
