@@ -1,3 +1,7 @@
+## 3.1.1
+
+- Update documentation in the 'NamedUtility','NamedVM','Model' sections and add section 'Software Architecture Evaluation Theory'
+
 ## 3.1.0
 
 - Fix documentation
