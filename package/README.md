@@ -10,6 +10,7 @@
 - [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
 - [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
 - [Design Patterns](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#design-patterns)
+- [Software Architecture Evaluation Theory](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#software-architecture-evaluation-theory)
 
 ## Example
 
@@ -51,7 +52,7 @@ Number. Name - Inheritance | Refactoring
 2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed) - Refactoring
 3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model) - Inheritance
 4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel) - Inheritance
-5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Refactoring (Only add new methods)
+5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Refactoring
 6) [ModelRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelRepository) - Inheritance
 
 #### NamedUtility
@@ -79,7 +80,7 @@ Number. Name - Inheritance | Refactoring
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
 - - Void:
-- - - operation[OtherModelOrPrimitiveType](WhereNamed)[FromNamed][ParameterNamed]
+- - - operation[OtherModelOrPrimitiveType] (WhereNamed)[FromNamed][ParameterNamed]
 - - - - () - optional
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
@@ -101,7 +102,12 @@ Number. Name - Inheritance | Refactoring
 
 #### NamedVM
 
-- Private methods that are invoked by other methods using if:
+- A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedWNamedVM', and the directories will also be located:
+- - Example:
+- - - UserVM
+- - - - UserWMoviesVM
+- - - - - UserWMoviesWActorsVM
+- Private methods that are invoked by other methods using if (Not layout/UI/design methods):
 - - Summary in the form of variables: | Example:
 - - - Summary in the form of variables:
 - - - - numberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
@@ -193,6 +199,12 @@ Number. Name - Inheritance | Refactoring
 
 #### Model
 
+- If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model (ModelWNamed):
+- - Example:
+- - - Matches:
+- - - - MatchesWDebut
+- - - - MatchesWMiddlegame
+- - - - MatchesWEndgame
 - Inheritance classes: 
 - - Names of inherited classes:
 - - - ModelNumber:
@@ -217,6 +229,15 @@ Number. Name - Inheritance | Refactoring
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
+- - - getModel(WhereNamed)[FromNamed]
+- - - - () - optional
+- - - - [] - if available
+- - - - getModel - when we return an object of our own class
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getModelWhereNamedFromOne))
+- - - - Regarding duplicates - at the end add 'First', 'Second', etc...
+- - - - Local variable name - model(WhereNamed)[FromNamed]
 - - Void:
 - - - operation[OtherModelOrPrimitiveType] (WhereNamed)[FromNamed][ParameterNamed]
 - - - - () - optional
@@ -388,3 +409,23 @@ Number. Name - Inheritance | Refactoring
 - - Similar to 'Strategy':
 - - - EnumRWTMode
 - - - BaseModelRepository
+
+## Software Architecture Evaluation Theory
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/roac_w_ioac.png" alt="ROAC W IOAC"/>
+</p>
+
+- Refactoring Of Architectural Components (ROAC):
+- - Code rules
+- Inheritance Of Architectural Components (IOAC):
+- - SOLID principles
+- - Design Patterns
+- - Code rules
+- Calculation formula:
+- - Inaccurate calculation
+- - Input: ROAC = 4. IOAC = 3:
+- - - Formula: IOAC / (ROAC + IOAC) * 100 = 43%:
+- - - - 0-30% or 70-100% - this is bad
+- - - - 50-55% - it's perfect
+- Note: We take into account that inheritance and refactoring must be correctly implemented, and the program must combine everything necessary, otherwise your architecture will not be able to take part in the evaluation, since it does not meet the needs of modern applications
