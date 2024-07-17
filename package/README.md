@@ -64,6 +64,9 @@ Number. Name - Inheritance | Refactoring
 - - KeysNamedUtility - a class whose keys belong to other classes and are attached to methods and can be used to store errors and various successes, etc...:
 - - - Example - Class 'DataForAntiDDosSystemView', Key 'GetExceptionInStringWhereNotEqualsParametersCodeAndInputCode', Code 'static const String dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode = "dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode"':
 - - - - QQ - needed as a separator that helps to quickly understand what this constant does
+- - KeysAPIUtility - exception, where the key is the name of the service you are using (not the class)
+- - - Example - Service 'Firebase', Key 'ProjectName', Code 'static const String firebaseQQProjectName = "example"'
+- - - - QQ - needed as a separator that helps to quickly understand what this constant does
 - - NamedUtility - it could be anything:
 - - - Example - TimerUtility,InsertUserUtility (To NamedService), etc...
 - Methods names:
@@ -416,6 +419,7 @@ Number. Name - Inheritance | Refactoring
 <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/roac_w_ioac.png" alt="ROAC W IOAC"/>
 </p>
 
+- We need to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will waste a lot of time making the bodies of all methods abstract (i.e., encapsulate the code in the second methods), and If we refactor everything, we will lose the quality of the code, and this will lead to errors in the program, so it is necessary to balance between inheritance and refactoring
 - Refactoring Of Architectural Components (ROAC):
 - - Code rules
 - Inheritance Of Architectural Components (IOAC):
@@ -424,8 +428,11 @@ Number. Name - Inheritance | Refactoring
 - - Code rules
 - Calculation formula:
 - - Inaccurate calculation
-- - Input: ROAC = 4. IOAC = 3:
-- - - Formula: IOAC / (ROAC + IOAC) * 100 = 43%:
-- - - - 0-30% or 70-100% - this is bad
-- - - - 50-55% - it's perfect
+- - Input: 
+- - - ROAC = 4 (NamedUtility, NamedVM, DataForNamed, NamedService)
+- - - IOAC = 3 (Model, ListModel, ModelRepository)
+- - - - Formula:
+- - - - - IOAC / (ROAC + IOAC) * 100 = 43%:
+- - - - - - 0-30% or 70-100% - this is bad
+- - - - - - 50-55% - it's perfect
 - Note: We take into account that inheritance and refactoring must be correctly implemented, and the program must combine everything necessary, otherwise your architecture will not be able to take part in the evaluation, since it does not meet the needs of modern applications
