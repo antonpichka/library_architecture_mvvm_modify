@@ -5,8 +5,8 @@ Future<void> main() async {
   final key = "Key";
   tempCacheService.updateWNotificationFromKeyTempCacheAndValueParameterOne(
       key, "One");
-  final fromKeyTempCacheParameterTempCache =
-      tempCacheService.getFromKeyTempCacheParameterTempCache(key);
+  final fromKeyTempCacheParameterTempCache = tempCacheService
+      .getFromKeyTempCacheAndDefaultValueParameterTempCache(key, "");
   debugPrint(
       "FromKeyTempCacheParameterTempCache: $fromKeyTempCacheParameterTempCache");
   tempCacheService.listenStreamFromKeyTempCacheAndCallbackParameterOne(key,

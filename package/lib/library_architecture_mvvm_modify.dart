@@ -21,6 +21,7 @@ export 'src/base_named_state/default_state.dart';
 export 'src/base_named_stream_w_state/base_named_stream_w_state.dart';
 export 'src/base_named_stream_w_state/default_stream_w_state.dart';
 
+export 'src/named_service/iteration_service.dart';
 export 'src/named_service/temp_cache_service.dart';
 
 export 'src/current_model_w_index.dart';
@@ -28,4 +29,5 @@ export 'src/enum_rwt_mode.dart';
 export 'src/exception_controller.dart';
 export 'src/i_dispose.dart';
 export 'src/result.dart';
+export 'src/temp_cache_provider.dart';
 export 'src/utility.dart';

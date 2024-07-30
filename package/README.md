@@ -43,7 +43,7 @@
 ### Architectural Objects
 
 - We create and write architectural objects in the order in which it will be faster and better for the developer to run all this code. Example: We wrote the design and basic setup in the 'NamedVM' class, and then we started writing 'DataForNamed' to add simple logic for the data loading simulator and displaying a list, and maybe add error, and only then we write 'Model', 'ListModel' to show the concretive data in the list that we need it, and at the end we write 'NamedService' and 'ModelRepository' to load real data (We take into account that we will return to these objects. Example: you write 'DataForNamed' and started writing a 'Model', and then returned to 'DataForNamed' to add this 'Model'.)
-- To cache temporary data and then share it, that is, the class 'TempCacheService'
+- To exchange data between VMs, without using a repository, use 'TempCacheProvider' directly ('TempCacheService' is deprecated, but will continue to exist in the library)
 
 Number. Name - Inheritance | Refactoring
 
@@ -57,6 +57,11 @@ Number. Name - Inheritance | Refactoring
 
 #### NamedUtility
 
+- KeysTempCacheProviderUtility - keys can be thought of as the name of any classes (even models) that you store or if you store their variables
+- - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
+- - - QQ - needed as a separator that helps to quickly understand what this constant does
+- - Example - Enum (Or Class) 'EnumBottomNavigationBar', Key 'EnumBottomNavigationBar', Code 'static const String enumBottomNavigationBar = "enumBottomNavigationBar";'
+- - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models:
 - - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
 - - - QQ - needed as a separator that helps to quickly understand what this constant does
@@ -104,6 +109,8 @@ Number. Name - Inheritance | Refactoring
 
 #### NamedVM
 
+- Classes Names:
+- - Do not use this symbol in the class name as it is used below: 'W'
 - A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedWNamedVM', and the directories will also be located:
 - - Example:
 - - - UserVM
@@ -201,6 +208,8 @@ Number. Name - Inheritance | Refactoring
 
 #### Model
 
+- Classes Names:
+- - Do not use this symbol in the class name as it is used below: 'W'
 - If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model (ModelWNamed):
 - - Example:
 - - - Matches:
@@ -263,6 +272,8 @@ Number. Name - Inheritance | Refactoring
 
 #### ListModel
 
+- Classes Names:
+- - Do not use this symbol in the class name as it is used below: 'W'
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ListModelNumber:

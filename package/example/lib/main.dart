@@ -185,10 +185,14 @@ final class MainVM {
 
   // NamedUtility
 
+  // TempCacheProvider
+  late final TempCacheProvider _tempCacheProvider;
+
   // NamedStreamWState
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
 
   MainVM() {
+    _tempCacheProvider = TempCacheProvider();
     _namedStreamWState =
         FactoryObjectUtility.getNamedStreamWStateWhereDataWMainVM;
   }
@@ -203,6 +207,7 @@ final class MainVM {
   }
 
   void dispose() {
+    _tempCacheProvider.dispose([]);
     _namedStreamWState.dispose();
   }
 

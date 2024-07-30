@@ -15,13 +15,13 @@ final class TempCacheService {
 
   /// It is in the map structure that the data is stored o about callbacks
   /// Where to use ? - here
-  final Map<String, List<void Function(dynamic event)>> _tempCacheWListAction;
+  final Map<String, Map<int, void Function(dynamic event)>> _tempCacheWStreams;
 
   /// Initialize the parameters '_tempCache','_tempCacheWStreamController'
   /// Where to use ? - here
   TempCacheService._()
       : _tempCache = {},
-        _tempCacheWListAction = {};
+        _tempCacheWStreams = {};
 
   /// clearTempCache - clear temporary cache
   /// ParameterInstance - use a static instances
@@ -37,12 +37,12 @@ final class TempCacheService {
   /// Where to use ? - anywhere (just not in models)
   static void closeStreamFromKeyTempCacheParameterInstance(
       String keyTempCache) {
-    final tempCacheWListAction = instance._tempCacheWListAction;
-    if (!tempCacheWListAction.containsKey(keyTempCache)) {
+    final tempCacheWStreams = instance._tempCacheWStreams;
+    if (!tempCacheWStreams.containsKey(keyTempCache)) {
       return;
     }
-    final listAction = tempCacheWListAction[keyTempCache];
-    listAction?.clear();
+    final streams = tempCacheWStreams[keyTempCache];
+    streams?.clear();
   }
 
   /// closeStreams - close the streams
@@ -51,13 +51,13 @@ final class TempCacheService {
   /// Where to use ? - anywhere (just not in models)
   static void closeStreamsFromListKeyTempCacheParameterInstance(
       List<String> listKeyTempCache) {
-    final tempCacheWListAction = instance._tempCacheWListAction;
+    final tempCacheWStreams = instance._tempCacheWStreams;
     for (String keyTempCache in listKeyTempCache) {
-      if (!tempCacheWListAction.containsKey(keyTempCache)) {
+      if (!tempCacheWStreams.containsKey(keyTempCache)) {
         continue;
       }
-      final listAction = tempCacheWListAction[keyTempCache];
-      listAction?.clear();
+      final streams = tempCacheWStreams[keyTempCache];
+      streams?.clear();
     }
   }
 
@@ -65,20 +65,20 @@ final class TempCacheService {
   /// ParameterInstance - use a static instances
   /// Where to use ? - anywhere (just not in models)
   static void closeStreamsParameterInstance() {
-    final tempCacheWListAction = instance._tempCacheWListAction;
-    tempCacheWListAction.forEach((key, value) {
+    final tempCacheWStreams = instance._tempCacheWStreams;
+    tempCacheWStreams.forEach((key, value) {
       value.clear();
     });
   }
 
   /// get - get object
-  /// FromKeyTempCache - get the key from the temporary cache to get data from the temporary cache
+  /// FromKeyTempCacheAndDefaultValue - get the key from the temporary cache to get data from the temporary cache
   /// ParameterTempCache - getting data from the temporary cache
   /// Where to use ? - use in 'ModelRepository' class
-  dynamic getFromKeyTempCacheParameterTempCache(String keyTempCache) {
+  dynamic getFromKeyTempCacheAndDefaultValueParameterTempCache(
+      String keyTempCache, dynamic defaultValue) {
     if (!_tempCache.containsKey(keyTempCache)) {
-      return throw LocalException(
-          this, EnumGuilty.developer, keyTempCache, "No exists key");
+      return defaultValue;
     }
     return _tempCache[keyTempCache];
   }
@@ -89,13 +89,31 @@ final class TempCacheService {
   /// Where to use ? - use in 'ModelRepository' class
   void listenStreamFromKeyTempCacheAndCallbackParameterOne(
       String keyTempCache, void Function(dynamic event) callback) {
-    final tempCacheWListAction = _tempCacheWListAction;
-    if (!tempCacheWListAction.containsKey(keyTempCache)) {
-      tempCacheWListAction[keyTempCache] = List.empty(growable: true);
-      tempCacheWListAction[keyTempCache]?.add(callback);
+    listenStreamFromKeyTempCacheAndIterationAndCallbackParameterOne(
+        keyTempCache,
+        IterationService.instance.newValueParameterIteration(),
+        callback);
+  }
+
+  void listenStreamFromKeyTempCacheAndIterationAndCallbackParameterOne(
+      String keyTempCache,
+      int iteration,
+      void Function(dynamic event) callback) {
+    final tempCacheWStreams = _tempCacheWStreams;
+    if (!tempCacheWStreams.containsKey(keyTempCache)) {
+      tempCacheWStreams[keyTempCache] = <int, void Function(dynamic event)>{};
+      tempCacheWStreams[keyTempCache]?[iteration] = callback;
       return;
     }
-    tempCacheWListAction[keyTempCache]?.add(callback);
+    final streams = tempCacheWStreams[keyTempCache] ?? {};
+    if (streams.containsKey(iteration)) {
+      throw LocalException(
+          this,
+          EnumGuilty.developer,
+          "{ $keyTempCache---$iteration }",
+          "Under such a key and iteration there already exists a listener: { $keyTempCache---$iteration }");
+    }
+    tempCacheWStreams[keyTempCache]?[iteration] = callback;
   }
 
   /// update - update an object in the temporary cache
@@ -114,15 +132,25 @@ final class TempCacheService {
   void updateWNotificationFromKeyTempCacheAndValueParameterOne(
       String keyTempCache, dynamic value) {
     updateFromKeyTempCacheAndValueParameterTempCache(keyTempCache, value);
-    final tempCacheWListAction = _tempCacheWListAction;
-    if (!tempCacheWListAction.containsKey(keyTempCache)) {
+    final tempCacheWStreams = _tempCacheWStreams;
+    if (!tempCacheWStreams.containsKey(keyTempCache)) {
       return;
     }
-    final listAction =
-        tempCacheWListAction[keyTempCache] ?? List.empty(growable: true);
-    for (final void Function(dynamic event) itemAction in listAction) {
-      itemAction(value);
+    final streams = tempCacheWStreams[keyTempCache];
+    for (final MapEntry<int, void Function(dynamic event)> entry
+        in streams!.entries) {
+      entry.value(value);
     }
+  }
+
+  void disposeStreamFromKeyTempCacheAndIterationParameterOne(
+      String keyTempCache, int iteration) {
+    final tempCacheWStreams = _tempCacheWStreams;
+    if (!tempCacheWStreams.containsKey(keyTempCache)) {
+      return;
+    }
+    final streams = tempCacheWStreams[keyTempCache];
+    streams?.remove(iteration);
   }
 
   /// delete - delete an object in the temporary cache

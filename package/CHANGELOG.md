@@ -1,3 +1,9 @@
+## 4.0.0
+
+- A new 'TempCacheProvider' object has been created, with which you can share data between 'NamedVM' directly. The reason for this was a data leak problem in 'TempCacheService', it was impossible to close a stream in a certain 'NamedVM'. And there was also a problem in that 'TempCacheService' had to connect to 'ModelRepository' in order to then get the data we needed from 'NamedVM' via 'ModelRepository'. Of course, this took a lot of time, but now it doesn't
+- 'TempCacheService' is used inside 'TempCacheProvider', and in the future use only 'TempCacheProvider'
+- One method name in 'TempCacheService' was changed, the code will have to be refactored a little (Yes, it's my fault, but it was necessary)
+
 ## 3.1.1
 
 - Update documentation in the 'NamedUtility','NamedVM','Model' sections and add section 'Software Architecture Evaluation Theory'
