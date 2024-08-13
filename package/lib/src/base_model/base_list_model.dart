@@ -23,14 +23,15 @@ abstract base class BaseListModel<T extends BaseModel> {
   String toString();
 
   /// sorting - sorting list of models
-  /// FromModelWNamedWNamedWNamedIterator - we get the iterator itself to sort
+  /// FromModelTTNamedTTNamedTTNamedTTIterator - we get the iterator itself to sort
   /// ParameterListModel - the 'listModel' parameter gets the sorted list
   /// Where to use ? - preferably in descendant classes and in the 'RWTMode' class, but there may be exceptions
   @nonVirtual
-  void sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
-      BaseModelWNamedWNamedWNamedIterator<T> modelWNamedWNamedWNamedIterator) {
+  void sortingFromModelTTNamedTTNamedTTNamedTTIteratorParameterListModel(
+      BaseModelTTNamedTTNamedTTNamedTTIterator<T>
+          modelTTNamedTTNamedTTNamedTTIterator) {
     final sortedListModelFromNewListModelParameterListModelIterator =
-        modelWNamedWNamedWNamedIterator
+        modelTTNamedTTNamedTTNamedTTIterator
             .getSortedListModelFromNewListModelParameterListModelIterator(
                 listModel);
     listModel.isNotEmpty ? listModel.clear() : null;

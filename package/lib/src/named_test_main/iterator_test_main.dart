@@ -42,8 +42,8 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
 }
 
 @immutable
-base class UserBalanceWOrderByDescWMoneyIterator<T extends UserBalance>
-    extends BaseModelWNamedWNamedWNamedIterator<T> {
+base class UserBalanceTTOrderByDescTTMoneyTTIterator<T extends UserBalance>
+    extends BaseModelTTNamedTTNamedTTNamedTTIterator<T> {
   @protected
   @override
   CurrentModelWIndex<T> get currentModelWIndex {
@@ -76,19 +76,22 @@ void main() {
     UserBalance("Sexy", -1)
   ]);
   debugPrint("Before: $listUserBalance"); // 3, 1, 10, 5, 7, -1
-  final userBalanceWOrderByDescWMoneyIterator =
-      UserBalanceWOrderByDescWMoneyIterator<UserBalance>();
-  listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
-      userBalanceWOrderByDescWMoneyIterator);
+  final userBalanceTTOrderByDescTTMoneyTTIterator =
+      UserBalanceTTOrderByDescTTMoneyTTIterator<UserBalance>();
+  listUserBalance
+      .sortingFromModelTTNamedTTNamedTTNamedTTIteratorParameterListModel(
+          userBalanceTTOrderByDescTTMoneyTTIterator);
   debugPrint("After: $listUserBalance"); // 10, 7, 5, 3, 1, -1
   listUserBalance
       .updateFromNewModelParameterListModel(UserBalance("Duramichi", 15));
-  listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
-      userBalanceWOrderByDescWMoneyIterator);
+  listUserBalance
+      .sortingFromModelTTNamedTTNamedTTNamedTTIteratorParameterListModel(
+          userBalanceTTOrderByDescTTMoneyTTIterator);
   debugPrint("After(Two): $listUserBalance"); // 15, 10, 7, 3, 1, -1
   listUserBalance.deleteFromUniqueIdByModelParameterListModel("Mitsuya");
-  listUserBalance.sortingFromModelWNamedWNamedWNamedIteratorParameterListModel(
-      userBalanceWOrderByDescWMoneyIterator);
+  listUserBalance
+      .sortingFromModelTTNamedTTNamedTTNamedTTIteratorParameterListModel(
+          userBalanceTTOrderByDescTTMoneyTTIterator);
   debugPrint("After(Three): $listUserBalance"); // 15, 7, 3, 1, -1
 }
 // EXPECTED OUTPUT:

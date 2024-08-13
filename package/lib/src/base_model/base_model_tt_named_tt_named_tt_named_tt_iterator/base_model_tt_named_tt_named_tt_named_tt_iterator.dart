@@ -4,7 +4,8 @@ import 'package:meta/meta.dart';
 /// Sorts the data, 'ListModel', in common parlance 'Iterator'
 /// Where to use ? - use in 'ListModel' class
 @immutable
-abstract base class BaseModelWNamedWNamedWNamedIterator<T extends BaseModel> {
+abstract base class BaseModelTTNamedTTNamedTTNamedTTIterator<
+    T extends BaseModel> {
   /// This list of models is used to sort the data
   /// Where to use ? - used to the method 'current' and nowhere else
   @protected
@@ -12,7 +13,7 @@ abstract base class BaseModelWNamedWNamedWNamedIterator<T extends BaseModel> {
 
   /// Initialize the parameter 'listModelIterator'
   /// Where to use ? - preferably use in 'BaseListModel' class
-  BaseModelWNamedWNamedWNamedIterator()
+  BaseModelTTNamedTTNamedTTNamedTTIterator()
       : listModelIterator = List.empty(growable: true);
 
   /// currentModelWIndex - we get a 'CurrentModelWIndex'

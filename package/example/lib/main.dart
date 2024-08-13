@@ -21,10 +21,30 @@ final class FactoryObjectUtility {
 }
 
 @immutable
+final class KeysUrlEndpointUtility {
+  /* JsonipAPI */
+  static const String jsonipAPI = "https://jsonip.com/";
+  static const String jsonipAPIQQProviders = "$jsonipAPI/providers";
+
+  const KeysUrlEndpointUtility._();
+}
+
+/// This is not used in the code, but in the future it will be necessary to add navigation,
+/// and if we have, for example, "Auth", "UnAuth", on the page "MainVM" (Refactoring names pages to "AuthMainVM", "UnAuthMainVM"),
+/// then the class in which the redirect logic and the build logic of a certain page will be will be in a class such as "NamedMainVMRouter",
+/// where the suffix will be "Router", and the prefix will be "Named" (Auth,UnAuth)
+@immutable
+final class KeysRoutesUtility {
+  /* NamedMainVMRouter */
+  static const String namedMainVMRouter = "/";
+
+  const KeysRoutesUtility._();
+}
+
+@immutable
 final class ReadyDataUtility {
   static const String unknown = "unknown";
   static const String success = "success";
-  static const String iPAPI = "https://jsonip.com/";
 
   const ReadyDataUtility._();
 }
@@ -90,66 +110,29 @@ final class HttpClientService {
 
 @immutable
 base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
-    extends BaseModelRepository<T, Y> {
+    extends BaseModelRepository {
   @protected
   final httpClientService = HttpClientService.instance;
 
   @protected
-  @override
-  T getBaseModelFromMapAndListKeys(
-      Map<String, dynamic> map, List<String> listKeys) {
-    return IPAddress(
-        getSafeValueWhereUsedInMethodGetModelFromMapAndListKeysAndIndexAndDefaultValue(
-            map, listKeys, 0, "")) as T;
-  }
-
-  @protected
-  @override
-  Y getBaseListModelFromListModel(List<T> listModel) {
-    return ListIPAddress(listModel) as Y;
-  }
-
-  @nonVirtual
   Future<Result<T>> getIPAddressParameterHttpClientService() async {
-    return getModeCallbackFromReleaseCallbackAndTestCallbackParameterEnumRWTMode(
-        getIPAddressParameterHttpClientServiceWReleaseCallback,
-        getIPAddressParameterHttpClientServiceWTestCallback)();
-  }
-
-  @protected
-  Future<Result<T>>
-      getIPAddressParameterHttpClientServiceWReleaseCallback() async {
     try {
       final response = await httpClientService.getParameterHttpClient
-          ?.get(Uri.parse(ReadyDataUtility.iPAPI))
-          .timeout(const Duration(seconds: 5));
+          ?.get(Uri.parse(KeysUrlEndpointUtility.jsonipAPI));
       if (response?.statusCode != 200) {
         throw NetworkException.fromKeyAndStatusCode(this,
             response?.statusCode.toString() ?? "", response?.statusCode ?? 0);
       }
       final Map<String, dynamic> data = jsonDecode(response?.body ?? "");
-      return Result<T>.success(getBaseModelFromMapAndListKeys(
-          data, getIPAddressParameterHttpClientServiceWListKeys));
+      return Result<T>.success(IPAddress(
+          getSafeValueFromMapAndKeyAndDefaultValue(
+              data, KeysHttpClientServiceUtility.iPAddressQQIp, "")) as T);
     } on NetworkException catch (e) {
       return Result<T>.exception(e);
     } catch (e) {
       return Result<T>.exception(LocalException(
           this, EnumGuilty.device, ReadyDataUtility.unknown, e.toString()));
     }
-  }
-
-  @protected
-  Future<Result<T>>
-      getIPAddressParameterHttpClientServiceWTestCallback() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    return Result<T>.success(getBaseModelFromMapAndListKeys(
-        {KeysHttpClientServiceUtility.iPAddressQQIp: "121.121.12.12"},
-        getIPAddressParameterHttpClientServiceWListKeys));
-  }
-
-  @protected
-  List<String> get getIPAddressParameterHttpClientServiceWListKeys {
-    return [KeysHttpClientServiceUtility.iPAddressQQIp];
   }
 }
 
@@ -253,7 +236,6 @@ final class MainVM {
 }
 
 Future<void> main() async {
-  BaseModelRepository.enumRWTMode = EnumRWTMode.release;
   final mainVM = MainVM();
   await mainVM.init();
   mainVM.dispose();

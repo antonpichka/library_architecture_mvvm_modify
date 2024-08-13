@@ -43,7 +43,7 @@
 ### Architectural Objects
 
 - We create and write architectural objects in the order in which it will be faster and better for the developer to run all this code. Example: We wrote the design and basic setup in the 'NamedVM' class, and then we started writing 'DataForNamed' to add simple logic for the data loading simulator and displaying a list, and maybe add error, and only then we write 'Model', 'ListModel' to show the concretive data in the list that we need it, and at the end we write 'NamedService' and 'ModelRepository' to load real data (We take into account that we will return to these objects. Example: you write 'DataForNamed' and started writing a 'Model', and then returned to 'DataForNamed' to add this 'Model'.)
-- To exchange data between VMs, without using a repository, use 'TempCacheProvider' directly ('TempCacheService' is deprecated, but will continue to exist in the library)
+- To exchange data between VMs, use 'TempCacheProvider' and also for simulating everything when you don't have time to write models and repositories
 
 Number. Name - Inheritance | Refactoring
 
@@ -57,22 +57,17 @@ Number. Name - Inheritance | Refactoring
 
 #### NamedUtility
 
-- KeysTempCacheProviderUtility - keys can be thought of as the name of any classes (even models) that you store or if you store their variables
-- - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
-- - - QQ - needed as a separator that helps to quickly understand what this constant does
-- - Example - Enum (Or Class) 'EnumBottomNavigationBar', Key 'EnumBottomNavigationBar', Code 'static const String enumBottomNavigationBar = "enumBottomNavigationBar";'
-- - - Regarding duplicates - at the end add 'First', 'Second', etc...
+##### Purpose: Can provide any functionality
+##### Knows about: Model, ListModel, ModelRepository, ModelTTNamed[TTNamed]TTNamedTTIterator, TempCacheProvider
+
+##### Rules
+
 - KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models:
 - - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
-- - - QQ - needed as a separator that helps to quickly understand what this constant does
-- KeysNamedUtility - a class whose keys belong to other classes and are attached to methods and can be used to store errors and various successes, etc...:
+- KeysNamedUtility - it can be linked to a class or anything, it all depends on your abstract thinking:
 - - Example - Class 'DataForAntiDDosSystemView', Key 'GetExceptionInStringWhereNotEqualsParametersCodeAndInputCode', Code 'static const String dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode = "dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode"':
-- - - QQ - needed as a separator that helps to quickly understand what this constant does
-- KeysAPIUtility - exception, where the key is the name of the service you are using (not the class)
-- - Example - Service 'Firebase', Key 'ProjectName', Code 'static const String firebaseQQProjectName = "example"'
-- - - QQ - needed as a separator that helps to quickly understand what this constant does
 - NamedUtility - it could be anything:
-- - Example - TimerUtility,InsertUserUtility (To NamedService), etc...
+- - Example - TimerUtility,InsertUserUtility, etc...
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -109,13 +104,16 @@ Number. Name - Inheritance | Refactoring
 
 #### NamedVM
 
-- Classes Names:
-- - Do not use this symbol in the class name as it is used below: 'W'
-- A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedWNamedVM', and the directories will also be located:
+##### Purpose: Displays data to the user and manipulates data
+##### Knows about: Model, ListModel, DataForNamed, ModelRepository, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedUtility, TempCacheProvider
+
+##### Rules
+
+- A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedEENamedVM', and the directories will also be located:
 - - Example:
 - - - UserVM
-- - - - UserWMoviesVM
-- - - - - UserWMoviesWActorsVM
+- - - - UserEEMoviesVM
+- - - - - UserEEMoviesEEActorsVM
 - Private methods that are invoked by other methods using if (Not layout/UI/design methods):
 - - Summary in the form of variables: | Example:
 - - - Summary in the form of variables:
@@ -130,47 +128,52 @@ Number. Name - Inheritance | Refactoring
 - - - Private methods created in this way allow you to write complex logic and readable code
 - - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
 - - - 'if' create methods:
-- - - - firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - firstBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchOneBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchOneBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchOneBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - firstBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchTwoBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchTwoBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchTwoBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - firstBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchThreeBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchThreeBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchThreeBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - secondQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - secondBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchOneBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchOneBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchOneBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - secondBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchTwoBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchTwoBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchTwoBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - secondBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchThreeBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchThreeBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchThreeBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - thirdQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - thirdBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchOneBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchOneBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchOneBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - thirdBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchTwoBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchTwoBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchTwoBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - thirdBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchThreeBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchThreeBranchTwoQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchThreeBranchThreeQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - firstBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - firstBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - firstBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - firstBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - secondQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - secondBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - secondBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - secondBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - secondBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - secondBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - secondBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - thirdQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - thirdBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - thirdBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - thirdBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - thirdBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - thirdBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - thirdBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 
 #### DataForNamed
+
+##### Purpose: Contains and manipulates the state of data
+##### Knows about: Model, ListModel, NamedUtility
+
+##### Rules
 
 - Methods names:
 - - Get:
@@ -208,14 +211,17 @@ Number. Name - Inheritance | Refactoring
 
 #### Model
 
-- Classes Names:
-- - Do not use this symbol in the class name as it is used below: 'W'
-- If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model (ModelWNamed):
+##### Purpose: Contains and manipulates data
+##### Knows about: NamedUtility
+
+##### Rules
+
+- If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model (ModelRRNamed):
 - - Example:
 - - - Matches:
-- - - - MatchesWDebut
-- - - - MatchesWMiddlegame
-- - - - MatchesWEndgame
+- - - - MatchesRRDebut
+- - - - MatchesRRMiddlegame
+- - - - MatchesRREndgame
 - Inheritance classes: 
 - - Names of inherited classes:
 - - - ModelNumber:
@@ -226,7 +232,12 @@ Number. Name - Inheritance | Refactoring
 - - When inheriting, we also inherit: 
 - - - 'ListModel'
 - - - 'ModelRepository'
-- - - 'ModelWNamedWNamedWNamedIterator' if exists
+- - - 'ModelTTNamed[TTNamed]TTNamedTTIterator' if exists
+- - - - [] - if available
+- - - - First 'TT', this is a 'Where'
+- - - - Second 'TT' this is a 'From'
+- - - - Third 'TT' this is a 'Parameter/Parameters'
+- - - - Fourth 'TT' it's just the end
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -272,8 +283,11 @@ Number. Name - Inheritance | Refactoring
 
 #### ListModel
 
-- Classes Names:
-- - Do not use this symbol in the class name as it is used below: 'W'
+##### Purpose: Store and manage a list of models
+##### Knows about: Model, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedUtility
+
+##### Rules
+
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ListModelNumber:
@@ -284,7 +298,7 @@ Number. Name - Inheritance | Refactoring
 - - When inheriting, we also inherit:
 - - - 'Model'
 - - - 'ModelRepository'
-- - - 'ModelWNamedWNamedWNamedIterator' if exists
+- - - 'ModelTTNamed[TTNamed]TTNamedTTIterator' if exists
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -319,7 +333,35 @@ Number. Name - Inheritance | Refactoring
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
+##### ModelTTNamedTTNamedTTNamedTTIterator
+
+###### Purpose: Sort data a list of models
+###### Knows about: Model, ListModel, NamedUtility
+
+###### Rules
+
+- ModelTTNamed[TTNamed]TTNamedTTIterator
+- - [] - if available
+- - First 'TT', this is a 'Where'
+- - Second 'TT' this is a 'From'
+- - Third 'TT' this is a 'Parameter/Parameters'
+- - Fourth 'TT' it's just the end
+- Inheritance classes:
+- - Names of inherited classes:
+- - - ModelNumberTTNamed[TTNamed]TTNamedTTIterator
+- - Inheritance goes along one branch:
+- - - ModelTTNamed[TTNamed]TTNamedTTIterator -> ModelFirstTTNamed[TTNamed]TTNamedTTIterator -> ModelSecondTTNamed[TTNamed]TTNamedTTIterator -> ModelThirdTTNamed[TTNamed]TTNamedTTIterator
+- - When inheriting, we also inherit:
+- - - 'Model'
+- - - 'ListModel'
+- - - 'ModelRepository'
+
 #### NamedService
+
+##### Purpose: Access network and cache
+##### Knows about: NamedUtility
+
+##### Rules
 
 - Methods names:
 - - Get:
@@ -357,6 +399,13 @@ Number. Name - Inheritance | Refactoring
 
 #### ModelRepository
 
+##### Purpose: Retrieve data from cache and network
+##### Knows about: NamedService, Model, ListModel
+
+##### Rules
+
+- Do not call methods 'Model', 'ListModel':
+- - So that it does not contradict the purpose of the object (At the moment it is not clear which pattern to solve this)
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ModelNumberRepository:
@@ -366,7 +415,7 @@ Number. Name - Inheritance | Refactoring
 - - When inheriting, we also inherit:
 - - - 'Model'
 - - - 'ListModel'
-- - - 'ModelWNamedWNamedWNamedIterator' if exists
+- - - 'ModelTTNamed[TTNamed]TTNamedTTIterator' if exists
 - Methods names:
 - - OperationModel(WhereNamed)[FromNamed]ParameterNamed:
 - - - () - optional
@@ -377,28 +426,6 @@ Number. Name - Inheritance | Refactoring
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
 - - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamed
-- - OperationModel(WhereNamed)[FromNamed]ParameterNumber:
-- - - () - optional
-- - - [] - if available
-- - - Operation -  insert, update, delete, set, init, etc...
-- - - Model - name model
-- - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - ParameterNumber - when a service or other parameters are still unknown, at the initial stage of development, we designate it with a number; the more services and other parameters, the larger the number. In the future we will not need to refactor the class
-- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNumber
-- Additional names of methods that are needed by the main method:
-- - OperationModel(WhereNamed)[FromNamed]ParameterNamedWReleaseCallback:
-- - - See the example to understand exactly how these methods should be written and how to use them.
-- - OperationModel(WhereNamed)[FromNamed]ParameterNamedWTestCallback:
-- - - See the example to understand exactly how these methods should be written and how to use them.
-- - OperationModel(WhereNamed)[FromNamed]ParameterNamedWListKeys:
-- - - See the example to understand exactly how these methods should be written and how to use them.
-- - OperationModel(WhereNamed)[FromNamed]ParameterNumberWReleaseCallback:
-- - - See the example to understand exactly how these methods should be written and how to use them.
-- - OperationModel(WhereNamed)[FromNamed]ParameterNumberWTestCallback:
-- - - See the example to understand exactly how these methods should be written and how to use them.
-- - OperationModel(WhereNamed)[FromNamed]ParameterNumberWListKeys:
-- - - See the example to understand exactly how these methods should be written and how to use them.
 
 ## Design Patterns
 
@@ -408,20 +435,18 @@ Number. Name - Inheritance | Refactoring
 - - - DefaultStreamWState
 - - Similar to 'Pub/Sub':
 - - - TempCacheService
+- - - TempCacheProvider
 - - Singleton:
 - - - TempCacheService
+- - - TempCacheProvider
 - - Factory method:
-- - - BaseModelWNamedWNamedWNamedIterator
+- - - BaseModelTTNamed[TTNamed]TTNamedTTIterator
 - - - BaseException
-- - - BaseModelRepository
 - - Prototype:
 - - - BaseModel
 - - - BaseListModel
 - - Similar to 'Adapter':
 - - - ExceptionController
-- - Similar to 'Strategy':
-- - - EnumRWTMode
-- - - BaseModelRepository
 
 ## Software Architecture Evaluation Theory
 

@@ -3,8 +3,8 @@ import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modif
 Future<void> main() async {
   final tempCacheProvider = TempCacheProvider();
   final key = "key";
-  final getKey = tempCacheProvider.getNamed<String>(key, "default");
-  debugPrint("GetKey: $getKey");
+  final keyFirst = tempCacheProvider.getNamed<String>(key, "default");
+  debugPrint("KeyFirst: $keyFirst");
   tempCacheProvider.listenNamed(key, (event) {
     debugPrint("Listen: $event");
   });
@@ -19,7 +19,7 @@ Future<void> main() async {
 }
 // EXPECTED OUTPUT:
 //
-// GetKey: default
+// KeyFirst: default
 // Listen: Two
 // ListenTwo: Three
 //

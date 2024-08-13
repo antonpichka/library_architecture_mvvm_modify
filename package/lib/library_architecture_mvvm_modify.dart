@@ -9,7 +9,7 @@ export 'src/base_exception/enum_guilty.dart';
 export 'src/base_exception/local_exception.dart';
 export 'src/base_exception/network_exception.dart';
 
-export 'src/base_model/base_model_w_named_w_named_w_named_iterator/base_model_w_named_w_named_w_named_iterator.dart';
+export 'src/base_model/base_model_tt_named_tt_named_tt_named_tt_iterator/base_model_tt_named_tt_named_tt_named_tt_iterator.dart';
 export 'src/base_model/base_model.dart';
 export 'src/base_model/base_list_model.dart';
 
