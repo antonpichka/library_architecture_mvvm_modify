@@ -9,7 +9,7 @@ base class UserBalance extends BaseModel {
   const UserBalance(this.username, this.money) : super(username);
 
   @override
-  UserBalance get getClone => UserBalance(username, money);
+  UserBalance clone() => UserBalance(username, money);
 
   @override
   String toString() {
@@ -23,10 +23,10 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
   const ListUserBalance(super.listModel) : super();
 
   @override
-  ListUserBalance<T> get getClone {
+  ListUserBalance<T> clone() {
     List<T> newListModel = List.empty(growable: true);
     for (T model in listModel) {
-      newListModel.add(model.getClone as T);
+      newListModel.add(model.clone() as T);
     }
     return ListUserBalance<T>(newListModel);
   }
@@ -42,25 +42,25 @@ base class ListUserBalance<T extends UserBalance> extends BaseListModel<T> {
 }
 
 @immutable
-base class UserBalanceTTOrderByDescTTMoneyTTIterator<T extends UserBalance>
-    extends BaseModelTTNamedTTNamedTTNamedTTIterator<T> {
+final class UserBalanceTTOrderByDescTTMoneyTTIterator
+    extends BaseModelTTNamedTTNamedTTNamedTTIterator<UserBalance> {
   @protected
   @override
-  CurrentModelWIndex<T> get currentModelWIndex {
-    T clone = listModelIterator[0].getClone as T;
+  CurrentModelWIndex<UserBalance> get currentModelWIndex {
+    UserBalance clone = listModelIterator[0].clone();
     if (listModelIterator.length <= 1) {
-      return CurrentModelWIndex<T>(clone, 0);
+      return CurrentModelWIndex<UserBalance>(clone, 0);
     }
     int indexRemove = 0;
     for (int i = 1; i < listModelIterator.length; i++) {
       final itemModelIterator = listModelIterator[i];
       if (itemModelIterator.money > clone.money) {
-        clone = itemModelIterator.getClone as T;
+        clone = itemModelIterator.clone();
         indexRemove = i;
         continue;
       }
     }
-    return CurrentModelWIndex<T>(clone, indexRemove);
+    return CurrentModelWIndex<UserBalance>(clone, indexRemove);
   }
 }
 
@@ -77,7 +77,7 @@ void main() {
   ]);
   debugPrint("Before: $listUserBalance"); // 3, 1, 10, 5, 7, -1
   final userBalanceTTOrderByDescTTMoneyTTIterator =
-      UserBalanceTTOrderByDescTTMoneyTTIterator<UserBalance>();
+      UserBalanceTTOrderByDescTTMoneyTTIterator();
   listUserBalance
       .sortingFromModelTTNamedTTNamedTTNamedTTIteratorParameterListModel(
           userBalanceTTOrderByDescTTMoneyTTIterator);

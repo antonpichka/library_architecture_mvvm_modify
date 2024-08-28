@@ -1,8 +1,6 @@
 import 'package:library_architecture_mvvm_modify/library_architecture_mvvm_modify.dart';
 import 'package:meta/meta.dart';
 
-/// An exception
-/// 'LAMM' laws don't apply here
 @immutable
 final class TempCacheProvider {
   final TempCacheService _tempCacheService;
@@ -13,38 +11,26 @@ final class TempCacheProvider {
         _iteration = IterationService.instance.newValueParameterIteration();
 
   T getNamed<T>(String keyTempCache, dynamic defaultValue) {
-    return _tempCacheService
-        .getFromKeyTempCacheAndDefaultValueParameterTempCache(
-            keyTempCache, defaultValue);
+    return _tempCacheService.getNamed<T>(keyTempCache, defaultValue);
   }
 
   void dispose(List<String> listKeyTempCache) {
-    if (listKeyTempCache.isEmpty) {
-      return;
-    }
-    for (final String itemKeyTempCache in listKeyTempCache) {
-      _tempCacheService.disposeStreamFromKeyTempCacheAndIterationParameterOne(
-          itemKeyTempCache, _iteration);
-    }
+    return _tempCacheService.dispose(listKeyTempCache, _iteration);
   }
 
   void listenNamed(String keyTempCache, void Function(dynamic event) callback) {
-    _tempCacheService
-        .listenStreamFromKeyTempCacheAndIterationAndCallbackParameterOne(
-            keyTempCache, _iteration, callback);
+    _tempCacheService.listenNamed(keyTempCache, callback, _iteration);
   }
 
   void update(String keyTempCache, dynamic value) {
-    _tempCacheService.updateFromKeyTempCacheAndValueParameterTempCache(
-        keyTempCache, value);
+    _tempCacheService.update(keyTempCache, value);
   }
 
   void updateWNotify(String keyTempCache, dynamic value) {
-    _tempCacheService.updateWNotificationFromKeyTempCacheAndValueParameterOne(
-        keyTempCache, value);
+    _tempCacheService.updateWNotify(keyTempCache, value);
   }
 
   void delete(String keyTempCache) {
-    _tempCacheService.deleteFromKeyTempCacheParameterTempCache(keyTempCache);
+    _tempCacheService.delete(keyTempCache);
   }
 }

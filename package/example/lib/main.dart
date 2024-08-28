@@ -7,9 +7,11 @@ import 'package:meta/meta.dart';
 final class FactoryObjectUtility {
   const FactoryObjectUtility._();
 
-  /* ModelRepository */
-  static IPAddressRepository get getIPAddressRepository {
-    return IPAddressRepository();
+  /* ModelWrapperRepository */
+  static IPAddressWrapperRepository
+      getIPAddressWrapperRepositoryFromBaseNamedHttpClientService(
+          BaseNamedHttpClientService baseNamedHttpClientService) {
+    return IPAddressWrapperRepository(baseNamedHttpClientService);
   }
 
   /* NamedStreamWState */
@@ -64,7 +66,7 @@ base class IPAddress extends BaseModel {
   const IPAddress(this.ip) : super(ip);
 
   @override
-  IPAddress get getClone => IPAddress(ip);
+  IPAddress clone() => IPAddress(ip);
 
   @override
   String toString() {
@@ -77,10 +79,10 @@ base class ListIPAddress<T extends IPAddress> extends BaseListModel<T> {
   const ListIPAddress(super.listModel) : super();
 
   @override
-  ListIPAddress<T> get getClone {
+  ListIPAddress<T> clone() {
     List<T> newListModel = List.empty(growable: true);
     for (final T model in listModel) {
-      newListModel.add(model.getClone as T);
+      newListModel.add(model.clone() as T);
     }
     return ListIPAddress<T>(newListModel);
   }
@@ -95,42 +97,156 @@ base class ListIPAddress<T extends IPAddress> extends BaseListModel<T> {
   }
 }
 
-final class HttpClientService {
-  static final HttpClientService instance = HttpClientService._();
-  http.Client? _httpClient;
+@immutable
+base class IPAddressWrapper extends BaseModelWrapper {
+  const IPAddressWrapper(super.listObject);
 
-  HttpClientService._() {
-    _httpClient = http.Client();
-  }
-
-  http.Client? get getParameterHttpClient {
-    return _httpClient;
+  @override
+  IPAddress createModel() {
+    return IPAddress(listObject[0]);
   }
 }
 
 @immutable
-base class IPAddressRepository<T extends IPAddress, Y extends ListIPAddress<T>>
-    extends BaseModelRepository {
-  @protected
-  final httpClientService = HttpClientService.instance;
+base class ListIPAddressWrapper extends BaseListModelWrapper {
+  const ListIPAddressWrapper(super.listsListObject);
 
+  @override
+  ListIPAddress createListModel() {
+    final List<IPAddress> listModel = List.empty(growable: true);
+    for (final List<dynamic> itemListObject in listsListObject) {
+      listModel.add(IPAddress(itemListObject[0]));
+    }
+    return ListIPAddress(listModel);
+  }
+}
+
+abstract class BaseNamedHttpClient {
+  const BaseNamedHttpClient();
+
+  Future<http.Response> get(Uri url, {Map<String, String>? headers});
+
+  Future<http.Response> post(Uri url,
+      {Map<String, String>? headers, body, Encoding? encoding});
+
+  void close();
+}
+
+final class DefaultHttpClient extends BaseNamedHttpClient {
+  final http.Client _client;
+
+  const DefaultHttpClient(this._client);
+
+  @override
+  Future<http.Response> get(Uri url, {Map<String, String>? headers}) {
+    return _client.get(url, headers: headers);
+  }
+
+  @override
+  Future<http.Response> post(Uri url,
+      {Map<String, String>? headers, Object? body, Encoding? encoding}) {
+    return _client.post(url, headers: headers, body: body, encoding: encoding);
+  }
+
+  @override
+  void close() {
+    _client.close();
+  }
+}
+
+final class TimeoutHttpClient extends BaseNamedHttpClient {
+  final http.Client _client;
+  final Duration _timeout;
+
+  const TimeoutHttpClient(this._client, this._timeout);
+
+  @override
+  Future<http.Response> get(Uri url, {Map<String, String>? headers}) {
+    return _client.get(url, headers: headers).timeout(_timeout);
+  }
+
+  @override
+  Future<http.Response> post(Uri url,
+      {Map<String, String>? headers, Object? body, Encoding? encoding}) {
+    return _client
+        .post(url, headers: headers, body: body, encoding: encoding)
+        .timeout(_timeout);
+  }
+
+  @override
+  void close() {
+    _client.close();
+  }
+}
+
+abstract class BaseNamedHttpClientService {
+  const BaseNamedHttpClientService();
+
+  BaseNamedHttpClient? get getParameterNamedHttpClient;
+}
+
+final class DefaultHttpClientService extends BaseNamedHttpClientService {
+  static final DefaultHttpClientService instance = DefaultHttpClientService._();
+  BaseNamedHttpClient? _namedHttpClient;
+
+  DefaultHttpClientService._();
+
+  @override
+  BaseNamedHttpClient? get getParameterNamedHttpClient {
+    if (_namedHttpClient != null) {
+      return _namedHttpClient;
+    }
+    _namedHttpClient = DefaultHttpClient(http.Client());
+    return _namedHttpClient;
+  }
+}
+
+final class TimeoutHttpClientService extends BaseNamedHttpClientService {
+  static final TimeoutHttpClientService instance = TimeoutHttpClientService._();
+  BaseNamedHttpClient? _namedHttpClient;
+
+  TimeoutHttpClientService._();
+
+  @override
+  BaseNamedHttpClient? get getParameterNamedHttpClient {
+    if (_namedHttpClient != null) {
+      return _namedHttpClient;
+    }
+    _namedHttpClient =
+        TimeoutHttpClient(http.Client(), const Duration(seconds: 5));
+    return _namedHttpClient;
+  }
+}
+
+@immutable
+base class IPAddressWrapperRepository<T extends IPAddressWrapper,
+    Y extends ListIPAddressWrapper> extends BaseModelWrapperRepository {
   @protected
-  Future<Result<T>> getIPAddressParameterHttpClientService() async {
+  final BaseNamedHttpClientService namedHttpClientService;
+
+  const IPAddressWrapperRepository(this.namedHttpClientService);
+
+  @override
+  void dispose() {}
+
+  Future<ResultWithModelWrapper<T>>
+      getIPAddressParameterNamedHttpClientService() async {
     try {
-      final response = await httpClientService.getParameterHttpClient
+      final response = await namedHttpClientService.getParameterNamedHttpClient
           ?.get(Uri.parse(KeysUrlEndpointUtility.jsonipAPI));
       if (response?.statusCode != 200) {
         throw NetworkException.fromKeyAndStatusCode(this,
             response?.statusCode.toString() ?? "", response?.statusCode ?? 0);
       }
       final Map<String, dynamic> data = jsonDecode(response?.body ?? "");
-      return Result<T>.success(IPAddress(
-          getSafeValueFromMapAndKeyAndDefaultValue(
-              data, KeysHttpClientServiceUtility.iPAddressQQIp, "")) as T);
+      final ipByIPAddress = getSafeValueFromMapAndKeyAndDefaultValue(
+          data, KeysHttpClientServiceUtility.iPAddressQQIp, "");
+      return ResultWithModelWrapper<T>.success(
+          IPAddressWrapper([ipByIPAddress]) as T);
     } on NetworkException catch (e) {
-      return Result<T>.exception(e);
+      return ResultWithModelWrapper<T>.exception(e);
     } catch (e) {
-      return Result<T>.exception(LocalException(
+      return ResultWithModelWrapper<T>.exception(LocalException(
           this, EnumGuilty.device, ReadyDataUtility.unknown, e.toString()));
     }
   }
@@ -163,8 +279,10 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
 }
 
 final class MainVM {
-  // ModelRepository
-  final _iPAddressRepository = FactoryObjectUtility.getIPAddressRepository;
+  // ModelWrapperRepository
+  final _iPAddressWrapperRepository = FactoryObjectUtility
+      .getIPAddressWrapperRepositoryFromBaseNamedHttpClientService(
+          TimeoutHttpClientService.instance);
 
   // NamedUtility
 
@@ -190,6 +308,7 @@ final class MainVM {
   }
 
   void dispose() {
+    _iPAddressWrapperRepository.dispose();
     _tempCacheProvider.dispose([]);
     _namedStreamWState.dispose();
   }
@@ -213,21 +332,23 @@ final class MainVM {
   }
 
   Future<String> _firstRequest() async {
-    final getIPAddressParameterHttpClientService =
-        await _iPAddressRepository.getIPAddressParameterHttpClientService();
-    if (getIPAddressParameterHttpClientService.exceptionController
+    final getIPAddressParameterNamedHttpClientService =
+        await _iPAddressWrapperRepository
+            .getIPAddressParameterNamedHttpClientService();
+    if (getIPAddressParameterNamedHttpClientService.exceptionController
         .isWhereNotEqualsNullParameterException()) {
-      return _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
-          getIPAddressParameterHttpClientService.exceptionController);
+      return _firstQQFirstRequestQQGetIPAddressParameterNamedHttpClientService(
+          getIPAddressParameterNamedHttpClientService.exceptionController);
     }
     _namedStreamWState.getDataForNamed.isLoading = false;
     _namedStreamWState.getDataForNamed.iPAddress =
-        getIPAddressParameterHttpClientService.parameter!.getClone;
+        getIPAddressParameterNamedHttpClientService.modelWrapper!.createModel();
     return ReadyDataUtility.success;
   }
 
-  Future<String> _firstQQFirstRequestQQGetIPAddressParameterHttpClientService(
-      ExceptionController exceptionController) async {
+  Future<String>
+      _firstQQFirstRequestQQGetIPAddressParameterNamedHttpClientService(
+          ExceptionController exceptionController) async {
     _namedStreamWState.getDataForNamed.isLoading = false;
     _namedStreamWState.getDataForNamed.exceptionController =
         exceptionController;
