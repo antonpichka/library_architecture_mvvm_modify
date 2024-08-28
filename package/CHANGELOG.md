@@ -1,3 +1,10 @@
+## 6.0.0
+
+- Added objects 'ModelWrapper', 'ListModelWrapper', the purpose of which is to contain 'Model', 'ListModel'
+- Changed 'ModelRepository' to 'ModelWrapperRepository'. This was done so that the repository was transparent (without encapsulation), and as a result easy to understand, should not know about 'Model', 'ListModel', so as not to call their methods. The purpose of the repository is to take data from the network or DB, convert the map to a list, and pass this list to 'ModelWrapper', or 'ListModelWrapper', where in turn they will create a 'Model' or 'ListModel' object and using the 'ResultWithModelWrapper' or 'ResultWithListModelsWrapper' object, which determines whether there was a success or an exception, will know about 'ModelWrapper' or 'ListModelWrapper' and will be able to pass it to the endpoint
+- The documentation has been updated, where all the library objects are described, and which object knows about whom is described. And I plan to add a diagram that will show the interaction between all the library objects, and I will add other diagrams, where it will be shown, if you remove one object, what will be the consequences if this object is not there
+NOTE: Some classes have been refactored (will have to be refactored a little)
+
 ## 5.0.1
 
 - Updated documentation
