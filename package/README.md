@@ -1,4 +1,4 @@
-<p align="center">
+<p>
 <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/logo_lamm.png" alt="Logo LAMM"/>
 </p>
 
@@ -6,11 +6,23 @@
 
 ## Getting Starting
 
+- [Why Did I Create Software Architecture](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#why-did-i-create-software-architecture)
 - [Example](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#example)
 - [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
 - [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
 - [Design Patterns](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#design-patterns)
-- [Software Architecture Evaluation Theory](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#software-architecture-evaluation-theory)
+
+## Why Did I Create Software Architecture
+
+- Everything starts with a problem, and problems give rise to solutions or technologies.
+- Let's start with the fact that modern architectures do not provide a clear explanation:
+- - How classes, methods, and variables should be named ?
+- - How many objects are needed to update data in the view ?
+- - Where exactly the logic should be when a certain widget is selected in the view, and how this should be implemented ?
+- - Also, how the logic should be written, and how the logic itself is written in the VM ? (I mean that after each if, a return should be specified, and if it's a loop, then continue or break depending on the situation, and this is also done in the VM, but with the addition that after each if a method is created to continue the chain of logic, thus making the code more readable, and the readability of the code is measured in a science like psychology, which studies how our brain perceives information. For example: Gestalt Theory).
+- - Where and how constants should be stored to be structured and understandable ?
+- - Through whom we need to share data between VMs ?
+- - It is also necessary to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will lose a lot of time making the bodies of all methods abstract (that is, encapsulating code in other methods, which we can override in descendant classes), and if we refactor everything, we will lose code quality, which will lead to errors in the program, so it is necessary to balance between inheritance and refactoring ?
 
 ## Example
 
@@ -23,7 +35,7 @@
 
 ## Documentation 
 
-- In general, I will try to describe the architecture in detail (Modification of MVVM). But before reading the documentation, please read the entire example
+- But before reading the documentation, please read the entire example
 
 ### General Rules
 
@@ -38,36 +50,39 @@
 - - ![#008000](https://placehold.co/15x15/008000/008000.png) W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
-- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[ModelRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelRepository)'
+- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService)','[ModelWrapperRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapperRepository)'
 
 ### Architectural Objects
 
-- We create and write architectural objects in the order in which it will be faster and better for the developer to run all this code. Example: We wrote the design and basic setup in the 'NamedVM' class, and then we started writing 'DataForNamed' to add simple logic for the data loading simulator and displaying a list, and maybe add error, and only then we write 'Model', 'ListModel' to show the concretive data in the list that we need it, and at the end we write 'NamedService' and 'ModelRepository' to load real data (We take into account that we will return to these objects. Example: you write 'DataForNamed' and started writing a 'Model', and then returned to 'DataForNamed' to add this 'Model'.)
-- To exchange data between VMs, use 'TempCacheProvider' and also for simulating everything when you don't have time to write models and repositories
-
-Number. Name - Inheritance | Refactoring
-
-123456 . [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility) - Refactoring
-1) [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM) - Refactoring
-2) [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed) - Refactoring
-3) [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model) - Inheritance
-4) [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel) - Inheritance
-5) [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Refactoring
-6) [ModelRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelRepository) - Inheritance
+- In "Architectural Objects" we include only those classes that can be refactored or inherited
+- Name - [Inheritance | Refactoring]:
+- - [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility) - Refactoring
+- - [NamedException](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedException) - Inheritance
+- - [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM) - Refactoring
+- - [NamedState](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedState) - Inheritance
+- - [NamedStreamWState](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedStreamWState) - Inheritance
+- - [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed) - Refactoring
+- - [EnumDataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#enumDataForNamed) - Refactoring
+- - [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model) - Inheritance
+- - [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel) - Inheritance
+- - [ModelTTNamed[TTNamed]TTNamedTTIterator](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelTTNamed[TTNamed]TTNamedTTIterator) - Refactoring
+- - [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Inheritance
+- - [ModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapper) - Inheritance
+- - [ListModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModelWrapper) - Inheritance
+- - [ModelWrapperRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapperRepository) - Inheritance
 
 #### NamedUtility
 
-##### Purpose: Can provide any functionality
-##### Knows about: Model, ListModel, ModelRepository, ModelTTNamed[TTNamed]TTNamedTTIterator, TempCacheProvider
+##### Knows about: NamedException, NamedVM, NamedState, NamedStreamWState, DataForNamed, EnumDataForNamed, Model, ListModel, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedService, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
 
 ##### Rules
 
-- KeysNamedServiceUtility - a class where the keys of a specific service are stored, and the keys are distributed across models:
-- - Example - Model 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
-- KeysNamedUtility - it can be linked to a class or anything, it all depends on your abstract thinking:
-- - Example - Class 'DataForAntiDDosSystemView', Key 'GetExceptionInStringWhereNotEqualsParametersCodeAndInputCode', Code 'static const String dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode = "dataForAntiDDosSystemViewQQGetExceptionInStringWhereNotEqualsParametersCodeAndInputCode"':
-- NamedUtility - it could be anything:
-- - Example - TimerUtility,InsertUserUtility, etc...
+- KeysNamedServiceUtility - A class that stores keys for a particular service, and keys are distributed across classes:
+- - Example - Class 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
+- KeysNamedUtility - It can be linked to a class or anything, it all depends on your abstract thinking:
+- - Example - Class 'DataForAntiDDosSystemVM', Key 'GetExceptionInStringWNotEqualsWCodeAndInputCode', Code 'static const String dataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode = "dataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode"':
+- NamedUtility - It could be anything:
+- - Example - TimerUtility, InsertUserUtility, etc...
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -75,9 +90,9 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - get - required word
 - - - - (Named) - we get primitive type or another model or briefly describe what we are taking
-- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
@@ -87,25 +102,35 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
 - - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
+- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelWhereNamedFromOneParameterOne))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - Bool:
 - - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - - [] - if available
-- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
+#### NamedException
+
+##### Knows about: NamedUtility
+
+##### Rules
+
+- Inherit the base class 'BaseException':
+- - Result:
+- - - 'LocalException'
+- - - 'NetworkException'
+
 #### NamedVM
 
-##### Purpose: Displays data to the user and manipulates data
-##### Knows about: Model, ListModel, DataForNamed, ModelRepository, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedUtility, TempCacheProvider
+##### Knows about: NamedException, NamedUtility, DataForNamed, EnumDataForNamed, Model, ListModel, ModelTTNamed[TTNamed]TTNamedTTIterator, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
 
 ##### Rules
 
@@ -114,16 +139,16 @@ Number. Name - Inheritance | Refactoring
 - - - UserVM
 - - - - UserEEMoviesVM
 - - - - - UserEEMoviesEEActorsVM
-- Private methods that are invoked by other methods using if (Not layout/UI/design methods):
+- Private methods that are invoked by other methods using if and return type 'void':
 - - Summary in the form of variables: | Example:
 - - - Summary in the form of variables:
-- - - - numberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
-- - - - - numberBranchNumberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
-- - - - - - numberBranchNumberBranchNumberQQ${In which "method" did this madness begin ?}QQ${What "method" started this madness ?}
+- - - - numberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
+- - - - - numberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
+- - - - - - numberBranchNumberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
 - - - Example:  
-- - - - firstQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - firstBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchOneBranchOneQQInitReleaseCallbackQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 - - Explanation:
 - - - Private methods created in this way allow you to write complex logic and readable code
 - - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
@@ -168,10 +193,29 @@ Number. Name - Inheritance | Refactoring
 - - - - - - thirdBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 - - - - - - thirdBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 
+#### NamedState
+
+##### Knows about: NamedException, DataForNamed
+
+##### Rules
+
+- Inherit the base class 'BaseNamedState':
+- - Result:
+- - - 'DefaultState'
+
+#### NamedStreamWState
+
+##### Knows about: NamedException, DataForNamed
+
+##### Rules
+
+- Inherit the base class 'BaseNamedStreamWState':
+- - Result:
+- - - 'DefaultStreamWState'
+
 #### DataForNamed
 
-##### Purpose: Contains and manipulates the state of data
-##### Knows about: Model, ListModel, NamedUtility
+##### Knows about: NamedException, NamedUtility, EnumDataForNamed, Model, ListModel, ModelTTNamed[TTNamed]TTNamedTTIterator, ExceptionController
 
 ##### Rules
 
@@ -182,9 +226,9 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - get - required word
 - - - - (Named) - we get primitive type or another model or briefly describe what we are taking
-- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
@@ -194,24 +238,27 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
 - - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
+- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelWhereNamedFromOneParameterOne))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - Bool:
 - - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - - [] - if available
-- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
+#### EnumDataForNamed
+
+##### Knows about: -
+
 #### Model
 
-##### Purpose: Contains and manipulates data
 ##### Knows about: NamedUtility
 
 ##### Rules
@@ -229,15 +276,11 @@ Number. Name - Inheritance | Refactoring
 - - - - Number - 'First','Second','Third', etc...
 - - Inheritance goes along one branch:
 - - - User -> UserFirst -> UserSecond -> UserThird
-- - When inheriting, we also inherit: 
+- - When inheriting, we also inherit:
 - - - 'ListModel'
-- - - 'ModelRepository'
-- - - 'ModelTTNamed[TTNamed]TTNamedTTIterator' if exists
-- - - - [] - if available
-- - - - First 'TT', this is a 'Where'
-- - - - Second 'TT' this is a 'From'
-- - - - Third 'TT' this is a 'Parameter/Parameters'
-- - - - Fourth 'TT' it's just the end
+- - - 'ModelWrapper'
+- - - 'ListModelWrapper'
+- - - 'ModelWrapperRepository'
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -245,9 +288,9 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - get - required word
 - - - - (Named) - we get primitive type or another model or briefly describe what we are taking
-- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
@@ -255,8 +298,8 @@ Number. Name - Inheritance | Refactoring
 - - - - () - optional
 - - - - [] - if available
 - - - - getModel - when we return an object of our own class
-- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getModelWhereNamedFromOne))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - model(WhereNamed)[FromNamed]
@@ -266,25 +309,24 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
 - - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
+- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelWhereNamedFromOneParameterOne))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - Bool:
 - - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - - [] - if available
-- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
 #### ListModel
 
-##### Purpose: Store and manage a list of models
-##### Knows about: Model, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedUtility
+##### Knows about: NamedUtility, Model, ModelTTNamed[TTNamed]TTNamedTTIterator
 
 ##### Rules
 
@@ -297,8 +339,9 @@ Number. Name - Inheritance | Refactoring
 - - - ListUser -> ListUserFirst -> ListUserSecond -> ListUserThird
 - - When inheriting, we also inherit:
 - - - 'Model'
-- - - 'ModelRepository'
-- - - 'ModelTTNamed[TTNamed]TTNamedTTIterator' if exists
+- - - 'ModelWrapper'
+- - - 'ListModelWrapper'
+- - - 'ModelWrapperRepository'
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -306,9 +349,9 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - get - required word
 - - - - (Named) - we get primitive type or another model or briefly describe what we are taking
-- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
@@ -318,27 +361,26 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
 - - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
+- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelWhereNamedFromOneParameterOne))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - Bool:
 - - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - - [] - if available
-- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
-##### ModelTTNamedTTNamedTTNamedTTIterator
+#### ModelTTNamed[TTNamed]TTNamedTTIterator
 
-###### Purpose: Sort data a list of models
-###### Knows about: Model, ListModel, NamedUtility
+##### Knows about: NamedUtility, Model
 
-###### Rules
+##### Rules
 
 - ModelTTNamed[TTNamed]TTNamedTTIterator
 - - [] - if available
@@ -346,23 +388,26 @@ Number. Name - Inheritance | Refactoring
 - - Second 'TT' this is a 'From'
 - - Third 'TT' this is a 'Parameter/Parameters'
 - - Fourth 'TT' it's just the end
-- Inheritance classes:
-- - Names of inherited classes:
-- - - ModelNumberTTNamed[TTNamed]TTNamedTTIterator
-- - Inheritance goes along one branch:
-- - - ModelTTNamed[TTNamed]TTNamedTTIterator -> ModelFirstTTNamed[TTNamed]TTNamedTTIterator -> ModelSecondTTNamed[TTNamed]TTNamedTTIterator -> ModelThirdTTNamed[TTNamed]TTNamedTTIterator
-- - When inheriting, we also inherit:
-- - - 'Model'
-- - - 'ListModel'
-- - - 'ModelRepository'
 
 #### NamedService
 
-##### Purpose: Access network and cache
-##### Knows about: NamedUtility
+##### Knows about: NamedUtility, NamedException
 
 ##### Rules
 
+- Inheritance classes:
+- - Names of inherited classes:
+- - - NamedNamedTwo:
+- - - - Named - Example - 'Default', 'Timeout'
+- - - - NamedTwo - Example - 'HttpClient', 'SharedPreferences'
+- - - NamedNamedTwoService:
+- - - - Named - Example - 'Default', 'Timeout'
+- - - - NamedTwoService - Example - 'HttpClientService', 'SharedPreferencesService'
+- - Inheritance goes along:
+- - - - BaseNamedHttpClient -> DefaultHttpClient
+- - - - BaseNamedHttpClient -> TimeoutHttpClient
+- - - - BaseNamedHttpClientService -> DefaultHttpClientService
+- - - - BaseNamedHttpClientService -> TimeoutHttpClientService
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -370,9 +415,9 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - get - required word
 - - - - (Named) - we get primitive type or another model or briefly describe what we are taking
-- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - (WhereNamed) - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - getNamedWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - named(WhereNamed)[FromNamed][ParameterNamed]
@@ -382,92 +427,140 @@ Number. Name - Inheritance | Refactoring
 - - - - [] - if available
 - - - - operation - insert, update, delete, set, init, etc...
 - - - - [OtherModelOrPrimitiveType] - if your class has a model list or primitive type list parameter. But if you specify a different model or primitive type in [FromNamed] then there is no point in specifying that. If you add the same "Model" to your "ListModel" then there is no point in specifying this
-- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelOrPrimitiveTypeWhereNamedFromOneParameterOne))
+- - - - (WhereNamed) -  describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - operationOtherModelWhereNamedFromOneParameterOne))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - Bool:
 - - - isWhereNamed[FromNamed][ParameterNamed]:
 - - - - [] - if available
-- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - - isWhereNamed - describe in as much detail as possible what this method does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - [ParameterNamed] - what global variables were used (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
-#### ModelRepository
+#### ModelWrapperRepository
 
-##### Purpose: Retrieve data from cache and network
-##### Knows about: NamedService, Model, ListModel
+##### Knows about: NamedUtility, NamedException, NamedService, Result, ResultWithModelWrapper, ResultWithListModelsWrapper, ModelWrapper, ListModelWrapper
 
 ##### Rules
 
-- Do not call methods 'Model', 'ListModel':
-- - So that it does not contradict the purpose of the object (At the moment it is not clear which pattern to solve this)
 - Inheritance classes:
 - - Names of inherited classes:
-- - - ModelNumberRepository:
+- - - ModelWrapperNumberRepository:
+- - - - ModelWrapper - Example - 'UserWrapper', 'MovieWrapper'
 - - - - Number - 'First','Second','Third', etc...
 - - Inheritance goes along one branch:
-- - - UserRepository -> UserFirstRepository -> UserSecondRepository -> UserThirdRepository
+- - - UserWrapperRepository -> UserWrapperFirstRepository -> UserWrapperSecondRepository -> UserWrapperThirdRepository
 - - When inheriting, we also inherit:
 - - - 'Model'
 - - - 'ListModel'
-- - - 'ModelTTNamed[TTNamed]TTNamedTTIterator' if exists
+- - - 'ModelWrapper'
+- - - 'ListModelWrapper'
 - Methods names:
 - - OperationModel(WhereNamed)[FromNamed]ParameterNamed:
 - - - () - optional
 - - - [] - if available
 - - - Operation -  insert, update, delete, set, init, etc...
 - - - Model - name model
-- - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
-- - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And - for iteration)
+- - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamed
+
+#### ModelWrapper
+
+##### Knows about: NamedUtility, Model
+
+##### Rules
+
+- Inheritance classes:
+- - Names of inherited classes:
+- - - ModelWrapperNumber:
+- - - - ModelWrapper - Example - 'UserWrapper', 'MovieWrapper'
+- - - - Number - 'First','Second','Third', etc...
+- - Inheritance goes along one branch:
+- - - UserWrapper -> UserWrapperFirst -> UserWrapperSecond -> UserWrapperThird
+- - When inheriting, we also inherit:
+- - - 'Model'
+- - - 'ListModel'
+- - - 'ListModelWrapper'
+- - - 'ModelWrapperRepository'
+
+#### ListModelWrapper
+
+##### Knows about: NamedUtility, Model, ListModel
+
+##### Rules
+
+- Inheritance classes:
+- - Names of inherited classes:
+- - - ListModelWrapperNumber:
+- - - - ListModelWrapper - Example - 'ListUserWrapper', 'ListMovieWrapper'
+- - - - Number - 'First','Second','Third', etc...
+- - Inheritance goes along one branch:
+- - - ListUserWrapper -> ListUserWrapperFirst -> ListUserWrapperSecond -> ListUserWrapperThird
+- - When inheriting, we also inherit:
+- - - 'Model'
+- - - 'ListModel'
+- - - 'ModelWrapper'
+- - - 'ModelWrapperRepository'
+
+### Not Architectural Objects
+
+- In 'Not Architectural Objects' we include only what is a class in the library with the final modifier:
+- - [TempCacheProvider](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#tempCacheProvider)
+- - [ExceptionController](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#exceptionController)
+- - [Result](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#result)
+- - [ResultWithModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithModelWrapper)
+- - [ResultWithListModelsWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithListModelsWrapper)
+
+#### TempCacheProvider
+
+##### Knows about: NamedException
+
+#### ExceptionController
+
+##### Knows about: NamedException
+
+#### Result
+
+##### Knows about: NamedException, ExceptionController
+
+#### ResultWithModelWrapper
+
+##### Knows about: ModelWrapper, NamedException, ExceptionController
+
+#### ResultWithListModelsWrapper
+
+##### Knows about: ListModelWrapper, NamedException, ExceptionController
+
+### Diagrams
+
+- Coming Soon
 
 ## Design Patterns
 
-- Design patterns used in 'LAMM' (-Design Patterns/--Classes):
+- Design patterns used in 'LAMM' (--Design Patterns/---Classes):
 - - Observer:
 - - - BaseNamedStreamWState
 - - - DefaultStreamWState
 - - Similar to 'Pub/Sub':
-- - - TempCacheService
 - - - TempCacheProvider
 - - Singleton:
-- - - TempCacheService
 - - - TempCacheProvider
+- - - IterationService
 - - Factory method:
 - - - BaseModelTTNamed[TTNamed]TTNamedTTIterator
 - - - BaseException
 - - Prototype:
 - - - BaseModel
 - - - BaseListModel
+- - Similar to 'Prototype':
+- - - BaseModelWrapper
+- - - BaseListModelWrapper
 - - Similar to 'Adapter':
 - - - ExceptionController
-
-## Software Architecture Evaluation Theory
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/roac_w_ioac.png" alt="ROAC W IOAC"/>
-</p>
-
-- We need to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will waste a lot of time making the bodies of all methods abstract (i.e., encapsulate the code in the second methods), and If we refactor everything, we will lose the quality of the code, and this will lead to errors in the program, so it is necessary to balance between inheritance and refactoring
-- Refactoring Of Architectural Components (ROAC):
-- - Code rules
-- Inheritance Of Architectural Components (IOAC):
-- - SOLID principles
-- - Design Patterns
-- - Code rules
-- Calculation formula:
-- - Inaccurate calculation
-- - Input: 
-- - - ROAC = 4 (NamedUtility, NamedVM, DataForNamed, NamedService)
-- - - IOAC = 3 (Model, ListModel, ModelRepository)
-- - - - Formula:
-- - - - - IOAC / (ROAC + IOAC) * 100 = 43%:
-- - - - - - 0-30% or 70-100% - this is bad
-- - - - - - 50-55% - it's perfect
-- Note: We take into account that inheritance and refactoring must be correctly implemented, and the program must combine everything necessary, otherwise your architecture will not be able to take part in the evaluation, since it does not meet the needs of modern applications
