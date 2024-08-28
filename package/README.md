@@ -1,6 +1,6 @@
-<p>
-<img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/logo_lamm.png" alt="Logo LAMM"/>
-</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/logo_lamm.png" alt="Logo LAMM"/>
+</div>
 
 --- 
 
@@ -65,7 +65,7 @@
 - - [EnumDataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#enumDataForNamed) - Refactoring
 - - [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model) - Inheritance
 - - [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel) - Inheritance
-- - [ModelTTNamed[TTNamed]TTNamedTTIterator](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelTTNamed[TTNamed]TTNamedTTIterator) - Refactoring
+- - [ModelTTNamed[TTNamed]TTNamedTTIterator](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelttnamedttnamedttnamedttiterator) - Refactoring
 - - [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Inheritance
 - - [ModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapper) - Inheritance
 - - [ListModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModelWrapper) - Inheritance
@@ -263,7 +263,7 @@
 
 ##### Rules
 
-- If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model (ModelRRNamed):
+- If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model 'ModelRRNamed':
 - - Example:
 - - - Matches:
 - - - - MatchesRRDebut
@@ -404,10 +404,10 @@
 - - - - Named - Example - 'Default', 'Timeout'
 - - - - NamedTwoService - Example - 'HttpClientService', 'SharedPreferencesService'
 - - Inheritance goes along:
-- - - - BaseNamedHttpClient -> DefaultHttpClient
-- - - - BaseNamedHttpClient -> TimeoutHttpClient
-- - - - BaseNamedHttpClientService -> DefaultHttpClientService
-- - - - BaseNamedHttpClientService -> TimeoutHttpClientService
+- - - BaseNamedHttpClient -> DefaultHttpClient
+- - - BaseNamedHttpClient -> TimeoutHttpClient
+- - - BaseNamedHttpClientService -> DefaultHttpClientService
+- - - BaseNamedHttpClientService -> TimeoutHttpClientService
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -512,15 +512,25 @@
 ### Not Architectural Objects
 
 - In 'Not Architectural Objects' we include only what is a class in the library with the final modifier:
+- - [TempCacheService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#tempCacheService)
+- - [IterationService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#iterationService)
 - - [TempCacheProvider](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#tempCacheProvider)
 - - [ExceptionController](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#exceptionController)
 - - [Result](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#result)
 - - [ResultWithModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithModelWrapper)
 - - [ResultWithListModelsWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithListModelsWrapper)
 
-#### TempCacheProvider
+#### TempCacheService
 
 ##### Knows about: NamedException
+
+#### IterationService 
+
+##### Knows about: -
+
+#### TempCacheProvider
+
+##### Knows about: TempCacheService, IterationService
 
 #### ExceptionController
 
@@ -549,8 +559,10 @@
 - - - BaseNamedStreamWState
 - - - DefaultStreamWState
 - - Similar to 'Pub/Sub':
+- - - TempCacheService
 - - - TempCacheProvider
 - - Singleton:
+- - - TempCacheService
 - - - TempCacheProvider
 - - - IterationService
 - - Factory method:
