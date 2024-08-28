@@ -22,7 +22,7 @@
 - - Also, how the logic should be written, and how the logic itself is written in the VM ? (I mean that after each if, a return should be specified, and if it's a loop, then continue or break depending on the situation, and this is also done in the VM, but with the addition that after each if a method is created to continue the chain of logic, thus making the code more readable, and the readability of the code is measured in a science like psychology, which studies how our brain perceives information. For example: Gestalt Theory).
 - - Where and how constants should be stored to be structured and understandable ?
 - - Through whom we need to share data between VMs ?
-- - It is also necessary to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will lose a lot of time making the bodies of all methods abstract (that is, encapsulating code in other methods, which we can override in descendant classes), and if we refactor everything, we will lose code quality, which will lead to errors in the program, so it is necessary to balance between inheritance and refactoring ?
+- It is also necessary to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will lose a lot of time making the bodies of all methods abstract (that is, encapsulating code in other methods, which we can override in descendant classes), and if we refactor everything, we will lose code quality, which will lead to errors in the program, so it is necessary to balance between inheritance and refactoring
 
 ## Example
 
