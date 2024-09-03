@@ -161,7 +161,7 @@
 - - - - - listenNamedTempCacheProviderYYImplementListenerUserTempCacheProvider
 - - - Explanation:
 - - - - The methods created in this way allow us to understand who created this method
-- - - - Minimum and maximum two 'YY' - needed as a separator that helps to quickly understand what this method does
+- - - - Minimum and maximum one 'YY' - needed as a separator that helps to quickly understand what this method does
 - - Private methods that are invoked by other methods using if and return type 'void' (sometime 'string'):
 - - - Summary in the form of variables: | Example:
 - - - - Summary in the form of variables:
