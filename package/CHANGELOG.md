@@ -1,3 +1,10 @@
+## 6.0.1
+
+- documentation(package/README.md): Improved understanding of chapters such as 'NamedUtility', 'NamedVM'
+- refactoring(.): Rearranging the code without significant changes
+- fix(package/lib/src/base_model/base_model_tt_named_tt_named_tt_named_tt_iterator): Method 'currentModelWIndex' was called twice in method 'getSortedListModelFromListModelParameterListModelIterator'. Now is called only once
+- Note: The next patch will have diagrams that will explain everything about the software architecture.
+
 ## 6.0.0
 
 - Added objects 'ModelWrapper', 'ListModelWrapper', the purpose of which is to contain 'Model', 'ListModel'
