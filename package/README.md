@@ -77,12 +77,26 @@
 
 ##### Rules
 
-- KeysNamedServiceUtility - A class that stores keys for a particular service, and keys are distributed across classes:
-- - Example - Class 'IPAddress', Key 'Ip', Code 'static const String iPAddressQQIp = "ip"':
-- KeysNamedUtility - It can be linked to a class or anything, it all depends on your abstract thinking:
-- - Example - Class 'DataForAntiDDosSystemVM', Key 'GetExceptionInStringWNotEqualsWCodeAndInputCode', Code 'static const String dataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode = "dataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode"':
-- NamedUtility - It could be anything:
-- - Example - TimerUtility, InsertUserUtility, etc...
+- KeysNamedServiceUtility - a class that stores keys for a particular service:
+- - Variables names (constants):
+- - - NamedQQNamedFirstQQ(NamedSecond):
+- - - - () - optional
+- - - - Named - some kind of class
+- - - - NamedFirst - variable of this class
+- - - - (NamedSecond) - if there is already one, then you can add a detailed description, or add it even if there is no such one
+- - - Example:
+- - - - iPAddressQQIpQQJsonipAPI
+- KeysNamedUtility - a class that stores keys for anything (depending on your abstract thinking):
+- - Variables names (constants):
+- - - NamedQQ(NamedFirst)QQ(NamedSecond):
+- - - - () - optional
+- - - - Named - anything you like
+- - - - (NamedFirst) - anything you like
+- - - - (NamedSecond) - anything you like
+- - - Example:
+- - - - DataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode
+- NamedUtility - it could be anything:
+- - TimerUtility, InsertUserUtility, etc...
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -124,9 +138,8 @@
 ##### Rules
 
 - Inherit the base class 'BaseException':
-- - Result:
-- - - 'LocalException'
-- - - 'NetworkException'
+- - LocalException
+- - NetworkException
 
 #### NamedVM
 
@@ -134,64 +147,74 @@
 
 ##### Rules
 
-- A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedEENamedVM', and the directories will also be located:
-- - Example:
-- - - UserVM
-- - - - UserEEMoviesVM
-- - - - - UserEEMoviesEEActorsVM
-- Private methods that are invoked by other methods using if and return type 'void':
-- - Summary in the form of variables: | Example:
-- - - Summary in the form of variables:
-- - - - numberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
-- - - - - numberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
-- - - - - - numberBranchNumberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
-- - - Example:  
-- - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - Explanation:
-- - - Private methods created in this way allow you to write complex logic and readable code
-- - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
-- - - 'if' create methods:
-- - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - firstBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - firstBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - secondQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - secondBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - secondBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - secondBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - thirdQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - thirdBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - thirdBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - thirdBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedEENamedVM', and the directories will also be located::
+- - UserVM
+- - - UserEEMoviesVM
+- - - - UserEEMoviesEEActorsVM
+- Methods names:
+- - Private methods that are called in the callback:
+- - - Summary in the form of variables: | Example:
+- - - - Summary in the form of variables:
+- - - - - ${In which callback did this start ?}YY${What does this method do ?}
+- - - - Example:
+- - - - - onPressedYYAddTask
+- - - - - listenNamedTempCacheProviderYYImplementListenerUserTempCacheProvider
+- - - Explanation:
+- - - - The methods created in this way allow us to understand who created this method
+- - - - Minimum and maximum two 'YY' - needed as a separator that helps to quickly understand what this method does
+- - Private methods that are invoked by other methods using if and return type 'void' (sometime 'string'):
+- - - Summary in the form of variables: | Example:
+- - - - Summary in the form of variables:
+- - - - - numberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
+- - - - - - numberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
+- - - - - - - numberBranchNumberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
+- - - - Example:
+- - - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - Explanation:
+- - - - The methods created in this way allow you to write complex logic
+- - - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
+- - - - 'if' create methods:
+- - - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - firstBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - firstBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - firstBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - secondQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - secondBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - secondBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - secondBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - secondBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - thirdQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - thirdBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - thirdBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - thirdBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - thirdBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 
 #### NamedState
 
@@ -200,8 +223,7 @@
 ##### Rules
 
 - Inherit the base class 'BaseNamedState':
-- - Result:
-- - - 'DefaultState'
+- - DefaultState
 
 #### NamedStreamWState
 
@@ -210,8 +232,7 @@
 ##### Rules
 
 - Inherit the base class 'BaseNamedStreamWState':
-- - Result:
-- - - 'DefaultStreamWState'
+- - DefaultStreamWState
 
 #### DataForNamed
 
@@ -264,23 +285,24 @@
 ##### Rules
 
 - If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model 'ModelRRNamed':
-- - Example:
-- - - Matches:
-- - - - MatchesRRDebut
-- - - - MatchesRRMiddlegame
-- - - - MatchesRREndgame
-- Inheritance classes: 
+- - Matches:
+- - - MatchesRRDebut
+- - - MatchesRRMiddlegame
+- - - MatchesRREndgame
+- Inheritance classes:
 - - Names of inherited classes:
 - - - ModelNumber:
-- - - - Model - The name of the model itself. Example: 'User', 'Movie', etc...
-- - - - Number - 'First','Second','Third', etc...
+- - - - Model - The name of the model itself:
+- - - - - User, Movie, etc...
+- - - - Number: 
+- - - - - First, Second, Third, etc...
 - - Inheritance goes along one branch:
 - - - User -> UserFirst -> UserSecond -> UserThird
 - - When inheriting, we also inherit:
-- - - 'ListModel'
-- - - 'ModelWrapper'
-- - - 'ListModelWrapper'
-- - - 'ModelWrapperRepository'
+- - - ListModel
+- - - ModelWrapper
+- - - ListModelWrapper
+- - - ModelWrapperRepository
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -333,15 +355,17 @@
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ListModelNumber:
-- - - - ListModel - The name of the model itself. Example - 'ListUser', 'ListMovie', etc...
-- - - - Number - 'First','Second','Third', etc...
+- - - - ListModel - The name of the model itself:
+- - - - - ListUser, ListMovie, etc...
+- - - - Number: 
+- - - - - First, Second, Third, etc...
 - - Inheritance goes along one branch:
 - - - ListUser -> ListUserFirst -> ListUserSecond -> ListUserThird
 - - When inheriting, we also inherit:
-- - - 'Model'
-- - - 'ModelWrapper'
-- - - 'ListModelWrapper'
-- - - 'ModelWrapperRepository'
+- - - Model
+- - - ModelWrapper
+- - - ListModelWrapper
+- - - ModelWrapperRepository
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -398,12 +422,16 @@
 - Inheritance classes:
 - - Names of inherited classes:
 - - - NamedNamedTwo:
-- - - - Named - Example - 'Default', 'Timeout'
-- - - - NamedTwo - Example - 'HttpClient', 'SharedPreferences'
+- - - - Named:
+- - - - - Default, Timeout, etc...
+- - - - NamedTwo:
+- - - - - HttpClient, SharedPreferences, etc...
 - - - NamedNamedTwoService:
-- - - - Named - Example - 'Default', 'Timeout'
-- - - - NamedTwoService - Example - 'HttpClientService', 'SharedPreferencesService'
-- - Inheritance goes along:
+- - - - Named:
+- - - - - Default, Timeout, etc...
+- - - - NamedTwoService:
+- - - - - HttpClientService, SharedPreferencesService, etc...
+- - Inheritance across different branches:
 - - - BaseNamedHttpClient -> DefaultHttpClient
 - - - BaseNamedHttpClient -> TimeoutHttpClient
 - - - BaseNamedHttpClientService -> DefaultHttpClientService
@@ -451,20 +479,22 @@
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ModelWrapperNumberRepository:
-- - - - ModelWrapper - Example - 'UserWrapper', 'MovieWrapper'
-- - - - Number - 'First','Second','Third', etc...
+- - - - ModelWrapper:
+- - - - - UserWrapper, MovieWrapper, etc...
+- - - - Number:
+- - - - - First, Second, Third, etc...
 - - Inheritance goes along one branch:
 - - - UserWrapperRepository -> UserWrapperFirstRepository -> UserWrapperSecondRepository -> UserWrapperThirdRepository
 - - When inheriting, we also inherit:
-- - - 'Model'
-- - - 'ListModel'
-- - - 'ModelWrapper'
-- - - 'ListModelWrapper'
+- - - Model
+- - - ListModel
+- - - ModelWrapper
+- - - ListModelWrapper
 - Methods names:
 - - OperationModel(WhereNamed)[FromNamed]ParameterNamed:
 - - - () - optional
 - - - [] - if available
-- - - Operation -  insert, update, delete, set, init, etc...
+- - - Operation -  insert, update, delete, set, init, get, etc...
 - - - Model - name model
 - - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
@@ -480,15 +510,17 @@
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ModelWrapperNumber:
-- - - - ModelWrapper - Example - 'UserWrapper', 'MovieWrapper'
-- - - - Number - 'First','Second','Third', etc...
+- - - - ModelWrapper:
+- - - - - UserWrapper, MovieWrapper, etc...
+- - - - Number:
+- - - - - First, Second, Third, etc...
 - - Inheritance goes along one branch:
 - - - UserWrapper -> UserWrapperFirst -> UserWrapperSecond -> UserWrapperThird
 - - When inheriting, we also inherit:
-- - - 'Model'
-- - - 'ListModel'
-- - - 'ListModelWrapper'
-- - - 'ModelWrapperRepository'
+- - - Model
+- - - ListModel
+- - - ListModelWrapper
+- - - ModelWrapperRepository
 
 #### ListModelWrapper
 
@@ -499,15 +531,17 @@
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ListModelWrapperNumber:
-- - - - ListModelWrapper - Example - 'ListUserWrapper', 'ListMovieWrapper'
-- - - - Number - 'First','Second','Third', etc...
+- - - - ListModelWrapper:
+- - - - - ListUserWrapper, ListMovieWrapper, etc...
+- - - - Number:
+- - - - - First, Second, Third, etc...
 - - Inheritance goes along one branch:
 - - - ListUserWrapper -> ListUserWrapperFirst -> ListUserWrapperSecond -> ListUserWrapperThird
 - - When inheriting, we also inherit:
-- - - 'Model'
-- - - 'ListModel'
-- - - 'ModelWrapper'
-- - - 'ModelWrapperRepository'
+- - - Model
+- - - ListModel
+- - - ModelWrapper
+- - - ModelWrapperRepository
 
 ### Not Architectural Objects
 
