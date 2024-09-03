@@ -22,8 +22,9 @@ abstract base class BaseModelTTNamedTTNamedTTNamedTTIterator<
     listModelIterator.addAll(listModel);
     final newListModel = List<T>.empty(growable: true);
     while (listModelIterator.isNotEmpty) {
-      listModelIterator.removeAt(currentModelWIndex.index);
-      newListModel.add(currentModelWIndex.currentModel);
+      final currentModelWIndexFirst = currentModelWIndex;
+      listModelIterator.removeAt(currentModelWIndexFirst.index);
+      newListModel.add(currentModelWIndexFirst.currentModel);
     }
     return newListModel;
   }
