@@ -9,9 +9,9 @@ final class FactoryObjectUtility {
 
   /* ModelWrapperRepository */
   static IPAddressWrapperRepository
-      getIPAddressWrapperRepositoryFromBaseNamedHttpClientService(
-          BaseNamedHttpClientService baseNamedHttpClientService) {
-    return IPAddressWrapperRepository(baseNamedHttpClientService);
+      getIPAddressWrapperRepositoryFromNamedHttpClientService(
+          BaseNamedHttpClientService namedHttpClientService) {
+    return IPAddressWrapperRepository(namedHttpClientService);
   }
 
   /* NamedStreamWState */
@@ -25,22 +25,10 @@ final class FactoryObjectUtility {
 @immutable
 final class KeysUrlEndpointUtility {
   /* JsonipAPI */
-  static const String jsonipAPI = "https://jsonip.com/";
+  static const String jsonipAPI = "https://jsonip.com";
   static const String jsonipAPIQQProviders = "$jsonipAPI/providers";
 
   const KeysUrlEndpointUtility._();
-}
-
-/// This is not used in the code, but in the future it will be necessary to add navigation,
-/// and if we have, for example, "Auth", "UnAuth", on the page "MainVM" (Refactoring names pages to "AuthMainVM", "UnAuthMainVM"),
-/// then the class in which the redirect logic and the build logic of a certain page will be will be in a class such as "NamedMainVMRouter",
-/// where the suffix will be "Router", and the prefix will be "Named" (Auth,UnAuth)
-@immutable
-final class KeysRoutesUtility {
-  /* NamedMainVMRouter */
-  static const String namedMainVMRouter = "/";
-
-  const KeysRoutesUtility._();
 }
 
 @immutable
@@ -281,7 +269,7 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
 final class MainVM {
   // ModelWrapperRepository
   final _iPAddressWrapperRepository = FactoryObjectUtility
-      .getIPAddressWrapperRepositoryFromBaseNamedHttpClientService(
+      .getIPAddressWrapperRepositoryFromNamedHttpClientService(
           TimeoutHttpClientService.instance);
 
   // NamedUtility

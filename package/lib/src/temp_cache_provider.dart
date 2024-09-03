@@ -10,12 +10,12 @@ final class TempCacheProvider {
       : _tempCacheService = TempCacheService.instance,
         _iteration = IterationService.instance.newValueParameterIteration();
 
-  T getNamed<T>(String keyTempCache, dynamic defaultValue) {
+  T getNamed<T>(String keyTempCache, T defaultValue) {
     return _tempCacheService.getNamed<T>(keyTempCache, defaultValue);
   }
 
   void dispose(List<String> listKeyTempCache) {
-    return _tempCacheService.dispose(listKeyTempCache, _iteration);
+    _tempCacheService.dispose(listKeyTempCache, _iteration);
   }
 
   void listenNamed(String keyTempCache, void Function(dynamic event) callback) {

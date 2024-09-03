@@ -9,8 +9,8 @@ final class DefaultState<T extends BaseDataForNamed<Enum>>
   const DefaultState(this._dataForNamed);
 
   @override
-  void dispose() {}
+  T get getDataForNamed => _dataForNamed;
 
   @override
-  T get getDataForNamed => _dataForNamed;
+  void dispose() {}
 }

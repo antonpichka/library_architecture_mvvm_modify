@@ -9,6 +9,9 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
   DefaultStreamWState(this._dataForNamed);
 
   @override
+  T get getDataForNamed => _dataForNamed;
+
+  @override
   void dispose() {
     if (_isDispose) {
       return;
@@ -18,23 +21,17 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
   }
 
   @override
-  T get getDataForNamed => _dataForNamed;
-
-  @override
   void listenStreamDataForNamedFromCallback(void Function(T event) callback) {
     if (_isDispose) {
       throw LocalException(
           this,
           EnumGuilty.developer,
-          "DefaultStreamWStateQQListenStreamDataForNamedFromCallback",
+          "DefaultStreamWStateQQListenStreamDataWNamedWCallback",
           "Already disposed of");
     }
     if (this._callback != null) {
-      throw LocalException(
-          this,
-          EnumGuilty.developer,
-          "DefaultStreamWStateQQListenStreamDataForNamedFromCallback",
-          "Duplicate");
+      throw LocalException(this, EnumGuilty.developer,
+          "DefaultStreamWStateQQListenStreamDataWNamedWCallback", "Duplicate");
     }
     this._callback = callback;
   }
