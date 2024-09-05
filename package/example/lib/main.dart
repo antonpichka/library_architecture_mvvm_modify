@@ -272,16 +272,15 @@ final class MainVM {
       .getIPAddressWrapperRepositoryFromNamedHttpClientService(
           TimeoutHttpClientService.instance);
 
-  // NamedUtility
-
   // TempCacheProvider
-  late final TempCacheProvider _tempCacheProvider;
+  final _tempCacheProvider = TempCacheProvider();
+
+  // NamedUtility
 
   // NamedStreamWState
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
 
   MainVM() {
-    _tempCacheProvider = TempCacheProvider();
     _namedStreamWState =
         FactoryObjectUtility.getNamedStreamWStateWhereDataWMainVM;
   }
@@ -302,17 +301,17 @@ final class MainVM {
   }
 
   void _build() {
-    final dataForNamed = _namedStreamWState.getDataForNamed;
-    switch (dataForNamed.getEnumDataForNamed) {
+    final dataWNamed = _namedStreamWState.getDataForNamed;
+    switch (dataWNamed.getEnumDataForNamed) {
       case EnumDataForMainVM.isLoading:
         debugPrint("Build: IsLoading");
         break;
       case EnumDataForMainVM.exception:
         debugPrint(
-            "Build: Exception(${dataForNamed.exceptionController.getKeyParameterException})");
+            "Build: Exception(${dataWNamed.exceptionController.getKeyParameterException})");
         break;
       case EnumDataForMainVM.success:
-        debugPrint("Build: Success(${dataForNamed.iPAddress})");
+        debugPrint("Build: Success(${dataWNamed.iPAddress})");
         break;
       default:
         break;
