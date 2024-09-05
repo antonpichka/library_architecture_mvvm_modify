@@ -217,7 +217,7 @@
 
 ##### Rules
 
-- When create methods ?:
+- Under what conditions are methods created ?:
 - - Void:
 - - - A variable is set or used in another variable
 - - - When necessary to use loops: 'for', 'while', 'do while'
