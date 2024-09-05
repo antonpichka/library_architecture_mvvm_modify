@@ -23,6 +23,9 @@
 - - Where and how constants should be stored to be structured and understandable ?
 - - Through whom we need to share data between VMs ?
 - It is also necessary to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will lose a lot of time making the bodies of all methods abstract (that is, encapsulating code in other methods, which we can override in descendant classes), and if we refactor everything, we will lose code quality, which will lead to errors in the program, so it is necessary to balance between inheritance and refactoring
+<p align="center">
+    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/roac_w_ioac.png" alt="ROAC W IOAC"/>
+</p>
 
 ## Example
 
@@ -39,33 +42,33 @@
 
 ### General Rules
 
-- Forbidden words (![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)):
-- - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) And
-- - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Or
-- - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Where
-- - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) For
-- - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) From
-- - ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) Parameter/Parameters
-- Alternative to forbidden words (![#008000](https://placehold.co/15x15/008000/008000.png)):
-- - ![#008000](https://placehold.co/15x15/008000/008000.png) W
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
 - Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService)','[ModelWrapperRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapperRepository)'
 
 ### Architectural Objects
 
-- In "Architectural Objects" we include only those classes that can be refactored or inherited
+- In 'Architectural Objects' we include only those classes that can be refactored or inherited
 - Name - [Inheritance | Refactoring]:
 - - [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility) - Refactoring
-- - [NamedException](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedException) - Inheritance
 - - [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM) - Refactoring
-- - [NamedState](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedState) - Inheritance
-- - [NamedStreamWState](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedStreamWState) - Inheritance
 - - [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed) - Refactoring
 - - [EnumDataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#enumDataForNamed) - Refactoring
+- - [ModelTTNamed[TTNamed]TTNamedTTIterator](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelttnamedttnamedttnamedttiterator) - Refactoring
+- - [NamedException](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedException) - Inheritance
+- - [NamedState](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedState) - Inheritance
+- - [NamedStreamWState](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedStreamWState) - Inheritance
 - - [Model](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#model) - Inheritance
 - - [ListModel](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModel) - Inheritance
-- - [ModelTTNamed[TTNamed]TTNamedTTIterator](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelttnamedttnamedttnamedttiterator) - Refactoring
 - - [NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService) - Inheritance
 - - [ModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapper) - Inheritance
 - - [ListModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModelWrapper) - Inheritance
@@ -73,7 +76,7 @@
 
 #### NamedUtility
 
-##### Knows about: NamedException, NamedVM, NamedState, NamedStreamWState, DataForNamed, EnumDataForNamed, Model, ListModel, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedService, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
+##### Knows about: NamedVM, DataForNamed, EnumDataForNamed, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedException, NamedState, NamedStreamWState, Model, ListModel, NamedService, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
 
 ##### Rules
 
@@ -90,9 +93,9 @@
 - - Variables names (constants):
 - - - NamedQQ(NamedFirst)QQ(NamedSecond):
 - - - - () - optional
-- - - - Named - anything you like
-- - - - (NamedFirst) - anything you like
-- - - - (NamedSecond) - anything you like
+- - - - Named - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - (NamedFirst) - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - (NamedSecond) - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - Example:
 - - - - DataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode
 - NamedUtility - it could be anything:
@@ -131,19 +134,9 @@
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
-#### NamedException
-
-##### Knows about: NamedUtility
-
-##### Rules
-
-- Inherit the base class 'BaseException':
-- - LocalException
-- - NetworkException
-
 #### NamedVM
 
-##### Knows about: NamedException, NamedUtility, DataForNamed, EnumDataForNamed, Model, ListModel, ModelTTNamed[TTNamed]TTNamedTTIterator, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
+##### Knows about: NamedUtility, DataForNamed, EnumDataForNamed, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedException, NamedState, NamedStreamWState, Model, ListModel, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
 
 ##### Rules
 
@@ -153,17 +146,19 @@
 - - - - UserEEMoviesEEActorsVM
 - Methods names:
 - - Private methods that are called in the callback:
-- - - Summary in the form of variables: | Example:
+- - - This code: 'for', 'while', 'do while', should not be inside a method. It must be encapsulated in 'DataForNamed' or 'AlgorithmsUtility', or 'Model', 'ListModel'
+- - - Summary in the form of variables: | Example: | Explanation:
 - - - - Summary in the form of variables:
 - - - - - ${In which callback did this start ?}YY${What does this method do ?}
 - - - - Example:
 - - - - - onPressedYYAddTask
 - - - - - listenNamedTempCacheProviderYYImplementListenerUserTempCacheProvider
-- - - Explanation:
-- - - - The methods created in this way allow us to understand who created this method
-- - - - Minimum and maximum one 'YY' - needed as a separator that helps to quickly understand what this method does
+- - - - Explanation:
+- - - - - The methods created in this way allow us to understand who created this method
+- - - - - Minimum and maximum one 'YY' - needed as a separator that helps to quickly understand what this method does
 - - Private methods that are invoked by other methods using if and return type 'void' (sometime 'string'):
-- - - Summary in the form of variables: | Example:
+- - - This code: 'for', 'while', 'do while', should not be inside a method. It must be encapsulated in 'DataForNamed' or 'AlgorithmsUtility', or 'Model', 'ListModel'
+- - - Summary in the form of variables: | Example: | Explanation:
 - - - - Summary in the form of variables:
 - - - - - numberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
 - - - - - - numberBranchNumberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
@@ -172,74 +167,60 @@
 - - - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 - - - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 - - - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - Explanation:
-- - - - The methods created in this way allow you to write complex logic
-- - - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
-- - - - 'if' create methods:
-- - - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - firstBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - firstBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - firstBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - firstBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - firstBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - firstBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - firstBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - firstBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - firstBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - secondQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - secondBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - secondBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - secondBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - secondBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - secondBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - secondBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - secondBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - secondBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - secondBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - secondBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - secondBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - thirdQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - thirdBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - thirdBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - thirdBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - thirdBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - thirdBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - thirdBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - thirdBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - thirdBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
-- - - - - - - thirdBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - thirdBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-- - - - - - - thirdBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
-
-#### NamedState
-
-##### Knows about: NamedException, DataForNamed
-
-##### Rules
-
-- Inherit the base class 'BaseNamedState':
-- - DefaultState
-
-#### NamedStreamWState
-
-##### Knows about: NamedException, DataForNamed
-
-##### Rules
-
-- Inherit the base class 'BaseNamedStreamWState':
-- - DefaultStreamWState
+- - - - Explanation:
+- - - - - The methods created in this way allow you to write complex logic
+- - - - - Minimum and maximum two 'QQ' - needed as a separator that helps to quickly understand what this method does
+- - - - - 'if' create methods:
+- - - - - - firstQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - firstBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - firstBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - firstBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - firstBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - firstBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - firstBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - firstBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - firstBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - firstBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - firstBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - firstBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - secondQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - secondBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - secondBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - secondBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - secondBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - secondBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - secondBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - secondBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - secondBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - secondBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - secondBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - secondBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - thirdQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - thirdBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - thirdBranchOneBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - thirdBranchOneBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - thirdBranchOneBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - thirdBranchTwoBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - thirdBranchTwoBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - thirdBranchTwoBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - thirdBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService:
+- - - - - - - - thirdBranchThreeBranchOneQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - thirdBranchThreeBranchTwoQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
+- - - - - - - - thirdBranchThreeBranchThreeQQFirstRequestQQGetIPAddressWhereJsonipAPIParameterHttpClientService
 
 #### DataForNamed
 
-##### Knows about: NamedException, NamedUtility, EnumDataForNamed, Model, ListModel, ModelTTNamed[TTNamed]TTNamedTTIterator, ExceptionController
+##### Knows about: NamedUtility, EnumDataForNamed, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedException, Model, ListModel, ExceptionController
 
 ##### Rules
 
+- When create methods ?:
+- - Void:
+- - - A variable is set or used in another variable
+- - - When necessary to use loops: 'for', 'while', 'do while'
 - Methods names:
 - - Get:
 - - - get(Named)(WhereNamed)[FromNamed][ParameterNamed]:
@@ -278,8 +259,49 @@
 
 ##### Knows about: -
 
-#### Model
+#### ModelTTNamed[TTNamed]TTNamedTTIterator
 
+##### Knows about: NamedUtility, Model
+
+##### Rules
+
+- ModelTTNamed[TTNamed]TTNamedTTIterator
+- - [] - if available
+- - First 'TT', this is a 'Where'
+- - Second 'TT' this is a 'From'
+- - Third 'TT' this is a 'Parameter/Parameters'
+- - Fourth 'TT' it's just the end
+
+#### NamedException
+
+##### Knows about: NamedUtility
+
+##### Rules
+
+- Inherit the base class 'BaseException':
+- - LocalException
+- - NetworkException
+
+#### NamedState
+
+##### Knows about: NamedUtility, DataForNamed, NamedException
+
+##### Rules
+
+- Inherit the base class 'BaseNamedState':
+- - DefaultState
+
+#### NamedStreamWState
+
+##### Knows about: NamedUtility, DataForNamed, NamedException
+
+##### Rules
+
+- Inherit the base class 'BaseNamedStreamWState':
+- - DefaultStreamWState
+
+#### Model
+    
 ##### Knows about: NamedUtility
 
 ##### Rules
@@ -348,7 +370,7 @@
 
 #### ListModel
 
-##### Knows about: NamedUtility, Model, ModelTTNamed[TTNamed]TTNamedTTIterator
+##### Knows about: NamedUtility, ModelTTNamed[TTNamed]TTNamedTTIterator, Model
 
 ##### Rules
 
@@ -399,19 +421,6 @@
 - - - - Method name length - no more than 100 characters (if more than 100, then use numbers (Example - isWhereNamedFromOneParametersTwo))
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
-
-#### ModelTTNamed[TTNamed]TTNamedTTIterator
-
-##### Knows about: NamedUtility, Model
-
-##### Rules
-
-- ModelTTNamed[TTNamed]TTNamedTTIterator
-- - [] - if available
-- - First 'TT', this is a 'Where'
-- - Second 'TT' this is a 'From'
-- - Third 'TT' this is a 'Parameter/Parameters'
-- - Fourth 'TT' it's just the end
 
 #### NamedService
 
@@ -470,37 +479,6 @@
 - - - - Regarding duplicates - at the end add 'First', 'Second', etc...
 - - - - Local variable name - isWhereNamed[FromNamed][ParameterNamed]
 
-#### ModelWrapperRepository
-
-##### Knows about: NamedUtility, NamedException, NamedService, Result, ResultWithModelWrapper, ResultWithListModelsWrapper, ModelWrapper, ListModelWrapper
-
-##### Rules
-
-- Inheritance classes:
-- - Names of inherited classes:
-- - - ModelWrapperNumberRepository:
-- - - - ModelWrapper:
-- - - - - UserWrapper, MovieWrapper, etc...
-- - - - Number:
-- - - - - First, Second, Third, etc...
-- - Inheritance goes along one branch:
-- - - UserWrapperRepository -> UserWrapperFirstRepository -> UserWrapperSecondRepository -> UserWrapperThirdRepository
-- - When inheriting, we also inherit:
-- - - Model
-- - - ListModel
-- - - ModelWrapper
-- - - ListModelWrapper
-- Methods names:
-- - OperationModel(WhereNamed)[FromNamed]ParameterNamed:
-- - - () - optional
-- - - [] - if available
-- - - Operation -  insert, update, delete, set, init, get, etc...
-- - - Model - name model
-- - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
-- - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
-- - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
-- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamed
-
 #### ModelWrapper
 
 ##### Knows about: NamedUtility, Model
@@ -543,6 +521,37 @@
 - - - ModelWrapper
 - - - ModelWrapperRepository
 
+#### ModelWrapperRepository
+
+##### Knows about: NamedUtility, NamedException, NamedService, ModelWrapper, ListModelWrapper, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
+
+##### Rules
+
+- Inheritance classes:
+- - Names of inherited classes:
+- - - ModelWrapperNumberRepository:
+- - - - ModelWrapper:
+- - - - - UserWrapper, MovieWrapper, etc...
+- - - - Number:
+- - - - - First, Second, Third, etc...
+- - Inheritance goes along one branch:
+- - - UserWrapperRepository -> UserWrapperFirstRepository -> UserWrapperSecondRepository -> UserWrapperThirdRepository
+- - When inheriting, we also inherit:
+- - - Model
+- - - ListModel
+- - - ModelWrapper
+- - - ListModelWrapper
+- Methods names:
+- - OperationModel(WhereNamed)[FromNamed]ParameterNamed:
+- - - () - optional
+- - - [] - if available
+- - - Operation -  insert, update, delete, set, init, get, etc...
+- - - Model - name model
+- - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamed
+
 ### Not Architectural Objects
 
 - In 'Not Architectural Objects' we include only what is a class in the library with the final modifier:
@@ -576,15 +585,25 @@
 
 #### ResultWithModelWrapper
 
-##### Knows about: ModelWrapper, NamedException, ExceptionController
+##### Knows about: NamedException, ModelWrapper, ExceptionController
 
 #### ResultWithListModelsWrapper
 
-##### Knows about: ListModelWrapper, NamedException, ExceptionController
+##### Knows about: NamedException, ListModelWrapper, ExceptionController
 
 ### Diagrams
 
-- Coming Soon
+- The diagrams will show all architectural and non-architectural components
+- Number of diagrams: 22  
+- There will be two types of diagrams:
+- - Where everything is shown
+- - Where everything is shown except one architectural or non-architectural component. And under the diagram it will be written what will happen if this one architectural or non-architectural component is missing
+- What sections will be under each diagram where a certain architectural or non-architectural component will be missing ?:
+- - What will happen to the software architecture if this '{architectural or non-architectural component}' is removed ?
+- - Comparison
+- - Summary
+
+------------------------------------> Coming Soon
 
 ## Design Patterns
 
