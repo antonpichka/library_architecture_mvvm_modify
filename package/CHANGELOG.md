@@ -1,3 +1,10 @@
+## 6.0.2
+
+- documentation(package/README.md): updated sections 'General Rules', 'NamedUtility', 'NamedVM', 'DataForNamed', 'Diagrams'
+- refactoring(package/example/lib/main.dart): updated example
+- chore(assets/roac_w_ioac.png): added
+- Note: The next patch will definitely have diagrams, as there were some shortcomings
+
 ## 6.0.1
 
 - documentation(package/README.md): Improved understanding of chapters such as 'NamedUtility', 'NamedVM'
