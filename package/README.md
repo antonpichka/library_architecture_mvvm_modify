@@ -219,7 +219,7 @@
 
 - Under what conditions are methods created ?:
 - - Void:
-- - - A variable is set or used in another variable
+- - - When 2+ variables interact with each other
 - - - When necessary to use loops: 'for', 'while', 'do while'
 - Methods names:
 - - Get:
