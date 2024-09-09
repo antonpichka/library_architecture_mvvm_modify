@@ -1,3 +1,9 @@
+## 6.0.3
+
+- chore(assets): replaced 'roac_w_ioac.png' on 'rao_w_iao.png'
+- chore(assets): added diagrams
+- documentation(package/README.md): updated sections 'Why Did I Create Software Architecture', 'Architectural Objects', 'NamedUtility', 'NamedVM', 'Model', 'ModelWrapperRepository'. The section has been completely added 'Diagrams'
+
 ## 6.0.2
 
 - documentation(package/README.md): updated sections 'General Rules', 'NamedUtility', 'NamedVM', 'DataForNamed', 'Diagrams'
