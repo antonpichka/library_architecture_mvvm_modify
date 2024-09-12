@@ -1,3 +1,8 @@
+## 6.0.4
+
+- documentation(package/README.md): updated section 'NamedUtility' where I added more separators in brackets (where the keys are) to make it more correct
+- documentation(package/README.md): updated section 'Design Patterns' where I removed 'TempCacheProvider' from the 'Singleton' design pattern because it was not implemented
+
 ## 6.0.3
 
 - chore(assets): replaced 'roac_w_ioac.png' on 'rao_w_iao.png'
