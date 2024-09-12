@@ -90,20 +90,20 @@
 - Class Types:
 - - KeysNamedServiceUtility - a class that stores keys for a particular service:
 - - - Variables names (constants):
-- - - - NamedQQNamedFirstQQ(NamedSecond):
+- - - - NamedQQNamedFirst(QQNamedSecond):
 - - - - - () - optional
 - - - - - Named - some kind of class
 - - - - - NamedFirst - variable of this class
-- - - - - (NamedSecond) - if there is already one, then you can add a detailed description, or add it even if there is no such one
+- - - - - (QQNamedSecond) - if there is already one, then you can add a detailed description, or add it even if there is no such one
 - - - - Example:
 - - - - - iPAddressQQIpQQJsonipAPI
 - - KeysNamedUtility - a class that stores keys for anything (depending on your abstract thinking):
 - - - Variables names (constants):
-- - - - NamedQQ(NamedFirst)QQ(NamedSecond):
+- - - - Named(QQNamedFirst)(QQNamedSecond):
 - - - - - () - optional
 - - - - - Named - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
-- - - - - (NamedFirst) - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
-- - - - - (NamedSecond) - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - - (QQNamedFirst) - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
+- - - - - (QQNamedSecond) - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - - Example:
 - - - - - DataWAntiDDosSystemVMQQGetExceptionInStringWNotEqualsWCodeAndInputCode
 - - NamedUtility - it could be anything:
