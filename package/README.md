@@ -887,7 +887,6 @@
 - - - TempCacheProvider
 - - Singleton:
 - - - TempCacheService
-- - - TempCacheProvider
 - - - IterationService
 - - Factory method:
 - - - BaseModelTTNamed[TTNamed]TTNamedTTIterator
