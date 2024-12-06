@@ -875,6 +875,30 @@
 
 - Same as with 'Result', only in success the object is 'ListModelWrapper'
 
+#### Without 'CurrentModelWIndex'
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/diagram_lamm_without_current_model_w_index.png" alt="Diagram LAMM Without CurrentModelWIndex"/>
+</p>
+
+- [CurrentModelWIndex](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#currentmodelwindex)
+
+##### What will happen to the software architecture if this 'CurrentModelWIndex' is removed ?
+
+- Without this object, we cannot get the 'Model' object that needs to be added to the list after sorting, and the index for deleting from the list that is used in sorting (We delete until the list is empty, after which we get a new sorted list (this is in the 'ModelTTNamedTTNamedTTNamedTTIterator' object))
+
+#### Without 'IDispose'
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/diagram_lamm_without_i_dispose.png" alt="Diagram LAMM Without IDispose"/>
+</p>
+
+- [IDispose](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#idispose)
+
+##### What will happen to the software architecture if this 'IDispose' is removed ?
+
+- Without this object, we will not be able to free resources in such objects as 'NamedStreamWState', 'NamedState', 'ModelWrapperRepository', and this in turn will lead to a memory leak
+
 ## Design Patterns
 
 - Design patterns used in 'LAMM' (--Design Patterns/---Classes):
