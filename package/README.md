@@ -11,6 +11,7 @@
 - [Template For LAMM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#template-for-lamm)
 - [Documentation](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#documentation)
 - [Design Patterns](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#design-patterns)
+- [Theory of Balance in Software Architecture](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#theory-of-balance-in-software-architecture)
 
 ## Why Did I Create Software Architecture
 
@@ -69,17 +70,6 @@
 - - [ModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapper) - Inheritance
 - - [ListModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModelWrapper) - Inheritance
 - - [ModelWrapperRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapperRepository) - Inheritance
-- Necessary to understand which classes to inherit and which classes to refactor, because if we inherit everything, we will lose a lot of time making the bodies of all methods abstract (that is, encapsulating code in other methods, which we can override in descendant classes), and if we refactor everything, we will lose code quality, which will lead to errors in the program, so it is necessary to balance between inheritance and refactoring
-<p align="center">
-    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/rao_w_iao.png" alt="RAO W IAO"/>
-</p>
-
-- RAO (Refactoring Architectural Objects):
-- - Fast start. Sad end
-- RAO & IAO (Refactoring Architectural Objects & Inheritance Architectural Objects):
-- - A worthy beginning. A worthy continuation. A great end
-- IAO (Inheritance Architectural Objects):
-- - Long beginning. Long Continuation. Worthy end
 
 #### NamedUtility
 
@@ -932,3 +922,12 @@
 - - - BaseListModelWrapper
 - - Similar to 'Adapter':
 - - - ExceptionController
+
+## Theory of Balance in Software Architecture
+
+- It is necessary to understand which classes to inherit and which to refactor. Because if we inherit everything, we will lose a lot of time, and if we refactor everything, we will lose a lot of time. 
+- Conclusion: It is necessary to balance between inheritance and refactoring so as not to lose a lot of time on software development
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/rao_w_iao.png" alt="RAO W IAO"/>
+</p>
