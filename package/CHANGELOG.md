@@ -1,3 +1,12 @@
+## 6.0.5
+
+- chore(assets): Changed the image 'Theory of Balance in Software Architecture'
+- documentation(package/README.md): Moved theory from 'Architectural Objects' section to new section 'Theory of Balance in Software Architecture'
+- documentation(package/README.md): Added subsections ‘CurrentModelWIndex', ‘IDispose’ to section 'Not Architectural Objects' (Also made some changes to 'Architectural Objects')
+- documentation(package/README.md): Added subsections 'Without ‘CurrentModelWIndex’', 'Without ‘IDispose’' to section 'Diagrams'
+- documentation(package/README.md): Removed text about the number of diagrams in the 'Diagrams' section
+- chore(assets): updated diagrams where is existing 'CurrentModelWIndex', 'IDispose'
+
 ## 6.0.4
 
 - documentation(package/README.md): updated section 'NamedUtility' where I added more separators in brackets (where the keys are) to make it more correct
