@@ -269,7 +269,7 @@
 
 #### ModelTTNamed[TTNamed]TTNamedTTIterator
 
-##### Knows about: NamedUtility, Model
+##### Knows about: NamedUtility, Model, CurrentModelWIndex
 
 ##### Rules
 
@@ -292,7 +292,7 @@
 
 #### NamedState
 
-##### Knows about: NamedUtility, DataForNamed, NamedException
+##### Knows about: NamedUtility, DataForNamed, NamedException, IDispose
 
 ##### Rules
 
@@ -301,7 +301,7 @@
 
 #### NamedStreamWState
 
-##### Knows about: NamedUtility, DataForNamed, NamedException
+##### Knows about: NamedUtility, DataForNamed, NamedException, IDispose
 
 ##### Rules
 
@@ -535,7 +535,7 @@
 
 #### ModelWrapperRepository
 
-##### Knows about: NamedUtility, NamedException, NamedService, ModelWrapper, ListModelWrapper, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
+##### Knows about: NamedUtility, NamedException, NamedService, ModelWrapper, ListModelWrapper, Result, ResultWithModelWrapper, ResultWithListModelsWrapper, IDispose
 
 ##### Rules
 
@@ -574,6 +574,8 @@
 - - [Result](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#result)
 - - [ResultWithModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithModelWrapper)
 - - [ResultWithListModelsWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithListModelsWrapper)
+- - [CurrentModelWIndex](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#currentModelWIndex)
+- - [IDispose](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#iDispose)
 
 #### TempCacheService
 
@@ -602,6 +604,14 @@
 #### ResultWithListModelsWrapper
 
 ##### Knows about: NamedException, ListModelWrapper, ExceptionController
+
+#### CurrentModelWIndex
+
+##### Knows about: Model
+
+#### IDispose
+
+##### Knows about: -
 
 ### Diagrams
 
