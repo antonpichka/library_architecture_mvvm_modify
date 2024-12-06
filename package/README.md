@@ -606,7 +606,6 @@
 ### Diagrams
 
 - The diagrams will show all architectural and non-architectural objects
-- Number of diagrams: 22  
 - There will be two types of diagrams:
 - - Where everything is shown
 - - Where everything is shown except one architectural or non-architectural object
