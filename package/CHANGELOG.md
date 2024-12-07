@@ -1,3 +1,8 @@
+## 6.0.6
+
+- chore(assets): Updated 'rao_w_iao.png'
+- documentation(package/README.md): Updated subsection 'NamedUtility' in section 'Architectural Objects'
+
 ## 6.0.5
 
 - chore(assets): Changed the image 'Theory of Balance in Software Architecture'
