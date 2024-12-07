@@ -73,7 +73,7 @@
 
 #### NamedUtility
 
-##### Knows about: NamedVM, DataForNamed, EnumDataForNamed, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedException, NamedState, NamedStreamWState, Model, ListModel, NamedService, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper
+##### Knows about: NamedVM, DataForNamed, EnumDataForNamed, ModelTTNamed[TTNamed]TTNamedTTIterator, NamedException, NamedState, NamedStreamWState, Model, ListModel, NamedService, ModelWrapper, ListModelWrapper, ModelWrapperRepository, TempCacheProvider, ExceptionController, Result, ResultWithModelWrapper, ResultWithListModelsWrapper, CurrentModelWIndex, IDispose
 
 ##### Rules
 
