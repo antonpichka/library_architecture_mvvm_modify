@@ -4,21 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 
 @immutable
-final class FactoryObjectUtility {
-  const FactoryObjectUtility._();
+final class FactoryModelWrapperRepositoryUtility {
+  const FactoryModelWrapperRepositoryUtility._();
 
   /* ModelWrapperRepository */
   static IPAddressWrapperRepository
       getIPAddressWrapperRepositoryFromNamedHttpClientService(
           BaseNamedHttpClientService namedHttpClientService) {
     return IPAddressWrapperRepository(namedHttpClientService);
-  }
-
-  /* NamedStreamWState */
-  static BaseNamedStreamWState<DataForMainVM>
-      get getNamedStreamWStateWhereDataWMainVM {
-    return DefaultStreamWState<DataForMainVM>(
-        DataForMainVM(true, const IPAddress("")));
   }
 }
 
@@ -208,7 +201,7 @@ final class TimeoutHttpClientService extends BaseNamedHttpClientService {
 
 @immutable
 base class IPAddressWrapperRepository<T extends IPAddressWrapper,
-    Y extends ListIPAddressWrapper> extends BaseModelWrapperRepository {
+    Y extends IPAddressWrapper> extends BaseModelWrapperRepository {
   @protected
   final BaseNamedHttpClientService namedHttpClientService;
 
@@ -229,12 +222,12 @@ base class IPAddressWrapperRepository<T extends IPAddressWrapper,
       final Map<String, dynamic> data = jsonDecode(response?.body ?? "");
       final ipByIPAddress = getSafeValueFromMapAndKeyAndDefaultValue(
           data, KeysHttpClientServiceUtility.iPAddressQQIp, "");
-      return ResultWithModelWrapper<T>.success(
+      return ResultWithModelWrapper.success(
           IPAddressWrapper([ipByIPAddress]) as T);
     } on NetworkException catch (e) {
-      return ResultWithModelWrapper<T>.exception(e);
+      return ResultWithModelWrapper.exception(e);
     } catch (e) {
-      return ResultWithModelWrapper<T>.exception(LocalException(
+      return ResultWithModelWrapper.exception(LocalException(
           this, EnumGuilty.device, ReadyDataUtility.unknown, e.toString()));
     }
   }
@@ -268,7 +261,7 @@ final class DataForMainVM extends BaseDataForNamed<EnumDataForMainVM> {
 
 final class MainVM {
   // ModelWrapperRepository
-  final _iPAddressWrapperRepository = FactoryObjectUtility
+  final _iPAddressWrapperRepository = FactoryModelWrapperRepositoryUtility
       .getIPAddressWrapperRepositoryFromNamedHttpClientService(
           TimeoutHttpClientService.instance);
 
@@ -281,8 +274,8 @@ final class MainVM {
   late final BaseNamedStreamWState<DataForMainVM> _namedStreamWState;
 
   MainVM() {
-    _namedStreamWState =
-        FactoryObjectUtility.getNamedStreamWStateWhereDataWMainVM;
+    _namedStreamWState = DefaultStreamWState<DataForMainVM>(
+        DataForMainVM(true, const IPAddress("")));
   }
 
   Future<void> init() async {
