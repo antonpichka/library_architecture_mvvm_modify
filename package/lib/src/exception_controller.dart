@@ -6,7 +6,8 @@ final class ExceptionController {
   final BaseException? _exception;
 
   const ExceptionController.success() : _exception = null;
-  const ExceptionController.exception(this._exception);
+  const ExceptionController.exception(BaseException exception)
+      : _exception = exception;
 
   @override
   String toString() {
