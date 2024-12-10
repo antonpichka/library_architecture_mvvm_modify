@@ -201,7 +201,7 @@ final class TimeoutHttpClientService extends BaseNamedHttpClientService {
 
 @immutable
 base class IPAddressWrapperRepository<T extends IPAddressWrapper,
-    Y extends IPAddressWrapper> extends BaseModelWrapperRepository {
+    Y extends ListIPAddressWrapper> extends BaseModelWrapperRepository {
   @protected
   final BaseNamedHttpClientService namedHttpClientService;
 
