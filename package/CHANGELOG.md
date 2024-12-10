@@ -1,3 +1,11 @@
+## 6.0.7
+
+- refactoring(package/example): upd
+- refactoring(package/example): upd
+- refactoring(package/lib/src/named_service/temp_cache_service.dart): In the 'getNamed' method, the parameter is named 'defaultValue', where the 'dynamic' type is replaced by the generic 'T' of the same method
+- refactoring(package/lib/src/exception_controller.dart): Removed null safety in constructor parameter named 'exception'
+- refactoring(package/lib/src/base_named_stream_w_state/default_stream_w_state.dart): Changed key names in 'LocalException'
+
 ## 6.0.6
 
 - chore(assets): Updated 'rao_w_iao.png'
