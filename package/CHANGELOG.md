@@ -1,3 +1,7 @@
+## 6.0.8
+
+- refactoring(package/example): upd
+
 ## 6.0.7
 
 - refactoring(package/example): upd
