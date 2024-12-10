@@ -7,7 +7,6 @@ import 'package:meta/meta.dart';
 final class FactoryModelWrapperRepositoryUtility {
   const FactoryModelWrapperRepositoryUtility._();
 
-  /* ModelWrapperRepository */
   static IPAddressWrapperRepository
       getIPAddressWrapperRepositoryFromNamedHttpClientService(
           BaseNamedHttpClientService namedHttpClientService) {
