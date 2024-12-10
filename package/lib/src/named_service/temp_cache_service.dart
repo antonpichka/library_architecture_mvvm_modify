@@ -12,7 +12,7 @@ final class TempCacheService {
       : _tempCache = {},
         _tempCacheWStreams = {};
 
-  T getNamed<T>(String keyTempCache, dynamic defaultValue) {
+  T getNamed<T>(String keyTempCache, T defaultValue) {
     if (!_tempCache.containsKey(keyTempCache)) {
       return defaultValue;
     }
