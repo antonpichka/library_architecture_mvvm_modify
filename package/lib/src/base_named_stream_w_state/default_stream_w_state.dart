@@ -39,17 +39,14 @@ final class DefaultStreamWState<T extends BaseDataForNamed<Enum>>
   @override
   void notifyStreamDataForNamed() {
     if (_isDispose) {
-      throw LocalException(
-          this,
-          EnumGuilty.developer,
-          "DefaultStreamWStateQQNotifyStreamDataForNamed",
-          "Already disposed of");
+      throw LocalException(this, EnumGuilty.developer,
+          "DefaultStreamWStateQQNotifyStreamDataWNamed", "Already disposed of");
     }
     if (_callback == null) {
       throw LocalException(
           this,
           EnumGuilty.developer,
-          "DefaultStreamWStateQQNotifyStreamDataForNamed",
+          "DefaultStreamWStateQQNotifyStreamDataWNamed",
           "Stream has no listener");
     }
     _callback!(_dataForNamed);
