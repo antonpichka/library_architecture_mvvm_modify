@@ -109,7 +109,7 @@ abstract class BaseNamedHttpClient {
   Future<http.Response> post(Uri url,
       {Map<String, String>? headers, body, Encoding? encoding});
 
-  void close();
+  Future<void> close();
 }
 
 final class DefaultHttpClient extends BaseNamedHttpClient {
@@ -129,7 +129,7 @@ final class DefaultHttpClient extends BaseNamedHttpClient {
   }
 
   @override
-  void close() {
+  Future<void> close() async {
     _client.close();
   }
 }
@@ -154,7 +154,7 @@ final class TimeoutHttpClient extends BaseNamedHttpClient {
   }
 
   @override
-  void close() {
+  Future<void> close() async {
     _client.close();
   }
 }
@@ -305,9 +305,7 @@ final class MainVM {
       case EnumDataForMainVM.success:
         debugPrint("Build: Success(${dataWNamed.iPAddress})");
         break;
-      default:
-        break;
-    }
+      }
   }
 
   Future<String> _firstRequest() async {
