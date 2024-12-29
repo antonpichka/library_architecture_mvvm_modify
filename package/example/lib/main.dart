@@ -305,7 +305,7 @@ final class MainVM {
       case EnumDataForMainVM.success:
         debugPrint("Build: Success(${dataWNamed.iPAddress})");
         break;
-      }
+    }
   }
 
   Future<String> _firstRequest() async {
