@@ -1,3 +1,10 @@
+## 6.0.9
+
+- refactoring(package/example): dart format .
+- documentation(package/README.md): Delete the section 'General Rules', and move this 'General Rules' to all subsections of 'Architectural Objects', and add rules like 'Local variables name', 'Use try/catch (Yes/No)'
+- refactoring(package/example): Updated the example
+- refactoring(package/lib/src/named_service/temp_cache_service.dart): In the ‘dispose’ method in the ‘for’ loop where ‘if’ replace ‘return’ with ’continue’
+
 ## 6.0.8
 
 - refactoring(package/example): upd
