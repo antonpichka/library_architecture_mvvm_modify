@@ -37,21 +37,6 @@
 
 - But before reading the documentation, please read the entire example
 
-### General Rules
-
-- Forbidden words:
-- - And
-- - Or
-- - Where
-- - For
-- - From
-- - Parameter/Parameters
-- Alternative to forbidden words:
-- - W
-- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
-- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
-- Try/catch only at '[NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility)','[NamedService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedService)','[ModelWrapperRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapperRepository)'
-
 ### Architectural Objects
 
 - In 'Architectural Objects' we include only those classes that can be refactored or inherited
@@ -77,6 +62,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - Yes
 - Class Types:
 - - KeysNamedServiceUtility - a class that stores keys for a particular service:
 - - - Variables names (constants):
@@ -138,6 +140,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - A 'NamedVM' called from another 'NamedVM' will be named by its 'Named' as a prefix of 'NamedEENamedVM', and the directories will also be located::
 - - UserVM
 - - - UserEEListMovieVM
@@ -215,6 +234,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Under what conditions are methods created ?:
 - - Void:
 - - - When 2+ variables interact with each other
@@ -263,6 +299,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - ModelTTNamed[TTNamed]TTNamedTTIterator
 - - [] - if available
 - - First 'TT', this is a 'Where'
@@ -276,6 +329,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Inherit the base class 'BaseException':
 - - LocalException
 - - NetworkException
@@ -286,6 +356,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Inherit the base class 'BaseNamedState':
 - - DefaultState
 
@@ -295,6 +382,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Inherit the base class 'BaseNamedStreamWState':
 - - DefaultStreamWState
 
@@ -304,6 +408,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model 'ModelRRNamed':
 - - Matches:
 - - - MatchesRRDebut
@@ -376,6 +497,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ListModelNumber:
@@ -430,6 +568,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - Yes
 - Inheritance classes:
 - - Names of inherited classes:
 - - - NamedNamedTwo:
@@ -487,6 +642,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ModelWrapperNumber:
@@ -508,6 +680,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - No
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ListModelWrapperNumber:
@@ -529,6 +718,23 @@
 
 ##### Rules
 
+- Forbidden words:
+- - And
+- - Or
+- - Where
+- - For
+- - From
+- - Parameter/Parameters
+- Alternative to forbidden words:
+- - W
+- Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
+- - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Local variables name:
+- - No Prefix:
+- - - get
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
+- Use try/catch (Yes/No):
+- - Yes
 - Inheritance classes:
 - - Names of inherited classes:
 - - - ModelWrapperNumberRepository:
@@ -552,7 +758,7 @@
 - - - (WhereNamed) - describe in as much detail as possible what this class does (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - [FromNamed] - if the method has parameters, then list (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
-- - - Local variable names - operationModel(WhereNamed)[FromNamed]ParameterNamed
+- - - Local variable name - operationModel(WhereNamed)[FromNamed]ParameterNamed
 
 ### Not Architectural Objects
 
