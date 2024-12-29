@@ -22,7 +22,7 @@ final class TempCacheService {
   void dispose(List<String> listKeyTempCache, int iteration) {
     for (final String itemKeyTempCache in listKeyTempCache) {
       if (!_tempCacheWStreams.containsKey(itemKeyTempCache)) {
-        return;
+        continue;
       }
       _tempCacheWStreams[itemKeyTempCache]?.remove(iteration);
     }
