@@ -73,6 +73,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -151,6 +154,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -245,6 +251,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -310,6 +319,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -340,6 +352,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -367,6 +382,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -393,6 +411,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -419,6 +440,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -508,6 +532,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -579,6 +606,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -653,6 +683,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -691,6 +724,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -729,6 +765,9 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
+- Global variables name:
+- - Name length - no more than 100 characters
+- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
