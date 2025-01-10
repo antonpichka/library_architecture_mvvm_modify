@@ -827,6 +827,10 @@
 
 ##### Knows about: NamedException, ExceptionController
 
+##### Rules
+
+- If successful, return only the primitive type (Int, String, Double, Long, DateTime, Float, etc...)
+
 #### ResultWithModelWrapper
 
 ##### Knows about: NamedException, ModelWrapper, ExceptionController
@@ -1089,7 +1093,7 @@
 
 ##### What will happen to the software architecture if this 'Result' is removed ?
 
-- Without it, we can't get success or exception. It can combine both success and exception, where with the help of 'ExceptionController' we determine whether we have an exception or not
+- Without it we can't get success (Only primitive type is returned) or exception. It can combine both success and exception, where with the help of 'ExceptionController' we determine whether we have an exception or not
 
 #### Without 'ResultWithModelWrapper'
 
