@@ -829,7 +829,7 @@
 
 ##### Rules
 
-- If successful, return only the primitive type (Int, String, Double, Long, DateTime, Float, etc...)
+- If successful, return only the primitive type (Int, String, Bool, Double, Long, DateTime, Float, etc...)
 
 #### ResultWithModelWrapper
 
