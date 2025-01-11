@@ -1,3 +1,7 @@
+## 6.1.1
+
+- documentation(package/README.md): In the 'ListModelWrapper' subsection in the 'Architectural Objects' section, updated 'Knows about'
+
 ## 6.1.0
 
 - refactoring(package/example/lib): Updated example
