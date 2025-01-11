@@ -95,7 +95,8 @@ base class ListIPAddressWrapper extends BaseListModelWrapper {
   ListIPAddress createListModel() {
     final List<IPAddress> listModel = List.empty(growable: true);
     for (final List<dynamic> itemListObject in listsListObject) {
-      listModel.add(IPAddress(itemListObject[0]));
+      final iPAddressWrapper = IPAddressWrapper(itemListObject);
+      listModel.add(iPAddressWrapper.createModel());
     }
     return ListIPAddress(listModel);
   }
