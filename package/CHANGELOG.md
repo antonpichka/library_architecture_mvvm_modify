@@ -1,3 +1,13 @@
+## 6.1.0
+
+- refactoring(package/example/lib): Updated example
+- documentation(package/README.md): In the 'Result' subsection in the 'Not Architectural Objects' section, updated rules
+- chore(assets): 'ListModelWrapper' now knows about 'ModelWrapper' thereby reducing the number of lines of code
+- chore(assets): Removed diagrams
+- documentation(package/README.md): In the 'Result' subsection in the 'Not Architectural Objects' section, added rules and in the 'Without 'Result'' subsection in the 'Diagrams' section, updated
+- documentation(package/README.md): In the 'Model' subsection in the 'Architectural objects' section, the following was removed: 'If complex logic is needed, then inside a certain model we create model catalogs with the prefix of a certain model 'ModelRRNamed''
+- documentation(package/README.md): 'Global variables name' rules have been added to all 'Architectural objects' subsections
+
 ## 6.0.9
 
 - refactoring(package/example): dart format .
