@@ -704,7 +704,7 @@
 
 #### ListModelWrapper
 
-##### Knows about: NamedUtility, Model, ListModel
+##### Knows about: NamedUtility, Model, ListModel, ModelWrapper
 
 ##### Rules
 
