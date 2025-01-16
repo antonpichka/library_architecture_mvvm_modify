@@ -39,8 +39,8 @@
 
 ### Architectural Objects
 
-- In 'Architectural Objects' we include only those classes that can be refactored or inherited
-- Name - [Inheritance | Refactoring]:
+- In 'Architectural Objects' includes only those classes that can be refactored or inherited
+- Name - [Refactoring | Inheritance]:
 - - [NamedUtility](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedUtility) - Refactoring
 - - [NamedVM](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#namedVM) - Refactoring
 - - [DataForNamed](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#dataForNamed) - Refactoring
@@ -55,6 +55,7 @@
 - - [ModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapper) - Inheritance
 - - [ListModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#listModelWrapper) - Inheritance
 - - [ModelWrapperRepository](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#modelWrapperRepository) - Inheritance
+- - [IDispose](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#iDispose) - Inheritance
 
 #### NamedUtility
 
@@ -84,7 +85,8 @@
 - - Yes
 - Class Types:
 - - KeysNamedServiceUtility - a class that stores keys for a particular service:
-- - - Variables names (constants):
+- - - Global variables name (constants):
+- - - - Name length - infinite
 - - - - NamedQQNamedFirst(QQNamedSecond):
 - - - - - () - optional
 - - - - - Named - some kind of class
@@ -93,7 +95,8 @@
 - - - - Example:
 - - - - - iPAddressQQIpQQJsonipAPI
 - - KeysNamedUtility - a class that stores keys for anything (depending on your abstract thinking):
-- - - Variables names (constants):
+- - - Global variables name (constants):
+- - - - Name length - infinite
 - - - - Named(QQNamedFirst)(QQNamedSecond):
 - - - - - () - optional
 - - - - - Named - anything you like (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
@@ -169,18 +172,16 @@
 - - - - UserEEListMovieEEDetailsMovieVM
 - - - - - UserEEListMoviesEEDetailsMovieEEActorsVM
 - Private methods that are called in the callback:
-- - This code: 'for', 'while', 'do while', should not be inside a method. It must be encapsulated in 'DataForNamed' or 'AlgorithmsUtility', or 'Model', 'ListModel'
 - - Summary in the form of variables: | Example: | Explanation:
 - - - Summary in the form of variables:
 - - - - ${In which callback did this start ?}YY${What does this method do ?}
 - - - Example:
 - - - - onPressedYYAddTask
-- - - - listenNamedTempCacheProviderYYImplementListenerUserTempCacheProvider
+- - - - callbackYYListenUser
 - - - Explanation:
 - - - - The methods created in this way allow us to understand who created this method
 - - - - Minimum and maximum one 'YY' - needed as a separator that helps to quickly understand what this method does
 - Private methods that are invoked by other methods using if and return type 'void' (sometime 'string'):
-- - This code: 'for', 'while', 'do while', should not be inside a method. It must be encapsulated in 'DataForNamed' or 'AlgorithmsUtility', or 'Model', 'ListModel'
 - - Summary in the form of variables: | Example: | Explanation:
 - - - Summary in the form of variables:
 - - - - numberQQ${In what "method" did this madness begin ?}QQ${What "method" started this madness ?}
@@ -262,6 +263,7 @@
 - - No
 - Under what conditions are methods created ?:
 - - Void:
+- - - When one variable interacts with itself
 - - - When 2+ variables interact with each other
 - - - When necessary to use loops: 'for', 'while', 'do while'
 - Methods names:
@@ -465,6 +467,7 @@
 - - - ModelWrapperRepository
 - Under what conditions are methods created ?:
 - - Void:
+- - - When one variable interacts with itself
 - - - When 2+ variables interact with each other
 - - - When necessary to use loops: 'for', 'while', 'do while'
 - Methods names:
@@ -678,9 +681,6 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
-- Global variables name:
-- - Name length - no more than 100 characters
-- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -719,9 +719,6 @@
 - - W
 - Exception to forbidden words in some situations (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)):
 - - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) And
-- Global variables name:
-- - Name length - no more than 100 characters
-- - Regarding duplicates - at the end add 'First', 'Second', etc...
 - Local variables name:
 - - No Prefix:
 - - - get
@@ -794,9 +791,13 @@
 - - - ParameterNamed - services and other parameters (![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png))
 - - - Local variable name - operationModel(WhereNamed)[FromNamed]ParameterNamed
 
+#### IDispose
+
+##### Knows about: -
+
 ### Not Architectural Objects
 
-- In 'Not Architectural Objects' we include only what is a class in the library with the final modifier:
+- In 'Not Architectural Objects' includes only those classes that cannot be refactored or inherited:
 - - [TempCacheService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#tempCacheService)
 - - [IterationService](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#iterationService)
 - - [TempCacheProvider](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#tempCacheProvider)
@@ -805,7 +806,6 @@
 - - [ResultWithModelWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithModelWrapper)
 - - [ResultWithListModelsWrapper](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#resultWithListModelsWrapper)
 - - [CurrentModelWIndex](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#currentModelWIndex)
-- - [IDispose](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#iDispose)
 
 #### TempCacheService
 
@@ -842,10 +842,6 @@
 #### CurrentModelWIndex
 
 ##### Knows about: Model
-
-#### IDispose
-
-##### Knows about: -
 
 ### Diagrams
 
@@ -1034,6 +1030,18 @@
 - Without it, we will have to take data from the network and cache, in 'NamedVM' itself
 - We will not be able to reuse and inherit code, which will lead to meaningless copycode and refactoring
 
+#### Without 'IDispose'
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/diagram_lamm_without_i_dispose.png" alt="Diagram LAMM Without IDispose"/>
+</p>
+
+- [IDispose](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#idispose)
+
+##### What will happen to the software architecture if this 'IDispose' is removed ?
+
+- Without this object, we will not be able to free resources in such objects as 'NamedStreamWState', 'NamedState', 'ModelWrapperRepository', and this in turn will lead to a memory leak
+
 #### Without 'TempCacheService'
 
 <p align="center">
@@ -1130,18 +1138,6 @@
 ##### What will happen to the software architecture if this 'CurrentModelWIndex' is removed ?
 
 - Without this object, we cannot get the 'Model' object that needs to be added to the list after sorting, and the index for deleting from the list that is used in sorting (We delete until the list is empty, after which we get a new sorted list (this is in the 'ModelTTNamedTTNamedTTNamedTTIterator' object))
-
-#### Without 'IDispose'
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/antonpichka/library_architecture_mvvm_modify/main/assets/diagram_lamm_without_i_dispose.png" alt="Diagram LAMM Without IDispose"/>
-</p>
-
-- [IDispose](https://github.com/antonpichka/library_architecture_mvvm_modify/tree/main/package#idispose)
-
-##### What will happen to the software architecture if this 'IDispose' is removed ?
-
-- Without this object, we will not be able to free resources in such objects as 'NamedStreamWState', 'NamedState', 'ModelWrapperRepository', and this in turn will lead to a memory leak
 
 ## Design Patterns
 
