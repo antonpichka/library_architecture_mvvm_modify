@@ -1,3 +1,9 @@
+## 6.1.2
+
+- chore(assets): 'IDispose' changed
+- chore(assets): Removed diagrams
+- documentation(package/README.md): 'IDispose' moved from 'Not Architectural Objects' to 'Architectural Objects', and some bugs in other sections fixed
+
 ## 6.1.1
 
 - documentation(package/README.md): In the 'ListModelWrapper' subsection in the 'Architectural Objects' section, updated 'Knows about'
